@@ -1,11 +1,11 @@
 import { AppShell } from '@workspace/ui';
 import { Outlet } from 'react-router';
 
-import { AppNav } from '../layout/app-nav';
+import { activities } from '../activities';
 
 export default function Layout(): React.ReactElement {
   return (
-    <AppShell title="Octo" leftSidebar={<AppNav />}>
+    <AppShell title="Octo" activities={activities}>
       <Outlet />
     </AppShell>
   );

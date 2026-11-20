@@ -11,6 +11,8 @@ src/
   components/
     index.ts
     color-mode-button.tsx
+    sidebar-view.tsx
+    sidebar-section.tsx
   hooks/
     index.ts
     use-app-shell-styles.ts
@@ -30,7 +32,12 @@ src/
     app-header.tsx
     app-block.tsx
     left/
+      index.ts
+      app-activity.ts
+      activity-selection.ts
+      use-activity-selection.ts
       app-activity-bar.tsx
+      app-sidebar-body.tsx
       app-left-sidebar.tsx
       app-left-drawer.tsx
     workspace/
@@ -51,12 +58,12 @@ src/
 | --- | --- |
 | `src/index.ts` | Public package entry |
 | `src/messages.ts` | Every user-facing string; values that depend on input are functions so i18n can reorder words |
-| `src/components/` | Shared components outside the shell. `ColorModeButton`: light/dark toggle with a circular reveal (View Transitions API; none when reduced motion or unsupported) |
+| `src/components/` | Shared components outside the shell: `SidebarView` (title bar and actions for one activity), `SidebarSection` (collapsible group), and `ColorModeButton`: light/dark toggle with a circular reveal (View Transitions API; none when reduced motion or unsupported) |
 | `src/hooks/` | Shared hooks; `useAppShellStyles` reads the `appShell` slot recipe |
 | `src/utils/` | Plain helpers; `appStorage` is a `localStorage` wrapper that is a no-op during server rendering |
 | `src/provider/` | `AppProvider`: Chakra provider with the package theme plus class-based `next-themes`; wrap the app once |
 | `src/theme/` | Theme system and the `appShell` slot recipe that holds every visual decision of the shell |
-| `src/shell/` | VSCode-style `AppShell`: header, activity bar, and resizable left sidebar, main, and right sidebar (Chakra `Splitter`, sizes saved in `localStorage`); the right sidebar is closed, docked, or a `FloatingPanel`, and its mode, position, and size are saved; below `md` (768px) the left sidebar moves into a drawer opened from the header and the right sidebar is only closed or floating, and the floating window is pinned to the bottom right (no drag, resize, reset, or dock; a header button maximizes it) |
+| `src/shell/` | VSCode-style `AppShell` driven by an `activities` array (`AppActivity`: id, title, icon, badge, `top` or `bottom` placement, content): header, an activity bar built on Chakra `Tabs` (vertical, with tooltips and badges; clicking the selected icon or pressing Ctrl/Cmd+B collapses the sidebar; the selected id is saved), and resizable left sidebar, main, and right sidebar (Chakra `Splitter`, sizes saved in `localStorage`); the right sidebar is closed, docked, or a `FloatingPanel`, and its mode, position, and size are saved; below `md` (768px) the left sidebar moves into a drawer opened from the header and the right sidebar is only closed or floating, and the floating window is pinned to the bottom right (no drag, resize, reset, or dock; a header button maximizes it) |
 | `package.json` | Private package; `exports` points at `src`, so there is no build output |
 
 ## Rules

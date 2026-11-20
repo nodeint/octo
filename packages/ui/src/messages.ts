@@ -12,6 +12,9 @@ export const messages = {
     leftSidebar: 'Primary sidebar',
     openNavigation: 'Open navigation menu',
     closeNavigation: 'Close navigation menu',
+    badgeOverflow: '99+',
+    sectionToggle: (title: string): string => `Toggle ${title}`,
+    activityWithBadge: (title: string, count: number): string => `${title}, ${count} new`,
   },
   rightSidebar: {
     /** Used when the app does not name the sidebar; most apps put their assistant chat here. */

@@ -1,12 +1,17 @@
-import { Box, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Flex, useBreakpointValue } from '@chakra-ui/react';
 import { useEffect, useState, useSyncExternalStore } from 'react';
 
 import { useAppShellStyles } from '../hooks';
 import { messages } from '../messages';
 import { AppBlock } from './app-block';
 import { AppHeader } from './app-header';
+import type { AppActivity } from './left';
+import { resolveActivityId } from './left/activity-selection';
+import { AppActivityBar } from './left/app-activity-bar';
 import { AppLeftDrawer } from './left/app-left-drawer';
 import { AppLeftSidebar } from './left/app-left-sidebar';
+import { AppSidebarBody } from './left/app-sidebar-body';
+import { useActivitySelection } from './left/use-activity-selection';
 import { AppRightSidebarDocked } from './right/app-right-sidebar-docked';
 import { AppRightSidebarFloating } from './right/app-right-sidebar-floating';
 import { useRightSidebarMode } from './right/use-right-sidebar-mode';
@@ -15,8 +20,8 @@ import { AppWorkspace } from './workspace/app-workspace';
 
 export type AppShellProps = {
   readonly title: string;
-  readonly activityBar?: React.ReactNode;
-  readonly leftSidebar?: React.ReactNode;
+  /** VS Code style activities: icons in the activity bar, each opening its content in the left sidebar. */
+  readonly activities?: readonly AppActivity[];
   readonly rightSidebar?: React.ReactNode;
   /** Names the right sidebar in its toolbar, window title, and launcher button. */
   readonly rightSidebarTitle?: string;
@@ -64,8 +69,7 @@ type AppShellBodyProps = AppShellProps & {
 
 function AppShellBody({
   title,
-  activityBar,
-  leftSidebar,
+  activities = [],
   rightSidebar,
   rightSidebarTitle = messages.rightSidebar.defaultTitle,
   children,
@@ -74,6 +78,12 @@ function AppShellBody({
 }: AppShellBodyProps): React.ReactElement {
   const isCompact = useBreakpointValue({ base: true, md: false }, { ssr: false }) ?? false;
   const [storedMode, setRightMode] = useRightSidebarMode();
+  const { activeId, select } = useActivitySelection(
+    activities.map((activity) => activity.id),
+    { isShortcutEnabled: !isCompact },
+  );
+  // The drawer has no collapsed state: it opens on the last chosen activity, or the first.
+  const drawerActiveId = activeId ?? resolveActivityId(undefined, activities.map((activity) => activity.id));
   // A docked panel needs width a compact screen does not have, so it shows as the launcher instead.
   const rightMode = isCompact && storedMode === 'docked' ? 'closed' : storedMode;
 
@@ -96,18 +106,25 @@ function AppShellBody({
         <>
           <Box h="full">{main}</Box>
           <AppLeftDrawer title={title} isOpen={isNavigationOpen} onOpenChange={onNavigationOpenChange}>
-            <AppLeftSidebar activityBar={activityBar}>{leftSidebar}</AppLeftSidebar>
+            <AppLeftSidebar activities={activities} activeId={drawerActiveId} onSelect={select} />
           </AppLeftDrawer>
         </>
       ) : (
-        <AppWorkspace
-          hasRightSidebar={rightMode === 'docked'}
-          renderHandle={(id) => <AppResizeHandle id={id} />}
-          renderLeft={() => (
+        <Flex h="full" gap="1.5">
+          {activities.length > 0 && (
             <AppBlock overflow="hidden">
-              <AppLeftSidebar activityBar={activityBar}>{leftSidebar}</AppLeftSidebar>
+              <AppActivityBar activities={activities} activeId={activeId} onSelect={select} canCollapse />
             </AppBlock>
           )}
+          <AppWorkspace
+            hasLeftSidebar={activeId !== null}
+            hasRightSidebar={rightMode === 'docked'}
+            renderHandle={(id) => <AppResizeHandle id={id} />}
+            renderLeft={() => (
+              <AppBlock overflow="hidden">
+                <AppSidebarBody activities={activities} activeId={activeId} />
+              </AppBlock>
+            )}
           renderMain={() => main}
           renderRight={() => (
             <AppBlock overflow="hidden">
@@ -116,7 +133,8 @@ function AppShellBody({
               </AppRightSidebarDocked>
             </AppBlock>
           )}
-        />
+          />
+        </Flex>
       )}
       <AppRightSidebarFloating
         title={rightSidebarTitle}

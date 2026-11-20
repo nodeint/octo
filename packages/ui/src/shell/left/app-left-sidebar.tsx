@@ -1,23 +1,21 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 
-import { useAppShellStyles } from '../../hooks';
-import { messages } from '../../messages';
+import type { AppActivity } from './app-activity';
 import { AppActivityBar } from './app-activity-bar';
+import { AppSidebarBody } from './app-sidebar-body';
 
 type AppLeftSidebarProps = {
-  readonly activityBar?: React.ReactNode;
-  readonly children?: React.ReactNode;
+  readonly activities: readonly AppActivity[];
+  readonly activeId: string | null;
+  readonly onSelect: (id: string | null) => void;
 };
 
-/** The activity bar and the sidebar panel side by side; shared by the docked block and the compact drawer. */
-export function AppLeftSidebar({ activityBar, children }: AppLeftSidebarProps): React.ReactElement {
-  const styles = useAppShellStyles();
+/** The activity bar and the sidebar body side by side, for the compact drawer where they share one surface. */
+export function AppLeftSidebar({ activities, activeId, onSelect }: AppLeftSidebarProps): React.ReactElement {
   return (
     <Flex h="full">
-      <AppActivityBar>{activityBar}</AppActivityBar>
-      <Box as="aside" aria-label={messages.layout.leftSidebar} css={styles.sidebarBody}>
-        {children}
-      </Box>
+      <AppActivityBar activities={activities} activeId={activeId} onSelect={onSelect} canCollapse={false} />
+      <AppSidebarBody activities={activities} activeId={activeId} />
     </Flex>
   );
 }
