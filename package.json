@@ -37,6 +37,7 @@
     "eslint-plugin-sonarjs": "^4.2.2",
     "eslint-plugin-unicorn": "^77.0.0",
     "globals": "^17.14.0",
+    "happy-dom": "^21.0.4",
     "jscpd": "5.4.3",
     "knip": "^6.46.1",
     "markdownlint-cli2": "^0.24.1",

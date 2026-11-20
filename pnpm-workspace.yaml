@@ -3,6 +3,9 @@ packages:
   - "e2e"
   - "app"
 
+allowBuilds:
+  esbuild: true
+
 catalog:
   "@vitest/coverage-v8": ^5.1.1
   tsdown: ^0.23.7

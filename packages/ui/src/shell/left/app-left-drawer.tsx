@@ -21,7 +21,6 @@ export function AppLeftDrawer({ title, isOpen, onOpenChange, children }: AppLeft
               <Drawer.Title>{title}</Drawer.Title>
             </Drawer.Header>
             <Drawer.Body
-              p="0"
               onClick={(event) => {
                 if (event.target instanceof Element && event.target.closest('a[href]')) {
                   onOpenChange(false);

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { getLayoutSpacePixels } from '../../../theme/layout-space';
 import {
   clampFloatingPanelRect,
   defaultFloatingPanelRect,
@@ -7,6 +8,10 @@ import {
   readFloatingPanelRect,
   saveFloatingPanelRect,
 } from './floating-panel-rect';
+
+function readInset(): number {
+  return getLayoutSpacePixels('spacing.layout.space.lg');
+}
 
 type UseFloatingPanelRectOptions = {
   readonly isFloating: boolean;
@@ -33,7 +38,7 @@ export function useFloatingPanelRect({
   isMaximized,
   isCompact,
 }: UseFloatingPanelRectOptions): FloatingPanelRectControls {
-  const [rect, setRect] = useState<FloatingPanelRect>(readFloatingPanelRect);
+  const [rect, setRect] = useState<FloatingPanelRect>(() => readFloatingPanelRect(readInset()));
   const latest = useRef(rect);
 
   const update = (change: Partial<FloatingPanelRect>): void => {
@@ -51,7 +56,7 @@ export function useFloatingPanelRect({
       return undefined;
     }
     const keepInViewport = (): void =>
-      replace(isCompact ? defaultFloatingPanelRect() : clampFloatingPanelRect(latest.current));
+      replace(isCompact ? defaultFloatingPanelRect(readInset()) : clampFloatingPanelRect(latest.current, readInset()));
     keepInViewport();
     window.addEventListener('resize', keepInViewport);
     return () => window.removeEventListener('resize', keepInViewport);
@@ -60,13 +65,13 @@ export function useFloatingPanelRect({
   return {
     rect,
     update,
-    saveCurrent: () => saveFloatingPanelRect(latest.current),
+    saveCurrent: () => saveFloatingPanelRect(latest.current, readInset()),
     reset: () => {
-      replace(defaultFloatingPanelRect());
-      saveFloatingPanelRect(latest.current);
+      replace(defaultFloatingPanelRect(readInset()));
+      saveFloatingPanelRect(latest.current, readInset());
     },
     // Leaving floating drops a maximized rect, and opening must not reuse a position from a window
     // that has since been resized.
-    refresh: () => replace(isCompact ? defaultFloatingPanelRect() : readFloatingPanelRect()),
+    refresh: () => replace(isCompact ? defaultFloatingPanelRect(readInset()) : readFloatingPanelRect(readInset())),
   };
 }

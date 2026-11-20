@@ -5,7 +5,7 @@ import { LuSearch } from 'react-icons/lu';
 export function SearchView(): React.ReactElement {
   return (
     <SidebarView title="Search">
-      <Stack p="3" gap="4">
+      <Stack p="layout.space.md" gap="layout.gap.lg">
         <Input size="sm" placeholder="Search" aria-label="Search" />
         <EmptyState.Root size="sm">
           <EmptyState.Content>

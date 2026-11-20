@@ -55,15 +55,13 @@ export function AppWorkspace({
   ];
 
   return (
-    // Remount when the panel set changes: the splitter reads its panels once per layout.
     <Splitter.Root
-      key={panelIds.join(',')}
       panels={panels}
       defaultSize={readPanelSizes(panelIds) ?? defaultSizes(hasLeftSidebar, hasRightSidebar)}
       onResizeEnd={({ size }) => savePanelSizes(panelIds, size)}
       h="full"
       flex="1"
-      minW="0"
+      minW="appShell.none"
     >
       {hasLeftSidebar && <Splitter.Panel id="left-sidebar">{renderLeft()}</Splitter.Panel>}
       {hasLeftSidebar && renderHandle('left-sidebar:main')}

@@ -61,7 +61,7 @@ export function ExplorerView(): React.ReactElement {
         </TreeView.Root>
       </SidebarSection>
       <SidebarSection title="Outline" defaultOpen={false}>
-        <EmptyState.Root size="sm" py="4">
+        <EmptyState.Root size="sm">
           <EmptyState.Content>
             <EmptyState.Description>No symbols found</EmptyState.Description>
           </EmptyState.Content>

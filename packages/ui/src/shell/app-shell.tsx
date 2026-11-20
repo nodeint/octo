@@ -8,6 +8,7 @@ import { AppHeader } from './app-header';
 import type { AppActivity } from './left';
 import { resolveActivityId } from './left/activity-selection';
 import { AppActivityBar } from './left/app-activity-bar';
+import { AppActivityProvider } from './left/app-activity-provider';
 import { AppLeftDrawer } from './left/app-left-drawer';
 import { AppLeftSidebar } from './left/app-left-sidebar';
 import { AppSidebarBody } from './left/app-sidebar-body';
@@ -44,7 +45,7 @@ export function AppShell({ title, ...bodyProps }: AppShellProps): React.ReactEle
   );
 
   return (
-    <Box css={styles.root}>
+    <Flex direction="column" css={styles.root}>
       <AppHeader title={title} onOpenNavigation={() => setIsNavigationOpen(true)} />
       <Box css={styles.content}>
         <Box css={styles.workspace}>
@@ -58,7 +59,7 @@ export function AppShell({ title, ...bodyProps }: AppShellProps): React.ReactEle
           )}
         </Box>
       </Box>
-    </Box>
+    </Flex>
   );
 }
 
@@ -76,6 +77,7 @@ function AppShellBody({
   isNavigationOpen,
   onNavigationOpenChange,
 }: AppShellBodyProps): React.ReactElement {
+  const styles = useAppShellStyles();
   const isCompact = useBreakpointValue({ base: true, md: false }, { ssr: false }) ?? false;
   const [storedMode, setRightMode] = useRightSidebarMode();
   const { activeId, select } = useActivitySelection(
@@ -95,55 +97,57 @@ function AppShellBody({
 
   const main = (
     // Leave room under the content so the launcher button never covers its last line.
-    <AppBlock as="main" p="6" pb={rightMode === 'closed' ? 'calc({spacing.6} + 4rem)' : undefined}>
+    <AppBlock as="main" p="layout.space.xl" pb={rightMode === 'closed' ? 'appShell.launcherClearance' : undefined}>
       {children}
     </AppBlock>
   );
 
   return (
-    <>
-      {isCompact ? (
-        <>
-          <Box h="full">{main}</Box>
-          <AppLeftDrawer title={title} isOpen={isNavigationOpen} onOpenChange={onNavigationOpenChange}>
-            <AppLeftSidebar activities={activities} activeId={drawerActiveId} onSelect={select} />
-          </AppLeftDrawer>
-        </>
-      ) : (
-        <Flex h="full" gap="1.5">
-          {activities.length > 0 && (
-            <AppBlock overflow="hidden">
-              <AppActivityBar activities={activities} activeId={activeId} onSelect={select} canCollapse />
-            </AppBlock>
-          )}
-          <AppWorkspace
-            hasLeftSidebar={activeId !== null}
-            hasRightSidebar={rightMode === 'docked'}
-            renderHandle={(id) => <AppResizeHandle id={id} />}
-            renderLeft={() => (
+    <AppActivityProvider activeId={isCompact ? drawerActiveId : activeId} onSelect={select} canCollapse={!isCompact}>
+      <Flex direction="column" css={styles.workspace}>
+        {isCompact ? (
+          <>
+            <Box h="full">{main}</Box>
+            <AppLeftDrawer title={title} isOpen={isNavigationOpen} onOpenChange={onNavigationOpenChange}>
+              <AppLeftSidebar activities={activities} />
+            </AppLeftDrawer>
+          </>
+        ) : (
+          <Flex h="full" gap="appShell.gutter">
+            {activities.length > 0 && (
               <AppBlock overflow="hidden">
-                <AppSidebarBody activities={activities} activeId={activeId} />
+                <AppActivityBar activities={activities} />
               </AppBlock>
             )}
-          renderMain={() => main}
-          renderRight={() => (
-            <AppBlock overflow="hidden">
-              <AppRightSidebarDocked title={rightSidebarTitle} onModeChange={setRightMode}>
-                {rightSidebar}
-              </AppRightSidebarDocked>
-            </AppBlock>
-          )}
-          />
-        </Flex>
-      )}
-      <AppRightSidebarFloating
-        title={rightSidebarTitle}
-        mode={rightMode}
-        isCompact={isCompact}
-        onModeChange={setRightMode}
-      >
-        {rightSidebar}
-      </AppRightSidebarFloating>
-    </>
+            <AppWorkspace
+              hasLeftSidebar={activeId !== null}
+              hasRightSidebar={rightMode === 'docked'}
+              renderHandle={(id) => <AppResizeHandle id={id} />}
+              renderLeft={() => (
+                <AppBlock overflow="hidden">
+                  <AppSidebarBody activities={activities} />
+                </AppBlock>
+              )}
+              renderMain={() => main}
+              renderRight={() => (
+                <AppBlock overflow="hidden">
+                  <AppRightSidebarDocked title={rightSidebarTitle} onModeChange={setRightMode}>
+                    {rightSidebar}
+                  </AppRightSidebarDocked>
+                </AppBlock>
+              )}
+            />
+          </Flex>
+        )}
+        <AppRightSidebarFloating
+          title={rightSidebarTitle}
+          mode={rightMode}
+          isCompact={isCompact}
+          onModeChange={setRightMode}
+        >
+          {rightSidebar}
+        </AppRightSidebarFloating>
+      </Flex>
+    </AppActivityProvider>
   );
 }

@@ -1,4 +1,4 @@
-import { Box, Splitter } from '@chakra-ui/react';
+import { Splitter } from '@chakra-ui/react';
 
 import { useAppShellStyles } from '../../hooks';
 
@@ -9,9 +9,5 @@ type AppResizeHandleProps = {
 
 export function AppResizeHandle({ id }: AppResizeHandleProps): React.ReactElement {
   const styles = useAppShellStyles();
-  return (
-    <Splitter.ResizeTrigger id={id} unstyled css={styles.resizeHandle}>
-      <Box data-part="dots" aria-hidden css={styles.resizeDots} />
-    </Splitter.ResizeTrigger>
-  );
+  return <Splitter.ResizeTrigger id={id} css={styles.resizeHandle} />;
 }

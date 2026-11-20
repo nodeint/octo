@@ -1,4 +1,4 @@
-import { Box, Collapsible } from '@chakra-ui/react';
+import { Button, Center, Collapsible, HStack } from '@chakra-ui/react';
 import { LuChevronRight } from 'react-icons/lu';
 
 import { useAppShellStyles } from '../hooks';
@@ -21,16 +21,18 @@ export function SidebarSection({
 }: SidebarSectionProps): React.ReactElement {
   const styles = useAppShellStyles();
   return (
-    <Collapsible.Root defaultOpen={defaultOpen} css={styles.sidebarSection}>
-      <Box css={styles.sectionHeader}>
-        <Collapsible.Trigger css={styles.sectionTrigger} aria-label={messages.layout.sectionToggle(title)}>
-          <Collapsible.Indicator css={styles.sectionChevron}>
-            <LuChevronRight />
-          </Collapsible.Indicator>
-          {title}
+    <Collapsible.Root defaultOpen={defaultOpen}>
+      <HStack css={styles.sectionHeader}>
+        <Collapsible.Trigger asChild>
+          <Button variant="ghost" size="sm" css={styles.sectionTrigger} aria-label={messages.layout.sectionToggle(title)}>
+            <Collapsible.Indicator asChild>
+              <Center as="span"><LuChevronRight /></Center>
+            </Collapsible.Indicator>
+            {title}
+          </Button>
         </Collapsible.Trigger>
-        {actions && <Box css={styles.sectionActions}>{actions}</Box>}
-      </Box>
+        {actions && <HStack css={styles.sectionActions}>{actions}</HStack>}
+      </HStack>
       <Collapsible.Content>{children}</Collapsible.Content>
     </Collapsible.Root>
   );

@@ -1,4 +1,4 @@
-import { Box, Flex, IconButton, Text } from '@chakra-ui/react';
+import { Box, Flex, HStack, IconButton, Text } from '@chakra-ui/react';
 import { LuPictureInPicture2, LuX } from 'react-icons/lu';
 
 import { useAppShellStyles } from '../../hooks';
@@ -20,7 +20,7 @@ export function AppRightSidebarDocked({
   const styles = useAppShellStyles();
   return (
     <Flex as="aside" aria-label={title} direction="column" h="full">
-      <Box css={styles.toolbar}>
+      <HStack css={styles.toolbar}>
         <Text css={styles.toolbarTitle}>{title}</Text>
         <IconButton aria-label={messages.rightSidebar.popOut(title)} size="xs" variant="ghost" onClick={() => onModeChange('floating')}>
           <LuPictureInPicture2 />
@@ -28,7 +28,7 @@ export function AppRightSidebarDocked({
         <IconButton aria-label={messages.rightSidebar.close(title)} size="xs" variant="ghost" onClick={() => onModeChange('closed')}>
           <LuX />
         </IconButton>
-      </Box>
+      </HStack>
       <Box css={styles.sidebarBody}>{children}</Box>
     </Flex>
   );

@@ -1,4 +1,4 @@
-import { Box, IconButton, Spacer, Text } from '@chakra-ui/react';
+import { HStack, IconButton, Spacer, Text } from '@chakra-ui/react';
 import { LuMenu } from 'react-icons/lu';
 
 import { ColorModeButton } from '../components';
@@ -14,7 +14,7 @@ type AppHeaderProps = {
 export function AppHeader({ title, onOpenNavigation }: AppHeaderProps): React.ReactElement {
   const styles = useAppShellStyles();
   return (
-    <Box as="header" css={styles.header}>
+    <HStack as="header" css={styles.header}>
       <IconButton
         aria-label={messages.layout.openNavigation}
         variant="ghost"
@@ -26,6 +26,6 @@ export function AppHeader({ title, onOpenNavigation }: AppHeaderProps): React.Re
       <Text fontWeight="semibold">{title}</Text>
       <Spacer />
       <ColorModeButton />
-    </Box>
+    </HStack>
   );
 }

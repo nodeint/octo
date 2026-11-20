@@ -1,9 +1,7 @@
 import { appStorage } from '../../../utils';
 
 const DEFAULT_SIZE = { width: 380, height: 560 } as const;
-const MARGIN = 16;
 const RECT_STORAGE_ID = 'octo:app-shell-floating-panel-rect';
-const BOTH_SIDES_MARGIN = MARGIN + MARGIN;
 
 export type FloatingPanelRect = {
   readonly x: number;
@@ -32,22 +30,24 @@ function clamp(value: number, min: number, max: number): number {
 }
 
 /** The default rect docks to the bottom right corner of the viewport. */
-export function defaultFloatingPanelRect(): FloatingPanelRect {
+export function defaultFloatingPanelRect(inset: number): FloatingPanelRect {
+  const bothSidesInset = inset + inset;
   // Shrink to fit first: on a phone the default size is wider than the screen.
-  const width = Math.min(DEFAULT_SIZE.width, window.innerWidth - BOTH_SIDES_MARGIN);
-  const height = Math.min(DEFAULT_SIZE.height, window.innerHeight - BOTH_SIDES_MARGIN);
+  const width = Math.min(DEFAULT_SIZE.width, window.innerWidth - bothSidesInset);
+  const height = Math.min(DEFAULT_SIZE.height, window.innerHeight - bothSidesInset);
   return {
-    x: window.innerWidth - width - MARGIN,
-    y: window.innerHeight - height - MARGIN,
+    x: window.innerWidth - width - inset,
+    y: window.innerHeight - height - inset,
     width,
     height,
   };
 }
 
 /** Fits a rect inside the current viewport, for when the window is smaller than when the rect was made. */
-export function clampFloatingPanelRect(rect: FloatingPanelRect): FloatingPanelRect {
-  const width = Math.min(rect.width, window.innerWidth - BOTH_SIDES_MARGIN);
-  const height = Math.min(rect.height, window.innerHeight - BOTH_SIDES_MARGIN);
+export function clampFloatingPanelRect(rect: FloatingPanelRect, inset: number): FloatingPanelRect {
+  const bothSidesInset = inset + inset;
+  const width = Math.min(rect.width, window.innerWidth - bothSidesInset);
+  const height = Math.min(rect.height, window.innerHeight - bothSidesInset);
   return {
     width,
     height,
@@ -57,7 +57,7 @@ export function clampFloatingPanelRect(rect: FloatingPanelRect): FloatingPanelRe
 }
 
 /** Reads the saved rect, keeping it inside the current viewport in case the window shrank since. */
-export function readFloatingPanelRect(): FloatingPanelRect {
+export function readFloatingPanelRect(inset: number): FloatingPanelRect {
   const stored = appStorage.getItem(RECT_STORAGE_ID);
   let saved: unknown;
   try {
@@ -66,11 +66,11 @@ export function readFloatingPanelRect(): FloatingPanelRect {
     // A corrupt value is no different from no value: fall back to the default.
     saved = undefined;
   }
-  return clampFloatingPanelRect(isFloatingPanelRect(saved) ? saved : defaultFloatingPanelRect());
+  return clampFloatingPanelRect(isFloatingPanelRect(saved) ? saved : defaultFloatingPanelRect(inset), inset);
 }
 
-export function saveFloatingPanelRect(partial: Partial<FloatingPanelRect>): void {
-  const next = { ...readFloatingPanelRect(), ...partial };
+export function saveFloatingPanelRect(partial: Partial<FloatingPanelRect>, inset: number): void {
+  const next = { ...readFloatingPanelRect(inset), ...partial };
   appStorage.setItem(
     RECT_STORAGE_ID,
     JSON.stringify({

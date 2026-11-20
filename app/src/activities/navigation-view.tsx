@@ -5,8 +5,8 @@ import { NavLink } from 'react-router';
 export function NavigationView(): React.ReactElement {
   return (
     <SidebarView title="Navigation">
-      <Stack as="nav" aria-label="Main" gap="1" p="2">
-        <Link asChild px="3" py="2" borderRadius="md" _hover={{ bg: 'bg.muted' }}>
+      <Stack as="nav" aria-label="Main" gap="layout.gap.2xs" p="layout.space.sm">
+        <Link asChild>
           <NavLink to="/" end>
             Home
           </NavLink>

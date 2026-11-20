@@ -4,7 +4,7 @@ import { SidebarView } from '@workspace/ui';
 export function SettingsView(): React.ReactElement {
   return (
     <SidebarView title="Settings">
-      <Stack p="3" gap="3">
+      <Stack p="layout.space.md" gap="layout.space.md">
         <Switch.Root size="sm">
           <Switch.HiddenInput />
           <Switch.Control />
