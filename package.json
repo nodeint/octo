@@ -25,8 +25,7 @@
     "lint:docs": "node scripts/docs/catalog.mjs --check",
     "docs:generate": "node scripts/docs/catalog.mjs",
     "knip": "knip --no-progress",
-    "jscpd": "jscpd",
-    "init:template": "node scripts/init.mjs"
+    "jscpd": "jscpd"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

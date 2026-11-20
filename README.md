@@ -19,17 +19,7 @@ the repository's rules, tooling, and workflows keep that work correct, reviewabl
 - **Release automation.** Tagging, GitHub Releases, and npm publishing through trusted publishing.
 - **Working example.** `packages/example` keeps CI green from the first commit.
 
-## Set up
-
-1. Click **Use this template** on GitHub.
-2. Run `node scripts/init.mjs <repo-name> [--scope @nodeint]` to rename the template references.
-3. Run `pnpm install && pnpm setup:git`.
-4. Import `.github/main-ruleset.json` and `.github/next-ruleset.json` in the repository settings;
-   GitHub does not copy rulesets from a template.
-5. Replace `packages/example`; update `docs/` and `AGENTS.md`.
-6. [Set up Migent](#set-up-migent).
-
-### Set up Migent
+## Set up Migent
 
 1. Install Migent globally and add its skill:
 
