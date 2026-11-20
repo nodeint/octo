@@ -1,4 +1,9 @@
+import { ClientOnly, IconButton, Skeleton } from '@chakra-ui/react';
+import { useTheme } from 'next-themes';
 import { flushSync } from 'react-dom';
+import { LuMoon, LuSun } from 'react-icons/lu';
+
+import { messages } from '../messages';
 
 const TRANSITION_DURATION_MS = 300;
 
@@ -28,7 +33,7 @@ function getCoverRadius({ x, y }: Origin): number {
  * Falls back to applying the theme immediately when view transitions are unavailable
  * or the user prefers reduced motion.
  */
-export async function startColorModeTransition(origin: Origin, applyTheme: () => void): Promise<void> {
+async function startColorModeTransition(origin: Origin, applyTheme: () => void): Promise<void> {
   if (!canAnimate()) {
     applyTheme();
     return;
@@ -51,5 +56,28 @@ export async function startColorModeTransition(origin: Origin, applyTheme: () =>
       easing: 'ease-out',
       pseudoElement: '::view-transition-new(root)',
     },
+  );
+}
+
+export function ColorModeButton(): React.ReactElement {
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    // Use the button centre so keyboard activation (clientX/Y = 0) still animates from the button.
+    const origin = getCenter(event.currentTarget);
+    void startColorModeTransition(origin, () => setTheme(isDark ? 'light' : 'dark'));
+  };
+
+  return (
+    <ClientOnly fallback={<Skeleton boxSize="9" />}>
+      <IconButton
+        aria-label={isDark ? messages.colorMode.switchToLight : messages.colorMode.switchToDark}
+        variant="ghost"
+        onClick={handleClick}
+      >
+        {isDark ? <LuSun /> : <LuMoon />}
+      </IconButton>
+    </ClientOnly>
   );
 }

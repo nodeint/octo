@@ -1,7 +1,8 @@
 import { useCallback, useState } from 'react';
 
-import { APP_RIGHT_SIDEBAR_MODE_STORAGE_ID } from '../constants';
-import { layoutStorage } from './layout-storage';
+import { appStorage } from '../../utils';
+
+const MODE_STORAGE_ID = 'octo:app-shell-right-sidebar-mode';
 
 export type RightSidebarMode = 'closed' | 'docked' | 'floating';
 
@@ -10,7 +11,7 @@ function isRightSidebarMode(value: string | null): value is RightSidebarMode {
 }
 
 function readMode(): RightSidebarMode {
-  const stored = layoutStorage.getItem(APP_RIGHT_SIDEBAR_MODE_STORAGE_ID);
+  const stored = appStorage.getItem(MODE_STORAGE_ID);
   return isRightSidebarMode(stored) ? stored : 'closed';
 }
 
@@ -20,7 +21,7 @@ export function useRightSidebarMode(): readonly [RightSidebarMode, (mode: RightS
 
   const setMode = useCallback((next: RightSidebarMode) => {
     setModeState(next);
-    layoutStorage.setItem(APP_RIGHT_SIDEBAR_MODE_STORAGE_ID, next);
+    appStorage.setItem(MODE_STORAGE_ID, next);
   }, []);
 
   return [mode, setMode];

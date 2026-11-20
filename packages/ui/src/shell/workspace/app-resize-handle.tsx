@@ -1,6 +1,6 @@
 import { Box, Splitter } from '@chakra-ui/react';
 
-import { useAppShellStyles } from '../theme/use-app-shell-styles';
+import { useAppShellStyles } from '../../hooks';
 
 type AppResizeHandleProps = {
   /** `"<before panel id>:<after panel id>"`, the pair of panels this handle resizes. */

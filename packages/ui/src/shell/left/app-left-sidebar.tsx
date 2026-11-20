@@ -1,7 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react';
 
-import { messages } from '../messages';
-import { useAppShellStyles } from '../theme/use-app-shell-styles';
+import { useAppShellStyles } from '../../hooks';
+import { messages } from '../../messages';
 import { AppActivityBar } from './app-activity-bar';
 
 type AppLeftSidebarProps = {

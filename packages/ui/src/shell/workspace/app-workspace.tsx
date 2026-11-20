@@ -1,8 +1,9 @@
 import { Splitter } from '@chakra-ui/react';
 
-import { APP_RIGHT_SIDEBAR_DEFAULT_WIDTH, APP_SIDEBAR_DEFAULT_WIDTH } from '../constants';
 import { readPanelSizes, savePanelSizes } from './panel-sizes';
 
+const LEFT_SIDEBAR_DEFAULT_WIDTH = 300;
+const RIGHT_SIDEBAR_DEFAULT_WIDTH = 320;
 const SIDEBAR_MIN_WIDTH = '200px';
 const MAIN_MIN_WIDTH = '240px';
 const FULL_PERCENT = 100;
@@ -18,11 +19,11 @@ type AppWorkspaceProps = {
 /** Pixel defaults can't express "the rest", so main gets whatever percentage the sidebars leave over. */
 function defaultSizes(hasRightSidebar: boolean): number[] {
   const width = Math.max(window.innerWidth, 1);
-  const left = (APP_SIDEBAR_DEFAULT_WIDTH / width) * FULL_PERCENT;
+  const left = (LEFT_SIDEBAR_DEFAULT_WIDTH / width) * FULL_PERCENT;
   if (!hasRightSidebar) {
     return [left, FULL_PERCENT - left];
   }
-  const right = (APP_RIGHT_SIDEBAR_DEFAULT_WIDTH / width) * FULL_PERCENT;
+  const right = (RIGHT_SIDEBAR_DEFAULT_WIDTH / width) * FULL_PERCENT;
   return [left, FULL_PERCENT - left - right, right];
 }
 

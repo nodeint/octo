@@ -1,8 +1,8 @@
 import { Box, Flex, IconButton, Text } from '@chakra-ui/react';
 import { LuPictureInPicture2, LuX } from 'react-icons/lu';
 
-import { messages } from '../messages';
-import { useAppShellStyles } from '../theme/use-app-shell-styles';
+import { useAppShellStyles } from '../../hooks';
+import { messages } from '../../messages';
 import type { RightSidebarMode } from './use-right-sidebar-mode';
 
 type AppRightSidebarDockedProps = {

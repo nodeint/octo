@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 
-import { messages } from '../messages';
-import { useAppShellStyles } from '../theme/use-app-shell-styles';
+import { useAppShellStyles } from '../../hooks';
+import { messages } from '../../messages';
 
 
 type AppActivityBarProps = {

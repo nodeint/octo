@@ -2,10 +2,10 @@ import { FloatingPanel, IconButton, Portal, useFloatingPanel } from '@chakra-ui/
 import { useEffect, useState } from 'react';
 import { LuMessageCircle } from 'react-icons/lu';
 
-import { messages } from '../messages';
-import { useAppShellStyles } from '../theme/use-app-shell-styles';
-import { AppFloatingPanelHeader } from './app-floating-panel-header';
-import { useFloatingPanelRect } from './use-floating-panel-rect';
+import { useAppShellStyles } from '../../hooks';
+import { messages } from '../../messages';
+import { AppFloatingPanelHeader } from './floating-panel/app-floating-panel-header';
+import { useFloatingPanelRect } from './floating-panel/use-floating-panel-rect';
 import type { RightSidebarMode } from './use-right-sidebar-mode';
 
 type AppRightSidebarFloatingProps = {

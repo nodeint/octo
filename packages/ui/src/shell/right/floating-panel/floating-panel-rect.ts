@@ -1,7 +1,9 @@
-import { APP_FLOATING_PANEL_MARGIN, APP_FLOATING_PANEL_RECT_STORAGE_ID, APP_FLOATING_PANEL_SIZE } from '../constants';
-import { layoutStorage } from './layout-storage';
+import { appStorage } from '../../../utils';
 
-const BOTH_SIDES_MARGIN = APP_FLOATING_PANEL_MARGIN + APP_FLOATING_PANEL_MARGIN;
+const DEFAULT_SIZE = { width: 380, height: 560 } as const;
+const MARGIN = 16;
+const RECT_STORAGE_ID = 'octo:app-shell-floating-panel-rect';
+const BOTH_SIDES_MARGIN = MARGIN + MARGIN;
 
 export type FloatingPanelRect = {
   readonly x: number;
@@ -32,11 +34,11 @@ function clamp(value: number, min: number, max: number): number {
 /** The default rect docks to the bottom right corner of the viewport. */
 export function defaultFloatingPanelRect(): FloatingPanelRect {
   // Shrink to fit first: on a phone the default size is wider than the screen.
-  const width = Math.min(APP_FLOATING_PANEL_SIZE.width, window.innerWidth - BOTH_SIDES_MARGIN);
-  const height = Math.min(APP_FLOATING_PANEL_SIZE.height, window.innerHeight - BOTH_SIDES_MARGIN);
+  const width = Math.min(DEFAULT_SIZE.width, window.innerWidth - BOTH_SIDES_MARGIN);
+  const height = Math.min(DEFAULT_SIZE.height, window.innerHeight - BOTH_SIDES_MARGIN);
   return {
-    x: window.innerWidth - width - APP_FLOATING_PANEL_MARGIN,
-    y: window.innerHeight - height - APP_FLOATING_PANEL_MARGIN,
+    x: window.innerWidth - width - MARGIN,
+    y: window.innerHeight - height - MARGIN,
     width,
     height,
   };
@@ -56,7 +58,7 @@ export function clampFloatingPanelRect(rect: FloatingPanelRect): FloatingPanelRe
 
 /** Reads the saved rect, keeping it inside the current viewport in case the window shrank since. */
 export function readFloatingPanelRect(): FloatingPanelRect {
-  const stored = layoutStorage.getItem(APP_FLOATING_PANEL_RECT_STORAGE_ID);
+  const stored = appStorage.getItem(RECT_STORAGE_ID);
   let saved: unknown;
   try {
     saved = stored === null ? undefined : JSON.parse(stored);
@@ -69,8 +71,8 @@ export function readFloatingPanelRect(): FloatingPanelRect {
 
 export function saveFloatingPanelRect(partial: Partial<FloatingPanelRect>): void {
   const next = { ...readFloatingPanelRect(), ...partial };
-  layoutStorage.setItem(
-    APP_FLOATING_PANEL_RECT_STORAGE_ID,
+  appStorage.setItem(
+    RECT_STORAGE_ID,
     JSON.stringify({
       x: Math.round(next.x),
       y: Math.round(next.y),

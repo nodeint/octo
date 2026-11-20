@@ -1,9 +1,9 @@
 import { Box, IconButton, Spacer, Text } from '@chakra-ui/react';
 import { LuMenu } from 'react-icons/lu';
 
-import { ColorModeButton } from '../color-mode';
+import { ColorModeButton } from '../components';
+import { useAppShellStyles } from '../hooks';
 import { messages } from '../messages';
-import { useAppShellStyles } from '../theme/use-app-shell-styles';
 
 type AppHeaderProps = {
   readonly title: string;

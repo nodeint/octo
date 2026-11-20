@@ -1,17 +1,17 @@
 import { Box, useBreakpointValue } from '@chakra-ui/react';
 import { useEffect, useState, useSyncExternalStore } from 'react';
 
+import { useAppShellStyles } from '../hooks';
 import { messages } from '../messages';
-import { useAppShellStyles } from '../theme/use-app-shell-styles';
 import { AppBlock } from './app-block';
 import { AppHeader } from './app-header';
-import { AppLeftDrawer } from './app-left-drawer';
-import { AppLeftSidebar } from './app-left-sidebar';
-import { AppResizeHandle } from './app-resize-handle';
-import { AppRightSidebarDocked } from './app-right-sidebar-docked';
-import { AppRightSidebarFloating } from './app-right-sidebar-floating';
-import { AppWorkspace } from './app-workspace';
-import { useRightSidebarMode } from './use-right-sidebar-mode';
+import { AppLeftDrawer } from './left/app-left-drawer';
+import { AppLeftSidebar } from './left/app-left-sidebar';
+import { AppRightSidebarDocked } from './right/app-right-sidebar-docked';
+import { AppRightSidebarFloating } from './right/app-right-sidebar-floating';
+import { useRightSidebarMode } from './right/use-right-sidebar-mode';
+import { AppResizeHandle } from './workspace/app-resize-handle';
+import { AppWorkspace } from './workspace/app-workspace';
 
 export type AppShellProps = {
   readonly title: string;

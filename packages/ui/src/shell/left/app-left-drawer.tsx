@@ -1,6 +1,6 @@
 import { CloseButton, Drawer, Portal } from '@chakra-ui/react';
 
-import { messages } from '../messages';
+import { messages } from '../../messages';
 
 type AppLeftDrawerProps = {
   readonly title: string;

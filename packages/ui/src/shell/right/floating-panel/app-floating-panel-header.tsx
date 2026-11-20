@@ -1,7 +1,7 @@
 import { FloatingPanel, IconButton, Menu, Portal } from '@chakra-ui/react';
 import { LuEllipsis, LuMaximize2, LuMinimize2, LuPanelRight, LuRotateCcw, LuX } from 'react-icons/lu';
 
-import { messages } from '../messages';
+import { messages } from '../../../messages';
 
 type AppFloatingPanelHeaderProps = {
   readonly title: string;
