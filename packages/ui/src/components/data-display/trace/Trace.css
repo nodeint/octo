@@ -1,0 +1,177 @@
+/*
+ * Trace: a list of steps.
+ * State hangs on data-slot, data-status (running, error, pending), and the Base UI
+ * data-panel-open on the trigger. A running line shimmers its title (see base.css);
+ * reduced motion stops the shimmer and the panel.
+ */
+.trace {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+  min-width: 0;
+}
+
+/* A link or button that wraps one line takes the line's shape and the focus ring. */
+.trace > :has(> [data-slot='trace-line']) {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  border-radius: var(--radius-md);
+  text-align: start;
+  outline: none;
+}
+
+.trace > :has(> [data-slot='trace-line']):focus-visible {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+.trace-line {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+  color: var(--foreground-muted);
+  transition-property: color;
+  transition-duration: var(--motion-duration-fast);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+:where(a, button) .trace-line {
+  cursor: pointer;
+}
+
+:where(a, button):hover .trace-line,
+.trace-collapsible-trigger[data-panel-open] > .trace-line {
+  color: var(--foreground);
+}
+
+.trace-line[data-status='error'],
+:where(a, button):hover .trace-line[data-status='error'] {
+  color: var(--destructive);
+}
+
+.trace-line[data-emphasis='quiet']:not([data-status='error']) > [data-slot='trace-icon'] {
+  color: var(--foreground-subtle);
+}
+
+.trace-line[data-emphasis='strong']:not([data-status='error']) > [data-slot='trace-icon'] {
+  color: var(--warning);
+}
+
+.trace-line[data-emphasis='strong']:not([data-status='error']) > [data-slot='trace-title'] {
+  font-weight: var(--font-weight-semibold);
+}
+
+.trace-line[data-status='pending'] {
+  opacity: var(--opacity-dim);
+}
+
+.trace-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-glyph-sm);
+  height: var(--control-glyph-sm);
+}
+
+.trace-icon svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.trace-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trace-description {
+  flex-shrink: 0;
+  font-size: var(--role-caption-size);
+  line-height: var(--role-caption-leading);
+  font-weight: var(--role-caption-weight);
+  color: var(--foreground-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+.trace-collapsible {
+  width: 100%;
+  min-width: 0;
+}
+
+.trace-collapsible-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  border-radius: var(--radius-md);
+  text-align: start;
+  color: var(--foreground-muted);
+  cursor: pointer;
+  outline: none;
+  transition-property: color;
+  transition-duration: var(--motion-duration-fast);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.trace-collapsible-trigger:focus-visible {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+.trace-collapsible-trigger:hover,
+.trace-collapsible-trigger[data-panel-open] {
+  color: var(--foreground);
+}
+
+.trace-collapsible-trigger:has([data-status='error']) {
+  color: var(--destructive);
+}
+
+.trace-collapsible-trigger > .trace-collapsible-chevron {
+  transition-property: transform, rotate;
+  transition-duration: var(--motion-duration-fast);
+  transition-timing-function: var(--ease-standard);
+}
+
+.trace-collapsible-trigger[data-panel-open] > .trace-collapsible-chevron {
+  rotate: 90deg;
+}
+
+.trace-collapsible-content {
+  min-width: 0;
+}
+
+.trace-collapsible-content-inner {
+  min-width: 0;
+  margin-block: var(--space-sm) var(--space-xs);
+  margin-inline-start: var(--space-sm);
+  padding-inline: var(--space-lg) var(--space-xs);
+  border-inline-start: var(--border-width-thin) solid var(--border);
+  overflow-wrap: anywhere;
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  color: var(--foreground-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trace-collapsible-trigger > .trace-collapsible-chevron {
+    transition: none;
+  }
+}

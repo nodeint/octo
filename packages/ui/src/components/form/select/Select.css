@@ -1,0 +1,265 @@
+.select-group {
+  scroll-margin-block: var(--space-xs);
+  padding: var(--space-xs);
+}
+
+/* min-width 0 and truncation: a flex item may shrink inside a constrained parent. */
+.select-value {
+  min-width: 0;
+  flex: 1 1 0%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: start;
+}
+
+/*
+ * min and max width keep the trigger inside constrained parents; fit-content still hugs short labels.
+ * No overflow hidden here, which would clip the focus ring; the value truncates instead.
+ */
+.select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  height: var(--control-height-md);
+  padding-inline: calc(var(--control-px-md) - var(--border-width-thin));
+  gap: var(--control-gap-md);
+  border: var(--border-width-thin) solid var(--control);
+  border-radius: 9999px;
+  background-color: transparent;
+  font-size: var(--role-field-size);
+  line-height: var(--role-field-leading);
+  font-weight: var(--role-field-weight);
+  white-space: nowrap;
+  outline: none;
+  user-select: none;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+@media (pointer: coarse) {
+  .select-trigger {
+    font-size: var(--role-field-size-coarse);
+  }
+}
+
+.select-trigger[data-placeholder] {
+  color: var(--foreground-subtle);
+}
+
+.select-trigger:focus-visible {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+.select-trigger[aria-invalid='true'] {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
+}
+
+.select-trigger:disabled {
+  pointer-events: none;
+  border-color: var(--disabled-border);
+  background-color: var(--disabled);
+  color: var(--foreground-disabled);
+}
+
+.select-trigger[data-disabled] {
+  pointer-events: none;
+  border-color: var(--disabled-border);
+  color: var(--foreground-disabled);
+}
+
+.dark .select-trigger {
+  background-color: var(--muted);
+}
+
+.dark .select-trigger:hover {
+  background-color: var(--secondary);
+}
+
+.dark .select-trigger:disabled {
+  background-color: var(--disabled);
+}
+
+.select-trigger svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.select-trigger svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+}
+
+.select-trigger[data-size='xs'] {
+  height: var(--control-height-xs);
+  padding-inline: calc(var(--control-px-xs) - var(--border-width-thin));
+  gap: var(--control-gap-xs);
+}
+
+.select-trigger[data-size='sm'] {
+  height: var(--control-height-sm);
+  padding-inline: calc(var(--control-px-sm) - var(--border-width-thin));
+  gap: var(--control-gap-sm);
+}
+
+.select-trigger[data-size='lg'] {
+  height: var(--control-height-lg);
+  padding-inline: calc(var(--control-px-lg) - var(--border-width-thin));
+  gap: var(--control-gap-lg);
+}
+
+.select-trigger[data-width='full'] {
+  width: 100%;
+}
+
+.select-trigger[data-variant='ghost'] {
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--foreground-muted);
+}
+
+.dark .select-trigger[data-variant='ghost'] {
+  background-color: transparent;
+}
+
+.dark .select-trigger[data-variant='ghost']:hover {
+  background-color: var(--secondary);
+}
+
+.select-positioner {
+  isolation: isolate;
+  z-index: var(--z-floating);
+}
+
+.select-content {
+  position: relative;
+  isolation: isolate;
+  z-index: var(--z-floating);
+  max-height: var(--available-height);
+  width: var(--anchor-width);
+  min-width: var(--overlay-xxs);
+  padding: var(--overlay-pad-xs);
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: var(--radius-overlay);
+  background-color: var(--popover);
+  color: var(--foreground);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
+  outline: none;
+}
+
+.select-content[data-align-trigger='true'] {
+  animation: none;
+}
+
+.select-label {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--role-caption-size);
+  line-height: var(--role-caption-leading);
+  font-weight: var(--role-caption-weight);
+  color: var(--role-caption-color);
+}
+
+.select-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: var(--space-xs) var(--space-2xl) var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  cursor: default;
+  outline: none;
+  user-select: none;
+}
+
+.select-item:is(:hover, :focus) {
+  background-color: var(--hover);
+  color: var(--foreground);
+}
+
+.select-item[data-disabled]:not([data-disabled='false']) {
+  pointer-events: none;
+  color: var(--foreground-disabled);
+}
+
+.select-item svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.select-item > span:last-child {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.select-item-text {
+  display: flex;
+  flex: 1 1 0%;
+  flex-shrink: 0;
+  gap: var(--space-sm);
+  white-space: nowrap;
+}
+
+.select-item-indicator {
+  pointer-events: none;
+  position: absolute;
+  right: var(--space-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-glyph-md);
+  height: var(--control-glyph-md);
+}
+
+.select-separator {
+  pointer-events: none;
+  height: 1px;
+  margin: var(--space-xs) calc(var(--space-xs) * -1);
+  background-color: var(--separator);
+}
+
+.select-scroll-button {
+  z-index: var(--z-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-block: var(--space-xs);
+  background-color: var(--popover);
+  cursor: default;
+}
+
+.select-scroll-button svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+}
+
+.select-scroll-up-button {
+  top: 0;
+}
+
+.select-scroll-down-button {
+  bottom: 0;
+}
+
+.select-icon {
+  pointer-events: none;
+}
+
+.select-icon-muted {
+  pointer-events: none;
+  color: var(--foreground-muted);
+}

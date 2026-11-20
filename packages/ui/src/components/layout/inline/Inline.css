@@ -1,0 +1,23 @@
+.layout-inline[data-gap='tight'] {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-tight);
+}
+
+.layout-inline[data-gap='related'] {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-related);
+}
+
+.layout-inline[data-gap='group'] {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-group);
+}
+
+.layout-inline[data-gap='section'] {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-section);
+}

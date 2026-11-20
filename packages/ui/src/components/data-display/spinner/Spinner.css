@@ -1,0 +1,11 @@
+.spinner {
+  width: var(--control-glyph-md);
+  height: var(--control-glyph-md);
+  animation: spinner-spin 1s linear infinite;
+}
+
+@keyframes spinner-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

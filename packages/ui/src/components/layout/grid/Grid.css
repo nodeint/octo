@@ -1,0 +1,121 @@
+.layout-grid[data-gap='tight'] {
+  display: grid;
+  gap: var(--gap-tight);
+}
+
+.layout-grid[data-gap='related'] {
+  display: grid;
+  gap: var(--gap-related);
+}
+
+.layout-grid[data-gap='group'] {
+  display: grid;
+  gap: var(--gap-group);
+}
+
+.layout-grid[data-gap='section'] {
+  display: grid;
+  gap: var(--gap-section);
+}
+
+.layout-grid[data-columns='1'] {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.layout-grid[data-columns='2'] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.layout-grid[data-columns='3'] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.layout-grid[data-columns='4'] {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.layout-grid[data-columns='5'] {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.layout-grid[data-columns='6'] {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+@media (min-width: 40rem) {
+  .layout-grid[data-columns-sm='1'] {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-sm='2'] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-sm='3'] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-sm='4'] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-sm='5'] {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-sm='6'] {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
+  .layout-grid[data-columns-md='1'] {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-md='2'] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-md='3'] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-md='4'] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-md='5'] {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-md='6'] {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .layout-grid[data-columns-lg='1'] {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-lg='2'] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-lg='3'] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-lg='4'] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-lg='5'] {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .layout-grid[data-columns-lg='6'] {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}

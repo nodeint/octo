@@ -1,0 +1,156 @@
+/*
+ * Orientation and variant chrome lives here, on host data-* attributes.
+ * Contract: .tabs[data-orientation], .tabs-list[data-variant], .tabs-trigger[data-active]
+ */
+.tabs {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.tabs[data-horizontal] {
+  flex-direction: column;
+}
+
+.tabs-list {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: var(--space-xs);
+  border-radius: var(--radius-lg);
+  color: var(--foreground-muted);
+}
+
+.tabs-list[data-variant='default'] {
+  background-color: var(--muted);
+}
+
+.tabs-list[data-variant='line'] {
+  gap: var(--space-xs);
+  border-radius: 0;
+  background-color: transparent;
+}
+
+/* List geometry from the root orientation. */
+.tabs[data-orientation='horizontal'] .tabs-list {
+  height: var(--control-height-sm);
+}
+
+.tabs[data-orientation='vertical'] .tabs-list {
+  height: fit-content;
+  flex-direction: column;
+}
+
+.tabs-trigger {
+  position: relative;
+  display: inline-flex;
+  flex: 1 1 0%;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  height: calc(100% - var(--tab-trigger-shrink));
+  padding: var(--space-xxs) var(--space-sm);
+  border: var(--border-width-thin) solid transparent;
+  border-radius: var(--radius-md);
+  font-size: var(--role-label-size);
+  line-height: var(--role-label-leading);
+  font-weight: var(--role-label-weight);
+  white-space: nowrap;
+  color: var(--foreground-muted);
+  outline: none;
+  transition-property: color, background-color, border-color, box-shadow, opacity;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.tabs-trigger:hover {
+  color: var(--foreground);
+}
+
+.tabs-trigger:focus-visible {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+.tabs-trigger:disabled,
+.tabs-trigger[aria-disabled='true'] {
+  pointer-events: none;
+  color: var(--foreground-disabled);
+}
+
+.tabs-trigger[data-active] {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.dark .tabs-trigger[data-active] {
+  border-color: var(--control);
+  background-color: var(--muted);
+}
+
+.tabs-trigger svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.tabs-trigger svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+}
+
+/* line indicator: the base pseudo-element */
+.tabs-trigger::after {
+  content: '';
+  position: absolute;
+  background-color: var(--foreground);
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.tabs[data-orientation='vertical'] .tabs-trigger {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.tabs[data-orientation='horizontal'] .tabs-trigger::after {
+  inset-inline: 0;
+  bottom: var(--tab-indicator-offset);
+  height: var(--tab-indicator-thickness);
+}
+
+.tabs[data-orientation='vertical'] .tabs-trigger::after {
+  inset-block: 0;
+  right: calc(var(--space-xs) * -1);
+  width: var(--tab-indicator-thickness);
+}
+
+/* The list owns data-variant and picks the trigger skin. */
+.tabs-list[data-variant='default'] .tabs-trigger[data-active] {
+  box-shadow: var(--shadow-sm);
+}
+
+.tabs-list[data-variant='line'] .tabs-trigger,
+.tabs-list[data-variant='line'] .tabs-trigger[data-active] {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.dark .tabs-list[data-variant='line'] .tabs-trigger[data-active] {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.tabs-list[data-variant='line'] .tabs-trigger[data-active]::after {
+  opacity: 1;
+}
+
+.tabs-content {
+  flex: 1 1 0%;
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+  outline: none;
+}

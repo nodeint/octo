@@ -1,0 +1,90 @@
+.dialog-content {
+  max-width: calc(100% - 2rem);
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+}
+
+/* width from the overlay scale */
+@media (min-width: 40rem) {
+  .dialog-content[data-size='sm'] {
+    max-width: var(--overlay-sm);
+  }
+
+  .dialog-content[data-size='md'] {
+    max-width: var(--overlay-md);
+  }
+
+  .dialog-content[data-size='lg'] {
+    max-width: var(--overlay-lg);
+  }
+
+  .dialog-content[data-size='xl'] {
+    max-width: var(--overlay-xl);
+  }
+}
+
+/* fixed height: the header and footer stay put, a ScrollArea child takes the rest */
+.dialog-content[data-fill] {
+  height: 85vh;
+  max-height: 85vh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.dialog-content[data-fill] .dialog-header {
+  flex-shrink: 0;
+  padding-inline-end: var(--space-xl);
+}
+
+.dialog-content[data-fill] .dialog-body {
+  flex: 1 1 0%;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.dialog-content[data-fill] .dialog-footer {
+  flex-shrink: 0;
+}
+
+/* no padding or gap: an app shell owns the whole panel */
+.dialog-content[data-variant='bare'] {
+  gap: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.dialog-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.dialog-header[data-leading] {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.dialog-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--panel-gap);
+}
+
+@media (min-width: 40rem) {
+  .dialog-footer[data-layout='stack'] {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+.dialog-footer[data-layout='stack'] {
+  flex-direction: column;
+}

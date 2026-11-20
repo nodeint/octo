@@ -1,0 +1,19 @@
+/*
+ * Cascade order. Layers declared here fix precedence regardless of import order:
+ * a later layer beats an earlier one. Tokens and appearance stay unlayered, so they are
+ * plain custom properties and `data-appearance-*` maps that no layer can outrank.
+ * Within one layer, file order in the group's index.css still applies (form: control.css first).
+ */
+@layer base, layout, typography, form, data-display, overlay, navigation;
+
+@import "@fontsource-variable/inter";
+
+@import "./tokens/index.css";
+@import "./appearance.css";
+@import "./base.css" layer(base);
+@import "../components/layout/index.css" layer(layout);
+@import "../components/typography/index.css" layer(typography);
+@import "../components/form/index.css" layer(form);
+@import "../components/data-display/index.css" layer(data-display);
+@import "../components/overlay/index.css" layer(overlay);
+@import "../components/navigation/index.css" layer(navigation);

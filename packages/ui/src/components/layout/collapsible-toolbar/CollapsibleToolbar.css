@@ -1,0 +1,62 @@
+/*
+ * Collapsible toolbar: the toolbar rail plus a Collapsible panel and trigger.
+ * The trigger stays at the end, and the panel grows along the bar's axis:
+ *   vertical    height via --collapsible-panel-height
+ *   horizontal  width via --collapsible-panel-width
+ * The panel carries the gap to the trigger as end padding, so the gap opens and closes with it.
+ */
+.collapsible-toolbar-root {
+  display: contents;
+}
+
+.collapsible-toolbar {
+  gap: 0;
+}
+
+.collapsible-toolbar .collapsible-toolbar-content {
+  opacity: 1;
+  transition:
+    height var(--motion-duration-normal) var(--ease-standard),
+    width var(--motion-duration-normal) var(--ease-standard),
+    opacity var(--motion-duration-normal) var(--ease-standard);
+}
+
+.collapsible-toolbar .collapsible-toolbar-content:not([hidden]) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xxs);
+}
+
+.collapsible-toolbar .collapsible-toolbar-content[data-starting-style],
+.collapsible-toolbar .collapsible-toolbar-content[data-ending-style] {
+  opacity: 0;
+}
+
+.collapsible-toolbar[data-orientation='vertical'] .collapsible-toolbar-content {
+  flex-direction: column;
+  width: auto;
+  padding-block-end: var(--space-xxs);
+}
+
+.collapsible-toolbar[data-orientation='vertical'] .collapsible-toolbar-content[data-starting-style],
+.collapsible-toolbar[data-orientation='vertical'] .collapsible-toolbar-content[data-ending-style] {
+  height: 0;
+}
+
+.collapsible-toolbar[data-orientation='horizontal'] .collapsible-toolbar-content {
+  flex-direction: row;
+  height: auto;
+  width: var(--collapsible-panel-width);
+  padding-inline-end: var(--space-xxs);
+}
+
+.collapsible-toolbar[data-orientation='horizontal'] .collapsible-toolbar-content[data-starting-style],
+.collapsible-toolbar[data-orientation='horizontal'] .collapsible-toolbar-content[data-ending-style] {
+  width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collapsible-toolbar .collapsible-toolbar-content {
+    transition: none;
+  }
+}

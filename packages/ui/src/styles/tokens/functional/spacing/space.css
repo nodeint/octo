@@ -1,0 +1,37 @@
+/**
+ * Space: the raw steps, var(--space-md), var(--space-xs), … A theme sets --space-*.
+ * Outside @workspace/ui, spacing goes through the layout roles below (Stack, Inline, Inset and
+ * the --gap-* and --inset-* roles), never through a raw step.
+ *   gap    tight (siblings in a cluster) · related (label and value) · group (blocks in a panel) · section
+ *   inset  xs · sm · md · lg · xl (padding of one box)
+ *   panel  --panel-inset, --panel-inset-compact, --panel-gap: one rhythm for every panel (dialog, alert-dialog,
+ *          sheet, card, pane). A panel reads these; it does not pick a space step of its own.
+ * A theme can retune one role without touching the others.
+ */
+
+:root {
+  --space-xxs: 0.125rem; /* primer: --space-xxs */
+  --space-xs: 0.25rem; /* primer: --space-xs */
+  --space-sm: 0.5rem; /* primer: --space-sm */
+  --space-md: 0.75rem; /* primer: --space-md */
+  --space-lg: 1rem; /* primer: --space-lg */
+  --space-xl: 1.5rem; /* primer: --space-xl */
+  --space-2xl: 2rem; /* primer: --base-size-32 */
+  --space-3xl: 3rem; /* primer: --base-size-48 */
+  --overlay-pad-xs: 0.25rem; /* primer: --overlay-paddingBlock-condensed */
+  --overlay-pad-sm: 0.5rem; /* primer: --overlay-padding-condensed */
+  --overlay-pad-md: 0.75rem; /* primer: --overlay-paddingBlock-normal */
+  --overlay-pad-lg: 1rem; /* primer: --overlay-padding-normal */
+  --gap-tight: var(--space-xs);
+  --gap-related: var(--space-sm);
+  --gap-group: var(--space-md);
+  --gap-section: var(--space-xl);
+  --inset-xs: var(--space-xs);
+  --inset-sm: var(--space-sm);
+  --inset-md: var(--space-md);
+  --inset-lg: var(--space-lg);
+  --inset-xl: var(--space-xl);
+  --panel-inset: var(--inset-md); /* padding of a panel: dialog, sheet, card, pane header and footer */
+  --panel-inset-compact: var(--inset-sm); /* the same for a compact panel (card size=sm) */
+  --panel-gap: var(--gap-group); /* between the header, body, and footer of a panel */
+}

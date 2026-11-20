@@ -1,0 +1,321 @@
+/*
+ * DOM contract: a hover wash when a direct-child a or button is the trigger
+ * (nested action buttons do not match). Media, content and spinner are data-slot.
+ */
+.attachment {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  border: var(--border-width-thin) solid var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--card);
+  color: var(--foreground);
+  outline: none;
+  transition-property: color, background-color, border-color;
+  transition-duration: var(--motion-duration-fast);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.attachment:focus-within {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+/* a clickable root child: depth is the hover contract */
+.attachment:has(> a, > button):hover {
+  background-color: var(--hover);
+}
+
+.attachment[data-state='error'] {
+  border-color: var(--destructive-subtle-foreground);
+}
+
+.attachment[data-state='idle'] {
+  border-style: dashed;
+}
+
+.attachment[data-size='md'] {
+  gap: var(--space-sm);
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+}
+
+.attachment[data-size='md']:has([data-slot='attachment-content']) {
+  padding: var(--space-sm);
+}
+
+.attachment[data-size='md']:has([data-slot='attachment-media']) {
+  padding: var(--space-sm);
+}
+
+.attachment[data-size='sm'],
+.attachment[data-size='xs'] {
+  font-size: var(--role-body-sm-size);
+  line-height: var(--role-body-sm-leading);
+}
+
+.attachment[data-size='sm'] {
+  gap: var(--space-sm);
+}
+
+.attachment[data-size='sm']:has([data-slot='attachment-content']),
+.attachment[data-size='xs']:has([data-slot='attachment-content']) {
+  padding: var(--space-xs) var(--space-sm);
+}
+
+.attachment[data-size='sm']:has([data-slot='attachment-media']),
+.attachment[data-size='xs']:has([data-slot='attachment-media']) {
+  padding: var(--space-xs);
+}
+
+.attachment[data-size='xs'] {
+  gap: var(--space-xs);
+}
+
+.attachment[data-orientation='horizontal'] {
+  min-width: var(--overlay-xxs);
+  align-items: center;
+}
+
+.attachment[data-orientation='vertical'] {
+  width: var(--size-container-xs);
+  flex-direction: column;
+}
+
+.attachment[data-orientation='vertical']:has([data-slot='attachment-content']) {
+  width: var(--size-container-sm);
+}
+
+/* media size and state are driven by the root */
+.attachment[data-orientation='vertical'] .attachment-media {
+  width: 100%;
+}
+
+.attachment[data-orientation='vertical'] .attachment-media svg:not([class*='size-']),
+.attachment[data-orientation='vertical'] .attachment-media [data-slot='spinner'] {
+  width: var(--control-height-xs);
+  height: var(--control-height-xs);
+}
+
+.attachment[data-size='sm'] .attachment-media {
+  width: var(--control-height-sm);
+  height: var(--control-height-sm);
+}
+
+.attachment[data-size='xs'] .attachment-media {
+  width: var(--control-height-xs);
+  height: var(--control-height-xs);
+  border-radius: var(--radius-md);
+}
+
+.attachment[data-size='xs'] .attachment-media svg:not([class*='size-']) {
+  width: var(--control-icon-xs);
+  height: var(--control-icon-xs);
+}
+
+.attachment[data-state='error'] .attachment-media {
+  background-color: var(--destructive-subtle);
+  color: var(--destructive-subtle-foreground);
+}
+
+.attachment[data-state='error'] .attachment-description {
+  color: var(--destructive-subtle-foreground);
+}
+
+.attachment[data-orientation='vertical'] .attachment-content {
+  padding-inline: var(--space-xs);
+}
+
+.attachment[data-orientation='vertical'] .attachment-actions {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  gap: var(--space-xs);
+}
+
+.attachment-media {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-height-lg);
+  height: var(--control-height-lg);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.attachment-media svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.attachment-media[data-variant='image'] {
+  opacity: var(--opacity-dim);
+}
+
+.attachment-media[data-variant='image'] > img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.attachment[data-state='done'] .attachment-media[data-variant='image'],
+.attachment[data-state='idle'] .attachment-media[data-variant='image'] {
+  opacity: 1;
+}
+
+.attachment-content {
+  flex: 1 1 0%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.attachment-title {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--role-label-size);
+  line-height: var(--role-label-leading);
+  font-weight: var(--role-label-weight);
+}
+
+.attachment-description {
+  color: var(--destructive-subtle-foreground);
+}
+
+.attachment[data-orientation='vertical'] .attachment-content {
+  padding-inline: var(--space-xs);
+}
+
+.attachment[data-orientation='vertical'] .attachment-actions {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  gap: var(--space-xs);
+}
+
+.attachment-media {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-height-lg);
+  height: var(--control-height-lg);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.attachment-media svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.attachment-media[data-variant='image'] {
+  opacity: var(--opacity-dim);
+}
+
+.attachment-media[data-variant='image'] > img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.attachment[data-state='done'] .attachment-media[data-variant='image'],
+.attachment[data-state='idle'] .attachment-media[data-variant='image'] {
+  opacity: 1;
+}
+
+.attachment-content {
+  flex: 1 1 0%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.attachment-title {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--role-label-size);
+  line-height: var(--role-label-leading);
+  font-weight: var(--role-label-weight);
+}
+
+.attachment[data-state='uploading'] .attachment-title,
+.attachment[data-state='processing'] .attachment-title {
+  --shimmer-angle: 20deg;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.attachment-description {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  margin-block-start: var(--space-xxs);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--role-caption-size);
+  line-height: var(--role-caption-leading);
+  font-weight: var(--role-caption-weight);
+  color: var(--role-caption-color);
+}
+
+.attachment-actions {
+  position: relative;
+  z-index: var(--z-chrome);
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.attachment-trigger {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-raised);
+  outline: none;
+}
+
+.attachment-group {
+  display: flex;
+  min-width: 0;
+  gap: var(--space-md);
+  padding-block: var(--space-xs);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--space-xs);
+  scrollbar-width: none;
+}
+
+.attachment-group::-webkit-scrollbar {
+  display: none;
+}
+
+.attachment-group [data-slot='attachment'] {
+  flex: none;
+  scroll-snap-align: start;
+}

@@ -1,0 +1,101 @@
+/*
+ * DOM contract: a bleed region is a direct first/last-child img or card-media.
+ * Header, title, description and action share their rules with Section (section.css).
+ */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--panel-gap);
+  padding: var(--panel-inset);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+  --surface: var(--card);
+  background-color: var(--surface);
+  color: var(--foreground);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.card[data-size='sm'] {
+  --panel-inset: var(--panel-inset-compact);
+}
+
+/* bleed: direct first/last-child img or card-media */
+.card > img,
+.card > [data-slot='card-media'] {
+  margin-inline: calc(var(--panel-inset) * -1);
+}
+
+.card > img:first-child,
+.card > [data-slot='card-media']:first-child {
+  margin-block-start: calc(var(--panel-inset) * -1);
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+}
+
+.card > img:last-child,
+.card > [data-slot='card-media']:last-child {
+  margin-block-end: calc(var(--panel-inset) * -1);
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+.card-header {
+  container-type: inline-size;
+  container-name: card-header;
+}
+
+/* A bordered header: the consumer adds the `border-b` class, and the header bleeds to the card edges. */
+.card-header.border-b {
+  margin-inline: calc(var(--panel-inset) * -1);
+  margin-block-start: calc(var(--panel-inset) * -1);
+  padding: var(--panel-inset);
+  border-bottom: var(--border-width-thin) solid var(--separator);
+}
+
+.card[data-size='sm'] .card-title {
+  font-family: inherit;
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+}
+
+.card-media {
+  position: relative;
+}
+
+.card-media > .card-action {
+  position: absolute;
+  top: var(--inset-sm);
+  inset-inline-end: var(--inset-sm);
+}
+
+/* hover reveal that keeps a pressed child (a set favorite) visible */
+.card-action[data-reveal='hover-keep-pressed'] > :not([aria-pressed='true']) {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.card:hover .card-action[data-reveal='hover-keep-pressed'] > *,
+.card:focus-within .card-action[data-reveal='hover-keep-pressed'] > * {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* footer band: top rule on the muted fill, bleeds to the bottom and sides, pads itself */
+.card-footer {
+  display: flex;
+  align-items: center;
+  margin-inline: calc(var(--panel-inset) * -1);
+  margin-block-end: calc(var(--panel-inset) * -1);
+  padding: var(--panel-inset);
+  border-top: var(--border-width-thin) solid var(--separator);
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+  background-color: var(--muted);
+}

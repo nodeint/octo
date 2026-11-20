@@ -1,0 +1,39 @@
+/*
+ * Token layers, in the order Primer uses: base → functional. Utilities and recipes live outside tokens/.
+ *   base/        raw color steps, no meaning
+ *   functional/  Nodeint's tokens, one folder per kind of value and one file per concern. Values are plain;
+ *                Primer is only a reference (`primer-reference.test.ts`). A theme overrides these variables,
+ *                not a framework's. Each file lives in the folder of its kind:
+ *     color/       roles, foreground, chart, theme, opacity   what a thing looks like in color
+ *     spacing/     space                          gaps, insets, panel padding
+ *     size/        control, target, container, content, overlay, parts    how big a box, or a part of one, is
+ *     shape/       radius, border                 corners and stroke widths
+ *     depth/       shadow, z-index                how far a thing sits above the surface
+ *     typography/  typography, roles              type steps, the font catalog, text roles
+ *     motion/      motion                         duration and easing
+ * appearance.css (the runtime axes) is imported after the tokens so live font and data-* maps win.
+ */
+@import "./base/color/swatches.css";
+@import "./base/color/scale-neutral.css";
+@import "./base/color/scale-accent.css";
+@import "./base/color/scale-status.css";
+@import "./base/color/scale-alpha.css";
+
+@import "./functional/spacing/space.css";
+@import "./functional/size/control.css";
+@import "./functional/size/target.css";
+@import "./functional/size/container.css";
+@import "./functional/size/content.css";
+@import "./functional/size/overlay.css";
+@import "./functional/size/parts.css";
+@import "./functional/shape/radius.css";
+@import "./functional/shape/border.css";
+@import "./functional/depth/shadow.css";
+@import "./functional/depth/z-index.css";
+@import "./functional/typography/typography.css";
+@import "./functional/typography/roles.css";
+@import "./functional/motion/motion.css";
+@import "./functional/color/roles.css";
+@import "./functional/color/foreground.css";
+@import "./functional/color/chart.css";
+@import "./functional/color/opacity.css";

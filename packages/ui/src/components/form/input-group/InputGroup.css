@@ -1,0 +1,252 @@
+/*
+ * DOM contract:
+ * - root data-slot=input-group, data-disabled
+ * - addon data-slot=input-group-addon, data-align=inline-start|inline-end|block-start|block-end
+ * - control data-slot=input-group-control (compound .input / .textarea)
+ * Single line: fixed control height and centered items.
+ * Multi line (textarea or block addon): auto height, a column, stretched items, so the width is
+ * definite for field-sizing and for a Collapsible's measured height.
+ */
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  height: var(--control-height-md);
+  border: var(--border-width-thin) solid var(--control);
+  border-radius: 9999px;
+  outline: none;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+[data-slot='combobox-content'] .input-group:focus-within {
+  border-color: inherit;
+  box-shadow: none;
+}
+
+.input-group:has(textarea:disabled),
+.input-group:has(input:disabled) {
+  background-color: var(--disabled);
+  color: var(--foreground-disabled);
+}
+
+.input-group:has([data-align='block-end']),
+.input-group:has([data-align='block-start']) {
+  height: auto;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: var(--radius-lg);
+}
+
+.input-group:has(> textarea) {
+  height: auto;
+  align-items: stretch;
+  border-radius: var(--radius-lg);
+}
+
+.dark .input-group {
+  background-color: var(--muted);
+}
+
+.dark .input-group:has(:disabled) {
+  background-color: var(--secondary);
+}
+
+.input-group:has([data-slot='input-group-control']:focus-visible) {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+.input-group[data-variant='bare'],
+.input-group[data-variant='bare']:has([data-slot='input-group-control']:focus-visible) {
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow: none;
+  outline: none;
+}
+
+.input-group:has([data-slot][aria-invalid='true']) {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
+}
+
+/* a direct input pads by the side its addon sits on */
+.input-group:has([data-align='block-end']) > input {
+  padding-block-start: var(--space-md);
+}
+
+.input-group:has([data-align='block-start']) > input {
+  padding-block-end: var(--space-md);
+}
+
+.input-group:has([data-align='inline-end']) > input {
+  padding-inline-end: var(--space-sm);
+}
+
+.input-group:has([data-align='inline-start']) > input {
+  padding-inline-start: var(--space-sm);
+}
+
+.input-group-addon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  height: auto;
+  cursor: text;
+  font-size: var(--role-label-size);
+  line-height: var(--role-label-leading);
+  font-weight: var(--role-label-weight);
+  color: var(--foreground-muted);
+  user-select: none;
+}
+
+.input-group-addon svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+/* a direct-child button or kbd tucks toward the edge */
+.input-group-addon[data-align='inline-start'] {
+  order: -1;
+  padding-inline-start: var(--space-sm);
+}
+
+.input-group-addon[data-align='inline-start']:has(> button) {
+  margin-inline-start: calc(var(--space-xs) * -1);
+}
+
+.input-group-addon[data-align='inline-start']:has(> kbd) {
+  margin-inline-start: calc(var(--space-xxs) * -1);
+}
+
+.input-group-addon[data-align='inline-end'] {
+  order: 1;
+  padding-inline-end: var(--space-sm);
+}
+
+.input-group-addon[data-align='inline-end']:has(> button) {
+  margin-inline-end: calc(var(--space-xs) * -1);
+}
+
+.input-group-addon[data-align='inline-end']:has(> kbd) {
+  margin-inline-end: calc(var(--space-xxs) * -1);
+}
+
+.input-group-addon[data-align='block-start'] {
+  order: -1;
+  width: 100%;
+  justify-content: flex-start;
+  padding-inline: var(--space-md);
+  padding-block-start: var(--space-md);
+}
+
+.input-group-addon[data-align='block-start'].border-b {
+  border-bottom: var(--border-width-thin) solid var(--control);
+  padding-block-end: var(--space-md);
+}
+
+.input-group-addon[data-align='block-end'] {
+  order: 1;
+  width: 100%;
+  justify-content: flex-start;
+  padding-inline: var(--space-md);
+  padding-block-end: var(--space-md);
+}
+
+.input-group-addon[data-align='block-end'].border-t {
+  border-top: var(--border-width-thin) solid var(--control);
+}
+
+.input-group-addon > kbd {
+  border-radius: calc(var(--radius-lg) - 5px);
+}
+
+/* a group with a direct input gives block addons less padding */
+.input-group:has(> input) .input-group-addon[data-align='block-start'] {
+  padding-block-start: var(--space-sm);
+}
+
+.input-group:has(> input) .input-group-addon[data-align='block-end'] {
+  padding-block-end: var(--space-sm);
+}
+
+.input-group-button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  box-shadow: none;
+  border-radius: calc(var(--radius-lg) - 3px);
+}
+
+.input-group-button[data-shape='default'] svg:not([class*='size-']) {
+  width: var(--control-icon-sm);
+  height: var(--control-icon-sm);
+}
+
+.input-group-button[data-shape='icon'] {
+  padding: 0;
+}
+
+.input-group-text {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--role-description-size);
+  line-height: var(--role-description-leading);
+  font-weight: var(--role-description-weight);
+  color: var(--role-description-color);
+}
+
+.input-group-text svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+/* The group paints the focus, so the field draws no border, ring or fill of its own. */
+.input.input-group-control,
+.textarea.input-group-control-textarea {
+  border-width: 0;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  outline: none;
+}
+
+.input.input-group-control:is(:focus-visible, [aria-invalid='true']),
+.textarea.input-group-control-textarea:is(:focus-visible, [aria-invalid='true']) {
+  border-width: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.input.input-group-control:disabled,
+.textarea.input-group-control-textarea:disabled,
+.dark .input.input-group-control,
+.dark .input.input-group-control:disabled,
+.dark .textarea.input-group-control-textarea,
+.dark .textarea.input-group-control-textarea:disabled {
+  background-color: transparent;
+}
+
+.input.input-group-control {
+  flex: 1 1 0%;
+}
+
+/* width 100% and min-width 0, not flex 1: flex with field-sizing destabilizes a measured height in a Collapsible */
+.textarea.input-group-control-textarea {
+  width: 100%;
+  min-width: 0;
+  resize: none;
+  padding-block: var(--space-sm);
+}

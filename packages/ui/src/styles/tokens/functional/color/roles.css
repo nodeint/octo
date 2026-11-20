@@ -1,0 +1,79 @@
+/*
+ * Semantic surface, edge, and emphasis roles. Aliases only. Raw oklch stays in the scale files.
+ * A neutral surface has no foreground of its own: text on it reads the foreground-* ladder (foreground.css).
+ * Only a solid emphasis fill keeps an on-fill pair: primary, primary-subtle, primary-fixed, and the statuses.
+ */
+:root {
+  --background: var(--neutral-3);
+  --card: var(--neutral-1);
+  --dialog: var(--neutral-13);
+  --popover: var(--neutral-2);
+  --toolbar: var(--neutral-5);
+  --prompt: var(--neutral-2);
+  --node: var(--neutral-1);
+
+  /* Graph connector. The hairline role stays --edge. */
+  --edge-stroke: var(--neutral-ink-2);
+  --edge-selected: var(--primary);
+  --primary: var(--teal);
+  --primary-foreground: var(--teal-foreground);
+  --primary-hover: var(--accent-hover);
+  --primary-subtle: var(--teal-subtle);
+  --primary-subtle-foreground: var(--teal-subtle-foreground);
+  --primary-fixed: var(--teal-fixed);
+  --primary-fixed-foreground: var(--teal-fixed-foreground);
+
+  --secondary: var(--neutral-5);
+  --muted: var(--neutral-6);
+  --tertiary: var(--neutral-7);
+  --accent: var(--neutral-8);
+
+  /* Hover and keyboard highlight of a row. Selected and open use accent. */
+  --hover: var(--alpha-hover);
+
+  --destructive: var(--status-destructive);
+  --destructive-subtle: var(--status-destructive-subtle);
+  --destructive-subtle-foreground: var(--status-destructive);
+  --success: var(--status-success);
+  --success-subtle: var(--status-success-subtle);
+  --success-subtle-foreground: var(--status-success);
+  --warning: var(--status-warning);
+  --warning-subtle: var(--status-warning-subtle);
+  --warning-subtle-foreground: var(--status-warning);
+  --info: var(--status-info);
+  --info-subtle: var(--status-info-subtle);
+  --info-subtle-foreground: var(--status-info);
+
+  --destructive-foreground: var(--status-destructive-foreground);
+  --destructive-hover: var(--status-destructive-hover);
+  --destructive-border: var(--status-destructive-border);
+  --success-foreground: var(--status-success-foreground);
+  --success-hover: var(--status-success-hover);
+  --success-border: var(--status-success-border);
+  --warning-foreground: var(--status-warning-foreground);
+  --warning-hover: var(--status-warning-hover);
+  --warning-border: var(--status-warning-border);
+  --info-foreground: var(--status-info-foreground);
+  --info-hover: var(--status-info-hover);
+  --info-border: var(--status-info-border);
+
+  /* Disabled is its own paint, not an opacity: quiet fill and quiet edge, with foreground-disabled text. */
+  --disabled: var(--neutral-5);
+  --disabled-border: var(--neutral-7);
+
+  --overlay: var(--alpha-overlay);
+  --edge: var(--alpha-edge);
+  --separator: var(--alpha-separator);
+
+  --border: var(--neutral-9);
+  --control: var(--neutral-10);
+  --scrollbar-thumb: var(--border);
+  --ring: var(--primary);
+
+  --sidebar: var(--neutral-4);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--neutral-8);
+  --sidebar-border: var(--neutral-9);
+  --sidebar-ring: var(--ring);
+}

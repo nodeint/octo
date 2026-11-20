@@ -1,0 +1,103 @@
+/* Height follows the control ladder: sm is control-sm, md is control-md. Default size is sm. */
+.badge {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  overflow: hidden;
+  border: var(--border-width-thin) solid transparent;
+  border-radius: var(--radius-lg);
+  white-space: nowrap;
+}
+
+.badge[data-size='sm'] {
+  height: var(--control-height-sm);
+  padding-inline: calc(var(--control-px-sm) - var(--border-width-thin));
+  gap: var(--control-gap-sm);
+  font-size: var(--role-action-sm-size);
+  line-height: var(--role-action-sm-leading);
+  font-weight: var(--role-action-sm-weight);
+}
+
+.badge[data-size='sm'] > svg {
+  width: var(--control-glyph-sm);
+  height: var(--control-glyph-sm);
+}
+
+.badge[data-size='md'] {
+  height: var(--control-height-md);
+  padding-inline: calc(var(--control-px-md) - var(--border-width-thin));
+  gap: var(--control-gap-md);
+  font-size: var(--role-action-size);
+  line-height: var(--role-action-leading);
+  font-weight: var(--role-action-weight);
+}
+
+.badge[data-size='md'] > svg {
+  width: var(--control-glyph-md);
+  height: var(--control-glyph-md);
+}
+
+.badge[data-variant='default'] {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+a.badge[data-variant='default']:hover {
+  background-color: var(--primary-hover);
+}
+
+.badge[data-variant='secondary'] {
+  background-color: var(--secondary);
+  color: var(--foreground);
+}
+
+a.badge[data-variant='secondary']:hover {
+  background-color: var(--tertiary);
+}
+
+.badge[data-variant='destructive'] {
+  background-color: var(--destructive-subtle);
+  color: var(--destructive-subtle-foreground);
+}
+
+.badge[data-variant='destructive']:focus-visible {
+  outline-color: var(--destructive);
+}
+
+.badge[data-variant='outline'] {
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+a.badge[data-variant='outline']:hover,
+.badge[data-variant='ghost']:hover {
+  background-color: var(--muted);
+  color: var(--foreground-muted);
+}
+
+.badge[data-variant='link'] {
+  color: var(--primary);
+  text-underline-offset: 4px;
+}
+
+.badge[data-variant='link']:hover {
+  text-decoration-line: underline;
+}
+
+/* Status chrome uses semantic tokens, for sync, log and status badges. */
+.badge[data-variant='success'] {
+  background-color: var(--success-subtle);
+  color: var(--success-subtle-foreground);
+}
+
+.badge[data-variant='warning'] {
+  background-color: var(--warning-subtle);
+  color: var(--warning-subtle-foreground);
+}
+
+.badge[data-variant='info'] {
+  background-color: var(--info-subtle);
+  color: var(--info-subtle-foreground);
+}

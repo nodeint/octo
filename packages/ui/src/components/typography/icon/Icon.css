@@ -1,0 +1,14 @@
+.icon[data-size='xs'] {
+  width: var(--control-glyph-xs);
+  height: var(--control-glyph-xs);
+}
+
+.icon[data-size='sm'] {
+  width: var(--control-glyph-sm);
+  height: var(--control-glyph-sm);
+}
+
+.icon[data-size='md'] {
+  width: var(--control-glyph-md);
+  height: var(--control-glyph-md);
+}

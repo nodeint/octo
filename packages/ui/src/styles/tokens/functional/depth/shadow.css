@@ -1,0 +1,28 @@
+/**
+ * Elevation: shadow-xs · sm · md (resting) · lg · xl · 2xl · 3xl (floating) · shadow-inset.
+ * Light values are the :root tokens; .dark overrides the same variables. Values are copied from
+ * Primer's light and dark themes, which are scoped to [data-color-mode] and so cannot be imported.
+ * `primer-reference.test.ts` checks every value against the installed Primer version.
+ */
+
+:root {
+  --shadow-xs: 0 1px 1px 0 #1f23280d; /* primer: --shadow-resting-xsmall (light) */
+  --shadow-sm: 0 1px 1px 0 #1f23280a, 0 1px 2px 0 #1f232808; /* primer: --shadow-resting-small (light) */
+  --shadow-md: 0 1px 1px 0 #25292e1a, 0 3px 6px 0 #25292e1f; /* primer: --shadow-resting-medium (light) */
+  --shadow-lg: 0 0 0 1px #d1d9e040, 0 6px 12px -3px #25292e0a, 0 6px 18px 0 #25292e1f; /* primer: --shadow-floating-small (light) */
+  --shadow-xl: 0 0 0 1px #d1d9e000, 0 8px 16px -4px #25292e14, 0 4px 32px -4px #25292e14, 0 24px 48px -12px #25292e14, 0 48px 96px -24px #25292e14; /* primer: --shadow-floating-medium (light) */
+  --shadow-2xl: 0 0 0 1px #d1d9e000, 0 40px 80px 0 #25292e3d; /* primer: --shadow-floating-large (light) */
+  --shadow-3xl: 0 0 0 1px #d1d9e000, 0 56px 112px 0 #25292e52; /* primer: --shadow-floating-xlarge (light) */
+  --shadow-inset: inset 0 1px 0 0 #1f23280a; /* primer: --shadow-inset (light) */
+}
+
+.dark {
+  --shadow-xs: 0 1px 1px 0 #010409cc; /* primer: --shadow-resting-xsmall (dark) */
+  --shadow-sm: 0 1px 1px 0 #01040999, 0 1px 3px 0 #01040999; /* primer: --shadow-resting-small (dark) */
+  --shadow-md: 0 1px 1px 0 #01040966, 0 3px 6px 0 #010409cc; /* primer: --shadow-resting-medium (dark) */
+  --shadow-lg: 0 0 0 1px #3d444d, 0 6px 12px -3px #01040966, 0 6px 18px 0 #01040966; /* primer: --shadow-floating-small (dark) */
+  --shadow-xl: 0 0 0 1px #3d444d, 0 8px 16px -4px #01040966, 0 4px 32px -4px #01040966, 0 24px 48px -12px #01040966, 0 48px 96px -24px #01040966; /* primer: --shadow-floating-medium (dark) */
+  --shadow-2xl: 0 0 0 1px #3d444d, 0 24px 48px 0 #010409; /* primer: --shadow-floating-large (dark) */
+  --shadow-3xl: 0 0 0 1px #3d444d, 0 32px 64px 0 #010409; /* primer: --shadow-floating-xlarge (dark) */
+  --shadow-inset: inset 0 1px 0 0 #0104093d; /* primer: --shadow-inset (dark) */
+}

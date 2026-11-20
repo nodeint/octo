@@ -1,0 +1,339 @@
+/*
+ * Shared overlay behavior: scrim, positioner, enter and exit motion, dialog and popover surfaces.
+ * Selector lists replace shared utilities; a new overlay joins the lists it needs.
+ * Motion reads `data-open` / `data-closed` (Base UI). A placement-aware overlay sets
+ * --overlay-x / --overlay-y from `data-side` so it slides in from its anchor.
+ */
+
+/* Scrim: fade-only, no zoom. */
+.dialog-overlay,
+.alert-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  isolation: isolate;
+  z-index: var(--z-floating);
+  background-color: var(--overlay);
+  backdrop-filter: var(--surface-overlay-filter);
+  -webkit-backdrop-filter: var(--surface-overlay-filter);
+  animation-duration: var(--motion-duration-fast);
+}
+
+/* No isolation: sheet motion must not create a stacking context here. */
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-floating);
+  background-color: var(--overlay);
+  backdrop-filter: var(--surface-overlay-filter);
+  -webkit-backdrop-filter: var(--surface-overlay-filter);
+  transition-property: opacity;
+  transition-duration: var(--motion-duration-normal);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.sheet-overlay[data-starting-style],
+.sheet-overlay[data-ending-style] {
+  opacity: 0;
+}
+
+.dialog-overlay[data-open],
+.alert-dialog-overlay[data-open] {
+  animation-name: overlay-fade-in;
+  animation-timing-function: var(--ease-enter);
+}
+
+.dialog-overlay[data-closed],
+.alert-dialog-overlay[data-closed] {
+  animation-name: overlay-fade-out;
+  animation-timing-function: var(--ease-exit);
+  animation-fill-mode: forwards;
+}
+
+.popover-positioner,
+.tooltip-positioner,
+.dropdown-menu-positioner,
+.context-menu-positioner {
+  isolation: isolate;
+  z-index: var(--z-floating);
+}
+
+.dropdown-menu-positioner,
+.context-menu-positioner {
+  outline: none;
+}
+
+/* Surfaces. A dialog panel and a popover differ only in the fill role. */
+.dialog-content,
+.alert-dialog-content,
+.sheet-content {
+  background-color: var(--dialog);
+  color: var(--foreground);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
+  outline: none;
+}
+
+.popover-content,
+.dropdown-menu-content,
+.dropdown-menu-sub-content,
+.context-menu-content {
+  background-color: var(--popover);
+  color: var(--foreground);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
+  outline: none;
+  animation-duration: var(--motion-duration-fast);
+}
+
+/* Centered dialogs zoom and fade in place. */
+.dialog-content,
+.alert-dialog-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: var(--z-floating);
+  width: 100%;
+  translate: -50% -50%;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--panel-gap);
+  padding: var(--panel-inset);
+  animation-duration: var(--motion-duration-fast);
+}
+
+.dialog-content[data-open],
+.alert-dialog-content[data-open] {
+  animation-name: overlay-zoom-in;
+  animation-timing-function: var(--ease-enter);
+}
+
+.dialog-content[data-closed],
+.alert-dialog-content[data-closed] {
+  animation-name: overlay-zoom-out;
+  animation-timing-function: var(--ease-exit);
+  animation-fill-mode: forwards;
+}
+
+/* Anchored panels slide in from the side they open toward. */
+.popover-content,
+.tooltip-content,
+.dropdown-menu-content,
+.dropdown-menu-sub-content,
+.context-menu-content {
+  transform-origin: var(--transform-origin);
+}
+
+.popover-content[data-side='bottom'],
+.tooltip-content[data-side='bottom'],
+.dropdown-menu-content[data-side='bottom'],
+.dropdown-menu-sub-content[data-side='bottom'],
+.context-menu-content[data-side='bottom'] {
+  --overlay-y: -0.5rem;
+}
+
+.popover-content[data-side='top'],
+.tooltip-content[data-side='top'],
+.dropdown-menu-content[data-side='top'],
+.dropdown-menu-sub-content[data-side='top'],
+.context-menu-content[data-side='top'] {
+  --overlay-y: 0.5rem;
+}
+
+.popover-content[data-side='inline-end'],
+.tooltip-content[data-side='inline-end'],
+.dropdown-menu-content[data-side='inline-end'],
+.dropdown-menu-sub-content[data-side='inline-end'],
+.context-menu-content[data-side='inline-end'],
+.popover-content[data-side='right'],
+.tooltip-content[data-side='right'],
+.dropdown-menu-content[data-side='right'],
+.dropdown-menu-sub-content[data-side='right'],
+.context-menu-content[data-side='right'] {
+  --overlay-x: -0.5rem;
+}
+
+.popover-content[data-side='inline-start'],
+.tooltip-content[data-side='inline-start'],
+.dropdown-menu-content[data-side='inline-start'],
+.dropdown-menu-sub-content[data-side='inline-start'],
+.context-menu-content[data-side='inline-start'],
+.popover-content[data-side='left'],
+.tooltip-content[data-side='left'],
+.dropdown-menu-content[data-side='left'],
+.dropdown-menu-sub-content[data-side='left'],
+.context-menu-content[data-side='left'] {
+  --overlay-x: 0.5rem;
+}
+
+.popover-content[data-open],
+.tooltip-content[data-open],
+.tooltip-content[data-state='delayed-open'],
+.dropdown-menu-content[data-open],
+.dropdown-menu-sub-content[data-open],
+.context-menu-content[data-open] {
+  animation-name: overlay-slide-in;
+  animation-timing-function: var(--ease-enter);
+}
+
+.popover-content[data-closed],
+.tooltip-content[data-closed],
+.dropdown-menu-content[data-closed],
+.dropdown-menu-sub-content[data-closed],
+.context-menu-content[data-closed] {
+  animation-name: overlay-zoom-out;
+  animation-timing-function: var(--ease-exit);
+  animation-fill-mode: forwards;
+}
+
+@keyframes overlay-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes overlay-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes overlay-zoom-in {
+  from {
+    opacity: 0;
+    scale: 0.95;
+  }
+}
+
+@keyframes overlay-zoom-out {
+  to {
+    opacity: 0;
+    scale: 0.95;
+  }
+}
+
+@keyframes overlay-slide-in {
+  from {
+    opacity: 0;
+    scale: 0.95;
+    translate: var(--overlay-x, 0) var(--overlay-y, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog-overlay,
+  .alert-dialog-overlay,
+  .dialog-content,
+  .alert-dialog-content,
+  .popover-content,
+  .tooltip-content,
+  .dropdown-menu-content,
+  .dropdown-menu-sub-content,
+  .context-menu-content {
+    animation-duration: 1ms;
+  }
+}
+
+/* A glyph pushed to the end of a menu row. */
+.menu-chevron {
+  margin-inline-start: auto;
+}
+
+/* Width from the overlay scale. A menu, context menu or popover sets data-size; no size keeps its own width. */
+.dropdown-menu-content[data-size='xxs'],
+.context-menu-content[data-size='xxs'],
+.popover-content[data-size='xxs'] {
+  width: var(--overlay-xxs);
+}
+
+.dropdown-menu-content[data-size='xs'],
+.context-menu-content[data-size='xs'],
+.popover-content[data-size='xs'] {
+  width: var(--overlay-xs);
+}
+
+.dropdown-menu-content[data-size='sm'],
+.context-menu-content[data-size='sm'],
+.popover-content[data-size='sm'] {
+  width: var(--overlay-sm);
+}
+
+.dropdown-menu-content[data-size='md'],
+.context-menu-content[data-size='md'],
+.popover-content[data-size='md'] {
+  width: var(--overlay-md);
+}
+
+.dropdown-menu-content[data-size='lg'],
+.context-menu-content[data-size='lg'],
+.popover-content[data-size='lg'] {
+  width: var(--overlay-lg);
+}
+
+.dropdown-menu-content[data-size='xl'],
+.context-menu-content[data-size='xl'],
+.popover-content[data-size='xl'] {
+  width: var(--overlay-xl);
+}
+
+/* Panel footer band, shared by dialog, alert dialog and sheet. */
+.dialog-footer,
+.alert-dialog-footer,
+.sheet-footer {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--space-xs);
+  margin-inline: calc(var(--panel-inset) * -1);
+  margin-block-end: calc(var(--panel-inset) * -1);
+  padding: var(--panel-inset);
+  border-top: var(--border-width-thin) solid var(--separator);
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+  background-color: var(--muted);
+}
+
+@media (min-width: 40rem) {
+  .dialog-footer,
+  .alert-dialog-footer {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+.dialog-title,
+.alert-dialog-title,
+.sheet-title {
+  font-family: var(--role-title-sm-family);
+  font-size: var(--role-title-sm-size);
+  line-height: var(--role-title-sm-leading);
+  font-weight: var(--role-title-sm-weight);
+}
+
+.sheet-title {
+  color: var(--foreground);
+}
+
+.dialog-description,
+.alert-dialog-description,
+.sheet-description {
+  font-size: var(--role-description-size);
+  line-height: var(--role-description-leading);
+  font-weight: var(--role-description-weight);
+  color: var(--role-description-color);
+}
+
+.dialog-description > a,
+.alert-dialog-description > a {
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+}
+
+.dialog-description > a:hover,
+.alert-dialog-description > a:hover {
+  color: var(--foreground);
+}
+
+.dialog-close-button,
+.sheet-close-button {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+}

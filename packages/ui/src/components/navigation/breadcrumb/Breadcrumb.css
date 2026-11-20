@@ -1,0 +1,50 @@
+.breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  overflow-wrap: break-word;
+  font-size: var(--role-description-size);
+  line-height: var(--role-description-leading);
+  font-weight: var(--role-description-weight);
+  color: var(--role-description-color);
+}
+
+.breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.breadcrumb-link {
+  transition-property: color;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.breadcrumb-link:hover {
+  color: var(--foreground);
+}
+
+.breadcrumb-page {
+  color: var(--foreground);
+}
+
+.breadcrumb-separator > svg {
+  width: var(--control-glyph-xs);
+  height: var(--control-glyph-xs);
+}
+
+/* Own-scale micro, not a control height. */
+.breadcrumb-ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-height-xs);
+  height: var(--control-height-xs);
+}
+
+.breadcrumb-ellipsis > svg {
+  width: var(--control-glyph-sm);
+  height: var(--control-glyph-sm);
+}

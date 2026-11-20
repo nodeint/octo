@@ -1,0 +1,170 @@
+/*
+ * Behavior shared by the closed controls (button, badge, input, textarea): focus ring,
+ * invalid and disabled paint. Selector lists replace shared utilities; keep them in sync with
+ * the component files. Badge lives in data-display and is listed here on purpose.
+ */
+
+.button,
+.badge,
+.input,
+.textarea {
+  outline: none;
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+/* Focus indicator: a solid outline in the ring color. An outline survives forced-colors mode. */
+.button:focus-visible,
+.badge:focus-visible,
+.input:focus-visible,
+.textarea:focus-visible {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+.button[aria-invalid='true'],
+.badge[aria-invalid='true'],
+.input[aria-invalid='true'],
+.textarea[aria-invalid='true'] {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
+}
+
+.button:disabled,
+.input:disabled,
+.textarea:disabled {
+  pointer-events: none;
+  color: var(--foreground-disabled);
+}
+
+.button[aria-disabled='true'] {
+  pointer-events: none;
+  color: var(--foreground-disabled);
+}
+
+.input:disabled,
+.textarea:disabled {
+  border-color: var(--disabled-border);
+  background-color: var(--disabled);
+}
+
+.input[data-disabled],
+.textarea[data-disabled] {
+  pointer-events: none;
+  border-color: var(--disabled-border);
+  color: var(--foreground-disabled);
+}
+
+/* Icon glyph size inside a control, beside its text. A size-* class on the svg opts out. */
+.button svg,
+.badge > svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.button svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+}
+
+/*
+ * Touch target: --target-min is 44px for a coarse pointer and 16px for a fine one. The pseudo-element
+ * grows the hit area without changing the control's size. :where() keeps the position easy to override.
+ */
+:where(.button) {
+  position: relative;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: 100%;
+  min-height: var(--target-min);
+  transform: translateY(-50%);
+}
+
+/* ---- selection controls and toggles ---- */
+.checkbox,
+.radio-group-item,
+.switch,
+.slider-thumb,
+.toggle {
+  outline: none;
+  transition-property: color, background-color, border-color, box-shadow, transform, translate, opacity;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.checkbox:focus-visible,
+.radio-group-item:focus-visible,
+.switch:focus-visible,
+.slider-thumb:focus-visible,
+.toggle:focus-visible {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+.checkbox[aria-invalid='true'],
+.radio-group-item[aria-invalid='true'],
+.switch[aria-invalid='true'],
+.toggle[aria-invalid='true'] {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
+}
+
+.checkbox:disabled,
+.radio-group-item:disabled,
+.switch:disabled,
+.toggle:disabled {
+  pointer-events: none;
+  color: var(--foreground-disabled);
+}
+
+.checkbox:disabled,
+.radio-group-item:disabled,
+.switch:disabled {
+  border-color: var(--disabled-border);
+}
+
+.checkbox[data-disabled],
+.radio-group-item[data-disabled],
+.switch[data-disabled] {
+  pointer-events: none;
+  border-color: var(--disabled-border);
+  color: var(--foreground-disabled);
+}
+
+.toggle[aria-disabled='true'] {
+  pointer-events: none;
+  color: var(--foreground-disabled);
+}
+
+/* Hit area grows past the box without changing its size. */
+.checkbox::after,
+.radio-group-item::after,
+.switch::after {
+  content: '';
+  position: absolute;
+  inset: calc(var(--space-sm) * -1) calc(var(--space-md) * -1);
+}
+
+.toggle::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: 100%;
+  min-height: var(--target-min);
+  transform: translateY(-50%);
+}
+
+.toggle svg,
+.toggle-group svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}

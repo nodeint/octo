@@ -1,0 +1,75 @@
+/*
+ * Token-only decoration. Attribute selectors stand alone, so Stack, Inline and Grid
+ * share these rules. Nothing here sets display, spacing or layout.
+ */
+[data-box-radius='sm'] {
+  border-radius: var(--radius-sm);
+}
+
+[data-box-radius='md'] {
+  border-radius: var(--radius-md);
+}
+
+[data-box-radius='lg'] {
+  border-radius: var(--radius-lg);
+}
+
+[data-box-surface='background'] {
+  --surface: var(--background);
+  background-color: var(--surface);
+}
+
+[data-box-surface='card'] {
+  --surface: var(--card);
+  background-color: var(--surface);
+}
+
+[data-box-surface='muted'] {
+  --surface: var(--muted);
+  background-color: var(--surface);
+}
+
+[data-box-surface='popover'] {
+  --surface: var(--popover);
+  background-color: var(--surface);
+}
+
+[data-box-surface='sidebar'] {
+  --surface: var(--sidebar);
+  background-color: var(--surface);
+}
+
+[data-box-surface='accent'] {
+  --surface: var(--accent);
+  background-color: var(--surface);
+}
+
+/* border and shadow share box-shadow, so each sets a layer and one rule joins them */
+[data-box-border='thin'] {
+  --box-ring: 0 0 0 var(--border-width-thin) var(--edge);
+}
+
+[data-box-border='thick'] {
+  --box-ring: 0 0 0 var(--border-width-thick) var(--edge);
+}
+
+[data-box-shadow='none'] {
+  --box-elevation: 0 0 #0000;
+}
+
+[data-box-shadow='sm'] {
+  --box-elevation: var(--shadow-sm);
+}
+
+[data-box-shadow='md'] {
+  --box-elevation: var(--shadow-md);
+}
+
+[data-box-shadow='lg'] {
+  --box-elevation: var(--shadow-lg);
+}
+
+[data-box-border],
+[data-box-shadow] {
+  box-shadow: var(--box-elevation, 0 0 #0000), var(--box-ring, 0 0 #0000);
+}

@@ -1,0 +1,95 @@
+.empty {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--panel-gap);
+  width: 100%;
+  min-width: 0;
+  padding: var(--inset-xl);
+  text-align: center;
+  text-wrap: balance;
+  border: var(--border-width-thin) dashed var(--border);
+  border-radius: var(--radius-lg);
+}
+
+/* A line inside a frame that already has a border. */
+.empty[data-variant='plain'] {
+  flex: none;
+  min-height: 0;
+  padding: var(--inset-sm);
+  border-width: 0;
+  border-radius: 0;
+}
+
+.empty-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  max-width: var(--overlay-sm);
+}
+
+.empty-media {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  margin-block-end: var(--space-sm);
+}
+
+.empty-media svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.empty-media[data-variant='default'] {
+  background-color: transparent;
+}
+
+.empty-media[data-variant='icon'] {
+  width: var(--control-height-md);
+  height: var(--control-height-md);
+  border-radius: var(--radius-lg);
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.empty-title {
+  font-family: var(--role-title-sm-family);
+  font-size: var(--role-title-sm-size);
+  line-height: var(--role-title-sm-leading);
+  font-weight: var(--role-title-sm-weight);
+}
+
+.empty-description {
+  font-size: var(--role-description-size);
+  line-height: var(--role-description-leading);
+  font-weight: var(--role-description-weight);
+  color: var(--role-description-color);
+}
+
+.empty-description > a {
+  text-decoration-line: underline;
+  text-underline-offset: 4px;
+}
+
+.empty-description > a:hover {
+  color: var(--primary);
+}
+
+.empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  max-width: var(--overlay-sm);
+  min-width: 0;
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  text-wrap: balance;
+}

@@ -1,0 +1,192 @@
+.button {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width-thin) solid transparent;
+  border-radius: 9999px;
+  background-clip: padding-box;
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.button:active:not([aria-haspopup]) {
+  transform: translateY(1px);
+}
+
+/* variants */
+.button[data-variant='default'] {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.button[data-variant='default']:hover {
+  background-color: var(--primary-hover);
+}
+
+.button[data-variant='outline'] {
+  border-color: var(--border);
+  background-color: transparent;
+}
+
+.button[data-variant='outline']:hover {
+  background-color: var(--tertiary);
+  color: var(--foreground);
+}
+
+.dark .button[data-variant='outline'] {
+  border-color: var(--control);
+}
+
+.dark .button[data-variant='outline']:hover {
+  background-color: var(--secondary);
+}
+
+.button[data-variant='outline'][aria-expanded='true'] {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.button[data-variant='secondary'] {
+  background-color: var(--secondary);
+  color: var(--foreground);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
+}
+
+.button[data-variant='secondary']:hover {
+  background-color: var(--tertiary);
+}
+
+.button[data-variant='secondary'][aria-expanded='true'] {
+  background-color: var(--accent);
+}
+
+/* A quiet control rests on foreground-muted and steps to foreground with its fill. */
+.button[data-variant='ghost'] {
+  color: var(--foreground-muted);
+}
+
+.button[data-variant='ghost']:hover,
+.button[data-variant='ghost']:active {
+  background-color: var(--tertiary);
+  color: var(--foreground);
+}
+
+.button[data-variant='ghost'][aria-expanded='true'],
+.button[data-variant='ghost'][aria-pressed='true'] {
+  background-color: var(--accent);
+  color: var(--foreground);
+}
+
+.button[data-variant='destructive'] {
+  background-color: var(--destructive-subtle);
+  color: var(--destructive-subtle-foreground);
+}
+
+.button[data-variant='destructive']:hover {
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+.button[data-variant='destructive']:active {
+  background-color: var(--destructive-hover);
+}
+
+.button[data-variant='destructive']:focus-visible {
+  outline-color: var(--destructive);
+}
+
+.button[data-variant='default']:disabled,
+.button[data-variant='default'][aria-disabled='true'],
+.button[data-variant='secondary']:disabled,
+.button[data-variant='secondary'][aria-disabled='true'],
+.button[data-variant='destructive']:disabled,
+.button[data-variant='destructive'][aria-disabled='true'] {
+  background-color: var(--disabled);
+}
+
+.button[data-variant='link'] {
+  color: var(--primary);
+  text-underline-offset: 4px;
+}
+
+.button[data-variant='link']:hover {
+  text-decoration-line: underline;
+}
+
+/* A link has no fill, so its text sits on the content edge. The extra [data-size] outranks the row size. */
+.button[data-variant='link'][data-shape='default'][data-size] {
+  padding-inline: 0;
+  border-inline-width: 0;
+}
+
+/* sizes: a shape (row or icon square) and a size from the control scale */
+.button[data-shape='default'][data-size='xs'] {
+  height: var(--control-height-xs);
+  padding-inline: calc(var(--control-px-xs) - var(--border-width-thin));
+  gap: var(--control-gap-xs);
+  font-size: var(--role-body-sm-size);
+  line-height: var(--role-body-sm-leading);
+  font-weight: var(--role-body-sm-weight);
+}
+
+.button[data-shape='default'][data-size='sm'] {
+  height: var(--control-height-sm);
+  padding-inline: calc(var(--control-px-sm) - var(--border-width-thin));
+  gap: var(--control-gap-sm);
+}
+
+.button[data-shape='default'][data-size='md'] {
+  height: var(--control-height-md);
+  padding-inline: calc(var(--control-px-md) - var(--border-width-thin));
+  gap: var(--control-gap-md);
+}
+
+.button[data-shape='default'][data-size='lg'] {
+  height: var(--control-height-lg);
+  padding-inline: calc(var(--control-px-lg) - var(--border-width-thin));
+  gap: var(--control-gap-lg);
+}
+
+.button[data-shape='default'][data-size='xs'] svg:not([class*='size-']) {
+  width: var(--control-icon-xs);
+  height: var(--control-icon-xs);
+}
+
+.button[data-shape='default'][data-size='sm'] svg:not([class*='size-']) {
+  width: var(--control-icon-sm);
+  height: var(--control-icon-sm);
+}
+
+.button[data-shape='icon'][data-size='xs'] {
+  width: var(--control-height-xs);
+  height: var(--control-height-xs);
+}
+
+.button[data-shape='icon'][data-size='sm'] {
+  width: var(--control-height-sm);
+  height: var(--control-height-sm);
+}
+
+.button[data-shape='icon'][data-size='md'] {
+  width: var(--control-height-md);
+  height: var(--control-height-md);
+}
+
+.button[data-shape='icon'][data-size='lg'] {
+  width: var(--control-height-lg);
+  height: var(--control-height-lg);
+}
+
+.button[data-shape='icon'][data-size='xs'] svg:not([class*='size-']) {
+  width: var(--control-icon-xs);
+  height: var(--control-icon-xs);
+}
+
+[data-slot='button-group'] .button[data-size='xs'],
+[data-slot='button-group'] .button[data-size='sm'] {
+  border-radius: 9999px;
+}

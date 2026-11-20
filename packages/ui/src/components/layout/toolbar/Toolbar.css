@@ -1,0 +1,75 @@
+/* A rail for toolbar items. */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xxs);
+  width: fit-content;
+  padding: var(--space-xs);
+  overflow: hidden;
+  border-radius: 9999px;
+  --surface: var(--toolbar);
+  background-color: var(--surface);
+  color: var(--foreground);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
+}
+
+.toolbar[data-orientation='vertical'] {
+  flex-direction: column;
+}
+
+.toolbar[data-disabled] {
+  pointer-events: none;
+  color: var(--foreground-disabled);
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.toolbar[data-orientation='vertical'] .toolbar-group {
+  flex-direction: column;
+}
+
+/* The control skin comes from the shared `.button` class on the element. */
+.toolbar-button {
+  flex-shrink: 0;
+}
+
+.toolbar-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--role-description-size);
+  line-height: var(--role-description-leading);
+  color: var(--role-description-color);
+  text-underline-offset: 4px;
+}
+
+.toolbar-link:hover {
+  color: var(--foreground);
+  text-decoration-line: underline;
+}
+
+/* The input skin comes from the shared `.input` class on the element. */
+.toolbar-input {
+  min-width: 0;
+}
+
+.toolbar-separator {
+  flex-shrink: 0;
+  background-color: var(--separator);
+}
+
+/* Perpendicular to the toolbar axis; Base UI sets the orientation. */
+.toolbar-separator[data-orientation='vertical'] {
+  width: 1px;
+  height: var(--control-height-sm);
+  align-self: center;
+}
+
+.toolbar-separator[data-orientation='horizontal'] {
+  width: 100%;
+  height: 1px;
+  align-self: stretch;
+}

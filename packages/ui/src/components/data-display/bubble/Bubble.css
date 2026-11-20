@@ -1,0 +1,103 @@
+/*
+ * DOM contract: the bubble is a transparent column, and data-slot=bubble-content is the painted box.
+ * Anything else in the column (a show-more control) sits below the box.
+ */
+.bubble {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-tight);
+  width: fit-content;
+  max-width: 80%;
+  min-width: 0;
+}
+
+.bubble[data-align='end'] {
+  align-self: flex-end;
+}
+
+/* ghost is unframed content that spans the row */
+.bubble[data-variant='ghost'] {
+  max-width: 100%;
+}
+
+.bubble-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-tight);
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  padding: var(--inset-sm) var(--inset-md);
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  border-radius: var(--radius-lg);
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
+}
+
+.bubble-content:is(button, a) {
+  text-align: start;
+  outline: none;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.bubble-content:is(button, a):focus-visible {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+.bubble[data-align='end'] > .bubble-content {
+  align-self: flex-end;
+}
+
+.bubble[data-variant='default'] > .bubble-content {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.bubble[data-variant='secondary'] > .bubble-content {
+  background-color: var(--secondary);
+  color: var(--foreground);
+}
+
+.bubble[data-variant='muted'] > .bubble-content {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.bubble[data-variant='tinted'] > .bubble-content {
+  background-color: var(--primary-subtle);
+  color: var(--primary-subtle-foreground);
+}
+
+.bubble[data-variant='outline'] > .bubble-content {
+  background-color: var(--card);
+  color: var(--foreground);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--border);
+}
+
+.bubble[data-variant='ghost'] > .bubble-content {
+  padding: 0;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.bubble[data-variant='destructive'] > .bubble-content {
+  background-color: var(--destructive-subtle);
+  color: var(--destructive-subtle-foreground);
+}
+
+.bubble-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-tight);
+  min-width: 0;
+}

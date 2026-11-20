@@ -1,0 +1,245 @@
+/**
+ * Named color swatches — full Tailwind default palette (4 slots each).
+ * Shape per hue: solid · solid-foreground · subtle · subtle-foreground.
+ *
+ * Ladder (except teal): Tailwind steps
+ *   light: solid=600, fg=white (or 950 on yellow/lime/amber), subtle=~100, subtle-fg=800
+ *   dark:  solid=400, fg=950, subtle=~900, subtle-fg=200
+ * Subtle sits one step past 50/950 so it separates from the neutral surfaces.
+ *
+ * teal: app brand (primary alias) — custom OKLCH, not TW teal-500.
+ * Source steps: tailwindcss@4.3.1 theme.css
+ *
+ * Utilities: bg-red, text-red-foreground, bg-blue-subtle, text-blue-subtle-foreground, …
+ * Role alias: --primary: var(--teal) in colors.css
+ */
+
+:root {
+  /* red */
+  --red: oklch(0.577 0.245 27.325);
+  --red-foreground: oklch(0.985 0 0);
+  --red-subtle: oklch(0.931 0.03 17.38);
+  --red-subtle-foreground: oklch(0.444 0.177 26.899);
+  /* orange */
+  --orange: oklch(0.646 0.222 41.116);
+  --orange-foreground: oklch(0.985 0 0);
+  --orange-subtle: oklch(0.94 0.03 73.684);
+  --orange-subtle-foreground: oklch(0.47 0.157 37.304);
+  /* amber */
+  --amber: oklch(0.666 0.179 58.318);
+  --amber-foreground: oklch(0.279 0.077 45.635);
+  --amber-subtle: oklch(0.947 0.0396 95.277);
+  --amber-subtle-foreground: oklch(0.473 0.137 46.201);
+  /* yellow */
+  --yellow: oklch(0.681 0.162 75.834);
+  --yellow-foreground: oklch(0.286 0.066 53.813);
+  --yellow-subtle: oklch(0.947 0.045 102.212);
+  --yellow-subtle-foreground: oklch(0.476 0.114 61.907);
+  /* lime */
+  --lime: oklch(0.648 0.2 131.684);
+  --lime-foreground: oklch(0.274 0.072 132.109);
+  --lime-subtle: oklch(0.946 0.045 120.757);
+  --lime-subtle-foreground: oklch(0.453 0.124 130.933);
+  /* green */
+  --green: oklch(0.627 0.194 149.214);
+  --green-foreground: oklch(0.985 0 0);
+  --green-subtle: oklch(0.942 0.0324 155.826);
+  --green-subtle-foreground: oklch(0.448 0.119 151.328);
+  /* emerald */
+  --emerald: oklch(0.596 0.145 163.225);
+  --emerald-foreground: oklch(0.985 0 0);
+  --emerald-subtle: oklch(0.939 0.0378 166.113);
+  --emerald-subtle-foreground: oklch(0.432 0.095 166.913);
+  /* teal */
+  --teal: oklch(0.508 0.118 165.612);
+  --teal-foreground: oklch(0.979 0.021 166.113);
+  --teal-subtle: oklch(0.93 0.045 166);
+  --teal-subtle-foreground: oklch(0.42 0.1 166);
+  /* cyan */
+  --cyan: oklch(0.609 0.126 221.723);
+  --cyan-foreground: oklch(0.985 0 0);
+  --cyan-subtle: oklch(0.944 0.0342 200.873);
+  --cyan-subtle-foreground: oklch(0.45 0.085 224.283);
+  /* sky */
+  --sky: oklch(0.588 0.158 241.966);
+  --sky-foreground: oklch(0.985 0 0);
+  --sky-subtle: oklch(0.937 0.03 236.62);
+  --sky-subtle-foreground: oklch(0.443 0.11 240.79);
+  /* blue */
+  --blue: oklch(0.546 0.245 262.881);
+  --blue-foreground: oklch(0.985 0 0);
+  --blue-subtle: oklch(0.93 0.03 254.604);
+  --blue-subtle-foreground: oklch(0.424 0.199 265.638);
+  /* indigo */
+  --indigo: oklch(0.511 0.262 276.966);
+  --indigo-foreground: oklch(0.985 0 0);
+  --indigo-subtle: oklch(0.922 0.0324 272.314);
+  --indigo-subtle-foreground: oklch(0.398 0.195 277.366);
+  /* violet */
+  --violet: oklch(0.541 0.281 293.009);
+  --violet-foreground: oklch(0.985 0 0);
+  --violet-subtle: oklch(0.929 0.03 293.756);
+  --violet-subtle-foreground: oklch(0.432 0.232 292.759);
+  /* purple */
+  --purple: oklch(0.558 0.288 302.321);
+  --purple-foreground: oklch(0.985 0 0);
+  --purple-subtle: oklch(0.937 0.03 308.299);
+  --purple-subtle-foreground: oklch(0.438 0.218 303.724);
+  /* fuchsia */
+  --fuchsia: oklch(0.591 0.293 322.896);
+  --fuchsia-foreground: oklch(0.985 0 0);
+  --fuchsia-subtle: oklch(0.937 0.0306 320.058);
+  --fuchsia-subtle-foreground: oklch(0.452 0.211 324.591);
+  /* pink */
+  --pink: oklch(0.592 0.249 0.584);
+  --pink-foreground: oklch(0.985 0 0);
+  --pink-subtle: oklch(0.931 0.03 343.198);
+  --pink-subtle-foreground: oklch(0.459 0.187 3.815);
+  /* rose */
+  --rose: oklch(0.586 0.253 17.585);
+  --rose-foreground: oklch(0.985 0 0);
+  --rose-subtle: oklch(0.929 0.03 12.422);
+  --rose-subtle-foreground: oklch(0.455 0.188 13.697);
+  /* slate */
+  --slate: oklch(0.446 0.043 257.281);
+  --slate-foreground: oklch(0.985 0 0);
+  --slate-subtle: oklch(0.94 0.004 247.858);
+  --slate-subtle-foreground: oklch(0.279 0.041 260.031);
+  /* gray */
+  --gray: oklch(0.446 0.03 256.802);
+  --gray-foreground: oklch(0.985 0 0);
+  --gray-subtle: oklch(0.94 0.004 247.839);
+  --gray-subtle-foreground: oklch(0.278 0.033 256.848);
+  /* zinc */
+  --zinc: oklch(0.442 0.017 285.786);
+  --zinc-foreground: oklch(0.985 0 0);
+  --zinc-subtle: oklch(0.94 0.004 0);
+  --zinc-subtle-foreground: oklch(0.274 0.006 286.033);
+  /* neutral */
+  --neutral: oklch(0.439 0 0);
+  --neutral-foreground: oklch(0.985 0 0);
+  --neutral-subtle: oklch(0.94 0.004 0);
+  --neutral-subtle-foreground: oklch(0.269 0 0);
+  /* stone */
+  --stone: oklch(0.444 0.011 73.639);
+  --stone-foreground: oklch(0.985 0 0);
+  --stone-subtle: oklch(0.94 0.004 106.423);
+  --stone-subtle-foreground: oklch(0.268 0.007 34.298);
+
+  /* Light solid, frozen for both modes. Primary-fixed aliases these. */
+  --teal-fixed: oklch(0.508 0.118 165.612);
+  --teal-fixed-foreground: oklch(0.979 0.021 166.113);
+  --blue-fixed: oklch(0.546 0.245 262.881);
+  --blue-fixed-foreground: oklch(0.985 0 0);
+  --indigo-fixed: oklch(0.511 0.262 276.966);
+  --indigo-fixed-foreground: oklch(0.985 0 0);
+  --violet-fixed: oklch(0.541 0.281 293.009);
+  --violet-fixed-foreground: oklch(0.985 0 0);
+  --purple-fixed: oklch(0.558 0.288 302.321);
+  --purple-fixed-foreground: oklch(0.985 0 0);
+  --rose-fixed: oklch(0.586 0.253 17.585);
+  --rose-fixed-foreground: oklch(0.985 0 0);
+  --pink-fixed: oklch(0.592 0.249 0.584);
+  --pink-fixed-foreground: oklch(0.985 0 0);
+  --orange-fixed: oklch(0.646 0.222 41.116);
+  --orange-fixed-foreground: oklch(0.985 0 0);
+  --green-fixed: oklch(0.627 0.194 149.214);
+  --green-fixed-foreground: oklch(0.985 0 0);
+  --emerald-fixed: oklch(0.596 0.145 163.225);
+  --emerald-fixed-foreground: oklch(0.985 0 0);
+  --cyan-fixed: oklch(0.609 0.126 221.723);
+  --cyan-fixed-foreground: oklch(0.985 0 0);
+  --sky-fixed: oklch(0.588 0.158 241.966);
+  --sky-fixed-foreground: oklch(0.985 0 0);
+}
+
+.dark {
+  --red: oklch(0.704 0.191 22.216);
+  --red-foreground: oklch(0.258 0.092 26.042);
+  --red-subtle: oklch(0.308 0.092 26.042);
+  --red-subtle-foreground: oklch(0.885 0.062 18.334);
+  --orange: oklch(0.75 0.183 55.934);
+  --orange-foreground: oklch(0.266 0.079 36.259);
+  --orange-subtle: oklch(0.316 0.079 36.259);
+  --orange-subtle-foreground: oklch(0.901 0.076 70.697);
+  --amber: oklch(0.828 0.189 84.429);
+  --amber-foreground: oklch(0.279 0.077 45.635);
+  --amber-subtle: oklch(0.329 0.077 45.635);
+  --amber-subtle-foreground: oklch(0.924 0.12 95.746);
+  --yellow: oklch(0.852 0.199 91.936);
+  --yellow-foreground: oklch(0.286 0.066 53.813);
+  --yellow-subtle: oklch(0.336 0.066 53.813);
+  --yellow-subtle-foreground: oklch(0.945 0.129 101.54);
+  --lime: oklch(0.841 0.238 128.85);
+  --lime-foreground: oklch(0.274 0.072 132.109);
+  --lime-subtle: oklch(0.324 0.072 132.109);
+  --lime-subtle-foreground: oklch(0.938 0.127 124.321);
+  --green: oklch(0.792 0.209 151.711);
+  --green-foreground: oklch(0.266 0.065 152.934);
+  --green-subtle: oklch(0.316 0.065 152.934);
+  --green-subtle-foreground: oklch(0.925 0.084 155.995);
+  --emerald: oklch(0.765 0.177 163.223);
+  --emerald-foreground: oklch(0.262 0.051 172.552);
+  --emerald-subtle: oklch(0.312 0.051 172.552);
+  --emerald-subtle-foreground: oklch(0.905 0.093 164.15);
+  --teal: oklch(0.78 0.12 166.5);
+  --teal-foreground: oklch(0.2 0.03 166);
+  --teal-subtle: oklch(0.33 0.045 166.5);
+  --teal-subtle-foreground: oklch(0.88 0.06 166.5);
+  --cyan: oklch(0.789 0.154 211.53);
+  --cyan-foreground: oklch(0.302 0.056 229.695);
+  --cyan-subtle: oklch(0.352 0.056 229.695);
+  --cyan-subtle-foreground: oklch(0.917 0.08 205.041);
+  --sky: oklch(0.746 0.16 232.661);
+  --sky-foreground: oklch(0.293 0.066 243.157);
+  --sky-subtle: oklch(0.343 0.066 243.157);
+  --sky-subtle-foreground: oklch(0.901 0.058 230.902);
+  --blue: oklch(0.707 0.165 254.624);
+  --blue-foreground: oklch(0.282 0.091 267.935);
+  --blue-subtle: oklch(0.332 0.091 267.935);
+  --blue-subtle-foreground: oklch(0.882 0.059 254.128);
+  --indigo: oklch(0.673 0.182 276.935);
+  --indigo-foreground: oklch(0.257 0.09 281.288);
+  --indigo-subtle: oklch(0.307 0.09 281.288);
+  --indigo-subtle-foreground: oklch(0.87 0.065 274.039);
+  --violet: oklch(0.702 0.183 293.541);
+  --violet-foreground: oklch(0.283 0.141 291.089);
+  --violet-subtle: oklch(0.333 0.141 291.089);
+  --violet-subtle-foreground: oklch(0.894 0.057 293.283);
+  --purple: oklch(0.714 0.203 305.504);
+  --purple-foreground: oklch(0.291 0.149 302.717);
+  --purple-subtle: oklch(0.341 0.149 302.717);
+  --purple-subtle-foreground: oklch(0.902 0.063 306.703);
+  --fuchsia: oklch(0.74 0.238 322.16);
+  --fuchsia-foreground: oklch(0.293 0.136 325.661);
+  --fuchsia-subtle: oklch(0.343 0.136 325.661);
+  --fuchsia-subtle-foreground: oklch(0.903 0.076 319.62);
+  --pink: oklch(0.718 0.202 349.761);
+  --pink-foreground: oklch(0.284 0.109 3.907);
+  --pink-subtle: oklch(0.334 0.109 3.907);
+  --pink-subtle-foreground: oklch(0.899 0.061 343.231);
+  --rose: oklch(0.712 0.194 13.428);
+  --rose-foreground: oklch(0.271 0.105 12.094);
+  --rose-subtle: oklch(0.321 0.105 12.094);
+  --rose-subtle-foreground: oklch(0.892 0.058 10.001);
+  --slate: oklch(0.704 0.04 256.788);
+  --slate-foreground: oklch(0.129 0.042 264.695);
+  --slate-subtle: oklch(0.3 0.042 264.695);
+  --slate-subtle-foreground: oklch(0.929 0.013 255.508);
+  --gray: oklch(0.707 0.022 261.325);
+  --gray-foreground: oklch(0.13 0.028 261.692);
+  --gray-subtle: oklch(0.3 0.028 261.692);
+  --gray-subtle-foreground: oklch(0.928 0.006 264.531);
+  --zinc: oklch(0.705 0.015 286.067);
+  --zinc-foreground: oklch(0.141 0.005 285.823);
+  --zinc-subtle: oklch(0.3 0.01 285.823);
+  --zinc-subtle-foreground: oklch(0.92 0.004 286.32);
+  --neutral: oklch(0.708 0 0);
+  --neutral-foreground: oklch(0.145 0 0);
+  --neutral-subtle: oklch(0.3 0.01 0);
+  --neutral-subtle-foreground: oklch(0.922 0 0);
+  --stone: oklch(0.709 0.01 56.259);
+  --stone-foreground: oklch(0.147 0.004 49.25);
+  --stone-subtle: oklch(0.3 0.01 49.25);
+  --stone-subtle-foreground: oklch(0.923 0.003 48.717);
+}

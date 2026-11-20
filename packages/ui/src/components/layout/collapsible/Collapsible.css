@@ -1,0 +1,52 @@
+/*
+ * Collapsible: Base UI Root, Trigger and Panel.
+ * Default panel motion needs no product className: height via Base UI --collapsible-panel-height,
+ * an opacity fade on the start and end styles, the slow motion token and the standard easing.
+ * The trigger is headless: compose it with Button through `render`.
+ * Optional chevron: wrap the glyph in [data-slot="collapsible-trigger-icon"].
+ */
+.collapsible {
+  display: flex;
+  flex-direction: column;
+}
+
+.collapsible-trigger [data-slot='collapsible-trigger-icon'] {
+  transition-property: transform, rotate;
+  transition-duration: var(--motion-duration-fast);
+  transition-timing-function: var(--ease-standard);
+}
+
+.collapsible-trigger[data-panel-open] [data-slot='collapsible-trigger-icon'] {
+  rotate: 90deg;
+}
+
+/* Base UI sets --collapsible-panel-height while measuring; data-starting-style and data-ending-style drive enter and exit. */
+.collapsible-content {
+  overflow: hidden;
+  height: var(--collapsible-panel-height);
+  opacity: 1;
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+  outline: none;
+  transition:
+    height var(--motion-duration-slow) var(--ease-standard),
+    width var(--motion-duration-normal) var(--ease-standard);
+}
+
+.collapsible-content[hidden]:not([hidden='until-found']) {
+  display: none;
+}
+
+.collapsible-content[data-starting-style],
+.collapsible-content[data-ending-style] {
+  height: 0;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collapsible-content,
+  .collapsible-trigger [data-slot='collapsible-trigger-icon'] {
+    transition: none;
+  }
+}

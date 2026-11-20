@@ -1,0 +1,168 @@
+.text[data-variant='display'] {
+  font-family: var(--role-display-family);
+  font-size: var(--role-display-size);
+  line-height: var(--role-display-leading);
+  font-weight: var(--role-display-weight);
+}
+
+.text[data-variant='title-lg'] {
+  font-family: var(--role-title-lg-family);
+  font-size: var(--role-title-lg-size);
+  line-height: var(--role-title-lg-leading);
+  font-weight: var(--role-title-lg-weight);
+}
+
+.text[data-variant='title-md'] {
+  font-family: var(--role-title-md-family);
+  font-size: var(--role-title-md-size);
+  line-height: var(--role-title-md-leading);
+  font-weight: var(--role-title-md-weight);
+}
+
+.text[data-variant='title-sm'] {
+  font-family: var(--role-title-sm-family);
+  font-size: var(--role-title-sm-size);
+  line-height: var(--role-title-sm-leading);
+  font-weight: var(--role-title-sm-weight);
+}
+
+.text[data-variant='subtitle'] {
+  font-family: var(--role-subtitle-family);
+  font-size: var(--role-subtitle-size);
+  line-height: var(--role-subtitle-leading);
+  font-weight: var(--role-subtitle-weight);
+}
+
+.text[data-variant='body-lg'] {
+  font-size: var(--role-body-lg-size);
+  line-height: var(--role-body-lg-leading);
+  font-weight: var(--role-body-lg-weight);
+}
+
+.text[data-variant='body'] {
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+}
+
+.text[data-variant='body-sm'] {
+  font-size: var(--role-body-sm-size);
+  line-height: var(--role-body-sm-leading);
+  font-weight: var(--role-body-sm-weight);
+}
+
+.text[data-variant='label'] {
+  font-size: var(--role-label-size);
+  line-height: var(--role-label-leading);
+  font-weight: var(--role-label-weight);
+}
+
+.text[data-variant='action'] {
+  font-size: var(--role-action-size);
+  line-height: var(--role-action-leading);
+  font-weight: var(--role-action-weight);
+}
+
+.text[data-variant='action-sm'] {
+  font-size: var(--role-action-sm-size);
+  line-height: var(--role-action-sm-leading);
+  font-weight: var(--role-action-sm-weight);
+}
+
+.text[data-variant='label-sm'] {
+  font-size: var(--role-label-sm-size);
+  line-height: var(--role-label-sm-leading);
+  font-weight: var(--role-label-sm-weight);
+  color: var(--role-label-sm-color);
+}
+
+.text[data-variant='description'] {
+  font-size: var(--role-description-size);
+  line-height: var(--role-description-leading);
+  font-weight: var(--role-description-weight);
+  color: var(--role-description-color);
+}
+
+.text[data-variant='caption'] {
+  font-size: var(--role-caption-size);
+  line-height: var(--role-caption-leading);
+  font-weight: var(--role-caption-weight);
+  color: var(--role-caption-color);
+}
+
+.text[data-variant='code'] {
+  font-family: var(--role-code-family);
+  font-size: var(--role-code-size);
+  line-height: var(--role-code-leading);
+  font-weight: var(--role-code-weight);
+}
+
+/* Text typed into an input: body size, and the larger body-lg size on a touch screen so a phone does not zoom in. */
+.text[data-variant='field'] {
+  font-size: var(--role-field-size);
+  line-height: var(--role-field-leading);
+  font-weight: var(--role-field-weight);
+}
+
+@media (pointer: coarse) {
+  .text[data-variant='field'] {
+    font-size: var(--role-field-size-coarse);
+  }
+}
+
+.text[data-align='start'] {
+  text-align: start;
+}
+
+.text[data-align='center'] {
+  text-align: center;
+}
+
+.text[data-align='end'] {
+  text-align: end;
+}
+
+.text[data-overflow='truncate'] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text[data-overflow^='clamp-'] {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text[data-overflow='clamp-1'] {
+  -webkit-line-clamp: 1;
+}
+
+.text[data-overflow='clamp-2'] {
+  -webkit-line-clamp: 2;
+}
+
+.text[data-overflow='clamp-3'] {
+  -webkit-line-clamp: 3;
+}
+
+.text[data-overflow='break'] {
+  overflow-wrap: anywhere;
+}
+
+.text[data-overflow='pre'] {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.text[data-overflow='no-wrap'] {
+  white-space: nowrap;
+}
+
+.text[data-italic] {
+  font-style: italic;
+}
+
+.text[data-numeric] {
+  font-variant-numeric: tabular-nums;
+}

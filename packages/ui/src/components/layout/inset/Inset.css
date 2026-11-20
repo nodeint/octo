@@ -1,0 +1,164 @@
+.layout-inset[data-size='xs'] {
+  padding: var(--inset-xs);
+}
+
+.layout-inset[data-size='sm'] {
+  padding: var(--inset-sm);
+}
+
+.layout-inset[data-size='md'] {
+  padding: var(--inset-md);
+}
+
+.layout-inset[data-size='lg'] {
+  padding: var(--inset-lg);
+}
+
+.layout-inset[data-size='xl'] {
+  padding: var(--inset-xl);
+}
+
+/* A side or axis on its own step. Later than the size rules, so these win. */
+.layout-inset[data-x='0'] {
+  padding-inline: 0;
+}
+
+.layout-inset[data-x='xs'] {
+  padding-inline: var(--inset-xs);
+}
+
+.layout-inset[data-x='sm'] {
+  padding-inline: var(--inset-sm);
+}
+
+.layout-inset[data-x='md'] {
+  padding-inline: var(--inset-md);
+}
+
+.layout-inset[data-x='lg'] {
+  padding-inline: var(--inset-lg);
+}
+
+.layout-inset[data-x='xl'] {
+  padding-inline: var(--inset-xl);
+}
+
+.layout-inset[data-y='0'] {
+  padding-block: 0;
+}
+
+.layout-inset[data-y='xs'] {
+  padding-block: var(--inset-xs);
+}
+
+.layout-inset[data-y='sm'] {
+  padding-block: var(--inset-sm);
+}
+
+.layout-inset[data-y='md'] {
+  padding-block: var(--inset-md);
+}
+
+.layout-inset[data-y='lg'] {
+  padding-block: var(--inset-lg);
+}
+
+.layout-inset[data-y='xl'] {
+  padding-block: var(--inset-xl);
+}
+
+.layout-inset[data-t='0'] {
+  padding-block-start: 0;
+}
+
+.layout-inset[data-t='xs'] {
+  padding-block-start: var(--inset-xs);
+}
+
+.layout-inset[data-t='sm'] {
+  padding-block-start: var(--inset-sm);
+}
+
+.layout-inset[data-t='md'] {
+  padding-block-start: var(--inset-md);
+}
+
+.layout-inset[data-t='lg'] {
+  padding-block-start: var(--inset-lg);
+}
+
+.layout-inset[data-t='xl'] {
+  padding-block-start: var(--inset-xl);
+}
+
+.layout-inset[data-b='0'] {
+  padding-block-end: 0;
+}
+
+.layout-inset[data-b='xs'] {
+  padding-block-end: var(--inset-xs);
+}
+
+.layout-inset[data-b='sm'] {
+  padding-block-end: var(--inset-sm);
+}
+
+.layout-inset[data-b='md'] {
+  padding-block-end: var(--inset-md);
+}
+
+.layout-inset[data-b='lg'] {
+  padding-block-end: var(--inset-lg);
+}
+
+.layout-inset[data-b='xl'] {
+  padding-block-end: var(--inset-xl);
+}
+
+.layout-inset[data-s='0'] {
+  padding-inline-start: 0;
+}
+
+.layout-inset[data-s='xs'] {
+  padding-inline-start: var(--inset-xs);
+}
+
+.layout-inset[data-s='sm'] {
+  padding-inline-start: var(--inset-sm);
+}
+
+.layout-inset[data-s='md'] {
+  padding-inline-start: var(--inset-md);
+}
+
+.layout-inset[data-s='lg'] {
+  padding-inline-start: var(--inset-lg);
+}
+
+.layout-inset[data-s='xl'] {
+  padding-inline-start: var(--inset-xl);
+}
+
+.layout-inset[data-e='0'] {
+  padding-inline-end: 0;
+}
+
+.layout-inset[data-e='xs'] {
+  padding-inline-end: var(--inset-xs);
+}
+
+.layout-inset[data-e='sm'] {
+  padding-inline-end: var(--inset-sm);
+}
+
+.layout-inset[data-e='md'] {
+  padding-inline-end: var(--inset-md);
+}
+
+.layout-inset[data-e='lg'] {
+  padding-inline-end: var(--inset-lg);
+}
+
+.layout-inset[data-e='xl'] {
+  padding-inline-end: var(--inset-xl);
+}

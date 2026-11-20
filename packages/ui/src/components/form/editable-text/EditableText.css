@@ -1,0 +1,72 @@
+.editable-text {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: var(--gap-related);
+}
+
+/* The text reads as the surrounding text: no fill, no hover tint, no border at rest. Editing shows only the bottom line. */
+.editable-text .editable-text-value,
+.editable-text input.editable-text-input {
+  min-width: 0;
+  flex: 1 1 0%;
+  padding-inline: var(--space-xs);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  background-color: transparent;
+  border-width: 0 0 2px;
+  border-style: solid;
+  border-color: transparent;
+  color: var(--foreground);
+  outline: none;
+}
+
+/* The field is the Input, whose base rules come later in the cascade; the element selector keeps these ahead. */
+.editable-text input.editable-text-input {
+  box-shadow: none;
+}
+
+.editable-text input.editable-text-input:is(:focus, :focus-visible) {
+  box-shadow: none;
+  border-bottom-color: var(--ring);
+}
+
+.editable-text .editable-text-value {
+  cursor: text;
+}
+
+.editable-text .editable-text-value:focus-visible {
+  border-bottom-color: var(--ring);
+}
+
+/* The pencil only offers the edit, so it shows while hovering. */
+.editable-text .editable-text-edit {
+  flex-shrink: 0;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.editable-text:hover .editable-text-edit {
+  opacity: 1;
+}
+
+.editable-text[data-variant='title-md'] .editable-text-input {
+  font-family: var(--role-title-md-family);
+  font-size: var(--role-title-md-size);
+  line-height: var(--role-title-md-leading);
+  font-weight: var(--role-title-md-weight);
+}
+
+.editable-text[data-variant='title-sm'] .editable-text-input {
+  font-family: var(--role-title-sm-family);
+  font-size: var(--role-title-sm-size);
+  line-height: var(--role-title-sm-leading);
+  font-weight: var(--role-title-sm-weight);
+}
+
+.editable-text[data-variant='body'] .editable-text-input {
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+}

@@ -1,0 +1,20 @@
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+  user-select: none;
+}
+
+/* A label that follows a disabled `.peer` control. */
+:where(.peer):disabled ~ .label {
+  cursor: not-allowed;
+  opacity: var(--opacity-dim);
+}
+
+.field[data-disabled='true'] .label {
+  cursor: not-allowed;
+  color: var(--foreground-disabled);
+}

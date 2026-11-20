@@ -1,0 +1,34 @@
+/**
+ * Control parts: the inner geometry of a control that is not a control size. A recipe reads one of these;
+ * a theme sets it to reshape the part without touching the component.
+ *   switch     track and thumb, per switch size
+ *   radio      the dot inside a selected radio
+ *   avatar     the status badge, per avatar size
+ *   scrollbar  the thickness, edge inset, and thumb radius of a scrollbar
+ *   slider     the thickness of the track
+ *   tooltip    the arrow
+ *   tab        the underline that marks the selected tab
+ * Where a part is the same size as a step of the control icon, space, or border scale, it reads that step.
+ * The rest keep their own value: no step matches, or reading one would tie the part to the wrong scale.
+ * Primer defines no size for these parts (only colors).
+ */
+
+:root {
+  --switch-track-height-md: var(--control-glyph-md); /* 20 */
+  --switch-track-width-md: 2rem;
+  --switch-thumb-size-md: var(--control-glyph-sm); /* 16 */
+  --switch-track-height-sm: 0.875rem;
+  --switch-track-width-sm: 1.5rem;
+  --switch-thumb-size-sm: var(--control-glyph-xs); /* 12 */
+  --switch-thumb-inset: var(--space-xxs); /* 2 */
+  --radio-dot-size: calc(var(--control-glyph-sm) / 2); /* half the radio box, 8 */
+  --scrollbar-size: 0.625rem;
+  --scrollbar-inset: 1px; /* gap between the thumb and the track edge */
+  --scrollbar-thumb-radius: 9999px;
+  --slider-track-height: var(--space-xs); /* 4 */
+  --tooltip-arrow-size: 0.625rem;
+  --tooltip-arrow-inset: var(--space-xxs); /* 2 */
+  --tab-indicator-thickness: var(--space-xxs); /* 2 */
+  --tab-indicator-offset: -0.3125rem;
+  --tab-trigger-shrink: var(--border-width-thin); /* 1, the tab's own border */
+}

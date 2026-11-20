@@ -1,0 +1,72 @@
+/**
+ * Text roles: the only way text takes a size, weight, leading, family, and (for secondary roles) color.
+ * utilities/text.css turns each role into a text-<role> class; Text and the design-system components use them.
+ * A theme overrides these --role-* variables to restyle every text of that role at once.
+ *   titles    display · title-lg · title-md · title-sm · subtitle   (heading family)
+ *   body      body-lg · body · body-sm · label                     (text color)
+ *   action    action · action-sm                                    (text on a control: badge, toggle)
+ *   secondary label-sm · description · caption                      (foreground-subtle for label-sm, foreground-muted for the others)
+ *   code      code                                                  (monospace)
+ *   field     field                                                 (text typed into an input)
+ */
+
+:root {
+  --role-display-size: 2.5rem; /* primer: --text-display-size */
+  --role-display-weight: 500; /* primer: --text-display-weight */
+  --role-display-leading: 1.375; /* primer: --text-display-lineHeight */
+  --role-display-family: var(--font-heading);
+  --role-title-lg-size: 2rem; /* primer: --text-title-size-large */
+  --role-title-lg-weight: 600; /* primer: --text-title-weight-large */
+  --role-title-lg-leading: 1.5; /* primer: --text-title-lineHeight-large */
+  --role-title-lg-family: var(--font-heading);
+  --role-title-md-size: 1.25rem; /* primer: --text-title-size-medium */
+  --role-title-md-weight: 600; /* primer: --text-title-weight-medium */
+  --role-title-md-leading: 1.625; /* primer: --text-title-lineHeight-medium */
+  --role-title-md-family: var(--font-heading);
+  --role-title-sm-size: 1rem; /* primer: --text-title-size-small */
+  --role-title-sm-weight: 600; /* primer: --text-title-weight-small */
+  --role-title-sm-leading: 1.5; /* primer: --text-title-lineHeight-small */
+  --role-title-sm-family: var(--font-heading);
+  --role-subtitle-size: 1.25rem; /* primer: --text-subtitle-size */
+  --role-subtitle-weight: 400; /* primer: --text-subtitle-weight */
+  --role-subtitle-leading: 1.625; /* primer: --text-subtitle-lineHeight */
+  --role-subtitle-family: var(--font-heading);
+  --role-body-lg-size: 1rem; /* primer: --base-text-size-md */
+  --role-body-lg-weight: 400;
+  --role-body-lg-leading: 1.5; /* primer: --text-body-lineHeight-large */
+  --role-body-size: 0.875rem; /* primer: --base-text-size-sm */
+  --role-body-weight: 400;
+  --role-body-leading: 1.5; /* primer: --text-body-lineHeight-medium */
+  --role-label-size: 0.875rem; /* primer: --base-text-size-sm */
+  --role-label-weight: 500;
+  --role-label-leading: 1.5;
+  --role-label-sm-size: 0.75rem; /* primer: --base-text-size-xs */
+  --role-label-sm-weight: 500;
+  --role-label-sm-leading: 1.5;
+  --role-label-sm-color: var(--foreground-subtle);
+  --role-description-size: 0.875rem; /* primer: --base-text-size-sm */
+  --role-description-weight: 400;
+  --role-description-leading: 1.5; /* primer: --text-body-lineHeight-medium */
+  --role-description-color: var(--foreground-muted);
+  --role-caption-size: 0.75rem; /* primer: --text-caption-size */
+  --role-caption-weight: 400; /* primer: --text-caption-weight */
+  --role-caption-leading: 1.25; /* primer: --text-caption-lineHeight */
+  --role-caption-color: var(--foreground-muted);
+  --role-body-sm-size: 0.75rem; /* primer: --base-text-size-xs */
+  --role-body-sm-weight: 400;
+  --role-body-sm-leading: 1.5;
+  --role-action-size: 0.875rem; /* primer: --base-text-size-sm */
+  --role-action-weight: 500;
+  --role-action-leading: 1.5;
+  --role-action-sm-size: 0.75rem; /* primer: --base-text-size-xs */
+  --role-action-sm-weight: 500;
+  --role-action-sm-leading: 1.5;
+  --role-field-size: var(--role-body-size);
+  --role-field-size-coarse: var(--role-body-lg-size);
+  --role-field-weight: 400;
+  --role-field-leading: 1.5;
+  --role-code-size: 0.75rem; /* primer: --base-text-size-xs */
+  --role-code-weight: 400;
+  --role-code-leading: 1.5;
+  --role-code-family: var(--font-mono);
+}

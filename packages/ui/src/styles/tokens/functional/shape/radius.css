@@ -1,0 +1,12 @@
+/**
+ * Corner radius: three steps. rounded-sm · rounded-md · rounded-lg, and rounded-full.
+ * rounded-overlay is the corner of every floating panel (menu, select, popover, tooltip).
+ * Values come from Primer; `primer-reference.test.ts` checks them. A theme sets --radius-*.
+ */
+
+:root {
+  --radius-sm: 0.1875rem; /* primer: --borderRadius-small */
+  --radius-md: 0.375rem; /* primer: --borderRadius-medium */
+  --radius-lg: 0.75rem; /* primer: --borderRadius-large */
+  --radius-overlay: 0.375rem; /* primer: --overlay-borderRadius */
+}

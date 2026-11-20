@@ -1,0 +1,308 @@
+.item-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-group);
+  width: 100%;
+}
+
+/* Size lives on the rows (Base UI data-size), not the group host. Match the row slot only:
+   a Button or Badge inside a row also carries data-size. */
+.item-group:has([data-slot='item'][data-size='sm']) {
+  gap: var(--space-sm);
+}
+
+.item-group:has([data-slot='item'][data-size='xs']) {
+  gap: var(--space-xs);
+}
+
+/* The label sits on the text edge of the rows it names: same size, same row inset. */
+.item-group-label {
+  font-size: var(--role-label-sm-size);
+  line-height: var(--role-label-sm-leading);
+  font-weight: var(--role-label-sm-weight);
+  color: var(--role-label-sm-color);
+}
+
+.item-group-label[data-size='md'] {
+  padding-inline: var(--control-px-md);
+}
+
+.item-group-label[data-size='sm'] {
+  padding-inline: var(--control-px-sm);
+}
+
+.item-group-label[data-size='xs'] {
+  padding-inline: var(--control-px-xs);
+}
+
+.item-separator {
+  margin-block: var(--space-sm);
+}
+
+/* text-align start: a row rendered as a button must not center its text */
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  border: var(--border-width-thin) solid transparent;
+  border-radius: var(--radius-lg);
+  text-align: start;
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+  outline: none;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: var(--motion-duration-fast);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.item:focus-visible {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+a.item:hover,
+button.item:hover {
+  background-color: var(--hover);
+}
+
+.item[data-variant='outline'] {
+  border-color: var(--border);
+}
+
+.item[data-variant='muted'] {
+  background-color: var(--muted);
+}
+
+/* accent is a state fill: everything on it reads foreground, the description too */
+.item[aria-selected='true'],
+.item[aria-selected='true']:hover {
+  background-color: var(--accent);
+  color: var(--foreground);
+}
+
+.item[aria-selected='true'] :is(.item-description, .item-meta) {
+  color: var(--foreground);
+}
+
+.item[data-size='md'] {
+  gap: var(--space-sm);
+  padding: var(--space-sm) calc(var(--control-px-md) - var(--border-width-thin));
+}
+
+.item[data-size='sm'] {
+  gap: var(--space-sm);
+  padding: var(--space-sm) calc(var(--control-px-sm) - var(--border-width-thin));
+}
+
+.item[data-size='xs'] {
+  gap: var(--space-sm);
+  padding: var(--space-xs) calc(var(--control-px-xs) - var(--border-width-thin));
+}
+
+/* A row with an ItemTrigger: the trigger's ::after covers the row, so a click anywhere opens it.
+   The row paints the hover and the trigger's focus; interactive actions sit above the cover. */
+.item:has(.item-trigger) {
+  position: relative;
+}
+
+.item:has(.item-trigger):hover {
+  background-color: var(--hover);
+}
+
+.item:has(.item-trigger:focus-visible) {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+.item:has(.item-trigger) .item-actions :is(a, button, input, select, textarea, [tabindex]) {
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+.item-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  max-width: 100%;
+  min-width: 0;
+  text-align: start;
+  outline: none;
+}
+
+.item-trigger::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+}
+
+.item-media {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.item-media svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.item-media[data-variant='default'] {
+  background-color: transparent;
+}
+
+.item-media[data-variant='image'] {
+  width: var(--control-height-lg);
+  height: var(--control-height-lg);
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.item-media[data-variant='image'] img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* With a description the row is two lines: pin an icon to the middle of the title line,
+   from the label role's line box and the icon step, not a hand-tuned nudge. */
+.item:has([data-slot='item-description']) .item-media {
+  align-self: flex-start;
+}
+
+.item:has([data-slot='item-description']) .item-media[data-variant='default'] {
+  margin-block-start: calc((var(--role-label-size) * var(--role-label-leading) - var(--control-icon-md)) / 2);
+}
+
+.item[data-size='sm'] .item-media[data-variant='image'] {
+  width: var(--control-height-md);
+  height: var(--control-height-md);
+}
+
+.item[data-size='xs'] .item-media[data-variant='image'] {
+  width: var(--control-height-xs);
+  height: var(--control-height-xs);
+}
+
+/* min-width 0: let a long title shrink and truncate instead of pushing the actions out */
+.item-content {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+
+.item-content + .item-content {
+  flex: none;
+}
+
+.item[data-size='xs'] .item-content {
+  gap: 0;
+}
+
+/* A row of the title text and its marks. Plain text is wrapped in .item-title-text, which truncates;
+   a clamp on the flex row itself never applies, because display flex overrides it. */
+.item-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  font-size: var(--role-label-size);
+  line-height: var(--role-label-leading);
+  font-weight: var(--role-label-weight);
+  text-underline-offset: 4px;
+}
+
+.item-title-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-align: start;
+  font-size: var(--role-description-size);
+  line-height: var(--role-description-leading);
+  font-weight: var(--role-description-weight);
+  color: var(--role-description-color);
+}
+
+.item-description > a {
+  text-decoration-line: underline;
+  text-underline-offset: 4px;
+}
+
+.item-description > a:hover {
+  color: var(--primary);
+}
+
+.item-meta {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-align: start;
+  font-size: var(--role-caption-size);
+  line-height: var(--role-caption-leading);
+  font-weight: var(--role-caption-weight);
+  color: var(--role-caption-color);
+}
+
+.item[data-size='xs'] .item-description {
+  font-size: var(--role-body-sm-size);
+  line-height: var(--role-body-sm-leading);
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.item-actions[data-reveal='hover'] {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.item:hover .item-actions[data-reveal='hover'],
+.item:focus-within .item-actions[data-reveal='hover'] {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* hover reveal that keeps a pressed child (a set favorite) visible */
+.item-actions[data-reveal='hover-keep-pressed'] > :not([aria-pressed='true']) {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.item:hover .item-actions[data-reveal='hover-keep-pressed'] > *,
+.item:focus-within .item-actions[data-reveal='hover-keep-pressed'] > * {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.item-header,
+.item-footer {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}

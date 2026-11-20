@@ -1,0 +1,25 @@
+/**
+ * Motion. Durations are tokens; easings are --ease-standard, --ease-enter and --ease-exit.
+ *   duration-(--motion-duration-fast|normal|slow)
+ * Prefer these over raw duration-100 / ease-in-out. Plain transition-* utilities use the hover motion.
+ */
+
+:root {
+  --motion-duration-fast: 100ms; /* primer: --base-duration-100 menus, dialogs, item chrome */
+  --motion-duration-normal: 200ms; /* primer: --base-duration-200 sheet overlay, mid chrome */
+  --motion-duration-slow: 300ms; /* primer: --base-duration-300 sheet panel, sidebar width */
+}
+
+:root {
+  --ease-standard: cubic-bezier(0.6, 0, 0.2, 1); /* primer: --base-easing-easeInOut move */
+  --ease-enter: cubic-bezier(0.3, 0.8, 0.6, 1); /* primer: --base-easing-easeOut open: decelerate */
+  --ease-exit: cubic-bezier(0.7, 0.1, 0.75, 0.9); /* primer: --base-easing-easeIn close: accelerate */
+
+  /* Every transition-* utility without an explicit duration or easing uses the hover motion. */
+}
+
+/* Default motion for a plain `transition`: the hover motion. */
+:root {
+  --default-transition-duration: 100ms; /* primer: --base-duration-100 */
+  --default-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1); /* primer: --base-easing-ease */
+}

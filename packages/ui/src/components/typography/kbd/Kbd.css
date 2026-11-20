@@ -1,0 +1,34 @@
+.kbd {
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  width: fit-content;
+  height: var(--control-height-xs);
+  min-width: var(--control-height-xs);
+  padding-inline: var(--space-xs);
+  border-radius: var(--radius-md);
+  background-color: var(--muted);
+  font-size: var(--role-label-sm-size);
+  line-height: var(--role-label-sm-leading);
+  font-weight: var(--role-label-sm-weight);
+  color: var(--role-label-sm-color);
+  user-select: none;
+}
+
+[data-slot='tooltip-content'] .kbd {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.kbd svg:not([class*='size-']) {
+  width: var(--control-glyph-xs);
+  height: var(--control-glyph-xs);
+}
+
+.kbd-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}

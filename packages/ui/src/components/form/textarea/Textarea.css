@@ -1,0 +1,8 @@
+.textarea {
+  display: flex;
+  field-sizing: content;
+  min-height: var(--input-min-height);
+  padding-block: var(--space-sm);
+  padding-inline: var(--control-px-md);
+  border-radius: var(--radius-lg);
+}

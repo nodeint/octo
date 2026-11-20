@@ -1,0 +1,118 @@
+/*
+ * DOM contract: the leading icon is a direct-child svg (grid columns and row span).
+ * Action chrome is data-slot=alert-action (reserved end padding).
+ */
+.alert {
+  position: relative;
+  display: grid;
+  gap: var(--space-xs);
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: var(--border-width-thin) solid var(--border);
+  border-radius: var(--radius-lg);
+  text-align: start;
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+}
+
+.alert:has([data-slot='alert-action']) {
+  padding-inline-end: calc(var(--space-3xl) + var(--space-xl));
+}
+
+.alert:has(> svg) {
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-sm);
+}
+
+.alert > svg {
+  grid-row: span 2;
+  translate: 0 0.125rem;
+  color: currentColor;
+}
+
+.alert svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.alert[data-variant='default'] {
+  background-color: var(--card);
+  color: var(--foreground);
+}
+
+/* status variants share one subtle fill, text and border pair */
+.alert[data-variant='info'] {
+  border-color: var(--info-subtle-foreground);
+  background-color: var(--info-subtle);
+  color: var(--info-subtle-foreground);
+}
+
+.alert[data-variant='success'] {
+  border-color: var(--success-subtle-foreground);
+  background-color: var(--success-subtle);
+  color: var(--success-subtle-foreground);
+}
+
+.alert[data-variant='warning'] {
+  border-color: var(--warning-subtle-foreground);
+  background-color: var(--warning-subtle);
+  color: var(--warning-subtle-foreground);
+}
+
+.alert[data-variant='destructive'] {
+  border-color: var(--destructive-subtle-foreground);
+  background-color: var(--destructive-subtle);
+  color: var(--destructive-subtle-foreground);
+}
+
+.alert:not([data-variant='default']) [data-slot='alert-description'] {
+  color: currentColor;
+}
+
+.alert:has(> svg) .alert-title {
+  grid-column-start: 2;
+}
+
+.alert-title {
+  font-size: var(--role-label-size);
+  line-height: var(--role-label-leading);
+  font-weight: var(--role-label-weight);
+}
+
+.alert-title a,
+.alert-description a {
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+}
+
+.alert-title a:hover,
+.alert-description a:hover {
+  color: var(--foreground);
+}
+
+.alert-description {
+  font-size: var(--role-description-size);
+  line-height: var(--role-description-leading);
+  font-weight: var(--role-description-weight);
+  color: var(--role-description-color);
+  text-wrap: balance;
+}
+
+@media (min-width: 48rem) {
+  .alert-description {
+    text-wrap: pretty;
+  }
+}
+
+.alert-description p:not(:last-child) {
+  margin-block-end: var(--space-lg);
+}
+
+.alert-action {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+}

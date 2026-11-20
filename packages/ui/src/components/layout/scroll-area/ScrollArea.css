@@ -1,0 +1,90 @@
+/* The free space of a flex column. The parent is that column and already has a height. */
+.scroll-area {
+  position: relative;
+  flex: 1 1 0%;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* A strip sizes to its content, so it does not claim the free space of a column. */
+.scroll-area[data-orientation='horizontal'] {
+  flex: none;
+}
+
+.scroll-area-viewport {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  outline: none;
+  transition-property: color, box-shadow;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.scroll-area-viewport:focus-visible {
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+.scroll-area-viewport[data-orientation='horizontal'] {
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+}
+
+.scroll-area-viewport[data-anchor='none'] {
+  overflow-anchor: none;
+}
+
+.scroll-area-viewport[data-max-height='sm'] {
+  max-height: min(var(--overlay-h-sm), 50vh);
+}
+
+.scroll-area-viewport[data-max-height='md'] {
+  max-height: min(var(--overlay-h-md), 50vh);
+}
+
+.scroll-area-viewport[data-max-height='lg'] {
+  max-height: min(var(--overlay-h-lg), 50vh);
+}
+
+.scroll-area-viewport[data-max-height='xl'] {
+  max-height: min(var(--overlay-h-xl), 50vh);
+}
+
+/* Hidden at rest so it never covers content. It shows while the user scrolls or points at it. */
+.scroll-area-scrollbar {
+  display: flex;
+  padding: var(--scrollbar-inset);
+  touch-action: none;
+  opacity: 0;
+  user-select: none;
+  transition-property: color, opacity;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.scroll-area-scrollbar[data-scrolling],
+.scroll-area-scrollbar:hover {
+  opacity: 1;
+}
+
+.scroll-area-scrollbar[data-orientation='horizontal'] {
+  height: var(--scrollbar-size);
+  flex-direction: column;
+  border-top: var(--border-width-thin) solid transparent;
+}
+
+.scroll-area-scrollbar[data-orientation='vertical'] {
+  width: var(--scrollbar-size);
+  height: 100%;
+  border-left: var(--border-width-thin) solid transparent;
+}
+
+.scroll-area-thumb {
+  position: relative;
+  flex: 1 1 0%;
+  border-radius: var(--scrollbar-thumb-radius);
+  background-color: var(--scrollbar-thumb);
+}

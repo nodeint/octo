@@ -1,0 +1,63 @@
+.switch {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  border: var(--border-width-thin) solid transparent;
+  border-radius: 9999px;
+}
+
+.switch[data-checked] {
+  background-color: var(--primary);
+}
+
+.switch[data-unchecked] {
+  background-color: var(--control);
+}
+
+/* Track and thumb come from the switch part tokens, not the control height. */
+.switch[data-size='md'] {
+  height: var(--switch-track-height-md);
+  width: var(--switch-track-width-md);
+}
+
+.switch[data-size='sm'] {
+  height: var(--switch-track-height-sm);
+  width: var(--switch-track-width-sm);
+}
+
+.switch-thumb {
+  pointer-events: none;
+  display: block;
+  border-radius: 9999px;
+  background-color: var(--background);
+  transition-property: transform, translate;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.dark .switch-thumb[data-checked] {
+  background-color: var(--primary-foreground);
+}
+
+.dark .switch-thumb[data-unchecked] {
+  background-color: var(--foreground);
+}
+
+.switch[data-size='md'] > .switch-thumb {
+  width: var(--switch-thumb-size-md);
+  height: var(--switch-thumb-size-md);
+}
+
+.switch[data-size='sm'] > .switch-thumb {
+  width: var(--switch-thumb-size-sm);
+  height: var(--switch-thumb-size-sm);
+}
+
+.switch > .switch-thumb[data-checked] {
+  translate: calc(100% - var(--switch-thumb-inset)) 0;
+}
+
+.switch > .switch-thumb[data-unchecked] {
+  translate: 0 0;
+}

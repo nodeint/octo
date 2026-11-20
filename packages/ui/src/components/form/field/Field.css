@@ -1,0 +1,225 @@
+/*
+ * DOM contract (prefer host data-* over deep child trees):
+ * - slots: field-set, field-group, field, field-content, field-label, field-description, field-error
+ * - field[data-orientation=vertical|horizontal|responsive]
+ * - field[data-disabled=true], field[data-invalid=true]
+ * - field-group is a container (field-group) so the responsive orientation reads its width.
+ * Direct-child .sr-only and [role=checkbox|radio]: depth is the control and label contract.
+ */
+.field-set {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-group);
+}
+
+.field-legend {
+  margin-block-end: var(--space-xs);
+  font-size: var(--role-label-size);
+  line-height: var(--role-label-leading);
+  font-weight: var(--role-label-weight);
+}
+
+.field-legend[data-variant='label'] {
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+}
+
+.field-legend[data-variant='legend'] {
+  font-size: var(--role-body-lg-size);
+  line-height: var(--role-body-lg-leading);
+  font-weight: var(--role-body-lg-weight);
+}
+
+.field-group {
+  container-type: inline-size;
+  container-name: field-group;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-group);
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.field[data-invalid='true'] {
+  color: var(--destructive);
+}
+
+.field[data-orientation='vertical'],
+.field[data-orientation='responsive'] {
+  flex-direction: column;
+}
+
+.field[data-orientation='vertical'] > *,
+.field[data-orientation='responsive'] > * {
+  width: 100%;
+}
+
+.field[data-orientation='vertical'] > .sr-only,
+.field[data-orientation='responsive'] > .sr-only {
+  width: auto;
+}
+
+.field[data-orientation='horizontal'] {
+  flex-direction: row;
+  align-items: center;
+}
+
+/* field-content present: align to the start; the label flexes */
+.field[data-orientation='horizontal']:has([data-slot='field-content']) {
+  align-items: flex-start;
+}
+
+.field[data-orientation='horizontal']:has([data-slot='field-content']) > [data-slot='field-label'] {
+  flex: 1 1 auto;
+}
+
+/* control beside label: the role is intentional (checkbox or radio), not the slot */
+.field[data-orientation='horizontal']:has([data-slot='field-content']) > :is([role='checkbox'], [role='radio']) {
+  margin-block-start: 1px;
+}
+
+@container field-group (width >= 28rem) {
+  .field[data-orientation='responsive'] {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .field[data-orientation='responsive'] > * {
+    width: auto;
+  }
+
+  .field[data-orientation='responsive']:has([data-slot='field-content']) {
+    align-items: flex-start;
+  }
+
+  .field[data-orientation='responsive']:has([data-slot='field-content']) > [data-slot='field-label'] {
+    flex: 1 1 auto;
+  }
+
+  .field[data-orientation='responsive']:has([data-slot='field-content']) > :is([role='checkbox'], [role='radio']) {
+    margin-block-start: 1px;
+  }
+}
+
+/* disabled: a host attribute, not group-data on children */
+.field[data-disabled='true'] :is([data-slot='field-label'], .field-title) {
+  color: var(--foreground-disabled);
+}
+
+.field-content {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.field-label {
+  display: flex;
+  gap: var(--space-sm);
+  width: fit-content;
+}
+
+.field-label:has([data-checked]) {
+  border-color: var(--primary-subtle-foreground);
+  background-color: var(--primary-subtle);
+}
+
+.field-label:has([data-slot='field']) {
+  flex-direction: column;
+  width: 100%;
+  border: var(--border-width-thin) solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.field-label > [data-slot='field'] {
+  padding: var(--space-sm);
+}
+
+.field-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: fit-content;
+  font-size: var(--role-label-size);
+  line-height: var(--role-label-leading);
+  font-weight: var(--role-label-weight);
+}
+
+.field-description {
+  text-align: start;
+  font-size: var(--role-description-size);
+  line-height: var(--role-description-leading);
+  font-weight: var(--role-description-weight);
+  color: var(--role-description-color);
+}
+
+[data-variant='legend'] + .field-description,
+.field-description:nth-last-child(2) {
+  margin-block-start: calc(var(--space-xs) * -1);
+}
+
+.field-description:last-child {
+  margin-block-start: 0;
+}
+
+.field-description > a {
+  text-decoration-line: underline;
+  text-underline-offset: 4px;
+}
+
+.field-description > a:hover {
+  color: var(--primary);
+}
+
+.field[data-orientation='horizontal'] .field-description {
+  text-wrap: balance;
+}
+
+.field-separator {
+  position: relative;
+  height: var(--control-height-xs);
+  margin-block: calc(var(--space-sm) * -1);
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+}
+
+.field-group[data-variant='outline'] .field-separator {
+  margin-block-end: calc(var(--space-sm) * -1);
+}
+
+.field-separator-content {
+  position: relative;
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
+  padding-inline: var(--space-sm);
+  background-color: var(--background);
+  color: var(--foreground-muted);
+}
+
+/* The rule drawn behind the separator text. */
+.field-separator > [data-slot='separator'] {
+  position: absolute;
+  inset: 0;
+  top: 50%;
+}
+
+.field-error {
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  color: var(--destructive);
+}
+
+.field-error-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-inline-start: var(--space-lg);
+  list-style: disc;
+}
