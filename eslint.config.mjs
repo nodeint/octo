@@ -8,8 +8,6 @@ import sonarjs from 'eslint-plugin-sonarjs';
 import tseslint from 'typescript-eslint';
 import unicorn from 'eslint-plugin-unicorn';
 
-import layoutSpacing from './scripts/lint/layout-spacing.mjs';
-
 /** Boolean names as is/has/can/should (locals + args; not function names). */
 const BOOLEAN_NAME_OPTIONS = {
   checkFunctions: 'never',
@@ -255,12 +253,5 @@ export default defineConfig(
   baseConfig,
   typeAwareConfig,
   sizeConfig,
-  {
-    files: ['packages/ui/src/**/*.{ts,tsx}', 'app/src/**/*.{ts,tsx}'],
-    plugins: { layout: { rules: { spacing: layoutSpacing } } },
-    rules: {
-      'layout/spacing': ['warn', { componentSlots: ['menuButton', 'activityItem', 'sectionTrigger'] }],
-    },
-  },
   testFilesConfig
 );

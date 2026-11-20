@@ -47,7 +47,6 @@ Explicit user instructions take precedence over skill guidance.
 | [`eslint`](.agents/skills/eslint/SKILL.md) | Creating or changing `.ts` or `.tsx`, reviewing those files against repository lint rules, or validating ESLint |
 | [`testing`](.agents/skills/testing/SKILL.md) | Writing, changing, reviewing, or deleting tests, or deciding what a test should cover |
 | [`typescript`](.agents/skills/typescript/SKILL.md) | Creating, changing, or reviewing `.ts` or `.tsx` files against TypeScript coding standards |
-| [`chakra-ui-builder`](.agents/skills/chakra-ui-builder/SKILL.md) | Building UI components, pages, layouts, or charts with Chakra UI, installing or configuring it, or defining its theme tokens and recipes |
 | [`create-issue`](.agents/skills/create-issue/SKILL.md) | Creating or rewriting a repository GitHub issue |
 | [`checkout-issue`](.agents/skills/checkout-issue/SKILL.md) | Reading or starting work on a repository GitHub issue |
 | [`product`](.agents/skills/product/SKILL.md) | Defining product requirements, user scenarios, CLI UX, and acceptance criteria before design |

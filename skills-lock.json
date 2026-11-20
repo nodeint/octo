@@ -1,13 +1,4 @@
 {
   "version": 2,
-  "skills": {
-    "chakra-ui-builder": {
-      "source": "chakra-ui/chakra-ui",
-      "ref": "main",
-      "commit": "4fca0889be532fced536b77e1dff982001ebc672",
-      "sourceType": "github",
-      "skillPath": "skills/chakra-ui-builder/SKILL.md",
-      "computedHash": "9d421a904d87b1713f0ffe82ac8c000a89c92407f5aab8d8c938357ebc1e125b"
-    }
-  }
+  "skills": {}
 }
