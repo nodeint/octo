@@ -5,10 +5,20 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
+    "start": "vite preview",
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
+    "@atlaskit/button": "^25.8.2",
+    "@atlaskit/css": "^1.1.10",
+    "@atlaskit/css-reset": "^8.4.10",
+    "@atlaskit/heading": "^8.0.0",
+    "@atlaskit/lozenge": "^17.0.9",
+    "@atlaskit/platform-feature-flags": "^2.2.2",
+    "@atlaskit/primitives": "^22.8.0",
+    "@atlaskit/textfield": "^11.0.0",
+    "@atlaskit/toggle": "^17.3.6",
+    "@atlaskit/tokens": "^20.14.0",
     "@react-router/node": "^8.5.2",
     "@react-router/serve": "^8.5.2",
     "isbot": "^5.1.36",

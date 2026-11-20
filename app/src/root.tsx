@@ -26,6 +26,16 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+export async function clientLoader(): Promise<null> {
+  // Dynamic import: the build prerenders the SPA shell in Node, which cannot resolve this package.
+  const { setBooleanFeatureFlagResolver } = await import('@atlaskit/platform-feature-flags');
+  const { setGlobalTheme } = await import('@atlaskit/tokens/set-global-theme');
+  // No Atlassian feature-gate client exists in this app; without a resolver every gate check logs an error.
+  setBooleanFeatureFlagResolver(() => false);
+  await setGlobalTheme({ colorMode: 'auto', light: 'light', dark: 'dark' });
+  return null;
+}
+
 export function Layout({ children }: { children: React.ReactNode }): React.ReactElement {
   return (
     <html lang="en">
@@ -75,4 +85,8 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps): React.ReactE
       )}
     </main>
   );
+}
+
+export function HydrateFallback(): null {
+  return null;
 }
