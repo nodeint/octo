@@ -10,6 +10,8 @@ export const messages = {
   layout: {
     activityBar: 'Activity bar',
     leftSidebar: 'Primary sidebar',
+    openNavigation: 'Open navigation menu',
+    closeNavigation: 'Close navigation menu',
   },
   rightSidebar: {
     /** Used when the app does not name the sidebar; most apps put their assistant chat here. */

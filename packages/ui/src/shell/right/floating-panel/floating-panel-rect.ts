@@ -31,12 +31,26 @@ function clamp(value: number, min: number, max: number): number {
 
 /** The default rect docks to the bottom right corner of the viewport. */
 export function defaultFloatingPanelRect(): FloatingPanelRect {
-  const { width, height } = APP_FLOATING_PANEL_SIZE;
+  // Shrink to fit first: on a phone the default size is wider than the screen.
+  const width = Math.min(APP_FLOATING_PANEL_SIZE.width, window.innerWidth - BOTH_SIDES_MARGIN);
+  const height = Math.min(APP_FLOATING_PANEL_SIZE.height, window.innerHeight - BOTH_SIDES_MARGIN);
   return {
     x: window.innerWidth - width - APP_FLOATING_PANEL_MARGIN,
     y: window.innerHeight - height - APP_FLOATING_PANEL_MARGIN,
     width,
     height,
+  };
+}
+
+/** Fits a rect inside the current viewport, for when the window is smaller than when the rect was made. */
+export function clampFloatingPanelRect(rect: FloatingPanelRect): FloatingPanelRect {
+  const width = Math.min(rect.width, window.innerWidth - BOTH_SIDES_MARGIN);
+  const height = Math.min(rect.height, window.innerHeight - BOTH_SIDES_MARGIN);
+  return {
+    width,
+    height,
+    x: clamp(rect.x, 0, window.innerWidth - width),
+    y: clamp(rect.y, 0, window.innerHeight - height),
   };
 }
 
@@ -50,15 +64,7 @@ export function readFloatingPanelRect(): FloatingPanelRect {
     // A corrupt value is no different from no value: fall back to the default.
     saved = undefined;
   }
-  const base = isFloatingPanelRect(saved) ? saved : defaultFloatingPanelRect();
-  const width = Math.min(base.width, window.innerWidth - BOTH_SIDES_MARGIN);
-  const height = Math.min(base.height, window.innerHeight - BOTH_SIDES_MARGIN);
-  return {
-    width,
-    height,
-    x: clamp(base.x, 0, window.innerWidth - width),
-    y: clamp(base.y, 0, window.innerHeight - height),
-  };
+  return clampFloatingPanelRect(isFloatingPanelRect(saved) ? saved : defaultFloatingPanelRect());
 }
 
 export function saveFloatingPanelRect(partial: Partial<FloatingPanelRect>): void {

@@ -25,11 +25,16 @@ src/
     app-header.tsx
     app-activity-bar.tsx
     app-block.tsx
+    app-left-sidebar.tsx
+    app-left-drawer.tsx
     app-resize-handle.tsx
+    app-workspace.tsx
+    panel-sizes.ts
     app-right-sidebar-docked.tsx
     app-right-sidebar-floating.tsx
     app-floating-panel-header.tsx
     floating-panel-rect.ts
+    use-floating-panel-rect.ts
     layout-storage.ts
     use-right-sidebar-mode.ts
 ```
@@ -42,7 +47,7 @@ src/
 | `src/color-mode/` | `ColorModeButton`: light/dark toggle with a circular reveal (View Transitions API; none when reduced motion or unsupported) |
 | `src/provider/` | `AppProvider`: Chakra provider with the package theme plus class-based `next-themes`; wrap the app once |
 | `src/theme/` | Theme system and the `appShell` slot recipe that holds every visual decision of the shell |
-| `src/layout/` | VSCode-style `AppShell`: header, activity bar, and resizable left sidebar, main, and right sidebar (`react-resizable-panels`, sizes saved in `localStorage`); the right sidebar is closed, docked, or a `FloatingPanel`, and its mode, position, and size are saved; desktop only |
+| `src/layout/` | VSCode-style `AppShell`: header, activity bar, and resizable left sidebar, main, and right sidebar (Chakra `Splitter`, sizes saved in `localStorage`); the right sidebar is closed, docked, or a `FloatingPanel`, and its mode, position, and size are saved; below `md` (768px) the left sidebar moves into a drawer opened from the header and the right sidebar is only closed or floating, and the floating window is pinned to the bottom right (no drag, resize, reset, or dock; a header button maximizes it) |
 | `package.json` | Private package; `exports` points at `src`, so there is no build output |
 
 ## Rules

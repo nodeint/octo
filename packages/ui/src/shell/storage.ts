@@ -1,7 +1,5 @@
-import type { LayoutStorage } from 'react-resizable-panels';
-
 /** `localStorage` does not exist during server rendering, so reads and writes become no-ops there. */
-export const layoutStorage: LayoutStorage = {
+export const layoutStorage: Pick<Storage, 'getItem' | 'setItem'> = {
   getItem: (key) => (typeof window === 'undefined' ? null : window.localStorage.getItem(key)),
   setItem: (key, value) => {
     if (typeof window === 'undefined') {
