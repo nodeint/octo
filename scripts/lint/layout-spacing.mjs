@@ -89,13 +89,16 @@ export default {
       if (name.type === 'JSXIdentifier') {
         const binding = imported(name);
         if (binding?.source === '@chakra-ui/react') return LAYOUT_COMPONENTS.has(binding.name) ? 'layout' : 'component';
-        if (binding?.name === 'AppBlock' && binding.source.endsWith('/app-block')) return 'layout';
         return undefined;
       }
       if (name.type !== 'JSXMemberExpression') return undefined;
       let base = name.object;
       while (base.type === 'JSXMemberExpression') base = base.object;
       const binding = imported(base);
+      if (binding?.name === 'Panel'
+        && (binding.source === '@workspace/ui' || /(?:^|\/)components(?:\/panel)?$/.test(binding.source))) {
+        return 'layout';
+      }
       if (binding?.source !== '@chakra-ui/react') return undefined;
       if (binding.namespace && name.object === base && LAYOUT_COMPONENTS.has(name.property.name)) return 'layout';
       return 'component';

@@ -1,4 +1,5 @@
-import { Splitter } from '@chakra-ui/react';
+import { Icon, Splitter } from '@chakra-ui/react';
+import { LuEllipsisVertical } from 'react-icons/lu';
 
 import { useAppShellStyles } from '../../hooks';
 
@@ -9,5 +10,9 @@ type AppResizeHandleProps = {
 
 export function AppResizeHandle({ id }: AppResizeHandleProps): React.ReactElement {
   const styles = useAppShellStyles();
-  return <Splitter.ResizeTrigger id={id} css={styles.resizeHandle} />;
+  return (
+    <Splitter.ResizeTrigger id={id} css={styles.resizeHandle}>
+      <Splitter.ResizeTriggerSeparator css={styles.resizeLine} aria-hidden />
+    </Splitter.ResizeTrigger>
+  );
 }

@@ -9,7 +9,6 @@ export const appShellSlotRecipe = defineSlotRecipe({
     'menuButton',
     'content',
     'workspace',
-    'block',
     'activityBar',
     'activityItem',
     'activityBadge',
@@ -22,8 +21,8 @@ export const appShellSlotRecipe = defineSlotRecipe({
     'sectionActions',
     'sectionTrigger',
     'resizeHandle',
-    'toolbar',
-    'toolbarTitle',
+    'resizeLine',
+    'resizeGrip',
     'launcher',
   ],
   base: {
@@ -32,7 +31,6 @@ export const appShellSlotRecipe = defineSlotRecipe({
     content: { flex: '1', minH: 'appShell.none', px: 'appShell.gutter', pb: 'appShell.contentBottom' },
     menuButton: { display: { base: 'inline-flex', md: 'none' } },
     workspace: { flex: '1', minW: 'appShell.none', h: 'full' },
-    block: { h: 'full', overflow: 'auto' },
     activityBar: {
       flex: 'none',
       w: 'appShell.activityBar',
@@ -60,8 +58,6 @@ export const appShellSlotRecipe = defineSlotRecipe({
       minW: 'appShell.none',
       justifyContent: 'flex-start',
     },
-    toolbar: { flex: 'none', gap: 'layout.gap.2xs', px: 'layout.space.md', py: 'layout.space.xs' },
-    toolbarTitle: { flex: '1', minW: 'appShell.none', truncate: true },
     launcher: { position: 'fixed', right: 'appShell.launcherRight', bottom: 'appShell.launcherBottom', zIndex: 'overlay' },
   },
 });

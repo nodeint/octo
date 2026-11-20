@@ -1,9 +1,9 @@
 import { Box, Flex, useBreakpointValue } from '@chakra-ui/react';
 import { useEffect, useState, useSyncExternalStore } from 'react';
 
+import { Panel } from '../components';
 import { useAppShellStyles } from '../hooks';
 import { messages } from '../messages';
-import { AppBlock } from './app-block';
 import { AppHeader } from './app-header';
 import type { AppActivity } from './left';
 import { resolveActivityId } from './left/activity-selection';
@@ -97,9 +97,11 @@ function AppShellBody({
 
   const main = (
     // Leave room under the content so the launcher button never covers its last line.
-    <AppBlock as="main" p="layout.space.xl" pb={rightMode === 'closed' ? 'appShell.launcherClearance' : undefined}>
-      {children}
-    </AppBlock>
+    <Panel.Root as="main">
+      <Panel.Body p="layout.space.xl" pb={rightMode === 'closed' ? 'appShell.launcherClearance' : undefined}>
+        {children}
+      </Panel.Body>
+    </Panel.Root>
   );
 
   return (
@@ -115,26 +117,24 @@ function AppShellBody({
         ) : (
           <Flex h="full" gap="appShell.gutter">
             {activities.length > 0 && (
-              <AppBlock overflow="hidden">
+              <Panel.Root>
                 <AppActivityBar activities={activities} />
-              </AppBlock>
+              </Panel.Root>
             )}
             <AppWorkspace
               hasLeftSidebar={activeId !== null}
               hasRightSidebar={rightMode === 'docked'}
               renderHandle={(id) => <AppResizeHandle id={id} />}
               renderLeft={() => (
-                <AppBlock overflow="hidden">
+                <Panel.Root>
                   <AppSidebarBody activities={activities} />
-                </AppBlock>
+                </Panel.Root>
               )}
               renderMain={() => main}
               renderRight={() => (
-                <AppBlock overflow="hidden">
-                  <AppRightSidebarDocked title={rightSidebarTitle} onModeChange={setRightMode}>
-                    {rightSidebar}
-                  </AppRightSidebarDocked>
-                </AppBlock>
+                <AppRightSidebarDocked title={rightSidebarTitle} onModeChange={setRightMode}>
+                  {rightSidebar}
+                </AppRightSidebarDocked>
               )}
             />
           </Flex>

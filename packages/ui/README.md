@@ -11,6 +11,7 @@ src/
   components/
     index.ts
     color-mode-button.tsx
+    panel.tsx
     sidebar-view.tsx
     sidebar-section.tsx
   hooks/
@@ -25,6 +26,7 @@ src/
     tokens.ts
     layout-space.ts
     app-shell-recipe.ts
+    panel-recipe.ts
   utils/
     index.ts
     storage.ts
@@ -32,7 +34,6 @@ src/
     index.ts
     app-shell.tsx
     app-header.tsx
-    app-block.tsx
     left/
       index.ts
       app-activity.ts
@@ -61,11 +62,11 @@ src/
 | --- | --- |
 | `src/index.ts` | Public package entry |
 | `src/messages.ts` | Every user-facing string; values that depend on input are functions so i18n can reorder words |
-| `src/components/` | Shared components outside the shell: `SidebarView` (title bar and actions for one activity), `SidebarSection` (collapsible group), and `ColorModeButton`: light/dark toggle with a circular reveal (View Transitions API; none when reduced motion or unsupported) |
+| `src/components/` | Shared components: `Panel` (docked frame with optional header, title, actions, and scrolling body), `SidebarView` (title bar and actions for one activity), `SidebarSection` (collapsible group), and `ColorModeButton`: light/dark toggle with a circular reveal (View Transitions API; none when reduced motion or unsupported) |
 | `src/hooks/` | Shared hooks; `useAppShellStyles` reads the `appShell` slot recipe |
 | `src/utils/` | Plain helpers; `appStorage` is a `localStorage` wrapper that is a no-op during server rendering |
 | `src/provider/` | `AppProvider`: Chakra provider with the package theme plus class-based `next-themes`; wrap the app once |
-| `src/theme/` | Theme system, shell layout tokens, and the `appShell` layout recipe; Chakra components provide their default visual styles |
+| `src/theme/` | Theme system, shell layout tokens, the `appShell` layout recipe, and the `panel` recipe derived from Chakra FloatingPanel styles |
 | `src/shell/` | VSCode-style `AppShell` driven by an `activities` array (`AppActivity`: id, title, icon, badge, `top` or `bottom` placement, content): header, an activity bar built on Chakra `Tabs` (vertical, with tooltips and badges; clicking the selected icon or pressing Ctrl/Cmd+B collapses the sidebar; the selected id is saved), and resizable left sidebar, main, and right sidebar (Chakra `Splitter`, sizes saved in `localStorage`); the right sidebar is closed, docked, or a `FloatingPanel`, and its mode, position, and size are saved; below `md` (768px) the left sidebar moves into a drawer opened from the header and the right sidebar is only closed or floating, and the floating window is pinned to the bottom right (no drag, resize, reset, or dock; a header button maximizes it) |
 | `package.json` | Private package; `exports` points at `src`, so there is no build output |
 
@@ -79,8 +80,8 @@ Sidebar sections compose independent `Collapsible` controls with Chakra buttons.
 - Private and never published; `exports` point at source so the app gets HMR without a build step.
 - Put every user-facing string in `src/messages.ts`; never write display text inline in a component.
 - Stay independent of routing: take navigation and page content as props, never import `react-router`.
-- Style only through Chakra props, tokens, and the `appShell` slot recipe; add no CSS files.
-  Put shell styling in the recipe, not in scattered props.
+- Style only through Chakra props, tokens, and slot recipes; add no CSS files.
+  Put shell styling in `appShell` and docked panel styling in `panel`, not in scattered props.
 - Keep constants and storage keys next to the code that uses them; `shell/left/`, `shell/workspace/`,
   and `shell/right/` never import each other, only `shell/app-shell.tsx` composes them.
 - Export public symbols explicitly by name through `src/index.ts`; use type-only exports for types.
@@ -134,9 +135,30 @@ Pixel equivalents below assume a 16px root font size; the actual lengths use Cha
 </Stack>
 ```
 
-The `layout/spacing` ESLint rule checks Chakra JSX imports, the internal `AppBlock` layout wrapper,
+The `layout/spacing` ESLint rule checks Chakra JSX imports, the `Panel.*` layout components,
 and Chakra recipe definitions in `packages/ui/src` and `app/src`.
 It follows local constant references, object spreads, conditional values, and responsive objects or arrays.
 It rejects numeric spacing and internal component spacing overrides; the shell recipe identifies its component-owned slots
 in the ESLint configuration.
 Opaque imported style objects and runtime-computed style spreads are not analyzed; prefer directly checkable declarations.
+
+## Panel
+
+`Panel` is a docked frame built from Chakra FloatingPanel's content, header, title, and body recipe styles.
+It keeps FloatingPanel's corner radius and shadow, adds a border, and removes the opening animation.
+It has no floating positioning or window state.
+`Panel.Root` fills its parent and clips overflow; `Panel.Body` provides the scrolling region.
+Headers are optional. The activity bar and left sidebar use only the root and manage scrolling internally.
+The workspace Splitter owns panel placement and resizing.
+
+```tsx
+import { Panel } from '@workspace/ui';
+
+<Panel.Root as="section" aria-labelledby="details-title">
+  <Panel.Header>
+    <Panel.Title id="details-title">{title}</Panel.Title>
+    <Panel.Actions>{actions}</Panel.Actions>
+  </Panel.Header>
+  <Panel.Body>{children}</Panel.Body>
+</Panel.Root>
+```

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add a reusable docked Panel with a border, rounded corners, and shadow based on Chakra FloatingPanel styles,
+  and use it for workspace regions with dotted resize grips and separator lines shown only while dragging.
 - Add shared layout space and gap scales, enforce layout/component spacing boundaries, and resolve floating insets
   from tokens.
 - Keep collapsed activity tabs keyboard-accessible and preserve workspace drafts when toggling sidebars.

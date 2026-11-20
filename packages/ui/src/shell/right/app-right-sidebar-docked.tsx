@@ -1,7 +1,7 @@
-import { Box, Flex, HStack, IconButton, Text } from '@chakra-ui/react';
+import { IconButton } from '@chakra-ui/react';
 import { LuPictureInPicture2, LuX } from 'react-icons/lu';
 
-import { useAppShellStyles } from '../../hooks';
+import { Panel } from '../../components';
 import { messages } from '../../messages';
 import type { RightSidebarMode } from './use-right-sidebar-mode';
 
@@ -17,19 +17,20 @@ export function AppRightSidebarDocked({
   onModeChange,
   children,
 }: AppRightSidebarDockedProps): React.ReactElement {
-  const styles = useAppShellStyles();
   return (
-    <Flex as="aside" aria-label={title} direction="column" h="full">
-      <HStack css={styles.toolbar}>
-        <Text css={styles.toolbarTitle}>{title}</Text>
-        <IconButton aria-label={messages.rightSidebar.popOut(title)} size="xs" variant="ghost" onClick={() => onModeChange('floating')}>
-          <LuPictureInPicture2 />
-        </IconButton>
-        <IconButton aria-label={messages.rightSidebar.close(title)} size="xs" variant="ghost" onClick={() => onModeChange('closed')}>
-          <LuX />
-        </IconButton>
-      </HStack>
-      <Box css={styles.sidebarBody}>{children}</Box>
-    </Flex>
+    <Panel.Root as="aside" aria-label={title}>
+      <Panel.Header>
+        <Panel.Title>{title}</Panel.Title>
+        <Panel.Actions>
+          <IconButton aria-label={messages.rightSidebar.popOut(title)} size="xs" variant="ghost" onClick={() => onModeChange('floating')}>
+            <LuPictureInPicture2 />
+          </IconButton>
+          <IconButton aria-label={messages.rightSidebar.close(title)} size="xs" variant="ghost" onClick={() => onModeChange('closed')}>
+            <LuX />
+          </IconButton>
+        </Panel.Actions>
+      </Panel.Header>
+      <Panel.Body p="layout.space.none">{children}</Panel.Body>
+    </Panel.Root>
   );
 }
