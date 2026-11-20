@@ -12,6 +12,7 @@ src/
     index.ts
     color-mode-provider.tsx
     color-mode-button.tsx
+    start-color-mode-transition.ts
   layout/
     index.ts
     app-shell.tsx
@@ -24,7 +25,7 @@ src/
 | --- | --- |
 | `src/index.ts` | Public package entry |
 | `src/constants.ts` | Shared layout dimensions |
-| `src/color-mode/` | `ColorModeProvider` (Chakra provider plus `next-themes`, class-based) and `ColorModeButton` (light/dark toggle) |
+| `src/color-mode/` | `ColorModeProvider` (Chakra provider plus `next-themes`, class-based) and `ColorModeButton` (light/dark toggle with a circular reveal via the View Transitions API; no animation under reduced motion or when unsupported) |
 | `src/layout/` | Fixed header, responsive sidebar, and main content; exported as `AppShell` |
 | `package.json` | Private package; `exports` points at `src`, so there is no build output |
 
