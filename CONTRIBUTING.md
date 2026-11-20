@@ -1,7 +1,5 @@
 # Contributing
 
-Repository: `nodeint/template`. Run `node scripts/init.mjs <repo-name>` once after creating a repo from it.
-
 ## Setup
 
 Node.js ≥22 (CI: 24), pnpm 12.6.0; macOS, Linux, Windows. Run from repo root:
@@ -14,7 +12,7 @@ pnpm build
 
 ## Packages
 
-Paths are `packages/<name>`; names are `@nodeint/<name>`.
+Paths are `packages/<name>`; names are `@workspace/<name>`.
 
 | Name | Owns |
 | --- | --- |
