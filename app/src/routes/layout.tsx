@@ -5,7 +5,7 @@ import { AppNav } from '../layout/app-nav';
 
 export default function Layout(): React.ReactElement {
   return (
-    <AppShell title="Octo" renderNavigation={(onNavigate) => <AppNav onNavigate={onNavigate} />}>
+    <AppShell title="Octo" leftSidebar={<AppNav />}>
       <Outlet />
     </AppShell>
   );

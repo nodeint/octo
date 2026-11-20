@@ -1,6 +1,6 @@
 import './app.css';
 
-import { ColorModeProvider } from '@workspace/ui';
+import { AppProvider } from '@workspace/ui';
 import {
   isRouteErrorResponse,
   Links,
@@ -47,9 +47,9 @@ export function Layout({ children }: { children: React.ReactNode }): React.React
 
 export default function App(): React.ReactElement {
   return (
-    <ColorModeProvider>
+    <AppProvider>
       <Outlet />
-    </ColorModeProvider>
+    </AppProvider>
   );
 }
 

@@ -2,6 +2,7 @@ import { ClientOnly, IconButton, Skeleton } from '@chakra-ui/react';
 import { useTheme } from 'next-themes';
 import { LuMoon, LuSun } from 'react-icons/lu';
 
+import { messages } from '../messages';
 import { getCenter, startColorModeTransition } from './start-color-mode-transition';
 
 export function ColorModeButton(): React.ReactElement {
@@ -17,7 +18,7 @@ export function ColorModeButton(): React.ReactElement {
   return (
     <ClientOnly fallback={<Skeleton boxSize="9" />}>
       <IconButton
-        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        aria-label={isDark ? messages.colorMode.switchToLight : messages.colorMode.switchToDark}
         variant="ghost"
         onClick={handleClick}
       >
