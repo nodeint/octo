@@ -1,5 +1,6 @@
 import eslint from '@eslint/js';
-import { defineConfig } from 'eslint/config';
+import { defineConfig, includeIgnoreFile } from 'eslint/config';
+import { fileURLToPath } from 'node:url';
 import globals from 'globals';
 import onlyWarn from 'eslint-plugin-only-warn';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
@@ -26,15 +27,19 @@ const BOOLEAN_NAME_OPTIONS = {
   ignore: ['^value$', '^v$', '^next$', '^flag$'],
 };
 
-const IGNORE_PATTERNS = [
-  '**/node_modules/**',
-  '**/dist/**',
-  '**/dist-test/**',
-  '**/.vscode-test/**',
-  '**/.git/**',
-  '**/.tmp/**',
-  '**/fixtures/**',
-  '**/*.generated.ts',
+const GITIGNORE_FILES = [
+  '.gitignore',
+  'app/.gitignore'
+].map(
+  (file) => fileURLToPath(new URL(file, import.meta.url)),
+);
+
+const INCLUDE_PATTERNS = [
+  'app/**/*.{ts,tsx}',
+  'packages/**/*.{ts,tsx}',
+  'e2e/**/*.{ts,tsx}',
+  'scripts/**/*.{ts,tsx}',
+  '*.{ts,tsx}',
 ];
 
 const TEST_FILE_GLOBS = ['**/*.test.{ts,tsx}', '**/*.integration.test.{ts,tsx}', '**/*.specs.ts'];
@@ -43,7 +48,7 @@ const SIZE_SKIP = { skipBlankLines: true, skipComments: true };
 
 // Base: non-type-aware (naming, logic, functions, formatting, imports).
 const baseConfig = {
-  files: ['**/*.{ts,tsx}'],
+  files: INCLUDE_PATTERNS,
   extends: [eslint.configs.recommended, tseslint.configs.recommended],
   languageOptions: {
     ecmaVersion: 2022,
@@ -210,7 +215,7 @@ const typeAwareConfig = {
 };
 
 const sizeConfig = {
-  files: ['**/*.{ts,tsx}'],
+  files: INCLUDE_PATTERNS,
   rules: {
     'max-lines': ['warn', { max: 512, ...SIZE_SKIP }],
     'max-lines-per-function': ['warn', { max: 80, ...SIZE_SKIP }],
@@ -244,7 +249,7 @@ const testFilesConfig = {
 };
 
 export default defineConfig(
-  { ignores: IGNORE_PATTERNS },
+  ...GITIGNORE_FILES.map((file) => includeIgnoreFile(file, { gitignoreResolution: true })),
   baseConfig,
   typeAwareConfig,
   sizeConfig,
