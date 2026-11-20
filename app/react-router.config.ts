@@ -2,7 +2,7 @@ import type { Config } from '@react-router/dev/config';
 
 export default {
   // Config options...
-  // SPA mode: the Atlassian packages ship CommonJS files that cannot be bundled for SSR
-  ssr: false,
+  // Server-side render by default, to enable SPA mode set this to `false`
+  ssr: true,
   appDirectory: './src'
 } satisfies Config;
