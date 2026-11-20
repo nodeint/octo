@@ -1,6 +1,7 @@
-import { Flex, IconButton, Text } from '@chakra-ui/react';
+import { Flex, IconButton, Spacer, Text } from '@chakra-ui/react';
 import { LuMenu } from 'react-icons/lu';
 
+import { ColorModeButton } from '../color-mode';
 import { APP_HEADER_HEIGHT } from '../constants';
 
 type AppHeaderProps = {
@@ -32,6 +33,8 @@ export function AppHeader({ title, onOpenSidebar }: AppHeaderProps): React.React
         <LuMenu />
       </IconButton>
       <Text fontWeight="semibold">{title}</Text>
+      <Spacer />
+      <ColorModeButton />
     </Flex>
   );
 }

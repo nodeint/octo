@@ -8,6 +8,10 @@ Thin UI kit on Chakra UI. Holds the app layout shell and other complex, reusable
 src/
   index.ts
   constants.ts
+  color-mode/
+    index.ts
+    color-mode-provider.tsx
+    color-mode-button.tsx
   layout/
     index.ts
     app-shell.tsx
@@ -20,6 +24,7 @@ src/
 | --- | --- |
 | `src/index.ts` | Public package entry |
 | `src/constants.ts` | Shared layout dimensions |
+| `src/color-mode/` | `ColorModeProvider` (Chakra provider plus `next-themes`, class-based) and `ColorModeButton` (light/dark toggle) |
 | `src/layout/` | Fixed header, responsive sidebar, and main content; exported as `AppShell` |
 | `package.json` | Private package; `exports` points at `src`, so there is no build output |
 

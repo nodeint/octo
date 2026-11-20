@@ -1,6 +1,6 @@
 import './app.css';
 
-import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
+import { ColorModeProvider } from '@workspace/ui';
 import {
   isRouteErrorResponse,
   Links,
@@ -29,7 +29,7 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }): React.ReactElement {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -47,9 +47,9 @@ export function Layout({ children }: { children: React.ReactNode }): React.React
 
 export default function App(): React.ReactElement {
   return (
-    <ChakraProvider value={defaultSystem}>
+    <ColorModeProvider>
       <Outlet />
-    </ChakraProvider>
+    </ColorModeProvider>
   );
 }
 
