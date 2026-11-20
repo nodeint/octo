@@ -1,6 +1,7 @@
 packages:
   - "packages/*"
   - "e2e"
+  - "app"
 
 catalog:
   "@vitest/coverage-v8": ^5.1.1
