@@ -11,7 +11,8 @@
   },
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles/index.css"
   },
   "engines": {
     "node": ">=22"

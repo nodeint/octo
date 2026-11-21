@@ -15,6 +15,14 @@ html {
   font-family: var(--font-sans);
 }
 
+/* Browsers give form controls their own font; inherit so data-appearance-font reaches them. */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
 body {
   margin: 0;
   background-color: var(--background);

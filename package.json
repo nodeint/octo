@@ -9,6 +9,7 @@
   "scripts": {
     "build": "pnpm -r build",
     "dev": "cd app && pnpm dev",
+    "storybook": "pnpm --filter storybook dev",
     "test": "node -e \"console.error('Run a scoped test: pnpm test:unit, test:scripts, test:integration, or test:e2e.');process.exit(1)\"",
     "test:unit": "node scripts/test/run-tests.mjs unit --passWithNoTests",
     "test:scripts": "node scripts/test/run-tests.mjs scripts",

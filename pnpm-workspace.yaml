@@ -1,7 +1,7 @@
 packages:
   - "packages/*"
+  - "apps/*"
   - "e2e"
-  - "app"
 
 allowBuilds:
   esbuild: true
@@ -11,3 +11,10 @@ catalog:
   tsdown: ^0.23.7
   typescript: ^7.0.2
   vitest: ^5.1.1
+
+minimumReleaseAgeExclude:
+  - '@storybook/builder-vite@10.6.8'
+  - '@storybook/react-dom-shim@10.6.8'
+  - '@storybook/react-vite@10.6.8'
+  - '@storybook/react@10.6.8'
+  - storybook@10.6.8

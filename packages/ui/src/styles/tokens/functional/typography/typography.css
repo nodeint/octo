@@ -49,3 +49,8 @@
   --font-stack-georgia: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
   --font-stack-menlo: var(--font-mono);
 }
+
+/* Heading roles (roles.css) follow the live sans family, so data-appearance-font retypes them too. */
+:root {
+  --font-heading: var(--font-sans);
+}
