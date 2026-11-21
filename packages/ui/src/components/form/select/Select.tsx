@@ -60,9 +60,7 @@ function SelectTrigger({
     >
       {children}
       <SelectPrimitive.Icon
-        render={
-          <Icon name="chevron-down" size="sm" className="select-icon-muted" />
-        }
+        render={<Icon name="chevron-down" size="sm" />}
       />
     </SelectPrimitive.Trigger>
   );

@@ -11,7 +11,7 @@ const meta = {
   component: ToggleGroup,
   tags: ['autodocs'],
   argTypes: {
-    variant: { control: 'inline-radio', options: ['default', 'outline'] },
+    variant: { control: 'inline-radio', options: ['ghost', 'outline'] },
     size: { control: 'inline-radio', options: SIZES },
     shape: { control: 'inline-radio', options: ['default', 'icon'] },
     orientation: { control: 'inline-radio', options: ['horizontal', 'vertical'] },

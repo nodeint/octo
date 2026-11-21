@@ -143,7 +143,8 @@
   padding: var(--space-xs) var(--field-px);
   gap: var(--field-gap);
   border: var(--border-width-thin) solid var(--control);
-  border-radius: var(--radius-field-block);
+  /* One row is a stadium like the other fields. Wrapped rows keep a rounded rectangle instead of a growing pill. */
+  border-radius: min(var(--field-radius), calc(var(--field-height) / 2));
   background-color: transparent;
   background-clip: padding-box;
   font-size: var(--role-body-size);
@@ -154,15 +155,17 @@
   transition-timing-function: var(--default-transition-timing-function);
 }
 
+/* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
 .combobox-chips:focus-within {
-  border-color: var(--ring);
-  outline: var(--focus-width) solid var(--ring);
-  outline-offset: var(--focus-offset);
+  border-color: var(--variant-border-focus);
+  box-shadow: var(--variant-shadow-focus);
+  outline: var(--focus-width) solid transparent;
 }
 
+/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
 .combobox-chips:has([aria-invalid='true']) {
-  border-color: var(--destructive);
-  box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
+  border-color: var(--variant-border-invalid);
+  box-shadow: var(--variant-shadow-invalid);
 }
 
 .combobox-chips:has([data-slot='combobox-chip']) {
@@ -208,10 +211,21 @@
   opacity: 1;
 }
 
+/* A bare native input: the chips row paints the field, so this draws no fill or border of its own. */
 .combobox-chips-input {
   flex: 1 1 0%;
   min-width: var(--input-min-width);
+  border: 0;
+  background-color: transparent;
+  color: inherit;
+  font-size: var(--role-field-size);
+  line-height: var(--role-field-leading);
+  font-weight: var(--role-field-weight);
   outline: none;
+}
+
+.combobox-chips-input::placeholder {
+  color: var(--variant-fg-placeholder);
 }
 
 /* A clear or trigger button inside a combobox input row keeps its own hover; no pressed fill. */

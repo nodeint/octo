@@ -82,16 +82,17 @@
   color: var(--variant-fg-selected);
 }
 
-/* Focus indicator: a solid outline in the ring color. An outline survives forced-colors mode. */
+/* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
 .button:focus-visible {
   border-color: var(--variant-border-focus);
-  outline: var(--focus-width) solid var(--variant-ring);
-  outline-offset: var(--focus-offset);
+  box-shadow: var(--variant-shadow-focus);
+  outline: var(--focus-width) solid transparent;
 }
 
+/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
 .button[aria-invalid='true'] {
   border-color: var(--variant-border-invalid);
-  box-shadow: 0 0 0 var(--focus-width) var(--variant-ring-invalid);
+  box-shadow: var(--variant-shadow-invalid);
 }
 
 .button:disabled,

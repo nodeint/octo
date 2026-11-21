@@ -4,7 +4,7 @@ import { Toggle as TogglePrimitive } from '@base-ui/react/toggle';
 
 import { cn } from '../../../lib/utils';
 
-type ToggleVariant = 'default' | 'outline' | 'swatch'
+type ToggleVariant = 'ghost' | 'outline' | 'swatch'
 type ToggleSize = 'xs' | 'sm' | 'md' | 'lg'
 /** `icon` is a square toggle that holds only a glyph. */
 type ToggleShape = 'default' | 'icon'
@@ -19,7 +19,7 @@ type ToggleProps = TogglePrimitive.Props & {
 
 function Toggle({
   className,
-  variant = 'default',
+  variant = 'ghost',
   size = 'md',
   shape = 'default',
   fillIcon = false,

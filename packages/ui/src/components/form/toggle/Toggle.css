@@ -11,48 +11,65 @@
   line-height: var(--role-action-leading);
   font-weight: var(--role-action-weight);
   white-space: nowrap;
-  color: var(--foreground-muted);
 }
 
-/* Same as a ghost button: rest is foreground-muted, hover and pressed step to foreground. */
-.toggle:hover {
-  background-color: var(--tertiary);
-  color: var(--foreground);
+/*
+ * Color comes only from the variant (styles/tokens/functional/color/variants.css), as for Button.
+ * A swatch has no variant tokens and paints itself below.
+ */
+.toggle:not([data-variant='swatch']) {
+  background-color: var(--variant-bg);
+  border-color: var(--variant-border);
+  color: var(--variant-fg);
+}
+
+.toggle:not([data-variant='swatch']):hover {
+  background-color: var(--variant-bg-hover);
+  border-color: var(--variant-border-hover);
+  color: var(--variant-fg-hover);
 }
 
 .toggle:active:not([aria-haspopup]) {
   transform: translateY(1px);
 }
 
-.toggle[aria-pressed='true'],
-.toggle[data-pressed] {
-  background-color: var(--accent);
-  color: var(--foreground);
+.toggle:not([data-variant='swatch']):active {
+  background-color: var(--variant-bg-active);
+  border-color: var(--variant-border-active);
+  color: var(--variant-fg-active);
 }
 
-.toggle[data-variant='default'] {
-  background-color: transparent;
+.toggle:not([data-variant='swatch'])[aria-pressed='true'],
+.toggle:not([data-variant='swatch'])[data-pressed] {
+  background-color: var(--variant-bg-selected);
+  border-color: var(--variant-border-selected);
+  color: var(--variant-fg-selected);
 }
 
-.toggle[data-variant='default'][aria-pressed='true'],
-.toggle[data-variant='default'][data-pressed] {
-  background-color: var(--accent);
-  color: var(--foreground);
-}
-
-.toggle[data-variant='outline'] {
-  border-color: var(--control);
-  background-color: transparent;
-}
-
-.toggle[data-variant='outline']:hover {
-  background-color: var(--tertiary);
-}
-
+/* A pressed outline toggle fills with accent. Button outline keeps --muted for its own selected state. */
 .toggle[data-variant='outline'][aria-pressed='true'],
 .toggle[data-variant='outline'][data-pressed] {
   background-color: var(--accent);
-  color: var(--foreground);
+}
+
+/* Focus: focus border plus a soft halo, matching button. The transparent outline still shows in forced-colors mode. */
+.toggle:not([data-variant='swatch']):focus-visible {
+  border-color: var(--variant-border-focus);
+  box-shadow: var(--variant-shadow-focus);
+  outline: var(--focus-width) solid transparent;
+}
+
+/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
+.toggle:not([data-variant='swatch'])[aria-invalid='true'] {
+  border-color: var(--variant-border-invalid);
+  box-shadow: var(--variant-shadow-invalid);
+}
+
+.toggle:not([data-variant='swatch']):disabled,
+.toggle:not([data-variant='swatch'])[aria-disabled='true'] {
+  background-color: var(--variant-bg-disabled);
+  border-color: var(--variant-border-disabled);
+  color: var(--variant-fg-disabled);
 }
 
 .toggle svg:not([class*='size-']) {
@@ -94,11 +111,13 @@
   border-color: transparent;
   border-radius: 9999px;
   background-color: transparent;
+  color: var(--foreground-muted);
   box-shadow: none;
 }
 
 .toggle[data-variant='swatch'][data-action-size]:hover {
   background-color: transparent;
+  color: var(--foreground);
   box-shadow: 0 0 0 var(--border-width-thick) var(--primary);
 }
 

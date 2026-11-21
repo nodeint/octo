@@ -4,7 +4,7 @@
  * --radius-overlay is the corner of every floating panel (menu, select, popover, tooltip).
  * Sets: a component reads its set and never the scale, so one set decides the shape of a whole family.
  *   --radius-field-*    text fields: input, select trigger. xs … lg follow --control-height-*
- *   --radius-field-block  a field that grows to several lines (textarea, group with a block addon, chips); one step, not per size
+ *   --radius-field-block  a field that grows to several lines (textarea, group with a block addon); one step, not per size
  *   --radius-action-*   actions: button, toggle, button group. xs … lg follow --control-height-*
  *   --radius-action-block  a stack of actions (vertical button group); one step, not per size
  * Values come from Primer; `primer-reference.test.ts` checks them. A theme sets --radius-*.

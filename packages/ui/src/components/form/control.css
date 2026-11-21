@@ -17,7 +17,7 @@
 .input:focus-visible,
 .textarea:focus-visible {
   border-color: var(--variant-border-focus);
-  box-shadow: 0 0 0 var(--focus-width) color-mix(in oklab, var(--variant-ring) 40%, transparent);
+  box-shadow: var(--variant-shadow-focus);
   outline: var(--focus-width) solid transparent;
 }
 
@@ -31,8 +31,7 @@
 .input[aria-invalid='true'],
 .textarea[aria-invalid='true'] {
   border-color: var(--variant-border-invalid);
-  box-shadow: 0 0 0 var(--focus-width)
-    color-mix(in oklab, var(--variant-border-invalid) 40%, transparent);
+  box-shadow: var(--variant-shadow-invalid);
   caret-color: var(--variant-border-invalid);
 }
 
@@ -82,7 +81,7 @@
 .radio-group-item:focus-visible,
 .switch:focus-visible,
 .slider-thumb:focus-visible,
-.toggle:focus-visible {
+.toggle[data-variant='swatch']:focus-visible {
   border-color: var(--ring);
   outline: var(--focus-width) solid var(--ring);
   outline-offset: var(--focus-offset);
@@ -91,7 +90,7 @@
 .checkbox[aria-invalid='true'],
 .radio-group-item[aria-invalid='true'],
 .switch[aria-invalid='true'],
-.toggle[aria-invalid='true'] {
+.toggle[data-variant='swatch'][aria-invalid='true'] {
   border-color: var(--destructive);
   box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
 }

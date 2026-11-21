@@ -59,13 +59,14 @@
 
 .select-trigger:focus-visible {
   border-color: var(--variant-border-focus);
-  outline: var(--focus-width) solid var(--variant-ring);
-  outline-offset: var(--focus-offset);
+  box-shadow: var(--variant-shadow-focus);
+  outline: var(--focus-width) solid transparent;
 }
 
+/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
 .select-trigger[aria-invalid='true'] {
   border-color: var(--variant-border-invalid);
-  box-shadow: 0 0 0 var(--focus-width) var(--variant-ring-invalid);
+  box-shadow: var(--variant-shadow-invalid);
 }
 
 .select-trigger:disabled,
@@ -214,9 +215,4 @@
 
 .select-icon {
   pointer-events: none;
-}
-
-.select-icon-muted {
-  pointer-events: none;
-  color: var(--foreground-muted);
 }

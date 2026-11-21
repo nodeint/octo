@@ -20,7 +20,7 @@ type ToggleGroupContextValue = {
 
 const ToggleGroupContext = React.createContext<ToggleGroupContextValue>({
   size: 'md',
-  variant: 'default',
+  variant: 'ghost',
   orientation: 'horizontal',
 });
 
@@ -76,7 +76,7 @@ function ToggleGroupItem({
   fillIcon?: boolean
 }): React.JSX.Element {
   const context = React.useContext(ToggleGroupContext);
-  const resolvedVariant = variant ?? context.variant ?? 'default';
+  const resolvedVariant = variant ?? context.variant ?? 'ghost';
   const resolvedSize = size ?? context.size ?? 'md';
   const resolvedShape = shape ?? context.shape ?? 'default';
 

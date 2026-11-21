@@ -90,6 +90,7 @@ function ComboboxChips({
   return (
     <ComboboxPrimitive.Chips
       data-slot="combobox-chips"
+      data-variant="field"
       data-field-size="md"
       className={cn('combobox-chips', className)}
       {...props}
