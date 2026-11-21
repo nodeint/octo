@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "storybook build",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "test": "vitest run",
+    "test:update": "vitest run --update"
   },
   "dependencies": {
     "@workspace/ui": "workspace:*",
@@ -13,11 +15,15 @@
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@storybook/addon-vitest": "^10.6.8",
     "@storybook/react-vite": "^10.6.8",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "@vitest/browser-playwright": "^5.1.1",
+    "playwright": "^1.65.1",
     "storybook": "^10.6.8",
     "typescript": "^5.9.3",
-    "vite": "^8.3.8"
+    "vite": "^8.3.8",
+    "vitest": "catalog:"
   }
 }

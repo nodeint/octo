@@ -20,8 +20,26 @@ const withAppearance: Decorator = (Story, context) => {
   return <Story />;
 };
 
+/** Under the Storybook Vitest plugin, compare each story with its reference screenshot. */
+const matchScreenshot: NonNullable<Preview['afterEach']> = async (context) => {
+  if (import.meta.env.MODE !== 'test') return;
+  const { expect } = await import('vitest');
+  const { page } = await import('vitest/browser');
+  const canvas = context.canvasElement;
+  // The canvas fills the viewport; shrink it so the reference image holds only the story.
+  canvas.style.width = 'fit-content';
+  canvas.style.height = 'fit-content';
+  try {
+    await expect.element(page.elementLocator(canvas)).toMatchScreenshot(context.id);
+  } finally {
+    canvas.style.removeProperty('width');
+    canvas.style.removeProperty('height');
+  }
+};
+
 const preview: Preview = {
   decorators: [withAppearance],
+  afterEach: matchScreenshot,
   initialGlobals: INITIAL_APPEARANCE,
   parameters: { layout: 'centered' },
 };
