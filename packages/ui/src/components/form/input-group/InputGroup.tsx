@@ -4,7 +4,7 @@ import { cn } from '../../../lib/utils';
 import { Button } from '../../form/button/Button';
 
 type InputGroupAddonAlign = 'inline-start' | 'inline-end' | 'block-start' | 'block-end'
-type InputGroupVariant = 'outline' | 'secondary' | 'ghost'
+type InputGroupVariant = 'field' | 'outline' | 'secondary' | 'ghost'
 type InputGroupButtonSize = 'xs' | 'sm' | 'md'
 type InputGroupSize = 'xs' | 'sm' | 'md' | 'lg'
 

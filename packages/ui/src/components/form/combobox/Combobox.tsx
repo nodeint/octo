@@ -15,6 +15,11 @@ import { Icon } from '../../typography/icon/Icon';
 
 const Combobox = ComboboxPrimitive.Root;
 
+/** Ref for the chips row, passed to `ComboboxChips` and to `ComboboxContent`'s `anchor` so the popup opens under the row. */
+function useComboboxAnchor(): React.RefObject<HTMLDivElement | null> {
+  return React.useRef<HTMLDivElement | null>(null);
+}
+
 function ComboboxValue({ ...props }: ComboboxPrimitive.Value.Props): React.JSX.Element {
   return <ComboboxPrimitive.Value data-slot="combobox-value" {...props} />;
 }
@@ -27,6 +32,8 @@ function ComboboxTrigger({
   return (
     <ComboboxPrimitive.Trigger
       data-slot="combobox-trigger"
+      data-variant="field"
+      data-field-size="md"
       className={cn('combobox-trigger', className)}
       {...props}
     >
@@ -61,7 +68,16 @@ function ComboboxInput({
   showClear?: boolean
 }): React.JSX.Element {
   return (
-    <InputGroup className={cn('w-auto', className)}>
+    <ComboboxPrimitive.InputGroup
+      render={<InputGroup variant="field" />}
+      className={cn('w-auto', className)}
+      // Base UI only reads `disabled` from the root, so a field disabled here would still open on a press in the group.
+      onMouseDown={(event) => {
+        if (disabled) {
+          event.preventBaseUIHandler();
+        }
+      }}
+    >
       <ComboboxPrimitive.Input
         render={<Input disabled={disabled} />}
         {...props}
@@ -70,7 +86,8 @@ function ComboboxInput({
         {showTrigger ? <InputGroupButton
             size="xs" shape="icon"
             variant="ghost"
-            render={<ComboboxTrigger />}
+            // The trigger is a field by default; inside the input it is the group's icon button.
+            render={<ComboboxTrigger data-variant="ghost" />}
             data-slot="input-group-button"
             className="combobox-pressed-reset"
             disabled={disabled}
@@ -78,7 +95,7 @@ function ComboboxInput({
         {showClear ? <ComboboxClear disabled={disabled} /> : null}
       </InputGroupAddon>
       {children}
-    </InputGroup>
+    </ComboboxPrimitive.InputGroup>
   );
 }
 
@@ -276,4 +293,5 @@ export {
   ComboboxSeparator,
   ComboboxTrigger,
   ComboboxValue,
+  useComboboxAnchor,
 };

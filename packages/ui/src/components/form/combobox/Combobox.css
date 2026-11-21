@@ -5,6 +5,70 @@
   flex-shrink: 0;
 }
 
+/*
+ * The trigger is a bordered text field, painted like select-trigger from the same --variant-* and
+ * --group-field-* tokens. ComboboxInput overrides data-variant to ghost: there it is an icon button in the group.
+ */
+.combobox-trigger[data-variant='field'] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  height: var(--field-height);
+  padding-inline: calc(var(--field-px) - var(--border-width-thin));
+  gap: var(--field-gap);
+  border: var(--border-width-thin) solid var(--group-field-border, var(--variant-border));
+  border-radius: var(--field-radius);
+  background-color: var(--group-field-bg, var(--variant-bg));
+  color: var(--group-field-fg, var(--variant-fg));
+  font-size: var(--role-field-size);
+  line-height: var(--role-field-leading);
+  font-weight: var(--role-field-weight);
+  white-space: nowrap;
+  outline: none;
+  user-select: none;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+@media (pointer: coarse) {
+  .combobox-trigger[data-variant='field'] {
+    font-size: var(--role-field-size-coarse);
+  }
+}
+
+.combobox-trigger[data-variant='field'][data-placeholder] {
+  color: var(--variant-fg-placeholder);
+}
+
+.combobox-trigger[data-variant='field']:hover {
+  background-color: var(--group-field-bg-hover, var(--variant-bg-hover));
+  color: var(--group-field-fg-hover, var(--variant-fg-hover));
+}
+
+.combobox-trigger[data-variant='field']:focus-visible {
+  border-color: var(--variant-border-focus);
+  box-shadow: var(--variant-shadow-focus);
+  outline: var(--focus-width) solid transparent;
+}
+
+/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
+.combobox-trigger[data-variant='field'][aria-invalid='true'] {
+  border-color: var(--variant-border-invalid);
+  box-shadow: var(--variant-shadow-invalid);
+}
+
+.combobox-trigger[data-variant='field']:disabled,
+.combobox-trigger[data-variant='field'][data-disabled] {
+  pointer-events: none;
+  border-color: var(--group-field-border-disabled, var(--variant-border-disabled));
+  background-color: var(--group-field-bg-disabled, var(--variant-bg-disabled));
+  color: var(--variant-fg-disabled);
+}
+
 .combobox-positioner {
   isolation: isolate;
   z-index: var(--z-floating);
@@ -15,7 +79,7 @@
   max-height: var(--available-height);
   width: var(--anchor-width);
   max-width: var(--available-width);
-  min-width: calc(var(--anchor-width) + 1.75rem);
+  min-width: var(--anchor-width);
   overflow: hidden;
   border-radius: var(--radius-overlay);
   background-color: var(--popover);
@@ -24,9 +88,10 @@
   transform-origin: var(--transform-origin);
 }
 
-/* chips host min-width */
-.combobox-content[data-chips='true'] {
-  min-width: var(--anchor-width);
+/* The search box in the popup: the group's own focus ring is off here. */
+.combobox-content .input-group:focus-within {
+  border-color: inherit;
+  box-shadow: none;
 }
 
 /* input-group child chrome */
@@ -137,16 +202,20 @@
 
 .combobox-chips {
   display: flex;
+  flex: var(--group-field-flex, initial);
   flex-wrap: wrap;
   align-items: center;
-  min-height: var(--field-height);
-  padding: var(--space-xs) var(--field-px);
-  gap: var(--field-gap);
-  border: var(--border-width-thin) solid var(--control);
+  min-height: var(--group-field-height, var(--field-height));
+  padding: var(--space-xs) var(--group-field-px, var(--field-px));
+  gap: var(--group-field-gap, var(--field-gap));
+  border-style: solid;
+  border-width: var(--group-field-border-width, var(--border-width-thin));
+  border-color: var(--group-field-border, var(--variant-border));
   /* One row is a stadium like the other fields. Wrapped rows keep a rounded rectangle instead of a growing pill. */
-  border-radius: min(var(--field-radius), calc(var(--field-height) / 2));
-  background-color: transparent;
+  border-radius: var(--group-field-radius, min(var(--field-radius), calc(var(--field-height) / 2)));
+  background-color: var(--group-field-bg, var(--variant-bg));
   background-clip: padding-box;
+  color: var(--group-field-fg, var(--variant-fg));
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   outline: none;
@@ -158,22 +227,18 @@
 /* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
 .combobox-chips:focus-within {
   border-color: var(--variant-border-focus);
-  box-shadow: var(--variant-shadow-focus);
+  box-shadow: var(--group-field-shadow-focus, var(--variant-shadow-focus));
   outline: var(--focus-width) solid transparent;
 }
 
 /* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
 .combobox-chips:has([aria-invalid='true']) {
   border-color: var(--variant-border-invalid);
-  box-shadow: var(--variant-shadow-invalid);
+  box-shadow: var(--group-field-shadow-invalid, var(--variant-shadow-invalid));
 }
 
 .combobox-chips:has([data-slot='combobox-chip']) {
   padding-inline: var(--space-xs);
-}
-
-.dark .combobox-chips {
-  background-color: var(--muted);
 }
 
 .combobox-chip {
