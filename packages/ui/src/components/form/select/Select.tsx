@@ -8,7 +8,7 @@ import { Icon } from '../../typography/icon/Icon';
 
 type SelectTriggerSize = 'xs' | 'sm' | 'md' | 'lg'
 type SelectTriggerWidth = 'hug' | 'full'
-type SelectTriggerVariant = 'outline' | 'ghost'
+type SelectTriggerVariant = 'field' | 'ghost'
 
 const Select = SelectPrimitive.Root;
 
@@ -36,7 +36,7 @@ function SelectTrigger({
   className,
   size = 'md',
   width = 'hug',
-  variant = 'outline',
+  variant = 'field',
   children,
   ...props
 }: SelectPrimitive.Trigger.Props & {
@@ -44,7 +44,7 @@ function SelectTrigger({
   /** hug = label width (default). full = fill the parent wrapper. */
   width?: SelectTriggerWidth
   /**
-   * outline = bordered field (default).
+   * field = bordered text field (default).
    * ghost = no border or fill until hovered, for a sort or filter beside a list.
    */
   variant?: SelectTriggerVariant

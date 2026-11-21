@@ -1,10 +1,9 @@
 /*
- * Behavior shared by the closed controls (button, badge, input, textarea): focus ring,
+ * Behavior shared by the closed controls (badge, input, textarea): focus ring,
  * invalid and disabled paint. Selector lists replace shared utilities; keep them in sync with
  * the component files. Badge lives in data-display and is listed here on purpose.
  */
 
-.button,
 .badge,
 .input,
 .textarea {
@@ -15,76 +14,53 @@
 }
 
 /* Focus indicator: a solid outline in the ring color. An outline survives forced-colors mode. */
-.button:focus-visible,
-.badge:focus-visible,
 .input:focus-visible,
 .textarea:focus-visible {
+  border-color: var(--variant-border-focus);
+  outline: var(--focus-width) solid var(--variant-ring);
+  outline-offset: var(--focus-offset);
+}
+
+.badge:focus-visible {
   border-color: var(--ring);
   outline: var(--focus-width) solid var(--ring);
   outline-offset: var(--focus-offset);
 }
 
-.button[aria-invalid='true'],
-.badge[aria-invalid='true'],
 .input[aria-invalid='true'],
 .textarea[aria-invalid='true'] {
+  border-color: var(--variant-border-invalid);
+  box-shadow: 0 0 0 var(--focus-width) var(--variant-ring-invalid);
+}
+
+.badge[aria-invalid='true'] {
   border-color: var(--destructive);
   box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
 }
 
-.button:disabled,
 .input:disabled,
 .textarea:disabled {
   pointer-events: none;
-  color: var(--foreground-disabled);
-}
-
-.button[aria-disabled='true'] {
-  pointer-events: none;
-  color: var(--foreground-disabled);
+  border-color: var(--variant-border-disabled);
+  color: var(--variant-fg-disabled);
 }
 
 .input:disabled,
 .textarea:disabled {
-  border-color: var(--disabled-border);
-  background-color: var(--disabled);
+  background-color: var(--variant-bg-disabled);
 }
 
 .input[data-disabled],
 .textarea[data-disabled] {
   pointer-events: none;
-  border-color: var(--disabled-border);
-  color: var(--foreground-disabled);
+  border-color: var(--variant-border-disabled);
+  color: var(--variant-fg-disabled);
 }
 
-/* Icon glyph size inside a control, beside its text. A size-* class on the svg opts out. */
-.button svg,
+/* Icon glyph size inside a badge. A size-* class on the svg opts out. */
 .badge > svg {
   pointer-events: none;
   flex-shrink: 0;
-}
-
-.button svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
-}
-
-/*
- * Touch target: --target-min is 44px for a coarse pointer and 16px for a fine one. The pseudo-element
- * grows the hit area without changing the control's size. :where() keeps the position easy to override.
- */
-:where(.button) {
-  position: relative;
-}
-
-.button::after {
-  content: '';
-  position: absolute;
-  inset-inline: 0;
-  top: 50%;
-  height: 100%;
-  min-height: var(--target-min);
-  transform: translateY(-50%);
 }
 
 /* ---- selection controls and toggles ---- */

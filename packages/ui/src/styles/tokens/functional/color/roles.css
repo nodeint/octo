@@ -58,6 +58,10 @@
   --info-border: var(--status-info-border);
 
   /* Disabled is its own paint, not an opacity: quiet fill and quiet edge, with foreground-disabled text. */
+  /* Text field fill. Open on a light page, tinted in dark. Read by the field variant. */
+  --field: transparent;
+  --field-hover: transparent;
+
   --disabled: var(--neutral-5);
   --disabled-border: var(--neutral-7);
 
@@ -76,4 +80,9 @@
   --sidebar-accent: var(--neutral-8);
   --sidebar-border: var(--neutral-9);
   --sidebar-ring: var(--ring);
+}
+
+.dark {
+  --field: var(--muted);
+  --field-hover: var(--secondary);
 }

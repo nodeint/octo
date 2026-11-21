@@ -7,6 +7,9 @@
  *   *-selected                open or on (aria-expanded, aria-pressed)
  *   bg-disabled               fill of a disabled control
  *   ring                      focus outline color
+ *   border-focus, border-invalid, ring-invalid   focus border, invalid border, invalid halo
+ *   fg-disabled, border-disabled                 disabled text and edge
+ *   fg-placeholder                               placeholder text
  * Same values in light and dark: the roles they alias already switch with the theme.
  */
 [data-variant='default'] {
@@ -25,6 +28,12 @@
   --variant-border-selected: transparent;
   --variant-bg-disabled: var(--disabled);
   --variant-ring: var(--ring);
+  --variant-border-disabled: transparent;
+  --variant-fg-disabled: var(--foreground-disabled);
+  --variant-border-focus: var(--ring);
+  --variant-border-invalid: var(--destructive);
+  --variant-ring-invalid: var(--destructive-subtle-foreground);
+  --variant-fg-placeholder: var(--foreground-subtle);
 }
 
 [data-variant='outline'] {
@@ -43,6 +52,12 @@
   --variant-border-selected: var(--border);
   --variant-bg-disabled: transparent;
   --variant-ring: var(--ring);
+  --variant-border-disabled: var(--border);
+  --variant-fg-disabled: var(--foreground-disabled);
+  --variant-border-focus: var(--ring);
+  --variant-border-invalid: var(--destructive);
+  --variant-ring-invalid: var(--destructive-subtle-foreground);
+  --variant-fg-placeholder: var(--foreground-subtle);
 }
 
 [data-variant='secondary'] {
@@ -61,6 +76,12 @@
   --variant-border-selected: transparent;
   --variant-bg-disabled: var(--disabled);
   --variant-ring: var(--ring);
+  --variant-border-disabled: transparent;
+  --variant-fg-disabled: var(--foreground-disabled);
+  --variant-border-focus: var(--ring);
+  --variant-border-invalid: var(--destructive);
+  --variant-ring-invalid: var(--destructive-subtle-foreground);
+  --variant-fg-placeholder: var(--foreground-subtle);
 }
 
 /* A quiet control rests on foreground-muted and steps to foreground with its fill. */
@@ -80,6 +101,12 @@
   --variant-border-selected: transparent;
   --variant-bg-disabled: transparent;
   --variant-ring: var(--ring);
+  --variant-border-disabled: transparent;
+  --variant-fg-disabled: var(--foreground-disabled);
+  --variant-border-focus: var(--ring);
+  --variant-border-invalid: var(--destructive);
+  --variant-ring-invalid: var(--destructive-subtle-foreground);
+  --variant-fg-placeholder: var(--foreground-subtle);
 }
 
 [data-variant='destructive'] {
@@ -98,6 +125,12 @@
   --variant-border-selected: transparent;
   --variant-bg-disabled: var(--disabled);
   --variant-ring: var(--destructive);
+  --variant-border-disabled: transparent;
+  --variant-fg-disabled: var(--foreground-disabled);
+  --variant-border-focus: var(--ring);
+  --variant-border-invalid: var(--destructive);
+  --variant-ring-invalid: var(--destructive-subtle-foreground);
+  --variant-fg-placeholder: var(--foreground-subtle);
 }
 
 [data-variant='link'] {
@@ -115,5 +148,36 @@
   --variant-fg-selected: var(--primary);
   --variant-border-selected: transparent;
   --variant-bg-disabled: transparent;
+  --variant-ring: var(--ring);
+  --variant-border-disabled: transparent;
+  --variant-fg-disabled: var(--foreground-disabled);
+  --variant-border-focus: var(--ring);
+  --variant-border-invalid: var(--destructive);
+  --variant-ring-invalid: var(--destructive-subtle-foreground);
+  --variant-fg-placeholder: var(--foreground-subtle);
+}
+
+/* A text field: input, textarea, and the select trigger. Fill and hover come from the --field roles, which switch with the theme. */
+[data-variant='field'] {
+  --variant-bg: var(--field);
+  --variant-fg: currentcolor;
+  --variant-border: var(--control);
+  --variant-edge: transparent;
+  --variant-bg-hover: var(--field-hover);
+  --variant-fg-hover: currentcolor;
+  --variant-border-hover: var(--control);
+  --variant-bg-active: var(--field-hover);
+  --variant-fg-active: currentcolor;
+  --variant-border-active: var(--control);
+  --variant-bg-selected: var(--field);
+  --variant-fg-selected: currentcolor;
+  --variant-border-selected: var(--control);
+  --variant-bg-disabled: var(--disabled);
+  --variant-border-disabled: var(--disabled-border);
+  --variant-fg-disabled: var(--foreground-disabled);
+  --variant-border-focus: var(--ring);
+  --variant-border-invalid: var(--destructive);
+  --variant-ring-invalid: var(--destructive-subtle-foreground);
+  --variant-fg-placeholder: var(--foreground-subtle);
   --variant-ring: var(--ring);
 }

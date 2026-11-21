@@ -19,7 +19,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     size: { control: 'inline-radio', options: SIZES },
-    variant: { control: 'inline-radio', options: ['outline', 'ghost'] },
+    variant: { control: 'inline-radio', options: ['field', 'ghost'] },
     width: { control: 'inline-radio', options: ['hug', 'full'] },
     disabled: { control: 'boolean' },
   },

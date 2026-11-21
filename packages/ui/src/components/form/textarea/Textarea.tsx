@@ -6,6 +6,7 @@ function Textarea({ className, ...props }: React.ComponentProps<'textarea'>): Re
   return (
     <textarea
       data-slot="textarea"
+      data-variant="field"
       className={cn('textarea', className)}
       {...props}
     />

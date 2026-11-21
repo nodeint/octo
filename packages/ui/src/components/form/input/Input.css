@@ -1,8 +1,9 @@
 .input,
 .textarea {
   width: 100%;
-  border: var(--border-width-thin) solid var(--control);
-  background-color: transparent;
+  border: var(--border-width-thin) solid var(--variant-border);
+  background-color: var(--variant-bg);
+  color: var(--variant-fg);
   font-size: var(--role-field-size);
   line-height: var(--role-field-leading);
   font-weight: var(--role-field-weight);
@@ -17,17 +18,7 @@
 
 .input::placeholder,
 .textarea::placeholder {
-  color: var(--foreground-subtle);
-}
-
-.dark .input,
-.dark .textarea {
-  background-color: var(--muted);
-}
-
-.dark .input:disabled,
-.dark .textarea:disabled {
-  background-color: var(--disabled);
+  color: var(--variant-fg-placeholder);
 }
 
 .input {

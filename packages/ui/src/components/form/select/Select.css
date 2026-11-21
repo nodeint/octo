@@ -27,9 +27,10 @@
   height: var(--control-height-md);
   padding-inline: calc(var(--control-px-md) - var(--border-width-thin));
   gap: var(--control-gap-md);
-  border: var(--border-width-thin) solid var(--control);
+  border: var(--border-width-thin) solid var(--variant-border);
   border-radius: 9999px;
-  background-color: transparent;
+  background-color: var(--variant-bg);
+  color: var(--variant-fg);
   font-size: var(--role-field-size);
   line-height: var(--role-field-leading);
   font-weight: var(--role-field-weight);
@@ -48,43 +49,31 @@
 }
 
 .select-trigger[data-placeholder] {
-  color: var(--foreground-subtle);
+  color: var(--variant-fg-placeholder);
+}
+
+.select-trigger:hover {
+  background-color: var(--variant-bg-hover);
+  color: var(--variant-fg-hover);
 }
 
 .select-trigger:focus-visible {
-  border-color: var(--ring);
-  outline: var(--focus-width) solid var(--ring);
+  border-color: var(--variant-border-focus);
+  outline: var(--focus-width) solid var(--variant-ring);
   outline-offset: var(--focus-offset);
 }
 
 .select-trigger[aria-invalid='true'] {
-  border-color: var(--destructive);
-  box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
+  border-color: var(--variant-border-invalid);
+  box-shadow: 0 0 0 var(--focus-width) var(--variant-ring-invalid);
 }
 
-.select-trigger:disabled {
-  pointer-events: none;
-  border-color: var(--disabled-border);
-  background-color: var(--disabled);
-  color: var(--foreground-disabled);
-}
-
+.select-trigger:disabled,
 .select-trigger[data-disabled] {
   pointer-events: none;
-  border-color: var(--disabled-border);
-  color: var(--foreground-disabled);
-}
-
-.dark .select-trigger {
-  background-color: var(--muted);
-}
-
-.dark .select-trigger:hover {
-  background-color: var(--secondary);
-}
-
-.dark .select-trigger:disabled {
-  background-color: var(--disabled);
+  border-color: var(--variant-border-disabled);
+  background-color: var(--variant-bg-disabled);
+  color: var(--variant-fg-disabled);
 }
 
 .select-trigger svg {
@@ -117,20 +106,6 @@
 
 .select-trigger[data-width='full'] {
   width: 100%;
-}
-
-.select-trigger[data-variant='ghost'] {
-  border-color: transparent;
-  background-color: transparent;
-  color: var(--foreground-muted);
-}
-
-.dark .select-trigger[data-variant='ghost'] {
-  background-color: transparent;
-}
-
-.dark .select-trigger[data-variant='ghost']:hover {
-  background-color: var(--secondary);
 }
 
 .select-positioner {
