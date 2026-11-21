@@ -1,6 +1,9 @@
 import '@workspace/ui/styles.css';
+import './docs.css';
 
+import { DocsContainer } from '@storybook/addon-docs/blocks';
 import type { Decorator, Preview } from '@storybook/react-vite';
+import { themes } from 'storybook/theming';
 
 import { APPEARANCE_AXES, DEFAULT_OPTION, INITIAL_APPEARANCE } from './appearance';
 
@@ -18,6 +21,12 @@ const withAppearance: Decorator = (Story, context) => {
     }
   }
   return <Story />;
+};
+
+/** Docs pages carry their own Storybook theme; follow the Theme global so they match the canvas. */
+const ThemedDocsContainer: NonNullable<NonNullable<Preview['parameters']>['docs']>['container'] = (props) => {
+  const isDark = props.context.store.userGlobals?.globals?.theme === 'dark';
+  return <DocsContainer {...props} theme={isDark ? themes.dark : themes.light} />;
 };
 
 /** Under the Storybook Vitest plugin, compare each story with its reference screenshot. */
@@ -41,7 +50,7 @@ const preview: Preview = {
   decorators: [withAppearance],
   afterEach: matchScreenshot,
   initialGlobals: INITIAL_APPEARANCE,
-  parameters: { layout: 'centered' },
+  parameters: { layout: 'centered', docs: { container: ThemedDocsContainer } },
 };
 
 export default preview;

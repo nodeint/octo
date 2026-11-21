@@ -9,7 +9,7 @@
 .field-set {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-group);
+  gap: var(--gap-md);
 }
 
 .field-legend {
@@ -36,7 +36,7 @@
   container-name: field-group;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-group);
+  gap: var(--gap-md);
   width: 100%;
 }
 

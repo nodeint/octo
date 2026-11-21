@@ -1,23 +1,4 @@
-.layout-stack[data-gap='tight'] {
+.layout-stack {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-tight);
-}
-
-.layout-stack[data-gap='related'] {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-related);
-}
-
-.layout-stack[data-gap='group'] {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-group);
-}
-
-.layout-stack[data-gap='section'] {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-section);
 }

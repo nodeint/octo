@@ -1,0 +1,10 @@
+/*
+ * Docs pages: paint each example area with the design system background so it matches the
+ * canvas. The doubled class beats Storybook's own single-class (emotion) rules whatever the
+ * injection order. `--background` follows the Theme global through the `.dark` class that
+ * the appearance decorator sets on <html>.
+ */
+.sbdocs-preview.sbdocs-preview,
+.sbdocs-preview.sbdocs-preview .docs-story {
+  background-color: var(--background);
+}

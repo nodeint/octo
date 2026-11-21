@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   min-width: 0;
-  gap: var(--gap-related);
+  gap: var(--gap-sm);
 }
 
 /* The text reads as the surrounding text: no fill, no hover tint, no border at rest. Editing shows only the bottom line. */

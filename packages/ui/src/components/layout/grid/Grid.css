@@ -1,21 +1,5 @@
-.layout-grid[data-gap='tight'] {
+.layout-grid {
   display: grid;
-  gap: var(--gap-tight);
-}
-
-.layout-grid[data-gap='related'] {
-  display: grid;
-  gap: var(--gap-related);
-}
-
-.layout-grid[data-gap='group'] {
-  display: grid;
-  gap: var(--gap-group);
-}
-
-.layout-grid[data-gap='section'] {
-  display: grid;
-  gap: var(--gap-section);
 }
 
 .layout-grid[data-columns='1'] {
