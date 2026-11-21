@@ -6,6 +6,7 @@
  *   --radius-field-*    text fields: input, select trigger. xs … lg follow --control-height-*
  *   --radius-field-block  a field that grows to several lines (textarea, group with a block addon, chips); one step, not per size
  *   --radius-action-*   actions: button, toggle, button group. xs … lg follow --control-height-*
+ *   --radius-action-block  a stack of actions (vertical button group); one step, not per size
  * Values come from Primer; `primer-reference.test.ts` checks them. A theme sets --radius-*.
  */
 
@@ -27,4 +28,6 @@
   --radius-action-sm: var(--radius-full);
   --radius-action-md: var(--radius-full);
   --radius-action-lg: var(--radius-full);
+
+  --radius-action-block: var(--radius-lg);
 }

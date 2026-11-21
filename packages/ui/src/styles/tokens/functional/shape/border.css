@@ -7,6 +7,6 @@
 :root {
   --border-width-thin: 0.0625rem; /* primer: --borderWidth-thin */
   --border-width-thick: 0.125rem; /* primer: --borderWidth-thick */
-  --focus-width: 0.125rem; /* primer: --focus-outline-width */
-  --focus-offset: -0.125rem; /* primer: --focus-outline-offset */
+  --focus-width: 0.1875rem; /* primer: --focus-outline-width is 2px; widened to 3px */
+  --focus-offset: -0.1875rem; /* primer: --focus-outline-offset */
 }

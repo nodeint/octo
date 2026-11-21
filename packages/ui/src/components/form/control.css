@@ -13,12 +13,12 @@
   transition-timing-function: var(--default-transition-timing-function);
 }
 
-/* Focus indicator: a solid outline in the ring color. An outline survives forced-colors mode. */
+/* Focus: focus border plus a soft halo, matching invalid. The transparent outline still shows in forced-colors mode. */
 .input:focus-visible,
 .textarea:focus-visible {
   border-color: var(--variant-border-focus);
-  outline: var(--focus-width) solid var(--variant-ring);
-  outline-offset: var(--focus-offset);
+  box-shadow: 0 0 0 var(--focus-width) color-mix(in oklab, var(--variant-ring) 40%, transparent);
+  outline: var(--focus-width) solid transparent;
 }
 
 .badge:focus-visible {
@@ -27,10 +27,13 @@
   outline-offset: var(--focus-offset);
 }
 
+/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
 .input[aria-invalid='true'],
 .textarea[aria-invalid='true'] {
   border-color: var(--variant-border-invalid);
-  box-shadow: 0 0 0 var(--focus-width) var(--variant-ring-invalid);
+  box-shadow: 0 0 0 var(--focus-width)
+    color-mix(in oklab, var(--variant-border-invalid) 40%, transparent);
+  caret-color: var(--variant-border-invalid);
 }
 
 .badge[aria-invalid='true'] {
