@@ -4,20 +4,16 @@
  * Each falls back to the child's own --variant-*, so a child outside a group, or in a group
  * without a variant, paints as before: var(--group-action-bg, var(--variant-bg)).
  *
- * data-group-variant is not data-variant: the group paints nothing itself, so it takes no set from
- * variants.css and defines both roles here.
+ * This file holds only the shared reset. The variants themselves live with their group:
+ * button-group/ButtonGroup.css and input-group/InputGroup.css.
  *
- * Only identity slots are owned here: bg, fg and border at rest, hover, active and selected, plus the disabled
- * fill and edge so a disabled child still reads as part of the row. Focus, invalid, disabled text, ring and
- * placeholder stay with the child, so an invalid field is red in every variant.
- */
-
-/*
- * Reset. Tokens inherit, so a nested group without a variant would otherwise paint with its parent's.
- * `initial` makes the token invalid, which sends var() to its fallback. The variant rules below
+ * Reset: tokens inherit, so a nested group without a variant would otherwise paint with its parent's.
+ * `initial` makes the token invalid, which sends var() to its fallback. The variant rules
  * have higher specificity and win on their own group.
+ *
+ * The reset is in the theme layer; the variants are in the components layer, which beats it.
  */
-[data-slot='button-group'] {
+[data-group-variant] {
   --group-action-bg: initial;
   --group-action-fg: initial;
   --group-action-border: initial;
@@ -46,100 +42,4 @@
   --group-field-border-selected: initial;
   --group-field-bg-disabled: initial;
   --group-field-border-disabled: initial;
-}
-
-/* outline: a bordered row. A field is transparent like an action, so the row reads as one surface. */
-[data-slot='button-group'][data-group-variant='outline'] {
-  --group-action-bg: transparent;
-  --group-action-fg: currentcolor;
-  --group-action-border: var(--border);
-  --group-action-bg-hover: var(--tertiary);
-  --group-action-fg-hover: var(--foreground);
-  --group-action-border-hover: var(--border);
-  --group-action-bg-active: var(--tertiary);
-  --group-action-fg-active: var(--foreground);
-  --group-action-border-active: var(--border);
-  --group-action-bg-selected: var(--muted);
-  --group-action-fg-selected: var(--foreground);
-  --group-action-border-selected: var(--border);
-  --group-action-bg-disabled: transparent;
-  --group-action-border-disabled: var(--border);
-  --group-field-bg: transparent;
-  --group-field-fg: currentcolor;
-  --group-field-border: var(--border);
-  --group-field-bg-hover: var(--tertiary);
-  --group-field-fg-hover: currentcolor;
-  --group-field-border-hover: var(--border);
-  --group-field-bg-active: var(--tertiary);
-  --group-field-fg-active: currentcolor;
-  --group-field-border-active: var(--border);
-  --group-field-bg-selected: var(--muted);
-  --group-field-fg-selected: currentcolor;
-  --group-field-border-selected: var(--border);
-  --group-field-bg-disabled: transparent;
-  --group-field-border-disabled: var(--border);
-}
-
-/* secondary: filled, no visible border. */
-[data-slot='button-group'][data-group-variant='secondary'] {
-  --group-action-bg: var(--secondary);
-  --group-action-fg: var(--foreground);
-  --group-action-border: transparent;
-  --group-action-bg-hover: var(--tertiary);
-  --group-action-fg-hover: var(--foreground);
-  --group-action-border-hover: transparent;
-  --group-action-bg-active: var(--tertiary);
-  --group-action-fg-active: var(--foreground);
-  --group-action-border-active: transparent;
-  --group-action-bg-selected: var(--accent);
-  --group-action-fg-selected: var(--foreground);
-  --group-action-border-selected: transparent;
-  --group-action-bg-disabled: var(--disabled);
-  --group-action-border-disabled: transparent;
-  --group-field-bg: var(--secondary);
-  --group-field-fg: var(--foreground);
-  --group-field-border: transparent;
-  --group-field-bg-hover: var(--tertiary);
-  --group-field-fg-hover: var(--foreground);
-  --group-field-border-hover: transparent;
-  --group-field-bg-active: var(--tertiary);
-  --group-field-fg-active: var(--foreground);
-  --group-field-border-active: transparent;
-  --group-field-bg-selected: var(--accent);
-  --group-field-fg-selected: var(--foreground);
-  --group-field-border-selected: transparent;
-  --group-field-bg-disabled: var(--disabled);
-  --group-field-border-disabled: transparent;
-}
-
-/* ghost: no fill or border at rest; a fill appears on hover. An action rests muted; a field keeps full-strength text. */
-[data-slot='button-group'][data-group-variant='ghost'] {
-  --group-action-bg: transparent;
-  --group-action-fg: var(--foreground-muted);
-  --group-action-border: transparent;
-  --group-action-bg-hover: var(--tertiary);
-  --group-action-fg-hover: var(--foreground);
-  --group-action-border-hover: transparent;
-  --group-action-bg-active: var(--tertiary);
-  --group-action-fg-active: var(--foreground);
-  --group-action-border-active: transparent;
-  --group-action-bg-selected: var(--accent);
-  --group-action-fg-selected: var(--foreground);
-  --group-action-border-selected: transparent;
-  --group-action-bg-disabled: transparent;
-  --group-action-border-disabled: transparent;
-  --group-field-bg: transparent;
-  --group-field-fg: var(--foreground);
-  --group-field-border: transparent;
-  --group-field-bg-hover: var(--tertiary);
-  --group-field-fg-hover: var(--foreground);
-  --group-field-border-hover: transparent;
-  --group-field-bg-active: var(--tertiary);
-  --group-field-fg-active: var(--foreground);
-  --group-field-border-active: transparent;
-  --group-field-bg-selected: var(--accent);
-  --group-field-fg-selected: var(--foreground);
-  --group-field-border-selected: transparent;
-  --group-field-bg-disabled: transparent;
-  --group-field-border-disabled: transparent;
 }

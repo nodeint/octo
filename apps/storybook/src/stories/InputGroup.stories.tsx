@@ -2,13 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { InputGroupSize } from '@workspace/ui';
 import {
   Icon,
+  Input,
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-  InputGroupInput,
   InputGroupText,
-  InputGroupTextarea,
   Stack,
+  Textarea,
 } from '@workspace/ui';
 
 const SIZES = ['xs', 'sm', 'md', 'lg'] as const satisfies readonly InputGroupSize[];
@@ -18,7 +18,7 @@ const meta = {
   component: InputGroup,
   tags: ['autodocs'],
   argTypes: {
-    variant: { control: 'inline-radio', options: ['outline', 'bare'] },
+    variant: { control: 'inline-radio', options: ['outline', 'secondary', 'ghost'] },
     size: { control: 'inline-radio', options: SIZES },
   },
 } satisfies Meta<typeof InputGroup>;
@@ -33,7 +33,7 @@ export const Playground: Story = {
       <InputGroupAddon>
         <Icon name="search" />
       </InputGroupAddon>
-      <InputGroupInput placeholder="Search" aria-label="Search" />
+      <Input placeholder="Search" aria-label="Search" />
     </InputGroup>
   ),
 };
@@ -46,7 +46,7 @@ export const Sizes: Story = {
           <InputGroupAddon>
             <Icon name="search" />
           </InputGroupAddon>
-          <InputGroupInput placeholder={size} aria-label={size} />
+          <Input placeholder={size} aria-label={size} />
         </InputGroup>
       ))}
     </Stack>
@@ -56,7 +56,7 @@ export const Sizes: Story = {
 export const WithButton: Story = {
   render: (args) => (
     <InputGroup {...args}>
-      <InputGroupInput placeholder="Search" aria-label="Search" />
+      <Input placeholder="Search" aria-label="Search" />
       <InputGroupAddon align="inline-end">
         <InputGroupButton shape="icon" aria-label="Clear">
           <Icon name="x" />
@@ -72,15 +72,16 @@ export const WithText: Story = {
       <InputGroupAddon>
         <InputGroupText>https://</InputGroupText>
       </InputGroupAddon>
-      <InputGroupInput placeholder="example.com" aria-label="Domain" />
+      <Input placeholder="example.com" aria-label="Domain" />
     </InputGroup>
   ),
 };
 
-export const Textarea: Story = {
+export const MultiLine: Story = {
+  name: 'Textarea',
   render: (args) => (
     <InputGroup {...args}>
-      <InputGroupTextarea placeholder="Write a message" aria-label="Message" />
+      <Textarea placeholder="Write a message" aria-label="Message" />
     </InputGroup>
   ),
 };
@@ -88,7 +89,7 @@ export const Textarea: Story = {
 export const WithBlockAddon: Story = {
   render: (args) => (
     <InputGroup {...args}>
-      <InputGroupInput placeholder="Ask anything" aria-label="Prompt" />
+      <Input placeholder="Ask anything" aria-label="Prompt" />
       <InputGroupAddon align="block-end">
         <InputGroupText>0 / 280</InputGroupText>
       </InputGroupAddon>
@@ -96,14 +97,14 @@ export const WithBlockAddon: Story = {
   ),
 };
 
-export const Bare: Story = {
-  args: { variant: 'bare' },
+export const Ghost: Story = {
+  args: { variant: 'ghost' },
   render: (args) => (
     <InputGroup {...args}>
       <InputGroupAddon>
         <Icon name="search" />
       </InputGroupAddon>
-      <InputGroupInput placeholder="Search" aria-label="Search" />
+      <Input placeholder="Search" aria-label="Search" />
     </InputGroup>
   ),
 };
@@ -114,7 +115,7 @@ export const Disabled: Story = {
       <InputGroupAddon>
         <Icon name="search" />
       </InputGroupAddon>
-      <InputGroupInput disabled placeholder="Disabled" aria-label="Disabled" />
+      <Input disabled placeholder="Disabled" aria-label="Disabled" />
     </InputGroup>
   ),
 };
@@ -122,7 +123,7 @@ export const Disabled: Story = {
 export const Invalid: Story = {
   render: (args) => (
     <InputGroup {...args}>
-      <InputGroupInput aria-invalid defaultValue="Invalid value" aria-label="Invalid" />
+      <Input aria-invalid defaultValue="Invalid value" aria-label="Invalid" />
     </InputGroup>
   ),
 };

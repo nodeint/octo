@@ -24,12 +24,12 @@
 }
 
 /*
- * md is the default: a field with no attribute still gets it. A field inside an input group is the exception:
- * it carries no attribute and inherits the group's set.
+ * md is the default: a field with no attribute still gets it. A field directly inside an input group is the
+ * exception: it inherits the group's set (input-group/InputGroup.css).
  */
 [data-field-size='md'],
-.input:not([data-field-size], .input-group-control),
-.textarea:not([data-field-size], .input-group-control-textarea) {
+.input:not([data-field-size]),
+.textarea:not([data-field-size]) {
   --field-height: var(--control-height-md);
   --field-px: var(--control-px-md);
   --field-gap: var(--control-gap-md);

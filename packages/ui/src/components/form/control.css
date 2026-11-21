@@ -17,7 +17,7 @@
 .input:focus-visible,
 .textarea:focus-visible {
   border-color: var(--variant-border-focus);
-  box-shadow: var(--variant-shadow-focus);
+  box-shadow: var(--group-field-shadow-focus, var(--variant-shadow-focus));
   outline: var(--focus-width) solid transparent;
 }
 
@@ -31,7 +31,7 @@
 .input[aria-invalid='true'],
 .textarea[aria-invalid='true'] {
   border-color: var(--variant-border-invalid);
-  box-shadow: var(--variant-shadow-invalid);
+  box-shadow: var(--group-field-shadow-invalid, var(--variant-shadow-invalid));
   caret-color: var(--variant-border-invalid);
 }
 

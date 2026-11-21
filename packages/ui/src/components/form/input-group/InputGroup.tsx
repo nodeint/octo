@@ -2,11 +2,9 @@ import * as React from 'react';
 
 import { cn } from '../../../lib/utils';
 import { Button } from '../../form/button/Button';
-import { Input } from '../../form/input/Input';
-import { Textarea } from '../../form/textarea/Textarea';
 
 type InputGroupAddonAlign = 'inline-start' | 'inline-end' | 'block-start' | 'block-end'
-type InputGroupVariant = 'outline' | 'bare'
+type InputGroupVariant = 'outline' | 'secondary' | 'ghost'
 type InputGroupButtonSize = 'xs' | 'sm' | 'md'
 type InputGroupSize = 'xs' | 'sm' | 'md' | 'lg'
 
@@ -28,8 +26,8 @@ function InputGroup({
   ...props
 }: React.ComponentProps<'div'> & {
   /**
-   * outline = bordered field (default).
-   * bare = no border, fill, or focus paint, for a group a parent surface already frames.
+   * Sets the border and fill of the group and the colors of its addons. Defaults to outline.
+   * A direct Input or Textarea draws none of its own and takes the group's size.
    */
   variant?: InputGroupVariant
   /** One step of the control scale. The input or textarea inside takes it too. */
@@ -38,7 +36,7 @@ function InputGroup({
   return (
     <div
       data-slot="input-group"
-      data-variant={variant}
+      data-group-variant={variant}
       data-field-size={size}
       role="group"
       className={cn('input-group', className)}
@@ -96,40 +94,10 @@ function InputGroupText({ className, ...props }: React.ComponentProps<'span'>): 
   );
 }
 
-function InputGroupInput({
-  className,
-  ...props
-}: React.ComponentProps<typeof Input>): React.JSX.Element {
-  return (
-    <Input
-      data-slot="input-group-control"
-      data-field-size={undefined}
-      className={cn('input-group-control', className)}
-      {...props}
-    />
-  );
-}
-
-function InputGroupTextarea({
-  className,
-  ...props
-}: React.ComponentProps<'textarea'>): React.JSX.Element {
-  return (
-    <Textarea
-      data-slot="input-group-control"
-      data-field-size={undefined}
-      className={cn('input-group-control-textarea', className)}
-      {...props}
-    />
-  );
-}
-
 export {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-  InputGroupInput,
   InputGroupText,
-  InputGroupTextarea,
 };
 export type { InputGroupAddonAlign, InputGroupButtonSize, InputGroupSize };

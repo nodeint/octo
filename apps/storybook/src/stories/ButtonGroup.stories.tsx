@@ -24,7 +24,6 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-  InputGroupInput,
   Label,
   Popover,
   PopoverContent,
@@ -249,7 +248,7 @@ export const Nested: Story = {
       </ButtonGroup>
       <ButtonGroup>
         <InputGroup>
-          <InputGroupInput
+          <Input
             placeholder="Send a message..."
             aria-label="Message"
           />
@@ -282,10 +281,10 @@ export const Split: Story = {
     },
   },
   render: () => (
-    <ButtonGroup>
-      <Button variant="secondary">Button</Button>
+    <ButtonGroup variant="secondary">
+      <Button>Button</Button>
       <ButtonGroupSeparator />
-      <Button variant="secondary" shape="icon" aria-label="Add">
+      <Button shape="icon" aria-label="Add">
         <Icon name="plus" />
       </Button>
     </ButtonGroup>
@@ -335,7 +334,7 @@ export const WithInputGroup: Story = {
         </ButtonGroup>
         <ButtonGroup>
           <InputGroup>
-            <InputGroupInput
+            <Input
               aria-label="Message"
               placeholder={
                 voiceEnabled ? 'Record and send audio...' : 'Send a message...'

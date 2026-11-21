@@ -9,8 +9,8 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-  InputGroupInput,
 } from '../../form/input-group/InputGroup';
+import { Input } from '../../form/input/Input';
 import { Icon } from '../../typography/icon/Icon';
 
 const Combobox = ComboboxPrimitive.Root;
@@ -63,7 +63,7 @@ function ComboboxInput({
   return (
     <InputGroup className={cn('w-auto', className)}>
       <ComboboxPrimitive.Input
-        render={<InputGroupInput disabled={disabled} />}
+        render={<Input disabled={disabled} />}
         {...props}
       />
       <InputGroupAddon align="inline-end">

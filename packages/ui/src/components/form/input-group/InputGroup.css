@@ -1,8 +1,9 @@
 /*
  * DOM contract:
- * - root data-slot=input-group, data-disabled
+ * - root data-slot=input-group, data-group-variant=outline|secondary|ghost, data-disabled
  * - addon data-slot=input-group-addon, data-align=inline-start|inline-end|block-start|block-end
- * - control data-slot=input-group-control (compound .input / .textarea)
+ * - control: a direct .input or .textarea. The group paints the border, fill and focus; the field draws none
+ *   and takes the group's size.
  * Single line: fixed control height and centered items.
  * Multi line (textarea or block addon): auto height, a column, stretched items, so the width is
  * definite for field-sizing and for a Collapsible's measured height.
@@ -14,13 +15,18 @@
   width: 100%;
   min-width: 0;
   height: var(--field-height);
-  border: var(--border-width-thin) solid var(--control);
+  border: var(--border-width-thin) solid var(--group-field-border);
   border-radius: var(--field-radius);
+  background-color: var(--group-field-bg);
+  color: var(--group-field-fg);
   outline: none;
-  /* outline already gets these from variants.css; bare matches no color variant, so the group names them itself. */
+  /* Color comes from data-group-variant (below). Focus and invalid have no variant set, so the group names them. */
   --variant-ring: var(--ring);
   --variant-border-focus: var(--ring);
   --variant-border-invalid: var(--destructive);
+  --variant-shadow-focus: 0 0 0 var(--focus-width) color-mix(in oklab, var(--variant-ring) 40%, transparent);
+  --variant-shadow-invalid: 0 0 0 var(--focus-width)
+    color-mix(in oklab, var(--variant-border-invalid) 40%, transparent);
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
@@ -31,9 +37,9 @@
   box-shadow: none;
 }
 
-.input-group:has(textarea:disabled),
-.input-group:has(input:disabled) {
-  background-color: var(--disabled);
+.input-group:has(:is(input, textarea):disabled) {
+  border-color: var(--group-field-border-disabled);
+  background-color: var(--group-field-bg-disabled);
   color: var(--foreground-disabled);
 }
 
@@ -51,27 +57,11 @@
   border-radius: var(--radius-field-block);
 }
 
-.dark .input-group {
-  background-color: var(--muted);
-}
-
-.dark .input-group:has(:disabled) {
-  background-color: var(--secondary);
-}
-
 /* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
-.input-group:has([data-slot='input-group-control']:focus-visible) {
+.input-group:has(> :is(.input, .textarea):focus-visible) {
   border-color: var(--variant-border-focus);
   box-shadow: var(--variant-shadow-focus);
   outline: var(--focus-width) solid transparent;
-}
-
-.input-group[data-variant='bare'],
-.input-group[data-variant='bare']:has([data-slot='input-group-control']:focus-visible) {
-  border-color: transparent;
-  background-color: transparent;
-  box-shadow: none;
-  outline: none;
 }
 
 /* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
@@ -219,40 +209,94 @@
   flex-shrink: 0;
 }
 
-/* The group paints the focus, so the field draws no border, ring or fill of its own. */
-.input.input-group-control,
-.textarea.input-group-control-textarea {
+/*
+ * The group paints the border, fill and focus, so a direct field zeroes its own color tokens (Input.css,
+ * Textarea and control.css read them first) and inherits the group's size instead of its default md.
+ */
+.input-group > :is(.input, .textarea) {
+  --group-field-bg: transparent;
+  --group-field-border: transparent;
+  --group-field-bg-disabled: transparent;
+  --group-field-border-disabled: transparent;
+  --group-field-shadow-focus: none;
+  --group-field-shadow-invalid: none;
+  --field-height: inherit;
+  --field-px: inherit;
+  --field-gap: inherit;
   border-width: 0;
   border-radius: 0;
-  background-color: transparent;
-  box-shadow: none;
   outline: none;
 }
 
-.input.input-group-control:is(:focus-visible, [aria-invalid='true']),
-.textarea.input-group-control-textarea:is(:focus-visible, [aria-invalid='true']) {
+.input-group > :is(.input, .textarea):is(:focus-visible, [aria-invalid='true']) {
   border-width: 0;
-  box-shadow: none;
   outline: none;
 }
 
-.input.input-group-control:disabled,
-.textarea.input-group-control-textarea:disabled,
-.dark .input.input-group-control,
-.dark .input.input-group-control:disabled,
-.dark .textarea.input-group-control-textarea,
-.dark .textarea.input-group-control-textarea:disabled {
-  background-color: transparent;
-}
-
-.input.input-group-control {
+.input-group > .input {
   flex: 1 1 0%;
 }
 
 /* width 100% and min-width 0, not flex 1: flex with field-sizing destabilizes a measured height in a Collapsible */
-.textarea.input-group-control-textarea {
+.input-group > .textarea {
   width: 100%;
   min-width: 0;
   resize: none;
   padding-block: var(--space-sm);
+}
+
+/*
+ * Group variants: data-group-variant sets the field color. The group paints its own border and fill from
+ * --group-field-*; the input inside zeroes them. The group resets the action tokens, so an addon button keeps its own variant.
+ * The shared reset is in styles/tokens/functional/color/group-variants.css.
+ */
+[data-slot='input-group'][data-group-variant='outline'] {
+  --group-field-bg: transparent;
+  --group-field-fg: currentcolor;
+  --group-field-border: var(--border);
+  --group-field-bg-hover: var(--tertiary);
+  --group-field-fg-hover: currentcolor;
+  --group-field-border-hover: var(--border);
+  --group-field-bg-active: var(--tertiary);
+  --group-field-fg-active: currentcolor;
+  --group-field-border-active: var(--border);
+  --group-field-bg-selected: var(--muted);
+  --group-field-fg-selected: currentcolor;
+  --group-field-border-selected: var(--border);
+  --group-field-bg-disabled: transparent;
+  --group-field-border-disabled: var(--border);
+}
+
+[data-slot='input-group'][data-group-variant='secondary'] {
+  --group-field-bg: var(--secondary);
+  --group-field-fg: var(--foreground);
+  --group-field-border: transparent;
+  --group-field-bg-hover: var(--tertiary);
+  --group-field-fg-hover: var(--foreground);
+  --group-field-border-hover: transparent;
+  --group-field-bg-active: var(--tertiary);
+  --group-field-fg-active: var(--foreground);
+  --group-field-border-active: transparent;
+  --group-field-bg-selected: var(--accent);
+  --group-field-fg-selected: var(--foreground);
+  --group-field-border-selected: transparent;
+  --group-field-bg-disabled: var(--disabled);
+  --group-field-border-disabled: transparent;
+}
+
+[data-slot='input-group'][data-group-variant='ghost'] {
+  --group-field-bg: transparent;
+  --group-field-fg: var(--foreground);
+  --group-field-border: transparent;
+  --group-field-bg-hover: var(--tertiary);
+  --group-field-fg-hover: var(--foreground);
+  --group-field-border-hover: transparent;
+  --group-field-bg-active: var(--tertiary);
+  --group-field-fg-active: var(--foreground);
+  --group-field-border-active: transparent;
+  --group-field-bg-selected: var(--accent);
+  --group-field-fg-selected: var(--foreground);
+  --group-field-border-selected: transparent;
+  --group-field-bg-disabled: transparent;
+  --group-field-border-disabled: transparent;
 }

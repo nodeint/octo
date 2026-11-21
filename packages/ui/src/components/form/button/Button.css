@@ -57,7 +57,7 @@
 
 /*
  * Color comes only from the variant (styles/tokens/functional/color/variants.css),
- * or from a button-group's data-group-variant (group-variants.css), which wins for the identity slots.
+ * or from a button-group's data-group-variant (group-variants.css, ButtonGroup.css), which wins for the identity slots.
  */
 .button {
   background-color: var(--group-action-bg, var(--variant-bg));
