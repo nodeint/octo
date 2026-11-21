@@ -4,7 +4,7 @@
  *   functional/  Nodeint's tokens, one folder per kind of value and one file per concern. Values are plain;
  *                Primer is only a reference (`primer-reference.test.ts`). A theme overrides these variables,
  *                not a framework's. Each file lives in the folder of its kind:
- *     color/       roles, foreground, chart, theme, opacity   what a thing looks like in color
+ *     color/       roles, foreground, variants, chart, theme, opacity   what a thing looks like in color
  *     spacing/     space                          gaps, insets, panel padding
  *     size/        control, target, container, content, overlay, parts    how big a box, or a part of one, is
  *     shape/       radius, border                 corners and stroke widths
@@ -37,3 +37,4 @@
 @import "./functional/color/foreground.css";
 @import "./functional/color/chart.css";
 @import "./functional/color/opacity.css";
+@import "./functional/color/variants.css";

@@ -1,0 +1,119 @@
+/*
+ * Variants: the app-wide color sets. A component never names a color; it paints from --variant-* and
+ * the element's data-variant picks the set. Every variant defines every slot, so a component can use any of them.
+ *   bg / fg / border          at rest
+ *   edge                      hairline drawn outside the border box (box-shadow color)
+ *   *-hover, *-active         pointer states; a variant with no distinct state repeats its rest value
+ *   *-selected                open or on (aria-expanded, aria-pressed)
+ *   bg-disabled               fill of a disabled control
+ *   ring                      focus outline color
+ * Same values in light and dark: the roles they alias already switch with the theme.
+ */
+[data-variant='default'] {
+  --variant-bg: var(--primary);
+  --variant-fg: var(--primary-foreground);
+  --variant-border: transparent;
+  --variant-edge: transparent;
+  --variant-bg-hover: var(--primary-hover);
+  --variant-fg-hover: var(--primary-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--primary-hover);
+  --variant-fg-active: var(--primary-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-selected: var(--primary);
+  --variant-fg-selected: var(--primary-foreground);
+  --variant-border-selected: transparent;
+  --variant-bg-disabled: var(--disabled);
+  --variant-ring: var(--ring);
+}
+
+[data-variant='outline'] {
+  --variant-bg: transparent;
+  --variant-fg: currentcolor;
+  --variant-border: var(--border);
+  --variant-edge: transparent;
+  --variant-bg-hover: var(--tertiary);
+  --variant-fg-hover: var(--foreground);
+  --variant-border-hover: var(--border);
+  --variant-bg-active: var(--tertiary);
+  --variant-fg-active: var(--foreground);
+  --variant-border-active: var(--border);
+  --variant-bg-selected: var(--muted);
+  --variant-fg-selected: var(--foreground);
+  --variant-border-selected: var(--border);
+  --variant-bg-disabled: transparent;
+  --variant-ring: var(--ring);
+}
+
+[data-variant='secondary'] {
+  --variant-bg: var(--secondary);
+  --variant-fg: var(--foreground);
+  --variant-border: transparent;
+  --variant-edge: var(--edge);
+  --variant-bg-hover: var(--tertiary);
+  --variant-fg-hover: var(--foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--tertiary);
+  --variant-fg-active: var(--foreground);
+  --variant-border-active: transparent;
+  --variant-bg-selected: var(--accent);
+  --variant-fg-selected: var(--foreground);
+  --variant-border-selected: transparent;
+  --variant-bg-disabled: var(--disabled);
+  --variant-ring: var(--ring);
+}
+
+/* A quiet control rests on foreground-muted and steps to foreground with its fill. */
+[data-variant='ghost'] {
+  --variant-bg: transparent;
+  --variant-fg: var(--foreground-muted);
+  --variant-border: transparent;
+  --variant-edge: transparent;
+  --variant-bg-hover: var(--tertiary);
+  --variant-fg-hover: var(--foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--tertiary);
+  --variant-fg-active: var(--foreground);
+  --variant-border-active: transparent;
+  --variant-bg-selected: var(--accent);
+  --variant-fg-selected: var(--foreground);
+  --variant-border-selected: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-ring: var(--ring);
+}
+
+[data-variant='destructive'] {
+  --variant-bg: var(--destructive-subtle);
+  --variant-fg: var(--destructive-subtle-foreground);
+  --variant-border: transparent;
+  --variant-edge: transparent;
+  --variant-bg-hover: var(--destructive);
+  --variant-fg-hover: var(--destructive-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--destructive-hover);
+  --variant-fg-active: var(--destructive-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-selected: var(--destructive-subtle);
+  --variant-fg-selected: var(--destructive-subtle-foreground);
+  --variant-border-selected: transparent;
+  --variant-bg-disabled: var(--disabled);
+  --variant-ring: var(--destructive);
+}
+
+[data-variant='link'] {
+  --variant-bg: transparent;
+  --variant-fg: var(--primary);
+  --variant-border: transparent;
+  --variant-edge: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--primary);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--primary);
+  --variant-border-active: transparent;
+  --variant-bg-selected: transparent;
+  --variant-fg-selected: var(--primary);
+  --variant-border-selected: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-ring: var(--ring);
+}

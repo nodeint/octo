@@ -3,7 +3,7 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  border: var(--border-width-thin) solid transparent;
+  border: var(--border-width-thin) solid;
   border-radius: 9999px;
   background-clip: padding-box;
   font-size: var(--role-body-size);
@@ -17,99 +17,40 @@
   transform: translateY(1px);
 }
 
-/* variants */
-.button[data-variant='default'] {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
+/* Color comes only from the variant (styles/tokens/functional/color/variants.css). */
+.button {
+  background-color: var(--variant-bg);
+  border-color: var(--variant-border);
+  color: var(--variant-fg);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--variant-edge);
+  outline-color: var(--variant-ring);
 }
 
-.button[data-variant='default']:hover {
-  background-color: var(--primary-hover);
+.button:hover {
+  background-color: var(--variant-bg-hover);
+  border-color: var(--variant-border-hover);
+  color: var(--variant-fg-hover);
 }
 
-.button[data-variant='outline'] {
-  border-color: var(--border);
-  background-color: transparent;
+.button:active {
+  background-color: var(--variant-bg-active);
+  border-color: var(--variant-border-active);
+  color: var(--variant-fg-active);
 }
 
-.button[data-variant='outline']:hover {
-  background-color: var(--tertiary);
-  color: var(--foreground);
+.button[aria-expanded='true'],
+.button[aria-pressed='true'] {
+  background-color: var(--variant-bg-selected);
+  border-color: var(--variant-border-selected);
+  color: var(--variant-fg-selected);
 }
 
-.dark .button[data-variant='outline'] {
-  border-color: var(--control);
-}
-
-.dark .button[data-variant='outline']:hover {
-  background-color: var(--secondary);
-}
-
-.button[data-variant='outline'][aria-expanded='true'] {
-  background-color: var(--muted);
-  color: var(--foreground);
-}
-
-.button[data-variant='secondary'] {
-  background-color: var(--secondary);
-  color: var(--foreground);
-  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
-}
-
-.button[data-variant='secondary']:hover {
-  background-color: var(--tertiary);
-}
-
-.button[data-variant='secondary'][aria-expanded='true'] {
-  background-color: var(--accent);
-}
-
-/* A quiet control rests on foreground-muted and steps to foreground with its fill. */
-.button[data-variant='ghost'] {
-  color: var(--foreground-muted);
-}
-
-.button[data-variant='ghost']:hover,
-.button[data-variant='ghost']:active {
-  background-color: var(--tertiary);
-  color: var(--foreground);
-}
-
-.button[data-variant='ghost'][aria-expanded='true'],
-.button[data-variant='ghost'][aria-pressed='true'] {
-  background-color: var(--accent);
-  color: var(--foreground);
-}
-
-.button[data-variant='destructive'] {
-  background-color: var(--destructive-subtle);
-  color: var(--destructive-subtle-foreground);
-}
-
-.button[data-variant='destructive']:hover {
-  background-color: var(--destructive);
-  color: var(--destructive-foreground);
-}
-
-.button[data-variant='destructive']:active {
-  background-color: var(--destructive-hover);
-}
-
-.button[data-variant='destructive']:focus-visible {
-  outline-color: var(--destructive);
-}
-
-.button[data-variant='default']:disabled,
-.button[data-variant='default'][aria-disabled='true'],
-.button[data-variant='secondary']:disabled,
-.button[data-variant='secondary'][aria-disabled='true'],
-.button[data-variant='destructive']:disabled,
-.button[data-variant='destructive'][aria-disabled='true'] {
-  background-color: var(--disabled);
+.button:disabled,
+.button[aria-disabled='true'] {
+  background-color: var(--variant-bg-disabled);
 }
 
 .button[data-variant='link'] {
-  color: var(--primary);
   text-underline-offset: 4px;
 }
 
