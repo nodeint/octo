@@ -2,7 +2,6 @@
  * Variants: the app-wide color sets. A component never names a color; it paints from --variant-* and
  * the element's data-variant picks the set. Every variant defines every slot, so a component can use any of them.
  *   bg / fg / border          at rest
- *   edge                      hairline drawn outside the border box (box-shadow color)
  *   *-hover, *-active         pointer states; a variant with no distinct state repeats its rest value
  *   *-selected                open or on (aria-expanded, aria-pressed)
  *   bg-disabled               fill of a disabled control
@@ -16,7 +15,6 @@
   --variant-bg: var(--primary);
   --variant-fg: var(--primary-foreground);
   --variant-border: transparent;
-  --variant-edge: transparent;
   --variant-bg-hover: var(--primary-hover);
   --variant-fg-hover: var(--primary-foreground);
   --variant-border-hover: transparent;
@@ -40,7 +38,6 @@
   --variant-bg: transparent;
   --variant-fg: currentcolor;
   --variant-border: var(--border);
-  --variant-edge: transparent;
   --variant-bg-hover: var(--tertiary);
   --variant-fg-hover: var(--foreground);
   --variant-border-hover: var(--border);
@@ -64,7 +61,6 @@
   --variant-bg: var(--secondary);
   --variant-fg: var(--foreground);
   --variant-border: transparent;
-  --variant-edge: var(--edge);
   --variant-bg-hover: var(--tertiary);
   --variant-fg-hover: var(--foreground);
   --variant-border-hover: transparent;
@@ -89,7 +85,6 @@
   --variant-bg: transparent;
   --variant-fg: var(--foreground-muted);
   --variant-border: transparent;
-  --variant-edge: transparent;
   --variant-bg-hover: var(--tertiary);
   --variant-fg-hover: var(--foreground);
   --variant-border-hover: transparent;
@@ -113,7 +108,6 @@
   --variant-bg: var(--destructive-subtle);
   --variant-fg: var(--destructive-subtle-foreground);
   --variant-border: transparent;
-  --variant-edge: transparent;
   --variant-bg-hover: var(--destructive);
   --variant-fg-hover: var(--destructive-foreground);
   --variant-border-hover: transparent;
@@ -137,7 +131,6 @@
   --variant-bg: transparent;
   --variant-fg: var(--primary);
   --variant-border: transparent;
-  --variant-edge: transparent;
   --variant-bg-hover: transparent;
   --variant-fg-hover: var(--primary);
   --variant-border-hover: transparent;
@@ -162,7 +155,6 @@
   --variant-bg: var(--field);
   --variant-fg: currentcolor;
   --variant-border: var(--control);
-  --variant-edge: transparent;
   --variant-bg-hover: var(--field-hover);
   --variant-fg-hover: currentcolor;
   --variant-border-hover: var(--control);

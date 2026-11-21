@@ -60,7 +60,6 @@
   background-color: var(--variant-bg);
   border-color: var(--variant-border);
   color: var(--variant-fg);
-  box-shadow: 0 0 0 var(--border-width-thin) var(--variant-edge);
   outline-color: var(--variant-ring);
 }
 
