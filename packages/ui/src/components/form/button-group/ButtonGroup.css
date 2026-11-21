@@ -9,7 +9,7 @@
   width: fit-content;
 }
 
-.button-group > *:focus-visible {
+.button-group > *:is(:focus-visible, [aria-invalid='true']) {
   position: relative;
   z-index: var(--z-raised);
 }
@@ -40,6 +40,21 @@
 .button-group[data-orientation='horizontal'] > [data-slot] ~ [data-slot] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+/*
+ * Neighbors share one border: each keeps all four edges and the later one overlaps the earlier by a
+ * border width. A focused or invalid child is raised above, so it still shows every edge. A nested
+ * group has a gap instead, and a separator is its own join.
+ */
+.button-group[data-orientation='horizontal']
+  > [data-slot]
+  ~ [data-slot]:not([data-slot='button-group'], [data-slot='button-group-separator']) {
+  margin-left: calc(var(--border-width-thin) * -1);
+}
+
+.button-group[data-orientation='horizontal'] > [data-slot='button-group-separator'] + [data-slot][data-slot] {
+  margin-left: 0;
   border-left-width: 0;
 }
 
@@ -73,8 +88,24 @@
   border-bottom-right-radius: var(--radius-action-block);
 }
 
-.button-group[data-orientation='vertical'] > [data-slot] ~ [data-slot] {
+.button-group[data-orientation='vertical']
+  > [data-slot]
+  ~ [data-slot]:not([data-slot='button-group'], [data-slot='button-group-separator']) {
+  margin-top: calc(var(--border-width-thin) * -1);
+}
+
+.button-group[data-orientation='vertical'] > [data-slot='button-group-separator'] + [data-slot][data-slot] {
+  margin-top: 0;
   border-top-width: 0;
+}
+
+/*
+ * secondary has no visible border, so its transparent edges are the divider. The overlap above
+ * still applies, which keeps the row as long as outline; padding-box keeps each fill off its edge,
+ * so the page behind shows as a border-wide gap between neighbors.
+ */
+.button-group[data-group-variant='secondary'] > :is(input, [data-slot='select-trigger']) {
+  background-clip: padding-box;
 }
 
 .button-group-text {
@@ -82,7 +113,7 @@
   align-items: center;
   gap: var(--space-sm);
   padding-inline: var(--space-md);
-  border: var(--border-width-thin) solid var(--border);
+  border: var(--border-width-thin) solid var(--group-action-border, var(--border));
   border-radius: var(--radius-action-md);
   font-size: var(--role-label-size);
   line-height: var(--role-label-leading);
@@ -104,10 +135,10 @@
 
 .button-group-separator[data-orientation='horizontal'] {
   width: auto;
-  margin-inline: 1px;
+  margin-inline: var(--border-width-thin);
 }
 
 .button-group-separator[data-orientation='vertical'] {
   height: auto;
-  margin-block: 1px;
+  margin-block: var(--border-width-thin);
 }

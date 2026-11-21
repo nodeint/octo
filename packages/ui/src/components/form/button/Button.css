@@ -55,31 +55,34 @@
   transform: translateY(1px);
 }
 
-/* Color comes only from the variant (styles/tokens/functional/color/variants.css). */
+/*
+ * Color comes only from the variant (styles/tokens/functional/color/variants.css),
+ * or from a button-group's data-group-variant (group-variants.css), which wins for the identity slots.
+ */
 .button {
-  background-color: var(--variant-bg);
-  border-color: var(--variant-border);
-  color: var(--variant-fg);
+  background-color: var(--group-action-bg, var(--variant-bg));
+  border-color: var(--group-action-border, var(--variant-border));
+  color: var(--group-action-fg, var(--variant-fg));
   outline-color: var(--variant-ring);
 }
 
 .button:hover {
-  background-color: var(--variant-bg-hover);
-  border-color: var(--variant-border-hover);
-  color: var(--variant-fg-hover);
+  background-color: var(--group-action-bg-hover, var(--variant-bg-hover));
+  border-color: var(--group-action-border-hover, var(--variant-border-hover));
+  color: var(--group-action-fg-hover, var(--variant-fg-hover));
 }
 
 .button:active {
-  background-color: var(--variant-bg-active);
-  border-color: var(--variant-border-active);
-  color: var(--variant-fg-active);
+  background-color: var(--group-action-bg-active, var(--variant-bg-active));
+  border-color: var(--group-action-border-active, var(--variant-border-active));
+  color: var(--group-action-fg-active, var(--variant-fg-active));
 }
 
 .button[aria-expanded='true'],
 .button[aria-pressed='true'] {
-  background-color: var(--variant-bg-selected);
-  border-color: var(--variant-border-selected);
-  color: var(--variant-fg-selected);
+  background-color: var(--group-action-bg-selected, var(--variant-bg-selected));
+  border-color: var(--group-action-border-selected, var(--variant-border-selected));
+  color: var(--group-action-fg-selected, var(--variant-fg-selected));
 }
 
 /* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
@@ -98,8 +101,8 @@
 .button:disabled,
 .button[aria-disabled='true'] {
   pointer-events: none;
-  background-color: var(--variant-bg-disabled);
-  border-color: var(--variant-border-disabled);
+  background-color: var(--group-action-bg-disabled, var(--variant-bg-disabled));
+  border-color: var(--group-action-border-disabled, var(--variant-border-disabled));
   color: var(--variant-fg-disabled);
 }
 

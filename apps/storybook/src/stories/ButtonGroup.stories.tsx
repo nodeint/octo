@@ -66,6 +66,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     orientation: { control: 'inline-radio', options: ['horizontal', 'vertical'] },
+    variant: { control: 'inline-radio', options: ['outline', 'secondary', 'ghost'] },
   },
 } satisfies Meta<typeof ButtonGroup>;
 
@@ -474,6 +475,47 @@ export const WithSelect: Story = {
       </ButtonGroup>
     );
   },
+};
+
+export const Variants: Story = {
+  parameters: {
+    docs: {
+      source: { type: 'dynamic' },
+      description: {
+        story:
+          'A `variant` on the group sets the fill, text and border of the fields and actions inside, over their own variant. Focus, invalid and disabled paint stay with the child.',
+      },
+    },
+  },
+  render: () => (
+    <Stack gap="md">
+      {(['outline', 'secondary', 'ghost'] as const).map((variant) => (
+        <ButtonGroup key={variant} variant={variant}>
+          <Select defaultValue="$">
+            <SelectTrigger aria-label="Currency">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {CURRENCIES.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.value} {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          <Input placeholder="10.00" aria-label="Amount" />
+          <Button shape="icon" aria-label="Send">
+            <Icon name="arrow-right" />
+          </Button>
+          <Button shape="icon" aria-label="Clear" disabled>
+            <Icon name="check" />
+          </Button>
+        </ButtonGroup>
+      ))}
+    </Stack>
+  ),
 };
 
 export const WithPopover: Story = {

@@ -27,10 +27,10 @@
   height: var(--field-height);
   padding-inline: calc(var(--field-px) - var(--border-width-thin));
   gap: var(--field-gap);
-  border: var(--border-width-thin) solid var(--variant-border);
+  border: var(--border-width-thin) solid var(--group-field-border, var(--variant-border));
   border-radius: var(--field-radius);
-  background-color: var(--variant-bg);
-  color: var(--variant-fg);
+  background-color: var(--group-field-bg, var(--variant-bg));
+  color: var(--group-field-fg, var(--variant-fg));
   font-size: var(--role-field-size);
   line-height: var(--role-field-leading);
   font-weight: var(--role-field-weight);
@@ -53,8 +53,8 @@
 }
 
 .select-trigger:hover {
-  background-color: var(--variant-bg-hover);
-  color: var(--variant-fg-hover);
+  background-color: var(--group-field-bg-hover, var(--variant-bg-hover));
+  color: var(--group-field-fg-hover, var(--variant-fg-hover));
 }
 
 .select-trigger:focus-visible {
@@ -72,8 +72,8 @@
 .select-trigger:disabled,
 .select-trigger[data-disabled] {
   pointer-events: none;
-  border-color: var(--variant-border-disabled);
-  background-color: var(--variant-bg-disabled);
+  border-color: var(--group-field-border-disabled, var(--variant-border-disabled));
+  background-color: var(--group-field-bg-disabled, var(--variant-bg-disabled));
   color: var(--variant-fg-disabled);
 }
 

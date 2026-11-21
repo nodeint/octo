@@ -5,19 +5,27 @@ import { cn } from '../../../lib/utils';
 import { Separator } from '../../layout/separator/Separator';
 
 type ButtonGroupOrientation = 'horizontal' | 'vertical'
+type ButtonGroupVariant = 'outline' | 'secondary' | 'ghost'
 
 function ButtonGroup({
   className,
   orientation = 'horizontal',
+  variant = 'outline',
   ...props
 }: React.ComponentProps<'div'> & {
   orientation?: ButtonGroupOrientation
+  /**
+   * Sets the identity colors (fill, text, border) of the fields and actions inside, over their own variant.
+   * Focus, invalid and disabled text paint stay with the child. Defaults to outline.
+   */
+  variant?: ButtonGroupVariant
 }): React.JSX.Element {
   return (
     <div
       role="group"
       data-slot="button-group"
       data-orientation={orientation}
+      data-group-variant={variant}
       className={cn('button-group', className)}
       {...props}
     />
@@ -64,4 +72,4 @@ export {
   ButtonGroupSeparator,
   ButtonGroupText,
 };
-export type { ButtonGroupOrientation };
+export type { ButtonGroupOrientation, ButtonGroupVariant };

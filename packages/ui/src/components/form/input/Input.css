@@ -1,9 +1,9 @@
 .input,
 .textarea {
   width: 100%;
-  border: var(--border-width-thin) solid var(--variant-border);
-  background-color: var(--variant-bg);
-  color: var(--variant-fg);
+  border: var(--border-width-thin) solid var(--group-field-border, var(--variant-border));
+  background-color: var(--group-field-bg, var(--variant-bg));
+  color: var(--group-field-fg, var(--variant-fg));
   font-size: var(--role-field-size);
   line-height: var(--role-field-leading);
   font-weight: var(--role-field-weight);
