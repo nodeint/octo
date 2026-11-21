@@ -31,7 +31,7 @@ function Button({
       {...props}
       data-slot="button"
       data-variant={variant}
-      data-size={size}
+      data-action-size={size}
       data-shape={shape}
       className={cn('button', className)}
     />

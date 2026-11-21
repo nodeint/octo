@@ -60,7 +60,7 @@ function ToolbarButton({
     <ToolbarPrimitive.Button
       data-slot="toolbar-button"
       data-variant={variant}
-      data-size={size}
+      data-action-size={size}
       data-shape={shape}
       className={cn('button toolbar-button', className)}
       focusableWhenDisabled={false}
@@ -93,7 +93,7 @@ function ToolbarToggle({
       type="button"
       data-slot="toolbar-toggle"
       data-variant={variant}
-      data-size={size}
+      data-action-size={size}
       data-shape={shape}
       data-pressed={pressed ? 'true' : undefined}
       aria-pressed={pressed}
@@ -126,7 +126,7 @@ function ToolbarInput({
   return (
     <ToolbarPrimitive.Input
       data-slot="toolbar-input"
-      data-size="sm"
+      data-field-size="sm"
       className={cn('toolbar-input input', className)}
       {...props}
     />

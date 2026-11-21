@@ -41,7 +41,7 @@ function DropdownMenuTrigger({
       nativeButton={nativeButton}
       {...(nativeButton && {
         'data-variant': variant,
-        'data-size': size,
+        'data-action-size': size,
         'data-shape': shape,
       })}
       className={nativeButton ? cn('button', className) : className}

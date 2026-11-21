@@ -1,0 +1,43 @@
+/*
+ * Action size: the app-wide size sets of the actions (button, toggle, toolbar button).
+ * An action never names a step; it reads --action-* and its data-action-size picks the set.
+ * data-action-size is separate from data-size, which other components use for their own scales
+ * (dialog width, card padding, item rows). Text fields have their own sets in field-size.css. Every step defines every slot.
+ *   height          row height, and the side of an icon-only square
+ *   px              inline inset, before the border is taken off
+ *   gap             space between a glyph and its label
+ *   icon            glyph beside a label
+ *   radius          corner of an action (--radius-action-*)
+ * The steps and their raw values live in control.css, the shared scale, and radius.css.
+ */
+[data-action-size='xs'] {
+  --action-height: var(--control-height-xs);
+  --action-px: var(--control-px-xs);
+  --action-gap: var(--control-gap-xs);
+  --action-icon: var(--control-icon-xs);
+  --action-radius: var(--radius-action-xs);
+}
+
+[data-action-size='sm'] {
+  --action-height: var(--control-height-sm);
+  --action-px: var(--control-px-sm);
+  --action-gap: var(--control-gap-sm);
+  --action-icon: var(--control-icon-sm);
+  --action-radius: var(--radius-action-sm);
+}
+
+[data-action-size='md'] {
+  --action-height: var(--control-height-md);
+  --action-px: var(--control-px-md);
+  --action-gap: var(--control-gap-md);
+  --action-icon: var(--control-icon-md);
+  --action-radius: var(--radius-action-md);
+}
+
+[data-action-size='lg'] {
+  --action-height: var(--control-height-lg);
+  --action-px: var(--control-px-lg);
+  --action-gap: var(--control-gap-lg);
+  --action-icon: var(--control-icon-md);
+  --action-radius: var(--radius-action-lg);
+}

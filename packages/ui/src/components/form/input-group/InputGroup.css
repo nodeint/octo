@@ -13,9 +13,9 @@
   align-items: center;
   width: 100%;
   min-width: 0;
-  height: var(--control-height-md);
+  height: var(--field-height);
   border: var(--border-width-thin) solid var(--control);
-  border-radius: 9999px;
+  border-radius: var(--field-radius);
   outline: none;
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--default-transition-duration);
@@ -38,13 +38,13 @@
   height: auto;
   flex-direction: column;
   align-items: stretch;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-field-block);
 }
 
 .input-group:has(> textarea) {
   height: auto;
   align-items: stretch;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-field-block);
 }
 
 .dark .input-group {

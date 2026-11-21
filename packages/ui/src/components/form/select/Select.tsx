@@ -52,7 +52,7 @@ function SelectTrigger({
   return (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
-      data-size={size}
+      data-field-size={size}
       data-width={width}
       data-variant={variant}
       className={cn('select-trigger', className)}

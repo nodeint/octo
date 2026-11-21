@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   border: var(--border-width-thin) solid;
-  border-radius: 9999px;
+  border-radius: var(--radius-action-md);
   background-clip: padding-box;
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
@@ -110,76 +110,49 @@
   text-decoration-line: underline;
 }
 
-/* A link has no fill, so its text sits on the content edge. The extra [data-size] outranks the row size. */
-.button[data-variant='link'][data-shape='default'][data-size] {
+/* A link has no fill, so its text sits on the content edge. The extra [data-action-size] outranks the row size. */
+.button[data-variant='link'][data-shape='default'][data-action-size] {
   padding-inline: 0;
   border-inline-width: 0;
 }
 
-/* sizes: a shape (row or icon square) and a size from the control scale */
-.button[data-shape='default'][data-size='xs'] {
-  height: var(--control-height-xs);
-  padding-inline: calc(var(--control-px-xs) - var(--border-width-thin));
-  gap: var(--control-gap-xs);
+/* sizes: a shape (row or icon square) and a size set from action-size.css */
+.button[data-action-size] {
+  border-radius: var(--action-radius);
+}
+
+.button[data-action-size] svg:not([class*='size-']) {
+  width: var(--action-icon);
+  height: var(--action-icon);
+}
+
+.button[data-shape='default'][data-action-size] {
+  height: var(--action-height);
+  padding-inline: calc(var(--action-px) - var(--border-width-thin));
+  gap: var(--action-gap);
+}
+
+.button[data-shape='icon'][data-action-size] {
+  width: var(--action-height);
+  height: var(--action-height);
+}
+
+/* An icon-only square keeps the md glyph from sm up; only xs steps down. */
+.button[data-shape='icon'][data-action-size='sm'] svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+}
+
+.button[data-shape='default'][data-action-size='xs'] {
   font-size: var(--role-body-sm-size);
   line-height: var(--role-body-sm-leading);
   font-weight: var(--role-body-sm-weight);
 }
 
-.button[data-shape='default'][data-size='sm'] {
-  height: var(--control-height-sm);
-  padding-inline: calc(var(--control-px-sm) - var(--border-width-thin));
-  gap: var(--control-gap-sm);
+[data-slot='button-group'] .button[data-action-size='xs'] {
+  border-radius: var(--radius-action-xs);
 }
 
-.button[data-shape='default'][data-size='md'] {
-  height: var(--control-height-md);
-  padding-inline: calc(var(--control-px-md) - var(--border-width-thin));
-  gap: var(--control-gap-md);
-}
-
-.button[data-shape='default'][data-size='lg'] {
-  height: var(--control-height-lg);
-  padding-inline: calc(var(--control-px-lg) - var(--border-width-thin));
-  gap: var(--control-gap-lg);
-}
-
-.button[data-shape='default'][data-size='xs'] svg:not([class*='size-']) {
-  width: var(--control-icon-xs);
-  height: var(--control-icon-xs);
-}
-
-.button[data-shape='default'][data-size='sm'] svg:not([class*='size-']) {
-  width: var(--control-icon-sm);
-  height: var(--control-icon-sm);
-}
-
-.button[data-shape='icon'][data-size='xs'] {
-  width: var(--control-height-xs);
-  height: var(--control-height-xs);
-}
-
-.button[data-shape='icon'][data-size='sm'] {
-  width: var(--control-height-sm);
-  height: var(--control-height-sm);
-}
-
-.button[data-shape='icon'][data-size='md'] {
-  width: var(--control-height-md);
-  height: var(--control-height-md);
-}
-
-.button[data-shape='icon'][data-size='lg'] {
-  width: var(--control-height-lg);
-  height: var(--control-height-lg);
-}
-
-.button[data-shape='icon'][data-size='xs'] svg:not([class*='size-']) {
-  width: var(--control-icon-xs);
-  height: var(--control-icon-xs);
-}
-
-[data-slot='button-group'] .button[data-size='xs'],
-[data-slot='button-group'] .button[data-size='sm'] {
-  border-radius: 9999px;
+[data-slot='button-group'] .button[data-action-size='sm'] {
+  border-radius: var(--radius-action-sm);
 }

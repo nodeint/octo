@@ -45,7 +45,7 @@ function ToggleGroup<Value extends string = string>({
     <ToggleGroupPrimitive
       data-slot="toggle-group"
       data-variant={variant}
-      data-size={size}
+      data-action-size={size}
       data-orientation={orientation}
       data-wrap={wrap ? '' : undefined}
       className={cn('toggle-group', className)}
@@ -84,7 +84,7 @@ function ToggleGroupItem({
     <TogglePrimitive
       data-slot="toggle-group-item"
       data-variant={resolvedVariant}
-      data-size={resolvedSize}
+      data-action-size={resolvedSize}
       data-shape={resolvedShape}
       className={cn('toggle toggle-group-item', className)}
       {...props}

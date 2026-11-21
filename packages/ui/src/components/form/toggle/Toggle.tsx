@@ -30,7 +30,7 @@ function Toggle({
       {...props}
       data-slot="toggle"
       data-variant={variant}
-      data-size={size}
+      data-action-size={size}
       data-shape={shape}
       data-fill-icon={fillIcon ? '' : undefined}
       className={cn('toggle', className)}

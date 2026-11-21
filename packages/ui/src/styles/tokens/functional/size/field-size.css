@@ -1,0 +1,44 @@
+/*
+ * Field size: the app-wide size sets of the text fields (input, textarea, select trigger, input group, combobox chips).
+ * A field never names a step; it reads --field-* and its data-field-size picks the set.
+ * Separate from data-action-size (buttons, toggles) so a field can change height or inset without moving a button.
+ * Today both read the shared control scale (control.css), so a field and an action of one size stand level.
+ *   height          row height; a multi-line field uses it as its minimum
+ *   px              inline inset, before the border is taken off
+ *   gap             space between a glyph and the text
+ *   radius          corner of a single-line field (--radius-field-*)
+ * A multi-line field takes --radius-field-block instead. The steps and their raw values live in control.css and radius.css.
+ */
+[data-field-size='xs'] {
+  --field-height: var(--control-height-xs);
+  --field-px: var(--control-px-xs);
+  --field-gap: var(--control-gap-xs);
+  --field-radius: var(--radius-field-xs);
+}
+
+[data-field-size='sm'] {
+  --field-height: var(--control-height-sm);
+  --field-px: var(--control-px-sm);
+  --field-gap: var(--control-gap-sm);
+  --field-radius: var(--radius-field-sm);
+}
+
+/*
+ * md is the default: a field with no attribute still gets it. A field inside an input group is the exception:
+ * it carries no attribute and inherits the group's set.
+ */
+[data-field-size='md'],
+.input:not([data-field-size], .input-group-control),
+.textarea:not([data-field-size], .input-group-control-textarea) {
+  --field-height: var(--control-height-md);
+  --field-px: var(--control-px-md);
+  --field-gap: var(--control-gap-md);
+  --field-radius: var(--radius-field-md);
+}
+
+[data-field-size='lg'] {
+  --field-height: var(--control-height-lg);
+  --field-px: var(--control-px-lg);
+  --field-gap: var(--control-gap-lg);
+  --field-radius: var(--radius-field-lg);
+}

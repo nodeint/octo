@@ -24,7 +24,7 @@ export const Sizes: Story = {
   render: (args) => (
     <Inline>
       {SIZES.map((size) => (
-        <Input key={size} {...args} data-size={size} defaultValue={size} />
+        <Input key={size} {...args} data-field-size={size} defaultValue={size} />
       ))}
     </Inline>
   ),

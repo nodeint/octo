@@ -6,7 +6,7 @@
 }
 
 /* Size lives on the rows (Base UI data-size), not the group host. Match the row slot only:
-   a Button or Badge inside a row also carries data-size. */
+   a Badge inside a row also carries data-size. */
 .item-group:has([data-slot='item'][data-size='sm']) {
   gap: var(--space-sm);
 }

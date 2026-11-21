@@ -26,15 +26,15 @@
   width: fit-content;
 }
 
-/* End-caps match Button (full radius): a stadium join, not rounded-lg. */
+/* End-caps match Button (--radius-action-md): a stadium join while the set is full. */
 .button-group[data-orientation='horizontal'] > [data-slot] {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 .button-group[data-orientation='horizontal'] > [data-slot]:not(:has(~ [data-slot])) {
-  border-top-right-radius: 9999px;
-  border-bottom-right-radius: 9999px;
+  border-top-right-radius: var(--radius-action-md);
+  border-bottom-right-radius: var(--radius-action-md);
 }
 
 .button-group[data-orientation='horizontal'] > [data-slot] ~ [data-slot] {
@@ -53,8 +53,8 @@
 }
 
 .button-group[data-orientation='vertical'] > [data-slot]:not(:has(~ [data-slot])) {
-  border-bottom-left-radius: 9999px;
-  border-bottom-right-radius: 9999px;
+  border-bottom-left-radius: var(--radius-action-md);
+  border-bottom-right-radius: var(--radius-action-md);
 }
 
 .button-group[data-orientation='vertical'] > [data-slot] ~ [data-slot] {

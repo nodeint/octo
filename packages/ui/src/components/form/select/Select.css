@@ -24,11 +24,11 @@
   width: fit-content;
   max-width: 100%;
   min-width: 0;
-  height: var(--control-height-md);
-  padding-inline: calc(var(--control-px-md) - var(--border-width-thin));
-  gap: var(--control-gap-md);
+  height: var(--field-height);
+  padding-inline: calc(var(--field-px) - var(--border-width-thin));
+  gap: var(--field-gap);
   border: var(--border-width-thin) solid var(--variant-border);
-  border-radius: 9999px;
+  border-radius: var(--field-radius);
   background-color: var(--variant-bg);
   color: var(--variant-fg);
   font-size: var(--role-field-size);
@@ -84,24 +84,6 @@
 .select-trigger svg:not([class*='size-']) {
   width: var(--control-icon-md);
   height: var(--control-icon-md);
-}
-
-.select-trigger[data-size='xs'] {
-  height: var(--control-height-xs);
-  padding-inline: calc(var(--control-px-xs) - var(--border-width-thin));
-  gap: var(--control-gap-xs);
-}
-
-.select-trigger[data-size='sm'] {
-  height: var(--control-height-sm);
-  padding-inline: calc(var(--control-px-sm) - var(--border-width-thin));
-  gap: var(--control-gap-sm);
-}
-
-.select-trigger[data-size='lg'] {
-  height: var(--control-height-lg);
-  padding-inline: calc(var(--control-px-lg) - var(--border-width-thin));
-  gap: var(--control-gap-lg);
 }
 
 .select-trigger[data-width='full'] {

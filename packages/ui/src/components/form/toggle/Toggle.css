@@ -60,66 +60,32 @@
   height: var(--control-icon-md);
 }
 
-/* sizes: the same shape and size scale as Button, and every size keeps the full radius */
-.toggle[data-shape='default'][data-size='xs'] {
-  height: var(--control-height-xs);
-  padding-inline: calc(var(--control-px-xs) - var(--border-width-thin));
-  gap: var(--control-gap-xs);
+/* sizes: the same shape and size sets as Button (action-size.css) */
+.toggle[data-action-size] {
+  border-radius: var(--action-radius);
 }
 
-.toggle[data-shape='default'][data-size='sm'] {
-  height: var(--control-height-sm);
-  padding-inline: calc(var(--control-px-sm) - var(--border-width-thin));
-  gap: var(--control-gap-sm);
+.toggle[data-action-size] svg:not([class*='size-']) {
+  width: var(--action-icon);
+  height: var(--action-icon);
 }
 
-.toggle[data-shape='default'][data-size='md'] {
-  height: var(--control-height-md);
-  padding-inline: calc(var(--control-px-md) - var(--border-width-thin));
-  gap: var(--control-gap-md);
+.toggle[data-shape='default'][data-action-size] {
+  height: var(--action-height);
+  padding-inline: calc(var(--action-px) - var(--border-width-thin));
+  gap: var(--action-gap);
 }
 
-.toggle[data-shape='default'][data-size='lg'] {
-  height: var(--control-height-lg);
-  padding-inline: calc(var(--control-px-lg) - var(--border-width-thin));
-  gap: var(--control-gap-lg);
-}
-
-.toggle[data-size='xs'] svg:not([class*='size-']) {
-  width: var(--control-icon-xs);
-  height: var(--control-icon-xs);
-}
-
-.toggle[data-size='sm'] svg:not([class*='size-']) {
-  width: var(--control-icon-sm);
-  height: var(--control-icon-sm);
-}
-
-.toggle[data-shape='icon'][data-size='xs'] {
-  width: var(--control-height-xs);
-  height: var(--control-height-xs);
-}
-
-.toggle[data-shape='icon'][data-size='sm'] {
-  width: var(--control-height-sm);
-  height: var(--control-height-sm);
-}
-
-.toggle[data-shape='icon'][data-size='md'] {
-  width: var(--control-height-md);
-  height: var(--control-height-md);
-}
-
-.toggle[data-shape='icon'][data-size='lg'] {
-  width: var(--control-height-lg);
-  height: var(--control-height-lg);
+.toggle[data-shape='icon'][data-action-size] {
+  width: var(--action-height);
+  height: var(--action-height);
 }
 
 /*
  * A color well. The disc stays in the plugin. Selection is a ring.
  * It follows the size rules above, which would otherwise keep the pill box.
  */
-.toggle[data-variant='swatch'][data-size] {
+.toggle[data-variant='swatch'][data-action-size] {
   width: 100%;
   min-width: 0;
   height: auto;
@@ -131,13 +97,13 @@
   box-shadow: none;
 }
 
-.toggle[data-variant='swatch'][data-size]:hover {
+.toggle[data-variant='swatch'][data-action-size]:hover {
   background-color: transparent;
   box-shadow: 0 0 0 var(--border-width-thick) var(--primary);
 }
 
-.toggle[data-variant='swatch'][data-size][aria-pressed='true'],
-.toggle[data-variant='swatch'][data-size][data-pressed] {
+.toggle[data-variant='swatch'][data-action-size][aria-pressed='true'],
+.toggle[data-variant='swatch'][data-action-size][data-pressed] {
   background-color: transparent;
   color: var(--foreground);
   box-shadow: 0 0 0 var(--border-width-thick) var(--foreground);

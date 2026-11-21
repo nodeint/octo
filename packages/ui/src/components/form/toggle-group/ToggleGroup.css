@@ -7,9 +7,9 @@
   border-radius: var(--radius-lg);
 }
 
-.toggle-group[data-size='sm'] {
+.toggle-group[data-action-size='sm'] {
   gap: var(--space-xs);
-  border-radius: 9999px;
+  border-radius: var(--action-radius);
 }
 
 .toggle-group[data-wrap] {

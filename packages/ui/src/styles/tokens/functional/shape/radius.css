@@ -1,6 +1,11 @@
 /**
- * Corner radius: three steps. rounded-sm · rounded-md · rounded-lg, and rounded-full.
- * rounded-overlay is the corner of every floating panel (menu, select, popover, tooltip).
+ * Corner radius, two layers.
+ * Scale: --radius-sm · --radius-md · --radius-lg · --radius-full. Plain steps with no meaning.
+ * --radius-overlay is the corner of every floating panel (menu, select, popover, tooltip).
+ * Sets: a component reads its set and never the scale, so one set decides the shape of a whole family.
+ *   --radius-field-*    text fields: input, select trigger. xs … lg follow --control-height-*
+ *   --radius-field-block  a field that grows to several lines (textarea, group with a block addon, chips); one step, not per size
+ *   --radius-action-*   actions: button, toggle, button group. xs … lg follow --control-height-*
  * Values come from Primer; `primer-reference.test.ts` checks them. A theme sets --radius-*.
  */
 
@@ -8,5 +13,18 @@
   --radius-sm: 0.1875rem; /* primer: --borderRadius-small */
   --radius-md: 0.375rem; /* primer: --borderRadius-medium */
   --radius-lg: 0.75rem; /* primer: --borderRadius-large */
+  --radius-full: 9999px; /* primer: --borderRadius-full */
   --radius-overlay: 0.375rem; /* primer: --overlay-borderRadius */
+
+  --radius-field-xs: var(--radius-full);
+  --radius-field-sm: var(--radius-full);
+  --radius-field-md: var(--radius-full);
+  --radius-field-lg: var(--radius-full);
+
+  --radius-field-block: var(--radius-lg);
+
+  --radius-action-xs: var(--radius-full);
+  --radius-action-sm: var(--radius-full);
+  --radius-action-md: var(--radius-full);
+  --radius-action-lg: var(--radius-full);
 }

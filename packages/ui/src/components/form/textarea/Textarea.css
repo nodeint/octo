@@ -3,6 +3,6 @@
   field-sizing: content;
   min-height: var(--input-min-height);
   padding-block: var(--space-sm);
-  padding-inline: var(--control-px-md);
-  border-radius: var(--radius-lg);
+  padding-inline: var(--field-px);
+  border-radius: var(--radius-field-block);
 }

@@ -8,6 +8,7 @@ import { Textarea } from '../../form/textarea/Textarea';
 type InputGroupAddonAlign = 'inline-start' | 'inline-end' | 'block-start' | 'block-end'
 type InputGroupVariant = 'outline' | 'bare'
 type InputGroupButtonSize = 'xs' | 'sm' | 'md'
+type InputGroupSize = 'xs' | 'sm' | 'md' | 'lg'
 
 function isClickInsideButton(target: EventTarget | null): boolean {
   return target instanceof HTMLElement && target.closest('button') !== null;
@@ -23,6 +24,7 @@ function focusGroupedInput(event: React.MouseEvent<HTMLDivElement>) {
 function InputGroup({
   className,
   variant = 'outline',
+  size = 'md',
   ...props
 }: React.ComponentProps<'div'> & {
   /**
@@ -30,11 +32,14 @@ function InputGroup({
    * bare = no border, fill, or focus paint, for a group a parent surface already frames.
    */
   variant?: InputGroupVariant
+  /** One step of the control scale. The input or textarea inside takes it too. */
+  size?: InputGroupSize
 }): React.JSX.Element {
   return (
     <div
       data-slot="input-group"
       data-variant={variant}
+      data-field-size={size}
       role="group"
       className={cn('input-group', className)}
       {...props}
@@ -98,6 +103,7 @@ function InputGroupInput({
   return (
     <Input
       data-slot="input-group-control"
+      data-field-size={undefined}
       className={cn('input-group-control', className)}
       {...props}
     />
@@ -111,6 +117,7 @@ function InputGroupTextarea({
   return (
     <Textarea
       data-slot="input-group-control"
+      data-field-size={undefined}
       className={cn('input-group-control-textarea', className)}
       {...props}
     />
@@ -125,4 +132,4 @@ export {
   InputGroupText,
   InputGroupTextarea,
 };
-export type { InputGroupAddonAlign, InputGroupButtonSize };
+export type { InputGroupAddonAlign, InputGroupButtonSize, InputGroupSize };

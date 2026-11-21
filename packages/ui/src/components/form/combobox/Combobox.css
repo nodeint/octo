@@ -139,11 +139,11 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  min-height: var(--control-height-md);
-  padding: var(--space-xs) var(--control-px-md);
-  gap: var(--control-gap-md);
+  min-height: var(--field-height);
+  padding: var(--space-xs) var(--field-px);
+  gap: var(--field-gap);
   border: var(--border-width-thin) solid var(--control);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-field-block);
   background-color: transparent;
   background-clip: padding-box;
   font-size: var(--role-body-size);
