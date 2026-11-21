@@ -29,7 +29,9 @@ const BOOLEAN_NAME_OPTIONS = {
 
 const GITIGNORE_FILES = [
   '.gitignore',
-  'app/.gitignore'
+  'e2e/.gitignore',
+  'apps/*/.gitignore',
+  'packages/*/.gitignore'
 ].map(
   (file) => fileURLToPath(new URL(file, import.meta.url)),
 );
