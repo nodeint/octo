@@ -1,49 +1,10 @@
 .toggle {
-  display: inline-flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border: var(--border-width-thin) solid transparent;
+  border-width: var(--border-width-thin);
+  border-style: solid;
   border-radius: 9999px;
-  background-clip: padding-box;
   font-size: var(--role-action-size);
   line-height: var(--role-action-leading);
   font-weight: var(--role-action-weight);
-  white-space: nowrap;
-}
-
-/*
- * Color comes only from the variant (styles/tokens/functional/color/variants.css), as for Button,
- * or from a toggle-group's data-group-variant (ButtonGroup.css), which wins for the identity slots.
- */
-.toggle {
-  background-color: var(--group-action-bg, var(--variant-bg));
-  border-color: var(--group-action-border, var(--variant-border));
-  color: var(--group-action-fg, var(--variant-fg));
-}
-
-.toggle:hover {
-  background-color: var(--group-action-bg-hover, var(--variant-bg-hover));
-  border-color: var(--group-action-border-hover, var(--variant-border-hover));
-  color: var(--group-action-fg-hover, var(--variant-fg-hover));
-}
-
-.toggle:active:not([aria-haspopup]) {
-  transform: translateY(1px);
-}
-
-.toggle:active {
-  background-color: var(--group-action-bg-active, var(--variant-bg-active));
-  border-color: var(--group-action-border-active, var(--variant-border-active));
-  color: var(--group-action-fg-active, var(--variant-fg-active));
-}
-
-.toggle[aria-pressed='true'],
-.toggle[data-pressed] {
-  background-color: var(--group-action-bg-selected, var(--variant-bg-selected));
-  border-color: var(--group-action-border-selected, var(--variant-border-selected));
-  color: var(--group-action-fg-selected, var(--variant-fg-selected));
 }
 
 /* A pressed outline toggle fills with accent. Button outline keeps --muted for its own selected state. */
@@ -52,41 +13,7 @@
   background-color: var(--accent);
 }
 
-/* Focus: focus border plus a soft halo, matching button. The transparent outline still shows in forced-colors mode. */
-.toggle:focus-visible {
-  border-color: var(--variant-border-focus);
-  box-shadow: var(--variant-shadow-focus);
-  outline: var(--focus-width) solid transparent;
-}
-
-/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
-.toggle[aria-invalid='true'] {
-  border-color: var(--variant-border-invalid);
-  box-shadow: var(--variant-shadow-invalid);
-}
-
-.toggle:disabled,
-.toggle[aria-disabled='true'] {
-  background-color: var(--group-action-bg-disabled, var(--variant-bg-disabled));
-  border-color: var(--group-action-border-disabled, var(--variant-border-disabled));
-  color: var(--variant-fg-disabled);
-}
-
-.toggle svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
-}
-
-/* sizes: the same shape and size sets as Button (action-size.css) */
-.toggle[data-action-size] {
-  border-radius: var(--group-action-radius, var(--action-radius));
-}
-
-.toggle[data-action-size] svg:not([class*='size-']) {
-  width: var(--group-action-icon, var(--action-icon));
-  height: var(--group-action-icon, var(--action-icon));
-}
-
+/* sizes: the row shape; the icon square and the shared size set live in action.css */
 .toggle[data-shape='default'][data-action-size] {
   width: var(--group-action-width, auto);
   min-width: var(--group-action-min-width, auto);
@@ -96,11 +23,6 @@
   gap: var(--group-action-gap, var(--action-gap));
   justify-content: var(--group-action-justify, center);
   text-align: var(--group-action-text-align, center);
-}
-
-.toggle[data-shape='icon'][data-action-size] {
-  width: var(--group-action-height, var(--action-height));
-  height: var(--group-action-height, var(--action-height));
 }
 
 /* Opt in per control. A pressed stroke icon, such as a star, stays an outline otherwise. */

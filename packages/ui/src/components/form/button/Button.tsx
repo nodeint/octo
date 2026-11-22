@@ -33,7 +33,7 @@ function Button({
       data-variant={variant}
       data-action-size={size}
       data-shape={shape}
-      className={cn('button', className)}
+      className={cn('action', 'button', className)}
     />
   );
 }

@@ -33,7 +33,7 @@ function Toggle({
       data-action-size={size}
       data-shape={shape}
       data-fill-icon={fillIcon ? '' : undefined}
-      className={cn('toggle', className)}
+      className={cn('action', 'toggle', className)}
     />
   );
 }

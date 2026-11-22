@@ -1,0 +1,55 @@
+/*
+ * Behavior shared by the text fields (input, textarea). Both components add `field-control` beside
+ * their own class, so no selector here names a specific field. Size, padding and radius stay in
+ * Input.css and Textarea.css. The class is not `field`: that one is the Field wrapper (Field.css).
+ */
+.field-control {
+  outline: none;
+  width: 100%;
+  border-style: solid;
+  border-width: var(--group-field-border-width, var(--border-width-thin));
+  border-color: var(--group-field-border, var(--variant-border));
+  background-color: var(--group-field-bg, var(--variant-bg));
+  color: var(--group-field-fg, var(--variant-fg));
+  font-size: var(--role-field-size);
+  line-height: var(--role-field-leading);
+  font-weight: var(--role-field-weight);
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+@media (pointer: coarse) {
+  .field-control {
+    font-size: var(--role-field-size-coarse);
+  }
+}
+
+.field-control::placeholder {
+  color: var(--variant-fg-placeholder);
+}
+
+/* Focus: focus border plus a soft halo, matching invalid. The transparent outline still shows in forced-colors mode. */
+.field-control:focus-visible {
+  border-color: var(--variant-border-focus);
+  box-shadow: var(--group-field-shadow-focus, var(--variant-shadow-focus));
+  outline: var(--focus-width) solid transparent;
+}
+
+/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
+.field-control[aria-invalid='true'] {
+  border-color: var(--variant-border-invalid);
+  box-shadow: var(--group-field-shadow-invalid, var(--variant-shadow-invalid));
+  caret-color: var(--variant-border-invalid);
+}
+
+.field-control:disabled {
+  background-color: var(--group-field-bg-disabled, var(--variant-bg-disabled));
+}
+
+.field-control:disabled,
+.field-control[data-disabled] {
+  pointer-events: none;
+  border-color: var(--group-field-border-disabled, var(--variant-border-disabled));
+  color: var(--variant-fg-disabled);
+}

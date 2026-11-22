@@ -15,7 +15,7 @@ function Input({ className, type, ...props }: InputProps): React.JSX.Element {
       data-slot="input"
       data-variant="field"
       data-field-size="md"
-      className={cn('input', className)}
+      className={cn('field-control', 'input', className)}
       {...props}
     />
   );

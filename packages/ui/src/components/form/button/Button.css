@@ -1,109 +1,16 @@
 .button {
-  display: inline-flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  border: var(--border-width-thin) solid;
+  border-width: var(--border-width-thin);
+  border-style: solid;
   border-radius: var(--radius-action-md);
-  background-clip: padding-box;
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);
-  white-space: nowrap;
   user-select: none;
-  outline: none;
-  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
-  transition-duration: var(--default-transition-duration);
-  transition-timing-function: var(--default-transition-timing-function);
-}
-
-/* Icon glyph size beside the text. A size-* class on the svg opts out. */
-.button svg {
-  pointer-events: none;
-  flex-shrink: 0;
-}
-
-.button svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
-}
-
-/*
- * Touch target: --target-min is 44px for a coarse pointer and 16px for a fine one. The pseudo-element
- * grows the hit area without changing the control's size. :where() keeps the position easy to override.
- */
-:where(.button) {
-  position: relative;
-}
-
-.button::after {
-  content: '';
-  position: absolute;
-  inset-inline: 0;
-  top: 50%;
-  height: 100%;
-  min-height: var(--target-min);
-  transform: translateY(-50%);
 }
 
 /* The label flips to the on-fill color while the fill darkens. Fading both makes them cross at similar lightness and the label blinks out. */
 .button[data-variant='destructive'] {
   transition-property: background-color, border-color, box-shadow, transform, opacity;
-}
-
-.button:active:not([aria-haspopup]) {
-  transform: translateY(1px);
-}
-
-/*
- * Color comes only from the variant (styles/tokens/functional/color/variants.css),
- * or from a button-group's data-group-variant (group-variants.css, ButtonGroup.css), which wins for the identity slots.
- */
-.button {
-  background-color: var(--group-action-bg, var(--variant-bg));
-  border-color: var(--group-action-border, var(--variant-border));
-  color: var(--group-action-fg, var(--variant-fg));
-  outline-color: var(--variant-ring);
-}
-
-.button:hover {
-  background-color: var(--group-action-bg-hover, var(--variant-bg-hover));
-  border-color: var(--group-action-border-hover, var(--variant-border-hover));
-  color: var(--group-action-fg-hover, var(--variant-fg-hover));
-}
-
-.button:active {
-  background-color: var(--group-action-bg-active, var(--variant-bg-active));
-  border-color: var(--group-action-border-active, var(--variant-border-active));
-  color: var(--group-action-fg-active, var(--variant-fg-active));
-}
-
-.button[aria-expanded='true'],
-.button[aria-pressed='true'] {
-  background-color: var(--group-action-bg-selected, var(--variant-bg-selected));
-  border-color: var(--group-action-border-selected, var(--variant-border-selected));
-  color: var(--group-action-fg-selected, var(--variant-fg-selected));
-}
-
-/* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
-.button:focus-visible {
-  border-color: var(--variant-border-focus);
-  box-shadow: var(--variant-shadow-focus);
-  outline: var(--focus-width) solid transparent;
-}
-
-/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
-.button[aria-invalid='true'] {
-  border-color: var(--variant-border-invalid);
-  box-shadow: var(--variant-shadow-invalid);
-}
-
-.button:disabled,
-.button[aria-disabled='true'] {
-  pointer-events: none;
-  background-color: var(--group-action-bg-disabled, var(--variant-bg-disabled));
-  border-color: var(--group-action-border-disabled, var(--variant-border-disabled));
-  color: var(--variant-fg-disabled);
 }
 
 .button[data-variant='link'] {
@@ -120,25 +27,11 @@
   border-inline-width: 0;
 }
 
-/* sizes: a shape (row or icon square) and a size set from action-size.css */
-.button[data-action-size] {
-  border-radius: var(--group-action-radius, var(--action-radius));
-}
-
-.button[data-action-size] svg:not([class*='size-']) {
-  width: var(--group-action-icon, var(--action-icon));
-  height: var(--group-action-icon, var(--action-icon));
-}
-
+/* sizes: the row shape; the icon square and the shared size set live in action.css */
 .button[data-shape='default'][data-action-size] {
   height: var(--group-action-height, var(--action-height));
   padding-inline: calc(var(--group-action-px, var(--action-px)) - var(--border-width-thin));
   gap: var(--group-action-gap, var(--action-gap));
-}
-
-.button[data-shape='icon'][data-action-size] {
-  width: var(--group-action-height, var(--action-height));
-  height: var(--group-action-height, var(--action-height));
 }
 
 /* An icon-only square keeps the md glyph from sm up; only xs steps down. */

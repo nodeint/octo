@@ -1,24 +1,15 @@
 /*
- * Behavior shared by the closed controls (badge, input, textarea): focus ring,
+ * Behavior shared by the closed controls (badge and the selection controls): focus ring,
  * invalid and disabled paint. Selector lists replace shared utilities; keep them in sync with
  * the component files. Badge lives in data-display and is listed here on purpose.
+ * Text fields (input, textarea) live in field-control.css, buttons and toggles in action.css.
  */
 
-.badge,
-.input,
-.textarea {
+.badge {
   outline: none;
   transition-property: color, background-color, border-color, box-shadow, transform, opacity;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
-}
-
-/* Focus: focus border plus a soft halo, matching invalid. The transparent outline still shows in forced-colors mode. */
-.input:focus-visible,
-.textarea:focus-visible {
-  border-color: var(--variant-border-focus);
-  box-shadow: var(--group-field-shadow-focus, var(--variant-shadow-focus));
-  outline: var(--focus-width) solid transparent;
 }
 
 .badge:focus-visible {
@@ -27,36 +18,9 @@
   outline-offset: var(--focus-offset);
 }
 
-/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
-.input[aria-invalid='true'],
-.textarea[aria-invalid='true'] {
-  border-color: var(--variant-border-invalid);
-  box-shadow: var(--group-field-shadow-invalid, var(--variant-shadow-invalid));
-  caret-color: var(--variant-border-invalid);
-}
-
 .badge[aria-invalid='true'] {
   border-color: var(--destructive);
   box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
-}
-
-.input:disabled,
-.textarea:disabled {
-  pointer-events: none;
-  border-color: var(--group-field-border-disabled, var(--variant-border-disabled));
-  color: var(--variant-fg-disabled);
-}
-
-.input:disabled,
-.textarea:disabled {
-  background-color: var(--group-field-bg-disabled, var(--variant-bg-disabled));
-}
-
-.input[data-disabled],
-.textarea[data-disabled] {
-  pointer-events: none;
-  border-color: var(--group-field-border-disabled, var(--variant-border-disabled));
-  color: var(--variant-fg-disabled);
 }
 
 /* Icon glyph size inside a badge. A size-* class on the svg opts out. */
@@ -65,12 +29,11 @@
   flex-shrink: 0;
 }
 
-/* ---- selection controls and toggles ---- */
+/* ---- selection controls ---- */
 .checkbox,
 .radio-group-item,
 .switch,
-.slider-thumb,
-.toggle {
+.slider-thumb {
   outline: none;
   transition-property: color, background-color, border-color, box-shadow, transform, translate, opacity;
   transition-duration: var(--default-transition-duration);
@@ -95,8 +58,7 @@
 
 .checkbox:disabled,
 .radio-group-item:disabled,
-.switch:disabled,
-.toggle:disabled {
+.switch:disabled {
   pointer-events: none;
   color: var(--foreground-disabled);
 }
@@ -115,11 +77,6 @@
   color: var(--foreground-disabled);
 }
 
-.toggle[aria-disabled='true'] {
-  pointer-events: none;
-  color: var(--foreground-disabled);
-}
-
 /* Hit area grows past the box without changing its size. */
 .checkbox::after,
 .radio-group-item::after,
@@ -129,17 +86,6 @@
   inset: calc(var(--space-sm) * -1) calc(var(--space-md) * -1);
 }
 
-.toggle::after {
-  content: '';
-  position: absolute;
-  inset-inline: 0;
-  top: 50%;
-  height: 100%;
-  min-height: var(--target-min);
-  transform: translateY(-50%);
-}
-
-.toggle svg,
 .toggle-group svg {
   pointer-events: none;
   flex-shrink: 0;

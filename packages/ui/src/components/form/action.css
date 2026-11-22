@@ -1,0 +1,116 @@
+/*
+ * Behavior shared by the action controls (button, toggle). Both components add `action` beside
+ * their own class, so no selector here names a specific control. Shape, type role and the
+ * size-specific layout stay in Button.css and Toggle.css.
+ *
+ * Color comes only from the variant (styles/tokens/functional/color/variants.css),
+ * or from a group's data-group-variant (group-variants.css, ButtonGroup.css), which wins for the identity slots.
+ */
+.action {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  background-clip: padding-box;
+  white-space: nowrap;
+  outline: none;
+  transition-property: color, background-color, border-color, box-shadow, transform, translate, opacity;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+/* Icon glyph size beside the text. A size-* class on the svg opts out. */
+.action svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.action svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+}
+
+/*
+ * Touch target: --target-min is 44px for a coarse pointer and 16px for a fine one. The pseudo-element
+ * grows the hit area without changing the control's size. :where() keeps the position easy to override.
+ */
+:where(.action) {
+  position: relative;
+}
+
+.action::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: 100%;
+  min-height: var(--target-min);
+  transform: translateY(-50%);
+}
+
+.action:active:not([aria-haspopup]) {
+  transform: translateY(1px);
+}
+
+.action {
+  background-color: var(--group-action-bg, var(--variant-bg));
+  border-color: var(--group-action-border, var(--variant-border));
+  color: var(--group-action-fg, var(--variant-fg));
+  outline-color: var(--variant-ring);
+}
+
+.action:hover {
+  background-color: var(--group-action-bg-hover, var(--variant-bg-hover));
+  border-color: var(--group-action-border-hover, var(--variant-border-hover));
+  color: var(--group-action-fg-hover, var(--variant-fg-hover));
+}
+
+.action:active {
+  background-color: var(--group-action-bg-active, var(--variant-bg-active));
+  border-color: var(--group-action-border-active, var(--variant-border-active));
+  color: var(--group-action-fg-active, var(--variant-fg-active));
+}
+
+.action[aria-expanded='true'],
+.action[aria-pressed='true'],
+.action[data-pressed] {
+  background-color: var(--group-action-bg-selected, var(--variant-bg-selected));
+  border-color: var(--group-action-border-selected, var(--variant-border-selected));
+  color: var(--group-action-fg-selected, var(--variant-fg-selected));
+}
+
+/* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
+.action:focus-visible {
+  border-color: var(--variant-border-focus);
+  box-shadow: var(--variant-shadow-focus);
+  outline: var(--focus-width) solid transparent;
+}
+
+/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
+.action[aria-invalid='true'] {
+  border-color: var(--variant-border-invalid);
+  box-shadow: var(--variant-shadow-invalid);
+}
+
+.action:disabled,
+.action[aria-disabled='true'] {
+  pointer-events: none;
+  background-color: var(--group-action-bg-disabled, var(--variant-bg-disabled));
+  border-color: var(--group-action-border-disabled, var(--variant-border-disabled));
+  color: var(--variant-fg-disabled);
+}
+
+/* sizes: a size set from action-size.css */
+.action[data-action-size] {
+  border-radius: var(--group-action-radius, var(--action-radius));
+}
+
+.action[data-action-size] svg:not([class*='size-']) {
+  width: var(--group-action-icon, var(--action-icon));
+  height: var(--group-action-icon, var(--action-icon));
+}
+
+.action[data-shape='icon'][data-action-size] {
+  width: var(--group-action-height, var(--action-height));
+  height: var(--group-action-height, var(--action-height));
+}
