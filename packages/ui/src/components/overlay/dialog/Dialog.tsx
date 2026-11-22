@@ -75,18 +75,18 @@ function DialogContent({
       >
         <DialogFillContext.Provider value={fill}>{children}</DialogFillContext.Provider>
         {showCloseButton ? <DialogPrimitive.Close
-            data-slot="dialog-close"
-            render={
-              <Button
-                variant="ghost"
-                className="dialog-close-button"
-                size="sm" shape="icon"
-              />
-            }
-          >
-            <Icon name="x" />
-            <span className="sr-only">Close</span>
-          </DialogPrimitive.Close> : null}
+          data-slot="dialog-close"
+          render={
+            <Button
+              variant="ghost"
+              className="dialog-close-button"
+              size="sm" shape="icon"
+            />
+          }
+        >
+          <Icon name="x" />
+          <span className="sr-only">Close</span>
+        </DialogPrimitive.Close> : null}
       </DialogPrimitive.Popup>
     </DialogPortal>
   );
@@ -124,15 +124,18 @@ function DialogBody({ className, ...props }: React.ComponentProps<'div'>): React
       {...props}
     />
   );
+
+  if (!fill) {
+    return content;
+  }
+
   // A fixed-height panel scrolls here. The scroll area bleeds to the panel edge so the scrollbar sits on it,
   // and the content inside re-pads with --panel-inset.
-  return fill ? (
+  return (
     <ScrollArea data-slot="dialog-body" data-box-bleed="x">
       {content}
     </ScrollArea>
-  ) : (
-    content
-  );
+  )
 }
 
 function DialogFooter({
@@ -155,8 +158,8 @@ function DialogFooter({
     >
       {children}
       {showCloseButton ? <DialogPrimitive.Close render={<Button variant="outline" />}>
-          Close
-        </DialogPrimitive.Close> : null}
+        Close
+      </DialogPrimitive.Close> : null}
     </div>
   );
 }

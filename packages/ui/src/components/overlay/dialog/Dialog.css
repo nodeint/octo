@@ -1,10 +1,3 @@
-.dialog-content {
-  max-width: calc(100% - 2rem);
-  font-size: var(--role-body-size);
-  line-height: var(--role-body-leading);
-  font-weight: var(--role-body-weight);
-}
-
 /* width from the overlay scale */
 @media (min-width: 40rem) {
   .dialog-content[data-size='sm'] {
@@ -45,7 +38,8 @@
 .dialog-content[data-variant='bare'] {
   gap: 0;
   overflow: hidden;
-  padding: 0;
+  --inset: 0px;
+  padding: var(--inset);
 }
 
 .dialog-header {
@@ -73,7 +67,7 @@
 
 /* the body bleeds to the panel edge (Box bleed), so a scrollbar sits on the edge; the content is re-padded here */
 .dialog-body {
-  padding-inline: var(--panel-inset);
+  padding-inline: var(--inset);
   display: flex;
   flex-direction: column;
   gap: var(--panel-gap);

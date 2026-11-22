@@ -282,8 +282,8 @@
   display: flex;
   flex-direction: column-reverse;
   gap: var(--space-xs);
-  margin-inline: calc(var(--panel-inset) * -1);
-  margin-block-end: calc(var(--panel-inset) * -1);
+  margin-inline: calc(var(--inset) * -1);
+  margin-block-end: calc(var(--inset) * -1);
   padding: var(--panel-inset);
   border-top: var(--border-width-thin) solid var(--separator);
   border-bottom-left-radius: var(--radius-overlay-lg);

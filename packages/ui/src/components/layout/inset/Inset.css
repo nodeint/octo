@@ -23,6 +23,19 @@
   padding: var(--inset);
 }
 
+/*
+ * A side or axis on its own step pads sides unevenly, which one --inset cannot describe.
+ * Reset it to 0 so a Box bleed inside does nothing instead of cancelling the wrong amount.
+ */
+.layout-inset[data-x],
+.layout-inset[data-y],
+.layout-inset[data-t],
+.layout-inset[data-b],
+.layout-inset[data-s],
+.layout-inset[data-e] {
+  --inset: 0px;
+}
+
 /* A side or axis on its own step. Later than the size rules, so these win. */
 .layout-inset[data-x='0'] {
   padding-inline: 0;

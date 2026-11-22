@@ -29,19 +29,19 @@
 /* bleed: direct first/last-child img or card-media */
 .card > img,
 .card > [data-slot='card-media'] {
-  margin-inline: calc(var(--panel-inset) * -1);
+  margin-inline: calc(var(--inset) * -1);
 }
 
 .card > img:first-child,
 .card > [data-slot='card-media']:first-child {
-  margin-block-start: calc(var(--panel-inset) * -1);
+  margin-block-start: calc(var(--inset) * -1);
   border-top-left-radius: var(--radius-surface-md);
   border-top-right-radius: var(--radius-surface-md);
 }
 
 .card > img:last-child,
 .card > [data-slot='card-media']:last-child {
-  margin-block-end: calc(var(--panel-inset) * -1);
+  margin-block-end: calc(var(--inset) * -1);
   border-bottom-left-radius: var(--radius-surface-md);
   border-bottom-right-radius: var(--radius-surface-md);
 }
@@ -53,8 +53,8 @@
 
 /* A bordered header: the consumer adds the `border-b` class, and the header bleeds to the card edges. */
 .card-header.border-b {
-  margin-inline: calc(var(--panel-inset) * -1);
-  margin-block-start: calc(var(--panel-inset) * -1);
+  margin-inline: calc(var(--inset) * -1);
+  margin-block-start: calc(var(--inset) * -1);
   padding: var(--panel-inset);
   border-bottom: var(--border-width-thin) solid var(--separator);
 }
@@ -92,8 +92,8 @@
 .card-footer {
   display: flex;
   align-items: center;
-  margin-inline: calc(var(--panel-inset) * -1);
-  margin-block-end: calc(var(--panel-inset) * -1);
+  margin-inline: calc(var(--inset) * -1);
+  margin-block-end: calc(var(--inset) * -1);
   padding: var(--panel-inset);
   border-top: var(--border-width-thin) solid var(--separator);
   border-bottom-left-radius: var(--radius-surface-md);
