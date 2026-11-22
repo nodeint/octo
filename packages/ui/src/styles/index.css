@@ -4,7 +4,7 @@
  *   base       reset and page defaults
  *   theme      tokens and data-appearance-* maps
  *   components every component; order inside it is file order (form: control.css first)
- *   utilities  reserved for override classes; empty today
+ *   utilities  override classes (utilities.css), after every component
  * Nothing in this package is unlayered, so a consumer's own CSS always wins.
  */
 @layer base, theme, components, utilities;
@@ -21,3 +21,4 @@
 @import "../components/data-display/index.css" layer(components);
 @import "../components/overlay/index.css" layer(components);
 @import "../components/navigation/index.css" layer(components);
+@import "./utilities.css" layer(utilities);

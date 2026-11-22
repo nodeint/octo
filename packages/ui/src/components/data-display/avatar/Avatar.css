@@ -15,11 +15,7 @@
   inset: 0;
   border: var(--border-width-thin) solid var(--border);
   border-radius: var(--radius-avatar);
-  mix-blend-mode: darken;
-}
-
-.dark .avatar::after {
-  mix-blend-mode: lighten;
+  mix-blend-mode: var(--avatar-blend-mode);
 }
 
 .avatar[data-size='sm'] {

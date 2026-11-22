@@ -13,14 +13,11 @@
   height: var(--control-glyph-sm);
   border: var(--border-width-thin) solid var(--control);
   border-radius: var(--radius-radio);
+  background-color: var(--radio-background);
 }
 
 .radio-group-item[data-checked] {
   border-color: var(--primary);
-}
-
-.dark .radio-group-item {
-  background-color: var(--muted);
 }
 
 .radio-group-indicator {

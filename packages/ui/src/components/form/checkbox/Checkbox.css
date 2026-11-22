@@ -8,6 +8,7 @@
   height: var(--control-glyph-md);
   border: var(--border-width-thin) solid var(--control);
   border-radius: var(--radius-checkbox);
+  background-color: var(--checkbox-background);
 }
 
 .field:has(:disabled) .checkbox,
@@ -25,16 +26,13 @@
   color: var(--primary-foreground);
 }
 
-.dark .checkbox {
-  background-color: var(--muted);
-}
-
-.dark .checkbox[data-checked] {
-  background-color: var(--primary);
-}
-
 .checkbox:disabled {
   background-color: var(--disabled);
+}
+
+/* A checked, disabled box keeps the checked paint in dark and the disabled paint in light. */
+.checkbox[data-checked]:disabled {
+  background-color: var(--checkbox-checked-disabled-background);
 }
 
 .checkbox-indicator {

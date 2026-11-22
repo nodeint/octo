@@ -265,9 +265,14 @@
 
 .attachment[data-state='uploading'] .attachment-title,
 .attachment[data-state='processing'] .attachment-title {
-  --shimmer-angle: 20deg;
+  background-image: var(--shimmer-image);
+  background-repeat: no-repeat;
+  background-size: var(--shimmer-size);
+  background-position: 0 0;
   background-clip: text;
   -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--shimmer-text-fill);
+  animation: var(--shimmer-animation);
 }
 
 .attachment-description {

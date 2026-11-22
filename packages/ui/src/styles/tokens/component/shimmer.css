@@ -1,0 +1,54 @@
+/*
+ * Shimmer: a moving highlight across text, for a step that is still running.
+ * Applied by .shimmer (utilities.css) and by the Attachment and Trace title rules.
+ * Set the inputs (--shimmer-spread, --shimmer-base, --shimmer-highlight) on :root or .dark only:
+ * the paint tokens below are derived where they are declared, so an input changed lower down is not picked up.
+ */
+@property --shimmer-angle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 20deg;
+}
+
+@keyframes shimmer-move {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+:root {
+  --shimmer-spread: calc(3ch + 40px);
+  --shimmer-base: currentColor;
+  --shimmer-highlight: oklch(from currentColor l c h / calc(alpha * 0.2));
+}
+
+.dark {
+  --shimmer-highlight: oklch(from currentColor max(0.8, calc(l + 0.4)) c h / calc(alpha + 0.4));
+}
+
+:root,
+.dark {
+  --shimmer-image: linear-gradient(
+    calc(90deg + var(--shimmer-angle)),
+    var(--shimmer-base) calc(50% - var(--shimmer-spread)),
+    color-mix(in oklch, var(--shimmer-highlight), var(--shimmer-base) 50%) calc(50% - var(--shimmer-spread) * 0.5),
+    var(--shimmer-highlight) 50%,
+    color-mix(in oklch, var(--shimmer-highlight), var(--shimmer-base) 50%) calc(50% + var(--shimmer-spread) * 0.5),
+    var(--shimmer-base) calc(50% + var(--shimmer-spread))
+  );
+  --shimmer-size: calc(200% + var(--shimmer-spread) * 2) 100%;
+  --shimmer-animation: shimmer-move 2s linear infinite;
+  --shimmer-text-fill: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  .dark {
+    --shimmer-image: none;
+    --shimmer-animation: none;
+    --shimmer-text-fill: currentColor;
+  }
+}

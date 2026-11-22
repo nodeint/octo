@@ -7,7 +7,8 @@
  *   scrollbar  the thickness, edge inset, and thumb radius of a scrollbar
  *   slider     the thickness of the track
  *   tooltip    the arrow
- *   tab        the underline that marks the selected tab
+ *   tab        the underline that marks the selected tab, and the active trigger's paint
+ *   checkbox, radio, switch thumb, avatar blend: paint that differs between light and dark
  * Where a part is the same size as a step of the control icon, space, or border scale, it reads that step.
  * The rest keep their own value: no step matches, or reading one would tie the part to the wrong scale.
  * Primer defines no size for these parts (only colors).
@@ -63,4 +64,31 @@
 
   /* Kbd */
   --radius-kbd: var(--radius-xs);
+
+  /* Theme paint: light values. The .dark block below replaces them. */
+  --checkbox-background: transparent;
+  --checkbox-checked-disabled-background: var(--disabled);
+  --radio-background: transparent;
+  --switch-thumb-checked-background: var(--background);
+  --switch-thumb-unchecked-background: var(--background);
+  --avatar-blend-mode: darken;
+  --tab-active-background: var(--background);
+  --tab-active-border-color: transparent;
+  --tab-active-focus-border-color: var(--ring);
+  --tab-line-active-border-color: transparent;
+  --tab-line-active-focus-border-color: var(--ring);
+}
+
+.dark {
+  --checkbox-background: var(--muted);
+  --checkbox-checked-disabled-background: var(--primary);
+  --radio-background: var(--muted);
+  --switch-thumb-checked-background: var(--primary-foreground);
+  --switch-thumb-unchecked-background: var(--foreground);
+  --avatar-blend-mode: lighten;
+  --tab-active-background: var(--muted);
+  --tab-active-border-color: var(--control);
+  --tab-active-focus-border-color: var(--control);
+  --tab-line-active-border-color: transparent;
+  --tab-line-active-focus-border-color: transparent;
 }

@@ -36,12 +36,12 @@
   transition-timing-function: var(--default-transition-timing-function);
 }
 
-.dark .switch-thumb[data-checked] {
-  background-color: var(--primary-foreground);
+.switch-thumb[data-checked] {
+  background-color: var(--switch-thumb-checked-background);
 }
 
-.dark .switch-thumb[data-unchecked] {
-  background-color: var(--foreground);
+.switch-thumb[data-unchecked] {
+  background-color: var(--switch-thumb-unchecked-background);
 }
 
 .switch[data-size='md'] > .switch-thumb {

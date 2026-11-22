@@ -1,7 +1,7 @@
 /*
  * Trace: a list of steps.
  * State hangs on data-slot, data-status (running, error, pending), and the Base UI
- * data-panel-open on the trigger. A running line shimmers its title (see base.css);
+ * data-panel-open on the trigger. A running line shimmers its title (tokens/component/shimmer.css);
  * reduced motion stops the shimmer and the panel.
  */
 .trace {
@@ -96,6 +96,17 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.trace-line[data-status='running'] > [data-slot='trace-title'] {
+  background-image: var(--shimmer-image);
+  background-repeat: no-repeat;
+  background-size: var(--shimmer-size);
+  background-position: 0 0;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--shimmer-text-fill);
+  animation: var(--shimmer-animation);
 }
 
 .trace-description {

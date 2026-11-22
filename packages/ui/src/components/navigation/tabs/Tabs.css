@@ -67,6 +67,10 @@
   color: var(--foreground);
 }
 
+.tabs-trigger[data-active] {
+  border-color: var(--tab-active-border-color);
+}
+
 .tabs-trigger:focus-visible {
   border-color: var(--ring);
   outline: var(--focus-width) solid var(--ring);
@@ -80,13 +84,12 @@
 }
 
 .tabs-trigger[data-active] {
-  background-color: var(--background);
+  background-color: var(--tab-active-background);
   color: var(--foreground);
 }
 
-.dark .tabs-trigger[data-active] {
-  border-color: var(--control);
-  background-color: var(--muted);
+.tabs-trigger[data-active]:focus-visible {
+  border-color: var(--tab-active-focus-border-color);
 }
 
 .tabs-trigger svg {
@@ -138,9 +141,12 @@
   box-shadow: none;
 }
 
-.dark .tabs-list[data-variant='line'] .tabs-trigger[data-active] {
-  border-color: transparent;
-  background-color: transparent;
+.tabs-list[data-variant='line'] .tabs-trigger[data-active] {
+  border-color: var(--tab-line-active-border-color);
+}
+
+.tabs-list[data-variant='line'] .tabs-trigger[data-active]:focus-visible {
+  border-color: var(--tab-line-active-focus-border-color);
 }
 
 .tabs-list[data-variant='line'] .tabs-trigger[data-active]::after {
