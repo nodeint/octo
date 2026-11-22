@@ -21,10 +21,7 @@ import {
   Textarea,
 } from '@workspace/ui';
 import * as React from 'react';
-
-/** Story width. A fixed value: the centered layout wraps stories in a shrink-to-fit box, so a percentage collapses. */
-const DEFAULT_WIDTH = '13.5rem';
-const WIDE = '32rem';
+import { storyWidthDecorator } from '../story-width';
 
 const SIZES = ['xs', 'sm', 'md', 'lg'] as const satisfies readonly InputGroupSize[];
 
@@ -36,13 +33,7 @@ const meta = {
     variant: { control: 'inline-radio', options: ['field', 'outline', 'secondary', 'ghost'] },
     size: { control: 'inline-radio', options: SIZES },
   },
-  decorators: [
-    (Story, { parameters }) => (
-      <div style={{ width: parameters.groupWidth ?? DEFAULT_WIDTH, maxWidth: '100vw' }}>
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [storyWidthDecorator],
 } satisfies Meta<typeof InputGroup>;
 
 export default meta;
@@ -307,7 +298,7 @@ export const WithSpinner: Story = {
 
 export const WithTextarea: Story = {
   name: 'Textarea',
-  parameters: { groupWidth: WIDE },
+  parameters: { storyWidth: 'lg' },
   render: (args) => (
     <InputGroup {...args}>
       <Textarea
@@ -338,7 +329,7 @@ export const WithTextarea: Story = {
 };
 
 export const CustomInput: Story = {
-  parameters: { groupWidth: WIDE },
+  parameters: { storyWidth: 'lg' },
   render: (args) => (
     <InputGroup {...args}>
       <Textarea placeholder="Autoresize textarea..." aria-label="Message" />

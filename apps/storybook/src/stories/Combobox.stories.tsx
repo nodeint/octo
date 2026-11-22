@@ -26,6 +26,7 @@ import {
   useComboboxAnchor,
 } from '@workspace/ui';
 import * as React from 'react';
+import { storyWidthDecorator } from '../story-width';
 
 const FRAMEWORKS = ['Next.js', 'SvelteKit', 'Nuxt.js', 'Remix', 'Astro'] as const;
 
@@ -104,13 +105,7 @@ const meta = {
   title: 'Form/Combobox',
   component: Combobox,
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <div style={{ width: '13.5rem', maxWidth: '100vw' }}>
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [storyWidthDecorator],
 } satisfies Meta<typeof Combobox>;
 
 export default meta;

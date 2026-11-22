@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Textarea } from '@workspace/ui';
+import { storyWidthDecorator } from '../story-width';
 
 const meta = {
   title: 'Form/Textarea',
@@ -7,6 +8,7 @@ const meta = {
   tags: ['autodocs'],
   args: { placeholder: 'Type your message' },
   argTypes: { disabled: { control: 'boolean' } },
+  decorators: [storyWidthDecorator],
 } satisfies Meta<typeof Textarea>;
 
 export default meta;

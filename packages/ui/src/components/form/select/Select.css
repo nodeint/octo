@@ -1,6 +1,11 @@
+/*
+ * No inline padding: .select-content already pads the list. A second layer pushes the item text
+ * further from the popup edge than from the trigger edge, so an aligned popup shifts left and
+ * stops short of the trigger's right edge.
+ */
 .select-group {
   scroll-margin-block: var(--space-xs);
-  padding: var(--space-xs);
+  padding-block: var(--space-xs);
 }
 
 /* min-width 0 and truncation: a flex item may shrink inside a constrained parent. */

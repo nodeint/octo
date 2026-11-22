@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@workspace/ui';
+import { storyWidthDecorator } from '../story-width';
 
 const SIZES = ['xs', 'sm', 'md', 'lg'] as const;
 
@@ -37,13 +38,7 @@ const meta = {
     type: { control: 'select', options: ['text', 'email', 'password', 'number', 'search', 'url', 'tel'] },
     disabled: { control: 'boolean' },
   },
-  decorators: [
-    (Story, { parameters }) => (
-      <div style={{ width: parameters.inputWidth ?? '13.5rem', maxWidth: '100vw' }}>
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [storyWidthDecorator],
 } satisfies Meta<typeof Input>;
 
 export default meta;
@@ -137,7 +132,7 @@ export const Inline: Story = {
 
 export const WithGrid: Story = {
   name: 'Grid',
-  parameters: { inputWidth: '18.5rem' },
+  parameters: { storyWidth: 'md' },
   render: (args) => (
     <Grid columns={2} gap="md">
       <Field>
@@ -211,7 +206,7 @@ export const WithButtonGroup: Story = {
 };
 
 export const Form: Story = {
-  parameters: { inputWidth: '18.5rem' },
+  parameters: { storyWidth: 'md' },
   render: (args) => (
     <form>
       <FieldGroup>
