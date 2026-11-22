@@ -6,8 +6,12 @@
   z-index: var(--z-floating);
   max-height: var(--available-height);
   min-width: var(--overlay-xxs);
-  padding: var(--overlay-pad-xs);
   overflow-x: hidden;
   overflow-y: auto;
   border-radius: var(--radius-overlay);
+}
+
+.context-menu-sub-content {
+  min-width: var(--size-container-xs);
+  overflow: hidden;
 }

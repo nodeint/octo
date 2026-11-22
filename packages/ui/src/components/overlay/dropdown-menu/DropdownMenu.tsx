@@ -88,8 +88,14 @@ function DropdownMenuContent({
   );
 }
 
-function DropdownMenuGroup({ ...props }: MenuPrimitive.Group.Props): React.JSX.Element {
-  return <MenuPrimitive.Group data-slot="dropdown-menu-group" {...props} />;
+function DropdownMenuGroup({ className, ...props }: MenuPrimitive.Group.Props): React.JSX.Element {
+  return (
+    <MenuPrimitive.Group
+      data-slot="dropdown-menu-group"
+      className={cn('dropdown-menu-group', className)}
+      {...props}
+    />
+  );
 }
 
 function DropdownMenuLabel({
@@ -208,10 +214,14 @@ function DropdownMenuCheckboxItem({
   );
 }
 
-function DropdownMenuRadioGroup({ ...props }: MenuPrimitive.RadioGroup.Props): React.JSX.Element {
+function DropdownMenuRadioGroup({
+  className,
+  ...props
+}: MenuPrimitive.RadioGroup.Props): React.JSX.Element {
   return (
     <MenuPrimitive.RadioGroup
       data-slot="dropdown-menu-radio-group"
+      className={cn('dropdown-menu-radio-group', className)}
       {...props}
     />
   );
@@ -247,11 +257,16 @@ function DropdownMenuRadioItem({
 
 function DropdownMenuSeparator({
   className,
+  inset,
   ...props
-}: MenuPrimitive.Separator.Props): React.JSX.Element {
+}: MenuPrimitive.Separator.Props & {
+  /** Keeps the line inside the menu padding instead of bleeding to the edges. */
+  inset?: boolean
+}): React.JSX.Element {
   return (
     <MenuPrimitive.Separator
       data-slot="dropdown-menu-separator"
+      data-inset={inset}
       className={cn('dropdown-menu-separator', className)}
       {...props}
     />

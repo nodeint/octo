@@ -106,9 +106,12 @@
   color: var(--destructive-subtle-foreground);
 }
 
+/* Glyph and shortcut follow the row colour, including the focused state. */
 .dropdown-menu-item[data-variant='destructive'] > svg,
-.context-menu-item[data-variant='destructive'] > svg {
-  color: var(--destructive);
+.dropdown-menu-item[data-variant='destructive'] > .dropdown-menu-shortcut,
+.context-menu-item[data-variant='destructive'] > svg,
+.context-menu-item[data-variant='destructive'] > .context-menu-shortcut {
+  color: inherit;
 }
 
 /* Icon glyph size beside the row text. */
@@ -154,11 +157,43 @@
   justify-content: center;
 }
 
+/* Container layout shared by both menus: the gap spaces rows, the pad insets them and sets how far a separator bleeds. */
+.dropdown-menu-content,
+.context-menu-content {
+  display: flex;
+  flex-direction: column;
+  --menu-gap: var(--space-xs);
+  --menu-pad: var(--overlay-pad-xs);
+  gap: var(--menu-gap);
+  padding: var(--menu-pad);
+}
+
+.dropdown-menu-sub-content,
+.context-menu-sub-content {
+  --menu-pad: var(--overlay-pad-xs);
+}
+
+.dropdown-menu-group,
+.dropdown-menu-radio-group,
+.context-menu-group,
+.context-menu-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--menu-gap);
+}
+
 .dropdown-menu-separator,
 .context-menu-separator {
+  flex-shrink: 0;
   height: 1px;
-  margin: var(--space-xs) calc(var(--space-xs) * -1);
+  margin-inline: calc(var(--menu-pad, var(--space-xs)) * -1);
   background-color: var(--separator);
+}
+
+/* Bleeds to the menu edges by default; `inset` keeps it inside the menu padding. */
+.dropdown-menu-separator[data-inset],
+.context-menu-separator[data-inset] {
+  margin-inline: 0;
 }
 
 .dropdown-menu-shortcut,

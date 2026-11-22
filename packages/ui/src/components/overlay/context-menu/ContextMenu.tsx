@@ -72,9 +72,16 @@ function ContextMenuContent({
   );
 }
 
-function ContextMenuGroup({ ...props }: ContextMenuPrimitive.Group.Props): React.JSX.Element {
+function ContextMenuGroup({
+  className,
+  ...props
+}: ContextMenuPrimitive.Group.Props): React.JSX.Element {
   return (
-    <ContextMenuPrimitive.Group data-slot="context-menu-group" {...props} />
+    <ContextMenuPrimitive.Group
+      data-slot="context-menu-group"
+      className={cn('context-menu-group', className)}
+      {...props}
+    />
   );
 }
 
@@ -149,7 +156,7 @@ function ContextMenuSubContent({
   return (
     <ContextMenuContent
       data-slot="context-menu-sub-content"
-      className={className}
+      className={cn('context-menu-sub-content', className)}
       side="right"
       {...props}
     />
@@ -184,11 +191,13 @@ function ContextMenuCheckboxItem({
 }
 
 function ContextMenuRadioGroup({
+  className,
   ...props
 }: ContextMenuPrimitive.RadioGroup.Props): React.JSX.Element {
   return (
     <ContextMenuPrimitive.RadioGroup
       data-slot="context-menu-radio-group"
+      className={cn('context-menu-radio-group', className)}
       {...props}
     />
   );
@@ -221,11 +230,16 @@ function ContextMenuRadioItem({
 
 function ContextMenuSeparator({
   className,
+  inset,
   ...props
-}: ContextMenuPrimitive.Separator.Props): React.JSX.Element {
+}: ContextMenuPrimitive.Separator.Props & {
+  /** Keeps the line inside the menu padding instead of bleeding to the edges. */
+  inset?: boolean
+}): React.JSX.Element {
   return (
     <ContextMenuPrimitive.Separator
       data-slot="context-menu-separator"
+      data-inset={inset}
       className={cn('context-menu-separator', className)}
       {...props}
     />
