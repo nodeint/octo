@@ -1,5 +1,5 @@
 /*
- * The group sizes and paints its toggles through --group-action-* (size/group-size.css, and the
+ * The group sizes and paints its toggles through --group-action-* (sizes/group-size.css, and the
  * variants in button-group/ButtonGroup.css) and never names a toggle. A toggle's own data-action-size
  * and data-variant are the fallback when it sits outside a group.
  */

@@ -4,8 +4,7 @@
  * Sets: a component reads its set and never the scale, so one set decides the shape of a whole family.
  *   --radius-surface-*  every content surface and the rows inside it: card, pane, alert, item, menu row. xs … lg
  *   --radius-overlay-*  the container of a floating layer only, never its children: xs = tooltip, sm = menu/select/popover, lg = dialog/sheet. xs … lg
- *   --radius-<part>     one control part with its own shape. checkbox, kbd: a step of the scale; tooltip-arrow: 3px.
- *                       toggle, switch, radio, slider, avatar, scrollbar-thumb: round, via --radius-round (exact semicircle ends)
+ *   --radius-<part>     one control part with its own shape: defined per element in ../elements.css
  *   --radius-field-*    text fields: input, select trigger. xs … lg follow --control-height-*; values come from the scale
  *   --radius-field-block  a field that grows to several lines (textarea, group with a block addon); one step, not per size
  *   --radius-action-*   actions: button, toggle, button group. Same steps and values as field
@@ -25,22 +24,6 @@
   --radius-pill-lg: calc(var(--control-height-lg) / 2);
 
   --radius-round: 9999px;
-
-  --radius-toggle: var(--radius-round);
-  --radius-switch: var(--radius-round);
-  --radius-switch-thumb: var(--radius-round);
-  --radius-radio: var(--radius-round);
-  --radius-radio-indicator: var(--radius-round);
-  --radius-slider-track: var(--radius-round);
-  --radius-slider-indicator: var(--radius-round);
-  --radius-slider-thumb: var(--radius-round);
-  --radius-avatar: var(--radius-round);
-  --radius-avatar-badge: var(--radius-round);
-  --radius-avatar-count: var(--radius-round);
-  --radius-scrollbar-thumb: var(--radius-round);
-  --radius-checkbox: var(--radius-xs);
-  --radius-kbd: var(--radius-xs);
-  --radius-tooltip-arrow: 0.1875rem;
 
   --radius-surface-xs: var(--radius-xs);
   --radius-surface-sm: var(--radius-sm);

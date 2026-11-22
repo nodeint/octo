@@ -21,7 +21,7 @@
  * (must not bake Inter literal). This file only maps data-appearance-* → tokens.
  */
 
-/* ── Font catalog (stacks live in tokens/functional/typography/typography.css) ── */
+/* ── Font catalog (stacks live in tokens/functional/typography.css) ── */
 
 :root[data-appearance-font='system-ui'] {
   --font-sans: var(--font-stack-system-ui);

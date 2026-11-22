@@ -11,9 +11,12 @@
  * Where a part is the same size as a step of the control icon, space, or border scale, it reads that step.
  * The rest keep their own value: no step matches, or reading one would tie the part to the wrong scale.
  * Primer defines no size for these parts (only colors).
+ * Each part also owns its corner radius (--radius-<part>): a step of the radius scale, or --radius-round
+ * (exact semicircle ends).
  */
 
 :root {
+  /* Switch */
   --switch-track-height-md: var(--control-glyph-md); /* 20 */
   --switch-track-width-md: 2rem;
   --switch-thumb-size-md: var(--control-glyph-sm); /* 16 */
@@ -21,13 +24,43 @@
   --switch-track-width-sm: 1.5rem;
   --switch-thumb-size-sm: var(--control-glyph-xs); /* 12 */
   --switch-thumb-inset: var(--space-xxs); /* 2 */
+  --radius-switch: var(--radius-round);
+  --radius-switch-thumb: var(--radius-round);
+
+  /* Radio */
   --radio-dot-size: calc(var(--control-glyph-sm) / 2); /* half the radio box, 8 */
+  --radius-radio: var(--radius-round);
+  --radius-radio-indicator: var(--radius-round);
+
+  /* Checkbox */
+  --radius-checkbox: var(--radius-xs);
+
+  /* Slider */
+  --slider-track-height: var(--space-xs); /* 4 */
+  --radius-slider-track: var(--radius-round);
+  --radius-slider-indicator: var(--radius-round);
+  --radius-slider-thumb: var(--radius-round);
+
+  /* Avatar */
+  --radius-avatar: var(--radius-round);
+  --radius-avatar-badge: var(--radius-round);
+  --radius-avatar-count: var(--radius-round);
+
+  /* Scrollbar */
   --scrollbar-size: 0.625rem;
   --scrollbar-inset: 1px; /* gap between the thumb and the track edge */
-  --slider-track-height: var(--space-xs); /* 4 */
+  --radius-scrollbar-thumb: var(--radius-round);
+
+  /* Tooltip */
   --tooltip-arrow-size: 0.625rem;
   --tooltip-arrow-inset: var(--space-xxs); /* 2 */
+  --radius-tooltip-arrow: 0.1875rem;
+
+  /* Tab */
   --tab-indicator-thickness: var(--space-xxs); /* 2 */
   --tab-indicator-offset: -0.3125rem;
   --tab-trigger-shrink: var(--border-width-thin); /* 1, the tab's own border */
+
+  /* Kbd */
+  --radius-kbd: var(--radius-xs);
 }

@@ -1,10 +1,6 @@
 .toggle {
   border-width: var(--border-width-thin);
   border-style: solid;
-  border-radius: var(--radius-toggle);
-  font-size: var(--role-action-size);
-  line-height: var(--role-action-leading);
-  font-weight: var(--role-action-weight);
 }
 
 /* A pressed outline toggle fills with accent. Button outline keeps --muted for its own selected state. */

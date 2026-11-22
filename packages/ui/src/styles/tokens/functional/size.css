@@ -1,0 +1,93 @@
+/**
+ * Control size: one step (xs … xl) owns its height, inline padding, and gap.
+ * Components never read these directly; they take a shape recipe from utilities/shape.css
+ * (recipe-row-md, recipe-square-sm, …) so one size is defined in one place.
+ * Two glyph axes, never mixed:
+ * --control-glyph-* sizes a glyph that stands alone or is a box part (recipe-glyph-*, switch, radio, avatar).
+ * --control-icon-* sizes the icon inside a control, beside its text (recipe-icon-*).
+ * Primer has no icon size, so the glyph steps read its base size.
+ */
+
+:root {
+  --control-height-xs: 1.5rem; /* primer: --control-xsmall-size */
+  --control-height-sm: 1.75rem; /* primer: --control-small-size */
+  --control-height-md: 2rem; /* primer: --control-medium-size */
+  --control-height-lg: 2.5rem; /* primer: --control-large-size */
+  --control-height-xl: 3rem; /* primer: --control-xlarge-size */
+  --control-px-xs: 0.5rem;
+  --control-px-sm: 0.75rem;
+  --control-px-md: 0.75rem;
+  --control-px-lg: 0.75rem;
+  --control-px-xl: 0.75rem;
+  --control-gap-xs: 0.25rem;
+  --control-gap-sm: 0.25rem;
+  --control-gap-md: 0.5rem;
+  --control-gap-lg: 0.5rem;
+  --control-gap-xl: 0.5rem;
+  --control-glyph-xs: 0.75rem; /* primer: --base-size-12 */
+  --control-glyph-sm: 1rem; /* primer: --base-size-16 */
+  --control-glyph-md: 1.25rem; /* primer: --base-size-20 */
+  --control-icon-xs: 0.75rem; /* primer: --base-size-12 */
+  --control-icon-sm: 0.875rem; /* 14, between the Primer steps 12 and 16 */
+  --control-icon-md: 1rem; /* primer: --base-size-16 */
+  --input-min-height: 4rem; /* primer: --base-size-64 */
+  --input-min-width: 4rem; /* primer: --base-size-64 */
+}
+
+/**
+ * Touch target: --target-min is 44px for a coarse pointer and 16px for a fine one.
+ * Read by the control utilities, not exposed as a class.
+ */
+
+:root {
+  --target-min: 1rem; /* primer: --control-minTarget-fine */
+}
+
+@media (pointer: coarse) {
+  :root {
+    --target-min: 2.75rem; /* primer: --control-minTarget-coarse */
+  }
+}
+
+/**
+ * Container boxes: size-container-xs, min-h-container-sm, max-w-container-md, … for fixed boxes
+ * (xs 96 · sm 112 · md 128). Anything under 96 is a control size: use a control shape (recipe-square-*, recipe-row-*).
+ * Primer has no container size token, so these read its base-size scale.
+ * Chrome rows and layout regions are content-driven; use a container step only for a fixed box.
+ * Raw values live in --size-container-*: Tailwind owns --container-* (max-w-xs, …).
+ */
+
+:root {
+  --size-container-xs: 6rem; /* primer: --base-size-96 */
+  --size-container-sm: 7rem; /* primer: --base-size-112 */
+  --size-container-md: 8rem; /* primer: --base-size-128 */
+}
+
+/**
+ * Content width: the widest a Section's content runs (forms, alerts, grouped actions).
+ * Headings and lists stay full width. A theme sets --content-width to widen or narrow every section at once.
+ */
+
+:root {
+  --content-width: 30rem;
+}
+
+/**
+ * Floating panels.
+ *   width      --overlay-xxs … xl         (192 · 256 · 320 · 480 · 768 · 960)
+ *   max height --overlay-h-sm … xl    (256 · 320 · 432 · 600, cap at 50vh where used)
+ * The panel padding is --overlay-pad-* (spacing/space.css) and its corner is --radius-overlay-sm (shape/radius.css).
+ */
+
+:root {
+  --overlay-xxs: 12rem; /* primer: --overlay-width-xsmall */
+  --overlay-xs: 16rem; /* not in Primer: fills the 12rem to 20rem gap for menus with a header */
+  --overlay-sm: 20rem; /* primer: --overlay-width-small */
+  --overlay-md: 30rem; /* primer: --overlay-width-medium */
+  --overlay-lg: 48rem; /* not Primer's 40rem: it left a 20rem gap to xl, so a sidebar page could only be xl */
+  --overlay-xl: 60rem; /* primer: --overlay-width-xlarge */
+  --overlay-h-sm: 16rem; /* primer: --overlay-height-small */
+  --overlay-h-md: 20rem; /* primer: --overlay-height-medium */
+  --overlay-h-lg: 27rem; /* primer: --overlay-height-large */
+  --overlay-h-xl: 37.5rem; /* primer: --overlay-height-xlarge */
+}

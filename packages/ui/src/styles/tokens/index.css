@@ -4,12 +4,13 @@
  *   functional/  Nodeint's tokens, one folder per kind of value and one file per concern. Values are plain;
  *                Primer is only a reference (`primer-reference.test.ts`). A theme overrides these variables,
  *                not a framework's. Each file lives in the folder of its kind:
- *     color/       roles, foreground, variants, chart, theme, opacity   what a thing looks like in color
+ *     color        roles, foreground, chart   what a thing looks like in color
  *     spacing/     space                          gaps, insets, panel padding
- *     size/        control, action-size, field-size, group-size, target, container, content, overlay, parts    how big a box, or a part of one, is
- *     shape/       radius, border                 corners (a scale plus field and control sets) and stroke widths
- *     depth/       shadow, z-index                how far a thing sits above the surface
- *     typography/  typography, roles              type steps, the font catalog, text roles
+ *     size         control, target, container, content, overlay    how big a box, or a part of one, is
+ *   sizes/       action-size, field-size, group-size   the size sets a data-*-size attribute picks
+ *            radius, border                 corners (a scale plus field and control sets) and stroke widths
+ *            shadow, z-index                how far a thing sits above the surface
+ *     typography   type steps, the font catalog, text roles (one file)
  *     motion/      motion                         duration and easing
  * appearance.css (the runtime axes) is imported after the tokens so live font and data-* maps win.
  */
@@ -19,26 +20,22 @@
 @import "./base/color/scale-status.css";
 @import "./base/color/scale-alpha.css";
 
-@import "./functional/spacing/space.css";
-@import "./functional/size/control.css";
-@import "./functional/size/action-size.css";
-@import "./functional/size/field-size.css";
-@import "./functional/size/group-size.css";
-@import "./functional/size/target.css";
-@import "./functional/size/container.css";
-@import "./functional/size/content.css";
-@import "./functional/size/overlay.css";
-@import "./functional/size/parts.css";
-@import "./functional/shape/radius.css";
-@import "./functional/shape/border.css";
-@import "./functional/depth/shadow.css";
-@import "./functional/depth/z-index.css";
-@import "./functional/typography/typography.css";
-@import "./functional/typography/roles.css";
-@import "./functional/motion/motion.css";
-@import "./functional/color/roles.css";
-@import "./functional/color/foreground.css";
-@import "./functional/color/chart.css";
-@import "./functional/color/opacity.css";
-@import "./functional/color/variants.css";
-@import "./functional/color/group-variants.css";
+@import "./functional/size.css";
+@import "./sizes/action-size.css";
+@import "./sizes/field-size.css";
+@import "./sizes/group-size.css";
+@import "./functional/typography.css";
+@import "./functional/color.css";
+
+@import "./functional/radius.css";
+@import "./functional/border.css";
+@import "./functional/motion.css";
+@import "./functional/space.css";
+@import "./functional/shadow.css";
+@import "./functional/z-index.css";
+@import "./functional/opacity.css";
+
+@import "./variants/control-variants.css";
+@import "./variants/group-variants.css";
+
+@import "./elements.css";

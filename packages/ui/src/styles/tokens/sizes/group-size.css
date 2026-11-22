@@ -6,41 +6,15 @@
  * child's own size attribute cannot override them.
  *   --group-action-*   buttons and toggles: height, px, gap, icon, radius
  *   --group-field-*    inputs, select triggers, comboboxes: height, px, gap, radius
- *   --group-corner     the group's own corner when it paints a box (input-group)
- * An input-group zeroes --group-field-radius for its fields itself, so it takes no field radius here.
- * An input-group hands down field tokens only: its addon buttons keep their own size.
+ *   --group-corner     the group's own corner when it paints a box (input-group, toolbar)
  * The steps and their raw values live in control.css and radius.css, as in action-size.css and field-size.css.
  */
 [data-group-size='xs'] {
   --group-field-height: var(--control-height-xs);
   --group-field-px: var(--control-px-xs);
   --group-field-gap: var(--control-gap-xs);
-  --group-corner: var(--radius-field-xs);
-}
-
-[data-group-size='sm'] {
-  --group-field-height: var(--control-height-sm);
-  --group-field-px: var(--control-px-sm);
-  --group-field-gap: var(--control-gap-sm);
-  --group-corner: var(--radius-field-sm);
-}
-
-[data-group-size='md'] {
-  --group-field-height: var(--control-height-md);
-  --group-field-px: var(--control-px-md);
-  --group-field-gap: var(--control-gap-md);
-  --group-corner: var(--radius-field-md);
-}
-
-[data-group-size='lg'] {
-  --group-field-height: var(--control-height-lg);
-  --group-field-px: var(--control-px-lg);
-  --group-field-gap: var(--control-gap-lg);
-  --group-corner: var(--radius-field-lg);
-}
-
-[data-group-size='xs']:not([data-slot='input-group']) {
   --group-field-radius: var(--radius-field-xs);
+  --group-corner: var(--radius-field-xs);
   --group-action-height: var(--control-height-xs);
   --group-action-px: var(--control-px-xs);
   --group-action-gap: var(--control-gap-xs);
@@ -48,8 +22,12 @@
   --group-action-radius: var(--radius-action-xs);
 }
 
-[data-group-size='sm']:not([data-slot='input-group']) {
+[data-group-size='sm'] {
+  --group-field-height: var(--control-height-sm);
+  --group-field-px: var(--control-px-sm);
+  --group-field-gap: var(--control-gap-sm);
   --group-field-radius: var(--radius-field-sm);
+  --group-corner: var(--radius-field-sm);
   --group-action-height: var(--control-height-sm);
   --group-action-px: var(--control-px-sm);
   --group-action-gap: var(--control-gap-sm);
@@ -57,8 +35,12 @@
   --group-action-radius: var(--radius-action-sm);
 }
 
-[data-group-size='md']:not([data-slot='input-group']) {
+[data-group-size='md'] {
+  --group-field-height: var(--control-height-md);
+  --group-field-px: var(--control-px-md);
+  --group-field-gap: var(--control-gap-md);
   --group-field-radius: var(--radius-field-md);
+  --group-corner: var(--radius-field-md);
   --group-action-height: var(--control-height-md);
   --group-action-px: var(--control-px-md);
   --group-action-gap: var(--control-gap-md);
@@ -66,23 +48,15 @@
   --group-action-radius: var(--radius-action-md);
 }
 
-[data-group-size='lg']:not([data-slot='input-group']) {
+[data-group-size='lg'] {
+  --group-field-height: var(--control-height-lg);
+  --group-field-px: var(--control-px-lg);
+  --group-field-gap: var(--control-gap-lg);
   --group-field-radius: var(--radius-field-lg);
+  --group-corner: var(--radius-field-lg);
   --group-action-height: var(--control-height-lg);
   --group-action-px: var(--control-px-lg);
   --group-action-gap: var(--control-gap-lg);
   --group-action-icon: var(--control-icon-md);
   --group-action-radius: var(--radius-action-lg);
-}
-
-/*
- * An input-group sits in a button-group without taking its action size: its addon buttons keep their own.
- * `initial` makes the token invalid, which sends var() to the child's own fallback.
- */
-[data-slot='input-group'][data-group-size] {
-  --group-action-height: initial;
-  --group-action-px: initial;
-  --group-action-gap: initial;
-  --group-action-icon: initial;
-  --group-action-radius: initial;
 }

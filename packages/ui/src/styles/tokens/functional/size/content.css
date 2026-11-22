@@ -1,8 +1,0 @@
-/**
- * Content width: the widest a Section's content runs (forms, alerts, grouped actions).
- * Headings and lists stay full width. A theme sets --content-width to widen or narrow every section at once.
- */
-
-:root {
-  --content-width: 30rem;
-}

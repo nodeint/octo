@@ -100,7 +100,7 @@
   color: var(--variant-fg-disabled);
 }
 
-/* sizes: a size set from action-size.css */
+/* sizes: a size set from sizes/action-size.css */
 .action[data-action-size] {
   border-radius: var(--group-action-radius, var(--action-radius));
 }

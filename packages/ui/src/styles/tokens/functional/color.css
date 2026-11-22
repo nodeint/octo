@@ -1,6 +1,6 @@
 /*
  * Semantic surface, edge, and emphasis roles. Aliases only. Raw oklch stays in the scale files.
- * A neutral surface has no foreground of its own: text on it reads the foreground-* ladder (foreground.css).
+ * A neutral surface has no foreground of its own: text on it reads the foreground-* ladder (the Foreground section below).
  * Only a solid emphasis fill keeps an on-fill pair: primary, primary-subtle, primary-fixed, and the statuses.
  */
 :root {
@@ -85,4 +85,44 @@
 .dark {
   --field: var(--muted);
   --field-hover: var(--secondary);
+}
+
+/*
+ * Foreground: the text and glyph axis. Aliases only. Raw oklch stays in the scale files.
+ * One ladder for every neutral surface. A surface role carries no text color of its own.
+ * Each step reads at 4.5:1 on the surfaces it is documented for (color-math.test.ts).
+ *   foreground   body text, titles, and a control that is hovered, selected, or pressed
+ *   foreground-muted     secondary text, descriptions, and a navigation row or quiet control at rest
+ *   foreground-subtle    placeholders, section labels, and metadata that the page can do without
+ *   foreground-disabled  a disabled control. Not content
+ * A solid emphasis fill (primary, a status) keeps its own on-fill pair: `*-foreground`.
+ */
+:root {
+  --foreground: var(--neutral-ink-1);
+  --foreground-muted: var(--neutral-ink-2);
+  --foreground-subtle: var(--neutral-ink-3);
+  --foreground-disabled: var(--neutral-10);
+}
+
+/*
+ * Categorical chart ramp. Hue order is the same in both modes.
+ * chart-1 takes the hue of --primary. The other hues stay put.
+ * chart-neutral is the de-emphasized series and the axis ink.
+ */
+:root {
+  --chart-1: oklch(from var(--primary) 0.55 c h);
+  --chart-2: oklch(0.55 0.16 40);
+  --chart-3: oklch(0.52 0.16 280);
+  --chart-4: oklch(0.55 0.17 20);
+  --chart-5: oklch(0.52 0.13 230);
+  --chart-neutral: var(--neutral-ink-2);
+}
+
+.dark {
+  --chart-1: oklch(from var(--primary) 0.78 c h);
+  --chart-2: oklch(0.78 0.14 40);
+  --chart-3: oklch(0.74 0.14 280);
+  --chart-4: oklch(0.78 0.15 20);
+  --chart-5: oklch(0.74 0.12 230);
+  --chart-neutral: var(--neutral-ink-2);
 }
