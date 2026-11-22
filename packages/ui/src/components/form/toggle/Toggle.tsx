@@ -4,7 +4,7 @@ import { Toggle as TogglePrimitive } from '@base-ui/react/toggle';
 
 import { cn } from '../../../lib/utils';
 
-type ToggleVariant = 'ghost' | 'outline' | 'swatch'
+type ToggleVariant = 'ghost' | 'outline'
 type ToggleSize = 'xs' | 'sm' | 'md' | 'lg'
 /** `icon` is a square toggle that holds only a glyph. */
 type ToggleShape = 'default' | 'icon'

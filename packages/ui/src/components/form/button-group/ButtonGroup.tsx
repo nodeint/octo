@@ -6,11 +6,13 @@ import { Separator } from '../../layout/separator/Separator';
 
 type ButtonGroupOrientation = 'horizontal' | 'vertical'
 type ButtonGroupVariant = 'outline' | 'secondary' | 'ghost'
+type ButtonGroupSize = 'xs' | 'sm' | 'md' | 'lg'
 
 function ButtonGroup({
   className,
   orientation = 'horizontal',
   variant = 'outline',
+  size,
   ...props
 }: React.ComponentProps<'div'> & {
   orientation?: ButtonGroupOrientation
@@ -19,6 +21,8 @@ function ButtonGroup({
    * Focus, invalid and disabled text paint stay with the child. Defaults to outline.
    */
   variant?: ButtonGroupVariant
+  /** One step of the control scale. The buttons and fields inside take it and cannot override it. Without it each child keeps its own. */
+  size?: ButtonGroupSize
 }): React.JSX.Element {
   return (
     <div
@@ -26,6 +30,7 @@ function ButtonGroup({
       data-slot="button-group"
       data-orientation={orientation}
       data-group-variant={variant}
+      data-group-size={size}
       className={cn('button-group', className)}
       {...props}
     />
@@ -72,4 +77,4 @@ export {
   ButtonGroupSeparator,
   ButtonGroupText,
 };
-export type { ButtonGroupOrientation, ButtonGroupVariant };
+export type { ButtonGroupOrientation, ButtonGroupSize, ButtonGroupVariant };

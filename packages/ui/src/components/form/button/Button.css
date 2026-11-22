@@ -122,23 +122,23 @@
 
 /* sizes: a shape (row or icon square) and a size set from action-size.css */
 .button[data-action-size] {
-  border-radius: var(--action-radius);
+  border-radius: var(--group-action-radius, var(--action-radius));
 }
 
 .button[data-action-size] svg:not([class*='size-']) {
-  width: var(--action-icon);
-  height: var(--action-icon);
+  width: var(--group-action-icon, var(--action-icon));
+  height: var(--group-action-icon, var(--action-icon));
 }
 
 .button[data-shape='default'][data-action-size] {
-  height: var(--action-height);
-  padding-inline: calc(var(--action-px) - var(--border-width-thin));
-  gap: var(--action-gap);
+  height: var(--group-action-height, var(--action-height));
+  padding-inline: calc(var(--group-action-px, var(--action-px)) - var(--border-width-thin));
+  gap: var(--group-action-gap, var(--action-gap));
 }
 
 .button[data-shape='icon'][data-action-size] {
-  width: var(--action-height);
-  height: var(--action-height);
+  width: var(--group-action-height, var(--action-height));
+  height: var(--group-action-height, var(--action-height));
 }
 
 /* An icon-only square keeps the md glyph from sm up; only xs steps down. */
@@ -151,12 +151,4 @@
   font-size: var(--role-body-sm-size);
   line-height: var(--role-body-sm-leading);
   font-weight: var(--role-body-sm-weight);
-}
-
-[data-slot='button-group'] .button[data-action-size='xs'] {
-  border-radius: var(--radius-action-xs);
-}
-
-[data-slot='button-group'] .button[data-action-size='sm'] {
-  border-radius: var(--radius-action-sm);
 }

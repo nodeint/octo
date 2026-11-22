@@ -29,11 +29,11 @@
   width: fit-content;
   max-width: 100%;
   min-width: 0;
-  height: var(--field-height);
-  padding-inline: calc(var(--field-px) - var(--border-width-thin));
-  gap: var(--field-gap);
+  height: var(--group-field-height, var(--field-height));
+  padding-inline: calc(var(--group-field-px, var(--field-px)) - var(--border-width-thin));
+  gap: var(--group-field-gap, var(--field-gap));
   border: var(--border-width-thin) solid var(--group-field-border, var(--variant-border));
-  border-radius: var(--field-radius);
+  border-radius: var(--group-field-radius, var(--field-radius));
   background-color: var(--group-field-bg, var(--variant-bg));
   color: var(--group-field-fg, var(--variant-fg));
   font-size: var(--role-field-size);

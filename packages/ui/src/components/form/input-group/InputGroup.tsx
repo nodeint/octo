@@ -37,7 +37,7 @@ function InputGroup({
     <div
       data-slot="input-group"
       data-group-variant={variant}
-      data-field-size={size}
+      data-group-size={size}
       role="group"
       className={cn('input-group', className)}
       {...props}

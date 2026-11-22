@@ -5,8 +5,8 @@ import {
   FieldLabel,
   Icon,
   Stack,
+  Toggle,
   ToggleGroup,
-  ToggleGroupItem,
 } from '@workspace/ui';
 import * as React from 'react';
 
@@ -45,9 +45,8 @@ const meta = {
   component: ToggleGroup,
   tags: ['autodocs'],
   argTypes: {
-    variant: { control: 'inline-radio', options: ['ghost', 'outline'] },
+    variant: { control: 'inline-radio', options: ['ghost', 'outline', 'secondary'] },
     size: { control: 'inline-radio', options: ['xs', 'sm', 'md', 'lg'] },
-    shape: { control: 'inline-radio', options: ['default', 'icon'] },
     orientation: { control: 'inline-radio', options: ['horizontal', 'vertical'] },
     disabled: { control: 'boolean' },
   },
@@ -62,25 +61,40 @@ export const Demo: Story = {
   render: (args) => (
     <ToggleGroup {...args}>
       {FORMATS.map((format) => (
-        <ToggleGroupItem key={format.value} value={format.value} aria-label={`Toggle ${format.value}`}>
+        <Toggle key={format.value} value={format.value} shape="icon" aria-label={`Toggle ${format.value}`}>
           <Icon name={format.icon} />
-        </ToggleGroupItem>
+        </Toggle>
       ))}
     </ToggleGroup>
   ),
 };
 
-export const Outline: Story = {
-  args: { variant: 'outline', defaultValue: ['all'] },
+export const Variants: Story = {
+  args: { multiple: true, defaultValue: ['bold', 'italic'] },
+  parameters: {
+    docs: {
+      source: { type: 'dynamic' },
+      description: {
+        story:
+          'A `variant` on the group sets the fill, text and border of the toggles inside, as ButtonGroup does. Focus, invalid and disabled paint stay with the toggle. The last toggle is disabled.',
+      },
+    },
+  },
   render: (args) => (
-    <ToggleGroup {...args}>
-      <ToggleGroupItem value="all" aria-label="Toggle all">
-        All
-      </ToggleGroupItem>
-      <ToggleGroupItem value="missed" aria-label="Toggle missed">
-        Missed
-      </ToggleGroupItem>
-    </ToggleGroup>
+    <Stack gap="md">
+      {(['ghost', 'outline', 'secondary'] as const).map((variant) => (
+        <ToggleGroup key={variant} {...args} variant={variant}>
+          {FORMATS.map((format) => (
+            <Toggle key={format.value} value={format.value} shape="icon" aria-label={`${variant} ${format.value}`}>
+              <Icon name={format.icon} />
+            </Toggle>
+          ))}
+          <Toggle value="disabled" shape="icon" aria-label={`${variant} disabled`} disabled>
+            <Icon name="check" />
+          </Toggle>
+        </ToggleGroup>
+      ))}
+    </Stack>
   ),
 };
 
@@ -90,32 +104,19 @@ export const Sizes: Story = {
     <Stack>
       <ToggleGroup {...args} size="sm">
         {SIDES.map((side) => (
-          <ToggleGroupItem key={side.value} value={side.value} aria-label={`Toggle ${side.value}`}>
+          <Toggle key={side.value} value={side.value} aria-label={`Toggle ${side.value}`}>
             {side.label}
-          </ToggleGroupItem>
+          </Toggle>
         ))}
       </ToggleGroup>
       <ToggleGroup {...args} size="md">
         {SIDES.map((side) => (
-          <ToggleGroupItem key={side.value} value={side.value} aria-label={`Toggle ${side.value}`}>
+          <Toggle key={side.value} value={side.value} aria-label={`Toggle ${side.value}`}>
             {side.label}
-          </ToggleGroupItem>
+          </Toggle>
         ))}
       </ToggleGroup>
     </Stack>
-  ),
-};
-
-export const Spacing: Story = {
-  args: { variant: 'outline', size: 'sm', defaultValue: ['top'], style: { gap: '0.5rem' } },
-  render: (args) => (
-    <ToggleGroup {...args}>
-      {SIDES.map((side) => (
-        <ToggleGroupItem key={side.value} value={side.value} aria-label={`Toggle ${side.value}`}>
-          {side.label}
-        </ToggleGroupItem>
-      ))}
-    </ToggleGroup>
   ),
 };
 
@@ -124,14 +125,13 @@ export const Vertical: Story = {
     multiple: true,
     orientation: 'vertical',
     defaultValue: ['bold', 'italic'],
-    style: { gap: '0.25rem' },
   },
   render: (args) => (
     <ToggleGroup {...args}>
       {FORMATS.map((format) => (
-        <ToggleGroupItem key={format.value} value={format.value} aria-label={`Toggle ${format.value}`}>
+        <Toggle key={format.value} value={format.value} shape="icon" aria-label={`Toggle ${format.value}`}>
           <Icon name={format.icon} />
-        </ToggleGroupItem>
+        </Toggle>
       ))}
     </ToggleGroup>
   ),
@@ -142,9 +142,9 @@ export const Disabled: Story = {
   render: (args) => (
     <ToggleGroup {...args}>
       {FORMATS.map((format) => (
-        <ToggleGroupItem key={format.value} value={format.value} aria-label={`Toggle ${format.value}`}>
+        <Toggle key={format.value} value={format.value} shape="icon" aria-label={`Toggle ${format.value}`}>
           <Icon name={format.icon} />
-        </ToggleGroupItem>
+        </Toggle>
       ))}
     </ToggleGroup>
   ),
@@ -168,7 +168,7 @@ function FontWeightSelector(args: React.ComponentProps<typeof ToggleGroup>): Rea
         }}
       >
         {FONT_WEIGHTS.map((item) => (
-          <ToggleGroupItem
+          <Toggle
             key={item.value}
             value={item.value}
             aria-label={item.label}
@@ -181,7 +181,7 @@ function FontWeightSelector(args: React.ComponentProps<typeof ToggleGroup>): Rea
           >
             <span style={{ fontSize: '1.5rem', lineHeight: 1, fontWeight: item.weight }}>Aa</span>
             <span style={{ fontSize: '0.75rem', color: 'var(--role-caption-color)' }}>{item.label}</span>
-          </ToggleGroupItem>
+          </Toggle>
         ))}
       </ToggleGroup>
       <FieldDescription>
@@ -202,9 +202,9 @@ export const Rtl: Story = {
   render: (args) => (
     <ToggleGroup {...args}>
       {RTL_VIEWS.map((view) => (
-        <ToggleGroupItem key={view.value} value={view.value} aria-label={view.label}>
+        <Toggle key={view.value} value={view.value} aria-label={view.label}>
           {view.label}
-        </ToggleGroupItem>
+        </Toggle>
       ))}
     </ToggleGroup>
   ),

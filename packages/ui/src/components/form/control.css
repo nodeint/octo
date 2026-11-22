@@ -80,8 +80,7 @@
 .checkbox:focus-visible,
 .radio-group-item:focus-visible,
 .switch:focus-visible,
-.slider-thumb:focus-visible,
-.toggle[data-variant='swatch']:focus-visible {
+.slider-thumb:focus-visible {
   border-color: var(--ring);
   outline: var(--focus-width) solid var(--ring);
   outline-offset: var(--focus-offset);
@@ -89,8 +88,7 @@
 
 .checkbox[aria-invalid='true'],
 .radio-group-item[aria-invalid='true'],
-.switch[aria-invalid='true'],
-.toggle[data-variant='swatch'][aria-invalid='true'] {
+.switch[aria-invalid='true'] {
   border-color: var(--destructive);
   box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
 }

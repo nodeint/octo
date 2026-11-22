@@ -6,7 +6,7 @@
  *                not a framework's. Each file lives in the folder of its kind:
  *     color/       roles, foreground, variants, chart, theme, opacity   what a thing looks like in color
  *     spacing/     space                          gaps, insets, panel padding
- *     size/        control, action-size, field-size, target, container, content, overlay, parts    how big a box, or a part of one, is
+ *     size/        control, action-size, field-size, group-size, target, container, content, overlay, parts    how big a box, or a part of one, is
  *     shape/       radius, border                 corners (a scale plus field and control sets) and stroke widths
  *     depth/       shadow, z-index                how far a thing sits above the surface
  *     typography/  typography, roles              type steps, the font catalog, text roles
@@ -23,6 +23,7 @@
 @import "./functional/size/control.css";
 @import "./functional/size/action-size.css";
 @import "./functional/size/field-size.css";
+@import "./functional/size/group-size.css";
 @import "./functional/size/target.css";
 @import "./functional/size/container.css";
 @import "./functional/size/content.css";

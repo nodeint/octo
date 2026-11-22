@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ToggleSize, ToggleVariant } from '@workspace/ui';
 import { Icon, Inline, Toggle } from '@workspace/ui';
 
-const VARIANTS = ['ghost', 'outline', 'swatch'] as const satisfies readonly ToggleVariant[];
+const VARIANTS = ['ghost', 'outline'] as const satisfies readonly ToggleVariant[];
 
 const SIZES = ['xs', 'sm', 'md', 'lg'] as const satisfies readonly ToggleSize[];
 

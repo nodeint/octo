@@ -15,13 +15,13 @@
   align-items: center;
   width: 100%;
   min-width: 0;
-  height: var(--field-height);
+  height: var(--group-field-height);
   border: var(--border-width-thin) solid var(--input-group-border);
-  border-radius: var(--field-radius);
+  border-radius: var(--group-corner);
   background-color: var(--input-group-bg);
   color: var(--group-field-fg);
   outline: none;
-  /* Tokens for the fields inside: no paint of their own, the group's size, and a flexing width. */
+  /* Tokens for the fields inside: no paint of their own and a flexing width. Size comes from data-group-size (size/group-size.css). */
   --group-field-bg: transparent;
   --group-field-border: transparent;
   --group-field-bg-disabled: transparent;
@@ -32,9 +32,6 @@
   --group-field-radius: 0;
   --group-field-flex: 1 1 0%;
   --group-field-resize: none;
-  --group-field-height: var(--field-height);
-  --group-field-px: var(--field-px);
-  --group-field-gap: var(--field-gap);
   /* Color comes from data-group-variant (below). Focus and invalid have no variant set, so the group names them. */
   --variant-ring: var(--ring);
   --variant-border-focus: var(--ring);

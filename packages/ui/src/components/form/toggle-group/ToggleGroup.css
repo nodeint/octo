@@ -1,15 +1,15 @@
+/*
+ * The group sizes and paints its toggles through --group-action-* (size/group-size.css, and the
+ * variants in button-group/ButtonGroup.css) and never names a toggle. A toggle's own data-action-size
+ * and data-variant are the fallback when it sits outside a group.
+ */
 .toggle-group {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: var(--space-xxs);
   width: fit-content;
-  border-radius: var(--radius-lg);
-}
-
-.toggle-group[data-action-size='sm'] {
-  gap: var(--space-xs);
-  border-radius: var(--action-radius);
+  border-radius: var(--group-action-radius, var(--radius-lg));
 }
 
 .toggle-group[data-wrap] {
@@ -18,24 +18,20 @@
   flex-wrap: wrap;
 }
 
+/* A vertical group is a list of rows. Its items fill the width and grow with a sample line. */
 .toggle-group[data-orientation='vertical'] {
+  --group-action-width: 100%;
+  --group-action-min-width: 0;
+  --group-action-row-height: auto;
+  --group-action-padding-block: var(--inset-xs);
+  --group-action-justify: flex-start;
+  --group-action-text-align: start;
   width: 100%;
   flex-direction: column;
   align-items: stretch;
 }
 
-/* The group fills its parent so a grid of wells has a width. */
-.toggle-group[data-variant='swatch'] {
-  width: 100%;
-  flex-direction: column;
-  align-items: stretch;
-  border-radius: 0;
-}
-
-.toggle-group-item {
-  flex-shrink: 0;
-}
-
-.toggle-group-item:is(:focus, :focus-visible) {
+/* A focused toggle is raised above its neighbors so its ring shows. */
+.toggle-group > [data-slot='toggle']:is(:focus, :focus-visible) {
   z-index: var(--z-raised);
 }

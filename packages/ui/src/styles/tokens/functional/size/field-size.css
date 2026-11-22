@@ -25,7 +25,7 @@
 
 /*
  * md is the default: a field with no attribute still gets it. A field directly inside an input group is the
- * exception: it inherits the group's set (input-group/InputGroup.css).
+ * exception: it takes the group's set (group-size.css).
  */
 [data-field-size='md'],
 .input:not([data-field-size]),
