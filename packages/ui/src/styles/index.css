@@ -11,6 +11,7 @@
 
 @import "@fontsource-variable/inter";
 
+@import "./reset.css" layer(base);
 @import "./base.css" layer(base);
 @import "./tokens/index.css" layer(theme);
 @import "./appearance.css" layer(theme);

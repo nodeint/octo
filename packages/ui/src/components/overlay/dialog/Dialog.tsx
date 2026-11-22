@@ -3,7 +3,12 @@ import * as React from 'react';
 
 import { cn } from '../../../lib/utils';
 import { Button } from '../../form/button/Button';
+import { Box } from '../../layout/box/Box';
+import { ScrollArea } from '../../layout/scroll-area/ScrollArea';
 import { Icon } from '../../typography/icon/Icon';
+
+/** Tells DialogBody whether the panel has a fixed height, so the body is the part that scrolls. */
+const DialogFillContext = React.createContext(false);
 
 function Dialog({ ...props }: DialogPrimitive.Root.Props): React.JSX.Element {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />;
@@ -68,7 +73,7 @@ function DialogContent({
         className={cn('dialog-content', className)}
         {...props}
       >
-        {children}
+        <DialogFillContext.Provider value={fill}>{children}</DialogFillContext.Provider>
         {showCloseButton ? <DialogPrimitive.Close
             data-slot="dialog-close"
             render={
@@ -110,12 +115,23 @@ function DialogHeader({
 }
 
 function DialogBody({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
-  return (
-    <div
-      data-slot="dialog-body"
+  const fill = React.useContext(DialogFillContext);
+  const content = (
+    <Box
+      bleed={fill ? undefined : 'x'}
+      data-slot={fill ? undefined : 'dialog-body'}
       className={cn('dialog-body', className)}
       {...props}
     />
+  );
+  // A fixed-height panel scrolls here. The scroll area bleeds to the panel edge so the scrollbar sits on it,
+  // and the content inside re-pads with --panel-inset.
+  return fill ? (
+    <ScrollArea data-slot="dialog-body" data-box-bleed="x">
+      {content}
+    </ScrollArea>
+  ) : (
+    content
   );
 }
 

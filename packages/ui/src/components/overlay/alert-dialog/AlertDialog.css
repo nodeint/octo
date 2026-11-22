@@ -16,7 +16,7 @@
   display: grid;
   grid-template-rows: auto 1fr;
   place-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-sm);
   text-align: center;
 }
 

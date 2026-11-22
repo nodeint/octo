@@ -2,6 +2,17 @@
  * Token-only decoration. Attribute selectors stand alone, so Stack, Inline and Grid
  * share these rules. Nothing here sets display or layout; `gap` only applies when the element is already flex or grid.
  */
+/* cancel the padding of the container around the box; the container declares it as --inset (0 when none does) */
+[data-box-bleed='x'],
+[data-box-bleed='all'] {
+  margin-inline: calc(var(--inset) * -1);
+}
+
+[data-box-bleed='y'],
+[data-box-bleed='all'] {
+  margin-block: calc(var(--inset) * -1);
+}
+
 [data-box-radius='xs'] {
   border-radius: var(--radius-surface-xs);
 }

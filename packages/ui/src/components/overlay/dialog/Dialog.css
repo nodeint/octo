@@ -37,12 +37,6 @@
   padding-inline-end: var(--space-xl);
 }
 
-.dialog-content[data-fill] .dialog-body {
-  flex: 1 1 0%;
-  min-height: 0;
-  overflow-y: auto;
-}
-
 .dialog-content[data-fill] .dialog-footer {
   flex-shrink: 0;
 }
@@ -72,7 +66,14 @@
   gap: var(--space-xs);
 }
 
+/* ScrollArea is width: 100%, which a negative margin would only shift; auto lets the flex column stretch it to the edges */
+.dialog-content > .scroll-area[data-box-bleed] {
+  width: auto;
+}
+
+/* the body bleeds to the panel edge (Box bleed), so a scrollbar sits on the edge; the content is re-padded here */
 .dialog-body {
+  padding-inline: var(--panel-inset);
   display: flex;
   flex-direction: column;
   gap: var(--panel-gap);

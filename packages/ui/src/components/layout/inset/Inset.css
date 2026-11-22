@@ -1,21 +1,26 @@
 .layout-inset[data-size='xs'] {
-  padding: var(--inset-xs);
+  --inset: var(--inset-xs);
+  padding: var(--inset);
 }
 
 .layout-inset[data-size='sm'] {
-  padding: var(--inset-sm);
+  --inset: var(--inset-sm);
+  padding: var(--inset);
 }
 
 .layout-inset[data-size='md'] {
-  padding: var(--inset-md);
+  --inset: var(--inset-md);
+  padding: var(--inset);
 }
 
 .layout-inset[data-size='lg'] {
-  padding: var(--inset-lg);
+  --inset: var(--inset-lg);
+  padding: var(--inset);
 }
 
 .layout-inset[data-size='xl'] {
-  padding: var(--inset-xl);
+  --inset: var(--inset-xl);
+  padding: var(--inset);
 }
 
 /* A side or axis on its own step. Later than the size rules, so these win. */
