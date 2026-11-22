@@ -23,6 +23,8 @@ import {
 } from '@workspace/ui';
 import * as React from 'react';
 
+import shadcnAvatar from '../assets/avatars/shadcn.jpg';
+
 const VARIANTS = ['default', 'outline', 'secondary', 'ghost'] as const satisfies readonly ButtonVariant[];
 
 const SIZES = ['xs', 'sm', 'md', 'lg'] as const satisfies readonly ButtonSize[];
@@ -346,7 +348,7 @@ export const AvatarTrigger: Story = {
     <DropdownMenu>
       <DropdownMenuTrigger {...args} variant="ghost" shape="icon" aria-label="Account menu">
         <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+          <AvatarImage src={shadcnAvatar} alt="shadcn" />
           <AvatarFallback>LR</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>

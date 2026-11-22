@@ -25,6 +25,15 @@ import {
 } from '@workspace/ui';
 import * as React from 'react';
 
+import evilrabbitAvatar from '../assets/avatars/evilrabbit.png';
+import maxleiterAvatar from '../assets/avatars/maxleiter.png';
+import shadcnAvatar from '../assets/avatars/shadcn.jpg';
+import song1 from '../assets/avatars/song-1.png';
+import song2 from '../assets/avatars/song-2.png';
+import song3 from '../assets/avatars/song-3.png';
+import model1 from '../assets/models/model-1.jpg';
+import model2 from '../assets/models/model-2.jpg';
+import model3 from '../assets/models/model-3.jpg';
 import { storyWidthDecorator } from '../story-width';
 
 const PEOPLE = [
@@ -33,27 +42,39 @@ const PEOPLE = [
   { username: 'evilrabbit', email: 'evilrabbit@vercel.com' },
 ] as const;
 
+const AVATARS: Record<string, string> = {
+  shadcn: shadcnAvatar,
+  maxleiter: maxleiterAvatar,
+  evilrabbit: evilrabbitAvatar,
+};
+
 const MUSIC = [
   { title: 'Midnight City Lights', artist: 'Neon Dreams', album: 'Electric Nights', duration: '3:45' },
   { title: 'Coffee Shop Conversations', artist: 'The Morning Brew', album: 'Urban Stories', duration: '4:05' },
   { title: 'Digital Rain', artist: 'Cyber Symphony', album: 'Binary Beats', duration: '3:30' },
 ] as const;
 
+const SONG_COVERS: Record<string, string> = {
+  'Midnight City Lights': song1,
+  'Coffee Shop Conversations': song2,
+  'Digital Rain': song3,
+};
+
 const MODELS = [
   {
     name: 'v0-1.5-sm',
     description: 'Everyday tasks and UI generation.',
-    image: 'https://images.unsplash.com/photo-1650804068570-7fb2e3dbf888?q=80&w=640&auto=format&fit=crop',
+    image: model1,
   },
   {
     name: 'v0-1.5-lg',
     description: 'Advanced thinking or reasoning.',
-    image: 'https://images.unsplash.com/photo-1610280777472-54133d004c8c?q=80&w=640&auto=format&fit=crop',
+    image: model2,
   },
   {
     name: 'v0-2.0-mini',
     description: 'Open Source model for everyone.',
-    image: 'https://images.unsplash.com/photo-1602146057681-08560aee8cde?q=80&w=640&auto=format&fit=crop',
+    image: model3,
   },
 ] as const;
 
@@ -192,7 +213,7 @@ export const WithAvatar: Story = {
       <Item variant="outline">
         <ItemMedia>
           <Avatar size="lg">
-            <AvatarImage src="https://github.com/evilrabbit.png" alt="Evil Rabbit" />
+            <AvatarImage src={evilrabbitAvatar} alt="Evil Rabbit" />
             <AvatarFallback>ER</AvatarFallback>
           </Avatar>
         </ItemMedia>
@@ -210,15 +231,15 @@ export const WithAvatar: Story = {
         <ItemMedia>
           <AvatarGroup>
             <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarImage src={shadcnAvatar} alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <Avatar>
-              <AvatarImage src="https://github.com/maxleiter.png" alt="@maxleiter" />
+              <AvatarImage src={maxleiterAvatar} alt="@maxleiter" />
               <AvatarFallback>LR</AvatarFallback>
             </Avatar>
             <Avatar>
-              <AvatarImage src="https://github.com/evilrabbit.png" alt="@evilrabbit" />
+              <AvatarImage src={evilrabbitAvatar} alt="@evilrabbit" />
               <AvatarFallback>ER</AvatarFallback>
             </Avatar>
           </AvatarGroup>
@@ -242,7 +263,7 @@ export const WithImage: Story = {
         <Item key={song.title} variant="outline" render={<a href="#item-song" />} role="listitem">
           <ItemMedia variant="image">
             <img
-              src={`https://avatar.vercel.sh/${encodeURIComponent(song.title)}`}
+              src={SONG_COVERS[song.title]}
               alt={song.title}
               width={32}
               height={32}
@@ -271,7 +292,7 @@ export const Group: Story = {
         <Item key={person.username} variant="outline">
           <ItemMedia>
             <Avatar>
-              <AvatarImage src={`https://github.com/${person.username}.png`} alt={person.username} />
+              <AvatarImage src={AVATARS[person.username]} alt={person.username} />
               <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
             </Avatar>
           </ItemMedia>
@@ -351,7 +372,7 @@ function TriggerDemo(): React.JSX.Element {
           <Item key={person.username} variant="outline">
             <ItemMedia>
               <Avatar>
-                <AvatarImage src={`https://github.com/${person.username}.png`} alt="" />
+                <AvatarImage src={AVATARS[person.username]} alt="" />
                 <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
               </Avatar>
             </ItemMedia>
@@ -410,7 +431,7 @@ export const DropdownItemLayout: Story = {
                 <Item size="xs" bare>
                   <ItemMedia>
                     <Avatar size="sm">
-                      <AvatarImage src={`https://github.com/${person.username}.png`} alt="" />
+                      <AvatarImage src={AVATARS[person.username]} alt="" />
                       <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
                     </Avatar>
                   </ItemMedia>
