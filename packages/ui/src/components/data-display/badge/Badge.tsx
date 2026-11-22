@@ -23,7 +23,7 @@ type BadgeProps = useRender.ComponentProps<'span'> & {
 function Badge({
   className,
   variant = 'default',
-  size = 'sm',
+  size = 'xs',
   render,
   ...props
 }: BadgeProps): React.JSX.Element {
