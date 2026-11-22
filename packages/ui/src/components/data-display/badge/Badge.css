@@ -1,4 +1,9 @@
-/* Height follows the control ladder: sm is control-sm, md is control-md. Default size is sm. */
+/*
+ * Static look matches the action controls (button): same height, inset, gap, glyph, pill corner and type
+ * role per step, and the shared --variant-* colors at rest. Focus ring and invalid paint apply when
+ * a badge is rendered as a link or other focusable element. Height follows the control ladder; default size is sm.
+ * success, warning and info are status variants that variants.css does not define.
+ */
 .badge {
   display: inline-flex;
   flex-shrink: 0;
@@ -6,84 +11,93 @@
   justify-content: center;
   width: fit-content;
   overflow: hidden;
-  border: var(--border-width-thin) solid transparent;
-  border-radius: var(--radius-lg);
+  border: var(--border-width-thin) solid var(--variant-border, transparent);
+  background-color: var(--variant-bg);
+  color: var(--variant-fg);
   white-space: nowrap;
+  font-weight: var(--role-body-weight);
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  outline: none;
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.badge:focus-visible {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
+}
+
+.badge[aria-invalid='true'] {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
+}
+
+/* Icon glyph beside the text. A size-* class on the svg opts out. */
+.badge svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.badge[data-size='xs'] {
+  height: var(--control-height-xs);
+  padding-inline: calc(var(--control-px-xs) - var(--border-width-thin));
+  gap: var(--control-gap-xs);
+  border-radius: var(--radius-action-xs-pill);
+  font-size: var(--role-body-sm-size);
+  line-height: var(--role-body-sm-leading);
+  font-weight: var(--role-body-sm-weight);
+}
+
+.badge[data-size='xs'] > svg {
+  width: var(--control-icon-xs);
+  height: var(--control-icon-xs);
 }
 
 .badge[data-size='sm'] {
   height: var(--control-height-sm);
   padding-inline: calc(var(--control-px-sm) - var(--border-width-thin));
   gap: var(--control-gap-sm);
-  font-size: var(--role-action-sm-size);
-  line-height: var(--role-action-sm-leading);
-  font-weight: var(--role-action-sm-weight);
+  border-radius: var(--radius-action-sm-pill);
 }
 
 .badge[data-size='sm'] > svg {
-  width: var(--control-glyph-sm);
-  height: var(--control-glyph-sm);
+  width: var(--control-icon-sm);
+  height: var(--control-icon-sm);
 }
 
 .badge[data-size='md'] {
   height: var(--control-height-md);
   padding-inline: calc(var(--control-px-md) - var(--border-width-thin));
   gap: var(--control-gap-md);
-  font-size: var(--role-action-size);
-  line-height: var(--role-action-leading);
-  font-weight: var(--role-action-weight);
+  border-radius: var(--radius-action-md-pill);
 }
 
 .badge[data-size='md'] > svg {
-  width: var(--control-glyph-md);
-  height: var(--control-glyph-md);
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
 }
 
-.badge[data-variant='default'] {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
+.badge[data-size='lg'] {
+  height: var(--control-height-lg);
+  padding-inline: calc(var(--control-px-lg) - var(--border-width-thin));
+  gap: var(--control-gap-lg);
+  border-radius: var(--radius-action-lg-pill);
 }
 
-a.badge[data-variant='default']:hover {
-  background-color: var(--primary-hover);
+/* The control scale has no lg icon step; lg keeps the md glyph, as a large button does. */
+.badge[data-size='lg'] > svg {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
 }
 
-.badge[data-variant='secondary'] {
-  background-color: var(--secondary);
-  color: var(--foreground);
-}
-
-a.badge[data-variant='secondary']:hover {
-  background-color: var(--tertiary);
-}
-
-.badge[data-variant='destructive'] {
-  background-color: var(--destructive-subtle);
-  color: var(--destructive-subtle-foreground);
-}
-
-.badge[data-variant='destructive']:focus-visible {
-  outline-color: var(--destructive);
-}
-
-.badge[data-variant='outline'] {
-  border-color: var(--border);
-  color: var(--foreground);
-}
-
-a.badge[data-variant='outline']:hover,
-.badge[data-variant='ghost']:hover {
-  background-color: var(--muted);
-  color: var(--foreground-muted);
-}
-
-.badge[data-variant='link'] {
-  color: var(--primary);
-  text-underline-offset: 4px;
-}
-
-.badge[data-variant='link']:hover {
-  text-decoration-line: underline;
+/* Links step to the variant's hover paint, as a button does. */
+a.badge:hover {
+  background-color: var(--variant-bg-hover);
+  border-color: var(--variant-border-hover);
+  color: var(--variant-fg-hover);
 }
 
 /* Status chrome uses semantic tokens, for sync, log and status badges. */

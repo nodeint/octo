@@ -8,13 +8,11 @@ type BadgeVariant =
   | 'secondary'
   | 'destructive'
   | 'outline'
-  | 'ghost'
-  | 'link'
   | 'success'
   | 'warning'
   | 'info'
-/** Control-h steps only: sm → control-sm · md → control-md. */
-type BadgeSize = 'sm' | 'md'
+/** Control-h steps only: xs → control-xs · sm → control-sm · md → control-md · lg → control-lg. */
+type BadgeSize = 'xs' | 'sm' | 'md' | 'lg'
 
 type BadgeProps = useRender.ComponentProps<'span'> & {
   variant?: BadgeVariant

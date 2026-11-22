@@ -1,33 +1,8 @@
 /*
- * Behavior shared by the closed controls (badge and the selection controls): focus ring,
- * invalid and disabled paint. Selector lists replace shared utilities; keep them in sync with
- * the component files. Badge lives in data-display and is listed here on purpose.
+ * Behavior shared by the selection controls: focus ring, invalid and disabled paint.
+ * Selector lists replace shared utilities; keep them in sync with the component files.
  * Text fields (input, textarea) live in field-control.css, buttons and toggles in action.css.
  */
-
-.badge {
-  outline: none;
-  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
-  transition-duration: var(--default-transition-duration);
-  transition-timing-function: var(--default-transition-timing-function);
-}
-
-.badge:focus-visible {
-  border-color: var(--ring);
-  outline: var(--focus-width) solid var(--ring);
-  outline-offset: var(--focus-offset);
-}
-
-.badge[aria-invalid='true'] {
-  border-color: var(--destructive);
-  box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
-}
-
-/* Icon glyph size inside a badge. A size-* class on the svg opts out. */
-.badge > svg {
-  pointer-events: none;
-  flex-shrink: 0;
-}
 
 /* ---- selection controls ---- */
 .checkbox,
@@ -86,7 +61,3 @@
   inset: calc(var(--space-sm) * -1) calc(var(--space-md) * -1);
 }
 
-.toggle-group svg {
-  pointer-events: none;
-  flex-shrink: 0;
-}
