@@ -57,35 +57,15 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-function FormatItems(): React.JSX.Element {
-  return (
-    <>
+export const Demo: Story = {
+  args: { variant: 'outline', multiple: true },
+  render: (args) => (
+    <ToggleGroup {...args}>
       {FORMATS.map((format) => (
         <ToggleGroupItem key={format.value} value={format.value} aria-label={`Toggle ${format.value}`}>
           <Icon name={format.icon} />
         </ToggleGroupItem>
       ))}
-    </>
-  );
-}
-
-function SideItems(): React.JSX.Element {
-  return (
-    <>
-      {SIDES.map((side) => (
-        <ToggleGroupItem key={side.value} value={side.value} aria-label={`Toggle ${side.value}`}>
-          {side.label}
-        </ToggleGroupItem>
-      ))}
-    </>
-  );
-}
-
-export const Demo: Story = {
-  args: { variant: 'outline', multiple: true },
-  render: (args) => (
-    <ToggleGroup {...args}>
-      <FormatItems />
     </ToggleGroup>
   ),
 };
@@ -109,10 +89,18 @@ export const Sizes: Story = {
   render: (args) => (
     <Stack>
       <ToggleGroup {...args} size="sm">
-        <SideItems />
+        {SIDES.map((side) => (
+          <ToggleGroupItem key={side.value} value={side.value} aria-label={`Toggle ${side.value}`}>
+            {side.label}
+          </ToggleGroupItem>
+        ))}
       </ToggleGroup>
       <ToggleGroup {...args} size="md">
-        <SideItems />
+        {SIDES.map((side) => (
+          <ToggleGroupItem key={side.value} value={side.value} aria-label={`Toggle ${side.value}`}>
+            {side.label}
+          </ToggleGroupItem>
+        ))}
       </ToggleGroup>
     </Stack>
   ),
@@ -122,7 +110,11 @@ export const Spacing: Story = {
   args: { variant: 'outline', size: 'sm', defaultValue: ['top'], style: { gap: '0.5rem' } },
   render: (args) => (
     <ToggleGroup {...args}>
-      <SideItems />
+      {SIDES.map((side) => (
+        <ToggleGroupItem key={side.value} value={side.value} aria-label={`Toggle ${side.value}`}>
+          {side.label}
+        </ToggleGroupItem>
+      ))}
     </ToggleGroup>
   ),
 };
@@ -136,7 +128,11 @@ export const Vertical: Story = {
   },
   render: (args) => (
     <ToggleGroup {...args}>
-      <FormatItems />
+      {FORMATS.map((format) => (
+        <ToggleGroupItem key={format.value} value={format.value} aria-label={`Toggle ${format.value}`}>
+          <Icon name={format.icon} />
+        </ToggleGroupItem>
+      ))}
     </ToggleGroup>
   ),
 };
@@ -145,7 +141,11 @@ export const Disabled: Story = {
   args: { disabled: true },
   render: (args) => (
     <ToggleGroup {...args}>
-      <FormatItems />
+      {FORMATS.map((format) => (
+        <ToggleGroupItem key={format.value} value={format.value} aria-label={`Toggle ${format.value}`}>
+          <Icon name={format.icon} />
+        </ToggleGroupItem>
+      ))}
     </ToggleGroup>
   ),
 };
