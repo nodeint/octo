@@ -1,22 +1,35 @@
 import { Toolbar as ToolbarPrimitive } from '@base-ui/react/toolbar';
 
 import { cn } from '../../../lib/utils';
+import { type ButtonGroupSize, type ButtonGroupVariant } from '../../form/button-group/ButtonGroup';
 import {
   type ButtonShape,
   type ButtonSize,
   type ButtonVariant,
 } from '../../form/button/Button';
+import { type ToggleSize, type ToggleVariant } from '../../form/toggle/Toggle';
 
 type ToolbarOrientation = 'horizontal' | 'vertical'
+
+type ToolbarProps = ToolbarPrimitive.Root.Props & {
+  /** Sets the identity colors of the buttons, toggles and inputs inside, over their own variant, as ButtonGroup does. */
+  variant?: ButtonGroupVariant
+  /** One step of the control scale. The items inside take it and cannot override it. */
+  size?: ButtonGroupSize
+}
 
 function Toolbar({
   className,
   orientation = 'horizontal',
+  variant = 'outline',
+  size = 'md',
   ...props
-}: ToolbarPrimitive.Root.Props): React.JSX.Element {
+}: ToolbarProps): React.JSX.Element {
   return (
     <ToolbarPrimitive.Root
       data-slot="toolbar"
+      data-group-variant={variant}
+      data-group-size={size}
       data-orientation={orientation}
       orientation={orientation}
       className={cn('toolbar', className)}
@@ -52,7 +65,7 @@ type ToolbarButtonProps = ToolbarPrimitive.Button.Props & {
 function ToolbarButton({
   className,
   variant = 'ghost',
-  size = 'sm',
+  size = 'md',
   shape = 'default',
   ...props
 }: ToolbarButtonProps): React.JSX.Element {
@@ -69,9 +82,13 @@ function ToolbarButton({
   );
 }
 
-type ToolbarToggleProps = Omit<ToolbarButtonProps, 'aria-pressed'> & {
+type ToolbarToggleProps = Omit<ToolbarButtonProps, 'aria-pressed' | 'variant' | 'size'> & {
+  variant?: ToggleVariant
+  size?: ToggleSize
   /** Controlled pressed state (two-state toolbar item). */
   pressed?: boolean
+  /** Fill the glyph while pressed, as Toggle does. */
+  fillIcon?: boolean
 }
 
 /**
@@ -86,6 +103,7 @@ function ToolbarToggle({
   size = 'md',
   shape = 'icon',
   pressed = false,
+  fillIcon = false,
   ...props
 }: ToolbarToggleProps): React.JSX.Element {
   return (
@@ -96,6 +114,7 @@ function ToolbarToggle({
       data-action-size={size}
       data-shape={shape}
       data-pressed={pressed ? 'true' : undefined}
+      data-fill-icon={fillIcon ? '' : undefined}
       aria-pressed={pressed}
       className={cn(
         'toggle toolbar-button toolbar-toggle',
@@ -126,6 +145,7 @@ function ToolbarInput({
   return (
     <ToolbarPrimitive.Input
       data-slot="toolbar-input"
+      data-variant="field"
       data-field-size="sm"
       className={cn('toolbar-input input', className)}
       {...props}
@@ -167,5 +187,6 @@ export type {
   ToolbarButtonSize,
   ToolbarButtonVariant,
   ToolbarOrientation,
+  ToolbarProps,
   ToolbarToggleProps,
 };

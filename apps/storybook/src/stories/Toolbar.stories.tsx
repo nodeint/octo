@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   Icon,
+  Stack,
   Toolbar,
   ToolbarButton,
   ToolbarGroup,
@@ -15,6 +16,8 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     orientation: { control: 'inline-radio', options: ['horizontal', 'vertical'] },
+    variant: { control: 'inline-radio', options: ['outline', 'secondary', 'ghost'] },
+    size: { control: 'inline-radio', options: ['xs', 'sm', 'md', 'lg'] },
   },
 } satisfies Meta<typeof Toolbar>;
 
@@ -93,5 +96,43 @@ export const Vertical: Story = {
         <Icon name="edit" />
       </ToolbarButton>
     </Toolbar>
+  ),
+};
+
+export const Variants: Story = {
+  render: (args) => (
+    <Stack gap="md">
+      {(['outline', 'secondary', 'ghost'] as const).map((variant) => (
+        <Toolbar key={variant} {...args} variant={variant}>
+          <ToolbarButton shape="icon" aria-label="Add">
+            <Icon name="plus" />
+          </ToolbarButton>
+          <ToolbarToggle pressed aria-label="Favorite">
+            <Icon name="star" />
+          </ToolbarToggle>
+          <ToolbarSeparator />
+          <ToolbarButton>Share</ToolbarButton>
+        </Toolbar>
+      ))}
+    </Stack>
+  ),
+};
+
+export const Sizes: Story = {
+  render: (args) => (
+    <Stack gap="md">
+      {(['xs', 'sm', 'md', 'lg'] as const).map((size) => (
+        <Toolbar key={size} {...args} size={size}>
+          <ToolbarButton shape="icon" aria-label="Add">
+            <Icon name="plus" />
+          </ToolbarButton>
+          <ToolbarToggle aria-label="Favorite">
+            <Icon name="star" />
+          </ToolbarToggle>
+          <ToolbarSeparator />
+          <ToolbarInput placeholder="Search" aria-label="Search" />
+        </Toolbar>
+      ))}
+    </Stack>
   ),
 };

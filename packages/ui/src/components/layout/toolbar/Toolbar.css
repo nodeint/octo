@@ -1,20 +1,62 @@
-/* A rail for toolbar items. */
+/*
+ * A rail for toolbar items. Like a button-group it owns the variant and size of what it holds:
+ * data-group-variant sets the --group-action-* / --group-field-* colors (below) and
+ * data-group-size sets height, inset, gap and radius (size/group-size.css). Unlike a button-group
+ * its items are spaced, not joined, so none of the join rules apply.
+ * The rail paints its own fill and edge per variant (--toolbar-fill, --toolbar-edge, at the end of this file).
+ */
 .toolbar {
   display: flex;
   align-items: center;
   gap: var(--space-xxs);
   width: fit-content;
-  padding: var(--space-xs);
-  overflow: hidden;
-  border-radius: 9999px;
-  --surface: var(--toolbar);
-  background-color: var(--surface);
+  /* Height is the size step, as an input-group's is; items and inputs fit inside the border and the inset. */
+  height: var(--toolbar-height);
+  padding: var(--toolbar-inset);
+  border: var(--border-width-thin) solid var(--toolbar-edge);
+  border-radius: var(--group-corner);
+  background-color: var(--toolbar-fill);
   color: var(--foreground);
-  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
+  --toolbar-inset: var(--space-xxs);
+  --toolbar-item-height: calc(var(--toolbar-height) - 2 * (var(--border-width-thin) + var(--toolbar-inset)));
+  --group-action-height: var(--toolbar-item-height);
+  --group-field-height: var(--toolbar-item-height);
+  /* Items sit concentric inside the rail: the rail corner less the border and the inset. */
+  --group-action-radius: max(calc(var(--group-corner) - var(--border-width-thin) - var(--toolbar-inset)), var(--space-xxs));
+  --group-field-radius: var(--group-action-radius);
+  /* A field inside the rail rests without fill or edge. It is independent: focus and invalid are drawn by the field itself. */
+  --group-field-bg: transparent;
+  --group-field-border: transparent;
+  --group-field-bg-disabled: transparent;
+  --group-field-border-disabled: transparent;
 }
 
+/* The step's own height, named here because the item tokens above replace --group-field-height on this element. */
+.toolbar[data-group-size='xs'] {
+  --toolbar-height: var(--control-height-xs);
+}
+
+.toolbar[data-group-size='sm'] {
+  --toolbar-height: var(--control-height-sm);
+}
+
+.toolbar[data-group-size='md'] {
+  --toolbar-height: var(--control-height-md);
+}
+
+.toolbar[data-group-size='lg'] {
+  --toolbar-height: var(--control-height-lg);
+}
+
+/* A vertical rail grows with its items and is block-shaped. */
 .toolbar[data-orientation='vertical'] {
   flex-direction: column;
+  height: auto;
+  border-radius: var(--radius-field-block);
+  --group-action-radius: max(
+    calc(var(--radius-field-block) - var(--border-width-thin) - var(--toolbar-inset)),
+    var(--space-xxs)
+  );
 }
 
 .toolbar[data-disabled] {
@@ -61,15 +103,119 @@
   background-color: var(--separator);
 }
 
-/* Perpendicular to the toolbar axis; Base UI sets the orientation. */
+/*
+ * Perpendicular to the toolbar axis; Base UI sets the orientation. It stretches across the rail's content box,
+ * so a negative margin of the rail's inset carries it out to the border on both ends.
+ */
 .toolbar-separator[data-orientation='vertical'] {
-  width: 1px;
-  height: var(--control-height-sm);
-  align-self: center;
+  width: var(--border-width-thin);
+  align-self: stretch;
+  margin-block: calc(var(--toolbar-inset) * -1);
 }
 
 .toolbar-separator[data-orientation='horizontal'] {
-  width: 100%;
-  height: 1px;
+  width: auto;
+  height: var(--border-width-thin);
   align-self: stretch;
+  margin-inline: calc(var(--toolbar-inset) * -1);
+}
+
+/*
+ * Group variants: data-group-variant sets the identity colors (bg, fg, border at rest, hover, active,
+ * selected, and the disabled fill and edge) that its buttons, toggles and inputs read through --group-*.
+ * Same roles and values as button-group (ButtonGroup.css); focus, invalid and disabled text stay with the child.
+ * The shared reset is in styles/tokens/functional/color/group-variants.css.
+ *
+ * The rail also paints the group's fill and edge (--toolbar-fill, --toolbar-edge), as an input-group does.
+ * Where the rail carries the border (outline), its items rest borderless: one outline around the row,
+ * not one per item. Hover, active and selected paint stay the button-group values.
+ */
+/* outline: a bordered row. A field is transparent like an action, so the row reads as one surface. */
+.toolbar[data-group-variant='outline'] {
+  --toolbar-fill: transparent;
+  --toolbar-edge: var(--border);
+  --group-action-bg: transparent;
+  --group-action-fg: currentcolor;
+  --group-action-border: transparent;
+  --group-action-bg-hover: var(--tertiary);
+  --group-action-fg-hover: var(--foreground);
+  --group-action-border-hover: transparent;
+  --group-action-bg-active: var(--tertiary);
+  --group-action-fg-active: var(--foreground);
+  --group-action-border-active: transparent;
+  --group-action-bg-selected: var(--muted);
+  --group-action-fg-selected: var(--foreground);
+  --group-action-border-selected: transparent;
+  --group-action-bg-disabled: transparent;
+  --group-action-border-disabled: transparent;
+  --group-field-fg: currentcolor;
+  --group-field-bg-hover: var(--tertiary);
+  --group-field-fg-hover: currentcolor;
+  --group-field-border-hover: transparent;
+  --group-field-bg-active: var(--tertiary);
+  --group-field-fg-active: currentcolor;
+  --group-field-border-active: transparent;
+  --group-field-bg-selected: var(--muted);
+  --group-field-fg-selected: currentcolor;
+  --group-field-border-selected: transparent;
+}
+
+/* secondary: filled, no visible border. */
+.toolbar[data-group-variant='secondary'] {
+  --toolbar-fill: var(--secondary);
+  --toolbar-edge: transparent;
+  --group-action-bg: transparent;
+  --group-action-fg: var(--foreground);
+  --group-action-border: transparent;
+  --group-action-bg-hover: var(--tertiary);
+  --group-action-fg-hover: var(--foreground);
+  --group-action-border-hover: transparent;
+  --group-action-bg-active: var(--tertiary);
+  --group-action-fg-active: var(--foreground);
+  --group-action-border-active: transparent;
+  --group-action-bg-selected: var(--accent);
+  --group-action-fg-selected: var(--foreground);
+  --group-action-border-selected: transparent;
+  --group-action-bg-disabled: var(--disabled);
+  --group-action-border-disabled: transparent;
+  --group-field-fg: var(--foreground);
+  --group-field-bg-hover: var(--tertiary);
+  --group-field-fg-hover: var(--foreground);
+  --group-field-border-hover: transparent;
+  --group-field-bg-active: var(--tertiary);
+  --group-field-fg-active: var(--foreground);
+  --group-field-border-active: transparent;
+  --group-field-bg-selected: var(--accent);
+  --group-field-fg-selected: var(--foreground);
+  --group-field-border-selected: transparent;
+}
+
+/* ghost: no fill or border at rest; a fill appears on hover. An action rests muted; a field keeps full-strength text. */
+.toolbar[data-group-variant='ghost'] {
+  --toolbar-fill: transparent;
+  --toolbar-edge: transparent;
+  --group-action-bg: transparent;
+  --group-action-fg: var(--foreground-muted);
+  --group-action-border: transparent;
+  --group-action-bg-hover: var(--tertiary);
+  --group-action-fg-hover: var(--foreground);
+  --group-action-border-hover: transparent;
+  --group-action-bg-active: var(--tertiary);
+  --group-action-fg-active: var(--foreground);
+  --group-action-border-active: transparent;
+  --group-action-bg-selected: var(--accent);
+  --group-action-fg-selected: var(--foreground);
+  --group-action-border-selected: transparent;
+  --group-action-bg-disabled: transparent;
+  --group-action-border-disabled: transparent;
+  --group-field-fg: var(--foreground);
+  --group-field-bg-hover: var(--tertiary);
+  --group-field-fg-hover: var(--foreground);
+  --group-field-border-hover: transparent;
+  --group-field-bg-active: var(--tertiary);
+  --group-field-fg-active: var(--foreground);
+  --group-field-border-active: transparent;
+  --group-field-bg-selected: var(--accent);
+  --group-field-fg-selected: var(--foreground);
+  --group-field-border-selected: transparent;
 }

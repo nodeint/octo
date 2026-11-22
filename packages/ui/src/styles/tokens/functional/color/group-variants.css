@@ -5,7 +5,7 @@
  * without a variant, paints as before: var(--group-action-bg, var(--variant-bg)).
  *
  * This file holds only the shared reset. The variants themselves live with their group:
- * button-group/ButtonGroup.css and input-group/InputGroup.css.
+ * button-group/ButtonGroup.css, toggle-group/ToggleGroup.css, toolbar/Toolbar.css and input-group/InputGroup.css.
  *
  * Reset: tokens inherit, so a nested group without a variant would otherwise paint with its parent's.
  * `initial` makes the token invalid, which sends var() to its fallback. The variant rules
