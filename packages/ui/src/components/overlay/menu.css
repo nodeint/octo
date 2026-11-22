@@ -4,7 +4,7 @@
  *   menu-row        every interactive row (item, sub-trigger, checkbox and radio item)
  *   menu-item       plain item          menu-sub-trigger  submenu trigger
  *   menu-checkable  checkbox and radio item
- *   menu-label, menu-separator, menu-shortcut, menu-indicator, menu-group, menu-content
+ *   menu-label, menu-separator, menu-shortcut, menu-indicator, menu-group, menu-content, menu-sub-content
  */
 .menu-row {
   position: relative;
@@ -107,6 +107,17 @@
   --menu-pad: var(--overlay-pad-xs);
   gap: var(--menu-gap);
   padding: var(--menu-pad);
+  z-index: var(--z-floating);
+  max-height: var(--available-height);
+  min-width: var(--overlay-xxs);
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: var(--radius-overlay-sm);
+}
+
+/* Submenu panel: no scroll container of its own. Must stay after .menu-content. */
+.menu-sub-content {
+  overflow: hidden;
 }
 
 .menu-group {

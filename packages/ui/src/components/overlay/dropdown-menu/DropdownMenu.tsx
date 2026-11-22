@@ -174,7 +174,7 @@ function DropdownMenuSubContent({
   return (
     <DropdownMenuContent
       data-slot="dropdown-menu-sub-content"
-      className={cn('dropdown-menu-sub-content', className)}
+      className={cn('menu-sub-content dropdown-menu-sub-content', className)}
       align={align}
       alignOffset={alignOffset}
       side={side}
