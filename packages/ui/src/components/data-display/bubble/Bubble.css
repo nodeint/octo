@@ -32,7 +32,7 @@
   padding: var(--inset-sm) var(--inset-md);
   overflow: hidden;
   overflow-wrap: anywhere;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-md);
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);

@@ -2,16 +2,20 @@
  * Token-only decoration. Attribute selectors stand alone, so Stack, Inline and Grid
  * share these rules. Nothing here sets display or layout; `gap` only applies when the element is already flex or grid.
  */
+[data-box-radius='xs'] {
+  border-radius: var(--radius-surface-xs);
+}
+
 [data-box-radius='sm'] {
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-surface-sm);
 }
 
 [data-box-radius='md'] {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-surface-md);
 }
 
 [data-box-radius='lg'] {
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-lg);
 }
 
 [data-box-surface='background'] {

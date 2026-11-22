@@ -24,7 +24,6 @@
   --radio-dot-size: calc(var(--control-glyph-sm) / 2); /* half the radio box, 8 */
   --scrollbar-size: 0.625rem;
   --scrollbar-inset: 1px; /* gap between the thumb and the track edge */
-  --scrollbar-thumb-radius: 9999px;
   --slider-track-height: var(--space-xs); /* 4 */
   --tooltip-arrow-size: 0.625rem;
   --tooltip-arrow-inset: var(--space-xxs); /* 2 */

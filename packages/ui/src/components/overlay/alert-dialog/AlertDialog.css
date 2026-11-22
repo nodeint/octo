@@ -32,7 +32,7 @@
   width: var(--control-height-lg);
   height: var(--control-height-lg);
   margin-block-end: var(--space-sm);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xs);
   background-color: var(--muted);
 }
 

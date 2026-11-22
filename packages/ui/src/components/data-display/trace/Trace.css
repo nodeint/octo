@@ -18,7 +18,7 @@
   width: fit-content;
   max-width: 100%;
   min-width: 0;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xs);
   text-align: start;
   outline: none;
 }
@@ -119,7 +119,7 @@
   width: fit-content;
   max-width: 100%;
   min-width: 0;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xs);
   text-align: start;
   color: var(--foreground-muted);
   cursor: pointer;

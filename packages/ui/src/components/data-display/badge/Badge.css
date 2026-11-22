@@ -45,7 +45,7 @@
   height: var(--control-height-xs);
   padding-inline: calc(var(--control-px-xs) - var(--border-width-thin));
   gap: var(--control-gap-xs);
-  border-radius: var(--radius-action-xs-pill);
+  border-radius: var(--radius-pill-xs);
   font-size: var(--role-body-sm-size);
   line-height: var(--role-body-sm-leading);
   font-weight: var(--role-body-sm-weight);
@@ -60,7 +60,7 @@
   height: var(--control-height-sm);
   padding-inline: calc(var(--control-px-sm) - var(--border-width-thin));
   gap: var(--control-gap-sm);
-  border-radius: var(--radius-action-sm-pill);
+  border-radius: var(--radius-pill-sm);
 }
 
 .badge[data-size='sm'] > svg {
@@ -72,7 +72,7 @@
   height: var(--control-height-md);
   padding-inline: calc(var(--control-px-md) - var(--border-width-thin));
   gap: var(--control-gap-md);
-  border-radius: var(--radius-action-md-pill);
+  border-radius: var(--radius-pill-md);
 }
 
 .badge[data-size='md'] > svg {
@@ -84,7 +84,7 @@
   height: var(--control-height-lg);
   padding-inline: calc(var(--control-px-lg) - var(--border-width-thin));
   gap: var(--control-gap-lg);
-  border-radius: var(--radius-action-lg-pill);
+  border-radius: var(--radius-pill-lg);
 }
 
 /* The control scale has no lg icon step; lg keeps the md glyph, as a large button does. */

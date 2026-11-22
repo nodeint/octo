@@ -9,7 +9,7 @@
   width: 100%;
   padding: var(--space-sm) var(--space-md);
   border: var(--border-width-thin) solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-md);
   text-align: start;
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);

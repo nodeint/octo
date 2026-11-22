@@ -168,7 +168,7 @@
 }
 
 .input-group-addon > kbd {
-  border-radius: calc(var(--radius-lg) - 5px);
+  border-radius: calc(var(--group-corner) - 5px);
 }
 
 /* a group with a direct field gives block addons less padding */
@@ -187,7 +187,7 @@
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   box-shadow: none;
-  border-radius: calc(var(--radius-lg) - 3px);
+  border-radius: calc(var(--group-corner) - 3px);
 }
 
 .input-group-button[data-shape='default'] svg:not([class*='size-']) {

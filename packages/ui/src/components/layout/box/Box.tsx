@@ -1,4 +1,4 @@
-type BoxRadius = 'sm' | 'md' | 'lg';
+type BoxRadius = 'xs' | 'sm' | 'md' | 'lg';
 type BoxSurface = 'background' | 'card' | 'muted' | 'popover' | 'sidebar' | 'accent';
 type BoxBorder = 'thin' | 'thick';
 type BoxShadow = 'none' | 'sm' | 'md' | 'lg';

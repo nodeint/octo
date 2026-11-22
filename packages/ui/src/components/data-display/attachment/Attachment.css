@@ -11,7 +11,7 @@
   max-width: 100%;
   min-width: 0;
   border: var(--border-width-thin) solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-md);
   background-color: var(--card);
   color: var(--foreground);
   outline: none;
@@ -110,7 +110,7 @@
 .attachment[data-size='xs'] .attachment-media {
   width: var(--control-height-xs);
   height: var(--control-height-xs);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-surface-sm);
 }
 
 .attachment[data-size='xs'] .attachment-media svg:not([class*='size-']) {
@@ -148,7 +148,7 @@
   height: var(--control-height-lg);
   aspect-ratio: 1;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-md);
   background-color: var(--muted);
   color: var(--foreground);
 }
@@ -218,7 +218,7 @@
   height: var(--control-height-lg);
   aspect-ratio: 1;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-md);
   background-color: var(--muted);
   color: var(--foreground);
 }

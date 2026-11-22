@@ -11,7 +11,7 @@
   min-width: 0;
   flex: 1 1 0%;
   padding-inline: var(--space-xs);
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border-radius: var(--radius-xs) var(--radius-xs) 0 0;
   background-color: transparent;
   border-width: 0 0 2px;
   border-style: solid;

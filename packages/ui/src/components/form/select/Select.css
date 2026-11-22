@@ -111,7 +111,7 @@
   padding: var(--overlay-pad-xs);
   overflow-x: hidden;
   overflow-y: auto;
-  border-radius: var(--radius-overlay);
+  border-radius: var(--radius-overlay-sm);
   background-color: var(--popover);
   color: var(--foreground);
   box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
@@ -137,7 +137,7 @@
   gap: var(--space-sm);
   width: 100%;
   padding: var(--space-xs) var(--space-2xl) var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-surface-sm);
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   cursor: default;

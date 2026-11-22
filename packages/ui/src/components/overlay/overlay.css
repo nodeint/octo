@@ -92,7 +92,7 @@
   z-index: var(--z-floating);
   width: 100%;
   translate: -50% -50%;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-overlay-lg);
   display: flex;
   flex-direction: column;
   gap: var(--panel-gap);
@@ -285,8 +285,8 @@
   margin-block-end: calc(var(--panel-inset) * -1);
   padding: var(--panel-inset);
   border-top: var(--border-width-thin) solid var(--separator);
-  border-bottom-left-radius: var(--radius-lg);
-  border-bottom-right-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-overlay-lg);
+  border-bottom-right-radius: var(--radius-overlay-lg);
   background-color: var(--muted);
 }
 

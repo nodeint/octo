@@ -9,7 +9,7 @@
   align-items: center;
   gap: var(--space-xxs);
   width: fit-content;
-  border-radius: var(--group-action-radius, var(--radius-lg));
+  border-radius: var(--group-action-radius, var(--radius-action-md));
 }
 
 .toggle-group[data-wrap] {

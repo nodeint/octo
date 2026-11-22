@@ -26,7 +26,7 @@ const TRIGGER_STYLE = {
   width: '100%',
   aspectRatio: '16 / 9',
   border: '1px dashed var(--border)',
-  borderRadius: 'var(--radius-lg)',
+  borderRadius: 'var(--radius-surface-md)',
   fontSize: '0.875rem',
 } as const satisfies React.CSSProperties;
 

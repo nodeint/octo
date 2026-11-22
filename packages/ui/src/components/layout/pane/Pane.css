@@ -14,7 +14,7 @@
   min-width: 0;
   min-height: 0;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-md);
   outline: none;
   container-type: inline-size;
   --surface: var(--sidebar);
@@ -46,8 +46,8 @@
 .pane-footer {
   margin-block-end: calc(var(--panel-inset) * -1);
   border-top: var(--border-width-thin) solid var(--separator);
-  border-bottom-left-radius: var(--radius-lg);
-  border-bottom-right-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-surface-md);
+  border-bottom-right-radius: var(--radius-surface-md);
   background-color: var(--muted);
 }
 

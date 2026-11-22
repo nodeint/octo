@@ -46,7 +46,7 @@
   align-items: center;
   width: 100%;
   border: var(--border-width-thin) solid transparent;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-md);
   text-align: start;
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
@@ -137,7 +137,7 @@ button.item:hover {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-md);
 }
 
 .item-media {
@@ -163,7 +163,7 @@ button.item:hover {
   width: var(--control-height-lg);
   height: var(--control-height-lg);
   overflow: hidden;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-surface-sm);
 }
 
 .item-media[data-variant='image'] img {

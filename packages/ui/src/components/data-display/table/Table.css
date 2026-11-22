@@ -82,5 +82,5 @@
 .data-table {
   overflow: hidden;
   border: var(--border-width-thin) solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xs);
 }

@@ -44,7 +44,7 @@ function DropdownMenuTrigger({
         'data-action-size': size,
         'data-shape': shape,
       })}
-      className={nativeButton ? cn('button', className) : className}
+      className={nativeButton ? cn('action button', className) : className}
       {...props}
     />
   );

@@ -8,7 +8,7 @@
   gap: var(--panel-gap);
   padding: var(--panel-inset);
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-md);
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);
@@ -34,15 +34,15 @@
 .card > img:first-child,
 .card > [data-slot='card-media']:first-child {
   margin-block-start: calc(var(--panel-inset) * -1);
-  border-top-left-radius: var(--radius-lg);
-  border-top-right-radius: var(--radius-lg);
+  border-top-left-radius: var(--radius-surface-md);
+  border-top-right-radius: var(--radius-surface-md);
 }
 
 .card > img:last-child,
 .card > [data-slot='card-media']:last-child {
   margin-block-end: calc(var(--panel-inset) * -1);
-  border-bottom-left-radius: var(--radius-lg);
-  border-bottom-right-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-surface-md);
+  border-bottom-right-radius: var(--radius-surface-md);
 }
 
 .card-header {
@@ -95,7 +95,7 @@
   margin-block-end: calc(var(--panel-inset) * -1);
   padding: var(--panel-inset);
   border-top: var(--border-width-thin) solid var(--separator);
-  border-bottom-left-radius: var(--radius-lg);
-  border-bottom-right-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-surface-md);
+  border-bottom-right-radius: var(--radius-surface-md);
   background-color: var(--muted);
 }

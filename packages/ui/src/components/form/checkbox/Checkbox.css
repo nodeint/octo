@@ -7,7 +7,7 @@
   width: var(--control-glyph-md);
   height: var(--control-glyph-md);
   border: var(--border-width-thin) solid var(--control);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-checkbox);
 }
 
 .field:has(:disabled) .checkbox,

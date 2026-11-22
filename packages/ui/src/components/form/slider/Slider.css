@@ -25,12 +25,12 @@
   position: relative;
   width: 100%;
   height: var(--slider-track-height);
-  border-radius: 9999px;
+  border-radius: var(--radius-slider-track);
   background-color: var(--muted);
 }
 
 .slider-indicator {
-  border-radius: 9999px;
+  border-radius: var(--radius-slider-indicator);
   background-color: var(--primary);
 }
 
@@ -38,6 +38,6 @@
   width: var(--control-glyph-sm);
   height: var(--control-glyph-sm);
   border: var(--border-width-thin) solid var(--primary);
-  border-radius: 9999px;
+  border-radius: var(--radius-slider-thumb);
   background-color: var(--background);
 }

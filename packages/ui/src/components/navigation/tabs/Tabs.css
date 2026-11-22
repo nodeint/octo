@@ -17,7 +17,7 @@
   justify-content: center;
   width: fit-content;
   padding: var(--space-xs);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-md);
   color: var(--foreground-muted);
 }
 
@@ -51,7 +51,7 @@
   height: calc(100% - var(--tab-trigger-shrink));
   padding: var(--space-xxs) var(--space-sm);
   border: var(--border-width-thin) solid transparent;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xs);
   font-size: var(--role-label-size);
   line-height: var(--role-label-leading);
   font-weight: var(--role-label-weight);

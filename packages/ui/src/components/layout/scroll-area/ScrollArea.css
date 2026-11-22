@@ -85,6 +85,6 @@
 .scroll-area-thumb {
   position: relative;
   flex: 1 1 0%;
-  border-radius: var(--scrollbar-thumb-radius);
+  border-radius: var(--radius-scrollbar-thumb);
   background-color: var(--scrollbar-thumb);
 }

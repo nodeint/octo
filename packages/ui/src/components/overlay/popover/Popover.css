@@ -6,7 +6,7 @@
   min-width: var(--overlay-xxs);
   padding: var(--overlay-pad-sm);
   overflow: hidden;
-  border-radius: var(--radius-overlay);
+  border-radius: var(--radius-overlay-sm);
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);

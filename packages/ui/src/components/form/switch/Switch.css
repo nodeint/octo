@@ -4,7 +4,7 @@
   flex-shrink: 0;
   align-items: center;
   border: var(--border-width-thin) solid transparent;
-  border-radius: 9999px;
+  border-radius: var(--radius-switch);
 }
 
 .switch[data-checked] {
@@ -29,7 +29,7 @@
 .switch-thumb {
   pointer-events: none;
   display: block;
-  border-radius: 9999px;
+  border-radius: var(--radius-switch-thumb);
   background-color: var(--background);
   transition-property: transform, translate;
   transition-duration: var(--default-transition-duration);

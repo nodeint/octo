@@ -11,7 +11,7 @@
   height: 100%;
   padding-block: var(--space-md) 0;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-md);
   --surface: var(--node);
   background-color: color-mix(in oklch, var(--surface) var(--surface-glass-content-alpha), transparent);
   color: var(--foreground);
@@ -63,7 +63,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-surface-md);
 }
 
 .canvas-node-edge {

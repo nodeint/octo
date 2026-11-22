@@ -16,8 +16,8 @@ const EDGE_RECT_STYLE = {
   y: EDGE_STROKE_INSET_PX,
   width: `calc(100% - ${EDGE_STROKE_PX}px)`,
   height: `calc(100% - ${EDGE_STROKE_PX}px)`,
-  rx: `calc(var(--radius-lg) - ${EDGE_STROKE_INSET_PX}px)`,
-  ry: `calc(var(--radius-lg) - ${EDGE_STROKE_INSET_PX}px)`,
+  rx: `calc(var(--radius-surface-md) - ${EDGE_STROKE_INSET_PX}px)`,
+  ry: `calc(var(--radius-surface-md) - ${EDGE_STROKE_INSET_PX}px)`,
 } as const;
 
 type CanvasNodeProps = React.ComponentProps<'div'> & {

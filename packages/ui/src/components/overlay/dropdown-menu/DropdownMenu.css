@@ -5,7 +5,7 @@
   min-width: var(--overlay-xxs);
   overflow-x: hidden;
   overflow-y: auto;
-  border-radius: var(--radius-overlay);
+  border-radius: var(--radius-overlay-sm);
 }
 
 .dropdown-menu-content[data-closed] {
@@ -16,5 +16,5 @@
   width: auto;
   min-width: var(--size-container-xs);
   overflow: hidden;
-  border-radius: var(--radius-overlay);
+  border-radius: var(--radius-overlay-sm);
 }
