@@ -1,5 +1,6 @@
 @import "./box/Box.css";
 @import "./section/Section.css";
+@import "./flex/Flex.css";
 @import "./stack/Stack.css";
 @import "./inline/Inline.css";
 @import "./grid/Grid.css";

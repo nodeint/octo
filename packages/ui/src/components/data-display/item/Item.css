@@ -102,6 +102,13 @@ button.item:hover {
   padding: var(--space-xs) calc(var(--control-px-xs) - var(--border-width-thin));
 }
 
+/* The container around the row already pads and frames it: no padding, no border.
+   Must stay after the size and variant rules. */
+.item[data-bare] {
+  padding: 0;
+  border: 0;
+}
+
 /* A row with an ItemTrigger: the trigger's ::after covers the row, so a click anywhere opens it.
    The row paints the hover and the trigger's focus; interactive actions sit above the cover. */
 .item:has(.item-trigger) {
@@ -178,7 +185,7 @@ button.item:hover {
   align-self: flex-start;
 }
 
-.item:has([data-slot='item-description']) .item-media[data-variant='default'] {
+.item:has([data-slot='item-description']) .item-media:is([data-variant='default'], [data-variant='icon']) {
   margin-block-start: calc((var(--role-label-size) * var(--role-label-leading) - var(--control-icon-md)) / 2);
 }
 
