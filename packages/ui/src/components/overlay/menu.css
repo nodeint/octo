@@ -1,11 +1,12 @@
 /*
- * Rows shared by dropdown-menu and context-menu: item, option, label, shortcut, indicator,
- * separator. Selector lists stand in for the old shared recipes.
+ * Rows shared by dropdown-menu and context-menu. Both components add these classes beside
+ * their own, so no selector here names a specific menu.
+ *   menu-row        every interactive row (item, sub-trigger, checkbox and radio item)
+ *   menu-item       plain item          menu-sub-trigger  submenu trigger
+ *   menu-checkable  checkbox and radio item
+ *   menu-label, menu-separator, menu-shortcut, menu-indicator, menu-group, menu-content
  */
-.dropdown-menu-item,
-.dropdown-menu-sub-trigger,
-.context-menu-item,
-.context-menu-sub-trigger {
+.menu-row {
   position: relative;
   display: flex;
   align-items: center;
@@ -20,40 +21,17 @@
   user-select: none;
 }
 
-.dropdown-menu-checkbox-item,
-.dropdown-menu-radio-item,
-.context-menu-checkbox-item,
-.context-menu-radio-item {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-xs) var(--space-2xl) var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-md);
-  font-size: var(--role-body-size);
-  line-height: var(--role-body-leading);
-  font-weight: var(--role-body-weight);
+.menu-checkable {
+  padding-right: var(--space-2xl);
   cursor: default;
-  outline: none;
-  user-select: none;
 }
 
 /* Rows with an `inset` flag line up under rows that carry an indicator or icon. */
-.dropdown-menu-item[data-inset],
-.dropdown-menu-sub-trigger[data-inset],
-.dropdown-menu-checkbox-item[data-inset],
-.dropdown-menu-radio-item[data-inset],
-.dropdown-menu-label[data-inset],
-.context-menu-item[data-inset],
-.context-menu-sub-trigger[data-inset],
-.context-menu-checkbox-item[data-inset],
-.context-menu-radio-item[data-inset],
-.context-menu-label[data-inset] {
+:is(.menu-row, .menu-label)[data-inset] {
   padding-inline-start: calc(var(--space-lg) + var(--space-md));
 }
 
-.dropdown-menu-label,
-.context-menu-label {
+.menu-label {
   padding: var(--space-xs) var(--space-sm);
   font-size: var(--role-label-sm-size);
   line-height: var(--role-label-sm-leading);
@@ -61,94 +39,58 @@
   color: var(--role-label-sm-color);
 }
 
-.dropdown-menu-item:is(:hover, :focus),
-.dropdown-menu-sub-trigger:is(:hover, :focus),
-.dropdown-menu-checkbox-item:is(:hover, :focus),
-.dropdown-menu-radio-item:is(:hover, :focus),
-.context-menu-item:is(:hover, :focus),
-.context-menu-sub-trigger:is(:hover, :focus),
-.context-menu-checkbox-item:is(:hover, :focus),
-.context-menu-radio-item:is(:hover, :focus) {
+.menu-row:is(:hover, :focus) {
   background-color: var(--hover);
   color: var(--foreground);
 }
 
-.dropdown-menu-item:not([data-variant='destructive']):focus > svg,
-.context-menu-item:not([data-variant='destructive']):focus > svg {
+.menu-item:not([data-variant='destructive']):focus > svg {
   color: var(--foreground);
 }
 
-.dropdown-menu-sub-trigger:is([data-popup-open], [data-open]),
-.context-menu-sub-trigger:is([data-popup-open], [data-open]) {
+.menu-sub-trigger:is([data-popup-open], [data-open]) {
   background-color: var(--accent);
   color: var(--foreground);
 }
 
-.dropdown-menu-item[data-disabled]:not([data-disabled='false']),
-.dropdown-menu-checkbox-item[data-disabled]:not([data-disabled='false']),
-.dropdown-menu-radio-item[data-disabled]:not([data-disabled='false']),
-.context-menu-item[data-disabled]:not([data-disabled='false']),
-.context-menu-checkbox-item[data-disabled]:not([data-disabled='false']),
-.context-menu-radio-item[data-disabled]:not([data-disabled='false']) {
+:is(.menu-item, .menu-checkable)[data-disabled]:not([data-disabled='false']) {
   pointer-events: none;
   color: var(--foreground-disabled);
 }
 
 /* destructive */
-.dropdown-menu-item[data-variant='destructive'],
-.context-menu-item[data-variant='destructive'] {
+.menu-item[data-variant='destructive'] {
   color: var(--destructive);
 }
 
-.dropdown-menu-item[data-variant='destructive']:focus,
-.context-menu-item[data-variant='destructive']:focus {
+.menu-item[data-variant='destructive']:focus {
   background-color: var(--destructive-subtle);
   color: var(--destructive-subtle-foreground);
 }
 
 /* Glyph and shortcut follow the row colour, including the focused state. */
-.dropdown-menu-item[data-variant='destructive'] > svg,
-.dropdown-menu-item[data-variant='destructive'] > .dropdown-menu-shortcut,
-.context-menu-item[data-variant='destructive'] > svg,
-.context-menu-item[data-variant='destructive'] > .context-menu-shortcut {
+.menu-item[data-variant='destructive'] > :is(svg, .menu-shortcut) {
   color: inherit;
 }
 
 /* Icon glyph size beside the row text. */
-.dropdown-menu-item svg,
-.dropdown-menu-sub-trigger svg,
-.dropdown-menu-checkbox-item svg,
-.dropdown-menu-radio-item svg,
-.context-menu-item svg,
-.context-menu-sub-trigger svg,
-.context-menu-checkbox-item svg,
-.context-menu-radio-item svg {
+.menu-row svg {
   pointer-events: none;
   flex-shrink: 0;
 }
 
-.dropdown-menu-item svg:not([class*='size-']),
-.dropdown-menu-sub-trigger svg:not([class*='size-']),
-.dropdown-menu-checkbox-item svg:not([class*='size-']),
-.dropdown-menu-radio-item svg:not([class*='size-']),
-.context-menu-item svg:not([class*='size-']),
-.context-menu-sub-trigger svg:not([class*='size-']),
-.context-menu-checkbox-item svg:not([class*='size-']),
-.context-menu-radio-item svg:not([class*='size-']) {
+.menu-row svg:not([class*='size-']) {
   width: var(--control-icon-md);
   height: var(--control-icon-md);
 }
 
 /* A truncating label shrinks inside the row and pushes a trailing glyph to the end. */
-.dropdown-menu-item > [data-slot='text'][data-overflow='truncate'],
-.dropdown-menu-checkbox-item > [data-slot='text'][data-overflow='truncate'],
-.dropdown-menu-radio-item > [data-slot='text'][data-overflow='truncate'] {
+:is(.menu-item, .menu-checkable) > [data-slot='text'][data-overflow='truncate'] {
   min-width: 0;
   flex: 1 1 0%;
 }
 
-.dropdown-menu-item-indicator,
-.context-menu-item-indicator {
+.menu-indicator {
   pointer-events: none;
   position: absolute;
   right: var(--space-sm);
@@ -158,8 +100,7 @@
 }
 
 /* Container layout shared by both menus: the gap spaces rows, the pad insets them and sets how far a separator bleeds. */
-.dropdown-menu-content,
-.context-menu-content {
+.menu-content {
   display: flex;
   flex-direction: column;
   --menu-gap: var(--space-xs);
@@ -168,22 +109,13 @@
   padding: var(--menu-pad);
 }
 
-.dropdown-menu-sub-content,
-.context-menu-sub-content {
-  --menu-pad: var(--overlay-pad-xs);
-}
-
-.dropdown-menu-group,
-.dropdown-menu-radio-group,
-.context-menu-group,
-.context-menu-radio-group {
+.menu-group {
   display: flex;
   flex-direction: column;
   gap: var(--menu-gap);
 }
 
-.dropdown-menu-separator,
-.context-menu-separator {
+.menu-separator {
   flex-shrink: 0;
   height: 1px;
   margin-inline: calc(var(--menu-pad, var(--space-xs)) * -1);
@@ -191,13 +123,11 @@
 }
 
 /* Bleeds to the menu edges by default; `inset` keeps it inside the menu padding. */
-.dropdown-menu-separator[data-inset],
-.context-menu-separator[data-inset] {
+.menu-separator[data-inset] {
   margin-inline: 0;
 }
 
-.dropdown-menu-shortcut,
-.context-menu-shortcut {
+.menu-shortcut {
   margin-inline-start: auto;
   font-size: var(--role-caption-size);
   line-height: var(--role-caption-leading);
@@ -205,7 +135,6 @@
   color: var(--role-caption-color);
 }
 
-:focus > .dropdown-menu-shortcut,
-:focus > .context-menu-shortcut {
+:focus > .menu-shortcut {
   color: var(--foreground);
 }

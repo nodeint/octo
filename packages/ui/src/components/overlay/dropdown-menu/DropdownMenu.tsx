@@ -80,7 +80,7 @@ function DropdownMenuContent({
         <MenuPrimitive.Popup
           data-slot="dropdown-menu-content"
           data-size={size}
-          className={cn('dropdown-menu-content', className)}
+          className={cn('menu-content dropdown-menu-content', className)}
           {...props}
         />
       </MenuPrimitive.Positioner>
@@ -92,7 +92,7 @@ function DropdownMenuGroup({ className, ...props }: MenuPrimitive.Group.Props): 
   return (
     <MenuPrimitive.Group
       data-slot="dropdown-menu-group"
-      className={cn('dropdown-menu-group', className)}
+      className={cn('menu-group dropdown-menu-group', className)}
       {...props}
     />
   );
@@ -109,7 +109,7 @@ function DropdownMenuLabel({
     <MenuPrimitive.GroupLabel
       data-slot="dropdown-menu-label"
       data-inset={inset}
-      className={cn('dropdown-menu-label', className)}
+      className={cn('menu-label dropdown-menu-label', className)}
       {...props}
     />
   );
@@ -130,7 +130,7 @@ function DropdownMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        'dropdown-menu-item',
+        'menu-row menu-item dropdown-menu-item',
         className
       )}
       {...props}
@@ -154,7 +154,7 @@ function DropdownMenuSubTrigger({
     <MenuPrimitive.SubmenuTrigger
       data-slot="dropdown-menu-sub-trigger"
       data-inset={inset}
-      className={cn('dropdown-menu-sub-trigger', className)}
+      className={cn('menu-row menu-sub-trigger dropdown-menu-sub-trigger', className)}
       {...props}
     >
       {children}
@@ -197,12 +197,12 @@ function DropdownMenuCheckboxItem({
     <MenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
       data-inset={inset}
-      className={cn('dropdown-menu-checkbox-item', className)}
+      className={cn('menu-row menu-checkable dropdown-menu-checkbox-item', className)}
       checked={checked}
       {...props}
     >
       <span
-        className="dropdown-menu-item-indicator"
+        className="menu-indicator dropdown-menu-item-indicator"
         data-slot="dropdown-menu-checkbox-item-indicator"
       >
         <MenuPrimitive.CheckboxItemIndicator>
@@ -221,7 +221,7 @@ function DropdownMenuRadioGroup({
   return (
     <MenuPrimitive.RadioGroup
       data-slot="dropdown-menu-radio-group"
-      className={cn('dropdown-menu-radio-group', className)}
+      className={cn('menu-group dropdown-menu-radio-group', className)}
       {...props}
     />
   );
@@ -239,11 +239,11 @@ function DropdownMenuRadioItem({
     <MenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       data-inset={inset}
-      className={cn('dropdown-menu-radio-item', className)}
+      className={cn('menu-row menu-checkable dropdown-menu-radio-item', className)}
       {...props}
     >
       <span
-        className="dropdown-menu-item-indicator"
+        className="menu-indicator dropdown-menu-item-indicator"
         data-slot="dropdown-menu-radio-item-indicator"
       >
         <MenuPrimitive.RadioItemIndicator>
@@ -267,7 +267,7 @@ function DropdownMenuSeparator({
     <MenuPrimitive.Separator
       data-slot="dropdown-menu-separator"
       data-inset={inset}
-      className={cn('dropdown-menu-separator', className)}
+      className={cn('menu-separator dropdown-menu-separator', className)}
       {...props}
     />
   );
@@ -281,7 +281,7 @@ function DropdownMenuShortcut({
     <span
       data-slot="dropdown-menu-shortcut"
       className={cn(
-        'dropdown-menu-shortcut',
+        'menu-shortcut dropdown-menu-shortcut',
         className
       )}
       {...props}

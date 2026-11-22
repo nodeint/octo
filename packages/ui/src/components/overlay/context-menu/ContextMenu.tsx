@@ -64,7 +64,7 @@ function ContextMenuContent({
         <ContextMenuPrimitive.Popup
           data-slot="context-menu-content"
           data-size={size}
-          className={cn('context-menu-content', className)}
+          className={cn('menu-content context-menu-content', className)}
           {...props}
         />
       </ContextMenuPrimitive.Positioner>
@@ -79,7 +79,7 @@ function ContextMenuGroup({
   return (
     <ContextMenuPrimitive.Group
       data-slot="context-menu-group"
-      className={cn('context-menu-group', className)}
+      className={cn('menu-group context-menu-group', className)}
       {...props}
     />
   );
@@ -96,7 +96,7 @@ function ContextMenuLabel({
     <ContextMenuPrimitive.GroupLabel
       data-slot="context-menu-label"
       data-inset={inset}
-      className={cn('context-menu-label', className)}
+      className={cn('menu-label context-menu-label', className)}
       {...props}
     />
   );
@@ -116,7 +116,7 @@ function ContextMenuItem({
       data-slot="context-menu-item"
       data-inset={inset}
       data-variant={variant}
-      className={cn('context-menu-item', className)}
+      className={cn('menu-row menu-item context-menu-item', className)}
       {...props}
     />
   );
@@ -140,7 +140,7 @@ function ContextMenuSubTrigger({
     <ContextMenuPrimitive.SubmenuTrigger
       data-slot="context-menu-sub-trigger"
       data-inset={inset}
-      className={cn('context-menu-sub-trigger', className)}
+      className={cn('menu-row menu-sub-trigger context-menu-sub-trigger', className)}
       {...props}
     >
       {children}
@@ -176,11 +176,11 @@ function ContextMenuCheckboxItem({
     <ContextMenuPrimitive.CheckboxItem
       data-slot="context-menu-checkbox-item"
       data-inset={inset}
-      className={cn('context-menu-checkbox-item', className)}
+      className={cn('menu-row menu-checkable context-menu-checkbox-item', className)}
       checked={checked}
       {...props}
     >
-      <span className="context-menu-item-indicator">
+      <span className="menu-indicator context-menu-item-indicator">
         <ContextMenuPrimitive.CheckboxItemIndicator>
           <Icon name="check" />
         </ContextMenuPrimitive.CheckboxItemIndicator>
@@ -197,7 +197,7 @@ function ContextMenuRadioGroup({
   return (
     <ContextMenuPrimitive.RadioGroup
       data-slot="context-menu-radio-group"
-      className={cn('context-menu-radio-group', className)}
+      className={cn('menu-group context-menu-radio-group', className)}
       {...props}
     />
   );
@@ -215,10 +215,10 @@ function ContextMenuRadioItem({
     <ContextMenuPrimitive.RadioItem
       data-slot="context-menu-radio-item"
       data-inset={inset}
-      className={cn('context-menu-radio-item', className)}
+      className={cn('menu-row menu-checkable context-menu-radio-item', className)}
       {...props}
     >
-      <span className="context-menu-item-indicator">
+      <span className="menu-indicator context-menu-item-indicator">
         <ContextMenuPrimitive.RadioItemIndicator>
           <Icon name="check" />
         </ContextMenuPrimitive.RadioItemIndicator>
@@ -240,7 +240,7 @@ function ContextMenuSeparator({
     <ContextMenuPrimitive.Separator
       data-slot="context-menu-separator"
       data-inset={inset}
-      className={cn('context-menu-separator', className)}
+      className={cn('menu-separator context-menu-separator', className)}
       {...props}
     />
   );
@@ -254,7 +254,7 @@ function ContextMenuShortcut({
     <span
       data-slot="context-menu-shortcut"
       className={cn(
-        'context-menu-shortcut',
+        'menu-shortcut context-menu-shortcut',
         className
       )}
       {...props}
