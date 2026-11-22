@@ -124,7 +124,7 @@
  * Group variants: data-group-variant sets the identity colors (bg, fg, border at rest, hover, active,
  * selected, and the disabled fill and edge) that its buttons, toggles and inputs read through --group-*.
  * Same roles and values as button-group (ButtonGroup.css); focus, invalid and disabled text stay with the child.
- * The shared reset is in styles/tokens/functional/color/group-variants.css.
+ * The shared reset is in styles/tokens/component/group-variants.css.
  *
  * The rail also paints the group's fill and edge (--toolbar-fill, --toolbar-edge), as an input-group does.
  * Where the rail carries the border (outline), its items rest borderless: one outline around the row,

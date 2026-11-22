@@ -1,5 +1,5 @@
 /**
- * Control parts: the inner geometry of a control that is not a control size. A recipe reads one of these;
+ * Control parts: the inner geometry of a control that is not a control size. A component reads one of these;
  * a theme sets it to reshape the part without touching the component.
  *   switch     track and thumb, per switch size
  *   radio      the dot inside a selected radio

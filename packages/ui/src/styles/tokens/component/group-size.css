@@ -7,7 +7,7 @@
  *   --group-action-*   buttons and toggles: height, px, gap, icon, radius
  *   --group-field-*    inputs, select triggers, comboboxes: height, px, gap, radius
  *   --group-corner     the group's own corner when it paints a box (input-group, toolbar)
- * The steps and their raw values live in control.css and radius.css, as in action-size.css and field-size.css.
+ * The steps and their raw values live in ../primitive/control.css and ../primitive/radius.css, as in action-size.css and field-size.css.
  */
 [data-group-size='xs'] {
   --group-field-height: var(--control-height-xs);

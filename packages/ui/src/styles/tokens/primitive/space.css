@@ -1,0 +1,15 @@
+/**
+ * Space: the raw steps, var(--space-md), var(--space-xs), … A theme sets --space-*.
+ * Components and consumers read the roles in ../semantic/space.css (--gap-*, --inset-*, --panel-*), not these steps.
+ */
+
+:root {
+  --space-xxs: 0.125rem; /* primer: --space-xxs */
+  --space-xs: 0.25rem; /* primer: --space-xs */
+  --space-sm: 0.5rem; /* primer: --space-sm */
+  --space-md: 0.75rem; /* primer: --space-md */
+  --space-lg: 1rem; /* primer: --space-lg */
+  --space-xl: 1.5rem; /* primer: --space-xl */
+  --space-2xl: 2rem; /* primer: --base-size-32 */
+  --space-3xl: 3rem; /* primer: --base-size-48 */
+}

@@ -1,41 +1,34 @@
 /*
- * Token layers, in the order Primer uses: base → functional. Utilities and recipes live outside tokens/.
- *   base/        raw color steps, no meaning
- *   functional/  Nodeint's tokens, one folder per kind of value and one file per concern. Values are plain;
- *                Primer is only a reference (`primer-reference.test.ts`). A theme overrides these variables,
- *                not a framework's. Each file lives in the folder of its kind:
- *     color        roles, foreground, chart   what a thing looks like in color
- *     spacing/     space                          gaps, insets, panel padding
- *     size         control, target, container, content, overlay    how big a box, or a part of one, is
- *   sizes/       action-size, field-size, group-size   the size sets a data-*-size attribute picks
- *            radius, border                 corners (a scale plus field and control sets) and stroke widths
- *            shadow, z-index                how far a thing sits above the surface
- *     typography   type steps, the font catalog, text roles (one file)
- *     motion/      motion                         duration and easing
- * appearance.css (the runtime axes) is imported after the tokens so live font and data-* maps win.
+ * Token tiers, each read only by the tier after it:
+ *   primitive/  raw scales with no meaning: color steps, space, control sizes, radius, type, border, shadow, motion, z-index, opacity
+ *   semantic/   roles built on primitives: surface and status colors, text roles, gaps, insets, container and overlay sizes, radius sets
+ *   component/  the sets a data-* attribute picks (action, field, group sizes; variants) and per-part tokens
+ * A theme overrides these variables. Values are plain; Primer is only a reference.
+ * A `.dark` block follows its `:root` block. The appearance/ files are imported after the tokens so live maps win.
  */
-@import "./base/color/swatches.css";
-@import "./base/color/scale-neutral.css";
-@import "./base/color/scale-accent.css";
-@import "./base/color/scale-status.css";
-@import "./base/color/scale-alpha.css";
+@import "./primitive/color/swatches.css";
+@import "./primitive/color/neutral.css";
+@import "./primitive/color/status.css";
+@import "./primitive/color/alpha.css";
+@import "./primitive/control.css";
+@import "./primitive/typography.css";
+@import "./primitive/radius.css";
+@import "./primitive/border.css";
+@import "./primitive/motion.css";
+@import "./primitive/space.css";
+@import "./primitive/shadow.css";
+@import "./primitive/z-index.css";
+@import "./primitive/opacity.css";
 
-@import "./functional/size.css";
-@import "./sizes/action-size.css";
-@import "./sizes/field-size.css";
-@import "./sizes/group-size.css";
-@import "./functional/typography.css";
-@import "./functional/color.css";
+@import "./semantic/size.css";
+@import "./semantic/typography.css";
+@import "./semantic/color.css";
+@import "./semantic/radius.css";
+@import "./semantic/space.css";
 
-@import "./functional/radius.css";
-@import "./functional/border.css";
-@import "./functional/motion.css";
-@import "./functional/space.css";
-@import "./functional/shadow.css";
-@import "./functional/z-index.css";
-@import "./functional/opacity.css";
-
-@import "./variants/control-variants.css";
-@import "./variants/group-variants.css";
-
-@import "./elements.css";
+@import "./component/action-size.css";
+@import "./component/field-size.css";
+@import "./component/group-size.css";
+@import "./component/variants.css";
+@import "./component/group-variants.css";
+@import "./component/parts.css";

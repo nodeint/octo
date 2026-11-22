@@ -2,12 +2,12 @@
  * Field size: the app-wide size sets of the text fields (input, textarea, select trigger, input group, combobox chips).
  * A field never names a step; it reads --field-* and its data-field-size picks the set.
  * Separate from data-action-size (buttons, toggles) so a field can change height or inset without moving a button.
- * Today both read the shared control scale (control.css), so a field and an action of one size stand level.
+ * Today both read the shared control scale (primitive/control.css), so a field and an action of one size stand level.
  *   height          row height; a multi-line field uses it as its minimum
  *   px              inline inset, before the border is taken off
  *   gap             space between a glyph and the text
  *   radius          corner of a single-line field (--radius-field-*)
- * A multi-line field takes --radius-field-block instead. The steps and their raw values live in control.css and radius.css.
+ * A multi-line field takes --radius-field-block instead. The steps and their raw values live in primitive/control.css and primitive/radius.css.
  */
 [data-field-size='xs'] {
   --field-height: var(--control-height-xs);

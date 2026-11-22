@@ -1,0 +1,9 @@
+/*
+ * Appearance: declarative paint via data-appearance-* on :root, one file per axis.
+ * Runtime (plugin-appearance) only calls setAttribute / removeAttribute; it sets no inline CSS variables.
+ * Light and dark still use the `.dark` class. Imported after the tokens so these maps win.
+ */
+@import "./font.css";
+@import "./primary.css";
+@import "./neutral.css";
+@import "./glass.css";

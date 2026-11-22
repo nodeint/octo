@@ -1,0 +1,21 @@
+/*
+ * Neutral axis: data-appearance-neutral = slate|zinc|stone | omit.
+ * Rebinds --neutral-h and the surface/ink chroma. Roles alias the neutral steps, so the whole ladder retints.
+ */
+:root[data-appearance-neutral='slate'] {
+  --neutral-h: 257;
+  --neutral-c-surface: 0.014;
+  --neutral-c-ink: 0.03;
+}
+
+:root[data-appearance-neutral='zinc'] {
+  --neutral-h: 286;
+  --neutral-c-surface: 0.008;
+  --neutral-c-ink: 0.016;
+}
+
+:root[data-appearance-neutral='stone'] {
+  --neutral-h: 74;
+  --neutral-c-surface: 0.012;
+  --neutral-c-ink: 0.022;
+}

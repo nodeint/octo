@@ -1,8 +1,4 @@
 /* Page defaults that read design tokens. The structural reset lives in reset.css. */
-:root {
-  --font-sans: var(--font-stack-default);
-}
-
 *,
 ::before,
 ::after {

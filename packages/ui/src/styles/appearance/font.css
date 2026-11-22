@@ -1,0 +1,17 @@
+/*
+ * Font axis: data-appearance-font picks a stack from the catalog in tokens/primitive/typography.css
+ * and rebinds the live --font-sans declared in tokens/semantic/typography.css.
+ *   data-appearance-font = system-ui|georgia|menlo | omit
+ */
+
+:root[data-appearance-font='system-ui'] {
+  --font-sans: var(--font-stack-system-ui);
+}
+
+:root[data-appearance-font='georgia'] {
+  --font-sans: var(--font-stack-georgia);
+}
+
+:root[data-appearance-font='menlo'] {
+  --font-sans: var(--font-stack-menlo);
+}

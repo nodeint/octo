@@ -1,40 +1,9 @@
 /**
- * Control size: one step (xs … xl) owns its height, inline padding, and gap.
- * Components never read these directly; they take a shape recipe from utilities/shape.css
- * (recipe-row-md, recipe-square-sm, …) so one size is defined in one place.
- * Two glyph axes, never mixed:
- * --control-glyph-* sizes a glyph that stands alone or is a box part (recipe-glyph-*, switch, radio, avatar).
- * --control-icon-* sizes the icon inside a control, beside its text (recipe-icon-*).
- * Primer has no icon size, so the glyph steps read its base size.
+ * Size roles: input minimums, touch target, container boxes, content width, and floating panels.
+ * Control steps live in ../primitive/control.css.
  */
 
 :root {
-  --control-height-xs: 1.5rem; /* primer: --control-xsmall-size */
-  --control-height-sm: 1.75rem; /* primer: --control-small-size */
-  --control-height-md: 2rem; /* primer: --control-medium-size */
-  --control-height-lg: 2.5rem; /* primer: --control-large-size */
-  --control-height-xl: 3rem; /* primer: --control-xlarge-size */
-
-  --control-px-xs: 0.5rem;
-  --control-px-sm: 0.75rem;
-  --control-px-md: 0.75rem;
-  --control-px-lg: 0.75rem;
-  --control-px-xl: 0.75rem;
-
-  --control-gap-xs: 0.25rem;
-  --control-gap-sm: 0.25rem;
-  --control-gap-md: 0.5rem;
-  --control-gap-lg: 0.5rem;
-  --control-gap-xl: 0.5rem;
-
-  --control-glyph-xs: 0.75rem; /* primer: --base-size-12 */
-  --control-glyph-sm: 1rem; /* primer: --base-size-16 */
-  --control-glyph-md: 1.25rem; /* primer: --base-size-20 */
-
-  --control-icon-xs: 0.75rem; /* primer: --base-size-12 */
-  --control-icon-sm: 0.875rem; /* 14, between the Primer steps 12 and 16 */
-  --control-icon-md: 1rem; /* primer: --base-size-16 */
-
   --input-min-height: 4rem; /* primer: --base-size-64 */
   --input-min-width: 4rem; /* primer: --base-size-64 */
 }
@@ -56,10 +25,10 @@
 
 /**
  * Container boxes: size-container-xs, min-h-container-sm, max-w-container-md, … for fixed boxes
- * (xs 96 · sm 112 · md 128). Anything under 96 is a control size: use a control shape (recipe-square-*, recipe-row-*).
+ * (xs 96 · sm 112 · md 128). Anything under 96 is a control size: use a control size.
  * Primer has no container size token, so these read its base-size scale.
  * Chrome rows and layout regions are content-driven; use a container step only for a fixed box.
- * Raw values live in --size-container-*: Tailwind owns --container-* (max-w-xs, …).
+ * Raw values live in --size-container-*: --container-* is left free for a utility framework.
  */
 
 :root {
@@ -81,7 +50,7 @@
  * Floating panels.
  *   width      --overlay-xxs … xl         (192 · 256 · 320 · 480 · 768 · 960)
  *   max height --overlay-h-sm … xl    (256 · 320 · 432 · 600, cap at 50vh where used)
- * The panel padding is --overlay-pad-* (spacing/space.css) and its corner is --radius-overlay-sm (shape/radius.css).
+ * The panel padding is --overlay-pad-* (semantic/space.css) and its corner is --radius-overlay-sm (semantic/radius.css).
  */
 
 :root {

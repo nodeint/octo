@@ -233,7 +233,7 @@
 /*
  * Group variants: data-group-variant sets the group's own border and fill (--input-group-*) and the colors
  * its fields read for text and states (--group-field-*). Border, fill and disabled paint are not passed down:
- * the group zeroes them for its fields above. The shared reset is in styles/tokens/functional/color/group-variants.css.
+ * the group zeroes them for its fields above. The shared reset is in styles/tokens/component/group-variants.css.
  */
 [data-slot='input-group'][data-group-variant='outline'] {
   --input-group-bg: transparent;

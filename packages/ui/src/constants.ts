@@ -320,7 +320,7 @@ export const ICON_MAP: Record<IconName, LucideIcon> = {
 };
 
 /**
- * Closed named color swatches — must match `styles/tokens/base/color/swatches.css`
+ * Closed named color swatches — must match `styles/tokens/primitive/color/swatches.css`
  * (4 slots per hue: solid · solid-foreground · subtle · subtle-foreground).
  *
  * Grow explicitly: add hue in swatches.css + here in the same PR.

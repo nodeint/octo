@@ -32,11 +32,6 @@
   --status-success-surface: oklch(0.985 0.012 145);
   --status-warning-surface: oklch(0.985 0.014 75);
   --status-info-surface: oklch(0.985 0.01 230);
-  /* Secondary text on a callout surface: the status ink pulled toward the muted foreground. */
-  --status-destructive-surface-foreground: color-mix(in oklch, var(--status-destructive) 90%, var(--foreground-muted));
-  --status-success-surface-foreground: color-mix(in oklch, var(--status-success) 90%, var(--foreground-muted));
-  --status-warning-surface-foreground: color-mix(in oklch, var(--status-warning) 90%, var(--foreground-muted));
-  --status-info-surface-foreground: color-mix(in oklch, var(--status-info) 90%, var(--foreground-muted));
 }
 
 .dark {
@@ -62,8 +57,4 @@
   --status-success-surface: oklch(0.24 0.02 145);
   --status-warning-surface: oklch(0.25 0.02 85);
   --status-info-surface: oklch(0.24 0.02 230);
-  --status-destructive-surface-foreground: color-mix(in oklch, var(--status-destructive) 90%, var(--foreground-muted));
-  --status-success-surface-foreground: color-mix(in oklch, var(--status-success) 90%, var(--foreground-muted));
-  --status-warning-surface-foreground: color-mix(in oklch, var(--status-warning) 90%, var(--foreground-muted));
-  --status-info-surface-foreground: color-mix(in oklch, var(--status-info) 90%, var(--foreground-muted));
 }

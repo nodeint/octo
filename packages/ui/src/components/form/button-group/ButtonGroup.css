@@ -153,7 +153,7 @@
  * A button-group paints nothing itself: it sets both roles for its children.
  * Only identity slots are owned: bg, fg and border at rest, hover, active and selected, plus the disabled
  * fill and edge. Focus, invalid, disabled text, ring and placeholder stay with the child.
- * The shared reset is in styles/tokens/functional/color/group-variants.css.
+ * The shared reset is in styles/tokens/component/group-variants.css.
  * Toggle-group and toolbar define their own sets in their own files.
  */
 /* outline: a bordered row. A field is transparent like an action, so the row reads as one surface. */

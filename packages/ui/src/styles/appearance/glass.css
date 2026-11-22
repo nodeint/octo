@@ -1,0 +1,85 @@
+/*
+ * Glass axis: data-appearance-glass = soft|strong|off | omit.
+ * Reduced transparency, and a missing backdrop-filter, win over the axis
+ * and paint the solid fill. Dark mode uses a higher alpha than light.
+ *
+ * Glass materials.
+ * Chrome (popover, secondary): floating menus, prompt, toolbar.
+ * Content: opt-in canvas panels. Primitives stay on the opaque surface.
+ * Scrim blur does not follow the axis. The fallbacks below clear it.
+ */
+:root {
+  --surface-glass-alpha: 80%;
+  --surface-glass-filter: blur(8px);
+  --surface-glass-content-alpha: 92%;
+  --surface-glass-content-filter: blur(4px);
+  --surface-overlay-filter: blur(8px);
+}
+
+.dark {
+  --surface-glass-alpha: 88%;
+  --surface-glass-filter: blur(8px);
+  --surface-glass-content-alpha: 94%;
+  --surface-glass-content-filter: blur(4px);
+}
+
+:root[data-appearance-glass='soft'] {
+  --surface-glass-alpha: 88%;
+  --surface-glass-filter: blur(4px);
+  --surface-glass-content-alpha: 96%;
+  --surface-glass-content-filter: blur(2px);
+}
+
+.dark[data-appearance-glass='soft'] {
+  --surface-glass-alpha: 92%;
+  --surface-glass-filter: blur(4px);
+  --surface-glass-content-alpha: 97%;
+  --surface-glass-content-filter: blur(2px);
+}
+
+:root[data-appearance-glass='strong'] {
+  --surface-glass-alpha: 72%;
+  --surface-glass-filter: blur(12px);
+  --surface-glass-content-alpha: 88%;
+  --surface-glass-content-filter: blur(8px);
+}
+
+.dark[data-appearance-glass='strong'] {
+  --surface-glass-alpha: 82%;
+  --surface-glass-filter: blur(12px);
+  --surface-glass-content-alpha: 90%;
+  --surface-glass-content-filter: blur(8px);
+}
+
+:root[data-appearance-glass='off'] {
+  --surface-glass-alpha: 100%;
+  --surface-glass-filter: none;
+  --surface-glass-content-alpha: 100%;
+  --surface-glass-content-filter: none;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root,
+  :root[data-appearance-glass],
+  :root.dark,
+  :root.dark[data-appearance-glass] {
+    --surface-glass-alpha: 100%;
+    --surface-glass-filter: none;
+    --surface-glass-content-alpha: 100%;
+    --surface-glass-content-filter: none;
+    --surface-overlay-filter: none;
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root,
+  :root[data-appearance-glass],
+  :root.dark,
+  :root.dark[data-appearance-glass] {
+    --surface-glass-alpha: 100%;
+    --surface-glass-filter: none;
+    --surface-glass-content-alpha: 100%;
+    --surface-glass-content-filter: none;
+    --surface-overlay-filter: none;
+  }
+}

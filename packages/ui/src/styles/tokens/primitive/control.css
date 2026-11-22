@@ -1,0 +1,36 @@
+/**
+ * Control size: one step (xs … xl) owns its height, inline padding, and gap.
+ * Two glyph axes, never mixed:
+ * --control-glyph-* sizes a glyph that stands alone or is a box part (switch, radio, avatar).
+ * --control-icon-* sizes the icon inside a control, beside its text.
+ * Primer has no icon size, so the glyph steps read its base size.
+ * The action, field, and group size sets in ../component/ pick from these steps.
+ */
+
+:root {
+  --control-height-xs: 1.5rem; /* primer: --control-xsmall-size */
+  --control-height-sm: 1.75rem; /* primer: --control-small-size */
+  --control-height-md: 2rem; /* primer: --control-medium-size */
+  --control-height-lg: 2.5rem; /* primer: --control-large-size */
+  --control-height-xl: 3rem; /* primer: --control-xlarge-size */
+
+  --control-px-xs: 0.5rem;
+  --control-px-sm: 0.75rem;
+  --control-px-md: 0.75rem;
+  --control-px-lg: 0.75rem;
+  --control-px-xl: 0.75rem;
+
+  --control-gap-xs: 0.25rem;
+  --control-gap-sm: 0.25rem;
+  --control-gap-md: 0.5rem;
+  --control-gap-lg: 0.5rem;
+  --control-gap-xl: 0.5rem;
+
+  --control-glyph-xs: 0.75rem; /* primer: --base-size-12 */
+  --control-glyph-sm: 1rem; /* primer: --base-size-16 */
+  --control-glyph-md: 1.25rem; /* primer: --base-size-20 */
+
+  --control-icon-xs: 0.75rem; /* primer: --base-size-12 */
+  --control-icon-sm: 0.875rem; /* 14, between the Primer steps 12 and 16 */
+  --control-icon-md: 1rem; /* primer: --base-size-16 */
+}

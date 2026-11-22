@@ -1,7 +1,8 @@
 /**
- * Space: the raw steps, var(--space-md), var(--space-xs), … A theme sets --space-*.
+ * Space roles, built on the raw steps in ../primitive/space.css.
  * Outside @workspace/ui, spacing goes through the layout roles below (Stack, Inline, Inset and
  * the --gap-* and --inset-* roles), never through a raw step.
+ *   overlay-pad  padding of a floating panel
  *   gap    xxs · xs · sm · md · lg · xl · 2xl · 3xl (space between children; Box `gap`)
  *   inset  xs · sm · md · lg · xl (padding of one box)
  *   panel  --panel-inset, --panel-inset-compact, --panel-gap: one rhythm for every panel (dialog, alert-dialog,
@@ -10,15 +11,6 @@
  */
 
 :root {
-  --space-xxs: 0.125rem; /* primer: --space-xxs */
-  --space-xs: 0.25rem; /* primer: --space-xs */
-  --space-sm: 0.5rem; /* primer: --space-sm */
-  --space-md: 0.75rem; /* primer: --space-md */
-  --space-lg: 1rem; /* primer: --space-lg */
-  --space-xl: 1.5rem; /* primer: --space-xl */
-  --space-2xl: 2rem; /* primer: --base-size-32 */
-  --space-3xl: 3rem; /* primer: --base-size-48 */
-
   --overlay-pad-xs: 0.25rem; /* primer: --overlay-paddingBlock-condensed */
   --overlay-pad-sm: 0.5rem; /* primer: --overlay-padding-condensed */
   --overlay-pad-md: 0.75rem; /* primer: --overlay-paddingBlock-normal */

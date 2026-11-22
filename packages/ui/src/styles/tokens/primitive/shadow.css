@@ -2,7 +2,6 @@
  * Elevation: shadow-xs · sm · md (resting) · lg · xl · 2xl · 3xl (floating) · shadow-inset.
  * Light values are the :root tokens; .dark overrides the same variables. Values are copied from
  * Primer's light and dark themes, which are scoped to [data-color-mode] and so cannot be imported.
- * `primer-reference.test.ts` checks every value against the installed Primer version.
  */
 
 :root {
