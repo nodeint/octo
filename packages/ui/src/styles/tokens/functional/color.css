@@ -44,6 +44,16 @@
   --info-subtle: var(--status-info-subtle);
   --info-subtle-foreground: var(--status-info);
 
+  /* Callout surface and its secondary text. The control fill stays --*-subtle. */
+  --destructive-surface: var(--status-destructive-surface);
+  --destructive-surface-foreground: var(--status-destructive-surface-foreground);
+  --success-surface: var(--status-success-surface);
+  --success-surface-foreground: var(--status-success-surface-foreground);
+  --warning-surface: var(--status-warning-surface);
+  --warning-surface-foreground: var(--status-warning-surface-foreground);
+  --info-surface: var(--status-info-surface);
+  --info-surface-foreground: var(--status-info-surface-foreground);
+
   --destructive-foreground: var(--status-destructive-foreground);
   --destructive-hover: var(--status-destructive-hover);
   --destructive-border: var(--status-destructive-border);

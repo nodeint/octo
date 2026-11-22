@@ -14,22 +14,27 @@
   --control-height-md: 2rem; /* primer: --control-medium-size */
   --control-height-lg: 2.5rem; /* primer: --control-large-size */
   --control-height-xl: 3rem; /* primer: --control-xlarge-size */
+
   --control-px-xs: 0.5rem;
   --control-px-sm: 0.75rem;
   --control-px-md: 0.75rem;
   --control-px-lg: 0.75rem;
   --control-px-xl: 0.75rem;
+
   --control-gap-xs: 0.25rem;
   --control-gap-sm: 0.25rem;
   --control-gap-md: 0.5rem;
   --control-gap-lg: 0.5rem;
   --control-gap-xl: 0.5rem;
+
   --control-glyph-xs: 0.75rem; /* primer: --base-size-12 */
   --control-glyph-sm: 1rem; /* primer: --base-size-16 */
   --control-glyph-md: 1.25rem; /* primer: --base-size-20 */
+
   --control-icon-xs: 0.75rem; /* primer: --base-size-12 */
   --control-icon-sm: 0.875rem; /* 14, between the Primer steps 12 and 16 */
   --control-icon-md: 1rem; /* primer: --base-size-16 */
+
   --input-min-height: 4rem; /* primer: --base-size-64 */
   --input-min-width: 4rem; /* primer: --base-size-64 */
 }

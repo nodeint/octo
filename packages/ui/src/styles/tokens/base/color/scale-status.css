@@ -26,6 +26,17 @@
   --status-success-border: oklch(from var(--status-success) l c h / 40%);
   --status-warning-border: oklch(from var(--status-warning) l c h / 40%);
   --status-info-border: oklch(from var(--status-info) l c h / 40%);
+
+  /* Callout surface: a quiet fill for Alert-like blocks on a surface. Distinct from the control fill --*-subtle. */
+  --status-destructive-surface: oklch(0.985 0.012 27);
+  --status-success-surface: oklch(0.985 0.012 145);
+  --status-warning-surface: oklch(0.985 0.014 75);
+  --status-info-surface: oklch(0.985 0.01 230);
+  /* Secondary text on a callout surface: the status ink pulled toward the muted foreground. */
+  --status-destructive-surface-foreground: color-mix(in oklch, var(--status-destructive) 90%, var(--foreground-muted));
+  --status-success-surface-foreground: color-mix(in oklch, var(--status-success) 90%, var(--foreground-muted));
+  --status-warning-surface-foreground: color-mix(in oklch, var(--status-warning) 90%, var(--foreground-muted));
+  --status-info-surface-foreground: color-mix(in oklch, var(--status-info) 90%, var(--foreground-muted));
 }
 
 .dark {
@@ -46,4 +57,13 @@
   --status-success-hover: oklch(from var(--status-success) clamp(0, calc(l + 0.05), 1) c h);
   --status-warning-hover: oklch(from var(--status-warning) clamp(0, calc(l + 0.05), 1) c h);
   --status-info-hover: oklch(from var(--status-info) clamp(0, calc(l + 0.05), 1) c h);
+
+  --status-destructive-surface: oklch(0.24 0.02 27);
+  --status-success-surface: oklch(0.24 0.02 145);
+  --status-warning-surface: oklch(0.25 0.02 85);
+  --status-info-surface: oklch(0.24 0.02 230);
+  --status-destructive-surface-foreground: color-mix(in oklch, var(--status-destructive) 90%, var(--foreground-muted));
+  --status-success-surface-foreground: color-mix(in oklch, var(--status-success) 90%, var(--foreground-muted));
+  --status-warning-surface-foreground: color-mix(in oklch, var(--status-warning) 90%, var(--foreground-muted));
+  --status-info-surface-foreground: color-mix(in oklch, var(--status-info) 90%, var(--foreground-muted));
 }
