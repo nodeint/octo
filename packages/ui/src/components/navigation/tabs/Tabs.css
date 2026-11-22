@@ -7,7 +7,7 @@
   gap: var(--space-sm);
 }
 
-.tabs[data-horizontal] {
+.tabs[data-orientation='horizontal'] {
   flex-direction: column;
 }
 

@@ -336,5 +336,5 @@
 .sheet-close-button {
   position: absolute;
   top: var(--space-sm);
-  right: var(--space-sm);
+  inset-inline-end: var(--space-sm);
 }
