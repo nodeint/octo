@@ -15,9 +15,15 @@ function ToggleGroup<Value extends string = string>({
   wrap = false,
   ...props
 }: ToggleGroupPrimitive.Props<Value> & {
-  /** Sets the identity colors (fill, text, border) of the toggles inside, over their own variant, as ButtonGroup does. */
+  /**
+   * Sets the identity colors (fill, text, border) of the toggles inside, over their own variant,
+   * as ButtonGroup does.
+   */
   variant?: ToggleGroupVariant
-  /** One step of the control scale. The toggles inside take it and cannot override it. Without it each keeps its own. */
+  /**
+   * One step of the control scale. The toggles inside take it and cannot override it.
+   * Without it each keeps its own.
+   */
   size?: ToggleSize
   orientation?: 'horizontal' | 'vertical'
   /** Toggles wrap onto the next line, and the group can shrink below its content width. */

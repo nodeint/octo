@@ -17,6 +17,7 @@ import {
   Icon,
 } from '@workspace/ui';
 import * as React from 'react';
+
 import { storyWidthDecorator } from '../story-width';
 
 const TRIGGER_STYLE = {

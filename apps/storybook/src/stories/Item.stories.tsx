@@ -341,7 +341,8 @@ export const Link: Story = {
 };
 
 function TriggerDemo(): React.JSX.Element {
-  // The trigger covers the row, so a click anywhere opens it; the action buttons sit above the cover and act on their own.
+  // The trigger covers the row, so a click anywhere opens it;
+  // the action buttons sit above the cover and act on their own.
   const [lastAction, setLastAction] = React.useState('None yet');
   return (
     <Stack gap="lg">

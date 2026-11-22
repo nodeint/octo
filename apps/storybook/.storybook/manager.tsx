@@ -1,6 +1,6 @@
+import React, { useState } from 'react';
 import { IconButton, TooltipLinkList, WithTooltip } from 'storybook/internal/components';
 import { addons, types, useGlobals } from 'storybook/manager-api';
-import React, { useState } from 'react';
 
 import { APPEARANCE_AXES, type AppearanceAxis, INITIAL_APPEARANCE } from './appearance';
 

@@ -1,5 +1,7 @@
 import eslint from '@eslint/js';
 import { defineConfig, includeIgnoreFile } from 'eslint/config';
+import { globSync } from 'node:fs';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import globals from 'globals';
 import onlyWarn from 'eslint-plugin-only-warn';
@@ -7,6 +9,8 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sonarjs from 'eslint-plugin-sonarjs';
 import tseslint from 'typescript-eslint';
 import unicorn from 'eslint-plugin-unicorn';
+
+const ROOT_DIR = fileURLToPath(new URL('.', import.meta.url));
 
 /** Boolean names as is/has/can/should (locals + args; not function names). */
 const BOOLEAN_NAME_OPTIONS = {
@@ -31,13 +35,13 @@ const GITIGNORE_FILES = [
   '.gitignore',
   'e2e/.gitignore',
   'apps/*/.gitignore',
-  'packages/*/.gitignore'
-].map(
-  (file) => fileURLToPath(new URL(file, import.meta.url)),
-);
+  'packages/*/.gitignore',
+]
+  .flatMap((pattern) => globSync(pattern, { cwd: ROOT_DIR }))
+  .map((file) => path.resolve(ROOT_DIR, file));
 
 const INCLUDE_PATTERNS = [
-  'app/**/*.{ts,tsx}',
+  'apps/**/*.{ts,tsx}',
   'packages/**/*.{ts,tsx}',
   'e2e/**/*.{ts,tsx}',
   'scripts/**/*.{ts,tsx}',
@@ -250,10 +254,21 @@ const testFilesConfig = {
   },
 };
 
+// Stories: a story file lists many variants of one component, and demos spell out whole menus.
+const storiesConfig = {
+  files: ['**/*.stories.{ts,tsx}'],
+  rules: {
+    'max-lines': ['warn', { max: 1024, ...SIZE_SKIP }],
+    'max-lines-per-function': ['warn', { max: 240, ...SIZE_SKIP }],
+    'max-nested-callbacks': ['warn', { max: 2 }],
+  },
+};
+
 export default defineConfig(
   ...GITIGNORE_FILES.map((file) => includeIgnoreFile(file, { gitignoreResolution: true })),
   baseConfig,
   typeAwareConfig,
   sizeConfig,
+  storiesConfig,
   testFilesConfig
 );

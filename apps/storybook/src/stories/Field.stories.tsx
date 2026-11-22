@@ -29,6 +29,10 @@ import * as React from 'react';
 
 import { storyWidthDecorator } from '../story-width';
 
+const MONTH_COUNT = 12;
+const MONTH_DIGITS = 2;
+const DEFAULT_PRICE = 200;
+
 const DEPARTMENTS = [
   { label: 'Engineering', value: 'engineering' },
   { label: 'Design', value: 'design' },
@@ -38,8 +42,8 @@ const DEPARTMENTS = [
 
 const MONTHS = [
   { label: 'MM', value: null },
-  ...Array.from({ length: 12 }, (_, index) => {
-    const month = String(index + 1).padStart(2, '0');
+  ...Array.from({ length: MONTH_COUNT }, (_, index) => {
+    const month = String(index + 1).padStart(MONTH_DIGITS, '0');
     return { label: month, value: month };
   }),
 ];
@@ -221,7 +225,7 @@ export const SelectField: Story = {
 
 export const SliderField: Story = {
   render: function SliderFieldDemo(): React.JSX.Element {
-    const [value, setValue] = React.useState<number>(200);
+    const [value, setValue] = React.useState<number>(DEFAULT_PRICE);
 
     return (
       <Field>
@@ -233,7 +237,7 @@ export const SliderField: Story = {
         </FieldDescription>
         <Slider
           value={value}
-          onValueChange={(next) => setValue(next as number)}
+          onValueChange={(next) => setValue(next)}
           max={1000}
           min={0}
           step={10}

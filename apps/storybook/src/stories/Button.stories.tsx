@@ -117,7 +117,7 @@ export const Link: Story = {
   args: { variant: 'link', children: 'Link' },
 };
 
-export const Icon_: Story = {
+export const IconOnly: Story = {
   name: 'Icon',
   parameters: {
     docs: {

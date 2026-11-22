@@ -5,17 +5,20 @@ import * as React from 'react';
 
 import { cn } from '../../../lib/utils';
 import { Button } from '../../form/button/Button';
+import { Input } from '../../form/input/Input';
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
 } from '../../form/input-group/InputGroup';
-import { Input } from '../../form/input/Input';
 import { Icon } from '../../typography/icon/Icon';
 
 const Combobox = ComboboxPrimitive.Root;
 
-/** Ref for the chips row, passed to `ComboboxChips` and to `ComboboxContent`'s `anchor` so the popup opens under the row. */
+/**
+ * Ref for the chips row, passed to `ComboboxChips` and to `ComboboxContent`'s `anchor`
+ * so the popup opens under the row.
+ */
 function useComboboxAnchor(): React.RefObject<HTMLDivElement | null> {
   return React.useRef<HTMLDivElement | null>(null);
 }

@@ -1,18 +1,21 @@
 import { Toolbar as ToolbarPrimitive } from '@base-ui/react/toolbar';
 
 import { cn } from '../../../lib/utils';
-import { type ButtonGroupSize, type ButtonGroupVariant } from '../../form/button-group/ButtonGroup';
 import {
   type ButtonShape,
   type ButtonSize,
   type ButtonVariant,
 } from '../../form/button/Button';
+import { type ButtonGroupSize, type ButtonGroupVariant } from '../../form/button-group/ButtonGroup';
 import { type ToggleSize, type ToggleVariant } from '../../form/toggle/Toggle';
 
 type ToolbarOrientation = 'horizontal' | 'vertical'
 
 type ToolbarProps = ToolbarPrimitive.Root.Props & {
-  /** Sets the identity colors of the buttons, toggles and inputs inside, over their own variant, as ButtonGroup does. */
+  /**
+   * Sets the identity colors of the buttons, toggles and inputs inside, over their own variant,
+   * as ButtonGroup does.
+   */
   variant?: ButtonGroupVariant
   /** One step of the control scale. The items inside take it and cannot override it. */
   size?: ButtonGroupSize

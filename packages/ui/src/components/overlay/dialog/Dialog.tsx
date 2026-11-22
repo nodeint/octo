@@ -115,17 +115,17 @@ function DialogHeader({
 }
 
 function DialogBody({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
-  const fill = React.useContext(DialogFillContext);
+  const isFill = React.useContext(DialogFillContext);
   const content = (
     <Box
-      bleed={fill ? undefined : 'x'}
-      data-slot={fill ? undefined : 'dialog-body'}
+      bleed={isFill ? undefined : 'x'}
+      data-slot={isFill ? undefined : 'dialog-body'}
       className={cn('dialog-body', className)}
       {...props}
     />
   );
 
-  if (!fill) {
+  if (!isFill) {
     return content;
   }
 
@@ -135,7 +135,7 @@ function DialogBody({ className, ...props }: React.ComponentProps<'div'>): React
     <ScrollArea data-slot="dialog-body" data-box-bleed="x">
       {content}
     </ScrollArea>
-  )
+  );
 }
 
 function DialogFooter({

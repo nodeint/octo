@@ -21,7 +21,10 @@ import {
   Textarea,
 } from '@workspace/ui';
 import * as React from 'react';
+
 import { storyWidthDecorator } from '../story-width';
+
+const COPIED_RESET_MS = 2000;
 
 const SIZES = ['xs', 'sm', 'md', 'lg'] as const satisfies readonly InputGroupSize[];
 
@@ -154,7 +157,7 @@ function ButtonExample(args: React.ComponentProps<typeof InputGroup>): React.JSX
             title="Copy"
             onClick={() => {
               setIsCopied(true);
-              setTimeout(() => setIsCopied(false), 2000);
+              setTimeout(() => setIsCopied(false), COPIED_RESET_MS);
             }}
           >
             <Icon name={isCopied ? 'check' : 'copy'} />

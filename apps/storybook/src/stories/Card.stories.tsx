@@ -19,6 +19,7 @@ import {
   Stack,
   Toggle,
 } from '@workspace/ui';
+
 import { storyWidthDecorator } from '../story-width';
 
 const meta = {

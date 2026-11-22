@@ -62,7 +62,10 @@ function ItemSeparator({
 type ItemProps = useRender.ComponentProps<'div'> & {
   variant?: ItemVariant
   size?: ItemSize
-  /** Drops the padding and the border of the row, for an `Item` inside a container that already pads it, such as a menu row. */
+  /**
+   * Drops the padding and the border of the row, for an `Item` inside a container that already pads it,
+   * such as a menu row.
+   */
   bare?: boolean
 }
 

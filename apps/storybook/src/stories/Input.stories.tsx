@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@workspace/ui';
+
 import { storyWidthDecorator } from '../story-width';
 
 const SIZES = ['xs', 'sm', 'md', 'lg'] as const;

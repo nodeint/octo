@@ -17,6 +17,7 @@ import {
   Switch,
 } from '@workspace/ui';
 import * as React from 'react';
+
 import { storyWidthDecorator } from '../story-width';
 
 const FRUITS = [

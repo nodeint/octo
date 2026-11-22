@@ -21,7 +21,10 @@ function ButtonGroup({
    * Focus, invalid and disabled text paint stay with the child. Defaults to outline.
    */
   variant?: ButtonGroupVariant
-  /** One step of the control scale. The buttons and fields inside take it and cannot override it. Without it each child keeps its own. */
+  /**
+   * One step of the control scale. The buttons and fields inside take it and cannot override it.
+   * Without it each child keeps its own.
+   */
   size?: ButtonGroupSize
 }): React.JSX.Element {
   return (
