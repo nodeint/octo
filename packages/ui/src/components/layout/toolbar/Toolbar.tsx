@@ -75,7 +75,7 @@ function ToolbarButton({
       data-variant={variant}
       data-action-size={size}
       data-shape={shape}
-      className={cn('button toolbar-button', className)}
+      className={cn('action button toolbar-button', className)}
       focusableWhenDisabled={false}
       {...props}
     />
@@ -117,7 +117,7 @@ function ToolbarToggle({
       data-fill-icon={fillIcon ? '' : undefined}
       aria-pressed={pressed}
       className={cn(
-        'toggle toolbar-button toolbar-toggle',
+        'action toggle toolbar-button toolbar-toggle',
         className
       )}
       {...props}
@@ -147,7 +147,7 @@ function ToolbarInput({
       data-slot="toolbar-input"
       data-variant="field"
       data-field-size="sm"
-      className={cn('toolbar-input input', className)}
+      className={cn('field-control input toolbar-input', className)}
       {...props}
     />
   );
