@@ -10,7 +10,6 @@ const meta = {
   title: 'Form/Toggle',
   component: Toggle,
   tags: ['autodocs'],
-  args: { children: 'Toggle' },
   argTypes: {
     variant: { control: 'inline-radio', options: VARIANTS },
     size: { control: 'inline-radio', options: SIZES },
@@ -24,53 +23,61 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Playground: Story = {};
+/*
+ * The icon catalog has no bookmark, italic or bold glyph, so these stories use the closest names
+ * it does have: star for bookmark, type for italic, pencil for bold.
+ */
 
-export const Variants: Story = {
+export const Demo: Story = {
+  args: { 'aria-label': 'Toggle bookmark', size: 'sm', variant: 'outline', fillIcon: true },
+  render: (args) => (
+    <Toggle {...args}>
+      <Icon name="star" />
+      Bookmark
+    </Toggle>
+  ),
+};
+
+export const Outline: Story = {
+  args: { variant: 'outline' },
   render: (args) => (
     <Inline>
-      {(['ghost', 'outline'] as const).map((variant) => (
-        <Toggle key={variant} {...args} variant={variant}>
-          {variant}
-        </Toggle>
-      ))}
+      <Toggle {...args} aria-label="Toggle italic">
+        <Icon name="type" />
+        Italic
+      </Toggle>
+      <Toggle {...args} aria-label="Toggle bold">
+        <Icon name="pencil" />
+        Bold
+      </Toggle>
     </Inline>
   ),
 };
 
-export const Pressed: Story = {
+export const WithText: Story = {
+  name: 'With Text',
+  args: { 'aria-label': 'Toggle italic' },
   render: (args) => (
-    <Inline>
-      {(['ghost', 'outline'] as const).map((variant) => (
-        <Toggle key={variant} {...args} variant={variant} defaultPressed>
-          {variant}
-        </Toggle>
-      ))}
-    </Inline>
+    <Toggle {...args}>
+      <Icon name="type" />
+      Italic
+    </Toggle>
   ),
 };
 
 export const Sizes: Story = {
+  args: { variant: 'outline' },
   render: (args) => (
     <Inline>
-      {SIZES.map((size) => (
-        <Toggle key={size} {...args} size={size}>
-          {size}
-        </Toggle>
-      ))}
-    </Inline>
-  ),
-};
-
-export const IconOnly: Story = {
-  args: { shape: 'icon', 'aria-label': 'Favorite' },
-  render: (args) => (
-    <Inline>
-      {SIZES.map((size) => (
-        <Toggle key={size} {...args} size={size}>
-          <Icon name="star" />
-        </Toggle>
-      ))}
+      <Toggle {...args} aria-label="Toggle small" size="sm">
+        Small
+      </Toggle>
+      <Toggle {...args} aria-label="Toggle default" size="md">
+        Default
+      </Toggle>
+      <Toggle {...args} aria-label="Toggle large" size="lg">
+        Large
+      </Toggle>
     </Inline>
   ),
 };
@@ -79,11 +86,23 @@ export const Disabled: Story = {
   args: { disabled: true },
   render: (args) => (
     <Inline>
-      {(['ghost', 'outline'] as const).map((variant) => (
-        <Toggle key={variant} {...args} variant={variant}>
-          {variant}
-        </Toggle>
-      ))}
+      <Toggle {...args} aria-label="Toggle disabled">
+        Disabled
+      </Toggle>
+      <Toggle {...args} variant="outline" aria-label="Toggle disabled outline">
+        Disabled
+      </Toggle>
     </Inline>
+  ),
+};
+
+export const Rtl: Story = {
+  name: 'RTL',
+  args: { 'aria-label': 'Toggle bookmark', size: 'sm', variant: 'outline', fillIcon: true, dir: 'rtl' },
+  render: (args) => (
+    <Toggle {...args}>
+      <Icon name="star" />
+      إشارة مرجعية
+    </Toggle>
   ),
 };
