@@ -31,6 +31,8 @@
 
 /* Components */
 @import "./components.css" layer(components);
+/* state-ring-group paints the ring over the container's own border, so it sits in components, before them, and wins on specificity. */
+@import "./recipes/state-ring-group.css" layer(components);
 @import "../components/layout/index.css" layer(components);
 @import "../components/typography/index.css" layer(components);
 @import "../components/form/index.css" layer(components);

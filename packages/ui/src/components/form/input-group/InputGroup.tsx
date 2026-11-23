@@ -44,7 +44,7 @@ function InputGroup({
       data-tone={paint.tone}
       data-emphasis={paint.emphasis}
       role="group"
-      className={cn('group input-group', className)}
+      className={cn('group input-group state-ring-group', className)}
       {...props}
     />
   );

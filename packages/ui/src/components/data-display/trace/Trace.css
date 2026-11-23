@@ -24,9 +24,9 @@
 }
 
 .trace > :has(> [data-slot='trace-line']):focus-visible {
-  border-color: var(--ring);
-  outline: var(--focus-width) solid var(--ring);
-  outline-offset: var(--focus-offset);
+  border-color: var(--state-focus-border);
+  box-shadow: var(--state-focus-shadow);
+  outline: var(--focus-width) solid transparent;
 }
 
 .trace-line {
@@ -141,9 +141,9 @@
 }
 
 .trace-collapsible-trigger:focus-visible {
-  border-color: var(--ring);
-  outline: var(--focus-width) solid var(--ring);
-  outline-offset: var(--focus-offset);
+  border-color: var(--state-focus-border);
+  box-shadow: var(--state-focus-shadow);
+  outline: var(--focus-width) solid transparent;
 }
 
 .trace-collapsible-trigger:hover,

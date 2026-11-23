@@ -21,9 +21,9 @@
 }
 
 .attachment:focus-within {
-  border-color: var(--ring);
-  outline: var(--focus-width) solid var(--ring);
-  outline-offset: var(--focus-offset);
+  border-color: var(--state-focus-border);
+  box-shadow: var(--state-focus-shadow);
+  outline: var(--focus-width) solid transparent;
 }
 
 /* a clickable root child: depth is the hover contract */
@@ -31,8 +31,10 @@
   background-color: var(--hover);
 }
 
+/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
 .attachment[data-state='error'] {
-  border-color: var(--destructive-subtle-foreground);
+  border-color: var(--state-invalid-border);
+  box-shadow: var(--state-invalid-shadow);
 }
 
 .attachment[data-state='idle'] {

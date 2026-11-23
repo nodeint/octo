@@ -24,8 +24,10 @@
 }
 
 .scroll-area-viewport:focus-visible {
-  outline: var(--focus-width) solid var(--ring);
-  outline-offset: var(--focus-offset);
+  /* Inset: the scroll-area parent clips overflow, so an outer halo would not show. */
+  box-shadow: inset 0 0 0 var(--focus-width) var(--state-focus-halo);
+  outline: var(--focus-width) solid transparent;
+  outline-offset: calc(var(--focus-width) * -1);
 }
 
 .scroll-area-viewport[data-orientation='horizontal'] {

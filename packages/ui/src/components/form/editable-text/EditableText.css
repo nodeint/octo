@@ -27,7 +27,7 @@
 
 .editable-text input.editable-text-input:is(:focus, :focus-visible) {
   box-shadow: none;
-  border-bottom-color: var(--ring);
+  border-bottom-color: var(--state-focus-border);
 }
 
 .editable-text .editable-text-value {
@@ -35,7 +35,7 @@
 }
 
 .editable-text .editable-text-value:focus-visible {
-  border-bottom-color: var(--ring);
+  border-bottom-color: var(--state-focus-border);
 }
 
 /* The pencil only offers the edit, so it shows while hovering. */

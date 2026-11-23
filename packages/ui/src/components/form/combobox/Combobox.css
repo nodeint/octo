@@ -192,19 +192,6 @@
   transition-timing-function: var(--default-transition-timing-function);
 }
 
-/* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
-.combobox-chips:focus-within {
-  border-color: var(--variant-border-focus);
-  box-shadow: var(--group-field-shadow-focus, var(--variant-shadow-focus));
-  outline: var(--focus-width) solid transparent;
-}
-
-/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
-.combobox-chips:has([aria-invalid='true']) {
-  border-color: var(--variant-border-invalid);
-  box-shadow: var(--group-field-shadow-invalid, var(--variant-shadow-invalid));
-}
-
 .combobox-chips:has([data-slot='combobox-chip']) {
   padding-inline: var(--space-xs);
 }

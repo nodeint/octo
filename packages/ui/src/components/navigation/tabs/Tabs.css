@@ -72,9 +72,9 @@
 }
 
 .tabs-trigger:focus-visible {
-  border-color: var(--ring);
-  outline: var(--focus-width) solid var(--ring);
-  outline-offset: var(--focus-offset);
+  border-color: var(--state-focus-border);
+  box-shadow: var(--state-focus-shadow);
+  outline: var(--focus-width) solid transparent;
 }
 
 .tabs-trigger:disabled,
@@ -147,6 +147,11 @@
 
 .tabs-list[data-variant='line'] .tabs-trigger[data-active]:focus-visible {
   border-color: var(--tab-line-active-focus-border-color);
+}
+
+/* After the variant skins on purpose: their shadow and `none` must not hide the focus halo. */
+.tabs-list[data-variant] .tabs-trigger:focus-visible {
+  box-shadow: var(--state-focus-shadow);
 }
 
 .tabs-list[data-variant='line'] .tabs-trigger[data-active]::after {

@@ -48,9 +48,9 @@
 }
 
 .bubble-content:is(button, a):focus-visible {
-  border-color: var(--ring);
-  outline: var(--focus-width) solid var(--ring);
-  outline-offset: var(--focus-offset);
+  border-color: var(--state-focus-border);
+  box-shadow: var(--state-focus-shadow);
+  outline: var(--focus-width) solid transparent;
 }
 
 .bubble[data-align='end'] > .bubble-content {

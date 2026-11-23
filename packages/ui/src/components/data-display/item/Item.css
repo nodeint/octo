@@ -58,9 +58,9 @@
 }
 
 .item:focus-visible {
-  border-color: var(--ring);
-  outline: var(--focus-width) solid var(--ring);
-  outline-offset: var(--focus-offset);
+  border-color: var(--state-focus-border);
+  box-shadow: var(--state-focus-shadow);
+  outline: var(--focus-width) solid transparent;
 }
 
 a.item:hover,
@@ -120,9 +120,9 @@ button.item:hover {
 }
 
 .item:has(.item-trigger:focus-visible) {
-  border-color: var(--ring);
-  outline: var(--focus-width) solid var(--ring);
-  outline-offset: var(--focus-offset);
+  border-color: var(--state-focus-border);
+  box-shadow: var(--state-focus-shadow);
+  outline: var(--focus-width) solid transparent;
 }
 
 .item:has(.item-trigger) .item-actions :is(a, button, input, select, textarea, [tabindex]) {

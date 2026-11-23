@@ -139,19 +139,6 @@
   color: var(--foreground-disabled);
 }
 
-/* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
-.input-group:has(> .field-control:focus-within) {
-  border-color: var(--variant-border-focus);
-  box-shadow: var(--variant-shadow-focus);
-  outline: var(--focus-width) solid transparent;
-}
-
-/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
-.input-group:has(> .field-control[aria-invalid='true']) {
-  border-color: var(--variant-border-invalid);
-  box-shadow: var(--variant-shadow-invalid);
-}
-
 /* A field pads by the side its addon sits on (read as --group-field-padding-* by the field). */
 .input-group:has(> [data-align='block-end']) {
   --group-field-padding-block-start: var(--space-md);

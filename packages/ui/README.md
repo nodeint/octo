@@ -11,7 +11,7 @@ src/
     index.css        layer order and imports
     reset.css        base layer
     base.css         base layer: page defaults only
-    theme/           theme layer: color and elevation tokens; the only axis with `.dark` values
+    theme/           theme layer: color, elevation and focus/invalid state tokens (state.css); the only axis with `.dark` values
     typography.css   theme layer: type steps and text roles
     variants.css     theme layer: the tone and emphasis sets that build --variant-*
     layout/          layout layer: control sizes, space, radius, border widths, containers, motion, z-index, opacity
@@ -31,7 +31,7 @@ src/
 
 A recipe is a stylesheet in `src/styles/recipes/` that gives a kind of element its skin. It binds token roles to
 properties and states for every element that opts in by adding the recipe's class
-(`action`, `field-control`, `group`, `media-frame`, `menu-row`).
+(`action`, `field-control`, `group`, `media-frame`, `menu-row`, `state-ring-group`).
 Recipes live in the `recipes` cascade layer, which sits below `components`: a component rule beats a recipe rule
 whatever the specificity, so a component overrides a recipe without raising its selector.
 

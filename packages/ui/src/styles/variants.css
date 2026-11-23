@@ -120,16 +120,23 @@
   --tone-border: var(--info-border);
 }
 
+/* The halo shapes behind the state-* colors (theme/state.css); the width is a layout token, so they live here. */
+:root,
+.dark {
+  --state-focus-shadow: 0 0 0 var(--focus-width) var(--state-focus-halo);
+  --state-invalid-shadow: 0 0 0 var(--focus-width) var(--state-invalid-halo);
+}
+
 /* State slots shared by every action: focus, invalid, disabled text. Resolves on each element against its own tone. */
 [data-tone] {
   --variant-ring: var(--tone-ring);
   --variant-border-focus: var(--tone-ring);
-  --variant-border-invalid: var(--destructive);
+  --variant-border-invalid: var(--state-invalid-border);
   --variant-fg-disabled: var(--foreground-disabled);
   --variant-fg-placeholder: var(--foreground-subtle);
-  --variant-shadow-focus: 0 0 0 var(--focus-width) color-mix(in oklab, var(--variant-ring) 40%, transparent);
-  --variant-shadow-invalid: 0 0 0 var(--focus-width)
-    color-mix(in oklab, var(--variant-border-invalid) 40%, transparent);
+  --variant-shadow-focus: 0 0 0 var(--focus-width)
+    color-mix(in oklab, var(--variant-ring) var(--state-halo-strength), transparent);
+  --variant-shadow-invalid: var(--state-invalid-shadow);
 }
 
 [data-emphasis='solid'] {

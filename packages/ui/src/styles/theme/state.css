@@ -1,0 +1,18 @@
+/*
+ * Interaction state roles: the focus ring and the invalid ring colors. One source for every control, so a change
+ * to the ring lands everywhere. Aliases only; the colors come from --ring (surface.css) and --destructive (status.css).
+ *   state-focus-border, state-invalid-border     border color while focused or invalid
+ *   state-halo-strength                          share of that color in the halo around the control
+ *   state-focus-halo, state-invalid-halo         the halo color
+ * The halo width is a layout token, so the box-shadow built from these (--state-focus-shadow,
+ * --state-invalid-shadow) is declared in variants.css.
+ * Declared on .dark too: a var() resolves where it is declared, so a nested .dark must resolve its own --ring.
+ */
+:root,
+.dark {
+  --state-focus-border: var(--ring);
+  --state-invalid-border: var(--destructive);
+  --state-halo-strength: 40%;
+  --state-focus-halo: color-mix(in oklab, var(--state-focus-border) var(--state-halo-strength), transparent);
+  --state-invalid-halo: color-mix(in oklab, var(--state-invalid-border) var(--state-halo-strength), transparent);
+}

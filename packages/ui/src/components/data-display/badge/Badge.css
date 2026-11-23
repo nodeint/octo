@@ -25,14 +25,14 @@
 }
 
 .badge:focus-visible {
-  border-color: var(--ring);
-  outline: var(--focus-width) solid var(--ring);
-  outline-offset: var(--focus-offset);
+  border-color: var(--state-focus-border);
+  box-shadow: var(--state-focus-shadow);
+  outline: var(--focus-width) solid transparent;
 }
 
 .badge[aria-invalid='true'] {
-  border-color: var(--destructive);
-  box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
+  border-color: var(--state-invalid-border);
+  box-shadow: var(--state-invalid-shadow);
 }
 
 /* Icon glyph beside the text. A size-* class on the svg opts out. */

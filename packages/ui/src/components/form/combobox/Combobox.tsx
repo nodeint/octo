@@ -118,7 +118,7 @@ function ComboboxChips({
       data-field-size="md"
       data-tone="field"
       data-emphasis="field"
-      className={cn('field-control', 'combobox-chips', className)}
+      className={cn('field-control', 'state-ring-group', 'combobox-chips', className)}
       {...props}
     />
   );

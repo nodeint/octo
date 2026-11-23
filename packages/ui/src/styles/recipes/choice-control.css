@@ -16,14 +16,14 @@
 }
 
 .choice-control:focus-visible {
-  border-color: var(--ring);
-  outline: var(--focus-width) solid var(--ring);
-  outline-offset: var(--focus-offset);
+  border-color: var(--state-focus-border);
+  box-shadow: var(--state-focus-shadow);
+  outline: var(--focus-width) solid transparent;
 }
 
 .choice-control[aria-invalid='true'] {
-  border-color: var(--choice-control-border-invalid, var(--destructive));
-  box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
+  border-color: var(--choice-control-border-invalid, var(--state-invalid-border));
+  box-shadow: var(--state-invalid-shadow);
 }
 
 .choice-control:disabled {

@@ -1,0 +1,25 @@
+/*
+ * Focus and invalid ring for a container that holds the field (input group, combobox chips). The ring is drawn on
+ * the container, and the field inside has its own ring turned off. A component adds `state-ring-group` beside its
+ * own class. Paint reads the --variant-* state slots like field-control.css, so a container and a bare field show
+ * one ring. It reads --variant-* and not --group-field-shadow-*: an input group sets those to none for its children.
+ * Unlike the other recipes it is imported in the components layer (styles/index.css): it must beat the container's
+ * own `border`, which a component declares. Its selectors out-rank a single component class.
+ *   focus    a field-control that is itself the container (chips), or a direct field-control child
+ *   invalid  any descendant with aria-invalid
+ */
+.state-ring-group:is(.field-control:focus-within, :has(> .field-control:focus-within)) {
+  border-color: var(--variant-border-focus);
+  box-shadow: var(--variant-shadow-focus);
+  outline: var(--focus-width) solid transparent;
+}
+
+/*
+ * After the focus rule on purpose: invalid paint wins while focused, so there is one ring.
+ * The first :is() branch only matches the focus rule's specificity (0,3,0): :has() counts its argument, so a bare
+ * `:has([aria-invalid])` (0,2,0) would lose to the focus rule above. Keep both branches.
+ */
+.state-ring-group:is(:has(> .field-control[aria-invalid='true']), :has([aria-invalid='true'])) {
+  border-color: var(--variant-border-invalid);
+  box-shadow: var(--variant-shadow-invalid);
+}
