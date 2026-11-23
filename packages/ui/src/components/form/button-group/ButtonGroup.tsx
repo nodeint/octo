@@ -1,11 +1,12 @@
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
 
+import { type GroupVariant, resolveGroupPaint } from '../../../lib/group-paint';
 import { cn } from '../../../lib/utils';
 import { Separator } from '../../layout/separator/Separator';
 
 type ButtonGroupOrientation = 'horizontal' | 'vertical'
-type ButtonGroupVariant = 'outline' | 'secondary' | 'ghost'
+type ButtonGroupVariant = GroupVariant
 type ButtonGroupSize = 'xs' | 'sm' | 'md' | 'lg'
 
 function ButtonGroup({
@@ -27,12 +28,15 @@ function ButtonGroup({
    */
   size?: ButtonGroupSize
 }): React.JSX.Element {
+  const paint = resolveGroupPaint(variant);
   return (
     <div
       role="group"
       data-slot="button-group"
       data-orientation={orientation}
       data-group-variant={variant}
+      data-tone={paint.tone}
+      data-emphasis={paint.emphasis}
       data-group-size={size}
       className={cn('group button-group', className)}
       {...props}

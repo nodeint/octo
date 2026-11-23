@@ -112,7 +112,7 @@ export const Actions: Story = {
             <TableCell>{product.price}</TableCell>
             <TableCell style={RIGHT}>
               <DropdownMenu>
-                <DropdownMenuTrigger render={<Button variant="ghost" shape="icon" size="sm" />}>
+                <DropdownMenuTrigger variant="muted" shape="icon" size="sm">
                   <Icon name="more-horizontal" />
                   <span className="sr-only">Open menu</span>
                 </DropdownMenuTrigger>

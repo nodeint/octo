@@ -44,7 +44,7 @@ A stylesheet is a recipe when all of these hold:
    `stylelint.config.mjs` (warnings). It declares no theme values: no `:root` or `.dark` block.
    A private hook it declares takes its value from a token.
    The exception is the sets a recipe owns: `[data-action-size]` in `action.css`, `[data-field-size]` in
-   `field-control.css`, and `[data-group-size]` and `[data-group-variant]` in `group.css` declare component tokens
+   `field-control.css`, and `[data-group-size]` and `[data-emphasis]` in `group.css` declare component tokens
    (`--action-*`, `--field-*`, `--group-*`) and may read the primitive control scale (`--control-*`, `--radius-*`).
    `octo/token-tier` skips custom properties declared in a recipe.
    `group.css` opts in by the `group` class, but it only hands `--group-*` tokens to the actions and fields inside a group.
@@ -106,11 +106,12 @@ The primitive reads of the legacy families in these files are warnings, not exce
   The tone and emphasis sets live in `styles/variants.css`, in the theme layer after the tokens.
   The action, field and group size sets and the group variant sets live with their recipe
   (`recipes/action.css`, `recipes/field-control.css`, `recipes/group.css`).
-  The group variant sets (`data-group-variant`) are declared once for all groups.
+  A group's `variant` maps to a tone and emphasis pair (`lib/group-paint.ts`); the root carries `data-tone` and
+  `data-emphasis`, and `group.css` only aliases the resulting `--variant-*` slots to `--group-*`, so it declares no color.
   A group overrides only the tokens that differ, on its own root, with a comment that gives the reason.
 - Paint has two axes in `styles/variants.css`: `data-tone` (`neutral`, `primary`, `destructive`, `success`,
   `warning`, `info`, `field`) declares `--tone-*` roles and the focus ring, and `data-emphasis` (`solid`, `soft`,
-  `outline`, `ghost`, `link`, `surface`, `field`) maps the roles to the `--variant-*` slots.
+  `outline`, `ghost`, `muted`, `link`, `surface`, `field`) maps the roles to the `--variant-*` slots.
   `Alert` is not an action: it sets `data-tone` from its `variant` and `data-emphasis="surface"`, a static callout
   painted from `--tone-surface`, `--tone-border`, and `--tone-surface-foreground` (`--variant-fg-secondary`).
   Text fields (`field-control`) set `data-tone="field"` and `data-emphasis="field"` and paint from `--variant-*`;

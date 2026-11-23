@@ -2,10 +2,11 @@
 
 import { ToggleGroup as ToggleGroupPrimitive } from '@base-ui/react/toggle-group';
 
+import { type GroupVariant, resolveGroupPaint } from '../../../lib/group-paint';
 import { cn } from '../../../lib/utils';
 import type { ToggleSize } from '../../form/toggle/Toggle';
 
-type ToggleGroupVariant = 'ghost' | 'outline' | 'secondary'
+type ToggleGroupVariant = GroupVariant
 
 function ToggleGroup<Value extends string = string>({
   className,
@@ -29,10 +30,13 @@ function ToggleGroup<Value extends string = string>({
   /** Toggles wrap onto the next line, and the group can shrink below its content width. */
   wrap?: boolean
 }): React.JSX.Element {
+  const paint = resolveGroupPaint(variant);
   return (
     <ToggleGroupPrimitive
       data-slot="toggle-group"
       data-group-variant={variant}
+      data-tone={paint.tone}
+      data-emphasis={paint.emphasis}
       data-group-size={size}
       data-orientation={orientation}
       data-wrap={wrap ? '' : undefined}

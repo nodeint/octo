@@ -314,10 +314,10 @@ export const WithTextarea: Story = {
           <Icon name="code-2" />
           script.js
         </InputGroupText>
-        <InputGroupButton shape="icon" aria-label="Refresh" style={{ marginInlineStart: 'auto' }}>
+        <InputGroupButton variant="muted" shape="icon" aria-label="Refresh" style={{ marginInlineStart: 'auto' }}>
           <Icon name="refresh-cw" />
         </InputGroupButton>
-        <InputGroupButton variant="ghost" shape="icon" aria-label="Copy">
+        <InputGroupButton variant="muted" shape="icon" aria-label="Copy">
           <Icon name="copy" />
         </InputGroupButton>
       </InputGroupAddon>

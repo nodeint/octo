@@ -4,13 +4,14 @@
  * The CSS sets live in styles/variants.css.
  */
 type ActionTone = 'neutral' | 'primary' | 'destructive'
-type ActionEmphasis = 'solid' | 'soft' | 'outline' | 'ghost' | 'link'
+type ActionEmphasis = 'solid' | 'soft' | 'outline' | 'ghost' | 'link' | 'muted'
 
 type ButtonVariant =
   | 'default'
   | 'outline'
   | 'secondary'
   | 'ghost'
+  | 'muted'
   | 'destructive'
   | 'link'
 type ToggleVariant = 'ghost' | 'outline'
@@ -19,7 +20,7 @@ type ToggleEmphasis = ToggleVariant
 /** The only exposed tone and emphasis pairs. */
 type ButtonAxes =
   | { tone: 'primary', emphasis: 'solid' | 'link' }
-  | { tone: 'neutral', emphasis: 'soft' | 'outline' | 'ghost' }
+  | { tone: 'neutral', emphasis: 'soft' | 'outline' | 'ghost' | 'muted' }
   | { tone: 'destructive', emphasis: 'soft' }
 
 type ButtonPaint =
@@ -46,6 +47,7 @@ const BUTTON_PRESETS: Record<ButtonVariant, ButtonAxes> = {
   secondary: { tone: 'neutral', emphasis: 'soft' },
   outline: { tone: 'neutral', emphasis: 'outline' },
   ghost: { tone: 'neutral', emphasis: 'ghost' },
+  muted: { tone: 'neutral', emphasis: 'muted' },
   destructive: { tone: 'destructive', emphasis: 'soft' },
   link: { tone: 'primary', emphasis: 'link' },
 };

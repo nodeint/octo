@@ -1,7 +1,7 @@
 /*
  * Paint: two independent axes, tone and emphasis, build the --variant-* slots a component reads.
  *   data-tone      which colors: neutral, primary, destructive, success, warning, info, field. Declares --tone-* roles and the focus ring.
- *   data-emphasis  how they are painted: solid, soft, outline, ghost, link, surface, field. Maps roles to the identity slots.
+ *   data-emphasis  how they are painted: solid, soft, outline, ghost, muted, link, surface, field. Maps roles to the identity slots.
  * A component never names a color or a tone; it paints from --variant-*. Only the blocks in this file
  * read --tone-*. Exposed action pairs: primary solid, primary link, neutral soft, outline, ghost, destructive soft.
  * The surface emphasis paints a static callout (alert): neutral, destructive, success, warning, info.
@@ -177,9 +177,10 @@
 }
 
 /* A quiet control rests on foreground-muted and steps to foreground with its fill. */
-[data-emphasis='ghost'] {
+[data-emphasis='ghost'],
+[data-emphasis='muted'] {
   --variant-bg: transparent;
-  --variant-fg: var(--foreground-muted);
+  --variant-fg: var(--foreground);
   --variant-border: transparent;
   --variant-bg-hover: var(--tertiary);
   --variant-fg-hover: var(--foreground);
@@ -192,6 +193,14 @@
   --variant-border-selected: transparent;
   --variant-bg-disabled: transparent;
   --variant-border-disabled: transparent;
+}
+
+/*
+ * Like ghost, with the rest text one step down: a secondary control (an icon button, an addon) recedes until the pointer
+ * reaches it, then steps to foreground with its fill. Pointer states match ghost.
+ */
+[data-emphasis='muted'] {
+  --variant-fg: var(--foreground-muted);
 }
 
 [data-emphasis='link'] {

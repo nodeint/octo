@@ -24,6 +24,7 @@ const VARIANTS = [
   'outline',
   'secondary',
   'ghost',
+  'muted',
   'destructive',
   'link',
 ] as const satisfies readonly ButtonVariant[];

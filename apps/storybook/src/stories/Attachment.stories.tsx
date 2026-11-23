@@ -68,14 +68,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-function RemoveAction({ name }: { name: string }) {
-  return (
-    <AttachmentAction aria-label={`Remove ${name}`}>
-      <Icon name="x" />
-    </AttachmentAction>
-  );
-}
-
 export const Demo: Story = {
   render: () => (
     <Stack gap="md">
@@ -115,7 +107,9 @@ export const Demo: Story = {
           <AttachmentDescription>TypeScript · 12 KB</AttachmentDescription>
         </AttachmentContent>
         <AttachmentActions>
-          <RemoveAction name="message-renderer.tsx" />
+          <AttachmentAction aria-label="Remove message-renderer.tsx">
+            <Icon name="x" />
+          </AttachmentAction>
         </AttachmentActions>
       </Attachment>
     </Stack>
@@ -135,7 +129,9 @@ export const Image: Story = {
             <AttachmentDescription>{image.meta}</AttachmentDescription>
           </AttachmentContent>
           <AttachmentActions>
-            <RemoveAction name={image.name} />
+            <AttachmentAction variant="ghost"  aria-label={`Remove ${image.name}`}>
+              <Icon name="x" />
+            </AttachmentAction>
           </AttachmentActions>
           <AttachmentTrigger render={<a href={image.src} target="_blank" rel="noreferrer" aria-label={`Open ${image.name}`} />} />
         </Attachment>
@@ -156,7 +152,9 @@ export const States: Story = {
           <AttachmentDescription>Ready to upload</AttachmentDescription>
         </AttachmentContent>
         <AttachmentActions>
-          <RemoveAction name="selected-file.pdf" />
+          <AttachmentAction aria-label="Remove selected-file.pdf">
+            <Icon name="x" />
+          </AttachmentAction>
         </AttachmentActions>
       </Attachment>
       <Attachment state="uploading">
@@ -182,7 +180,9 @@ export const States: Story = {
           <AttachmentDescription>Processing document</AttachmentDescription>
         </AttachmentContent>
         <AttachmentActions>
-          <RemoveAction name="market-research.pdf" />
+          <AttachmentAction aria-label="Remove market-research.pdf">
+            <Icon name="x" />
+          </AttachmentAction>
         </AttachmentActions>
       </Attachment>
       <Attachment state="error">
@@ -197,7 +197,9 @@ export const States: Story = {
           <AttachmentAction aria-label="Retry upload">
             <Icon name="refresh-cw" />
           </AttachmentAction>
-          <RemoveAction name="financial-model.xlsx" />
+          <AttachmentAction aria-label="Remove financial-model.xlsx">
+            <Icon name="x" />
+          </AttachmentAction>
         </AttachmentActions>
       </Attachment>
       <Attachment state="done">
@@ -209,7 +211,9 @@ export const States: Story = {
           <AttachmentDescription>Uploaded · 1.8 MB</AttachmentDescription>
         </AttachmentContent>
         <AttachmentActions>
-          <RemoveAction name="uploaded-report.pdf" />
+          <AttachmentAction aria-label="Remove uploaded-report.pdf">
+            <Icon name="x" />
+          </AttachmentAction>
         </AttachmentActions>
       </Attachment>
     </Stack>
@@ -275,7 +279,9 @@ export const Group: Story = {
             <AttachmentDescription>{item.meta}</AttachmentDescription>
           </AttachmentContent>
           <AttachmentActions>
-            <RemoveAction name={item.name} />
+            <AttachmentAction aria-label={`Remove ${item.name}`}>
+              <Icon name="x" />
+            </AttachmentAction>
           </AttachmentActions>
         </Attachment>
       ))}
@@ -298,7 +304,9 @@ export const Trigger: Story = {
           <AttachmentAction aria-label="Copy link">
             <Icon name="copy" />
           </AttachmentAction>
-          <RemoveAction name="research-summary.pdf" />
+          <AttachmentAction aria-label="Remove research-summary.pdf">
+            <Icon name="x" />
+          </AttachmentAction>
         </AttachmentActions>
         <DialogTrigger render={<AttachmentTrigger aria-label="Preview research-summary.pdf" />} />
       </Attachment>

@@ -301,7 +301,7 @@ export const Group: Story = {
             <ItemDescription>{person.email}</ItemDescription>
           </ItemContent>
           <ItemActions>
-            <Button variant="ghost" size="sm" shape="icon" aria-label={`Invite ${person.username}`}>
+            <Button variant="muted" size="sm" shape="icon" aria-label={`Invite ${person.username}`}>
               <Icon name="plus" />
             </Button>
           </ItemActions>
@@ -361,51 +361,50 @@ export const Link: Story = {
   ),
 };
 
-function TriggerDemo(): React.JSX.Element {
-  // The trigger covers the row, so a click anywhere opens it;
-  // the action buttons sit above the cover and act on their own.
-  const [lastAction, setLastAction] = React.useState('None yet');
-  return (
-    <Stack gap="lg">
-      <ItemGroup>
-        {PEOPLE.map((person) => (
-          <Item key={person.username} variant="outline">
-            <ItemMedia>
-              <Avatar>
-                <AvatarImage src={AVATARS[person.username]} alt="" />
-                <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
-              </Avatar>
-            </ItemMedia>
-            <ItemContent>
-              <ItemTitle>
-                <ItemTrigger onClick={() => setLastAction(`Opened ${person.username}`)}>
-                  {person.username}
-                </ItemTrigger>
-              </ItemTitle>
-              <ItemDescription>{person.email}</ItemDescription>
-            </ItemContent>
-            <ItemActions>
-              <Button
-                variant="ghost"
-                size="sm"
-                shape="icon"
-                aria-label={`Copy ${person.username}`}
-                onClick={() => setLastAction(`Copied ${person.username}`)}
-              >
-                <Icon name="copy" />
-              </Button>
-            </ItemActions>
-          </Item>
-        ))}
-      </ItemGroup>
-      <ItemDescription>Last action: {lastAction}</ItemDescription>
-    </Stack>
-  );
-}
 
-/** Repo-specific: `ItemTrigger` is the row's primary action; it has no shadcn counterpart. */
+/** `ItemTrigger` is the row's primary action; */
 export const WithTrigger: Story = {
-  render: () => <TriggerDemo />,
+  render: () => {
+    // The trigger covers the row, so a click anywhere opens it;
+    // the action buttons sit above the cover and act on their own.
+    const [lastAction, setLastAction] = React.useState('None yet');
+    return (
+      <Stack gap="lg">
+        <ItemGroup>
+          {PEOPLE.map((person) => (
+            <Item key={person.username} variant="outline">
+              <ItemMedia>
+                <Avatar>
+                  <AvatarImage src={AVATARS[person.username]} alt="" />
+                  <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
+                </Avatar>
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>
+                  <ItemTrigger onClick={() => setLastAction(`Opened ${person.username}`)}>
+                    {person.username}
+                  </ItemTrigger>
+                </ItemTitle>
+                <ItemDescription>{person.email}</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button
+                  variant="muted"
+                  size="sm"
+                  shape="icon"
+                  aria-label={`Copy ${person.username}`}
+                  onClick={() => setLastAction(`Copied ${person.username}`)}
+                >
+                  <Icon name="copy" />
+                </Button>
+              </ItemActions>
+            </Item>
+          ))}
+        </ItemGroup>
+        <ItemDescription>Last action: {lastAction}</ItemDescription>
+      </Stack>
+    );
+  }
 };
 
 export const DropdownItemLayout: Story = {

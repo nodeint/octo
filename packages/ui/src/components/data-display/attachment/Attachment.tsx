@@ -109,6 +109,7 @@ function AttachmentAction({
   className,
   size = 'xs',
   shape = 'icon',
+  variant = 'muted',
   ...props
 }: React.ComponentProps<typeof Button>): React.JSX.Element {
   return (
@@ -117,7 +118,7 @@ function AttachmentAction({
       size={size}
       shape={shape}
       className={cn(className)}
-      {...withDefaultVariant(props, 'ghost')}
+      {...withDefaultVariant(props, variant)}
     />
   );
 }
@@ -151,7 +152,7 @@ function AttachmentTrigger({
     state: {
       slot: 'attachment-trigger',
     },
-    });
+  });
 }
 
 function AttachmentGroup({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {

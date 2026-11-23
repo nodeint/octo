@@ -1,6 +1,7 @@
 import { Toolbar as ToolbarPrimitive } from '@base-ui/react/toolbar';
 
 import { type ButtonPaint, resolveButtonPaint, resolveTogglePaint, type TogglePaint } from '../../../lib/action-paint';
+import { resolveGroupPaint } from '../../../lib/group-paint';
 import { cn } from '../../../lib/utils';
 import {
   type ButtonShape,
@@ -29,10 +30,13 @@ function Toolbar({
   size = 'md',
   ...props
 }: ToolbarProps): React.JSX.Element {
+  const paint = resolveGroupPaint(variant);
   return (
     <ToolbarPrimitive.Root
       data-slot="toolbar"
       data-group-variant={variant}
+      data-tone={paint.tone}
+      data-emphasis={paint.emphasis}
       data-group-size={size}
       data-orientation={orientation}
       orientation={orientation}

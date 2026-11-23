@@ -51,7 +51,7 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
   return (
     <ComboboxPrimitive.Clear
       data-slot="combobox-clear"
-      render={<InputGroupButton variant="ghost" size="xs" shape="icon" />}
+      render={<InputGroupButton variant="muted" size="xs" shape="icon" />}
       className={cn(className)}
       {...props}
     >
@@ -87,7 +87,8 @@ function ComboboxInput({
         {...props}
       />
       <InputGroupAddon align="inline-end">
-        {showTrigger ? <InputGroupButton
+        {showTrigger ? (
+          <InputGroupButton
             size="xs" shape="icon"
             variant="ghost"
             // ComboboxTrigger is a bordered field; inside the input the trigger is the group's icon button.
@@ -97,7 +98,8 @@ function ComboboxInput({
             disabled={disabled}
           >
             <Icon name="chevron-down" size="sm" className="combobox-icon-muted" />
-          </InputGroupButton> : null}
+          </InputGroupButton>
+        ) : null}
         {showClear ? <ComboboxClear disabled={disabled} /> : null}
       </InputGroupAddon>
       {children}
@@ -137,13 +139,15 @@ function ComboboxChip({
       {...props}
     >
       {children}
-      {showRemove ? <ComboboxPrimitive.ChipRemove
-          render={<Button variant="ghost" size="xs" shape="icon" />}
+      {showRemove ? (
+        <ComboboxPrimitive.ChipRemove
+          render={<Button variant="muted" size="xs" shape="icon" />}
           className="combobox-chip-remove"
           data-slot="combobox-chip-remove"
         >
           <Icon name="x" className="combobox-icon" />
-        </ComboboxPrimitive.ChipRemove> : null}
+        </ComboboxPrimitive.ChipRemove>
+      ) : null}
     </ComboboxPrimitive.Chip>
   );
 }

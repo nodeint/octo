@@ -44,7 +44,7 @@ export const Demo: Story = {
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <DropdownMenu>
-            <DropdownMenuTrigger render={<Button size="sm" shape="icon" variant="ghost" />}>
+            <DropdownMenuTrigger render={<Button size="sm" shape="icon" variant="muted" />}>
               <BreadcrumbEllipsis />
               <span className="sr-only">Toggle menu</span>
             </DropdownMenuTrigger>

@@ -10,17 +10,6 @@
  * definite for field-sizing and for a Collapsible's measured height.
  */
 .input-group {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  min-width: 0;
-  height: var(--group-field-height);
-  border: var(--border-width-thin) solid var(--input-group-border);
-  border-radius: var(--group-corner);
-  background-color: var(--input-group-bg);
-  color: var(--group-field-fg);
-  outline: none;
   /* Tokens for the fields inside: no paint of their own and a flexing width. Size comes from data-group-size (styles/recipes/group.css). */
   --group-field-bg: transparent;
   --group-field-border: transparent;
@@ -31,20 +20,14 @@
   --group-field-border-width: 0;
   --group-field-flex: 1 1 0%;
   --group-field-resize: none;
-  /* Color comes from data-group-variant (below). Focus and invalid halos come from the group's own data-tone. */
-  transition-property: color, background-color, border-color, box-shadow;
-  transition-duration: var(--default-transition-duration);
-  transition-timing-function: var(--default-transition-timing-function);
-}
-
-/*
- * The group takes field tokens from data-group-size but not action ones, and its fields draw no corner of their own.
- * [data-group-size] raises specificity over the size rules in styles/recipes/group.css, which set the same tokens.
- * `initial` makes a token invalid, which sends var() to the child's own fallback: this also keeps an
- * input-group inside a button-group from taking that group's action size, so its addon buttons keep their own.
- */
-.input-group[data-group-size] {
   --group-field-radius: 0;
+  /*
+   * The group takes field tokens from data-group-size but not action ones, and its fields draw no corner of their own.
+   * The components layer comes after the recipes layer (styles/index.css), so these win over the size and emphasis rules
+   * in styles/recipes/group.css that set the same tokens, whatever their specificity.
+   * `initial` makes a token invalid, which sends var() to the child's own fallback: this also keeps an
+   * input-group inside a button-group from taking that group's action size, so its addon buttons keep their own.
+   */
   --group-action-height: initial;
   --group-action-px: initial;
   --group-action-gap: initial;
@@ -65,26 +48,93 @@
   --group-action-border-selected: initial;
   --group-action-bg-disabled: initial;
   --group-action-border-disabled: initial;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  height: var(--group-field-height);
+  border: var(--border-width-thin) solid var(--input-group-border);
+  border-radius: var(--group-corner);
+  background-color: var(--input-group-bg);
+  color: var(--group-field-fg);
+  outline: none;
+  
+  /* Color comes from data-group-variant (below). Focus and invalid halos come from the group's own data-tone. */
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
 }
 
-.input-group:has(.field-control:disabled) {
-  border-color: var(--input-group-border-disabled);
-  background-color: var(--input-group-bg-disabled);
-  color: var(--foreground-disabled);
+/*
+ * Group variants: data-group-variant sets the group's own border and fill (--input-group-*). The colors its fields
+ * read for text and states come from the shared set (styles/recipes/group.css), except in `field`,
+ * which has no shared set and keeps its own. Border, fill and disabled paint are not passed down:
+ * the group zeroes them for its fields above.
+ */
+.input-group[data-group-variant='outline'] {
+  --input-group-divider: var(--border);
+  --input-group-bg: transparent;
+  --input-group-border: var(--border);
+  --input-group-bg-disabled: transparent;
+  --input-group-border-disabled: var(--border);
 }
 
-.input-group:has([data-align='block-end']),
-.input-group:has([data-align='block-start']) {
-  height: auto;
-  flex-direction: column;
-  align-items: stretch;
-  border-radius: var(--radius-field-block);
+.input-group[data-group-variant='secondary'] {
+  --input-group-divider: var(--border);
+  --input-group-bg: var(--secondary);
+  --input-group-border: transparent;
+  --input-group-bg-disabled: var(--disabled);
+  --input-group-border-disabled: transparent;
 }
 
+.input-group[data-group-variant='ghost'] {
+  --input-group-divider: var(--border);
+  --input-group-bg: transparent;
+  --input-group-border: transparent;
+  --input-group-bg-disabled: transparent;
+  --input-group-border-disabled: transparent;
+}
+
+/* field: paints like a standalone Input or Select (styles/recipes/field-control.css), so a group sits level with them. */
+.input-group[data-group-variant='field'] {
+  --input-group-divider: var(--control);
+  --input-group-bg: var(--field);
+  --input-group-border: var(--control);
+  --input-group-bg-disabled: var(--disabled);
+  --input-group-border-disabled: var(--disabled-border);
+  --group-field-fg: currentcolor;
+  --group-field-bg-hover: var(--field-hover);
+  --group-field-fg-hover: currentcolor;
+  --group-field-border-hover: var(--control);
+  --group-field-bg-active: var(--field-hover);
+  --group-field-fg-active: currentcolor;
+  --group-field-border-active: var(--control);
+  --group-field-bg-selected: var(--field);
+  --group-field-fg-selected: currentcolor;
+  --group-field-border-selected: var(--control);
+}
+
+/* Multi line (block addon or textarea): auto height and stretched items, with the block corner. */
+.input-group:has(> [data-align='block-end']),
+.input-group:has(> [data-align='block-start']),
 .input-group:has(> [data-slot='textarea']) {
   height: auto;
   align-items: stretch;
   border-radius: var(--radius-field-block);
+}
+
+.input-group:has(> [data-align='block-end']),
+.input-group:has(> [data-align='block-start']) {
+  flex-direction: column;
+}
+
+.input-group[data-disabled],
+.input-group:has(> .field-control:disabled) {
+  border-color: var(--input-group-border-disabled);
+  background-color: var(--input-group-bg-disabled);
+  color: var(--foreground-disabled);
 }
 
 /* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
@@ -95,25 +145,25 @@
 }
 
 /* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
-.input-group:has([data-slot][aria-invalid='true']) {
+.input-group:has(> .field-control[aria-invalid='true']) {
   border-color: var(--variant-border-invalid);
   box-shadow: var(--variant-shadow-invalid);
 }
 
 /* A field pads by the side its addon sits on (read as --group-field-padding-* by the field). */
-.input-group:has([data-align='block-end']) {
+.input-group:has(> [data-align='block-end']) {
   --group-field-padding-block-start: var(--space-md);
 }
 
-.input-group:has([data-align='block-start']) {
+.input-group:has(> [data-align='block-start']) {
   --group-field-padding-block-end: var(--space-md);
 }
 
-.input-group:has([data-align='inline-end']) {
+.input-group:has(> [data-align='inline-end']) {
   --group-field-padding-inline-end: var(--space-sm);
 }
 
-.input-group:has([data-align='inline-start']) {
+.input-group:has(> [data-align='inline-start']) {
   --group-field-padding-inline-start: var(--space-sm);
 }
 
@@ -122,7 +172,6 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  height: auto;
   cursor: text;
   font-size: var(--role-label-size);
   line-height: var(--role-label-leading);
@@ -176,7 +225,7 @@
 }
 
 .input-group-addon[data-align='block-start'].border-b {
-  border-bottom: var(--border-width-thin) solid var(--control);
+  border-bottom: var(--border-width-thin) solid var(--input-group-divider);
   padding-block-end: var(--space-md);
 }
 
@@ -189,11 +238,7 @@
 }
 
 .input-group-addon[data-align='block-end'].border-t {
-  border-top: var(--border-width-thin) solid var(--control);
-}
-
-.input-group-addon > kbd {
-  border-radius: calc(var(--group-corner) - 5px);
+  border-top: var(--border-width-thin) solid var(--input-group-divider);
 }
 
 /* a group with a direct field gives block addons less padding */
@@ -236,49 +281,4 @@
   height: var(--control-icon-md);
   pointer-events: none;
   flex-shrink: 0;
-}
-
-/*
- * Group variants: data-group-variant sets the group's own border and fill (--input-group-*). The colors its fields
- * read for text and states come from the shared set (styles/recipes/group.css), except in `field`,
- * which has no shared set and keeps its own. Border, fill and disabled paint are not passed down:
- * the group zeroes them for its fields above.
- */
-[data-slot='input-group'][data-group-variant='outline'] {
-  --input-group-bg: transparent;
-  --input-group-border: var(--border);
-  --input-group-bg-disabled: transparent;
-  --input-group-border-disabled: var(--border);
-}
-
-[data-slot='input-group'][data-group-variant='secondary'] {
-  --input-group-bg: var(--secondary);
-  --input-group-border: transparent;
-  --input-group-bg-disabled: var(--disabled);
-  --input-group-border-disabled: transparent;
-}
-
-[data-slot='input-group'][data-group-variant='ghost'] {
-  --input-group-bg: transparent;
-  --input-group-border: transparent;
-  --input-group-bg-disabled: transparent;
-  --input-group-border-disabled: transparent;
-}
-
-/* field: paints like a standalone Input or Select (styles/recipes/field-control.css), so a group sits level with them. */
-[data-slot='input-group'][data-group-variant='field'] {
-  --input-group-bg: var(--field);
-  --input-group-border: var(--control);
-  --input-group-bg-disabled: var(--disabled);
-  --input-group-border-disabled: var(--disabled-border);
-  --group-field-fg: currentcolor;
-  --group-field-bg-hover: var(--field-hover);
-  --group-field-fg-hover: currentcolor;
-  --group-field-border-hover: var(--control);
-  --group-field-bg-active: var(--field-hover);
-  --group-field-fg-active: currentcolor;
-  --group-field-border-active: var(--control);
-  --group-field-bg-selected: var(--field);
-  --group-field-fg-selected: currentcolor;
-  --group-field-border-selected: var(--control);
 }

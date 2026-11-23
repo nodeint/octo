@@ -1,11 +1,12 @@
 import * as React from 'react';
 
 import { type OmitFromUnion, withDefaultVariant } from '../../../lib/action-paint';
+import { type GroupFieldVariant, resolveGroupPaint } from '../../../lib/group-paint';
 import { cn } from '../../../lib/utils';
 import { Button } from '../../form/button/Button';
 
 type InputGroupAddonAlign = 'inline-start' | 'inline-end' | 'block-start' | 'block-end'
-type InputGroupVariant = 'field' | 'outline' | 'secondary' | 'ghost'
+type InputGroupVariant = GroupFieldVariant
 type InputGroupButtonSize = 'xs' | 'sm' | 'md'
 type InputGroupSize = 'xs' | 'sm' | 'md' | 'lg'
 
@@ -34,12 +35,14 @@ function InputGroup({
   /** One step of the control scale. The input or textarea inside takes it too. */
   size?: InputGroupSize
 }): React.JSX.Element {
+  const paint = resolveGroupPaint(variant);
   return (
     <div
       data-slot="input-group"
       data-group-variant={variant}
       data-group-size={size}
-      data-tone="field"
+      data-tone={paint.tone}
+      data-emphasis={paint.emphasis}
       role="group"
       className={cn('group input-group', className)}
       {...props}
