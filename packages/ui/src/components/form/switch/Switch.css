@@ -56,8 +56,17 @@
   height: var(--switch-thumb-size-sm);
 }
 
+/* translate is physical: the thumb starts at the inline start, so it travels toward the inline end (negative X in RTL). */
+.switch {
+  --switch-thumb-direction: 1;
+}
+
+.switch:dir(rtl) {
+  --switch-thumb-direction: -1;
+}
+
 .switch > .switch-thumb[data-checked] {
-  translate: calc(100% - var(--switch-thumb-inset)) 0;
+  translate: calc((100% - var(--switch-thumb-inset)) * var(--switch-thumb-direction)) 0;
 }
 
 .switch > .switch-thumb[data-unchecked] {
