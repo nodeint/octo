@@ -27,7 +27,7 @@
   border-inline-width: 0;
 }
 
-/* sizes: the row shape; the icon square and the shared size set live in action.css */
+/* sizes: the row shape; the icon square and the shared size set live in styles/recipes/action.css */
 .button[data-shape='default'][data-action-size] {
   height: var(--group-action-height, var(--action-height));
   padding-inline: calc(var(--group-action-px, var(--action-px)) - var(--border-width-thin));

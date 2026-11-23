@@ -9,7 +9,7 @@
   background-color: var(--accent);
 }
 
-/* sizes: the row shape; the icon square and the shared size set live in action.css */
+/* sizes: the row shape; the icon square and the shared size set live in styles/recipes/action.css */
 .toggle[data-shape='default'][data-action-size] {
   width: var(--group-action-width, auto);
   min-width: var(--group-action-min-width, auto);

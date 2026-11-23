@@ -1,7 +1,7 @@
 /*
  * Behavior shared by the selection controls: focus ring, invalid and disabled paint.
  * Selector lists replace shared utilities; keep them in sync with the component files.
- * Text fields (input, textarea) live in field-control.css, buttons and toggles in action.css.
+ * Text fields (input, textarea) live in field-control.css, buttons and toggles in action.css (same folder).
  */
 
 /* ---- selection controls ---- */

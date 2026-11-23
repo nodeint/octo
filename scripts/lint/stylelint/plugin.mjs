@@ -83,6 +83,7 @@ export function classifyFile(file, pathApi = path) {
       if (trail.length === 1 && (trail[0] === 'base.css' || trail[0] === 'utilities.css')) {
         return { kind: 'consumer', tokensDir };
       }
+      if (trail[0] === 'recipes') return { kind: 'consumer', tokensDir };
       return undefined;
     }
     if (name === 'components' && above === 'src') {

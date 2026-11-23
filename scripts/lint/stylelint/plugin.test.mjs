@@ -32,6 +32,13 @@ test('classifies base.css and utilities.css as consumers', () => {
   expect(classifyFile('/r/src/styles/utilities.css', path.posix)?.kind).toBe('consumer');
 });
 
+test('classifies files under styles/recipes as consumers', () => {
+  expect(classifyFile('/r/packages/ui/src/styles/recipes/action.css', path.posix)).toEqual({
+    kind: 'consumer',
+    tokensDir: '/r/packages/ui/src/styles/tokens',
+  });
+});
+
 test('ignores appearance files and unrelated paths', () => {
   expect(classifyFile('/r/src/styles/appearance/p.css', path.posix)).toBeUndefined();
   expect(classifyFile('/r/other/x.css', path.posix)).toBeUndefined();

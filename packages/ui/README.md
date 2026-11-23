@@ -16,6 +16,7 @@ src/
       semantic/      roles
       component/     data-* sets and per-part tokens
     appearance/      theme layer: one file per data-appearance-* axis
+    recipes/         components layer, imported first: class skins shared by several components
     utilities.css    utilities layer: .sr-only, .no-scrollbar, .scroll-fade-x, .shimmer
 ```
 
@@ -24,6 +25,59 @@ src/
 | `src/index.ts` | Public package entry |
 | `src/styles/tokens/` | Token tiers; a token's tier is the folder that declares it |
 | `package.json` | Private package; `exports` points at `src`, so there is no build output |
+
+## Recipes
+
+A recipe is a stylesheet in `src/styles/recipes/` that gives a kind of element its skin. It binds token roles to
+properties and states for every element that opts in by adding the recipe's class (`action`, `field-control`, `menu-row`).
+Recipes stay in the `components` cascade layer and are imported before every component file.
+
+A stylesheet is a recipe when all of these hold:
+
+1. Opt-in by class. Each selector targets one of the recipe's own classes, its states, or elements inside one of its classes.
+   No selector names a component's own class or `data-slot`.
+2. Shared. At least two components add the recipe's classes. One component with variants is component CSS.
+3. Reads like component CSS. It reads semantic and component tokens, the documented `--group-*` and `--variant-*` hooks
+   and its own private hooks (for example `--menu-gap`), and no primitive token except the legacy families in
+   `stylelint.config.mjs` (warnings). It declares no theme values: no `:root` or `.dark` block.
+   A private hook it declares takes its value from a token.
+4. Owns its own parts only. It may lay out the parts it owns (`.menu-content` stacks `.menu-row`s).
+   It never lays out or joins another component's children; joins and gaps between group items stay with the group.
+
+Classification test for a reviewer, in order:
+
+1. Only custom properties on `:root`, `.dark` or `data-*` selectors: a token file.
+2. Override classes meant to win over components: a utility.
+3. Two or more components add its classes, and its selectors pass rules 1 and 4: a recipe.
+   `pnpm lint:css` checks only primitive reads (`octo/token-tier`) and `.dark` selectors (`octo/no-theme-selector`).
+   The rest of rule 3 (no `:root` block, hooks that take their value from a token) and rules 1, 2 and 4 are review checks.
+4. It fails rule 1 or 4 only in a selector listed under Recorded exceptions: a recipe with a transitional exception.
+5. Otherwise it is component CSS.
+
+Read direction:
+
+- A recipe reads semantic and component tokens, `--group-*` and `--variant-*` hooks and its own private hooks.
+  Components read recipe classes by adding them; a recipe never names a component.
+- A component may set a recipe's input tokens on its own root. It expresses an exception by overriding those tokens,
+  never by copying a recipe or a variant set.
+- A recipe never reads another recipe's private tokens; it shares a token instead.
+
+`control.css` and `overlay.css` are selector lists of component classes, not opt-in classes. They are transitional
+exceptions to rule 1 (see below), not examples of the pattern.
+
+### Recorded exceptions
+
+An exception applies only while a migration is in progress. A new exception needs the same record
+(what it breaks, why it stays, when it ends), and a reviewer rejects a rule break that has none.
+
+| File | Breaks | Why it stays | Removal condition |
+| --- | --- | --- | --- |
+| `control.css` | Rule 1: a selector list of component classes (`.checkbox`, `.radio-group-item`, `.switch`, `.slider-thumb`) | A shared class means a DOM change in four components | A follow-up adds a shared class to those components and replaces the list |
+| `overlay.css` | Rule 1: a selector list of component classes (dialog, alert dialog, sheet and popover overlays, positioners and surfaces) | Same reason | The same follow-up, for the overlay components |
+| `overlay.css` | Rule 3: the placement rules set the private hooks `--overlay-x` and `--overlay-y` to the literal `±0.5rem` | A token would declare a new design value; token values are out of scope | The follow-up adds a component token for the slide distance and the rules read it |
+| `menu.css` | Rule 1, in one selector: `:is(.menu-item, .menu-checkable) > [data-slot='text'][data-overflow='truncate']` names the Text slot | Removing it changes the Text or menu markup | The follow-up gives the row label a recipe-owned hook, or Text exposes a token the row sets |
+
+The primitive reads of the legacy families in these files are warnings, not exceptions.
 
 ## Rules
 
