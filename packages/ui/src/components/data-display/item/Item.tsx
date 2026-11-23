@@ -7,6 +7,9 @@ import { Separator } from '../../layout/separator/Separator';
 
 type ItemVariant = 'default' | 'outline' | 'muted'
 type ItemSize = 'md' | 'sm' | 'xs'
+
+/** The media step an item hands to its media: the row size picks one step of the media scale. */
+const ITEM_MEDIA_SIZE = { md: 'lg', sm: 'md', xs: 'xs' } as const satisfies Record<ItemSize, string>;
 type ItemMediaVariant = 'default' | 'icon' | 'image'
 
 /** True inside an `ItemGroup`, so a plain row there is a `listitem` of the group's `list`. */
@@ -96,6 +99,7 @@ function Item({
       variant,
       size,
       bare,
+      'media-size': ITEM_MEDIA_SIZE[size],
     },
     });
 }
@@ -111,8 +115,9 @@ function ItemMedia({
     <div
       data-slot="item-media"
       data-variant={variant}
+      data-media-fit={variant === 'image' ? 'image' : undefined}
       className={cn(
-        'item-media',
+        'media-frame item-media',
         className
       )}
       {...props}

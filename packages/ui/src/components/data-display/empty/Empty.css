@@ -32,30 +32,12 @@
 }
 
 .empty-media {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
+  --media-background: transparent;
   margin-block-end: var(--space-sm);
 }
 
-.empty-media svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
-  pointer-events: none;
-  flex-shrink: 0;
-}
-
-.empty-media[data-variant='default'] {
-  background-color: transparent;
-}
-
 .empty-media[data-variant='icon'] {
-  width: var(--control-height-md);
-  height: var(--control-height-md);
-  border-radius: var(--radius-surface-md);
-  background-color: var(--muted);
-  color: var(--foreground);
+  --media-background: var(--muted);
 }
 
 .empty-title {

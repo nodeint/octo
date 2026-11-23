@@ -26,19 +26,7 @@
 }
 
 .alert-dialog-media {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--control-height-lg);
-  height: var(--control-height-lg);
   margin-block-end: var(--space-sm);
-  border-radius: var(--radius-xs);
-  background-color: var(--muted);
-}
-
-.alert-dialog-media svg:not([class*='size-']) {
-  width: var(--control-height-xs);
-  height: var(--control-height-xs);
 }
 
 .alert-dialog-description {

@@ -30,7 +30,8 @@ src/
 ## Recipes
 
 A recipe is a stylesheet in `src/styles/recipes/` that gives a kind of element its skin. It binds token roles to
-properties and states for every element that opts in by adding the recipe's class (`action`, `field-control`, `group`, `menu-row`).
+properties and states for every element that opts in by adding the recipe's class
+(`action`, `field-control`, `group`, `media-frame`, `menu-row`).
 Recipes live in the `recipes` cascade layer, which sits below `components`: a component rule beats a recipe rule
 whatever the specificity, so a component overrides a recipe without raising its selector.
 
@@ -73,6 +74,10 @@ Read direction:
   `--choice-control-border-invalid` and `--choice-control-border-disabled` for `choice-control.css`,
   `--action-radius` and `--icon-size` for `action.css`. A component that sizes a glyph reads `--icon-size`
   with its own step as the fallback.
+
+`media.css` is the `media-frame` skin shared by the media parts of media, empty, item, attachment and alert dialog.
+A part sets `--media-size` (or `--media-width` and `--media-height`), `--media-radius`, `--media-background`,
+`--media-foreground` and `--media-icon-size` on its own root, and an image part adds `data-media-fit="image"`.
 
 `overlay.css` holds only the `overlay-*` keyframes shared by modal and anchored overlays; it has no selectors.
 `modal.css` is the modal skin (`modal-overlay`, `modal-content`, `modal-footer`, `modal-title`, `modal-description`,

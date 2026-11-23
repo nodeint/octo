@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Icon, Inline, Media, Stack, Text } from '@workspace/ui';
 
-const SIZES = ['md', 'xl'] as const;
+const SIZES = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 const VARIANTS = ['subtle', 'plain'] as const;
 
 const meta = {

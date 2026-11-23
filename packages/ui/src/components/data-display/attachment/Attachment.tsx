@@ -8,6 +8,9 @@ import { Button } from '../../form/button/Button';
 
 type AttachmentState = 'idle' | 'uploading' | 'processing' | 'error' | 'done'
 type AttachmentSize = 'md' | 'sm' | 'xs'
+
+/** The media step an attachment hands to its media: the size picks one step of the media scale. */
+const ATTACHMENT_MEDIA_SIZE = { md: 'lg', sm: 'sm', xs: 'xs' } as const satisfies Record<AttachmentSize, string>;
 type AttachmentOrientation = 'horizontal' | 'vertical'
 type AttachmentMediaVariant = 'icon' | 'image'
 
@@ -29,6 +32,7 @@ function Attachment({
       data-slot="attachment"
       data-state={state}
       data-size={size}
+      data-media-size={ATTACHMENT_MEDIA_SIZE[size]}
       data-orientation={orientation}
       className={cn('attachment', className)}
       {...props}
@@ -47,7 +51,8 @@ function AttachmentMedia({
     <div
       data-slot="attachment-media"
       data-variant={variant}
-      className={cn('attachment-media', className)}
+      data-media-fit={variant === 'image' ? 'image' : undefined}
+      className={cn('media-frame attachment-media', className)}
       {...props}
     />
   );

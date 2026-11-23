@@ -93,34 +93,13 @@
 
 /* media size and state are driven by the root */
 .attachment[data-orientation='vertical'] .attachment-media {
-  width: 100%;
-}
-
-.attachment[data-orientation='vertical'] .attachment-media svg:not([class*='size-']),
-.attachment[data-orientation='vertical'] .attachment-media [data-slot='spinner'] {
-  width: var(--control-height-xs);
-  height: var(--control-height-xs);
-}
-
-.attachment[data-size='sm'] .attachment-media {
-  width: var(--control-height-sm);
-  height: var(--control-height-sm);
-}
-
-.attachment[data-size='xs'] .attachment-media {
-  width: var(--control-height-xs);
-  height: var(--control-height-xs);
-  border-radius: var(--radius-surface-sm);
-}
-
-.attachment[data-size='xs'] .attachment-media svg:not([class*='size-']) {
-  width: var(--control-icon-xs);
-  height: var(--control-icon-xs);
+  --media-width: 100%;
+  --media-icon-size: var(--control-height-xs);
 }
 
 .attachment[data-state='error'] .attachment-media {
-  background-color: var(--destructive-subtle);
-  color: var(--destructive-subtle-foreground);
+  --media-background: var(--destructive-subtle);
+  --media-foreground: var(--destructive-subtle-foreground);
 }
 
 .attachment[data-state='error'] .attachment-description {
@@ -140,24 +119,7 @@
 
 .attachment-media {
   position: relative;
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  width: var(--control-height-lg);
-  height: var(--control-height-lg);
   aspect-ratio: 1;
-  overflow: hidden;
-  border-radius: var(--radius-surface-md);
-  background-color: var(--muted);
-  color: var(--foreground);
-}
-
-.attachment-media svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
-  pointer-events: none;
-  flex-shrink: 0;
 }
 
 .attachment-media[data-variant='image'] {
@@ -165,79 +127,7 @@
 }
 
 .attachment-media[data-variant='image'] > img {
-  width: 100%;
   aspect-ratio: 1;
-  object-fit: cover;
-}
-
-.attachment[data-state='done'] .attachment-media[data-variant='image'],
-.attachment[data-state='idle'] .attachment-media[data-variant='image'] {
-  opacity: 1;
-}
-
-.attachment-content {
-  flex: 1 1 0%;
-  max-width: 100%;
-  min-width: 0;
-}
-
-.attachment-title {
-  display: block;
-  max-width: 100%;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: var(--role-label-size);
-  line-height: var(--role-label-leading);
-  font-weight: var(--role-label-weight);
-}
-
-.attachment-description {
-  color: var(--destructive-subtle-foreground);
-}
-
-.attachment[data-orientation='vertical'] .attachment-content {
-  padding-inline: var(--space-xs);
-}
-
-.attachment[data-orientation='vertical'] .attachment-actions {
-  position: absolute;
-  top: var(--space-md);
-  right: var(--space-md);
-  gap: var(--space-xs);
-}
-
-.attachment-media {
-  position: relative;
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  width: var(--control-height-lg);
-  height: var(--control-height-lg);
-  aspect-ratio: 1;
-  overflow: hidden;
-  border-radius: var(--radius-surface-md);
-  background-color: var(--muted);
-  color: var(--foreground);
-}
-
-.attachment-media svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
-  pointer-events: none;
-  flex-shrink: 0;
-}
-
-.attachment-media[data-variant='image'] {
-  opacity: var(--opacity-dim);
-}
-
-.attachment-media[data-variant='image'] > img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
 }
 
 .attachment[data-state='done'] .attachment-media[data-variant='image'],

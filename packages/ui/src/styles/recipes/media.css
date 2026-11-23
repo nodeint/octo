@@ -1,0 +1,72 @@
+/*
+ * Media frame shared by the media parts of media, empty, item, attachment and alert dialog. Each part adds
+ * `media-frame` beside its own class and sets the input tokens on its own root; no selector here names a
+ * component. An image part also sets data-media-fit="image".
+ *
+ * Sizes: data-media-size picks a step and declares --media-size, --media-radius and --media-icon-size from the
+ * control and radius scales, as data-action-size does for an action. Tokens inherit, so a parent (item, attachment)
+ * that carries data-media-size hands its step to the media inside it, and a media never names its parent.
+ * A component overrides only what differs on its own root: --media-width, --media-height, --media-radius,
+ * --media-icon-size, --media-background, --media-foreground. Without a step the frame is as big as its content.
+ * Spacing to neighbors and any grid placement stay with the component.
+ */
+[data-media-size='xs'] {
+  --media-size: var(--control-height-xs);
+  --media-radius: var(--radius-surface-sm);
+  --media-icon-size: var(--control-icon-xs);
+}
+
+[data-media-size='sm'] {
+  --media-size: var(--control-height-sm);
+  --media-radius: var(--radius-surface-md);
+  --media-icon-size: var(--control-icon-md);
+}
+
+[data-media-size='md'] {
+  --media-size: var(--control-height-md);
+  --media-radius: var(--radius-surface-md);
+  --media-icon-size: var(--control-icon-md);
+}
+
+[data-media-size='lg'] {
+  --media-size: var(--control-height-lg);
+  --media-radius: var(--radius-surface-md);
+  --media-icon-size: var(--control-icon-md);
+}
+
+[data-media-size='xl'] {
+  --media-size: var(--control-height-xl);
+  --media-radius: var(--radius-surface-md);
+  --media-icon-size: var(--control-icon-md);
+}
+
+.media-frame {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--media-width, var(--media-size, auto));
+  height: var(--media-height, var(--media-size, auto));
+  border-radius: var(--media-radius, var(--radius-surface-md));
+  background-color: var(--media-background, var(--muted));
+  color: var(--media-foreground, var(--foreground));
+}
+
+/* Glyph size inside the frame. --icon-size is what Spinner and Icon read. A size-* class on the svg opts out. */
+.media-frame svg:not([class*='size-']) {
+  --icon-size: var(--media-icon-size, var(--control-icon-md));
+  width: var(--icon-size);
+  height: var(--icon-size);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.media-frame[data-media-fit='image'] {
+  overflow: hidden;
+}
+
+.media-frame[data-media-fit='image'] > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

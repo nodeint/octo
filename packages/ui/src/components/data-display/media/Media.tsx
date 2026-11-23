@@ -1,6 +1,6 @@
 import { cn } from '../../../lib/utils';
 
-type MediaSize = 'md' | 'xl';
+type MediaSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type MediaVariant = 'subtle' | 'plain';
 
 function Media({
@@ -9,7 +9,7 @@ function Media({
   variant = 'subtle',
   ...props
 }: React.ComponentProps<'div'> & {
-  /** md = a small mark beside text (default). xl = a hero mark that fills its box. */
+  /** xs to lg = a mark beside text, md is the default. xl = a hero mark that fills its box. */
   size?: MediaSize
   /** subtle = a tinted tile (default). plain = the mark alone in the primary color. */
   variant?: MediaVariant
@@ -18,8 +18,9 @@ function Media({
     <div
       data-slot="media"
       data-size={size}
+      data-media-size={size}
       data-variant={variant}
-      className={cn('media', className)}
+      className={cn('media-frame media', className)}
       {...props}
     />
   );

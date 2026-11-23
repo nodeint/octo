@@ -42,7 +42,8 @@ function EmptyMedia({
     <div
       data-slot="empty-icon"
       data-variant={variant}
-      className={cn('empty-media', className)}
+      data-media-size={variant === 'icon' ? 'md' : undefined}
+      className={cn('media-frame empty-media', className)}
       {...props}
     />
   );

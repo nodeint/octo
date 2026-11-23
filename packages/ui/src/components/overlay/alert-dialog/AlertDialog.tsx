@@ -100,8 +100,9 @@ function AlertDialogMedia({
   return (
     <div
       data-slot="alert-dialog-media"
+      data-media-size="lg"
       className={cn(
-        'alert-dialog-media',
+        'media-frame alert-dialog-media',
         className
       )}
       {...props}

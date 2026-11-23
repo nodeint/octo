@@ -1,9 +1,9 @@
 import type { Decorator } from '@storybook/react-vite';
 
 /** Fixed story widths. The centered layout wraps stories in a shrink-to-fit box, so a percentage collapses. */
-export const STORY_WIDTHS = { sm: '13.5rem', md: '20rem', lg: '32rem' } as const;
+const STORY_WIDTHS = { sm: '13.5rem', md: '20rem', lg: '32rem' } as const;
 
-export type StoryWidth = keyof typeof STORY_WIDTHS;
+type StoryWidth = keyof typeof STORY_WIDTHS;
 
 function isStoryWidth(value: unknown): value is StoryWidth {
   return typeof value === 'string' && value in STORY_WIDTHS;
