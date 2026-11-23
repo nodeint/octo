@@ -2,7 +2,7 @@
  * DOM contract:
  * - root data-slot=input-group, data-group-variant=field|outline|secondary|ghost, data-disabled
  * - addon data-slot=input-group-addon, data-align=inline-start|inline-end|block-start|block-end
- * - fields: direct children with data-variant=field. The group paints the border, fill and focus and hands its
+ * - fields: direct children with the field-control class. The group paints the border, fill and focus and hands its
  *   fields tokens (--group-field-*) that turn their own paint off and pass the group's size and addon insets.
  *   The group never names a field's element or class.
  * Single line: fixed control height and centered items.
@@ -32,12 +32,12 @@
   --group-field-flex: 1 1 0%;
   --group-field-resize: none;
   /* Color comes from data-group-variant (below). Focus and invalid have no variant set, so the group names them. */
-  --variant-ring: var(--ring);
-  --variant-border-focus: var(--ring);
-  --variant-border-invalid: var(--destructive);
-  --variant-shadow-focus: 0 0 0 var(--focus-width) color-mix(in oklab, var(--variant-ring) 40%, transparent);
-  --variant-shadow-invalid: 0 0 0 var(--focus-width)
-    color-mix(in oklab, var(--variant-border-invalid) 40%, transparent);
+  --field-ring: var(--ring);
+  --field-border-focus: var(--ring);
+  --field-border-invalid: var(--destructive);
+  --field-shadow-focus: 0 0 0 var(--focus-width) color-mix(in oklab, var(--field-ring) 40%, transparent);
+  --field-shadow-invalid: 0 0 0 var(--focus-width)
+    color-mix(in oklab, var(--field-border-invalid) 40%, transparent);
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
@@ -73,7 +73,7 @@
   --group-action-border-disabled: initial;
 }
 
-.input-group:has([data-variant='field']:disabled) {
+.input-group:has(.field-control:disabled) {
   border-color: var(--input-group-border-disabled);
   background-color: var(--input-group-bg-disabled);
   color: var(--foreground-disabled);
@@ -94,16 +94,16 @@
 }
 
 /* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
-.input-group:has(> [data-variant='field']:focus-within) {
-  border-color: var(--variant-border-focus);
-  box-shadow: var(--variant-shadow-focus);
+.input-group:has(> .field-control:focus-within) {
+  border-color: var(--field-border-focus);
+  box-shadow: var(--field-shadow-focus);
   outline: var(--focus-width) solid transparent;
 }
 
 /* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
 .input-group:has([data-slot][aria-invalid='true']) {
-  border-color: var(--variant-border-invalid);
-  box-shadow: var(--variant-shadow-invalid);
+  border-color: var(--field-border-invalid);
+  box-shadow: var(--field-shadow-invalid);
 }
 
 /* A field pads by the side its addon sits on (read as --group-field-padding-* by the field). */
@@ -203,11 +203,11 @@
 }
 
 /* a group with a direct field gives block addons less padding */
-.input-group:has(> [data-variant='field']) .input-group-addon[data-align='block-start'] {
+.input-group:has(> .field-control) .input-group-addon[data-align='block-start'] {
   padding-block-start: var(--space-sm);
 }
 
-.input-group:has(> [data-variant='field']) .input-group-addon[data-align='block-end'] {
+.input-group:has(> .field-control) .input-group-addon[data-align='block-end'] {
   padding-block-end: var(--space-sm);
 }
 
@@ -271,7 +271,7 @@
   --input-group-border-disabled: transparent;
 }
 
-/* field: paints like a standalone Input or Select (variants.css [data-variant='field']), so a group sits level with them. */
+/* field: paints like a standalone Input or Select (styles/recipes/field-control.css), so a group sits level with them. */
 [data-slot='input-group'][data-group-variant='field'] {
   --input-group-bg: var(--field);
   --input-group-border: var(--control);

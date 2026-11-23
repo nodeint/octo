@@ -19,6 +19,7 @@
 }
 
 /*
+ * Paint, font, focus, invalid and disabled come from the field-control recipe (styles/recipes/field-control.css).
  * min and max width keep the trigger inside constrained parents; fit-content still hugs short labels.
  * No overflow hidden here, which would clip the focus ring; the value truncates instead.
  */
@@ -32,54 +33,18 @@
   height: var(--group-field-height, var(--field-height));
   padding-inline: calc(var(--group-field-px, var(--field-px)) - var(--border-width-thin));
   gap: var(--group-field-gap, var(--field-gap));
-  border: var(--border-width-thin) solid var(--group-field-border, var(--variant-border));
   border-radius: var(--group-field-radius, var(--field-radius));
-  background-color: var(--group-field-bg, var(--variant-bg));
-  color: var(--group-field-fg, var(--variant-fg));
-  font-size: var(--role-field-size);
-  line-height: var(--role-field-leading);
-  font-weight: var(--role-field-weight);
   white-space: nowrap;
-  outline: none;
   user-select: none;
-  transition-property: color, background-color, border-color, box-shadow;
-  transition-duration: var(--default-transition-duration);
-  transition-timing-function: var(--default-transition-timing-function);
-}
-
-@media (pointer: coarse) {
-  .select-trigger {
-    font-size: var(--role-field-size-coarse);
-  }
 }
 
 .select-trigger[data-placeholder] {
-  color: var(--variant-fg-placeholder);
+  color: var(--field-fg-placeholder);
 }
 
 .select-trigger:hover {
-  background-color: var(--group-field-bg-hover, var(--variant-bg-hover));
-  color: var(--group-field-fg-hover, var(--variant-fg-hover));
-}
-
-.select-trigger:focus-visible {
-  border-color: var(--variant-border-focus);
-  box-shadow: var(--variant-shadow-focus);
-  outline: var(--focus-width) solid transparent;
-}
-
-/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
-.select-trigger[aria-invalid='true'] {
-  border-color: var(--variant-border-invalid);
-  box-shadow: var(--variant-shadow-invalid);
-}
-
-.select-trigger:disabled,
-.select-trigger[data-disabled] {
-  pointer-events: none;
-  border-color: var(--group-field-border-disabled, var(--variant-border-disabled));
-  background-color: var(--group-field-bg-disabled, var(--variant-bg-disabled));
-  color: var(--variant-fg-disabled);
+  background-color: var(--group-field-bg-hover, var(--field-bg-hover));
+  color: var(--group-field-fg-hover, var(--field-fg-hover));
 }
 
 .select-trigger svg {

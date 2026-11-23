@@ -101,7 +101,6 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     size: { control: 'inline-radio', options: ['xs', 'sm', 'md', 'lg'] },
-    variant: { control: 'inline-radio', options: ['field', 'ghost'] },
     width: { control: 'inline-radio', options: ['hug', 'full'] },
     disabled: { control: 'boolean' },
   },

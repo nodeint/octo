@@ -8,7 +8,6 @@ import { Icon } from '../../typography/icon/Icon';
 
 type SelectTriggerSize = 'xs' | 'sm' | 'md' | 'lg'
 type SelectTriggerWidth = 'hug' | 'full'
-type SelectTriggerVariant = 'field' | 'ghost'
 
 const Select = SelectPrimitive.Root;
 
@@ -36,26 +35,19 @@ function SelectTrigger({
   className,
   size = 'md',
   width = 'hug',
-  variant = 'field',
   children,
   ...props
 }: SelectPrimitive.Trigger.Props & {
   size?: SelectTriggerSize
   /** hug = label width (default). full = fill the parent wrapper. */
   width?: SelectTriggerWidth
-  /**
-   * field = bordered text field (default).
-   * ghost = no border or fill until hovered, for a sort or filter beside a list.
-   */
-  variant?: SelectTriggerVariant
 }): React.JSX.Element {
   return (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       data-field-size={size}
       data-width={width}
-      data-variant={variant}
-      className={cn('select-trigger', className)}
+      className={cn('field-control', 'select-trigger', className)}
       {...props}
     >
       {children}

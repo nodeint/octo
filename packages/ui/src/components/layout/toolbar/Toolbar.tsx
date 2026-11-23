@@ -148,7 +148,6 @@ function ToolbarInput({
   return (
     <ToolbarPrimitive.Input
       data-slot="toolbar-input"
-      data-variant="field"
       data-field-size="sm"
       className={cn('field-control input toolbar-input', className)}
       {...props}

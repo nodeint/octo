@@ -35,9 +35,8 @@ function ComboboxTrigger({
   return (
     <ComboboxPrimitive.Trigger
       data-slot="combobox-trigger"
-      data-variant="field"
       data-field-size="md"
-      className={cn('combobox-trigger', className)}
+      className={cn('field-control', 'combobox-trigger', className)}
       {...props}
     >
       {children}
@@ -89,12 +88,14 @@ function ComboboxInput({
         {showTrigger ? <InputGroupButton
             size="xs" shape="icon"
             variant="ghost"
-            // The trigger is a field by default; inside the input it is the group's icon button.
-            render={<ComboboxTrigger data-variant="ghost" />}
+            // ComboboxTrigger is a bordered field; inside the input the trigger is the group's icon button.
+            render={<ComboboxPrimitive.Trigger />}
             data-slot="input-group-button"
             className="combobox-pressed-reset"
             disabled={disabled}
-          /> : null}
+          >
+            <Icon name="chevron-down" size="sm" className="combobox-icon-muted" />
+          </InputGroupButton> : null}
         {showClear ? <ComboboxClear disabled={disabled} /> : null}
       </InputGroupAddon>
       {children}
@@ -110,9 +111,8 @@ function ComboboxChips({
   return (
     <ComboboxPrimitive.Chips
       data-slot="combobox-chips"
-      data-variant="field"
       data-field-size="md"
-      className={cn('combobox-chips', className)}
+      className={cn('field-control', 'combobox-chips', className)}
       {...props}
     />
   );
