@@ -1,36 +1,33 @@
 import { Button as ButtonPrimitive } from '@base-ui/react/button';
 
+import { type ButtonPaint, type ButtonVariant, resolveButtonPaint } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
 
-type ButtonVariant =
-  | 'default'
-  | 'outline'
-  | 'secondary'
-  | 'ghost'
-  | 'destructive'
-  | 'link'
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg'
 /** `icon` is a square button that holds only a glyph. */
 type ButtonShape = 'default' | 'icon'
 
-type ButtonProps = ButtonPrimitive.Props & {
-  variant?: ButtonVariant
+type ButtonProps = ButtonPrimitive.Props & ButtonPaint & {
   size?: ButtonSize
   shape?: ButtonShape
 }
 
 function Button({
   className,
-  variant = 'default',
+  variant,
+  tone,
+  emphasis,
   size = 'md',
   shape = 'default',
   ...props
 }: ButtonProps): React.JSX.Element {
+  const paint = resolveButtonPaint({ variant, tone, emphasis }, 'default');
   return (
     <ButtonPrimitive
       {...props}
       data-slot="button"
-      data-variant={variant}
+      data-tone={paint.tone}
+      data-emphasis={paint.emphasis}
       data-action-size={size}
       data-shape={shape}
       className={cn('action', 'button', className)}
@@ -39,4 +36,5 @@ function Button({
 }
 
 export { Button };
+export type { ActionEmphasis as ButtonEmphasis, ActionTone as ButtonTone } from '../../../lib/action-paint';
 export type { ButtonProps, ButtonShape, ButtonSize, ButtonVariant };

@@ -3,6 +3,7 @@
 import { AlertDialog as AlertDialogPrimitive } from '@base-ui/react/alert-dialog';
 import * as React from 'react';
 
+import { type ButtonPaint, toButtonPaint } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
 import { Button } from '../../form/button/Button';
 
@@ -152,16 +153,20 @@ function AlertDialogAction({
 
 function AlertDialogCancel({
   className,
-  variant = 'outline',
+  variant,
+  tone,
+  emphasis,
   size = 'md',
   ...props
 }: AlertDialogPrimitive.Close.Props &
-  Pick<React.ComponentProps<typeof Button>, 'variant' | 'size'>): React.JSX.Element {
+  Pick<React.ComponentProps<typeof Button>, 'size'> &
+  ButtonPaint): React.JSX.Element {
+  const paint = toButtonPaint({ variant, tone, emphasis }, 'outline');
   return (
     <AlertDialogPrimitive.Close
       data-slot="alert-dialog-cancel"
       className={cn(className)}
-      render={<Button variant={variant} size={size} />}
+      render={<Button {...paint} size={size} />}
       {...props}
     />
   );

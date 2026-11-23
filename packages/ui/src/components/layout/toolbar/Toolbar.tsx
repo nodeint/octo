@@ -1,5 +1,6 @@
 import { Toolbar as ToolbarPrimitive } from '@base-ui/react/toolbar';
 
+import { type ButtonPaint, resolveButtonPaint, resolveTogglePaint, type TogglePaint } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
 import {
   type ButtonShape,
@@ -7,7 +8,7 @@ import {
   type ButtonVariant,
 } from '../../form/button/Button';
 import { type ButtonGroupSize, type ButtonGroupVariant } from '../../form/button-group/ButtonGroup';
-import { type ToggleSize, type ToggleVariant } from '../../form/toggle/Toggle';
+import { type ToggleSize } from '../../form/toggle/Toggle';
 
 type ToolbarOrientation = 'horizontal' | 'vertical'
 
@@ -54,8 +55,7 @@ function ToolbarGroup({
   );
 }
 
-type ToolbarButtonProps = ToolbarPrimitive.Button.Props & {
-  variant?: ButtonVariant
+type ToolbarButtonProps = ToolbarPrimitive.Button.Props & ButtonPaint & {
   size?: ButtonSize
   shape?: ButtonShape
 }
@@ -67,15 +67,19 @@ type ToolbarButtonProps = ToolbarPrimitive.Button.Props & {
  */
 function ToolbarButton({
   className,
-  variant = 'ghost',
+  variant,
+  tone,
+  emphasis,
   size = 'md',
   shape = 'default',
   ...props
 }: ToolbarButtonProps): React.JSX.Element {
+  const paint = resolveButtonPaint({ variant, tone, emphasis }, 'ghost');
   return (
     <ToolbarPrimitive.Button
       data-slot="toolbar-button"
-      data-variant={variant}
+      data-tone={paint.tone}
+      data-emphasis={paint.emphasis}
       data-action-size={size}
       data-shape={shape}
       className={cn('action button toolbar-button', className)}
@@ -85,8 +89,7 @@ function ToolbarButton({
   );
 }
 
-type ToolbarToggleProps = Omit<ToolbarButtonProps, 'aria-pressed' | 'variant' | 'size'> & {
-  variant?: ToggleVariant
+type ToolbarToggleProps = Omit<ToolbarButtonProps, 'aria-pressed' | 'variant' | 'tone' | 'emphasis' | 'size'> & TogglePaint & {
   size?: ToggleSize
   /** Controlled pressed state (two-state toolbar item). */
   pressed?: boolean
@@ -102,18 +105,21 @@ type ToolbarToggleProps = Omit<ToolbarButtonProps, 'aria-pressed' | 'variant' | 
  */
 function ToolbarToggle({
   className,
-  variant = 'ghost',
+  variant,
+  emphasis,
   size = 'md',
   shape = 'icon',
   pressed = false,
   fillIcon = false,
   ...props
 }: ToolbarToggleProps): React.JSX.Element {
+  const paint = resolveTogglePaint({ variant, emphasis }, 'ghost');
   return (
     <ToolbarPrimitive.Button
       type="button"
       data-slot="toolbar-toggle"
-      data-variant={variant}
+      data-tone={paint.tone}
+      data-emphasis={paint.emphasis}
       data-action-size={size}
       data-shape={shape}
       data-pressed={pressed ? 'true' : undefined}

@@ -1,8 +1,9 @@
 import { Menu as MenuPrimitive } from '@base-ui/react/menu';
 import * as React from 'react';
 
+import { type ButtonPaint, resolveButtonPaint } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
-import type { ButtonShape, ButtonSize, ButtonVariant } from '../../form/button/Button';
+import type { ButtonShape, ButtonSize } from '../../form/button/Button';
 import { Icon } from '../../typography/icon/Icon';
 import type { OverlayWidth } from '../overlay-width';
 
@@ -16,8 +17,7 @@ function DropdownMenuPortal({ ...props }: MenuPrimitive.Portal.Props): React.JSX
   return <MenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />;
 }
 
-type DropdownMenuTriggerProps = MenuPrimitive.Trigger.Props & {
-  variant?: ButtonVariant
+type DropdownMenuTriggerProps = MenuPrimitive.Trigger.Props & ButtonPaint & {
   size?: ButtonSize
   shape?: ButtonShape
 }
@@ -29,18 +29,22 @@ type DropdownMenuTriggerProps = MenuPrimitive.Trigger.Props & {
  */
 function DropdownMenuTrigger({
   className,
-  variant = 'secondary',
+  variant,
+  tone,
+  emphasis,
   size = 'md',
   shape = 'default',
   nativeButton = true,
   ...props
 }: DropdownMenuTriggerProps): React.JSX.Element {
+  const paint = resolveButtonPaint({ variant, tone, emphasis }, 'secondary');
   return (
     <MenuPrimitive.Trigger
       data-slot="dropdown-menu-trigger"
       nativeButton={nativeButton}
       {...(nativeButton && {
-        'data-variant': variant,
+        'data-tone': paint.tone,
+        'data-emphasis': paint.emphasis,
         'data-action-size': size,
         'data-shape': shape,
       })}

@@ -1,6 +1,7 @@
 import { createContext, useContext, useRef } from 'react';
 
 import { useCollapsibleToolbar } from '../../../hooks/use-collapsible-toolbar';
+import type { OmitFromUnion } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
 import { Collapsible, CollapsibleContent } from '../../layout/collapsible/Collapsible';
 import { Toolbar, ToolbarToggle } from '../../layout/toolbar/Toolbar';
@@ -88,7 +89,7 @@ function CollapsibleToolbarContent({
 function CollapsibleToolbarTrigger({
   children,
   ...props
-}: Omit<React.ComponentProps<typeof ToolbarToggle>, 'pressed' | 'onClick'>): React.JSX.Element {
+}: OmitFromUnion<React.ComponentProps<typeof ToolbarToggle>, 'pressed' | 'onClick'>): React.JSX.Element {
   const { orientation, isOpen, isPinned, toggle } = useCollapsibleToolbarContext();
   const icons = TRIGGER_ICON[orientation];
 

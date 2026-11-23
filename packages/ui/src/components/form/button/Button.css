@@ -8,20 +8,20 @@
 }
 
 /* The label flips to the on-fill color while the fill darkens. Fading both makes them cross at similar lightness and the label blinks out. */
-.button[data-variant='destructive'] {
+.button[data-emphasis='soft']:not([data-tone='neutral']) {
   transition-property: background-color, border-color, box-shadow, transform, opacity;
 }
 
-.button[data-variant='link'] {
+.button[data-emphasis='link'] {
   text-underline-offset: 4px;
 }
 
-.button[data-variant='link']:hover {
+.button[data-emphasis='link']:hover {
   text-decoration-line: underline;
 }
 
 /* A link has no fill, so its text sits on the content edge. The extra [data-action-size] outranks the row size. */
-.button[data-variant='link'][data-shape='default'][data-action-size] {
+.button[data-emphasis='link'][data-shape='default'][data-action-size] {
   padding-inline: 0;
   border-inline-width: 0;
 }

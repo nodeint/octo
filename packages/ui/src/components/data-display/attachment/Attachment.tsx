@@ -2,6 +2,7 @@ import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
 import * as React from 'react';
 
+import { withDefaultVariant } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
 import { Button } from '../../form/button/Button';
 
@@ -106,7 +107,6 @@ function AttachmentActions({
 
 function AttachmentAction({
   className,
-  variant = 'ghost',
   size = 'xs',
   shape = 'icon',
   ...props
@@ -114,11 +114,10 @@ function AttachmentAction({
   return (
     <Button
       data-slot="attachment-action"
-      variant={variant}
       size={size}
       shape={shape}
       className={cn(className)}
-      {...props}
+      {...withDefaultVariant(props, 'ghost')}
     />
   );
 }

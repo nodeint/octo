@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { type OmitFromUnion, withDefaultVariant } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
 import { Button } from '../../form/button/Button';
 
@@ -67,20 +68,18 @@ function InputGroupAddon({
 function InputGroupButton({
   className,
   type = 'button',
-  variant = 'ghost',
   size = 'xs',
   ...props
-}: Omit<React.ComponentProps<typeof Button>, 'size' | 'type'> & {
+}: OmitFromUnion<React.ComponentProps<typeof Button>, 'size' | 'type'> & {
   type?: 'button' | 'submit' | 'reset'
   size?: InputGroupButtonSize
 }): React.JSX.Element {
   return (
     <Button
       type={type}
-      variant={variant}
       size={size}
       className={cn('input-group-button', className)}
-      {...props}
+      {...withDefaultVariant(props, 'ghost')}
     />
   );
 }

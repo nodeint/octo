@@ -106,6 +106,16 @@ The primitive reads of the legacy families in these files are warnings, not exce
   (`recipes/action.css`, `recipes/field-control.css`, `recipes/group.css`).
   The group variant sets (`data-group-variant`) are declared once for all groups.
   A group overrides only the tokens that differ, on its own root, with a comment that gives the reason.
+- Paint has two axes in `tokens/component/variants.css`: `data-tone` (`neutral`, `primary`, `destructive`, `success`,
+  `warning`, `info`) declares `--tone-*` roles and the focus ring, and `data-emphasis` (`solid`, `soft`, `outline`,
+  `ghost`, `link`, `surface`) maps the roles to the `--variant-*` slots.
+  `Alert` is not an action: it sets `data-tone` from its `variant` and `data-emphasis="surface"`, a static callout
+  painted from `--tone-surface`, `--tone-border`, and `--tone-surface-foreground` (`--variant-fg-secondary`).
+  One shared `[data-tone]` block declares the state slots (ring, focus, invalid, disabled text, halos).
+  Only those blocks read `--tone-*`; recipes and components read `--variant-*` and never name a tone.
+  `Button` and its forwarders keep `variant` as a preset for one approved pair; a caller passes `variant`,
+  or `tone` with `emphasis`, never both. Only the six mapped pairs are exposed (`lib/action-paint.ts`).
+  `Toggle` and `ToolbarToggle` take `variant` or `emphasis` alone (`ghost` or `outline`); their tone is fixed to `neutral`.
 - Put an appearance axis in its own file under `src/styles/appearance/`. Put a helper class in `src/styles/utilities.css`.
 - Component CSS never selects `.dark`; put theme-dependent values in a token file as a `:root` / `.dark` pair.
 - `pnpm lint:css` enforces these rules locally; CI does not run it.

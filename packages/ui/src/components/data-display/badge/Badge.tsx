@@ -11,6 +11,16 @@ type BadgeVariant =
   | 'success'
   | 'warning'
   | 'info'
+/** The shared values render a tone and emphasis pair; a status value paints in Badge.css. */
+const BADGE_AXES: Record<BadgeVariant, { tone?: string, emphasis?: string }> = {
+  default: { tone: 'primary', emphasis: 'solid' },
+  secondary: { tone: 'neutral', emphasis: 'soft' },
+  destructive: { tone: 'destructive', emphasis: 'soft' },
+  outline: { tone: 'neutral', emphasis: 'outline' },
+  success: {},
+  warning: {},
+  info: {},
+};
 /** Control-h steps only: xs → control-xs · sm → control-sm · md → control-md · lg → control-lg. */
 type BadgeSize = 'xs' | 'sm' | 'md' | 'lg'
 
@@ -41,6 +51,7 @@ function Badge({
       slot: 'badge',
       variant,
       size,
+      ...BADGE_AXES[variant],
     },
     });
 }

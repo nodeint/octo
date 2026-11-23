@@ -4,8 +4,8 @@
 }
 
 /* A pressed outline toggle fills with accent. Button outline keeps --muted for its own selected state. */
-.toggle[data-variant='outline'][aria-pressed='true'],
-.toggle[data-variant='outline'][data-pressed] {
+.toggle[data-emphasis='outline'][aria-pressed='true'],
+.toggle[data-emphasis='outline'][data-pressed] {
   background-color: var(--accent);
 }
 

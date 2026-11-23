@@ -13,6 +13,14 @@ const ALERT_ROLE: Record<AlertVariant, 'alert' | 'status'> = {
   destructive: 'alert',
 };
 
+const ALERT_TONE = {
+  default: 'neutral',
+  info: 'info',
+  success: 'success',
+  warning: 'warning',
+  destructive: 'destructive',
+} as const satisfies Record<AlertVariant, string>;
+
 type AlertProps = React.ComponentProps<'div'> & {
   variant?: AlertVariant
 }
@@ -26,6 +34,8 @@ function Alert({
     <div
       data-slot="alert"
       data-variant={variant}
+      data-tone={ALERT_TONE[variant]}
+      data-emphasis="surface"
       role={ALERT_ROLE[variant]}
       className={cn('alert', className)}
       {...props}
