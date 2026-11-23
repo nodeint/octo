@@ -7,7 +7,7 @@ import { cn } from '../../../lib/utils';
 /** Runtime-only component icon (custom SVG). Prefer catalog {@link IconName} + {@link Icon}. */
 export type IconComponent = ComponentType<{ className?: string }>;
 
-export type IconSize = 'xs' | 'sm' | 'md';
+export type IconSize = 'xs' | 'sm' | 'md' | 'lg';
 
 export type IconProps = React.ComponentProps<'svg'> & {
   /**
@@ -15,7 +15,7 @@ export type IconProps = React.ComponentProps<'svg'> & {
    * Host icon id strings accepted; unknown ids throw in development.
    */
   name?: string | null;
-  /** Control glyph size token (`--control-glyph-*`). Omit to size via `className`. */
+  /** Control icon size token (`--control-icon-*`). Omit to size via `className`. */
   size?: IconSize;
 };
 

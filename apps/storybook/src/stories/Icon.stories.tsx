@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { IconSize } from '@workspace/ui';
 import { Flex, Icon } from '@workspace/ui';
 
-const SIZES = ['xs', 'sm', 'md'] as const satisfies readonly IconSize[];
+const SIZES = ['xs', 'sm', 'md', 'lg'] as const satisfies readonly IconSize[];
 const NAMES = ['search', 'settings', 'star', 'heart', 'user', 'trash', 'download', 'terminal'] as const;
 
 const meta = {
