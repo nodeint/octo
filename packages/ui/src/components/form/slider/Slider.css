@@ -48,7 +48,8 @@
   background-color: var(--background);
 }
 
-.slider-thumb:focus-visible {
+/* Focus lands on the range input nested in the thumb div, so the thumb itself is never :focus-visible. */
+.slider-thumb:has(input:focus-visible) {
   border-color: var(--state-focus-border);
   box-shadow: var(--state-focus-shadow);
   outline: var(--focus-width) solid transparent;

@@ -33,6 +33,14 @@ export const Demo: Story = {
   args: { defaultValue: 33, max: 100, step: 1 },
 };
 
+/** Focus lands on the range input inside the thumb; the thumb still shows the focus ring. */
+export const Focused: Story = {
+  args: { defaultValue: 33, max: 100, step: 1 },
+  play: ({ canvasElement }) => {
+    canvasElement.querySelector('input')?.focus({ focusVisible: true });
+  },
+};
+
 export const Controlled: Story = {
   render: function ControlledStory() {
     const [value, setValue] = React.useState(INITIAL_TEMPERATURE);
