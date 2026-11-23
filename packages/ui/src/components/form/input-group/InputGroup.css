@@ -22,18 +22,14 @@
   --group-field-resize: none;
   --group-field-radius: 0;
   /*
-   * The group takes field tokens from data-group-size but not action ones, and its fields draw no corner of their own.
+   * The group takes field tokens from data-group-size, and its fields draw no corner of their own.
    * The components layer comes after the recipes layer (styles/index.css), so these win over the size and emphasis rules
    * in styles/recipes/group.css that set the same tokens, whatever their specificity.
    * `initial` makes a token invalid, which sends var() to the child's own fallback: this also keeps an
-   * input-group inside a button-group from taking that group's action size, so its addon buttons keep their own.
+   * input-group inside a button-group from taking that group's action size.
+   * Action size tokens are not reset here: the size blocks below hand addon buttons a step that fits the group.
    */
-  --group-action-height: initial;
-  --group-action-px: initial;
-  --group-action-gap: initial;
-  --group-action-icon: initial;
-  --group-action-radius: initial;
-  /* Action color roles too: the shared set assigns them on this root, and addon buttons keep their own variant. */
+  /* Action color roles are reset: the shared set assigns them on this root, and addon buttons keep their own variant. */
   --group-action-bg: initial;
   --group-action-fg: initial;
   --group-action-border: initial;
@@ -65,6 +61,44 @@
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
+}
+
+/*
+ * Addon action size: the group hands its buttons a step that fits inside its border, one step below the
+ * group's own (xs stays xs, the smallest). Buttons, toggles and glyphs in an addon read --group-action-* and
+ * so follow the group; a button's own size prop no longer changes its height, padding, gap, icon or radius.
+ * A plain glyph in an addon reads --group-action-icon too, so it matches the icon inside a button.
+ */
+.input-group[data-group-size='xs'] {
+  --group-action-height: var(--control-height-xs);
+  --group-action-px: var(--control-px-xs);
+  --group-action-gap: var(--control-gap-xs);
+  --group-action-icon: var(--control-icon-xs);
+  --group-action-radius: var(--radius-action-xs);
+}
+
+.input-group[data-group-size='sm'] {
+  --group-action-height: var(--control-height-xs);
+  --group-action-px: var(--control-px-xs);
+  --group-action-gap: var(--control-gap-xs);
+  --group-action-icon: var(--control-icon-xs);
+  --group-action-radius: var(--radius-action-xs);
+}
+
+.input-group[data-group-size='md'] {
+  --group-action-height: var(--control-height-sm);
+  --group-action-px: var(--control-px-sm);
+  --group-action-gap: var(--control-gap-sm);
+  --group-action-icon: var(--control-icon-sm);
+  --group-action-radius: var(--radius-action-sm);
+}
+
+.input-group[data-group-size='lg'] {
+  --group-action-height: var(--control-height-md);
+  --group-action-px: var(--control-px-md);
+  --group-action-gap: var(--control-gap-md);
+  --group-action-icon: var(--control-icon-md);
+  --group-action-radius: var(--radius-action-md);
 }
 
 /*
@@ -183,8 +217,8 @@
 /* A glyph inside an action takes its size from the action recipe. */
 .input-group-addon :not(.action) > svg:not([class*='size-']),
 .input-group-addon > svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+  width: var(--group-action-icon, var(--control-icon-md));
+  height: var(--group-action-icon, var(--control-icon-md));
   pointer-events: none;
   flex-shrink: 0;
 }
@@ -277,8 +311,8 @@
 }
 
 .input-group-text svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+  width: var(--group-action-icon, var(--control-icon-md));
+  height: var(--group-action-icon, var(--control-icon-md));
   pointer-events: none;
   flex-shrink: 0;
 }

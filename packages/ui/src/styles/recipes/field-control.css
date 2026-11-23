@@ -76,32 +76,28 @@
  * A multi-line field takes --radius-field-block instead. The steps and their raw values live in
  * tokens/primitive/control.css and tokens/primitive/radius.css.
  */
-[data-field-size='xs'] {
+.field-control[data-field-size='xs'] {
   --field-height: var(--control-height-xs);
   --field-px: var(--control-px-xs);
   --field-gap: var(--control-gap-xs);
   --field-radius: var(--radius-field-xs);
 }
 
-[data-field-size='sm'] {
+.field-control[data-field-size='sm'] {
   --field-height: var(--control-height-sm);
   --field-px: var(--control-px-sm);
   --field-gap: var(--control-gap-sm);
   --field-radius: var(--radius-field-sm);
 }
 
-/*
- * md is the default: input and textarea always render data-field-size="md". A field directly inside an input group
- * takes the group's set instead (group.css).
- */
-[data-field-size='md'] {
+.field-control[data-field-size='md'] {
   --field-height: var(--control-height-md);
   --field-px: var(--control-px-md);
   --field-gap: var(--control-gap-md);
   --field-radius: var(--radius-field-md);
 }
 
-[data-field-size='lg'] {
+.field-control[data-field-size='lg'] {
   --field-height: var(--control-height-lg);
   --field-px: var(--control-px-lg);
   --field-gap: var(--control-gap-lg);
