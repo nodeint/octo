@@ -1,6 +1,6 @@
 /*
  * The group sizes and paints its toggles through --group-action-* (sizes/group-size.css, and the
- * variants in button-group/ButtonGroup.css) and never names a toggle. A toggle's own data-action-size
+ * shared variants in styles/tokens/component/group-variants.css) and never names a toggle. A toggle's own data-action-size
  * and data-variant are the fallback when it sits outside a group.
  */
 .toggle-group {
@@ -34,64 +34,4 @@
 /* A focused toggle is raised above its neighbors so its ring shows. */
 .toggle-group > [data-slot='toggle']:is(:focus, :focus-visible) {
   z-index: var(--z-raised);
-}
-
-/*
- * Group variants: data-group-variant sets the identity colors (bg, fg, border at rest, hover, active,
- * selected, and the disabled fill and edge) that its toggles read through --group-*.
- * Same roles and values as button-group (ButtonGroup.css); focus, invalid and disabled text stay with the child.
- * The shared reset is in styles/tokens/component/group-variants.css.
- */
-/* outline: a bordered row. A field is transparent like an action, so the row reads as one surface. */
-[data-slot='toggle-group'][data-group-variant='outline'] {
-  --group-action-bg: transparent;
-  --group-action-fg: currentcolor;
-  --group-action-border: var(--border);
-  --group-action-bg-hover: var(--tertiary);
-  --group-action-fg-hover: var(--foreground);
-  --group-action-border-hover: var(--border);
-  --group-action-bg-active: var(--tertiary);
-  --group-action-fg-active: var(--foreground);
-  --group-action-border-active: var(--border);
-  --group-action-bg-selected: var(--muted);
-  --group-action-fg-selected: var(--foreground);
-  --group-action-border-selected: var(--border);
-  --group-action-bg-disabled: transparent;
-  --group-action-border-disabled: var(--border);
-}
-
-/* secondary: filled, no visible border. */
-[data-slot='toggle-group'][data-group-variant='secondary'] {
-  --group-action-bg: var(--secondary);
-  --group-action-fg: var(--foreground);
-  --group-action-border: transparent;
-  --group-action-bg-hover: var(--tertiary);
-  --group-action-fg-hover: var(--foreground);
-  --group-action-border-hover: transparent;
-  --group-action-bg-active: var(--tertiary);
-  --group-action-fg-active: var(--foreground);
-  --group-action-border-active: transparent;
-  --group-action-bg-selected: var(--accent);
-  --group-action-fg-selected: var(--foreground);
-  --group-action-border-selected: transparent;
-  --group-action-bg-disabled: var(--disabled);
-  --group-action-border-disabled: transparent;
-}
-
-/* ghost: no fill or border at rest; a fill appears on hover. An action rests muted; a field keeps full-strength text. */
-[data-slot='toggle-group'][data-group-variant='ghost'] {
-  --group-action-bg: transparent;
-  --group-action-fg: var(--foreground-muted);
-  --group-action-border: transparent;
-  --group-action-bg-hover: var(--tertiary);
-  --group-action-fg-hover: var(--foreground);
-  --group-action-border-hover: transparent;
-  --group-action-bg-active: var(--tertiary);
-  --group-action-fg-active: var(--foreground);
-  --group-action-border-active: transparent;
-  --group-action-bg-selected: var(--accent);
-  --group-action-fg-selected: var(--foreground);
-  --group-action-border-selected: transparent;
-  --group-action-bg-disabled: transparent;
-  --group-action-border-disabled: transparent;
 }

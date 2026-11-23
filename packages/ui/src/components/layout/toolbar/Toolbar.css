@@ -121,101 +121,34 @@
 }
 
 /*
- * Group variants: data-group-variant sets the identity colors (bg, fg, border at rest, hover, active,
- * selected, and the disabled fill and edge) that its buttons, toggles and inputs read through --group-*.
- * Same roles and values as button-group (ButtonGroup.css); focus, invalid and disabled text stay with the child.
- * The shared reset is in styles/tokens/component/group-variants.css.
- *
- * The rail also paints the group's fill and edge (--toolbar-fill, --toolbar-edge), as an input-group does.
- * Where the rail carries the border (outline), its items rest borderless: one outline around the row,
- * not one per item. Hover, active and selected paint stay the button-group values.
+ * Group variants: the colors come from the shared set (styles/tokens/component/group-variants.css).
+ * The rail also paints the group's fill and edge (--toolbar-fill, --toolbar-edge), as an input-group does,
+ * and overrides only the tokens that differ from the shared set.
  */
-/* outline: a bordered row. A field is transparent like an action, so the row reads as one surface. */
+/* outline: the rail carries the border (one outline around the row, not one per item), so every item border
+   and the field hover, active and selected borders are transparent. */
 .toolbar[data-group-variant='outline'] {
   --toolbar-fill: transparent;
   --toolbar-edge: var(--border);
-  --group-action-bg: transparent;
-  --group-action-fg: currentcolor;
   --group-action-border: transparent;
-  --group-action-bg-hover: var(--tertiary);
-  --group-action-fg-hover: var(--foreground);
   --group-action-border-hover: transparent;
-  --group-action-bg-active: var(--tertiary);
-  --group-action-fg-active: var(--foreground);
   --group-action-border-active: transparent;
-  --group-action-bg-selected: var(--muted);
-  --group-action-fg-selected: var(--foreground);
   --group-action-border-selected: transparent;
-  --group-action-bg-disabled: transparent;
   --group-action-border-disabled: transparent;
-  --group-field-fg: currentcolor;
-  --group-field-bg-hover: var(--tertiary);
-  --group-field-fg-hover: currentcolor;
   --group-field-border-hover: transparent;
-  --group-field-bg-active: var(--tertiary);
-  --group-field-fg-active: currentcolor;
   --group-field-border-active: transparent;
-  --group-field-bg-selected: var(--muted);
-  --group-field-fg-selected: currentcolor;
   --group-field-border-selected: transparent;
 }
 
-/* secondary: filled, no visible border. */
+/* secondary: the rail carries the fill, so an item rests transparent. */
 .toolbar[data-group-variant='secondary'] {
   --toolbar-fill: var(--secondary);
   --toolbar-edge: transparent;
   --group-action-bg: transparent;
-  --group-action-fg: var(--foreground);
-  --group-action-border: transparent;
-  --group-action-bg-hover: var(--tertiary);
-  --group-action-fg-hover: var(--foreground);
-  --group-action-border-hover: transparent;
-  --group-action-bg-active: var(--tertiary);
-  --group-action-fg-active: var(--foreground);
-  --group-action-border-active: transparent;
-  --group-action-bg-selected: var(--accent);
-  --group-action-fg-selected: var(--foreground);
-  --group-action-border-selected: transparent;
-  --group-action-bg-disabled: var(--disabled);
-  --group-action-border-disabled: transparent;
-  --group-field-fg: var(--foreground);
-  --group-field-bg-hover: var(--tertiary);
-  --group-field-fg-hover: var(--foreground);
-  --group-field-border-hover: transparent;
-  --group-field-bg-active: var(--tertiary);
-  --group-field-fg-active: var(--foreground);
-  --group-field-border-active: transparent;
-  --group-field-bg-selected: var(--accent);
-  --group-field-fg-selected: var(--foreground);
-  --group-field-border-selected: transparent;
 }
 
-/* ghost: no fill or border at rest; a fill appears on hover. An action rests muted; a field keeps full-strength text. */
+/* ghost: the shared set, with the rail paint only. */
 .toolbar[data-group-variant='ghost'] {
   --toolbar-fill: transparent;
   --toolbar-edge: transparent;
-  --group-action-bg: transparent;
-  --group-action-fg: var(--foreground-muted);
-  --group-action-border: transparent;
-  --group-action-bg-hover: var(--tertiary);
-  --group-action-fg-hover: var(--foreground);
-  --group-action-border-hover: transparent;
-  --group-action-bg-active: var(--tertiary);
-  --group-action-fg-active: var(--foreground);
-  --group-action-border-active: transparent;
-  --group-action-bg-selected: var(--accent);
-  --group-action-fg-selected: var(--foreground);
-  --group-action-border-selected: transparent;
-  --group-action-bg-disabled: transparent;
-  --group-action-border-disabled: transparent;
-  --group-field-fg: var(--foreground);
-  --group-field-bg-hover: var(--tertiary);
-  --group-field-fg-hover: var(--foreground);
-  --group-field-border-hover: transparent;
-  --group-field-bg-active: var(--tertiary);
-  --group-field-fg-active: var(--foreground);
-  --group-field-border-active: transparent;
-  --group-field-bg-selected: var(--accent);
-  --group-field-fg-selected: var(--foreground);
-  --group-field-border-selected: transparent;
 }

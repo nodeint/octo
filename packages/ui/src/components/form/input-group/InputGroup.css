@@ -56,6 +56,21 @@
   --group-action-gap: initial;
   --group-action-icon: initial;
   --group-action-radius: initial;
+  /* Action color roles too: the shared set assigns them on this root, and addon buttons keep their own variant. */
+  --group-action-bg: initial;
+  --group-action-fg: initial;
+  --group-action-border: initial;
+  --group-action-bg-hover: initial;
+  --group-action-fg-hover: initial;
+  --group-action-border-hover: initial;
+  --group-action-bg-active: initial;
+  --group-action-fg-active: initial;
+  --group-action-border-active: initial;
+  --group-action-bg-selected: initial;
+  --group-action-fg-selected: initial;
+  --group-action-border-selected: initial;
+  --group-action-bg-disabled: initial;
+  --group-action-border-disabled: initial;
 }
 
 .input-group:has([data-variant='field']:disabled) {
@@ -231,25 +246,16 @@
 }
 
 /*
- * Group variants: data-group-variant sets the group's own border and fill (--input-group-*) and the colors
- * its fields read for text and states (--group-field-*). Border, fill and disabled paint are not passed down:
- * the group zeroes them for its fields above. The shared reset is in styles/tokens/component/group-variants.css.
+ * Group variants: data-group-variant sets the group's own border and fill (--input-group-*). The colors its fields
+ * read for text and states come from the shared set (styles/tokens/component/group-variants.css), except in `field`,
+ * which has no shared set and keeps its own. Border, fill and disabled paint are not passed down:
+ * the group zeroes them for its fields above.
  */
 [data-slot='input-group'][data-group-variant='outline'] {
   --input-group-bg: transparent;
   --input-group-border: var(--border);
   --input-group-bg-disabled: transparent;
   --input-group-border-disabled: var(--border);
-  --group-field-fg: currentcolor;
-  --group-field-bg-hover: var(--tertiary);
-  --group-field-fg-hover: currentcolor;
-  --group-field-border-hover: var(--border);
-  --group-field-bg-active: var(--tertiary);
-  --group-field-fg-active: currentcolor;
-  --group-field-border-active: var(--border);
-  --group-field-bg-selected: var(--muted);
-  --group-field-fg-selected: currentcolor;
-  --group-field-border-selected: var(--border);
 }
 
 [data-slot='input-group'][data-group-variant='secondary'] {
@@ -257,16 +263,6 @@
   --input-group-border: transparent;
   --input-group-bg-disabled: var(--disabled);
   --input-group-border-disabled: transparent;
-  --group-field-fg: var(--foreground);
-  --group-field-bg-hover: var(--tertiary);
-  --group-field-fg-hover: var(--foreground);
-  --group-field-border-hover: transparent;
-  --group-field-bg-active: var(--tertiary);
-  --group-field-fg-active: var(--foreground);
-  --group-field-border-active: transparent;
-  --group-field-bg-selected: var(--accent);
-  --group-field-fg-selected: var(--foreground);
-  --group-field-border-selected: transparent;
 }
 
 [data-slot='input-group'][data-group-variant='ghost'] {
@@ -274,16 +270,6 @@
   --input-group-border: transparent;
   --input-group-bg-disabled: transparent;
   --input-group-border-disabled: transparent;
-  --group-field-fg: var(--foreground);
-  --group-field-bg-hover: var(--tertiary);
-  --group-field-fg-hover: var(--foreground);
-  --group-field-border-hover: transparent;
-  --group-field-bg-active: var(--tertiary);
-  --group-field-fg-active: var(--foreground);
-  --group-field-border-active: transparent;
-  --group-field-bg-selected: var(--accent);
-  --group-field-fg-selected: var(--foreground);
-  --group-field-border-selected: transparent;
 }
 
 /* field: paints like a standalone Input or Select (variants.css [data-variant='field']), so a group sits level with them. */

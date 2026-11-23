@@ -38,6 +38,8 @@ src/
 - Semantic tokens are roles. A semantic file never reads a component token.
   A primitive file never reads a semantic or component token.
 - Component tokens hold the `data-*` size and variant sets and per-part values. They may read any tier.
+  The group variant sets (`data-group-variant`) live in `src/styles/tokens/component/group-variants.css`, once for all groups.
+  A group overrides only the tokens that differ, on its own root, with a comment that gives the reason.
 - Put an appearance axis in its own file under `src/styles/appearance/`. Put a helper class in `src/styles/utilities.css`.
 - Component CSS never selects `.dark`; put theme-dependent values in a token file as a `:root` / `.dark` pair.
 - `pnpm lint:css` enforces these rules locally; CI does not run it.

@@ -4,7 +4,7 @@
  * size-specific layout stay in Button.css and Toggle.css.
  *
  * Color comes only from the variant (styles/tokens/component/variants.css),
- * or from a group's data-group-variant (group-variants.css, ButtonGroup.css), which wins for the identity slots.
+ * or from a group's data-group-variant (styles/tokens/component/group-variants.css), which wins for the identity slots.
  */
 .action {
   display: inline-flex;
