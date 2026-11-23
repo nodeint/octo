@@ -27,8 +27,14 @@
    * in styles/recipes/group.css that set the same tokens, whatever their specificity.
    * `initial` makes a token invalid, which sends var() to the child's own fallback: this also keeps an
    * input-group inside a button-group from taking that group's action size.
-   * Action size tokens are not reset here: the size blocks below hand addon buttons a step that fits the group.
+   * Addon buttons take the group's item step (--group-item-*), one below the group's own, so they fit inside its border.
+   * A button's own size prop no longer changes its height, padding, gap, icon or radius.
    */
+  --group-action-height: var(--group-item-height);
+  --group-action-px: var(--group-item-px);
+  --group-action-gap: var(--group-item-gap);
+  --group-action-icon: var(--group-item-icon);
+  --group-action-radius: var(--group-item-radius);
   /* Action color roles are reset: the shared set assigns them on this root, and addon buttons keep their own variant. */
   --group-action-bg: initial;
   --group-action-fg: initial;
@@ -61,44 +67,6 @@
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
-}
-
-/*
- * Addon action size: the group hands its buttons a step that fits inside its border, one step below the
- * group's own (xs stays xs, the smallest). Buttons, toggles and glyphs in an addon read --group-action-* and
- * so follow the group; a button's own size prop no longer changes its height, padding, gap, icon or radius.
- * A plain glyph in an addon reads --group-action-icon too, so it matches the icon inside a button.
- */
-.input-group[data-group-size='xs'] {
-  --group-action-height: var(--control-height-xs);
-  --group-action-px: var(--control-px-xs);
-  --group-action-gap: var(--control-gap-xs);
-  --group-action-icon: var(--control-icon-xs);
-  --group-action-radius: var(--radius-action-xs);
-}
-
-.input-group[data-group-size='sm'] {
-  --group-action-height: var(--control-height-xs);
-  --group-action-px: var(--control-px-xs);
-  --group-action-gap: var(--control-gap-xs);
-  --group-action-icon: var(--control-icon-xs);
-  --group-action-radius: var(--radius-action-xs);
-}
-
-.input-group[data-group-size='md'] {
-  --group-action-height: var(--control-height-sm);
-  --group-action-px: var(--control-px-sm);
-  --group-action-gap: var(--control-gap-sm);
-  --group-action-icon: var(--control-icon-sm);
-  --group-action-radius: var(--radius-action-sm);
-}
-
-.input-group[data-group-size='lg'] {
-  --group-action-height: var(--control-height-md);
-  --group-action-px: var(--control-px-md);
-  --group-action-gap: var(--control-gap-md);
-  --group-action-icon: var(--control-icon-md);
-  --group-action-radius: var(--radius-action-md);
 }
 
 /*

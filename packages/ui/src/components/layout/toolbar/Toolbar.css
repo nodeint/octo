@@ -1,7 +1,7 @@
 /*
  * A rail for toolbar items. Like a button-group it owns the variant and size of what it holds:
  * data-group-variant sets the --group-action-* / --group-field-* colors (below) and
- * data-group-size sets the rail height and its corner (styles/recipes/group.css) and the item step (below). Unlike a button-group
+ * data-group-size sets the rail height and its corner (styles/recipes/group.css) and the item step (--group-item-*). Unlike a button-group
  * its items are spaced, not joined, so none of the join rules apply.
  * The rail paints its own fill and edge per variant (--toolbar-fill, --toolbar-edge, at the end of this file).
  */
@@ -16,40 +16,17 @@
   border-radius: var(--group-corner);
   background-color: var(--toolbar-fill);
   color: var(--foreground);
+  /* Items take the group's item step (--group-item-*), one below the rail's own. A button's own size prop no longer changes it. */
+  --group-action-height: var(--group-item-height);
+  --group-action-px: var(--group-item-px);
+  --group-action-gap: var(--group-item-gap);
+  --group-action-icon: var(--group-item-icon);
+  --group-action-radius: var(--group-item-radius);
   /* A field inside the rail rests without fill or edge. It is independent: focus and invalid are drawn by the field itself. */
   --group-field-bg: transparent;
   --group-field-border: transparent;
   --group-field-bg-disabled: transparent;
   --group-field-border-disabled: transparent;
-}
-
-/*
- * Item size: the rail hands its items a step below its own (xs stays xs), as an input-group does for its addon buttons.
- * A button's own size prop no longer changes its height, padding, gap, icon or radius.
- */
-.toolbar[data-group-size='xs'],
-.toolbar[data-group-size='sm'] {
-  --group-action-height: var(--control-height-xs);
-  --group-action-px: var(--control-px-xs);
-  --group-action-gap: var(--control-gap-xs);
-  --group-action-icon: var(--control-icon-xs);
-  --group-action-radius: var(--radius-action-xs);
-}
-
-.toolbar[data-group-size='md'] {
-  --group-action-height: var(--control-height-sm);
-  --group-action-px: var(--control-px-sm);
-  --group-action-gap: var(--control-gap-sm);
-  --group-action-icon: var(--control-icon-sm);
-  --group-action-radius: var(--radius-action-sm);
-}
-
-.toolbar[data-group-size='lg'] {
-  --group-action-height: var(--control-height-md);
-  --group-action-px: var(--control-px-md);
-  --group-action-gap: var(--control-gap-md);
-  --group-action-icon: var(--control-icon-md);
-  --group-action-radius: var(--radius-action-md);
 }
 
 /* A vertical rail grows with its items and is block-shaped. */
