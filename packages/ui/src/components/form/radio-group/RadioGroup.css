@@ -13,7 +13,7 @@
   height: var(--control-glyph-sm);
   border-width: var(--border-width-thin);
   border-style: solid;
-  --choice-control-border: var(--control);
+  --choice-control-border: var(--border-control);
   border-radius: var(--radio-radius);
   background-color: var(--radio-background);
 }

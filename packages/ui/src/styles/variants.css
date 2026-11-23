@@ -15,6 +15,7 @@
  *   fg-disabled, fg-placeholder                  disabled text, placeholder text
  *   fg-secondary                                 secondary text on a surface (surface emphasis only)
  * Same values in light and dark: the roles they alias already switch with the theme.
+ * The one exception is the field tone, which declares its own fill and has a `.dark` block.
  */
 
 /*
@@ -65,10 +66,16 @@
  * specific to this tone. Not exposed to actions.
  */
 [data-tone='field'] {
-  --tone-surface: var(--field);
-  --tone-surface-hover: var(--field-hover);
-  --tone-border: var(--control);
+  --tone-surface: transparent;
+  --tone-surface-hover: transparent;
+  --tone-border: var(--border-control);
   --tone-ring: var(--ring);
+}
+
+/* Open on a light page, tinted in dark. */
+.dark [data-tone='field'] {
+  --tone-surface: var(--muted);
+  --tone-surface-hover: var(--secondary);
 }
 
 [data-tone='success'] {

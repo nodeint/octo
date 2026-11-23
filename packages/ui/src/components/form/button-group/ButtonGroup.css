@@ -131,7 +131,7 @@
 .button-group-separator {
   position: relative;
   align-self: stretch;
-  background-color: var(--control);
+  background-color: var(--separator);
 }
 
 .button-group-separator[data-orientation='horizontal'] {

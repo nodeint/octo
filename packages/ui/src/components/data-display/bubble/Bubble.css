@@ -36,7 +36,7 @@
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);
-  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--border-surface);
 }
 
 .bubble-content:is(button, a) {

@@ -17,7 +17,7 @@
  *   --group-item-*     the step an action takes when it sits inside a group's own border (input-group addon, toolbar):
  *                      one step below the group, xs stays xs. height, px, gap, icon, radius. Such a group aliases these
  *                      to --group-action-* on its root, so it never copies the set.
- * The steps and their raw values live in tokens/primitive/control.css and tokens/primitive/radius.css, as in the size sets in action.css and field-control.css.
+ * The steps and their raw values live in layout/control.css and layout/radius.css, as in the size sets in action.css and field-control.css.
  */
 .group[data-group-size='xs'] {
   --group-field-height: var(--control-height-xs);

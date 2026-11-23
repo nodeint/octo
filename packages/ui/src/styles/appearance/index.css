@@ -1,7 +1,7 @@
 /*
  * Appearance: declarative paint via data-appearance-* on :root, one file per axis.
  * Runtime (plugin-appearance) only calls setAttribute / removeAttribute; it sets no inline CSS variables.
- * Light and dark still use the `.dark` class. Imported after the tokens so these maps win.
+ * Light and dark still use the `.dark` class. They live in the appearance layer, above components, so these maps win over every token a lower layer declares.
  */
 @import "./font.css";
 @import "./primary.css";

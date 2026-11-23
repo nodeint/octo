@@ -7,42 +7,10 @@ import stylelint from 'stylelint';
 import { afterEach, beforeEach, expect, test } from 'vitest';
 
 const PLUGIN = fileURLToPath(new URL('plugin.mjs', import.meta.url));
-const LEGACY_TOKENS = {
-  '--space-sm': '4px',
-  '--control-height': '2rem',
-  '--border-width-1': '1px',
-  '--focus-width': '2px',
-  '--default-transition-duration': '1s',
-  '--motion-fast': '1s',
-  '--ease-standard': 'ease',
-  '--z-raised': '1',
-  '--radius-xs': '1px',
-  '--opacity-dim': '.5',
-  '--shadow-sm': 'none',
-  '--font-weight-bold': '700',
-};
 const CONFIG = {
   plugins: [PLUGIN],
   rules: {
-    'octo/token-tier': [
-      true,
-      {
-        legacyFamilies: [
-          '--space-',
-          '--control-',
-          '--border-width-',
-          '--focus-',
-          '--default-transition-',
-          '--motion-',
-          '--ease-',
-          '--z-',
-          '--radius-xs',
-          '--opacity-',
-          '--shadow-',
-          '--font-weight-',
-        ],
-      },
-    ],
+    'octo/token-tier': true,
     'octo/no-theme-selector': true,
   },
 };
@@ -71,46 +39,61 @@ async function lint(rel, code) {
 
 beforeEach(() => {
   root = mkdtempSync(join(tmpdir(), 'stylelint-plugin-'));
-  const legacy = Object.entries(LEGACY_TOKENS)
-    .map(([name, value]) => `${name}: ${value};`)
-    .join(' ');
-  put('src/styles/tokens/primitive/a.css', `:root { --raw: 1px; --radius-sm: 2px; ${legacy} }`);
-  put('src/styles/tokens/semantic/a.css', ':root { --role: var(--raw); }');
-  put('src/styles/tokens/component/a.css', ':root { --part: var(--role); }');
+  put('src/styles/theme/swatches.css', ':root { --blue: 1; }');
+  put('src/styles/theme/neutral.css', ':root { --neutral-1: 1; }');
+  put('src/styles/theme/surface.css', ':root { --card: var(--neutral-1); }');
+  put('src/styles/layout/space.css', ':root { --space-sm: 4px; }');
 });
 
 afterEach(() => rmSync(root, { recursive: true, force: true }));
 
-test.each(Object.keys(LEGACY_TOKENS))('warns on a component read of %s', async (token) => {
-  expect(await lint(COMPONENT, `.x { a: var(${token}); }`)).toEqual([
-    expect.stringMatching(/^warning: .*legacy family/),
+test('errors on a component read of a swatch step', async () => {
+  expect(await lint(COMPONENT, '.x { a: var(--blue); }')).toEqual([
+    expect.stringMatching(/^error: .*raw color token "--blue"/),
   ]);
 });
 
-test('errors on a component read of a non-legacy primitive', async () => {
-  expect(await lint(COMPONENT, '.x { a: var(--raw); }')).toEqual([
-    expect.stringMatching(/^error: .*primitive token "--raw"/),
+test('errors on a component read of a neutral step', async () => {
+  expect(await lint(COMPONENT, '.x { a: var(--neutral-1); }')).toEqual([
+    expect.stringMatching(/^error: .*raw color token "--neutral-1"/),
   ]);
 });
 
-test('accepts semantic and component reads in a component', async () => {
-  expect(await lint(COMPONENT, '.x { a: var(--role); b: var(--part); }')).toEqual([]);
+test('accepts a component read of a theme role and a layout token', async () => {
+  expect(await lint(COMPONENT, '.x { a: var(--card); b: var(--space-sm); }')).toEqual([]);
 });
 
-test('errors when a primitive file reads a semantic token', async () => {
-  expect(await lint('src/styles/tokens/primitive/b.css', ':root { --y: var(--role); }')).toEqual([
-    expect.stringMatching(/^error: A primitive token file reads semantic/),
+test('accepts a recipe that declares a custom property from a raw step', async () => {
+  expect(await lint('src/styles/recipes/r.css', '.r { --r-bg: var(--blue); }')).toEqual([]);
+});
+
+test('errors on a recipe property that reads a raw step', async () => {
+  expect(await lint('src/styles/recipes/r.css', '.r { color: var(--blue); }')).toEqual([
+    expect.stringMatching(/^error: .*raw color token "--blue"/),
   ]);
 });
 
-test('errors when a semantic file reads a component token', async () => {
-  expect(await lint('src/styles/tokens/semantic/b.css', ':root { --y: var(--part); }')).toEqual([
-    expect.stringMatching(/^error: A semantic token file reads component/),
+test('errors when a theme file reads a layout token', async () => {
+  expect(await lint('src/styles/theme/b.css', ':root { --y: var(--space-sm); }')).toEqual([
+    expect.stringMatching(/^error: A theme token file reads layout token "--space-sm"/),
   ]);
 });
 
-test('accepts a semantic file reading a primitive token', async () => {
-  expect(await lint('src/styles/tokens/semantic/b.css', ':root { --y: var(--raw); }')).toEqual([]);
+test('errors when a layout file reads a theme token', async () => {
+  expect(await lint('src/styles/layout/b.css', ':root { --y: var(--card); }')).toEqual([
+    expect.stringMatching(/^error: A layout token file reads theme token "--card"/),
+  ]);
+});
+
+test('accepts a theme file reading a raw step of its own axis', async () => {
+  expect(await lint('src/styles/theme/b.css', ':root { --y: var(--neutral-1); }')).toEqual([]);
+});
+
+test('does not check typography.css, components.css or appearance files', async () => {
+  const code = ':root { --y: var(--space-sm); --z: var(--blue); }';
+  expect(await lint('src/styles/typography.css', code)).toEqual([]);
+  expect(await lint('src/styles/components.css', code)).toEqual([]);
+  expect(await lint('src/styles/appearance/p.css', code)).toEqual([]);
 });
 
 test('errors on .dark in a component', async () => {
@@ -119,26 +102,31 @@ test('errors on .dark in a component', async () => {
   ]);
 });
 
-test('errors on .dark in utilities.css', async () => {
-  expect(await lint('src/styles/utilities.css', '.dark .x { color: red; }')).toEqual([
+test('errors on .dark in base.css', async () => {
+  expect(await lint('src/styles/base.css', '.dark .x { color: red; }')).toEqual([
     expect.stringMatching(/^error: .*\.dark/),
   ]);
 });
 
-test('accepts .dark in a token file', async () => {
-  expect(await lint('src/styles/tokens/semantic/b.css', '.dark { --y: var(--raw); }')).toEqual([]);
+test('accepts .dark in utilities.css', async () => {
+  expect(await lint('src/styles/utilities.css', '.dark .x { color: red; }')).toEqual([]);
+});
+
+test('still errors on a raw color read in utilities.css', async () => {
+  expect(await lint('src/styles/utilities.css', '.x { color: var(--blue); }')).toEqual([
+    expect.stringMatching(/^error: .*raw color token "--blue"/),
+  ]);
+});
+
+test('accepts .dark in a theme file', async () => {
+  expect(await lint('src/styles/theme/b.css', '.dark { --y: var(--neutral-1); }')).toEqual([]);
 });
 
 test('accepts .dark in an appearance file', async () => {
   expect(await lint('src/styles/appearance/p.css', '.dark { --primary: red; }')).toEqual([]);
 });
 
-test('warnings alone do not fail the lint', async () => {
-  const result = await run(COMPONENT, '.x { gap: var(--space-sm); }');
-  expect(result.errored).toBe(false);
-});
-
-test('fails loudly when the token directory cannot be read', async () => {
-  rmSync(join(root, 'src/styles/tokens'), { recursive: true });
-  await expect(lint(COMPONENT, '.x { a: var(--raw); }')).rejects.toThrow();
+test('fails loudly when the theme and layout directories cannot be read', async () => {
+  rmSync(join(root, 'src/styles/theme'), { recursive: true });
+  await expect(lint(COMPONENT, '.x { a: var(--blue); }')).rejects.toThrow();
 });

@@ -52,7 +52,7 @@ Scope each check to the change; full runs are slow.
 | Lint | `pnpm lint -- <paths>` |
 | Unit tests | `pnpm test:unit --file <suite> [--case <name>]` |
 | Scripts tests | `pnpm test:scripts --file <suite> [--case <name>]` |
-| CSS token tiers (local only, not in CI) | `pnpm lint:css` |
+| CSS token axes (local only, not in CI) | `pnpm lint:css` |
 | Test layout | `pnpm test:layout` |
 | Integration tests | `pnpm test:integration --file <suite> [--case <name>]` |
 | E2E tests | `pnpm test:e2e` |

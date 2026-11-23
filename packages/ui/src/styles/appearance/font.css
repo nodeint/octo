@@ -1,6 +1,6 @@
 /*
- * Font axis: data-appearance-font picks a stack from the catalog in tokens/primitive/typography.css
- * and rebinds the live --font-sans declared in tokens/semantic/typography.css.
+ * Font axis: data-appearance-font picks a stack from the catalog in typography.css
+ * and rebinds the live --font-sans declared in typography.css.
  *   data-appearance-font = system-ui|georgia|menlo | omit
  */
 

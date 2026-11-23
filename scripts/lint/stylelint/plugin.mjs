@@ -1,13 +1,16 @@
 /**
- * Local Stylelint plugin for the `@workspace/ui` token tiers.
+ * Local Stylelint plugin for the `@workspace/ui` token axes.
  *
- * - `octo/token-tier`: a file may read only tokens of its own tier or a lower one.
- * - `octo/no-theme-selector`: component files and `utilities.css` must not select `.dark`.
+ * - `octo/token-tier`: a component, recipe, `base.css` or `utilities.css` must not read a raw color scale
+ *   (`styles/theme/swatches.css`, `styles/theme/neutral.css`); it reads a theme role. A `theme/` file reads only
+ *   `theme/` tokens, and a `layout/` file reads only `layout/` tokens.
+ * - `octo/no-theme-selector`: component, recipe, and `base.css` files must not select `.dark`.
+ *   `utilities.css` may select it.
  *
- * A token's tier is the folder of the file that declares it
- * (`styles/tokens/primitive|semantic|component`), so moving a file re-tiers its tokens.
- * A custom property declared in `styles/recipes/` is a component token: it may read any tier.
+ * A token's axis is the folder of the file that declares it (`styles/theme`, `styles/layout`).
+ * A custom property declared in `styles/recipes/` is a component token: it may read any token.
  * The other declarations of a recipe are consumer reads.
+ * `typography.css`, `components.css`, `variants.css` and `appearance/` are not checked.
  */
 import { readdirSync, readFileSync } from 'node:fs';
 import path, { join } from 'node:path';
@@ -16,12 +19,13 @@ import stylelint from 'stylelint';
 
 const { createPlugin, utils } = stylelint;
 
-const TIERS = ['primitive', 'semantic', 'component'];
+const AXES = ['theme', 'layout'];
+const RAW_FILES = ['swatches.css', 'neutral.css'];
 const TOKEN_DECLARATION = /(^|[\s;{])(--[\w-]+)\s*:/g;
 const VAR_READ = /var\(\s*(--[\w-]+)/g;
 
-/** @type {Map<string, Map<string, string>>} */
-const tierIndexCache = new Map();
+/** @type {Map<string, Map<string, { axis: string, raw: boolean }>>} */
+const tokenIndexCache = new Map();
 
 /**
  * @param {string} dir
@@ -38,32 +42,33 @@ function listCssFiles(dir) {
 }
 
 /**
- * Maps each token name to the tier of the folder that declares it.
- * @param {string} tokensDir
- * @returns {Map<string, string>}
+ * Maps each token name to the axis of the folder that declares it, and whether it is a raw color scale step.
+ * @param {string} stylesDir
+ * @returns {Map<string, { axis: string, raw: boolean }>}
  */
-export function buildTierIndex(tokensDir) {
-  const cached = tierIndexCache.get(tokensDir);
+export function buildTokenIndex(stylesDir) {
+  const cached = tokenIndexCache.get(stylesDir);
   if (cached) return cached;
-  /** @type {Map<string, string>} */
+  /** @type {Map<string, { axis: string, raw: boolean }>} */
   const index = new Map();
-  for (const tier of TIERS) {
-    for (const file of listCssFiles(join(tokensDir, tier))) {
+  for (const axis of AXES) {
+    for (const file of listCssFiles(join(stylesDir, axis))) {
+      const raw = axis === 'theme' && RAW_FILES.includes(path.basename(file));
       const source = readFileSync(file, 'utf8').replaceAll(/\/\*[\s\S]*?\*\//g, '');
       for (const match of source.matchAll(TOKEN_DECLARATION)) {
-        if (!index.has(match[2])) index.set(match[2], tier);
+        if (!index.has(match[2])) index.set(match[2], { axis, raw });
       }
     }
   }
-  if (index.size === 0) throw new Error(`octo/token-tier: no tokens found under ${tokensDir}`);
-  tierIndexCache.set(tokensDir, index);
+  if (index.size === 0) throw new Error(`octo/token-tier: no tokens found under ${stylesDir}`);
+  tokenIndexCache.set(stylesDir, index);
   return index;
 }
 
 /**
  * @param {string} file Absolute path of the linted file.
  * @param {import('node:path').PlatformPath} [pathApi] Path flavor; tests pass `path.win32`.
- * @returns {{ kind: 'token', tier: string, tokensDir: string } | { kind: 'consumer', recipe?: true, tokensDir: string } | undefined}
+ * @returns {{ kind: 'token', axis: string, stylesDir: string } | { kind: 'consumer', recipe?: true, utilities?: true, stylesDir: string } | undefined}
  */
 export function classifyFile(file, pathApi = path) {
   // Walk up from the file so the root (drive letter or `/`) is preserved as given.
@@ -78,73 +83,56 @@ export function classifyFile(file, pathApi = path) {
     const name = pathApi.basename(current);
     const above = pathApi.basename(pathApi.dirname(current));
     if (name === 'styles') {
-      const tokensDir = pathApi.join(current, 'tokens');
-      if (trail[0] === 'tokens' && TIERS.includes(trail[1])) {
-        return { kind: 'token', tier: trail[1], tokensDir };
+      if (AXES.includes(trail[0]) && trail.length > 1) {
+        return { kind: 'token', axis: trail[0], stylesDir: current };
       }
-      if (trail.length === 1 && (trail[0] === 'base.css' || trail[0] === 'utilities.css')) {
-        return { kind: 'consumer', tokensDir };
+      if (trail.length === 1 && trail[0] === 'base.css') return { kind: 'consumer', stylesDir: current };
+      if (trail.length === 1 && trail[0] === 'utilities.css') {
+        return { kind: 'consumer', utilities: true, stylesDir: current };
       }
-      if (trail[0] === 'recipes') return { kind: 'consumer', recipe: true, tokensDir };
+      if (trail[0] === 'recipes') return { kind: 'consumer', recipe: true, stylesDir: current };
       return undefined;
     }
     if (name === 'components' && above === 'src') {
-      const tokensDir = pathApi.join(pathApi.dirname(current), 'styles', 'tokens');
-      return { kind: 'consumer', tokensDir };
+      return { kind: 'consumer', stylesDir: pathApi.join(pathApi.dirname(current), 'styles') };
     }
   }
 }
 
-/**
- * @param {string[]} patterns Prefixes; a trailing `*` is optional and ignored.
- * @param {string} token
- */
-function isLegacy(patterns, token) {
-  return patterns.some((pattern) => token.startsWith(pattern.replace(/\*$/, '')));
-}
-
 const tokenTierName = 'octo/token-tier';
 const tokenTierMessages = utils.ruleMessages(tokenTierName, {
-  primitive: (token) => `Component reads primitive token "${token}"; read a semantic or component token`,
-  legacy: (token) => `Component reads primitive token "${token}" (legacy family, migrate to a semantic role)`,
-  upward: (token, from, to) => `A ${from} token file reads ${to} token "${token}"`,
+  raw: (token) => `Component reads raw color token "${token}"; read a theme role`,
+  crossAxis: (from, to, token) => `A ${from} token file reads ${to} token "${token}"`,
 });
 
-const tokenTierRule = (enabled, options = {}) => (root, result) => {
+const tokenTierRule = (enabled) => (root, result) => {
   if (!enabled) return;
-  const legacyFamilies = options.legacyFamilies ?? [];
   const file = root.source?.input.file;
   const info = file && classifyFile(file);
   if (!info) return;
-  const index = buildTierIndex(info.tokensDir);
+  const index = buildTokenIndex(info.stylesDir);
 
   root.walkDecls((decl) => {
     for (const match of decl.value.matchAll(VAR_READ)) {
       const token = match[1];
-      const tier = index.get(token);
-      if (!tier) continue;
-      const readerRank = info.kind === 'token' ? TIERS.indexOf(info.tier) : TIERS.indexOf('semantic');
-      const report = (message, severity) =>
+      const entry = index.get(token);
+      if (!entry) continue;
+      const report = (message) =>
         utils.report({
           ruleName: tokenTierName,
           result,
           node: decl,
           message,
           word: token,
-          severity,
+          severity: 'error',
         });
       if (info.kind === 'consumer') {
-        if (tier !== 'primitive') continue;
-        // A token a recipe declares is component tier, which may read any tier.
+        if (!entry.raw) continue;
+        // A token a recipe declares is a component token, which may read any token.
         if (info.recipe && decl.prop.startsWith('--')) continue;
-        report(
-          isLegacy(legacyFamilies, token)
-            ? tokenTierMessages.legacy(token)
-            : tokenTierMessages.primitive(token),
-          isLegacy(legacyFamilies, token) ? 'warning' : 'error',
-        );
-      } else if (TIERS.indexOf(tier) > readerRank && info.tier !== 'component') {
-        report(tokenTierMessages.upward(token, info.tier, tier), 'error');
+        report(tokenTierMessages.raw(token));
+      } else if (entry.axis !== info.axis) {
+        report(tokenTierMessages.crossAxis(info.axis, entry.axis, token));
       }
     }
   });
@@ -161,7 +149,7 @@ const noThemeRule = (enabled) => (root, result) => {
   if (!enabled) return;
   const file = root.source?.input.file;
   const info = file && classifyFile(file);
-  if (!info || info.kind !== 'consumer') return;
+  if (!info || info.kind !== 'consumer' || info.utilities) return;
   root.walkRules((rule) => {
     if (/\.dark(?![\w-])/.test(rule.selector)) {
       utils.report({

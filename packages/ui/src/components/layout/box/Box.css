@@ -61,11 +61,11 @@
 
 /* border and shadow share box-shadow, so each sets a layer and one rule joins them */
 [data-box-border='thin'] {
-  --box-ring: 0 0 0 var(--border-width-thin) var(--edge);
+  --box-ring: 0 0 0 var(--border-width-thin) var(--border-surface);
 }
 
 [data-box-border='thick'] {
-  --box-ring: 0 0 0 var(--border-width-thick) var(--edge);
+  --box-ring: 0 0 0 var(--border-width-thick) var(--border-surface);
 }
 
 [data-box-shadow='none'] {

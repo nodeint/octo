@@ -44,7 +44,7 @@
   padding: var(--modal-padding, var(--inset));
   background-color: var(--modal-background, var(--dialog));
   color: var(--foreground);
-  box-shadow: var(--modal-shadow, 0 0 0 var(--border-width-thin) var(--edge));
+  box-shadow: var(--modal-shadow, 0 0 0 var(--border-width-thin) var(--border-surface));
   outline: none;
 }
 

@@ -16,7 +16,7 @@
   --surface: var(--card);
   background-color: var(--surface);
   color: var(--foreground);
-  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--border-surface);
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);

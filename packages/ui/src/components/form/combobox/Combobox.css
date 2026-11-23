@@ -50,7 +50,7 @@
   border-radius: var(--radius-overlay-sm);
   background-color: var(--popover);
   color: var(--foreground);
-  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--border-surface);
   transform-origin: var(--transform-origin);
 }
 
@@ -64,7 +64,7 @@
 .combobox-content > [data-slot='input-group'] {
   height: var(--control-height-md);
   margin: var(--space-xs) var(--space-xs) 0;
-  border-color: var(--control);
+  border-color: var(--border-control);
   background-color: var(--muted);
   box-shadow: none;
 }

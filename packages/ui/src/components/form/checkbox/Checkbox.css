@@ -8,7 +8,7 @@
   height: var(--control-glyph-md);
   border-width: var(--border-width-thin);
   border-style: solid;
-  --choice-control-border: var(--control);
+  --choice-control-border: var(--border-control);
   border-radius: var(--checkbox-radius);
   background-color: var(--checkbox-background);
 }

@@ -14,7 +14,7 @@
 }
 
 .switch[data-unchecked] {
-  background-color: var(--control);
+  background-color: var(--border-control);
 }
 
 /* Track and thumb come from the switch part tokens, not the control height. */

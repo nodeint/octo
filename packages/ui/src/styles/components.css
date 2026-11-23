@@ -58,6 +58,7 @@
   --scrollbar-size: 0.625rem;
   --scrollbar-inset: 1px; /* gap between the thumb and the track edge */
   --scrollbar-thumb-radius: var(--radius-round);
+  --scrollbar-thumb: var(--border);
 
   /* Tooltip: the arrow */
   --tooltip-arrow-size: 0.625rem;
@@ -79,6 +80,14 @@
 
   /* Kbd: corner radius */
   --kbd-radius: var(--radius-xs);
+
+  /* Sidebar */
+  --sidebar: var(--neutral-4);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--neutral-8);
+  --sidebar-border: var(--neutral-9);
+  --sidebar-ring: var(--ring);
 }
 
 .dark {
@@ -98,8 +107,8 @@
 
   /* Tab */
   --tab-active-background: var(--muted);
-  --tab-active-border-color: var(--control);
-  --tab-active-focus-border-color: var(--control);
+  --tab-active-border-color: var(--border-control);
+  --tab-active-focus-border-color: var(--border-control);
   --tab-line-active-border-color: transparent;
   --tab-line-active-focus-border-color: transparent;
 }

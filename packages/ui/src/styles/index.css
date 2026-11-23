@@ -2,25 +2,35 @@
  * Cascade order. Layers declared here fix precedence regardless of import order:
  * a later layer beats an earlier one, and any unlayered rule beats all of them.
  *   base       reset and page defaults
- *   theme      tokens and data-appearance-* maps
+ *   theme      color and typography tokens, and the tone and emphasis sets
+ *   layout     size, space, radius, border, motion, z-index, and opacity tokens
  *   recipes    class skins shared by several components (recipes/); choice-control.css first in it
- *   components every component, so a component rule beats a recipe rule whatever the specificity
+ *   components per-part tokens (components.css) and every component, so a component rule beats a recipe rule whatever the specificity
+ *   appearance data-appearance-* maps; they rebind tokens, so they beat every token a lower layer declares
  *   utilities  override classes (utilities.css), after every component
  * Nothing in this package is unlayered, so a consumer's own CSS always wins.
  */
-@layer base, theme, recipes, components, utilities;
+@layer base, theme, layout, recipes, components, appearance, utilities;
 
 @import "@fontsource-variable/inter";
 
+/* Base */
 @import "./reset.css" layer(base);
 @import "./base.css" layer(base);
 
-@import "./tokens/index.css" layer(theme);
+/* Theme */
+@import "./theme/index.css" layer(theme);
+@import "./typography.css" layer(theme);
 @import "./variants.css" layer(theme);
-@import "./appearance/index.css" layer(theme);
 
+/* Layer */
+@import "./layout/index.css" layer(layout);
+
+/* Recipes */
 @import "./recipes/index.css" layer(recipes);
 
+/* Components */
+@import "./components.css" layer(components);
 @import "../components/layout/index.css" layer(components);
 @import "../components/typography/index.css" layer(components);
 @import "../components/form/index.css" layer(components);
@@ -28,4 +38,8 @@
 @import "../components/overlay/index.css" layer(components);
 @import "../components/navigation/index.css" layer(components);
 
+/* Appearance */
+@import "./appearance/index.css" layer(appearance);
+
+/* Utilities */
 @import "./utilities.css" layer(utilities);

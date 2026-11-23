@@ -11,20 +11,20 @@ src/
     index.css        layer order and imports
     reset.css        base layer
     base.css         base layer: page defaults only
-    tokens/          theme layer
-      primitive/     raw scales
-      semantic/      roles
-      component/     per-part and effect tokens
+    theme/           theme layer: color and elevation tokens; the only axis with `.dark` values
+    typography.css   theme layer: type steps and text roles
     variants.css     theme layer: the tone and emphasis sets that build --variant-*
-    appearance/      theme layer: one file per data-appearance-* axis
+    layout/          layout layer: control sizes, space, radius, border widths, containers, motion, z-index, opacity
     recipes/         recipes layer, below components: class skins shared by several components
+    components.css   components layer: per-part tokens, such as switch, tab, and sidebar parts
+    appearance/      appearance layer: one file per data-appearance-* axis
     utilities.css    utilities layer: .sr-only, .no-scrollbar, .scroll-fade-x, .shimmer
 ```
 
 | Path | Purpose |
 | --- | --- |
 | `src/index.ts` | Public package entry |
-| `src/styles/tokens/` | Token tiers; a token's tier is the folder that declares it |
+| `src/styles/theme/`, `src/styles/layout/` | Token axes; a token's axis is the folder that declares it |
 | `package.json` | Private package; `exports` points at `src`, so there is no build output |
 
 ## Recipes
@@ -39,13 +39,13 @@ A stylesheet is a recipe when all of these hold:
 1. Opt-in by class. Each selector targets one of the recipe's own classes, its states, or elements inside one of its classes.
    No selector names a component's own class or `data-slot`.
 2. Shared. At least two components add the recipe's classes. One component with variants is component CSS.
-3. Reads like component CSS. It reads semantic and component tokens, the documented `--group-*` and `--variant-*` hooks
-   and its own private hooks (for example `--menu-gap`), and no primitive token except the legacy families in
-   `stylelint.config.mjs` (warnings). It declares no theme values: no `:root` or `.dark` block.
+3. Reads like component CSS. It reads theme roles, layout and component tokens, the documented `--group-*` and
+   `--variant-*` hooks and its own private hooks (for example `--menu-gap`), and no raw color step from
+   `theme/swatches.css` or `theme/neutral.css`. It declares no theme values: no `:root` or `.dark` block.
    A private hook it declares takes its value from a token.
    The exception is the sets a recipe owns: `[data-action-size]` in `action.css`, `[data-field-size]` in
    `field-control.css`, and `[data-group-size]` and `[data-emphasis]` in `group.css` declare component tokens
-   (`--action-*`, `--field-*`, `--group-*`) and may read the primitive control scale (`--control-*`, `--radius-*`).
+   (`--action-*`, `--field-*`, `--group-*`) from the control and radius scales (`--control-*`, `--radius-*`).
    `octo/token-tier` skips custom properties declared in a recipe.
    `group.css` opts in by the `group` class, but it only hands `--group-*` tokens to the actions and fields inside a group.
 4. Owns its own parts only. It may lay out the parts it owns (`.menu-content` stacks `.menu-row`s).
@@ -56,14 +56,14 @@ Classification test for a reviewer, in order:
 1. Only custom properties on `:root`, `.dark` or `data-*` selectors, and no recipe owns them: a token file.
 2. Override classes meant to win over components: a utility.
 3. Two or more components add its classes, and its selectors pass rules 1 and 4: a recipe.
-   `pnpm lint:css` checks only primitive reads (`octo/token-tier`) and `.dark` selectors (`octo/no-theme-selector`).
+   `pnpm lint:css` checks only raw color reads (`octo/token-tier`) and `.dark` selectors (`octo/no-theme-selector`).
    The rest of rule 3 (no `:root` block, hooks that take their value from a token) and rules 1, 2 and 4 are review checks.
 4. It fails rule 1 or 4 only in a selector listed under Recorded exceptions: a recipe with a transitional exception.
 5. Otherwise it is component CSS.
 
 Read direction:
 
-- A recipe reads semantic and component tokens, `--group-*` and `--variant-*` hooks and its own private hooks.
+- A recipe reads theme roles, layout and component tokens, `--group-*` and `--variant-*` hooks and its own private hooks.
   Components read recipe classes by adding them; a recipe never names a component.
 - A component may set a recipe's input tokens on its own root. It expresses an exception by overriding those tokens,
   never by copying a recipe or a variant set.
@@ -88,8 +88,6 @@ An exception applies only while a migration is in progress. A new exception need
 | --- | --- | --- | --- |
 | `menu.css` | Rule 1, in one selector: `:is(.menu-item, .menu-checkable) > [data-slot='text'][data-overflow='truncate']` names the Text slot | Removing it changes the Text or menu markup | The follow-up gives the row label a recipe-owned hook, or Text exposes a token the row sets |
 
-The primitive reads of the legacy families in these files are warnings, not exceptions.
-
 ## Rules
 
 - Private and never published; `exports` point at source so the app gets HMR without a build step.
@@ -99,11 +97,14 @@ The primitive reads of the legacy families in these files are warnings, not exce
 
 ## Style tokens
 
-- Primitive tokens are raw scales with no meaning. Only other tokens read them; components read semantic or component tokens.
-- Semantic tokens are roles. A semantic file never reads a component token.
-  A primitive file never reads a semantic or component token.
-- Component tokens hold per-part values. They may read any tier.
-  The tone and emphasis sets live in `styles/variants.css`, in the theme layer after the tokens.
+- Tokens live in three axes: `theme/` (color and elevation), `layout/` (size, space, radius, border widths, motion,
+  z-index, opacity), and `typography.css`. An axis file reads only its own axis, except `typography.css`,
+  which reads the `--foreground-*` text colors from `theme/`.
+- `theme/swatches.css` and `theme/neutral.css` are raw color scales. The other `theme/` files build roles on them;
+  components, recipes, `base.css`, and `utilities.css` read the roles, never a raw step.
+- `components.css` holds per-part tokens: switch, radio, checkbox, slider, avatar, scrollbar, tooltip, floating,
+  tab, kbd, and sidebar. It may read any axis.
+- The tone and emphasis sets live in `styles/variants.css`, in the theme layer after the tokens.
   The action, field and group size sets and the group variant sets live with their recipe
   (`recipes/action.css`, `recipes/field-control.css`, `recipes/group.css`).
   A group's `variant` maps to a tone and emphasis pair (`lib/group-paint.ts`); the root carries `data-tone` and
@@ -121,8 +122,10 @@ The primitive reads of the legacy families in these files are warnings, not exce
   `Button` and its forwarders keep `variant` as a preset for one approved pair; a caller passes `variant`,
   or `tone` with `emphasis`, never both. Only the six mapped pairs are exposed (`lib/action-paint.ts`).
   `Toggle` and `ToolbarToggle` take `variant` or `emphasis` alone (`ghost` or `outline`); their tone is fixed to `neutral`.
-- Put an appearance axis in its own file under `src/styles/appearance/`. Put a helper class in `src/styles/utilities.css`.
-- Component CSS never selects `.dark`; put theme-dependent values in a token file as a `:root` / `.dark` pair.
-- `pnpm lint:css` enforces these rules locally; CI does not run it.
-  Component reads of the legacy primitive families listed in `stylelint.config.mjs` are warnings
-  until they move to semantic roles. Any other violation is an error.
+- Put an appearance axis in its own file under `src/styles/appearance/`. The appearance layer sits above components,
+  so an axis rebinds a token whatever layer declares it. Put a helper class in `src/styles/utilities.css`.
+- Component, recipe, and `base.css` CSS never select `.dark`; put theme-dependent values in a `theme/` file as a
+  `:root` / `.dark` pair. `utilities.css` may select `.dark`.
+- `pnpm lint:css` enforces these rules locally; CI does not run it. It reports as errors a component, recipe,
+  `base.css`, or `utilities.css` read of a raw color step, and a read between `theme/` and `layout/`.
+  It does not check `typography.css`, `components.css`, `variants.css`, or `appearance/`.

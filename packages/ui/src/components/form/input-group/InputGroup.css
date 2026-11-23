@@ -101,21 +101,21 @@
 
 /* field: paints like a standalone Input or Select (styles/recipes/field-control.css), so a group sits level with them. */
 .input-group[data-group-variant='field'] {
-  --input-group-divider: var(--control);
-  --input-group-bg: var(--field);
-  --input-group-border: var(--control);
+  --input-group-divider: var(--border-control);
+  --input-group-bg: var(--tone-surface);
+  --input-group-border: var(--border-control);
   --input-group-bg-disabled: var(--disabled);
   --input-group-border-disabled: var(--disabled-border);
   --group-field-fg: currentcolor;
-  --group-field-bg-hover: var(--field-hover);
+  --group-field-bg-hover: var(--tone-surface-hover);
   --group-field-fg-hover: currentcolor;
-  --group-field-border-hover: var(--control);
-  --group-field-bg-active: var(--field-hover);
+  --group-field-border-hover: var(--border-control);
+  --group-field-bg-active: var(--tone-surface-hover);
   --group-field-fg-active: currentcolor;
-  --group-field-border-active: var(--control);
-  --group-field-bg-selected: var(--field);
+  --group-field-border-active: var(--border-control);
+  --group-field-bg-selected: var(--tone-surface);
   --group-field-fg-selected: currentcolor;
-  --group-field-border-selected: var(--control);
+  --group-field-border-selected: var(--border-control);
 }
 
 /* Multi line (block addon or textarea): auto height and stretched items, with the block corner. */
