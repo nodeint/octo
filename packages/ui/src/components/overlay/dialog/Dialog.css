@@ -36,10 +36,9 @@
 
 /* no padding or gap: an app shell owns the whole panel */
 .dialog-content[data-variant='bare'] {
-  gap: 0;
+  --modal-gap: 0px;
   overflow: hidden;
   --inset: 0px;
-  padding: var(--inset);
 }
 
 .dialog-header {

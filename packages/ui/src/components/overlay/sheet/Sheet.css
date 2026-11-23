@@ -1,16 +1,21 @@
+/* No isolation: sheet motion must not create a stacking context here. */
+.sheet-overlay {
+  transition-property: opacity;
+  transition-duration: var(--motion-duration-normal);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.sheet-overlay[data-starting-style],
+.sheet-overlay[data-ending-style] {
+  opacity: 0;
+}
+
 .sheet-content {
-  position: fixed;
-  z-index: var(--z-floating);
-  display: flex;
-  flex-direction: column;
-  gap: var(--panel-gap);
-  --inset: var(--panel-inset);
-  padding: var(--inset);
+  --modal-shadow: var(--shadow-lg);
   background-clip: padding-box;
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);
-  box-shadow: var(--shadow-lg);
   transition-property: opacity, translate;
   transition-duration: var(--motion-duration-slow);
   transition-timing-function: var(--ease-standard);
@@ -80,12 +85,12 @@
 
 /* no surface, gap, or edge: a pane paints the sheet and the sheet only insets it */
 .sheet-content[data-variant='bare'] {
-  gap: 0;
-  border-width: 0;
-  background-color: transparent;
-  padding: var(--space-sm);
+  --modal-gap: 0px;
+  --modal-background: transparent;
+  --modal-padding: var(--space-sm);
   /* The surface ring and the sheet shadow are both box-shadow. The pane paints its own. */
-  box-shadow: none;
+  --modal-shadow: none;
+  border-width: 0;
 }
 
 .sheet-header {
@@ -96,5 +101,5 @@
 
 .sheet-footer {
   margin-block-start: auto;
-  flex-direction: column;
+  --modal-footer-direction: column;
 }

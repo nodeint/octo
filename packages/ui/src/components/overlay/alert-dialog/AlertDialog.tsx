@@ -31,7 +31,7 @@ function AlertDialogOverlay({
   return (
     <AlertDialogPrimitive.Backdrop
       data-slot="alert-dialog-overlay"
-      className={cn('alert-dialog-overlay', className)}
+      className={cn('modal-overlay modal-overlay-fade', className)}
       {...props}
     />
   );
@@ -51,7 +51,7 @@ function AlertDialogContent({
         data-slot="alert-dialog-content"
         data-size={size}
         className={cn(
-          'alert-dialog-content',
+          'modal-content modal-centered alert-dialog-content',
           className
         )}
         {...props}
@@ -84,7 +84,7 @@ function AlertDialogFooter({
     <div
       data-slot="alert-dialog-footer"
       className={cn(
-        'alert-dialog-footer',
+        'modal-footer alert-dialog-footer',
         className
       )}
       {...props}
@@ -116,7 +116,7 @@ function AlertDialogTitle({
     <AlertDialogPrimitive.Title
       data-slot="alert-dialog-title"
       className={cn(
-        'alert-dialog-title',
+        'modal-title alert-dialog-title',
         className
       )}
       {...props}
@@ -131,7 +131,7 @@ function AlertDialogDescription({
   return (
     <AlertDialogPrimitive.Description
       data-slot="alert-dialog-description"
-      className={cn('alert-dialog-description', className)}
+      className={cn('modal-description alert-dialog-description', className)}
       {...props}
     />
   );

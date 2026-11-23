@@ -1,0 +1,127 @@
+/*
+ * Modal skin: scrim, panel surface, footer band, title, description and close button, shared by dialog,
+ * alert dialog and sheet. A component adds the classes it needs. Keyframes live in overlay.css.
+ *
+ * Input tokens a component may set on its own root:
+ *   --modal-background, --modal-shadow, --modal-gap, --modal-padding, --modal-footer-direction
+ */
+
+/* Scrim paint. */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-floating);
+  background-color: var(--overlay);
+  backdrop-filter: var(--surface-overlay-filter);
+  -webkit-backdrop-filter: var(--surface-overlay-filter);
+}
+
+/* Fade-only scrim motion for centered modals. A sheet fades by transition, so it does not add this class. */
+.modal-overlay-fade {
+  isolation: isolate;
+  animation-duration: var(--motion-duration-fast);
+}
+
+.modal-overlay-fade[data-open] {
+  animation-name: overlay-fade-in;
+  animation-timing-function: var(--ease-enter);
+}
+
+.modal-overlay-fade[data-closed] {
+  animation-name: overlay-fade-out;
+  animation-timing-function: var(--ease-exit);
+  animation-fill-mode: forwards;
+}
+
+/* Panel surface. */
+.modal-content {
+  position: fixed;
+  z-index: var(--z-floating);
+  display: flex;
+  flex-direction: column;
+  gap: var(--modal-gap, var(--panel-gap));
+  --inset: var(--panel-inset);
+  padding: var(--modal-padding, var(--inset));
+  background-color: var(--modal-background, var(--dialog));
+  color: var(--foreground);
+  box-shadow: var(--modal-shadow, 0 0 0 var(--border-width-thin) var(--edge));
+  outline: none;
+}
+
+/* Centered panels zoom and fade in place. */
+.modal-centered {
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  translate: -50% -50%;
+  border-radius: var(--radius-overlay-lg);
+  animation-duration: var(--motion-duration-fast);
+}
+
+.modal-centered[data-open] {
+  animation-name: overlay-zoom-in;
+  animation-timing-function: var(--ease-enter);
+}
+
+.modal-centered[data-closed] {
+  animation-name: overlay-zoom-out;
+  animation-timing-function: var(--ease-exit);
+  animation-fill-mode: forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay-fade,
+  .modal-centered {
+    animation-duration: 1ms;
+  }
+}
+
+/* Panel footer band. */
+.modal-footer {
+  display: flex;
+  flex-direction: var(--modal-footer-direction, column-reverse);
+  gap: var(--space-xs);
+  margin-inline: calc(var(--inset) * -1);
+  margin-block-end: calc(var(--inset) * -1);
+  padding: var(--panel-inset);
+  border-top: var(--border-width-thin) solid var(--separator);
+  border-bottom-left-radius: var(--radius-overlay-lg);
+  border-bottom-right-radius: var(--radius-overlay-lg);
+  background-color: var(--muted);
+}
+
+@media (min-width: 40rem) {
+  .modal-centered .modal-footer {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+.modal-title {
+  font-family: var(--role-title-sm-family);
+  font-size: var(--role-title-sm-size);
+  line-height: var(--role-title-sm-leading);
+  font-weight: var(--role-title-sm-weight);
+}
+
+.modal-description {
+  font-size: var(--role-description-size);
+  line-height: var(--role-description-leading);
+  font-weight: var(--role-description-weight);
+  color: var(--role-description-color);
+}
+
+.modal-description > a {
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+}
+
+.modal-description > a:hover {
+  color: var(--foreground);
+}
+
+.modal-close-button {
+  position: absolute;
+  top: var(--space-sm);
+  inset-inline-end: var(--space-sm);
+}

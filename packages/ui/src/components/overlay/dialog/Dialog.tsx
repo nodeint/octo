@@ -33,7 +33,7 @@ function DialogOverlay({
   return (
     <DialogPrimitive.Backdrop
       data-slot="dialog-overlay"
-      className={cn('dialog-overlay', className)}
+      className={cn('modal-overlay modal-overlay-fade', className)}
       {...props}
     />
   );
@@ -70,7 +70,7 @@ function DialogContent({
         data-size={size}
         data-fill={fill ? '' : undefined}
         data-variant={variant}
-        className={cn('dialog-content', className)}
+        className={cn('modal-content modal-centered dialog-content', className)}
         {...props}
       >
         <DialogFillContext.Provider value={fill}>{children}</DialogFillContext.Provider>
@@ -79,7 +79,7 @@ function DialogContent({
           render={
             <Button
               variant="ghost"
-              className="dialog-close-button"
+              className="modal-close-button"
               size="sm" shape="icon"
             />
           }
@@ -153,7 +153,7 @@ function DialogFooter({
     <div
       data-slot="dialog-footer"
       data-layout={layout}
-      className={cn('dialog-footer', className)}
+      className={cn('modal-footer dialog-footer', className)}
       {...props}
     >
       {children}
@@ -168,7 +168,7 @@ function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props): Reac
   return (
     <DialogPrimitive.Title
       data-slot="dialog-title"
-      className={cn('dialog-title', className)}
+      className={cn('modal-title', className)}
       {...props}
     />
   );
@@ -181,7 +181,7 @@ function DialogDescription({
   return (
     <DialogPrimitive.Description
       data-slot="dialog-description"
-      className={cn('dialog-description', className)}
+      className={cn('modal-description', className)}
       {...props}
     />
   );

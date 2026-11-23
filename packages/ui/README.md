@@ -73,8 +73,10 @@ Read direction:
   `--action-radius` and `--icon-size` for `action.css`. A component that sizes a glyph reads `--icon-size`
   with its own step as the fallback.
 
-`overlay.css` is a selector list of component classes, not an opt-in class. It is a transitional
-exception to rule 1 (see below), not an example of the pattern.
+`overlay.css` holds only the `overlay-*` keyframes shared by modal and anchored overlays; it has no selectors.
+`modal.css` is the modal skin (`modal-overlay`, `modal-content`, `modal-footer`, `modal-title`, `modal-description`,
+`modal-close-button`) that dialog, alert dialog and sheet opt into by class. A component sets its input tokens
+(`--modal-background`, `--modal-shadow`, `--modal-gap`, `--modal-padding`, `--modal-footer-direction`) on its own root.
 
 ### Recorded exceptions
 
@@ -83,7 +85,6 @@ An exception applies only while a migration is in progress. A new exception need
 
 | File | Breaks | Why it stays | Removal condition |
 | --- | --- | --- | --- |
-| `overlay.css` | Rule 1: a selector list of component classes (dialog, alert dialog and sheet: scrims and surfaces) | Same reason | The same follow-up, for the overlay components |
 | `menu.css` | Rule 1, in one selector: `:is(.menu-item, .menu-checkable) > [data-slot='text'][data-overflow='truncate']` names the Text slot | Removing it changes the Text or menu markup | The follow-up gives the row label a recipe-owned hook, or Text exposes a token the row sets |
 
 The primitive reads of the legacy families in these files are warnings, not exceptions.
