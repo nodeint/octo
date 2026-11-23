@@ -68,6 +68,7 @@
 [data-tone='field'] {
   --tone-surface: transparent;
   --tone-surface-hover: transparent;
+  --tone-surface-focus: transparent;
   --tone-border: var(--border-control);
   --tone-ring: var(--ring);
 }
@@ -76,6 +77,7 @@
 .dark [data-tone='field'] {
   --tone-surface: var(--muted);
   --tone-surface-hover: var(--secondary);
+  --tone-surface-focus: var(--secondary);
 }
 
 [data-tone='success'] {
@@ -247,8 +249,13 @@
   --variant-bg: var(--tone-surface);
   --variant-fg: currentcolor;
   --variant-border: var(--tone-border);
+
   --variant-bg-hover: var(--tone-surface-hover);
   --variant-fg-hover: currentcolor;
+
+  --variant-bg-focus: var(--tone-surface-focus);
+  --variant-fg-focus: currentcolor;
+
   --variant-bg-disabled: var(--disabled);
   --variant-border-disabled: var(--disabled-border);
 }

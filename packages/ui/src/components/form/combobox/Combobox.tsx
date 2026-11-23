@@ -135,7 +135,7 @@ function ComboboxChip({
   return (
     <ComboboxPrimitive.Chip
       data-slot="combobox-chip"
-      className={cn('combobox-chip', className)}
+      className={cn('chip', 'combobox-chip', className)}
       {...props}
     >
       {children}

@@ -1,6 +1,6 @@
 /*
  * DOM contract:
- * - root data-slot=input-group, data-group-variant=field|outline|secondary|ghost, data-disabled
+ * - root data-slot=input-group, data-group-variant=field|outline|ghost, data-disabled
  * - addon data-slot=input-group-addon, data-align=inline-start|inline-end|block-start|block-end
  * - fields: direct children with the field-control class. The group paints the border, fill and focus and hands its
  *   fields tokens (--group-field-*) that turn their own paint off and pass the group's size and addon insets.
@@ -12,12 +12,15 @@
 .input-group {
   /* Tokens for the fields inside: no paint of their own and a flexing width. Size comes from data-group-size (styles/recipes/group.css). */
   --group-field-bg: transparent;
-  --group-field-border: transparent;
+  /* The group paints hover and focus fill on itself (field variant, below); a field inside never fills on its own. */
+  --group-field-bg-hover: transparent;
+  --group-field-bg-focus: transparent;
   --group-field-bg-disabled: transparent;
+  --group-field-border: transparent;
   --group-field-border-disabled: transparent;
+  --group-field-border-width: 0;
   --group-field-shadow-focus: none;
   --group-field-shadow-invalid: none;
-  --group-field-border-width: 0;
   --group-field-flex: 1 1 0%;
   --group-field-resize: none;
   --group-field-radius: 0;
@@ -62,7 +65,6 @@
   background-color: var(--input-group-bg);
   color: var(--group-field-fg);
   outline: none;
-  
   /* Color comes from data-group-variant (below). Focus and invalid halos come from the group's own data-tone. */
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--default-transition-duration);
@@ -83,14 +85,6 @@
   --input-group-border-disabled: var(--border);
 }
 
-.input-group[data-group-variant='secondary'] {
-  --input-group-divider: var(--border);
-  --input-group-bg: var(--secondary);
-  --input-group-border: transparent;
-  --input-group-bg-disabled: var(--disabled);
-  --input-group-border-disabled: transparent;
-}
-
 .input-group[data-group-variant='ghost'] {
   --input-group-divider: var(--border);
   --input-group-bg: transparent;
@@ -107,7 +101,6 @@
   --input-group-bg-disabled: var(--disabled);
   --input-group-border-disabled: var(--disabled-border);
   --group-field-fg: currentcolor;
-  --group-field-bg-hover: var(--tone-surface-hover);
   --group-field-fg-hover: currentcolor;
   --group-field-border-hover: var(--border-control);
   --group-field-bg-active: var(--tone-surface-hover);
@@ -116,7 +109,17 @@
   --group-field-bg-selected: var(--tone-surface);
   --group-field-fg-selected: currentcolor;
   --group-field-border-selected: var(--border-control);
+  
+  /* Hover and focus fill, as a bare Input has them. The focus border and halo come from state-ring-group. Focus comes last and wins. */
+  &:hover:not([data-disabled], :has(> .field-control:disabled)) {
+    background-color: var(--variant-bg-hover);
+  }
+
+  &:has(> .field-control:focus):not([data-disabled], :has(> .field-control:disabled)) {
+    background-color: var(--variant-bg-focus);
+  }
 }
+
 
 /* Multi line (block addon or textarea): auto height and stretched items, with the block corner. */
 .input-group:has(> [data-align='block-end']),
@@ -160,7 +163,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
   cursor: text;
   font-size: var(--role-label-size);
   line-height: var(--role-label-leading);

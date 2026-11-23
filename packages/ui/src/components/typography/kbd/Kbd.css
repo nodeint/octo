@@ -1,30 +1,14 @@
 .kbd {
+  --chip-px: var(--space-xs);
+  --chip-gap: var(--space-xs);
+  --chip-min-width: var(--control-height-xs);
   pointer-events: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-xs);
-  width: fit-content;
-  height: var(--control-height-xs);
-  min-width: var(--control-height-xs);
-  padding-inline: var(--space-xs);
-  border-radius: var(--kbd-radius);
-  background-color: var(--muted);
-  font-size: var(--role-label-sm-size);
-  line-height: var(--role-label-sm-leading);
-  font-weight: var(--role-label-sm-weight);
-  color: var(--role-label-sm-color);
   user-select: none;
 }
 
 [data-slot='tooltip-content'] .kbd {
-  background-color: var(--foreground);
-  color: var(--background);
-}
-
-.kbd svg:not([class*='size-']) {
-  width: var(--control-glyph-xs);
-  height: var(--control-glyph-xs);
+  --chip-bg: color-mix(in srgb, var(--background) 15%, transparent);
+  --chip-fg: inherit;
 }
 
 .kbd-group {

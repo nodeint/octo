@@ -4,7 +4,7 @@ function Kbd({ className, ...props }: React.ComponentProps<'kbd'>): React.JSX.El
   return (
     <kbd
       data-slot="kbd"
-      className={cn('kbd', className)}
+      className={cn('chip', 'kbd', className)}
       {...props}
     />
   );

@@ -123,18 +123,27 @@
   --group-action-border-selected: var(--variant-border-selected);
   --group-action-bg-disabled: var(--variant-bg-disabled);
   --group-action-border-disabled: var(--variant-border-disabled);
+  
   --group-field-bg: var(--variant-bg);
   --group-field-fg: var(--variant-fg);
   --group-field-border: var(--variant-border);
+
   --group-field-bg-hover: var(--variant-bg-hover);
   --group-field-fg-hover: var(--variant-fg-hover);
   --group-field-border-hover: var(--variant-border-hover);
+
+  --group-field-bg-focus: var(--variant-bg-hover);
+  --group-field-fg-focus: var(--variant-fg-hover);
+  --group-field-border-focus: var(--variant-border-hover);
+
   --group-field-bg-active: var(--variant-bg-active);
   --group-field-fg-active: var(--variant-fg-active);
   --group-field-border-active: var(--variant-border-active);
+
   --group-field-bg-selected: var(--variant-bg-selected);
   --group-field-fg-selected: var(--variant-fg-selected);
   --group-field-border-selected: var(--variant-border-selected);
+
   --group-field-bg-disabled: var(--variant-bg-disabled);
   --group-field-border-disabled: var(--variant-border-disabled);
 }

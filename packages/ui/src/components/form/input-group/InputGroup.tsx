@@ -6,7 +6,7 @@ import { cn } from '../../../lib/utils';
 import { Button } from '../../form/button/Button';
 
 type InputGroupAddonAlign = 'inline-start' | 'inline-end' | 'block-start' | 'block-end'
-type InputGroupVariant = GroupFieldVariant
+type InputGroupVariant = Exclude<GroupFieldVariant, 'secondary'>
 type InputGroupButtonSize = 'xs' | 'sm' | 'md'
 type InputGroupSize = 'xs' | 'sm' | 'md' | 'lg'
 
@@ -103,4 +103,4 @@ export {
   InputGroupButton,
   InputGroupText,
 };
-export type { InputGroupAddonAlign, InputGroupButtonSize, InputGroupSize };
+export type { InputGroupAddonAlign, InputGroupButtonSize, InputGroupSize, InputGroupVariant };

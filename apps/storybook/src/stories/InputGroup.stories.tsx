@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import type { InputGroupSize } from '@workspace/ui';
+import type { InputGroupSize, InputGroupVariant } from '@workspace/ui';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,12 +28,14 @@ const COPIED_RESET_MS = 2000;
 
 const SIZES = ['xs', 'sm', 'md', 'lg'] as const satisfies readonly InputGroupSize[];
 
+const VARIANTS = ['field', 'outline', 'ghost'] as const satisfies readonly InputGroupVariant[];
+
 const meta = {
   title: 'Form/InputGroup',
   component: InputGroup,
   tags: ['autodocs'],
   argTypes: {
-    variant: { control: 'inline-radio', options: ['field', 'outline', 'secondary', 'ghost'] },
+    variant: { control: 'inline-radio', options: ['field', 'outline', 'ghost'] },
     size: { control: 'inline-radio', options: SIZES },
   },
   decorators: [storyWidthDecorator],
@@ -62,6 +64,24 @@ export const Sizes: Story = {
           <Input placeholder={size} aria-label={size} />
           <InputGroupAddon>
             <Icon name="search" />
+          </InputGroupAddon>
+        </InputGroup>
+      ))}
+    </Stack>
+  ),
+};
+
+export const Variants: Story = {
+  render: (args) => (
+    <Stack gap="lg">
+      {VARIANTS.map((variant) => (
+        <InputGroup key={variant} {...args} variant={variant}>
+          <InputGroupAddon>
+            <Icon name="search" />
+          </InputGroupAddon>
+          <Input placeholder={variant} aria-label={variant} />
+          <InputGroupAddon align="inline-end">
+            <InputGroupButton variant="ghost">Search</InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
       ))}

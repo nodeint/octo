@@ -78,9 +78,6 @@
   --tab-line-active-border-color: transparent;
   --tab-line-active-focus-border-color: var(--ring);
 
-  /* Kbd: corner radius */
-  --kbd-radius: var(--radius-xs);
-
   /* Sidebar */
   --sidebar: var(--neutral-4);
   --sidebar-primary: var(--primary);

@@ -1,0 +1,27 @@
+/*
+ * The chip skin: a small, muted, inline label such as a key cap or a selected-value tag.
+ * A component sets the input tokens on its own root to differ: --chip-px, --chip-gap, --chip-min-width,
+ * --chip-bg, --chip-fg.
+ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--chip-gap, var(--control-gap-xs));
+  width: fit-content;
+  height: var(--control-height-xs);
+  min-width: var(--chip-min-width, 0);
+  padding-inline: var(--chip-px, var(--space-sm));
+  border-radius: var(--radius-xs);
+  background-color: var(--chip-bg, var(--muted));
+  color: var(--chip-fg, var(--role-label-sm-color));
+  font-size: var(--role-label-sm-size);
+  line-height: var(--role-label-sm-leading);
+  font-weight: var(--role-label-sm-weight);
+  white-space: nowrap;
+}
+
+.chip svg:not([class*='size-']) {
+  width: var(--control-glyph-xs);
+  height: var(--control-glyph-xs);
+}

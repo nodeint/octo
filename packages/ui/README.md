@@ -31,7 +31,7 @@ src/
 
 A recipe is a stylesheet in `src/styles/recipes/` that gives a kind of element its skin. It binds token roles to
 properties and states for every element that opts in by adding the recipe's class
-(`action`, `field-control`, `group`, `media-frame`, `menu-row`, `state-ring-group`).
+(`action`, `chip`, `field-control`, `group`, `media-frame`, `menu-row`, `state-ring-group`).
 Recipes live in the `recipes` cascade layer, which sits below `components`: a component rule beats a recipe rule
 whatever the specificity, so a component overrides a recipe without raising its selector.
 
@@ -108,7 +108,7 @@ An exception applies only while a migration is in progress. A new exception need
 - `theme/swatches.css` and `theme/neutral.css` are raw color scales. The other `theme/` files build roles on them;
   components, recipes, `base.css`, and `utilities.css` read the roles, never a raw step.
 - `components.css` holds per-part tokens: switch, radio, checkbox, slider, avatar, scrollbar, tooltip, floating,
-  tab, kbd, and sidebar. It may read any axis.
+  tab, and sidebar. It may read any axis.
 - The tone and emphasis sets live in `styles/variants.css`, in the theme layer after the tokens.
   The action, field and group size sets and the group variant sets live with their recipe
   (`recipes/action.css`, `recipes/field-control.css`, `recipes/group.css`).

@@ -197,20 +197,7 @@
 }
 
 .combobox-chip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  height: var(--control-height-xs);
-  padding-inline: var(--space-sm);
-  gap: var(--control-gap-xs);
-  border-radius: var(--radius-xs);
-  background-color: var(--muted);
-  font-size: var(--role-action-sm-size);
-  line-height: var(--role-action-sm-leading);
-  font-weight: var(--role-action-sm-weight);
-  white-space: nowrap;
-  color: var(--foreground);
+  --chip-fg: var(--foreground);
 }
 
 .combobox-chip:has(:disabled) {

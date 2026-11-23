@@ -27,6 +27,13 @@
   transition-property: color, background-color, border-color, box-shadow, transform, opacity;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
+  /* A hovered <label> also puts :hover on the control it labels; the pointer is on the label, not the field, so skip the paint. */
+  &:hover:not(:root:has(label:hover) *) {
+    background-color: var(--group-field-bg-hover, var(--variant-bg-hover));
+  }
+  &:focus {
+    background-color: var(--group-field-bg-focus, var(--variant-bg-focus));
+  }
 }
 
 @media (pointer: coarse) {
@@ -53,12 +60,9 @@
   caret-color: var(--variant-border-invalid);
 }
 
-.field-control:disabled {
-  background-color: var(--group-field-bg-disabled, var(--variant-bg-disabled));
-}
-
 .field-control:disabled,
 .field-control[data-disabled] {
+  background-color: var(--group-field-bg-disabled, var(--variant-bg-disabled));
   pointer-events: none;
   border-color: var(--group-field-border-disabled, var(--variant-border-disabled));
   color: var(--variant-fg-disabled);
