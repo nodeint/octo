@@ -1,5 +1,5 @@
-/* control.css first: it holds the focus, invalid and disabled paint the controls share. */
-@import "./control.css";
+/* choice-control.css first: it holds the focus, invalid and disabled paint the choice controls share. */
+@import "./choice-control.css";
 @import "./action.css";
 @import "./field-control.css";
 @import "./group.css";

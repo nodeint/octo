@@ -3,7 +3,7 @@
  * a later layer beats an earlier one, and any unlayered rule beats all of them.
  *   base       reset and page defaults
  *   theme      tokens and data-appearance-* maps
- *   recipes    class skins shared by several components (recipes/); control.css first in it
+ *   recipes    class skins shared by several components (recipes/); choice-control.css first in it
  *   components every component, so a component rule beats a recipe rule whatever the specificity
  *   utilities  override classes (utilities.css), after every component
  * Nothing in this package is unlayered, so a consumer's own CSS always wins.

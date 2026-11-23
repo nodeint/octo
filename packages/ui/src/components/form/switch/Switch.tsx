@@ -18,7 +18,7 @@ function Switch({
       {...props}
       data-slot="switch"
       data-size={size}
-      className={cn('peer switch', className)}
+      className={cn('peer switch choice-control', className)}
     >
       <SwitchPrimitive.Thumb
         data-slot="switch-thumb"

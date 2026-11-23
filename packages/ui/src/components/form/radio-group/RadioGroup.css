@@ -13,15 +13,15 @@
   height: var(--control-glyph-sm);
   border-width: var(--border-width-thin);
   border-style: solid;
-  --control-border: var(--control);
+  --choice-control-border: var(--control);
   border-radius: var(--radius-radio);
   background-color: var(--radio-background);
 }
 
 .radio-group-item[data-checked] {
-  --control-border: var(--primary);
-  --control-border-disabled: var(--primary);
-  --control-border-invalid: var(--primary);
+  --choice-control-border: var(--primary);
+  --choice-control-border-disabled: var(--primary);
+  --choice-control-border-invalid: var(--primary);
 }
 
 .radio-group-indicator {

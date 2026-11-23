@@ -5,7 +5,7 @@
   align-items: center;
   border-width: var(--border-width-thin);
   border-style: solid;
-  --control-border: transparent;
+  --choice-control-border: transparent;
   border-radius: var(--radius-switch);
 }
 

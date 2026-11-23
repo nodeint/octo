@@ -68,12 +68,13 @@ Read direction:
   never by copying a recipe or a variant set.
 - A recipe never reads another recipe's private tokens; it shares a token instead.
 - A component never overrides a recipe property. The `recipes` layer sits below `components`, so a component rule
-  would win over every recipe state. A component sets the recipe's input tokens instead: `--control-border`,
-  `--control-border-invalid` and `--control-border-disabled` for `control.css`, `--action-radius` and `--icon-size`
-  for `action.css`. A component that sizes a glyph reads `--icon-size` with its own step as the fallback.
+  would win over every recipe state. A component sets the recipe's input tokens instead: `--choice-control-border`,
+  `--choice-control-border-invalid` and `--choice-control-border-disabled` for `choice-control.css`,
+  `--action-radius` and `--icon-size` for `action.css`. A component that sizes a glyph reads `--icon-size`
+  with its own step as the fallback.
 
-`control.css` and `overlay.css` are selector lists of component classes, not opt-in classes. They are transitional
-exceptions to rule 1 (see below), not examples of the pattern.
+`overlay.css` is a selector list of component classes, not an opt-in class. It is a transitional
+exception to rule 1 (see below), not an example of the pattern.
 
 ### Recorded exceptions
 
@@ -82,7 +83,6 @@ An exception applies only while a migration is in progress. A new exception need
 
 | File | Breaks | Why it stays | Removal condition |
 | --- | --- | --- | --- |
-| `control.css` | Rule 1: a selector list of component classes (`.checkbox`, `.radio-group-item`, `.switch`, `.slider-thumb`) | A shared class means a DOM change in four components | A follow-up adds a shared class to those components and replaces the list |
 | `overlay.css` | Rule 1: a selector list of component classes (dialog, alert dialog, sheet and popover overlays, positioners and surfaces) | Same reason | The same follow-up, for the overlay components |
 | `overlay.css` | Rule 3: the placement rules set the private hooks `--overlay-x` and `--overlay-y` to the literal `±0.5rem` | A token would declare a new design value; token values are out of scope | The follow-up adds a component token for the slide distance and the rules read it |
 | `menu.css` | Rule 1, in one selector: `:is(.menu-item, .menu-checkable) > [data-slot='text'][data-overflow='truncate']` names the Text slot | Removing it changes the Text or menu markup | The follow-up gives the row label a recipe-owned hook, or Text exposes a token the row sets |

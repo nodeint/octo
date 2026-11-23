@@ -1,68 +1,46 @@
 /*
- * Behavior shared by the selection controls: focus ring, invalid and disabled paint.
- * Selector lists replace shared utilities; keep them in sync with the component files.
- * Text fields (input, textarea) live in field-control.css, buttons and toggles in action.css (same folder).
+ * Behavior shared by the choice controls (checkbox, radio-group item, switch): focus ring, invalid and
+ * disabled paint, hit area. Each component adds `choice-control` beside its own class, so no selector here
+ * names a specific control. Text fields live in field-control.css, buttons and toggles in action.css.
+ *
+ * Border color is a recipe input: a component sets --choice-control-border (rest),
+ * --choice-control-border-invalid and --choice-control-border-disabled on its own root and never writes
+ * border-color, so the states below win.
  */
-
-/*
- * ---- selection controls ----
- * Border color is a recipe input: a component sets --control-border (rest), --control-border-invalid and
- * --control-border-disabled on its own root and never writes border-color, so the states below win.
- */
-.checkbox,
-.radio-group-item,
-.switch,
-.slider-thumb {
-  border-color: var(--control-border);
+.choice-control {
+  border-color: var(--choice-control-border);
   outline: none;
   transition-property: color, background-color, border-color, box-shadow, transform, translate, opacity;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
 }
 
-.checkbox:focus-visible,
-.radio-group-item:focus-visible,
-.switch:focus-visible,
-.slider-thumb:focus-visible {
+.choice-control:focus-visible {
   border-color: var(--ring);
   outline: var(--focus-width) solid var(--ring);
   outline-offset: var(--focus-offset);
 }
 
-.checkbox[aria-invalid='true'],
-.radio-group-item[aria-invalid='true'],
-.switch[aria-invalid='true'] {
-  border-color: var(--control-border-invalid, var(--destructive));
+.choice-control[aria-invalid='true'] {
+  border-color: var(--choice-control-border-invalid, var(--destructive));
   box-shadow: 0 0 0 var(--focus-width) var(--destructive-subtle-foreground);
 }
 
-.checkbox:disabled,
-.radio-group-item:disabled,
-.switch:disabled {
+.choice-control:disabled {
   pointer-events: none;
   color: var(--foreground-disabled);
+  border-color: var(--choice-control-border-disabled, var(--disabled-border));
 }
 
-.checkbox:disabled,
-.radio-group-item:disabled,
-.switch:disabled {
-  border-color: var(--control-border-disabled, var(--disabled-border));
-}
-
-.checkbox[data-disabled],
-.radio-group-item[data-disabled],
-.switch[data-disabled] {
+.choice-control[data-disabled] {
   pointer-events: none;
-  border-color: var(--control-border-disabled, var(--disabled-border));
+  border-color: var(--choice-control-border-disabled, var(--disabled-border));
   color: var(--foreground-disabled);
 }
 
 /* Hit area grows past the box without changing its size. */
-.checkbox::after,
-.radio-group-item::after,
-.switch::after {
+.choice-control::after {
   content: '';
   position: absolute;
   inset: calc(var(--space-sm) * -1) calc(var(--space-md) * -1);
 }
-

@@ -22,7 +22,7 @@ function RadioGroupItem({
   return (
     <RadioPrimitive.Root
       data-slot="radio-group-item"
-      className={cn('radio-group-item', className)}
+      className={cn('radio-group-item choice-control', className)}
       {...props}
     >
       <RadioPrimitive.Indicator

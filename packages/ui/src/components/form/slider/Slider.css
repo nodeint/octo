@@ -39,7 +39,17 @@
   height: var(--control-glyph-sm);
   border-width: var(--border-width-thin);
   border-style: solid;
-  --control-border: var(--primary);
+  border-color: var(--primary);
+  outline: none;
+  transition-property: color, background-color, border-color, box-shadow, transform, translate, opacity;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
   border-radius: var(--radius-slider-thumb);
   background-color: var(--background);
+}
+
+.slider-thumb:focus-visible {
+  border-color: var(--ring);
+  outline: var(--focus-width) solid var(--ring);
+  outline-offset: var(--focus-offset);
 }

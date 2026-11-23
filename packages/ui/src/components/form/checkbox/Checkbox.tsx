@@ -10,7 +10,7 @@ function Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props): React.
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        'peer checkbox',
+        'peer checkbox choice-control',
         className
       )}
       {...props}
