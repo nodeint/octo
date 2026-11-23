@@ -66,14 +66,14 @@ function findMatchRanges(text: string, query: string): TextRange[] {
   }
 
   const lowerText = text.toLowerCase();
-  const fullIndex = lowerText.indexOf(normalizedQuery);
-  if (fullIndex !== -1) {
-    return [{ start: fullIndex, end: fullIndex + normalizedQuery.length }];
+  const ranges: TextRange[] = [];
+  collectTokenRanges(lowerText, normalizedQuery, ranges);
+  if (ranges.length > 0) {
+    return ranges;
   }
 
   const tokens = tokenizeQuery(query);
   const minTokenLength = tokens.length > 1 ? MIN_HIGHLIGHT_TOKEN_LENGTH : 1;
-  const ranges: TextRange[] = [];
 
   for (const token of tokens) {
     if (token.length >= minTokenLength) {
