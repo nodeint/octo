@@ -1,7 +1,7 @@
 /*
  * Trace: a list of steps.
  * State hangs on data-slot, data-status (running, error, pending), and the Base UI
- * data-panel-open on the trigger. A running line shimmers its title (tokens/component/shimmer.css);
+ * data-panel-open on the trigger. A running line shimmers its title (.shimmer in styles/utilities.css);
  * reduced motion stops the shimmer and the panel.
  */
 .trace {

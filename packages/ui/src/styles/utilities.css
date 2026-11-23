@@ -32,7 +32,69 @@
   mask-image: linear-gradient(to right, transparent 0, #000 min(12%, 2.5rem), #000 calc(100% - min(12%, 2.5rem)), transparent 100%);
 }
 
-/* A moving highlight across text. Paint comes from the --shimmer-* tokens in tokens/component/shimmer.css. */
+/*
+ * Shimmer: a moving highlight across text, for a step that is still running.
+ * Applied by .shimmer below and by the Attachment and Trace title rules.
+ *   inputs   --shimmer-angle, --shimmer-spread, --shimmer-base, --shimmer-highlight
+ *   paint    --shimmer-image, --shimmer-size, --shimmer-animation, --shimmer-text-fill: what a consumer reads
+ * Set the inputs on :root or .dark only: the paint tokens are derived where they are declared,
+ * so an input changed lower down is not picked up.
+ */
+
+/* Registered so the angle is typed and inherits; an input like the others. */
+@property --shimmer-angle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 20deg;
+}
+
+@keyframes shimmer-move {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* Inputs: light values. The .dark block below replaces the highlight. */
+:root {
+  --shimmer-spread: calc(3ch + 40px);
+  --shimmer-base: currentColor;
+  --shimmer-highlight: oklch(from currentColor l c h / calc(alpha * 0.2));
+}
+
+.dark {
+  --shimmer-highlight: oklch(from currentColor max(0.8, calc(l + 0.4)) c h / calc(alpha + 0.4));
+}
+
+/* Paint: derived from the inputs above, in both themes. */
+:root,
+.dark {
+  --shimmer-image: linear-gradient(
+    calc(90deg + var(--shimmer-angle)),
+    var(--shimmer-base) calc(50% - var(--shimmer-spread)),
+    color-mix(in oklch, var(--shimmer-highlight), var(--shimmer-base) 50%) calc(50% - var(--shimmer-spread) * 0.5),
+    var(--shimmer-highlight) 50%,
+    color-mix(in oklch, var(--shimmer-highlight), var(--shimmer-base) 50%) calc(50% + var(--shimmer-spread) * 0.5),
+    var(--shimmer-base) calc(50% + var(--shimmer-spread))
+  );
+  --shimmer-size: calc(200% + var(--shimmer-spread) * 2) 100%;
+  --shimmer-animation: shimmer-move 2s linear infinite;
+  --shimmer-text-fill: transparent;
+}
+
+/* Reduced motion: no highlight, the text keeps its own color. */
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  .dark {
+    --shimmer-image: none;
+    --shimmer-animation: none;
+    --shimmer-text-fill: currentColor;
+  }
+}
+
+/* A moving highlight across text, painted from the --shimmer-* tokens above. */
 .shimmer {
   background-image: var(--shimmer-image);
   background-repeat: no-repeat;
