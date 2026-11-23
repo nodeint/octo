@@ -14,13 +14,18 @@
 
 @import "./reset.css" layer(base);
 @import "./base.css" layer(base);
+
 @import "./tokens/index.css" layer(theme);
+@import "./variants.css" layer(theme);
 @import "./appearance/index.css" layer(theme);
+
 @import "./recipes/index.css" layer(recipes);
+
 @import "../components/layout/index.css" layer(components);
 @import "../components/typography/index.css" layer(components);
 @import "../components/form/index.css" layer(components);
 @import "../components/data-display/index.css" layer(components);
 @import "../components/overlay/index.css" layer(components);
 @import "../components/navigation/index.css" layer(components);
+
 @import "./utilities.css" layer(utilities);

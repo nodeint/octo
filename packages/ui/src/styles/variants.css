@@ -1,10 +1,11 @@
 /*
  * Paint: two independent axes, tone and emphasis, build the --variant-* slots a component reads.
- *   data-tone      which colors: neutral, primary, destructive, success, warning, info. Declares --tone-* roles and the focus ring.
- *   data-emphasis  how they are painted: solid, soft, outline, ghost, link, surface. Maps roles to the identity slots.
+ *   data-tone      which colors: neutral, primary, destructive, success, warning, info, field. Declares --tone-* roles and the focus ring.
+ *   data-emphasis  how they are painted: solid, soft, outline, ghost, link, surface, field. Maps roles to the identity slots.
  * A component never names a color or a tone; it paints from --variant-*. Only the blocks in this file
  * read --tone-*. Exposed action pairs: primary solid, primary link, neutral soft, outline, ghost, destructive soft.
  * The surface emphasis paints a static callout (alert): neutral, destructive, success, warning, info.
+ * The field emphasis paints a text field (input, textarea, select and combobox trigger) with the field tone only.
  *   bg / fg / border          at rest
  *   *-hover, *-active         pointer states; an emphasis with no distinct state repeats its rest value
  *   *-selected                open or on (aria-expanded, aria-pressed)
@@ -57,6 +58,17 @@
   --tone-surface: var(--destructive-surface);
   --tone-surface-foreground: var(--destructive-surface-foreground);
   --tone-border: var(--destructive-border);
+}
+
+/*
+ * Text fields. Only the roles the field emphasis and the focus ring read are declared; --tone-surface-hover is
+ * specific to this tone. Not exposed to actions.
+ */
+[data-tone='field'] {
+  --tone-surface: var(--field);
+  --tone-surface-hover: var(--field-hover);
+  --tone-border: var(--control);
+  --tone-ring: var(--ring);
 }
 
 [data-tone='success'] {
@@ -205,4 +217,15 @@
   --variant-fg: var(--tone-text);
   --variant-fg-secondary: var(--tone-surface-foreground);
   --variant-border: var(--tone-border);
+}
+
+/* A text field: the tone's surface and border at rest, its hover fill for the select and combobox triggers. Field tone only. */
+[data-emphasis='field'] {
+  --variant-bg: var(--tone-surface);
+  --variant-fg: currentcolor;
+  --variant-border: var(--tone-border);
+  --variant-bg-hover: var(--tone-surface-hover);
+  --variant-fg-hover: currentcolor;
+  --variant-bg-disabled: var(--disabled);
+  --variant-border-disabled: var(--disabled-border);
 }

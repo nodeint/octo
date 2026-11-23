@@ -31,13 +31,7 @@
   --group-field-border-width: 0;
   --group-field-flex: 1 1 0%;
   --group-field-resize: none;
-  /* Color comes from data-group-variant (below). Focus and invalid have no variant set, so the group names them. */
-  --field-ring: var(--ring);
-  --field-border-focus: var(--ring);
-  --field-border-invalid: var(--destructive);
-  --field-shadow-focus: 0 0 0 var(--focus-width) color-mix(in oklab, var(--field-ring) 40%, transparent);
-  --field-shadow-invalid: 0 0 0 var(--focus-width)
-    color-mix(in oklab, var(--field-border-invalid) 40%, transparent);
+  /* Color comes from data-group-variant (below). Focus and invalid halos come from the group's own data-tone. */
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
@@ -95,15 +89,15 @@
 
 /* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
 .input-group:has(> .field-control:focus-within) {
-  border-color: var(--field-border-focus);
-  box-shadow: var(--field-shadow-focus);
+  border-color: var(--variant-border-focus);
+  box-shadow: var(--variant-shadow-focus);
   outline: var(--focus-width) solid transparent;
 }
 
 /* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
 .input-group:has([data-slot][aria-invalid='true']) {
-  border-color: var(--field-border-invalid);
-  box-shadow: var(--field-shadow-invalid);
+  border-color: var(--variant-border-invalid);
+  box-shadow: var(--variant-shadow-invalid);
 }
 
 /* A field pads by the side its addon sits on (read as --group-field-padding-* by the field). */

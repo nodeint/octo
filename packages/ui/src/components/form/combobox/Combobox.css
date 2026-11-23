@@ -27,12 +27,12 @@
 }
 
 .combobox-trigger[data-placeholder] {
-  color: var(--field-fg-placeholder);
+  color: var(--variant-fg-placeholder);
 }
 
 .combobox-trigger:hover {
-  background-color: var(--group-field-bg-hover, var(--field-bg-hover));
-  color: var(--group-field-fg-hover, var(--field-fg-hover));
+  background-color: var(--group-field-bg-hover, var(--variant-bg-hover));
+  color: var(--group-field-fg-hover, var(--variant-fg-hover));
 }
 
 .combobox-positioner {
@@ -178,12 +178,12 @@
   gap: var(--group-field-gap, var(--field-gap));
   border-style: solid;
   border-width: var(--group-field-border-width, var(--border-width-thin));
-  border-color: var(--group-field-border, var(--field-border));
+  border-color: var(--group-field-border, var(--variant-border));
   /* One row is a stadium like the other fields. Wrapped rows keep a rounded rectangle instead of a growing pill. */
   border-radius: var(--group-field-radius, min(var(--field-radius), calc(var(--field-height) / 2)));
-  background-color: var(--group-field-bg, var(--field-bg));
+  background-color: var(--group-field-bg, var(--variant-bg));
   background-clip: padding-box;
-  color: var(--group-field-fg, var(--field-fg));
+  color: var(--group-field-fg, var(--variant-fg));
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   outline: none;
@@ -194,15 +194,15 @@
 
 /* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */
 .combobox-chips:focus-within {
-  border-color: var(--field-border-focus);
-  box-shadow: var(--group-field-shadow-focus, var(--field-shadow-focus));
+  border-color: var(--variant-border-focus);
+  box-shadow: var(--group-field-shadow-focus, var(--variant-shadow-focus));
   outline: var(--focus-width) solid transparent;
 }
 
 /* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
 .combobox-chips:has([aria-invalid='true']) {
-  border-color: var(--field-border-invalid);
-  box-shadow: var(--group-field-shadow-invalid, var(--field-shadow-invalid));
+  border-color: var(--variant-border-invalid);
+  box-shadow: var(--group-field-shadow-invalid, var(--variant-shadow-invalid));
 }
 
 .combobox-chips:has([data-slot='combobox-chip']) {
@@ -258,7 +258,7 @@
 }
 
 .combobox-chips-input::placeholder {
-  color: var(--field-fg-placeholder);
+  color: var(--variant-fg-placeholder);
 }
 
 /* A clear or trigger button inside a combobox input row keeps its own hover; no pressed fill. */

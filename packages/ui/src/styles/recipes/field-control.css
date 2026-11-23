@@ -1,41 +1,26 @@
 /*
  * Behavior shared by the text fields (input, textarea, select trigger, combobox trigger and chips). Each component adds
- * `field-control` beside its own class, so no selector here names a specific field. Size, padding and radius stay in
- * the component files. The class is not `field`: that one is the Field wrapper (Field.css).
+ * `field-control` beside its own class and sets data-tone="field" with data-emphasis="field", so no selector here
+ * names a specific field. Size, padding and radius stay in the component files. The class is not `field`: that one is
+ * the Field wrapper (Field.css).
  *
- * Color slots, painted from --field-*. They resolve on each element, so a field inside a group still reads its group's
- * --group-field-* first. Fill and hover come from the --field roles, which switch with the theme.
+ * Color is painted from --variant-* (styles/variants.css). They resolve on each element, so a field inside a
+ * group still reads its group's --group-field-* first. The field reads these slots:
  *   bg / fg / border                 at rest
  *   bg-hover, fg-hover               pointer hover; the select and combobox triggers read them
  *   bg-disabled, border-disabled, fg-disabled
- *   border-focus, ring               focus border and halo color
- *   border-invalid                   invalid border and halo color
- *   shadow-focus, shadow-invalid     focus and invalid halo, built from ring and border-invalid
+ *   border-focus, border-invalid     focus and invalid border
+ *   shadow-focus, shadow-invalid     focus and invalid halo
  *   fg-placeholder                   placeholder text
  */
 .field-control {
-  --field-bg: var(--field);
-  --field-fg: currentcolor;
-  --field-border: var(--control);
-  --field-bg-hover: var(--field-hover);
-  --field-fg-hover: currentcolor;
-  --field-bg-disabled: var(--disabled);
-  --field-border-disabled: var(--disabled-border);
-  --field-fg-disabled: var(--foreground-disabled);
-  --field-border-focus: var(--ring);
-  --field-ring: var(--ring);
-  --field-border-invalid: var(--destructive);
-  --field-fg-placeholder: var(--foreground-subtle);
-  --field-shadow-focus: 0 0 0 var(--focus-width) color-mix(in oklab, var(--field-ring) 40%, transparent);
-  --field-shadow-invalid: 0 0 0 var(--focus-width)
-    color-mix(in oklab, var(--field-border-invalid) 40%, transparent);
   outline: none;
   width: 100%;
   border-style: solid;
   border-width: var(--group-field-border-width, var(--border-width-thin));
-  border-color: var(--group-field-border, var(--field-border));
-  background-color: var(--group-field-bg, var(--field-bg));
-  color: var(--group-field-fg, var(--field-fg));
+  border-color: var(--group-field-border, var(--variant-border));
+  background-color: var(--group-field-bg, var(--variant-bg));
+  color: var(--group-field-fg, var(--variant-fg));
   font-size: var(--role-field-size);
   line-height: var(--role-field-leading);
   font-weight: var(--role-field-weight);
@@ -51,32 +36,32 @@
 }
 
 .field-control::placeholder {
-  color: var(--field-fg-placeholder);
+  color: var(--variant-fg-placeholder);
 }
 
 /* Focus: focus border plus a soft halo, matching invalid. The transparent outline still shows in forced-colors mode. */
 .field-control:focus-visible {
-  border-color: var(--field-border-focus);
-  box-shadow: var(--group-field-shadow-focus, var(--field-shadow-focus));
+  border-color: var(--variant-border-focus);
+  box-shadow: var(--group-field-shadow-focus, var(--variant-shadow-focus));
   outline: var(--focus-width) solid transparent;
 }
 
 /* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
 .field-control[aria-invalid='true'] {
-  border-color: var(--field-border-invalid);
-  box-shadow: var(--group-field-shadow-invalid, var(--field-shadow-invalid));
-  caret-color: var(--field-border-invalid);
+  border-color: var(--variant-border-invalid);
+  box-shadow: var(--group-field-shadow-invalid, var(--variant-shadow-invalid));
+  caret-color: var(--variant-border-invalid);
 }
 
 .field-control:disabled {
-  background-color: var(--group-field-bg-disabled, var(--field-bg-disabled));
+  background-color: var(--group-field-bg-disabled, var(--variant-bg-disabled));
 }
 
 .field-control:disabled,
 .field-control[data-disabled] {
   pointer-events: none;
-  border-color: var(--group-field-border-disabled, var(--field-border-disabled));
-  color: var(--field-fg-disabled);
+  border-color: var(--group-field-border-disabled, var(--variant-border-disabled));
+  color: var(--variant-fg-disabled);
 }
 
 /*

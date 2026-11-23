@@ -77,7 +77,7 @@
  * This section holds the shared reset and the one shared outline, secondary and ghost set, with the
  * button-group values. Only identity slots are owned: bg, fg and border at rest, hover, active and selected,
  * plus the disabled fill and edge. Focus, invalid, disabled text, ring and placeholder stay with the child.
- * data-group-variant is not data-variant: it takes no set from tokens/component/variants.css.
+ * data-group-variant is not data-variant: it takes no set from styles/variants.css.
  *
  * A group that differs overrides the tokens that differ on its own root, in its own file (the components
  * layer beats this one), with a comment that gives the reason. It never copies the set.

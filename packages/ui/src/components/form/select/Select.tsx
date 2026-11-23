@@ -46,6 +46,8 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       data-field-size={size}
+      data-tone="field"
+      data-emphasis="field"
       data-width={width}
       className={cn('field-control', 'select-trigger', className)}
       {...props}

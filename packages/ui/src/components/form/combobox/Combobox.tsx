@@ -36,6 +36,8 @@ function ComboboxTrigger({
     <ComboboxPrimitive.Trigger
       data-slot="combobox-trigger"
       data-field-size="md"
+      data-tone="field"
+      data-emphasis="field"
       className={cn('field-control', 'combobox-trigger', className)}
       {...props}
     >
@@ -112,6 +114,8 @@ function ComboboxChips({
     <ComboboxPrimitive.Chips
       data-slot="combobox-chips"
       data-field-size="md"
+      data-tone="field"
+      data-emphasis="field"
       className={cn('field-control', 'combobox-chips', className)}
       {...props}
     />

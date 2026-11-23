@@ -39,12 +39,12 @@
 }
 
 .select-trigger[data-placeholder] {
-  color: var(--field-fg-placeholder);
+  color: var(--variant-fg-placeholder);
 }
 
 .select-trigger:hover {
-  background-color: var(--group-field-bg-hover, var(--field-bg-hover));
-  color: var(--group-field-fg-hover, var(--field-fg-hover));
+  background-color: var(--group-field-bg-hover, var(--variant-bg-hover));
+  color: var(--group-field-fg-hover, var(--variant-fg-hover));
 }
 
 .select-trigger svg {

@@ -39,6 +39,7 @@ function InputGroup({
       data-slot="input-group"
       data-group-variant={variant}
       data-group-size={size}
+      data-tone="field"
       role="group"
       className={cn('group input-group', className)}
       {...props}

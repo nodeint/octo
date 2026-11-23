@@ -14,7 +14,8 @@ src/
     tokens/          theme layer
       primitive/     raw scales
       semantic/      roles
-      component/     data-* sets and per-part tokens
+      component/     per-part and effect tokens
+    variants.css     theme layer: the tone and emphasis sets that build --variant-*
     appearance/      theme layer: one file per data-appearance-* axis
     recipes/         recipes layer, below components: class skins shared by several components
     utilities.css    utilities layer: .sr-only, .no-scrollbar, .scroll-fade-x, .shimmer
@@ -101,16 +102,19 @@ The primitive reads of the legacy families in these files are warnings, not exce
 - Primitive tokens are raw scales with no meaning. Only other tokens read them; components read semantic or component tokens.
 - Semantic tokens are roles. A semantic file never reads a component token.
   A primitive file never reads a semantic or component token.
-- Component tokens hold the `data-*` variant sets and per-part values. They may read any tier.
+- Component tokens hold per-part values. They may read any tier.
+  The tone and emphasis sets live in `styles/variants.css`, in the theme layer after the tokens.
   The action, field and group size sets and the group variant sets live with their recipe
   (`recipes/action.css`, `recipes/field-control.css`, `recipes/group.css`).
   The group variant sets (`data-group-variant`) are declared once for all groups.
   A group overrides only the tokens that differ, on its own root, with a comment that gives the reason.
-- Paint has two axes in `tokens/component/variants.css`: `data-tone` (`neutral`, `primary`, `destructive`, `success`,
-  `warning`, `info`) declares `--tone-*` roles and the focus ring, and `data-emphasis` (`solid`, `soft`, `outline`,
-  `ghost`, `link`, `surface`) maps the roles to the `--variant-*` slots.
+- Paint has two axes in `styles/variants.css`: `data-tone` (`neutral`, `primary`, `destructive`, `success`,
+  `warning`, `info`, `field`) declares `--tone-*` roles and the focus ring, and `data-emphasis` (`solid`, `soft`,
+  `outline`, `ghost`, `link`, `surface`, `field`) maps the roles to the `--variant-*` slots.
   `Alert` is not an action: it sets `data-tone` from its `variant` and `data-emphasis="surface"`, a static callout
   painted from `--tone-surface`, `--tone-border`, and `--tone-surface-foreground` (`--variant-fg-secondary`).
+  Text fields (`field-control`) set `data-tone="field"` and `data-emphasis="field"` and paint from `--variant-*`;
+  `--field-*` now holds only size slots. `--group-field-*` still overrides paint inside a group.
   One shared `[data-tone]` block declares the state slots (ring, focus, invalid, disabled text, halos).
   Only those blocks read `--tone-*`; recipes and components read `--variant-*` and never name a tone.
   `Button` and its forwarders keep `variant` as a preset for one approved pair; a caller passes `variant`,

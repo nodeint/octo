@@ -7,6 +7,8 @@ function Textarea({ className, ...props }: React.ComponentProps<'textarea'>): Re
     <textarea
       data-slot="textarea"
       data-field-size="md"
+      data-tone="field"
+      data-emphasis="field"
       className={cn('field-control', 'textarea', className)}
       {...props}
     />
