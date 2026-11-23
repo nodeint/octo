@@ -39,7 +39,7 @@ function InputGroup({
       data-group-variant={variant}
       data-group-size={size}
       role="group"
-      className={cn('input-group', className)}
+      className={cn('group input-group', className)}
       {...props}
     />
   );

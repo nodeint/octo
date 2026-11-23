@@ -6,7 +6,9 @@
   justify-content: center;
   width: var(--control-glyph-md);
   height: var(--control-glyph-md);
-  border: var(--border-width-thin) solid var(--control);
+  border-width: var(--border-width-thin);
+  border-style: solid;
+  --control-border: var(--control);
   border-radius: var(--radius-checkbox);
   background-color: var(--checkbox-background);
 }
@@ -17,11 +19,12 @@
 }
 
 .checkbox[aria-invalid='true'][aria-checked='true'] {
-  border-color: var(--primary);
+  --control-border-invalid: var(--primary);
 }
 
 .checkbox[data-checked] {
-  border-color: var(--primary);
+  --control-border: var(--primary);
+  --control-border-disabled: var(--primary);
   background-color: var(--primary);
   color: var(--primary-foreground);
 }

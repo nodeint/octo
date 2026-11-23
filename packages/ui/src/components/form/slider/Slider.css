@@ -37,7 +37,9 @@
 .slider-thumb {
   width: var(--control-glyph-sm);
   height: var(--control-glyph-sm);
-  border: var(--border-width-thin) solid var(--primary);
+  border-width: var(--border-width-thin);
+  border-style: solid;
+  --control-border: var(--primary);
   border-radius: var(--radius-slider-thumb);
   background-color: var(--background);
 }

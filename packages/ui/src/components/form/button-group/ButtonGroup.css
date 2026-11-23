@@ -121,8 +121,9 @@
 }
 
 .button-group-text svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+  --icon-size: var(--control-icon-md);
+  width: var(--icon-size);
+  height: var(--icon-size);
   pointer-events: none;
   flex-shrink: 0;
 }

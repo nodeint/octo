@@ -3,7 +3,9 @@
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
-  border: var(--border-width-thin) solid transparent;
+  border-width: var(--border-width-thin);
+  border-style: solid;
+  --control-border: transparent;
   border-radius: var(--radius-switch);
 }
 

@@ -1,14 +1,15 @@
+/* --icon-size is set by a recipe that sizes the glyphs inside it, such as an action; it wins over the step. */
 .icon[data-size='xs'] {
-  width: var(--control-glyph-xs);
-  height: var(--control-glyph-xs);
+  width: var(--icon-size, var(--control-glyph-xs));
+  height: var(--icon-size, var(--control-glyph-xs));
 }
 
 .icon[data-size='sm'] {
-  width: var(--control-glyph-sm);
-  height: var(--control-glyph-sm);
+  width: var(--icon-size, var(--control-glyph-sm));
+  height: var(--icon-size, var(--control-glyph-sm));
 }
 
 .icon[data-size='md'] {
-  width: var(--control-glyph-md);
-  height: var(--control-glyph-md);
+  width: var(--icon-size, var(--control-glyph-md));
+  height: var(--icon-size, var(--control-glyph-md));
 }

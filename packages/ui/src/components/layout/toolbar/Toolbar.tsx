@@ -35,7 +35,7 @@ function Toolbar({
       data-group-size={size}
       data-orientation={orientation}
       orientation={orientation}
-      className={cn('toolbar', className)}
+      className={cn('group toolbar', className)}
       {...props}
     />
   );

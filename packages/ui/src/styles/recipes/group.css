@@ -1,23 +1,93 @@
 /*
+ * Group recipe: what a group hands to the actions and fields inside it, picked by data-group-size and
+ * data-group-variant. Button-group, toggle-group, input-group and toolbar add `group` beside their own class. A child reads --group-* with its own token as the
+ * fallback and never names a group. Both sets declare component tokens (--group-*) and read the primitive control scale.
+ * A group that differs overrides tokens on its own root, in its own file, which is imported after the recipes.
+ */
+
+/*
+ * Group sizes: a group (button-group, toggle-group, input-group) sets the size of what it holds.
+ * data-group-size picks a step and the group hands its children tokens. A child reads
+ * var(--group-action-height, var(--action-height)), so it never names a group, and outside a group
+ * it falls back to its own data-action-size or data-field-size. The group wins: tokens inherit, so the
+ * child's own size attribute cannot override them.
+ *   --group-action-*   buttons and toggles: height, px, gap, icon, radius
+ *   --group-field-*    inputs, select triggers, comboboxes: height, px, gap, radius
+ *   --group-corner     the group's own corner when it paints a box (input-group, toolbar)
+ * The steps and their raw values live in tokens/primitive/control.css and tokens/primitive/radius.css, as in the size sets in action.css and field-control.css.
+ */
+.group[data-group-size='xs'] {
+  --group-field-height: var(--control-height-xs);
+  --group-field-px: var(--control-px-xs);
+  --group-field-gap: var(--control-gap-xs);
+  --group-field-radius: var(--radius-field-xs);
+  --group-corner: var(--radius-field-xs);
+  --group-action-height: var(--control-height-xs);
+  --group-action-px: var(--control-px-xs);
+  --group-action-gap: var(--control-gap-xs);
+  --group-action-icon: var(--control-icon-xs);
+  --group-action-radius: var(--radius-action-xs);
+}
+
+.group[data-group-size='sm'] {
+  --group-field-height: var(--control-height-sm);
+  --group-field-px: var(--control-px-sm);
+  --group-field-gap: var(--control-gap-sm);
+  --group-field-radius: var(--radius-field-sm);
+  --group-corner: var(--radius-field-sm);
+  --group-action-height: var(--control-height-sm);
+  --group-action-px: var(--control-px-sm);
+  --group-action-gap: var(--control-gap-sm);
+  --group-action-icon: var(--control-icon-sm);
+  --group-action-radius: var(--radius-action-sm);
+}
+
+.group[data-group-size='md'] {
+  --group-field-height: var(--control-height-md);
+  --group-field-px: var(--control-px-md);
+  --group-field-gap: var(--control-gap-md);
+  --group-field-radius: var(--radius-field-md);
+  --group-corner: var(--radius-field-md);
+  --group-action-height: var(--control-height-md);
+  --group-action-px: var(--control-px-md);
+  --group-action-gap: var(--control-gap-md);
+  --group-action-icon: var(--control-icon-md);
+  --group-action-radius: var(--radius-action-md);
+}
+
+.group[data-group-size='lg'] {
+  --group-field-height: var(--control-height-lg);
+  --group-field-px: var(--control-px-lg);
+  --group-field-gap: var(--control-gap-lg);
+  --group-field-radius: var(--radius-field-lg);
+  --group-corner: var(--radius-field-lg);
+  --group-action-height: var(--control-height-lg);
+  --group-action-px: var(--control-px-lg);
+  --group-action-gap: var(--control-gap-lg);
+  --group-action-icon: var(--control-icon-md);
+  --group-action-radius: var(--radius-action-lg);
+}
+
+/*
  * Group variants: a group's data-group-variant sets the color of the fields and actions inside it.
  * A field (input, select trigger) reads --group-field-*; an action (button) reads --group-action-*.
  * Each falls back to the child's own --variant-*, so a child outside a group, or in a group
  * without a variant, paints as before: var(--group-action-bg, var(--variant-bg)).
  *
- * This file holds the shared reset and the one shared outline, secondary and ghost set, with the
+ * This section holds the shared reset and the one shared outline, secondary and ghost set, with the
  * button-group values. Only identity slots are owned: bg, fg and border at rest, hover, active and selected,
  * plus the disabled fill and edge. Focus, invalid, disabled text, ring and placeholder stay with the child.
- * data-group-variant is not data-variant: it takes no set from variants.css.
+ * data-group-variant is not data-variant: it takes no set from tokens/component/variants.css.
  *
  * A group that differs overrides the tokens that differ on its own root, in its own file (the components
  * layer beats this one), with a comment that gives the reason. It never copies the set.
  *
  * Reset: tokens inherit, so a nested group without a variant would otherwise paint with its parent's.
  * `initial` makes the token invalid, which sends var() to its fallback.
- * The set must follow the reset: both are in this layer at equal specificity, so source order decides
+ * The set must follow the reset: both are in this file at equal specificity, so source order decides
  * and a set placed before the reset would be wiped.
  */
-[data-group-variant] {
+.group[data-group-variant] {
   --group-action-bg: initial;
   --group-action-fg: initial;
   --group-action-border: initial;
@@ -49,7 +119,7 @@
 }
 
 /* outline: a bordered row. A field is transparent like an action, so the row reads as one surface. */
-[data-group-variant='outline'] {
+.group[data-group-variant='outline'] {
   --group-action-bg: transparent;
   --group-action-fg: currentcolor;
   --group-action-border: var(--border);
@@ -81,7 +151,7 @@
 }
 
 /* secondary: filled, no visible border. */
-[data-group-variant='secondary'] {
+.group[data-group-variant='secondary'] {
   --group-action-bg: var(--secondary);
   --group-action-fg: var(--foreground);
   --group-action-border: transparent;
@@ -113,7 +183,7 @@
 }
 
 /* ghost: no fill or border at rest; a fill appears on hover. An action rests muted; a field keeps full-strength text. */
-[data-group-variant='ghost'] {
+.group[data-group-variant='ghost'] {
   --group-action-bg: transparent;
   --group-action-fg: var(--foreground-muted);
   --group-action-border: transparent;

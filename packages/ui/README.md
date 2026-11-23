@@ -16,7 +16,7 @@ src/
       semantic/      roles
       component/     data-* sets and per-part tokens
     appearance/      theme layer: one file per data-appearance-* axis
-    recipes/         components layer, imported first: class skins shared by several components
+    recipes/         recipes layer, below components: class skins shared by several components
     utilities.css    utilities layer: .sr-only, .no-scrollbar, .scroll-fade-x, .shimmer
 ```
 
@@ -29,8 +29,9 @@ src/
 ## Recipes
 
 A recipe is a stylesheet in `src/styles/recipes/` that gives a kind of element its skin. It binds token roles to
-properties and states for every element that opts in by adding the recipe's class (`action`, `field-control`, `menu-row`).
-Recipes stay in the `components` cascade layer and are imported before every component file.
+properties and states for every element that opts in by adding the recipe's class (`action`, `field-control`, `group`, `menu-row`).
+Recipes live in the `recipes` cascade layer, which sits below `components`: a component rule beats a recipe rule
+whatever the specificity, so a component overrides a recipe without raising its selector.
 
 A stylesheet is a recipe when all of these hold:
 
@@ -41,12 +42,17 @@ A stylesheet is a recipe when all of these hold:
    and its own private hooks (for example `--menu-gap`), and no primitive token except the legacy families in
    `stylelint.config.mjs` (warnings). It declares no theme values: no `:root` or `.dark` block.
    A private hook it declares takes its value from a token.
+   The exception is the sets a recipe owns: `[data-action-size]` in `action.css`, `[data-field-size]` in
+   `field-control.css`, and `[data-group-size]` and `[data-group-variant]` in `group.css` declare component tokens
+   (`--action-*`, `--field-*`, `--group-*`) and may read the primitive control scale (`--control-*`, `--radius-*`).
+   `octo/token-tier` skips custom properties declared in a recipe.
+   `group.css` opts in by the `group` class, but it only hands `--group-*` tokens to the actions and fields inside a group.
 4. Owns its own parts only. It may lay out the parts it owns (`.menu-content` stacks `.menu-row`s).
    It never lays out or joins another component's children; joins and gaps between group items stay with the group.
 
 Classification test for a reviewer, in order:
 
-1. Only custom properties on `:root`, `.dark` or `data-*` selectors: a token file.
+1. Only custom properties on `:root`, `.dark` or `data-*` selectors, and no recipe owns them: a token file.
 2. Override classes meant to win over components: a utility.
 3. Two or more components add its classes, and its selectors pass rules 1 and 4: a recipe.
    `pnpm lint:css` checks only primitive reads (`octo/token-tier`) and `.dark` selectors (`octo/no-theme-selector`).
@@ -61,6 +67,10 @@ Read direction:
 - A component may set a recipe's input tokens on its own root. It expresses an exception by overriding those tokens,
   never by copying a recipe or a variant set.
 - A recipe never reads another recipe's private tokens; it shares a token instead.
+- A component never overrides a recipe property. The `recipes` layer sits below `components`, so a component rule
+  would win over every recipe state. A component sets the recipe's input tokens instead: `--control-border`,
+  `--control-border-invalid` and `--control-border-disabled` for `control.css`, `--action-radius` and `--icon-size`
+  for `action.css`. A component that sizes a glyph reads `--icon-size` with its own step as the fallback.
 
 `control.css` and `overlay.css` are selector lists of component classes, not opt-in classes. They are transitional
 exceptions to rule 1 (see below), not examples of the pattern.
@@ -91,8 +101,10 @@ The primitive reads of the legacy families in these files are warnings, not exce
 - Primitive tokens are raw scales with no meaning. Only other tokens read them; components read semantic or component tokens.
 - Semantic tokens are roles. A semantic file never reads a component token.
   A primitive file never reads a semantic or component token.
-- Component tokens hold the `data-*` size and variant sets and per-part values. They may read any tier.
-  The group variant sets (`data-group-variant`) live in `src/styles/tokens/component/group-variants.css`, once for all groups.
+- Component tokens hold the `data-*` variant sets and per-part values. They may read any tier.
+  The action, field and group size sets and the group variant sets live with their recipe
+  (`recipes/action.css`, `recipes/field-control.css`, `recipes/group.css`).
+  The group variant sets (`data-group-variant`) are declared once for all groups.
   A group overrides only the tokens that differ, on its own root, with a comment that gives the reason.
 - Put an appearance axis in its own file under `src/styles/appearance/`. Put a helper class in `src/styles/utilities.css`.
 - Component CSS never selects `.dark`; put theme-dependent values in a token file as a `:root` / `.dark` pair.

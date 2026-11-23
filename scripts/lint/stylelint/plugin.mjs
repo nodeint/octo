@@ -6,6 +6,8 @@
  *
  * A token's tier is the folder of the file that declares it
  * (`styles/tokens/primitive|semantic|component`), so moving a file re-tiers its tokens.
+ * A custom property declared in `styles/recipes/` is a component token: it may read any tier.
+ * The other declarations of a recipe are consumer reads.
  */
 import { readdirSync, readFileSync } from 'node:fs';
 import path, { join } from 'node:path';
@@ -61,7 +63,7 @@ export function buildTierIndex(tokensDir) {
 /**
  * @param {string} file Absolute path of the linted file.
  * @param {import('node:path').PlatformPath} [pathApi] Path flavor; tests pass `path.win32`.
- * @returns {{ kind: 'token', tier: string, tokensDir: string } | { kind: 'consumer', tokensDir: string } | undefined}
+ * @returns {{ kind: 'token', tier: string, tokensDir: string } | { kind: 'consumer', recipe?: true, tokensDir: string } | undefined}
  */
 export function classifyFile(file, pathApi = path) {
   // Walk up from the file so the root (drive letter or `/`) is preserved as given.
@@ -83,7 +85,7 @@ export function classifyFile(file, pathApi = path) {
       if (trail.length === 1 && (trail[0] === 'base.css' || trail[0] === 'utilities.css')) {
         return { kind: 'consumer', tokensDir };
       }
-      if (trail[0] === 'recipes') return { kind: 'consumer', tokensDir };
+      if (trail[0] === 'recipes') return { kind: 'consumer', recipe: true, tokensDir };
       return undefined;
     }
     if (name === 'components' && above === 'src') {
@@ -133,6 +135,8 @@ const tokenTierRule = (enabled, options = {}) => (root, result) => {
         });
       if (info.kind === 'consumer') {
         if (tier !== 'primitive') continue;
+        // A token a recipe declares is component tier, which may read any tier.
+        if (info.recipe && decl.prop.startsWith('--')) continue;
         report(
           isLegacy(legacyFamilies, token)
             ? tokenTierMessages.legacy(token)

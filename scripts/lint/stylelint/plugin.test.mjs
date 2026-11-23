@@ -35,6 +35,7 @@ test('classifies base.css and utilities.css as consumers', () => {
 test('classifies files under styles/recipes as consumers', () => {
   expect(classifyFile('/r/packages/ui/src/styles/recipes/action.css', path.posix)).toEqual({
     kind: 'consumer',
+    recipe: true,
     tokensDir: '/r/packages/ui/src/styles/tokens',
   });
 });

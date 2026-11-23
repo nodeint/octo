@@ -1,6 +1,6 @@
 /*
- * The group sizes and paints its toggles through --group-action-* (sizes/group-size.css, and the
- * shared variants in styles/tokens/component/group-variants.css) and never names a toggle. A toggle's own data-action-size
+ * The group sizes and paints its toggles through --group-action-* (styles/recipes/group.css, and the
+ * shared variants in styles/recipes/group.css) and never names a toggle. A toggle's own data-action-size
  * and data-variant are the fallback when it sits outside a group.
  */
 .toggle-group {

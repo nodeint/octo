@@ -2,7 +2,7 @@
  * Token tiers, each read only by the tier after it:
  *   primitive/  raw scales with no meaning: color steps, space, control sizes, radius, type, border, shadow, motion, z-index, opacity
  *   semantic/   roles built on primitives: surface and status colors, text roles, gaps, insets, container and overlay sizes, radius sets
- *   component/  the sets a data-* attribute picks (action, field, group sizes; variants) and per-part tokens
+ *   component/  the sets a data-* attribute picks (variants) and per-part tokens
  * A theme overrides these variables. Values are plain; Primer is only a reference.
  * A `.dark` block follows its `:root` block. The appearance/ files are imported after the tokens so live maps win.
  */
@@ -26,10 +26,6 @@
 @import "./semantic/radius.css";
 @import "./semantic/space.css";
 
-@import "./component/action-size.css";
-@import "./component/field-size.css";
-@import "./component/group-size.css";
 @import "./component/variants.css";
-@import "./component/group-variants.css";
 @import "./component/parts.css";
 @import "./component/shimmer.css";

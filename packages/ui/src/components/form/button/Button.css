@@ -1,7 +1,6 @@
 .button {
   border-width: var(--border-width-thin);
   border-style: solid;
-  border-radius: var(--radius-action-md);
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);

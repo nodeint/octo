@@ -3,11 +3,12 @@
  * a later layer beats an earlier one, and any unlayered rule beats all of them.
  *   base       reset and page defaults
  *   theme      tokens and data-appearance-* maps
- *   components every component; order inside it is file order (recipes/ first, control.css first in it)
+ *   recipes    class skins shared by several components (recipes/); control.css first in it
+ *   components every component, so a component rule beats a recipe rule whatever the specificity
  *   utilities  override classes (utilities.css), after every component
  * Nothing in this package is unlayered, so a consumer's own CSS always wins.
  */
-@layer base, theme, components, utilities;
+@layer base, theme, recipes, components, utilities;
 
 @import "@fontsource-variable/inter";
 
@@ -15,7 +16,7 @@
 @import "./base.css" layer(base);
 @import "./tokens/index.css" layer(theme);
 @import "./appearance/index.css" layer(theme);
-@import "./recipes/index.css" layer(components);
+@import "./recipes/index.css" layer(recipes);
 @import "../components/layout/index.css" layer(components);
 @import "../components/typography/index.css" layer(components);
 @import "../components/form/index.css" layer(components);

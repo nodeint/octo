@@ -34,7 +34,7 @@ function ButtonGroup({
       data-orientation={orientation}
       data-group-variant={variant}
       data-group-size={size}
-      className={cn('button-group', className)}
+      className={cn('group button-group', className)}
       {...props}
     />
   );

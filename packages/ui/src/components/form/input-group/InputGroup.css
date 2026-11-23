@@ -21,7 +21,7 @@
   background-color: var(--input-group-bg);
   color: var(--group-field-fg);
   outline: none;
-  /* Tokens for the fields inside: no paint of their own and a flexing width. Size comes from data-group-size (sizes/group-size.css). */
+  /* Tokens for the fields inside: no paint of their own and a flexing width. Size comes from data-group-size (styles/recipes/group.css). */
   --group-field-bg: transparent;
   --group-field-border: transparent;
   --group-field-bg-disabled: transparent;
@@ -45,7 +45,7 @@
 
 /*
  * The group takes field tokens from data-group-size but not action ones, and its fields draw no corner of their own.
- * [data-group-size] raises specificity over the size rules in sizes/group-size.css, which set the same tokens.
+ * [data-group-size] raises specificity over the size rules in styles/recipes/group.css, which set the same tokens.
  * `initial` makes a token invalid, which sends var() to the child's own fallback: this also keeps an
  * input-group inside a button-group from taking that group's action size, so its addon buttons keep their own.
  */
@@ -137,7 +137,9 @@
   user-select: none;
 }
 
-.input-group-addon svg:not([class*='size-']) {
+/* A glyph inside an action takes its size from the action recipe. */
+.input-group-addon :not(.action) > svg:not([class*='size-']),
+.input-group-addon > svg:not([class*='size-']) {
   width: var(--control-icon-md);
   height: var(--control-icon-md);
   pointer-events: none;
@@ -215,13 +217,10 @@
   gap: var(--space-sm);
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
-  box-shadow: none;
-  border-radius: calc(var(--group-corner) - 3px);
 }
 
 .input-group-button[data-shape='default'] svg:not([class*='size-']) {
-  width: var(--control-icon-sm);
-  height: var(--control-icon-sm);
+  --icon-size: var(--control-icon-sm);
 }
 
 .input-group-button[data-shape='icon'] {
@@ -247,7 +246,7 @@
 
 /*
  * Group variants: data-group-variant sets the group's own border and fill (--input-group-*). The colors its fields
- * read for text and states come from the shared set (styles/tokens/component/group-variants.css), except in `field`,
+ * read for text and states come from the shared set (styles/recipes/group.css), except in `field`,
  * which has no shared set and keeps its own. Border, fill and disabled paint are not passed down:
  * the group zeroes them for its fields above.
  */

@@ -36,7 +36,7 @@ function ToggleGroup<Value extends string = string>({
       data-group-size={size}
       data-orientation={orientation}
       data-wrap={wrap ? '' : undefined}
-      className={cn('toggle-group', className)}
+      className={cn('group toggle-group', className)}
       {...props}
     />
   );

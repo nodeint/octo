@@ -11,13 +11,17 @@
   justify-content: center;
   width: var(--control-glyph-sm);
   height: var(--control-glyph-sm);
-  border: var(--border-width-thin) solid var(--control);
+  border-width: var(--border-width-thin);
+  border-style: solid;
+  --control-border: var(--control);
   border-radius: var(--radius-radio);
   background-color: var(--radio-background);
 }
 
 .radio-group-item[data-checked] {
-  border-color: var(--primary);
+  --control-border: var(--primary);
+  --control-border-disabled: var(--primary);
+  --control-border-invalid: var(--primary);
 }
 
 .radio-group-indicator {

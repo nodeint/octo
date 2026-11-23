@@ -1,7 +1,7 @@
 /*
  * A rail for toolbar items. Like a button-group it owns the variant and size of what it holds:
  * data-group-variant sets the --group-action-* / --group-field-* colors (below) and
- * data-group-size sets height, inset, gap and radius (sizes/group-size.css). Unlike a button-group
+ * data-group-size sets height, inset, gap and radius (styles/recipes/group.css). Unlike a button-group
  * its items are spaced, not joined, so none of the join rules apply.
  * The rail paints its own fill and edge per variant (--toolbar-fill, --toolbar-edge, at the end of this file).
  */
@@ -121,7 +121,7 @@
 }
 
 /*
- * Group variants: the colors come from the shared set (styles/tokens/component/group-variants.css).
+ * Group variants: the colors come from the shared set (styles/recipes/group.css).
  * The rail also paints the group's fill and edge (--toolbar-fill, --toolbar-edge), as an input-group does,
  * and overrides only the tokens that differ from the shared set.
  */
