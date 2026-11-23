@@ -14,7 +14,7 @@
   border-width: var(--border-width-thin);
   border-style: solid;
   --choice-control-border: var(--control);
-  border-radius: var(--radius-radio);
+  border-radius: var(--radio-radius);
   background-color: var(--radio-background);
 }
 
@@ -28,6 +28,6 @@
   pointer-events: none;
   width: var(--radio-dot-size);
   height: var(--radio-dot-size);
-  border-radius: var(--radius-radio-indicator);
+  border-radius: var(--radio-indicator-radius);
   background-color: var(--primary);
 }

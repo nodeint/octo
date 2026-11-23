@@ -9,7 +9,7 @@
   border-width: var(--border-width-thin);
   border-style: solid;
   --choice-control-border: var(--control);
-  border-radius: var(--radius-checkbox);
+  border-radius: var(--checkbox-radius);
   background-color: var(--checkbox-background);
 }
 

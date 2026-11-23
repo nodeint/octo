@@ -6,7 +6,7 @@
   border-width: var(--border-width-thin);
   border-style: solid;
   --choice-control-border: transparent;
-  border-radius: var(--radius-switch);
+  border-radius: var(--switch-radius);
 }
 
 .switch[data-checked] {
@@ -31,7 +31,7 @@
 .switch-thumb {
   pointer-events: none;
   display: block;
-  border-radius: var(--radius-switch-thumb);
+  border-radius: var(--switch-thumb-radius);
   background-color: var(--background);
   transition-property: transform, translate;
   transition-duration: var(--default-transition-duration);

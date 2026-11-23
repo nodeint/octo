@@ -8,7 +8,7 @@
   height: var(--control-height-xs);
   min-width: var(--control-height-xs);
   padding-inline: var(--space-xs);
-  border-radius: var(--radius-kbd);
+  border-radius: var(--kbd-radius);
   background-color: var(--muted);
   font-size: var(--role-label-sm-size);
   line-height: var(--role-label-sm-leading);

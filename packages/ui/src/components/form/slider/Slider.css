@@ -25,12 +25,12 @@
   position: relative;
   width: 100%;
   height: var(--slider-track-height);
-  border-radius: var(--radius-slider-track);
+  border-radius: var(--slider-track-radius);
   background-color: var(--muted);
 }
 
 .slider-indicator {
-  border-radius: var(--radius-slider-indicator);
+  border-radius: var(--slider-indicator-radius);
   background-color: var(--primary);
 }
 
@@ -44,7 +44,7 @@
   transition-property: color, background-color, border-color, box-shadow, transform, translate, opacity;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
-  border-radius: var(--radius-slider-thumb);
+  border-radius: var(--slider-thumb-radius);
   background-color: var(--background);
 }
 

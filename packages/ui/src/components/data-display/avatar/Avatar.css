@@ -5,7 +5,7 @@
   flex-shrink: 0;
   width: var(--control-height-md);
   height: var(--control-height-md);
-  border-radius: var(--radius-avatar);
+  border-radius: var(--avatar-radius);
   user-select: none;
 }
 
@@ -14,7 +14,7 @@
   position: absolute;
   inset: 0;
   border: var(--border-width-thin) solid var(--border);
-  border-radius: var(--radius-avatar);
+  border-radius: var(--avatar-radius);
   mix-blend-mode: var(--avatar-blend-mode);
 }
 
@@ -32,7 +32,7 @@
   width: 100%;
   height: 100%;
   aspect-ratio: 1;
-  border-radius: var(--radius-avatar);
+  border-radius: var(--avatar-radius);
   object-fit: cover;
 }
 
@@ -42,7 +42,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  border-radius: var(--radius-avatar);
+  border-radius: var(--avatar-radius);
   background-color: var(--muted);
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);
@@ -62,7 +62,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-avatar-badge);
+  border-radius: var(--avatar-badge-radius);
   background-color: var(--primary);
   color: var(--primary-foreground);
   box-shadow: 0 0 0 var(--border-width-thick) var(--background);
@@ -110,7 +110,7 @@
   justify-content: center;
   width: var(--control-height-md);
   height: var(--control-height-md);
-  border-radius: var(--radius-avatar-count);
+  border-radius: var(--avatar-count-radius);
   background-color: var(--muted);
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);

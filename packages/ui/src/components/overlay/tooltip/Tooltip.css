@@ -30,7 +30,7 @@
   height: var(--tooltip-arrow-size);
   translate: 0 calc(-50% - var(--tooltip-arrow-inset));
   rotate: 45deg;
-  border-radius: var(--radius-tooltip-arrow);
+  border-radius: var(--tooltip-arrow-radius);
   background-color: var(--foreground);
   fill: var(--foreground);
 }
