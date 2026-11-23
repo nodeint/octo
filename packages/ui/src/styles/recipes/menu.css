@@ -1,0 +1,153 @@
+/*
+ * Menu rows and container layout, shared by dropdown-menu and context-menu and free of any floating behavior,
+ * so an inline menu can reuse them. A floating menu adds the floating.css classes beside these.
+ *   menu-row        every interactive row (item, sub-trigger, checkbox and radio item)
+ *   menu-item       plain item          menu-sub-trigger  submenu trigger
+ *   menu-checkable  checkbox and radio item
+ *   menu-label, menu-separator, menu-shortcut, menu-indicator, menu-group, menu-content, menu-sub-content, menu-chevron
+ */
+.menu-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-surface-sm);
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.menu-checkable {
+  padding-right: var(--space-2xl);
+  cursor: default;
+}
+
+/* Rows with an `inset` flag line up under rows that carry an indicator or icon. */
+:is(.menu-row, .menu-label)[data-inset] {
+  padding-inline-start: calc(var(--space-lg) + var(--space-md));
+}
+
+.menu-label {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--role-label-sm-size);
+  line-height: var(--role-label-sm-leading);
+  font-weight: var(--role-label-sm-weight);
+  color: var(--role-label-sm-color);
+}
+
+.menu-row:is(:hover, :focus) {
+  background-color: var(--hover);
+  color: var(--foreground);
+}
+
+.menu-item:not([data-variant='destructive']):focus > svg {
+  color: var(--foreground);
+}
+
+.menu-sub-trigger:is([data-popup-open], [data-open]) {
+  background-color: var(--accent);
+  color: var(--foreground);
+}
+
+:is(.menu-item, .menu-checkable)[data-disabled]:not([data-disabled='false']) {
+  pointer-events: none;
+  color: var(--foreground-disabled);
+}
+
+/* destructive */
+.menu-item[data-variant='destructive'] {
+  color: var(--destructive);
+}
+
+.menu-item[data-variant='destructive']:focus {
+  background-color: var(--destructive-subtle);
+  color: var(--destructive-subtle-foreground);
+}
+
+/* Glyph and shortcut follow the row colour, including the focused state. */
+.menu-item[data-variant='destructive'] > :is(svg, .menu-shortcut) {
+  color: inherit;
+}
+
+/* Icon glyph size beside the row text. */
+.menu-row svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.menu-row svg:not([class*='size-']) {
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
+}
+
+/* A truncating label shrinks inside the row and pushes a trailing glyph to the end. */
+:is(.menu-item, .menu-checkable) > [data-slot='text'][data-overflow='truncate'] {
+  min-width: 0;
+  flex: 1 1 0%;
+}
+
+.menu-indicator {
+  pointer-events: none;
+  position: absolute;
+  right: var(--space-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container layout shared by every menu: the gap spaces rows, the pad insets them and sets how far a separator bleeds. */
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  --menu-gap: var(--space-xs);
+  --menu-pad: var(--overlay-pad-xs);
+  gap: var(--menu-gap);
+  padding: var(--menu-pad);
+  max-height: var(--available-height);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Submenu panel: no scroll container of its own. Must stay after .menu-content. */
+.menu-sub-content {
+  overflow: hidden;
+}
+
+.menu-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--menu-gap);
+}
+
+.menu-separator {
+  flex-shrink: 0;
+  height: 1px;
+  margin-inline: calc(var(--menu-pad, var(--space-xs)) * -1);
+  background-color: var(--separator);
+}
+
+/* Bleeds to the menu edges by default; `inset` keeps it inside the menu padding. */
+.menu-separator[data-inset] {
+  margin-inline: 0;
+}
+
+.menu-shortcut {
+  margin-inline-start: auto;
+  font-size: var(--role-caption-size);
+  line-height: var(--role-caption-leading);
+  font-weight: var(--role-caption-weight);
+  color: var(--role-caption-color);
+}
+
+:focus > .menu-shortcut {
+  color: var(--foreground);
+}
+
+/* A glyph pushed to the end of a menu row. */
+.menu-chevron {
+  margin-inline-start: auto;
+}

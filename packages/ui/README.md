@@ -29,7 +29,7 @@ src/
 ## Recipes
 
 A recipe is a stylesheet in `src/styles/recipes/` that gives a kind of element its skin. It binds token roles to
-properties and states for every element that opts in by adding the recipe's class (`action`, `field-control`, `group`, `floating-menu-row`).
+properties and states for every element that opts in by adding the recipe's class (`action`, `field-control`, `group`, `menu-row`).
 Recipes live in the `recipes` cascade layer, which sits below `components`: a component rule beats a recipe rule
 whatever the specificity, so a component overrides a recipe without raising its selector.
 
@@ -39,7 +39,7 @@ A stylesheet is a recipe when all of these hold:
    No selector names a component's own class or `data-slot`.
 2. Shared. At least two components add the recipe's classes. One component with variants is component CSS.
 3. Reads like component CSS. It reads semantic and component tokens, the documented `--group-*` and `--variant-*` hooks
-   and its own private hooks (for example `--floating-menu-gap`), and no primitive token except the legacy families in
+   and its own private hooks (for example `--menu-gap`), and no primitive token except the legacy families in
    `stylelint.config.mjs` (warnings). It declares no theme values: no `:root` or `.dark` block.
    A private hook it declares takes its value from a token.
    The exception is the sets a recipe owns: `[data-action-size]` in `action.css`, `[data-field-size]` in
@@ -47,7 +47,7 @@ A stylesheet is a recipe when all of these hold:
    (`--action-*`, `--field-*`, `--group-*`) and may read the primitive control scale (`--control-*`, `--radius-*`).
    `octo/token-tier` skips custom properties declared in a recipe.
    `group.css` opts in by the `group` class, but it only hands `--group-*` tokens to the actions and fields inside a group.
-4. Owns its own parts only. It may lay out the parts it owns (`.floating-menu-content` stacks `.floating-menu-row`s).
+4. Owns its own parts only. It may lay out the parts it owns (`.menu-content` stacks `.menu-row`s).
    It never lays out or joins another component's children; joins and gaps between group items stay with the group.
 
 Classification test for a reviewer, in order:
@@ -83,11 +83,8 @@ An exception applies only while a migration is in progress. A new exception need
 
 | File | Breaks | Why it stays | Removal condition |
 | --- | --- | --- | --- |
-| `overlay.css` | Rule 1: a selector list of component classes (dialog, alert dialog, sheet, popover and tooltip: modal and anchored overlays, positioners and surfaces) | Same reason | The same follow-up, for the overlay components |
-| `overlay.css` | Rule 3: the placement rules set the private hooks `--overlay-x` and `--overlay-y` to the literal `±0.5rem` | A token would declare a new design value; token values are out of scope | The follow-up adds a component token for the slide distance and the rules read it |
-| `floating-menu.css` | Rule 1: `floating-menu-*` panel classes (positioner, surface, placement, motion, width) | Same reason | The same follow-up, for the menu components |
-| `floating-menu.css` | Rule 3: the placement rules set `--overlay-x` and `--overlay-y` to the literal `±0.5rem` | Same as the `overlay.css` row | The same follow-up |
-| `floating-menu.css` | Rule 1, in one selector: `:is(.floating-menu-item, .floating-menu-checkable) > [data-slot='text'][data-overflow='truncate']` names the Text slot | Removing it changes the Text or menu markup | The follow-up gives the row label a recipe-owned hook, or Text exposes a token the row sets |
+| `overlay.css` | Rule 1: a selector list of component classes (dialog, alert dialog and sheet: scrims and surfaces) | Same reason | The same follow-up, for the overlay components |
+| `menu.css` | Rule 1, in one selector: `:is(.menu-item, .menu-checkable) > [data-slot='text'][data-overflow='truncate']` names the Text slot | Removing it changes the Text or menu markup | The follow-up gives the row label a recipe-owned hook, or Text exposes a token the row sets |
 
 The primitive reads of the legacy families in these files are warnings, not exceptions.
 

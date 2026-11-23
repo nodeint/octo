@@ -7,6 +7,7 @@
  *   scrollbar  the thickness, edge inset, and thumb radius of a scrollbar
  *   slider     the thickness of the track
  *   tooltip    the arrow
+ *   floating   how far a floating panel slides in from its anchor
  *   tab        the underline that marks the selected tab, and the active trigger's paint
  *   checkbox, radio, switch thumb, avatar blend: paint that differs between light and dark
  * Where a part is the same size as a step of the control icon, space, or border scale, it reads that step.
@@ -54,6 +55,7 @@
 
   /* Tooltip */
   --tooltip-arrow-size: 0.625rem;
+  --floating-slide-distance: 0.5rem;
   --tooltip-arrow-inset: var(--space-xxs); /* 2 */
   --radius-tooltip-arrow: 0.1875rem;
 

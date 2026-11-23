@@ -1,5 +1,4 @@
 .tooltip-content {
-  z-index: var(--z-floating);
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);

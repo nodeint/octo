@@ -1,0 +1,90 @@
+/*
+ * Anchored panels: popover, tooltip, dropdown menu and context menu. A component adds the classes it needs
+ * beside its own.
+ *   floating-positioner  the Base UI positioner: stacking and focus ring
+ *   floating-panel       the popup: stacking, and the slide-in and zoom-out motion from the side it opens toward
+ *   floating-surface     a filled panel: popover fill, edge, radius, minimum width and the `data-size` width
+ * Motion reads `data-open` / `data-closed` (Base UI) and slides by `--floating-slide-distance`.
+ * The `overlay-*` keyframes live in overlay.css.
+ */
+.floating-positioner {
+  isolation: isolate;
+  z-index: var(--z-floating);
+  outline: none;
+}
+
+.floating-panel {
+  z-index: var(--z-floating);
+  transform-origin: var(--transform-origin);
+  animation-duration: var(--motion-duration-fast);
+}
+
+.floating-panel[data-side='bottom'] {
+  --overlay-y: calc(var(--floating-slide-distance) * -1);
+}
+
+.floating-panel[data-side='top'] {
+  --overlay-y: var(--floating-slide-distance);
+}
+
+.floating-panel[data-side='inline-end'],
+.floating-panel[data-side='right'] {
+  --overlay-x: calc(var(--floating-slide-distance) * -1);
+}
+
+.floating-panel[data-side='inline-start'],
+.floating-panel[data-side='left'] {
+  --overlay-x: var(--floating-slide-distance);
+}
+
+.floating-panel[data-open],
+.floating-panel[data-state='delayed-open'] {
+  animation-name: overlay-slide-in;
+  animation-timing-function: var(--ease-enter);
+}
+
+.floating-panel[data-closed] {
+  animation-name: overlay-zoom-out;
+  animation-timing-function: var(--ease-exit);
+  animation-fill-mode: forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-panel {
+    animation-duration: 1ms;
+  }
+}
+
+.floating-surface {
+  min-width: var(--overlay-xxs);
+  border-radius: var(--radius-overlay-sm);
+  background-color: var(--popover);
+  color: var(--foreground);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
+  outline: none;
+}
+
+/* Width from the overlay scale; no data-size keeps its own width. */
+.floating-surface[data-size='xxs'] {
+  width: var(--overlay-xxs);
+}
+
+.floating-surface[data-size='xs'] {
+  width: var(--overlay-xs);
+}
+
+.floating-surface[data-size='sm'] {
+  width: var(--overlay-sm);
+}
+
+.floating-surface[data-size='md'] {
+  width: var(--overlay-md);
+}
+
+.floating-surface[data-size='lg'] {
+  width: var(--overlay-lg);
+}
+
+.floating-surface[data-size='xl'] {
+  width: var(--overlay-xl);
+}

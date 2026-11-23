@@ -1,8 +1,9 @@
 /*
- * Shared overlay behavior: scrim, positioner, enter and exit motion, dialog and popover surfaces.
+ * Modal overlay behavior: scrim, enter and exit motion, dialog, alert dialog and sheet surfaces. Anchored
+ * overlays (popover, tooltip, menus) own their rules; they reuse the `overlay-*` keyframes below.
  * Selector lists replace shared utilities; a new overlay joins the lists it needs.
- * Motion reads `data-open` / `data-closed` (Base UI). A placement-aware overlay sets
- * --overlay-x / --overlay-y from `data-side` so it slides in from its anchor.
+ * Motion reads `data-open` / `data-closed` (Base UI). `overlay-slide-in` reads --overlay-x / --overlay-y,
+ * which a placement-aware overlay sets from `data-side`.
  */
 
 /* Scrim: fade-only, no zoom. */
@@ -49,13 +50,7 @@
   animation-fill-mode: forwards;
 }
 
-.popover-positioner,
-.tooltip-positioner {
-  isolation: isolate;
-  z-index: var(--z-floating);
-}
-
-/* Surfaces. A dialog panel and a popover differ only in the fill role. */
+/* Surfaces. */
 .dialog-content,
 .alert-dialog-content,
 .sheet-content {
@@ -63,14 +58,6 @@
   color: var(--foreground);
   box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
   outline: none;
-}
-
-.popover-content {
-  background-color: var(--popover);
-  color: var(--foreground);
-  box-shadow: 0 0 0 var(--border-width-thin) var(--edge);
-  outline: none;
-  animation-duration: var(--motion-duration-fast);
 }
 
 /* Centered dialogs zoom and fade in place. */
@@ -99,50 +86,6 @@
 
 .dialog-content[data-closed],
 .alert-dialog-content[data-closed] {
-  animation-name: overlay-zoom-out;
-  animation-timing-function: var(--ease-exit);
-  animation-fill-mode: forwards;
-}
-
-/* Anchored panels slide in from the side they open toward. */
-.popover-content,
-.tooltip-content {
-  transform-origin: var(--transform-origin);
-}
-
-.popover-content[data-side='bottom'],
-.tooltip-content[data-side='bottom'] {
-  --overlay-y: -0.5rem;
-}
-
-.popover-content[data-side='top'],
-.tooltip-content[data-side='top'] {
-  --overlay-y: 0.5rem;
-}
-
-.popover-content[data-side='inline-end'],
-.tooltip-content[data-side='inline-end'],
-.popover-content[data-side='right'],
-.tooltip-content[data-side='right'] {
-  --overlay-x: -0.5rem;
-}
-
-.popover-content[data-side='inline-start'],
-.tooltip-content[data-side='inline-start'],
-.popover-content[data-side='left'],
-.tooltip-content[data-side='left'] {
-  --overlay-x: 0.5rem;
-}
-
-.popover-content[data-open],
-.tooltip-content[data-open],
-.tooltip-content[data-state='delayed-open'] {
-  animation-name: overlay-slide-in;
-  animation-timing-function: var(--ease-enter);
-}
-
-.popover-content[data-closed],
-.tooltip-content[data-closed] {
   animation-name: overlay-zoom-out;
   animation-timing-function: var(--ease-exit);
   animation-fill-mode: forwards;
@@ -186,36 +129,9 @@
   .dialog-overlay,
   .alert-dialog-overlay,
   .dialog-content,
-  .alert-dialog-content,
-  .popover-content,
-  .tooltip-content {
+  .alert-dialog-content {
     animation-duration: 1ms;
   }
-}
-
-/* Width from the overlay scale. A popover sets data-size; no size keeps its own width. */
-.popover-content[data-size='xxs'] {
-  width: var(--overlay-xxs);
-}
-
-.popover-content[data-size='xs'] {
-  width: var(--overlay-xs);
-}
-
-.popover-content[data-size='sm'] {
-  width: var(--overlay-sm);
-}
-
-.popover-content[data-size='md'] {
-  width: var(--overlay-md);
-}
-
-.popover-content[data-size='lg'] {
-  width: var(--overlay-lg);
-}
-
-.popover-content[data-size='xl'] {
-  width: var(--overlay-xl);
 }
 
 /* Panel footer band, shared by dialog, alert dialog and sheet. */

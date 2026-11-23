@@ -45,14 +45,14 @@ function PopoverContent({
         sideOffset={sideOffset}
         collisionAvoidance={collisionAvoidance}
         anchor={anchor}
-        className="popover-positioner"
+        className="floating-positioner popover-positioner"
       >
         <PopoverPrimitive.Popup
           data-slot="popover-content"
           data-size={size}
           data-inset={inset}
           data-width={anchorWidth ? 'anchor' : undefined}
-          className={cn('popover-content', className)}
+          className={cn('floating-panel floating-surface popover-content', className)}
           {...props}
         />
       </PopoverPrimitive.Positioner>

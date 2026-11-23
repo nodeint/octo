@@ -43,11 +43,11 @@ function TooltipContent({
         alignOffset={alignOffset}
         side={side}
         sideOffset={sideOffset}
-        className="tooltip-positioner"
+        className="floating-positioner tooltip-positioner"
       >
         <TooltipPrimitive.Popup
           data-slot="tooltip-content"
-          className={cn('tooltip-content', className)}
+          className={cn('floating-panel tooltip-content', className)}
           {...props}
         >
           {children}
