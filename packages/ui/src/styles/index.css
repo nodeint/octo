@@ -21,7 +21,8 @@
 /* Theme */
 @import "./theme/index.css" layer(theme);
 @import "./typography.css" layer(theme);
-@import "./variants.css" layer(theme);
+@import "./variants/tone.css" layer(theme);
+@import "./variants/emphasis.css" layer(theme);
 
 /* Layer */
 @import "./layout/index.css" layer(layout);

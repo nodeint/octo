@@ -1,8 +1,7 @@
 /*
- * Paint: two independent axes, tone and emphasis, build the --variant-* slots a component reads.
- *   data-tone      which colors: neutral, primary, destructive, success, warning, info, field. Declares --tone-* roles and the focus ring.
- *   data-emphasis  how they are painted: solid, soft, outline, ghost, muted, link, surface, field. Maps roles to the identity slots.
- * A component never names a color or a tone; it paints from --variant-*. Only the blocks in this file
+ * Emphasis axis: data-emphasis builds the --variant-* slots a component reads from the --tone-* roles (variants/tone.css).
+ *   data-emphasis  how the tone is painted: solid, soft, outline, ghost, muted, link, surface, field. Maps roles to the identity slots.
+ * A component never names a color or a tone; it paints from --variant-*. Only the blocks in variants/
  * read --tone-*. Exposed action pairs: primary solid, primary link, neutral soft, outline, ghost, destructive soft.
  * The surface emphasis paints a static callout (alert): neutral, destructive, success, warning, info.
  * The field emphasis paints a text field (input, textarea, select and combobox trigger) with the field tone only.
@@ -15,124 +14,7 @@
  *   fg-disabled, fg-placeholder                  disabled text, placeholder text
  *   fg-secondary                                 secondary text on a surface (surface emphasis only)
  * Same values in light and dark: the roles they alias already switch with the theme.
- * The one exception is the field tone, which declares its own fill and has a `.dark` block.
  */
-
-/*
- * Tone roles: strong fill (+hover, text on it), subtle fill (+text), selected fill, tone text on a plain surface, ring,
- * and the callout surface (fill, edge, secondary text) read by the surface emphasis.
- */
-[data-tone='neutral'] {
-  --tone-strong: var(--tertiary);
-  --tone-strong-hover: var(--tertiary);
-  --tone-strong-foreground: var(--foreground);
-  --tone-subtle: var(--secondary);
-  --tone-subtle-foreground: var(--foreground);
-  --tone-selected: var(--accent);
-  --tone-text: var(--foreground);
-  --tone-ring: var(--ring);
-  --tone-surface: var(--card);
-  --tone-surface-foreground: var(--role-description-color);
-  --tone-border: var(--border);
-}
-
-[data-tone='primary'] {
-  --tone-strong: var(--primary);
-  --tone-strong-hover: var(--primary-hover);
-  --tone-strong-foreground: var(--primary-foreground);
-  --tone-subtle: var(--secondary);
-  --tone-subtle-foreground: var(--foreground);
-  --tone-selected: var(--accent);
-  --tone-text: var(--primary);
-  --tone-ring: var(--ring);
-}
-
-[data-tone='destructive'] {
-  --tone-strong: var(--destructive);
-  --tone-strong-hover: var(--destructive-hover);
-  --tone-strong-foreground: var(--destructive-foreground);
-  --tone-subtle: var(--destructive-subtle);
-  --tone-subtle-foreground: var(--destructive-subtle-foreground);
-  --tone-selected: var(--destructive-subtle);
-  --tone-text: var(--destructive);
-  --tone-ring: var(--destructive);
-  --tone-surface: var(--destructive-surface);
-  --tone-surface-foreground: var(--destructive-surface-foreground);
-  --tone-border: var(--destructive-border);
-}
-
-/*
- * Text fields. Only the roles the field emphasis and the focus ring read are declared; --tone-surface-hover is
- * specific to this tone. Not exposed to actions.
- */
-[data-tone='field'] {
-  --tone-surface: transparent;
-  --tone-surface-hover: transparent;
-  --tone-surface-focus: transparent;
-  --tone-border: var(--border-control);
-  --tone-ring: var(--ring);
-}
-
-/* Open on a light page, tinted in dark. */
-.dark [data-tone='field'] {
-  --tone-surface: var(--muted);
-  --tone-surface-hover: var(--secondary);
-  --tone-surface-focus: var(--secondary);
-}
-
-[data-tone='success'] {
-  --tone-strong: var(--success);
-  --tone-strong-hover: var(--success-hover);
-  --tone-strong-foreground: var(--success-foreground);
-  --tone-subtle: var(--success-subtle);
-  --tone-subtle-foreground: var(--success-subtle-foreground);
-  --tone-selected: var(--success-subtle);
-  --tone-text: var(--success);
-  --tone-ring: var(--success);
-  --tone-surface: var(--success-surface);
-  --tone-surface-foreground: var(--success-surface-foreground);
-  --tone-border: var(--success-border);
-}
-
-[data-tone='warning'] {
-  --tone-strong: var(--warning);
-  --tone-strong-hover: var(--warning-hover);
-  --tone-strong-foreground: var(--warning-foreground);
-  --tone-subtle: var(--warning-subtle);
-  --tone-subtle-foreground: var(--warning-subtle-foreground);
-  --tone-selected: var(--warning-subtle);
-  --tone-text: var(--warning);
-  --tone-ring: var(--warning);
-  --tone-surface: var(--warning-surface);
-  --tone-surface-foreground: var(--warning-surface-foreground);
-  --tone-border: var(--warning-border);
-}
-
-[data-tone='info'] {
-  --tone-strong: var(--info);
-  --tone-strong-hover: var(--info-hover);
-  --tone-strong-foreground: var(--info-foreground);
-  --tone-subtle: var(--info-subtle);
-  --tone-subtle-foreground: var(--info-subtle-foreground);
-  --tone-selected: var(--info-subtle);
-  --tone-text: var(--info);
-  --tone-ring: var(--info);
-  --tone-surface: var(--info-surface);
-  --tone-surface-foreground: var(--info-surface-foreground);
-  --tone-border: var(--info-border);
-}
-
-/* State slots shared by every action: focus, invalid, disabled text. Resolves on each element against its own tone. */
-[data-tone] {
-  --variant-ring: var(--tone-ring);
-  --variant-border-focus: var(--tone-ring);
-  --variant-border-invalid: var(--state-invalid-border);
-  --variant-fg-disabled: var(--foreground-disabled);
-  --variant-fg-placeholder: var(--foreground-subtle);
-  --variant-shadow-focus: 0 0 0 var(--focus-width)
-    color-mix(in oklab, var(--variant-ring) var(--state-halo-strength), transparent);
-  --variant-shadow-invalid: var(--state-invalid-shadow);
-}
 
 [data-emphasis='solid'] {
   --variant-bg: var(--tone-strong);

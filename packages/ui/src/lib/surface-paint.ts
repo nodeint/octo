@@ -1,7 +1,7 @@
 /**
  * Paint of a static surface (badge): a tone (which colors) and an emphasis (how they are painted).
  * `variant` is a preset name for one approved pair. A caller passes `variant`, or `tone` with `emphasis`.
- * The CSS sets live in styles/variants.css.
+ * The CSS sets live in styles/variants/.
  */
 type SurfaceTone = 'neutral' | 'primary' | 'destructive' | 'success' | 'warning' | 'info'
 type SurfaceEmphasis = 'solid' | 'soft' | 'outline'

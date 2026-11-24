@@ -4,7 +4,7 @@
  * names a specific field. Size, padding and radius stay in the component files. The class is not `field`: that one is
  * the Field wrapper (Field.css).
  *
- * Color is painted from --variant-* (styles/variants.css). They resolve on each element, so a field inside a
+ * Color is painted from --variant-* (styles/variants/). They resolve on each element, so a field inside a
  * group still reads its group's --group-field-* first. The field reads these slots:
  *   bg / fg / border                 at rest
  *   bg-hover, fg-hover               pointer hover; the select and combobox triggers read them

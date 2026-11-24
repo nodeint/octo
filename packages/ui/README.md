@@ -13,7 +13,7 @@ src/
     base.css         base layer: page defaults only
     theme/           theme layer: color, elevation and focus/invalid state tokens (state.css); the only axis with `.dark` values
     typography.css   theme layer: type steps and text roles
-    variants.css     theme layer: the tone and emphasis sets that build --variant-*
+    variants/        theme layer: tone.css and emphasis.css: the sets that build --variant-*
     layout/          layout layer: control sizes, space, radius, border widths, containers, motion, z-index, opacity
     recipes/         recipes layer, below components: class skins shared by several components
     components.css   components layer: per-part tokens, such as switch, tab, and sidebar parts
@@ -109,13 +109,13 @@ An exception applies only while a migration is in progress. A new exception need
   components, recipes, `base.css`, and `utilities.css` read the roles, never a raw step.
 - `components.css` holds per-part tokens: switch, radio, checkbox, slider, avatar, scrollbar, tooltip, floating,
   tab, and sidebar. It may read any axis.
-- The tone and emphasis sets live in `styles/variants.css`, in the theme layer after the tokens.
+- The tone and emphasis sets live in `styles/variants/`, in the theme layer after the tokens.
   The action, field and group size sets and the group variant sets live with their recipe
   (`recipes/action.css`, `recipes/field-control.css`, `recipes/group.css`).
   A group's `variant` maps to a tone and emphasis pair (`lib/group-paint.ts`); the root carries `data-tone` and
   `data-emphasis`, and `group.css` only aliases the resulting `--variant-*` slots to `--group-*`, so it declares no color.
   A group overrides only the tokens that differ, on its own root, with a comment that gives the reason.
-- Paint has two axes in `styles/variants.css`: `data-tone` (`neutral`, `primary`, `destructive`, `success`,
+- Paint has two axes in `styles/variants/`: `data-tone` (`neutral`, `primary`, `destructive`, `success`,
   `warning`, `info`, `field`) declares `--tone-*` roles and the focus ring, and `data-emphasis` (`solid`, `soft`,
   `outline`, `ghost`, `muted`, `link`, `surface`, `field`) maps the roles to the `--variant-*` slots.
   `Alert` is not an action: it sets `data-tone` from its `variant` and `data-emphasis="surface"`, a static callout
@@ -133,4 +133,4 @@ An exception applies only while a migration is in progress. A new exception need
   `:root` / `.dark` pair. `utilities.css` may select `.dark`.
 - `pnpm lint:css` enforces these rules locally; CI does not run it. It reports as errors a component, recipe,
   `base.css`, or `utilities.css` read of a raw color step, and a read between `theme/` and `layout/`.
-  It does not check `typography.css`, `components.css`, `variants.css`, or `appearance/`.
+  It does not check `typography.css`, `components.css`, `variants/`, or `appearance/`.

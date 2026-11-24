@@ -1,7 +1,7 @@
 /**
  * Paint of a group: a group's `variant` is a preset name for one tone and emphasis pair.
  * The group root carries `data-tone` and `data-emphasis`, and styles/recipes/group.css hands the resulting
- * --variant-* slots to the actions and fields inside as --group-*. The CSS sets live in styles/variants.css.
+ * --variant-* slots to the actions and fields inside as --group-*. The CSS sets live in styles/variants/.
  */
 type GroupVariant = 'outline' | 'secondary' | 'ghost'
 type GroupFieldVariant = GroupVariant | 'field'

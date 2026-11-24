@@ -94,7 +94,7 @@
 
 /*
  * Group paint: the group root carries data-tone and data-emphasis (lib/group-paint.ts maps data-group-variant to
- * the pair), so styles/variants.css has already built --variant-* on it. This block only hands those slots to the
+ * the pair), so styles/variants/ has already built --variant-* on it. This block only hands those slots to the
  * actions and fields inside as --group-*; it declares no color. A change to a tone or an emphasis reaches every
  * group with no edit here. A field (input, select trigger) reads --group-field-*; an action (button) reads
  * --group-action-*. Each falls back to the child's own --variant-*, so a child outside a group paints as before:

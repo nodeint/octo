@@ -1,17 +1,5 @@
 /**
- * Corner radius scale: --radius-xs · --radius-sm · --radius-md · --radius-lg. Plain steps with no meaning.
- * Components read the role sets further down in this file, not these steps.
- */
-
-:root {
-  --radius-xs: 0.375rem;
-  --radius-sm: 0.5rem;
-  --radius-md: 0.625rem;
-  --radius-lg: 0.75rem;
-}
-
-/**
- * Radius roles, built on the scale above.
+  * Corner radius scale: --radius-xs · --radius-sm · --radius-md · --radius-lg. Plain steps with no meaning.
  * A component reads its set and never the scale, so one set decides the shape of a whole family.
  *   --radius-surface-*  every content surface and the rows inside it: card, pane, alert, item, menu row. xs … lg
  *   --radius-overlay-*  the container of a floating layer only, never its children: xs = tooltip, sm = menu/select/popover, lg = dialog/sheet. xs … lg
@@ -22,8 +10,12 @@
  *   --radius-pill-*     a capsule: half the matching --control-height-*, so the ends are exact semicircles (badge)
  *   --radius-action-block  a stack of actions (vertical button group); one step, not per size
  */
-
 :root {
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+
   --radius-pill-xs: calc(var(--control-height-xs) / 2);
   --radius-pill-sm: calc(var(--control-height-sm) / 2);
   --radius-pill-md: calc(var(--control-height-md) / 2);

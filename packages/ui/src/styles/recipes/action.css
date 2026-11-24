@@ -3,7 +3,7 @@
  * their own class, so no selector here names a specific control. Shape, type role and the
  * size-specific layout stay in Button.css and Toggle.css.
  *
- * Color comes only from the variant (styles/variants.css),
+ * Color comes only from the variant (styles/variants/),
  * or from a group's data-group-variant (styles/recipes/group.css), which wins for the identity slots.
  */
 .action {

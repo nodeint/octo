@@ -5,7 +5,7 @@
  *   state-halo-strength                          share of that color in the halo around the control
  *   state-focus-halo, state-invalid-halo         the halo color
  * The halo width is a layout token, so the box-shadow built from these (--state-focus-shadow,
- * --state-invalid-shadow) is declared in variants.css.
+ * --state-invalid-shadow) is declared in variants/.
  * Declared on .dark too: a var() resolves where it is declared, so a nested .dark must resolve its own --ring.
  */
 :root,
