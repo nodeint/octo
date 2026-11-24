@@ -21,408 +21,618 @@
 
 /* Swatch tones: each aliases one hue of theme/swatches.css. Light-on-light hues (yellow, lime) take their text from the subtle foreground. */
 [data-tone='orange'] {
-  --tone-strong: var(--orange);
-  --tone-strong-hover: var(--orange-hover);
-  --tone-strong-foreground: var(--orange-foreground);
+  --tone-strong: var(--orange-strong);
+  --tone-strong-foreground: var(--orange-strong-foreground);
+  --tone-strong-hover: var(--orange-strong-hover);
+  --tone-strong-pressed: var(--orange-subtle);
+  --tone-strong-disabled: var(--orange-strong-disabled);
   --tone-subtle: var(--orange-subtle);
   --tone-subtle-foreground: var(--orange-subtle-foreground);
-  --tone-selected: var(--orange-subtle);
-  --tone-foreground: var(--orange);
-  --tone-ring: var(--orange);
+  --tone-subtle-pressed: var(--orange-subtle-pressed);
+  --tone-subtle-hover: var(--orange-subtle-hover);
+  --tone-subtle-disabled: var(--orange-subtle-disabled);
+  --tone-plain-foreground: var(--orange-plain-foreground);
+  --tone-plain-border: var(--orange-plain-border);
+  --tone-plain-border-disabled: var(--orange-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--orange-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--orange-plain-foreground-muted);
   --tone-surface: var(--orange-surface);
   --tone-surface-foreground: var(--orange-surface-foreground);
-  --tone-border: var(--orange-border);
+  --tone-surface-border: var(--orange-surface-border);
+  --tone-ring: var(--orange-strong);
 }
 
 [data-tone='yellow'] {
-  --tone-strong: var(--yellow);
-  --tone-strong-hover: var(--yellow-hover);
-  --tone-strong-foreground: var(--yellow-foreground);
+  --tone-strong: var(--yellow-strong);
+  --tone-strong-foreground: var(--yellow-strong-foreground);
+  --tone-strong-hover: var(--yellow-strong-hover);
+  --tone-strong-pressed: var(--yellow-subtle);
+  --tone-strong-disabled: var(--yellow-strong-disabled);
   --tone-subtle: var(--yellow-subtle);
   --tone-subtle-foreground: var(--yellow-subtle-foreground);
-  --tone-selected: var(--yellow-subtle);
-  --tone-foreground: var(--yellow-subtle-foreground);
-  --tone-ring: var(--yellow);
+  --tone-subtle-pressed: var(--yellow-subtle-pressed);
+  --tone-subtle-hover: var(--yellow-subtle-hover);
+  --tone-subtle-disabled: var(--yellow-subtle-disabled);
+  --tone-plain-foreground: var(--yellow-plain-foreground);
+  --tone-plain-border: var(--yellow-plain-border);
+  --tone-plain-border-disabled: var(--yellow-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--yellow-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--yellow-plain-foreground-muted);
   --tone-surface: var(--yellow-surface);
   --tone-surface-foreground: var(--yellow-surface-foreground);
-  --tone-border: var(--yellow-border);
+  --tone-surface-border: var(--yellow-surface-border);
+  --tone-ring: var(--yellow-strong);
 }
 
 [data-tone='lime'] {
-  --tone-strong: var(--lime);
-  --tone-strong-hover: var(--lime-hover);
-  --tone-strong-foreground: var(--lime-foreground);
+  --tone-strong: var(--lime-strong);
+  --tone-strong-foreground: var(--lime-strong-foreground);
+  --tone-strong-hover: var(--lime-strong-hover);
+  --tone-strong-pressed: var(--lime-subtle);
+  --tone-strong-disabled: var(--lime-strong-disabled);
   --tone-subtle: var(--lime-subtle);
   --tone-subtle-foreground: var(--lime-subtle-foreground);
-  --tone-selected: var(--lime-subtle);
-  --tone-foreground: var(--lime-subtle-foreground);
-  --tone-ring: var(--lime);
+  --tone-subtle-pressed: var(--lime-subtle-pressed);
+  --tone-subtle-hover: var(--lime-subtle-hover);
+  --tone-subtle-disabled: var(--lime-subtle-disabled);
+  --tone-plain-foreground: var(--lime-plain-foreground);
+  --tone-plain-border: var(--lime-plain-border);
+  --tone-plain-border-disabled: var(--lime-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--lime-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--lime-plain-foreground-muted);
   --tone-surface: var(--lime-surface);
   --tone-surface-foreground: var(--lime-surface-foreground);
-  --tone-border: var(--lime-border);
+  --tone-surface-border: var(--lime-surface-border);
+  --tone-ring: var(--lime-strong);
 }
 
 [data-tone='emerald'] {
-  --tone-strong: var(--emerald);
-  --tone-strong-hover: var(--emerald-hover);
-  --tone-strong-foreground: var(--emerald-foreground);
+  --tone-strong: var(--emerald-strong);
+  --tone-strong-foreground: var(--emerald-strong-foreground);
+  --tone-strong-hover: var(--emerald-strong-hover);
+  --tone-strong-pressed: var(--emerald-subtle);
+  --tone-strong-disabled: var(--emerald-strong-disabled);
   --tone-subtle: var(--emerald-subtle);
   --tone-subtle-foreground: var(--emerald-subtle-foreground);
-  --tone-selected: var(--emerald-subtle);
-  --tone-foreground: var(--emerald);
-  --tone-ring: var(--emerald);
+  --tone-subtle-pressed: var(--emerald-subtle-pressed);
+  --tone-subtle-hover: var(--emerald-subtle-hover);
+  --tone-subtle-disabled: var(--emerald-subtle-disabled);
+  --tone-plain-foreground: var(--emerald-plain-foreground);
+  --tone-plain-border: var(--emerald-plain-border);
+  --tone-plain-border-disabled: var(--emerald-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--emerald-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--emerald-plain-foreground-muted);
   --tone-surface: var(--emerald-surface);
   --tone-surface-foreground: var(--emerald-surface-foreground);
-  --tone-border: var(--emerald-border);
+  --tone-surface-border: var(--emerald-surface-border);
+  --tone-ring: var(--emerald-strong);
 }
 
 [data-tone='cyan'] {
-  --tone-strong: var(--cyan);
-  --tone-strong-hover: var(--cyan-hover);
-  --tone-strong-foreground: var(--cyan-foreground);
+  --tone-strong: var(--cyan-strong);
+  --tone-strong-foreground: var(--cyan-strong-foreground);
+  --tone-strong-hover: var(--cyan-strong-hover);
+  --tone-strong-pressed: var(--cyan-subtle);
+  --tone-strong-disabled: var(--cyan-strong-disabled);
   --tone-subtle: var(--cyan-subtle);
   --tone-subtle-foreground: var(--cyan-subtle-foreground);
-  --tone-selected: var(--cyan-subtle);
-  --tone-foreground: var(--cyan);
-  --tone-ring: var(--cyan);
+  --tone-subtle-pressed: var(--cyan-subtle-pressed);
+  --tone-subtle-hover: var(--cyan-subtle-hover);
+  --tone-subtle-disabled: var(--cyan-subtle-disabled);
+  --tone-plain-foreground: var(--cyan-plain-foreground);
+  --tone-plain-border: var(--cyan-plain-border);
+  --tone-plain-border-disabled: var(--cyan-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--cyan-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--cyan-plain-foreground-muted);
   --tone-surface: var(--cyan-surface);
   --tone-surface-foreground: var(--cyan-surface-foreground);
-  --tone-border: var(--cyan-border);
+  --tone-surface-border: var(--cyan-surface-border);
+  --tone-ring: var(--cyan-strong);
 }
 
 [data-tone='blue'] {
-  --tone-strong: var(--blue);
-  --tone-strong-hover: var(--blue-hover);
-  --tone-strong-foreground: var(--blue-foreground);
+  --tone-strong: var(--blue-strong);
+  --tone-strong-foreground: var(--blue-strong-foreground);
+  --tone-strong-hover: var(--blue-strong-hover);
+  --tone-strong-pressed: var(--blue-subtle);
+  --tone-strong-disabled: var(--blue-strong-disabled);
   --tone-subtle: var(--blue-subtle);
   --tone-subtle-foreground: var(--blue-subtle-foreground);
-  --tone-selected: var(--blue-subtle);
-  --tone-foreground: var(--blue);
-  --tone-ring: var(--blue);
+  --tone-subtle-pressed: var(--blue-subtle-pressed);
+  --tone-subtle-hover: var(--blue-subtle-hover);
+  --tone-subtle-disabled: var(--blue-subtle-disabled);
+  --tone-plain-foreground: var(--blue-plain-foreground);
+  --tone-plain-border: var(--blue-plain-border);
+  --tone-plain-border-disabled: var(--blue-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--blue-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--blue-plain-foreground-muted);
   --tone-surface: var(--blue-surface);
   --tone-surface-foreground: var(--blue-surface-foreground);
-  --tone-border: var(--blue-border);
+  --tone-surface-border: var(--blue-surface-border);
+  --tone-ring: var(--blue-strong);
 }
 
 [data-tone='indigo'] {
-  --tone-strong: var(--indigo);
-  --tone-strong-hover: var(--indigo-hover);
-  --tone-strong-foreground: var(--indigo-foreground);
+  --tone-strong: var(--indigo-strong);
+  --tone-strong-foreground: var(--indigo-strong-foreground);
+  --tone-strong-hover: var(--indigo-strong-hover);
+  --tone-strong-pressed: var(--indigo-subtle);
+  --tone-strong-disabled: var(--indigo-strong-disabled);
   --tone-subtle: var(--indigo-subtle);
   --tone-subtle-foreground: var(--indigo-subtle-foreground);
-  --tone-selected: var(--indigo-subtle);
-  --tone-foreground: var(--indigo);
-  --tone-ring: var(--indigo);
+  --tone-subtle-pressed: var(--indigo-subtle-pressed);
+  --tone-subtle-hover: var(--indigo-subtle-hover);
+  --tone-subtle-disabled: var(--indigo-subtle-disabled);
+  --tone-plain-foreground: var(--indigo-plain-foreground);
+  --tone-plain-border: var(--indigo-plain-border);
+  --tone-plain-border-disabled: var(--indigo-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--indigo-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--indigo-plain-foreground-muted);
   --tone-surface: var(--indigo-surface);
   --tone-surface-foreground: var(--indigo-surface-foreground);
-  --tone-border: var(--indigo-border);
+  --tone-surface-border: var(--indigo-surface-border);
+  --tone-ring: var(--indigo-strong);
 }
 
 [data-tone='violet'] {
-  --tone-strong: var(--violet);
-  --tone-strong-hover: var(--violet-hover);
-  --tone-strong-foreground: var(--violet-foreground);
+  --tone-strong: var(--violet-strong);
+  --tone-strong-foreground: var(--violet-strong-foreground);
+  --tone-strong-hover: var(--violet-strong-hover);
+  --tone-strong-pressed: var(--violet-subtle);
+  --tone-strong-disabled: var(--violet-strong-disabled);
   --tone-subtle: var(--violet-subtle);
   --tone-subtle-foreground: var(--violet-subtle-foreground);
-  --tone-selected: var(--violet-subtle);
-  --tone-foreground: var(--violet);
-  --tone-ring: var(--violet);
+  --tone-subtle-pressed: var(--violet-subtle-pressed);
+  --tone-subtle-hover: var(--violet-subtle-hover);
+  --tone-subtle-disabled: var(--violet-subtle-disabled);
+  --tone-plain-foreground: var(--violet-plain-foreground);
+  --tone-plain-border: var(--violet-plain-border);
+  --tone-plain-border-disabled: var(--violet-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--violet-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--violet-plain-foreground-muted);
   --tone-surface: var(--violet-surface);
   --tone-surface-foreground: var(--violet-surface-foreground);
-  --tone-border: var(--violet-border);
+  --tone-surface-border: var(--violet-surface-border);
+  --tone-ring: var(--violet-strong);
 }
 
 [data-tone='purple'] {
-  --tone-strong: var(--purple);
-  --tone-strong-hover: var(--purple-hover);
-  --tone-strong-foreground: var(--purple-foreground);
+  --tone-strong: var(--purple-strong);
+  --tone-strong-foreground: var(--purple-strong-foreground);
+  --tone-strong-hover: var(--purple-strong-hover);
+  --tone-strong-pressed: var(--purple-subtle);
+  --tone-strong-disabled: var(--purple-strong-disabled);
   --tone-subtle: var(--purple-subtle);
   --tone-subtle-foreground: var(--purple-subtle-foreground);
-  --tone-selected: var(--purple-subtle);
-  --tone-foreground: var(--purple);
-  --tone-ring: var(--purple);
+  --tone-subtle-pressed: var(--purple-subtle-pressed);
+  --tone-subtle-hover: var(--purple-subtle-hover);
+  --tone-subtle-disabled: var(--purple-subtle-disabled);
+  --tone-plain-foreground: var(--purple-plain-foreground);
+  --tone-plain-border: var(--purple-plain-border);
+  --tone-plain-border-disabled: var(--purple-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--purple-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--purple-plain-foreground-muted);
   --tone-surface: var(--purple-surface);
   --tone-surface-foreground: var(--purple-surface-foreground);
-  --tone-border: var(--purple-border);
+  --tone-surface-border: var(--purple-surface-border);
+  --tone-ring: var(--purple-strong);
 }
 
 [data-tone='fuchsia'] {
-  --tone-strong: var(--fuchsia);
-  --tone-strong-hover: var(--fuchsia-hover);
-  --tone-strong-foreground: var(--fuchsia-foreground);
+  --tone-strong: var(--fuchsia-strong);
+  --tone-strong-foreground: var(--fuchsia-strong-foreground);
+  --tone-strong-hover: var(--fuchsia-strong-hover);
+  --tone-strong-pressed: var(--fuchsia-subtle);
+  --tone-strong-disabled: var(--fuchsia-strong-disabled);
   --tone-subtle: var(--fuchsia-subtle);
   --tone-subtle-foreground: var(--fuchsia-subtle-foreground);
-  --tone-selected: var(--fuchsia-subtle);
-  --tone-foreground: var(--fuchsia);
-  --tone-ring: var(--fuchsia);
+  --tone-subtle-pressed: var(--fuchsia-subtle-pressed);
+  --tone-subtle-hover: var(--fuchsia-subtle-hover);
+  --tone-subtle-disabled: var(--fuchsia-subtle-disabled);
+  --tone-plain-foreground: var(--fuchsia-plain-foreground);
+  --tone-plain-border: var(--fuchsia-plain-border);
+  --tone-plain-border-disabled: var(--fuchsia-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--fuchsia-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--fuchsia-plain-foreground-muted);
   --tone-surface: var(--fuchsia-surface);
   --tone-surface-foreground: var(--fuchsia-surface-foreground);
-  --tone-border: var(--fuchsia-border);
+  --tone-surface-border: var(--fuchsia-surface-border);
+  --tone-ring: var(--fuchsia-strong);
 }
 
 [data-tone='pink'] {
-  --tone-strong: var(--pink);
-  --tone-strong-hover: var(--pink-hover);
-  --tone-strong-foreground: var(--pink-foreground);
+  --tone-strong: var(--pink-strong);
+  --tone-strong-foreground: var(--pink-strong-foreground);
+  --tone-strong-hover: var(--pink-strong-hover);
+  --tone-strong-pressed: var(--pink-subtle);
+  --tone-strong-disabled: var(--pink-strong-disabled);
   --tone-subtle: var(--pink-subtle);
   --tone-subtle-foreground: var(--pink-subtle-foreground);
-  --tone-selected: var(--pink-subtle);
-  --tone-foreground: var(--pink);
-  --tone-ring: var(--pink);
+  --tone-subtle-pressed: var(--pink-subtle-pressed);
+  --tone-subtle-hover: var(--pink-subtle-hover);
+  --tone-subtle-disabled: var(--pink-subtle-disabled);
+  --tone-plain-foreground: var(--pink-plain-foreground);
+  --tone-plain-border: var(--pink-plain-border);
+  --tone-plain-border-disabled: var(--pink-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--pink-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--pink-plain-foreground-muted);
   --tone-surface: var(--pink-surface);
   --tone-surface-foreground: var(--pink-surface-foreground);
-  --tone-border: var(--pink-border);
+  --tone-surface-border: var(--pink-surface-border);
+  --tone-ring: var(--pink-strong);
 }
 
 [data-tone='rose'] {
-  --tone-strong: var(--rose);
-  --tone-strong-hover: var(--rose-hover);
-  --tone-strong-foreground: var(--rose-foreground);
+  --tone-strong: var(--rose-strong);
+  --tone-strong-foreground: var(--rose-strong-foreground);
+  --tone-strong-hover: var(--rose-strong-hover);
+  --tone-strong-pressed: var(--rose-subtle);
+  --tone-strong-disabled: var(--rose-strong-disabled);
   --tone-subtle: var(--rose-subtle);
   --tone-subtle-foreground: var(--rose-subtle-foreground);
-  --tone-selected: var(--rose-subtle);
-  --tone-foreground: var(--rose);
-  --tone-ring: var(--rose);
+  --tone-subtle-pressed: var(--rose-subtle-pressed);
+  --tone-subtle-hover: var(--rose-subtle-hover);
+  --tone-subtle-disabled: var(--rose-subtle-disabled);
+  --tone-plain-foreground: var(--rose-plain-foreground);
+  --tone-plain-border: var(--rose-plain-border);
+  --tone-plain-border-disabled: var(--rose-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--rose-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--rose-plain-foreground-muted);
   --tone-surface: var(--rose-surface);
   --tone-surface-foreground: var(--rose-surface-foreground);
-  --tone-border: var(--rose-border);
+  --tone-surface-border: var(--rose-surface-border);
+  --tone-ring: var(--rose-strong);
 }
 
 [data-tone='slate'] {
-  --tone-strong: var(--slate);
-  --tone-strong-hover: var(--slate-hover);
-  --tone-strong-foreground: var(--slate-foreground);
+  --tone-strong: var(--slate-strong);
+  --tone-strong-foreground: var(--slate-strong-foreground);
+  --tone-strong-hover: var(--slate-strong-hover);
+  --tone-strong-pressed: var(--slate-subtle);
+  --tone-strong-disabled: var(--slate-strong-disabled);
   --tone-subtle: var(--slate-subtle);
   --tone-subtle-foreground: var(--slate-subtle-foreground);
-  --tone-selected: var(--slate-subtle);
-  --tone-foreground: var(--slate);
-  --tone-ring: var(--slate);
+  --tone-subtle-pressed: var(--slate-subtle-pressed);
+  --tone-subtle-hover: var(--slate-subtle-hover);
+  --tone-subtle-disabled: var(--slate-subtle-disabled);
+  --tone-plain-foreground: var(--slate-plain-foreground);
+  --tone-plain-border: var(--slate-plain-border);
+  --tone-plain-border-disabled: var(--slate-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--slate-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--slate-plain-foreground-muted);
   --tone-surface: var(--slate-surface);
   --tone-surface-foreground: var(--slate-surface-foreground);
-  --tone-border: var(--slate-border);
+  --tone-surface-border: var(--slate-surface-border);
+  --tone-ring: var(--slate-strong);
 }
 
 [data-tone='gray'] {
-  --tone-strong: var(--gray);
-  --tone-strong-hover: var(--gray-hover);
-  --tone-strong-foreground: var(--gray-foreground);
+  --tone-strong: var(--gray-strong);
+  --tone-strong-foreground: var(--gray-strong-foreground);
+  --tone-strong-hover: var(--gray-strong-hover);
+  --tone-strong-pressed: var(--gray-subtle);
+  --tone-strong-disabled: var(--gray-strong-disabled);
   --tone-subtle: var(--gray-subtle);
   --tone-subtle-foreground: var(--gray-subtle-foreground);
-  --tone-selected: var(--gray-subtle);
-  --tone-foreground: var(--gray);
-  --tone-ring: var(--gray);
+  --tone-subtle-pressed: var(--gray-subtle-pressed);
+  --tone-subtle-hover: var(--gray-subtle-hover);
+  --tone-subtle-disabled: var(--gray-subtle-disabled);
+  --tone-plain-foreground: var(--gray-plain-foreground);
+  --tone-plain-border: var(--gray-plain-border);
+  --tone-plain-border-disabled: var(--gray-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--gray-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--gray-plain-foreground-muted);
   --tone-surface: var(--gray-surface);
   --tone-surface-foreground: var(--gray-surface-foreground);
-  --tone-border: var(--gray-border);
+  --tone-surface-border: var(--gray-surface-border);
+  --tone-ring: var(--gray-strong);
 }
 
 [data-tone='neutral'] {
-  --tone-strong: var(--neutral);
-  --tone-strong-hover: var(--neutral-hover);
-  --tone-strong-foreground: var(--neutral-foreground);
+  --tone-strong: var(--neutral-strong);
+  --tone-strong-foreground: var(--neutral-strong-foreground);
+  --tone-strong-hover: var(--neutral-strong-hover);
+  --tone-strong-pressed: var(--neutral-subtle);
+  --tone-strong-disabled: var(--neutral-strong-disabled);
   --tone-subtle: var(--neutral-subtle);
   --tone-subtle-foreground: var(--neutral-subtle-foreground);
-  --tone-selected: var(--neutral-subtle);
-  --tone-foreground: var(--neutral);
-  --tone-ring: var(--neutral);
+  --tone-subtle-pressed: var(--neutral-subtle-pressed);
+  --tone-subtle-hover: var(--neutral-subtle-hover);
+  --tone-subtle-disabled: var(--neutral-subtle-disabled);
+  --tone-plain-foreground: var(--neutral-plain-foreground);
+  --tone-plain-border: var(--neutral-plain-border);
+  --tone-plain-border-disabled: var(--neutral-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--neutral-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--neutral-plain-foreground-muted);
   --tone-surface: var(--neutral-surface);
   --tone-surface-foreground: var(--neutral-surface-foreground);
-  --tone-border: var(--neutral-border);
+  --tone-surface-border: var(--neutral-surface-border);
+  --tone-ring: var(--neutral-strong);
 }
 
 [data-tone='zinc'] {
-  --tone-strong: var(--zinc);
-  --tone-strong-hover: var(--zinc-hover);
-  --tone-strong-foreground: var(--zinc-foreground);
+  --tone-strong: var(--zinc-strong);
+  --tone-strong-foreground: var(--zinc-strong-foreground);
+  --tone-strong-hover: var(--zinc-strong-hover);
+  --tone-strong-pressed: var(--zinc-subtle);
+  --tone-strong-disabled: var(--zinc-strong-disabled);
   --tone-subtle: var(--zinc-subtle);
   --tone-subtle-foreground: var(--zinc-subtle-foreground);
-  --tone-selected: var(--zinc-subtle);
-  --tone-foreground: var(--zinc);
-  --tone-ring: var(--zinc);
+  --tone-subtle-pressed: var(--zinc-subtle-pressed);
+  --tone-subtle-hover: var(--zinc-subtle-hover);
+  --tone-subtle-disabled: var(--zinc-subtle-disabled);
+  --tone-plain-foreground: var(--zinc-plain-foreground);
+  --tone-plain-border: var(--zinc-plain-border);
+  --tone-plain-border-disabled: var(--zinc-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--zinc-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--zinc-plain-foreground-muted);
   --tone-surface: var(--zinc-surface);
   --tone-surface-foreground: var(--zinc-surface-foreground);
-  --tone-border: var(--zinc-border);
+  --tone-surface-border: var(--zinc-surface-border);
+  --tone-ring: var(--zinc-strong);
 }
 
 [data-tone='stone'] {
-  --tone-strong: var(--stone);
-  --tone-strong-hover: var(--stone-hover);
-  --tone-strong-foreground: var(--stone-foreground);
+  --tone-strong: var(--stone-strong);
+  --tone-strong-foreground: var(--stone-strong-foreground);
+  --tone-strong-hover: var(--stone-strong-hover);
+  --tone-strong-pressed: var(--stone-subtle);
+  --tone-strong-disabled: var(--stone-strong-disabled);
   --tone-subtle: var(--stone-subtle);
   --tone-subtle-foreground: var(--stone-subtle-foreground);
-  --tone-selected: var(--stone-subtle);
-  --tone-foreground: var(--stone);
-  --tone-ring: var(--stone);
+  --tone-subtle-pressed: var(--stone-subtle-pressed);
+  --tone-subtle-hover: var(--stone-subtle-hover);
+  --tone-subtle-disabled: var(--stone-subtle-disabled);
+  --tone-plain-foreground: var(--stone-plain-foreground);
+  --tone-plain-border: var(--stone-plain-border);
+  --tone-plain-border-disabled: var(--stone-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--stone-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--stone-plain-foreground-muted);
   --tone-surface: var(--stone-surface);
   --tone-surface-foreground: var(--stone-surface-foreground);
-  --tone-border: var(--stone-border);
+  --tone-surface-border: var(--stone-surface-border);
+  --tone-ring: var(--stone-strong);
 }
 
 [data-tone='mauve'] {
-  --tone-strong: var(--mauve);
-  --tone-strong-hover: var(--mauve-hover);
-  --tone-strong-foreground: var(--mauve-foreground);
+  --tone-strong: var(--mauve-strong);
+  --tone-strong-foreground: var(--mauve-strong-foreground);
+  --tone-strong-hover: var(--mauve-strong-hover);
+  --tone-strong-pressed: var(--mauve-subtle);
+  --tone-strong-disabled: var(--mauve-strong-disabled);
   --tone-subtle: var(--mauve-subtle);
   --tone-subtle-foreground: var(--mauve-subtle-foreground);
-  --tone-selected: var(--mauve-subtle);
-  --tone-foreground: var(--mauve);
-  --tone-ring: var(--mauve);
+  --tone-subtle-pressed: var(--mauve-subtle-pressed);
+  --tone-subtle-hover: var(--mauve-subtle-hover);
+  --tone-subtle-disabled: var(--mauve-subtle-disabled);
+  --tone-plain-foreground: var(--mauve-plain-foreground);
+  --tone-plain-border: var(--mauve-plain-border);
+  --tone-plain-border-disabled: var(--mauve-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--mauve-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--mauve-plain-foreground-muted);
   --tone-surface: var(--mauve-surface);
   --tone-surface-foreground: var(--mauve-surface-foreground);
-  --tone-border: var(--mauve-border);
+  --tone-surface-border: var(--mauve-surface-border);
+  --tone-ring: var(--mauve-strong);
 }
 
 [data-tone='olive'] {
-  --tone-strong: var(--olive);
-  --tone-strong-hover: var(--olive-hover);
-  --tone-strong-foreground: var(--olive-foreground);
+  --tone-strong: var(--olive-strong);
+  --tone-strong-foreground: var(--olive-strong-foreground);
+  --tone-strong-hover: var(--olive-strong-hover);
+  --tone-strong-pressed: var(--olive-subtle);
+  --tone-strong-disabled: var(--olive-strong-disabled);
   --tone-subtle: var(--olive-subtle);
   --tone-subtle-foreground: var(--olive-subtle-foreground);
-  --tone-selected: var(--olive-subtle);
-  --tone-foreground: var(--olive);
-  --tone-ring: var(--olive);
+  --tone-subtle-pressed: var(--olive-subtle-pressed);
+  --tone-subtle-hover: var(--olive-subtle-hover);
+  --tone-subtle-disabled: var(--olive-subtle-disabled);
+  --tone-plain-foreground: var(--olive-plain-foreground);
+  --tone-plain-border: var(--olive-plain-border);
+  --tone-plain-border-disabled: var(--olive-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--olive-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--olive-plain-foreground-muted);
   --tone-surface: var(--olive-surface);
   --tone-surface-foreground: var(--olive-surface-foreground);
-  --tone-border: var(--olive-border);
+  --tone-surface-border: var(--olive-surface-border);
+  --tone-ring: var(--olive-strong);
 }
 
 [data-tone='mist'] {
-  --tone-strong: var(--mist);
-  --tone-strong-hover: var(--mist-hover);
-  --tone-strong-foreground: var(--mist-foreground);
+  --tone-strong: var(--mist-strong);
+  --tone-strong-foreground: var(--mist-strong-foreground);
+  --tone-strong-hover: var(--mist-strong-hover);
+  --tone-strong-pressed: var(--mist-subtle);
+  --tone-strong-disabled: var(--mist-strong-disabled);
   --tone-subtle: var(--mist-subtle);
   --tone-subtle-foreground: var(--mist-subtle-foreground);
-  --tone-selected: var(--mist-subtle);
-  --tone-foreground: var(--mist);
-  --tone-ring: var(--mist);
+  --tone-subtle-pressed: var(--mist-subtle-pressed);
+  --tone-subtle-hover: var(--mist-subtle-hover);
+  --tone-subtle-disabled: var(--mist-subtle-disabled);
+  --tone-plain-foreground: var(--mist-plain-foreground);
+  --tone-plain-border: var(--mist-plain-border);
+  --tone-plain-border-disabled: var(--mist-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--mist-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--mist-plain-foreground-muted);
   --tone-surface: var(--mist-surface);
   --tone-surface-foreground: var(--mist-surface-foreground);
-  --tone-border: var(--mist-border);
+  --tone-surface-border: var(--mist-surface-border);
+  --tone-ring: var(--mist-strong);
 }
 
 [data-tone='taupe'] {
-  --tone-strong: var(--taupe);
-  --tone-strong-hover: var(--taupe-hover);
-  --tone-strong-foreground: var(--taupe-foreground);
-
+  --tone-strong: var(--taupe-strong);
+  --tone-strong-foreground: var(--taupe-strong-foreground);
+  --tone-strong-hover: var(--taupe-strong-hover);
+  --tone-strong-pressed: var(--taupe-subtle);
+  --tone-strong-disabled: var(--taupe-strong-disabled);
   --tone-subtle: var(--taupe-subtle);
   --tone-subtle-foreground: var(--taupe-subtle-foreground);
-  
+  --tone-subtle-pressed: var(--taupe-subtle-pressed);
+  --tone-subtle-hover: var(--taupe-subtle-hover);
+  --tone-subtle-disabled: var(--taupe-subtle-disabled);
+  --tone-plain-foreground: var(--taupe-plain-foreground);
+  --tone-plain-border: var(--taupe-plain-border);
+  --tone-plain-border-disabled: var(--taupe-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--taupe-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--taupe-plain-foreground-muted);
   --tone-surface: var(--taupe-surface);
   --tone-surface-foreground: var(--taupe-surface-foreground);
-
-  --tone-selected: var(--taupe-subtle);
-  --tone-foreground: var(--taupe);
-  --tone-ring: var(--taupe);
-  --tone-border: var(--taupe-border);
+  --tone-surface-border: var(--taupe-surface-border);
+  --tone-ring: var(--taupe-strong);
 }
 
 
 /*
- * Tone roles: strong fill (+hover, text on it), subtle fill (+text), selected fill, tone text on a plain surface, ring,
+ * Tone roles: strong fill (+hover, text on it), subtle fill (+text, hover, pressed), strong and subtle disabled fills, disabled edge and text, muted text, tone text on a plain surface, ring,
  * and the callout surface (fill, edge, secondary text) read by the surface emphasis.
  */
 [data-tone='base'] {
   --tone-strong: var(--secondary);
-  --tone-strong-hover: var(--accent);
   --tone-strong-foreground: var(--foreground);
-
+  --tone-strong-hover: var(--accent);
+  --tone-strong-pressed: var(--accent);
+  --tone-strong-disabled: var(--disabled);
   --tone-subtle: var(--secondary);
   --tone-subtle-foreground: var(--foreground);
-
+  --tone-subtle-pressed: var(--muted);
+  --tone-subtle-hover: var(--accent);
+  --tone-subtle-disabled: color-mix(in oklab, var(--tone-subtle) 50%, transparent);
+  --tone-plain-foreground: var(--foreground);
+  --tone-plain-border: var(--border);
+  --tone-plain-border-disabled: var(--disabled-border);
+  --tone-plain-foreground-disabled: var(--foreground-disabled);
+  --tone-plain-foreground-muted: var(--foreground-muted);
   --tone-surface: var(--card);
   --tone-surface-foreground: var(--foreground);
-
-  --tone-selected: var(--accent);
-  --tone-foreground: var(--foreground);
+  --tone-surface-border: var(--border);
   --tone-ring: var(--state-focus-border);
-  --tone-border: var(--border);
 }
 
 [data-tone='primary'] {
-  --tone-strong: var(--primary);
-  --tone-strong-hover: var(--primary-hover);
-  --tone-strong-foreground: var(--primary-foreground);
-
+  --tone-strong: var(--primary-strong);
+  --tone-strong-foreground: var(--primary-strong-foreground);
+  --tone-strong-hover: var(--primary-strong-hover);
+  --tone-strong-pressed: var(--accent);
+  --tone-strong-disabled: var(--disabled);
   --tone-subtle: var(--secondary);
   --tone-subtle-foreground: var(--foreground);
-
-  --tone-selected: var(--accent);
-  --tone-foreground: var(--primary);
+  --tone-subtle-pressed: var(--muted);
+  --tone-subtle-hover: var(--accent);
+  --tone-subtle-disabled: color-mix(in oklab, var(--tone-subtle) 50%, transparent);
+  --tone-plain-foreground: var(--primary-strong);
+  --tone-plain-border: var(--border);
+  --tone-plain-border-disabled: var(--disabled-border);
+  --tone-plain-foreground-disabled: var(--foreground-disabled);
+  --tone-plain-foreground-muted: var(--foreground-muted);
+  --tone-surface-border: var(--border);
   --tone-ring: var(--ring);
 }
 
 [data-tone='destructive'] {
-  --tone-strong: var(--destructive);
-  --tone-strong-hover: var(--destructive-hover);
-  --tone-strong-foreground: var(--destructive-foreground);
+  --tone-strong: var(--destructive-strong);
+  --tone-strong-foreground: var(--destructive-strong-foreground);
+  --tone-strong-hover: var(--destructive-strong-hover);
+  --tone-strong-pressed: var(--destructive-subtle);
+  --tone-strong-disabled: var(--destructive-strong-disabled);
   --tone-subtle: var(--destructive-subtle);
   --tone-subtle-foreground: var(--destructive-subtle-foreground);
-  --tone-selected: var(--destructive-subtle);
-  --tone-foreground: var(--destructive);
-  --tone-ring: var(--destructive);
+  --tone-subtle-pressed: var(--destructive-subtle-pressed);
+  --tone-subtle-hover: var(--destructive-subtle-hover);
+  --tone-subtle-disabled: var(--destructive-subtle-disabled);
+  --tone-plain-foreground: var(--destructive-plain-foreground);
+  --tone-plain-border: var(--destructive-plain-border);
+  --tone-plain-border-disabled: var(--destructive-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--destructive-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--destructive-plain-foreground-muted);
   --tone-surface: var(--destructive-surface);
   --tone-surface-foreground: var(--destructive-surface-foreground);
-  --tone-border: var(--destructive-border);
+  --tone-surface-border: var(--destructive-surface-border);
+  --tone-ring: var(--destructive-strong);
 }
 
 /*
- * Text fields. Only the roles the field emphasis and the focus ring read are declared; --tone-surface-hover is
+ * Text fields. Only the roles the field emphasis and the focus ring read are declared; --tone-strong-focus is
  * specific to this tone. Not exposed to actions.
  */
 [data-tone='field'] {
-  --tone-surface: var(--card);
-  --tone-surface-hover: var(--card);
-  --tone-surface-focus: var(--card);
-  --tone-border: var(--border);
+  --tone-strong: var(--card);
+  --tone-strong-hover: var(--card);
+  --tone-strong-disabled: var(--disabled);
+  --tone-strong-focus: var(--card);
+  --tone-plain-border: var(--border);
+  --tone-plain-border-disabled: var(--disabled-border);
   --tone-ring: var(--ring);
 
   .dark & {
-    --tone-surface: var(--card);
-    --tone-surface-hover: var(--secondary);
-    --tone-surface-focus: var(--secondary);
+    --tone-strong-hover: var(--secondary);
+    --tone-strong-focus: var(--secondary);
   }
 }
 
 [data-tone='success'] {
-  --tone-strong: var(--success);
-  --tone-strong-hover: var(--success-hover);
-  --tone-strong-foreground: var(--success-foreground);
+  --tone-strong: var(--success-strong);
+  --tone-strong-foreground: var(--success-strong-foreground);
+  --tone-strong-hover: var(--success-strong-hover);
+  --tone-strong-pressed: var(--success-subtle);
+  --tone-strong-disabled: var(--success-strong-disabled);
   --tone-subtle: var(--success-subtle);
   --tone-subtle-foreground: var(--success-subtle-foreground);
-  --tone-selected: var(--success-subtle);
-  --tone-foreground: var(--success);
-  --tone-ring: var(--success);
+  --tone-subtle-pressed: var(--success-subtle-pressed);
+  --tone-subtle-hover: var(--success-subtle-hover);
+  --tone-subtle-disabled: var(--success-subtle-disabled);
+  --tone-plain-foreground: var(--success-plain-foreground);
+  --tone-plain-border: var(--success-plain-border);
+  --tone-plain-border-disabled: var(--success-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--success-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--success-plain-foreground-muted);
   --tone-surface: var(--success-surface);
   --tone-surface-foreground: var(--success-surface-foreground);
-  --tone-border: var(--success-border);
+  --tone-surface-border: var(--success-surface-border);
+  --tone-ring: var(--success-strong);
 }
 
 [data-tone='warning'] {
-  --tone-strong: var(--warning);
-  --tone-strong-hover: var(--warning-hover);
-  --tone-strong-foreground: var(--warning-foreground);
+  --tone-strong: var(--warning-strong);
+  --tone-strong-foreground: var(--warning-strong-foreground);
+  --tone-strong-hover: var(--warning-strong-hover);
+  --tone-strong-pressed: var(--warning-subtle);
+  --tone-strong-disabled: var(--warning-strong-disabled);
   --tone-subtle: var(--warning-subtle);
   --tone-subtle-foreground: var(--warning-subtle-foreground);
-  --tone-selected: var(--warning-subtle);
-  --tone-foreground: var(--warning);
-  --tone-ring: var(--warning);
+  --tone-subtle-pressed: var(--warning-subtle-pressed);
+  --tone-subtle-hover: var(--warning-subtle-hover);
+  --tone-subtle-disabled: var(--warning-subtle-disabled);
+  --tone-plain-foreground: var(--warning-plain-foreground);
+  --tone-plain-border: var(--warning-plain-border);
+  --tone-plain-border-disabled: var(--warning-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--warning-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--warning-plain-foreground-muted);
   --tone-surface: var(--warning-surface);
   --tone-surface-foreground: var(--warning-surface-foreground);
-  --tone-border: var(--warning-border);
+  --tone-surface-border: var(--warning-surface-border);
+  --tone-ring: var(--warning-strong);
 }
 
 [data-tone='info'] {
-  --tone-strong: var(--info);
-  --tone-strong-hover: var(--info-hover);
-  --tone-strong-foreground: var(--info-foreground);
+  --tone-strong: var(--info-strong);
+  --tone-strong-foreground: var(--info-strong-foreground);
+  --tone-strong-hover: var(--info-strong-hover);
+  --tone-strong-pressed: var(--info-subtle);
+  --tone-strong-disabled: var(--info-strong-disabled);
   --tone-subtle: var(--info-subtle);
   --tone-subtle-foreground: var(--info-subtle-foreground);
-  --tone-selected: var(--info-subtle);
-  --tone-foreground: var(--info);
-  --tone-ring: var(--info);
+  --tone-subtle-pressed: var(--info-subtle-pressed);
+  --tone-subtle-hover: var(--info-subtle-hover);
+  --tone-subtle-disabled: var(--info-subtle-disabled);
+  --tone-plain-foreground: var(--info-plain-foreground);
+  --tone-plain-border: var(--info-plain-border);
+  --tone-plain-border-disabled: var(--info-plain-border-disabled);
+  --tone-plain-foreground-disabled: var(--info-plain-foreground-disabled);
+  --tone-plain-foreground-muted: var(--info-plain-foreground-muted);
   --tone-surface: var(--info-surface);
   --tone-surface-foreground: var(--info-surface-foreground);
-  --tone-border: var(--info-border);
+  --tone-surface-border: var(--info-surface-border);
+  --tone-ring: var(--info-strong);
 }
 

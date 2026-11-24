@@ -31,7 +31,7 @@
 
 .slider-indicator {
   border-radius: var(--slider-indicator-radius);
-  background-color: var(--primary);
+  background-color: var(--primary-strong);
 }
 
 .slider-thumb {
@@ -39,7 +39,7 @@
   height: var(--slider-thumb-size);
   border-width: var(--border-width-thin);
   border-style: solid;
-  border-color: var(--primary);
+  border-color: var(--primary-strong);
   outline: none;
   transition-property: color, background-color, border-color, box-shadow, transform, translate, opacity;
   transition-duration: var(--default-transition-duration);

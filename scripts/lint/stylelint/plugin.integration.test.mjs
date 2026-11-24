@@ -39,7 +39,7 @@ async function lint(rel, code) {
 
 beforeEach(() => {
   root = mkdtempSync(join(tmpdir(), 'stylelint-plugin-'));
-  put('src/styles/theme/swatches.css', ':root { --blue: 1; }');
+  put('src/styles/theme/swatches.css', ':root { --blue-strong: 1; }');
   put('src/styles/theme/base.css', ':root { --base-1: 1; --card: var(--base-1); }');
   put('src/styles/layout/space.css', ':root { --space-sm: 4px; }');
 });
@@ -47,8 +47,8 @@ beforeEach(() => {
 afterEach(() => rmSync(root, { recursive: true, force: true }));
 
 test('errors on a component read of a swatch step', async () => {
-  expect(await lint(COMPONENT, '.x { a: var(--blue); }')).toEqual([
-    expect.stringMatching(/^error: .*raw color token "--blue"/),
+  expect(await lint(COMPONENT, '.x { a: var(--blue-strong); }')).toEqual([
+    expect.stringMatching(/^error: .*raw color token "--blue-strong"/),
   ]);
 });
 
@@ -67,12 +67,12 @@ test('accepts a component read of a theme role and a layout token', async () => 
 });
 
 test('accepts a recipe that declares a custom property from a raw step', async () => {
-  expect(await lint('src/styles/recipes/r.css', '.r { --r-bg: var(--blue); }')).toEqual([]);
+  expect(await lint('src/styles/recipes/r.css', '.r { --r-bg: var(--blue-strong); }')).toEqual([]);
 });
 
 test('errors on a recipe property that reads a raw step', async () => {
-  expect(await lint('src/styles/recipes/r.css', '.r { color: var(--blue); }')).toEqual([
-    expect.stringMatching(/^error: .*raw color token "--blue"/),
+  expect(await lint('src/styles/recipes/r.css', '.r { color: var(--blue-strong); }')).toEqual([
+    expect.stringMatching(/^error: .*raw color token "--blue-strong"/),
   ]);
 });
 
@@ -93,7 +93,7 @@ test('accepts a theme file reading a raw step of its own axis', async () => {
 });
 
 test('does not check typography.css, components.css or appearance files', async () => {
-  const code = ':root { --y: var(--space-sm); --z: var(--blue); }';
+  const code = ':root { --y: var(--space-sm); --z: var(--blue-strong); }';
   expect(await lint('src/styles/typography.css', code)).toEqual([]);
   expect(await lint('src/styles/components.css', code)).toEqual([]);
   expect(await lint('src/styles/appearance/p.css', code)).toEqual([]);
@@ -116,8 +116,8 @@ test('accepts .dark in utilities.css', async () => {
 });
 
 test('still errors on a raw color read in utilities.css', async () => {
-  expect(await lint('src/styles/utilities.css', '.x { color: var(--blue); }')).toEqual([
-    expect.stringMatching(/^error: .*raw color token "--blue"/),
+  expect(await lint('src/styles/utilities.css', '.x { color: var(--blue-strong); }')).toEqual([
+    expect.stringMatching(/^error: .*raw color token "--blue-strong"/),
   ]);
 });
 
@@ -126,10 +126,10 @@ test('accepts .dark in a theme file', async () => {
 });
 
 test('accepts .dark in an appearance file', async () => {
-  expect(await lint('src/styles/appearance/p.css', '.dark { --primary: red; }')).toEqual([]);
+  expect(await lint('src/styles/appearance/p.css', '.dark { --primary-strong: red; }')).toEqual([]);
 });
 
 test('fails loudly when the theme and layout directories cannot be read', async () => {
   rmSync(join(root, 'src/styles/theme'), { recursive: true });
-  await expect(lint(COMPONENT, '.x { a: var(--blue); }')).rejects.toThrow();
+  await expect(lint(COMPONENT, '.x { a: var(--blue-strong); }')).rejects.toThrow();
 });

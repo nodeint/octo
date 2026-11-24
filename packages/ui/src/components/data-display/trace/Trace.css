@@ -56,7 +56,7 @@
 
 .trace-line[data-status='error'],
 :where(a, button):hover .trace-line[data-status='error'] {
-  color: var(--destructive);
+  color: var(--destructive-strong);
 }
 
 .trace-line[data-emphasis='quiet']:not([data-status='error']) > [data-slot='trace-icon'] {
@@ -64,7 +64,7 @@
 }
 
 .trace-line[data-emphasis='strong']:not([data-status='error']) > [data-slot='trace-icon'] {
-  color: var(--warning);
+  color: var(--warning-strong);
 }
 
 .trace-line[data-emphasis='strong']:not([data-status='error']) > [data-slot='trace-title'] {
@@ -152,7 +152,7 @@
 }
 
 .trace-collapsible-trigger:has([data-status='error']) {
-  color: var(--destructive);
+  color: var(--destructive-strong);
 }
 
 .trace-collapsible-trigger > .trace-collapsible-chevron {

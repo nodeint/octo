@@ -119,7 +119,7 @@ An exception applies only while a migration is in progress. A new exception need
   `warning`, `info`, `field`, and 21 swatch hues aliased from `theme/swatches.css`) declares `--tone-*` roles and the focus ring, and `data-emphasis` (`solid`, `soft`,
   `outline`, `ghost`, `muted`, `link`, `surface`, `field`) maps the roles to the `--variant-*` slots.
   `Alert` is not an action: it sets `data-tone` from its `variant` and `data-emphasis="surface"`, a static callout
-  painted from `--tone-surface`, `--tone-border`, and `--tone-surface-foreground` (`--variant-fg-secondary`).
+  painted from `--tone-surface`, `--tone-plain-border`, and `--tone-surface-foreground` (`--variant-fg-secondary`).
   Text fields (`field-control`) set `data-tone="field"` and `data-emphasis="field"` and paint from `--variant-*`;
   `--field-*` now holds only size slots. `--group-field-*` still overrides paint inside a group.
   One shared `[data-tone]` block declares the state slots (ring, focus, invalid, disabled text, halos).

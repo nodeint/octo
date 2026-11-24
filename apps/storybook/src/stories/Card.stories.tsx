@@ -179,7 +179,7 @@ export const WithFooterActions: Story = {
 };
 
 const COVER =
-  'linear-gradient(135deg, var(--primary) 0%, var(--muted) 100%)';
+  'linear-gradient(135deg, var(--primary-strong) 0%, var(--muted) 100%)';
 
 export const WithMedia: Story = {
   render: (args) => (

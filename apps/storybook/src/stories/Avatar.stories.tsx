@@ -43,7 +43,7 @@ const PEOPLE = {
 } as const;
 
 const GRAYSCALE = { filter: 'grayscale(1)' } as const;
-const ONLINE = { backgroundColor: 'var(--success, #16a34a)' } as const;
+const ONLINE = { backgroundColor: 'var(--success-strong, #16a34a)' } as const;
 
 const meta = {
   title: 'Data Display/Avatar',

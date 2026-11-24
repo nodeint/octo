@@ -60,7 +60,7 @@
 
 /* destructive */
 .menu-item[data-variant='destructive'] {
-  color: var(--destructive);
+  color: var(--destructive-strong);
 }
 
 .menu-item[data-variant='destructive']:focus {

@@ -60,7 +60,7 @@
 }
 
 .empty-description > a:hover {
-  color: var(--primary);
+  color: var(--primary-strong);
 }
 
 .empty-content {

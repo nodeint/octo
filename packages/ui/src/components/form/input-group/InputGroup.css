@@ -48,9 +48,9 @@
   --group-action-bg-active: initial;
   --group-action-fg-active: initial;
   --group-action-border-active: initial;
-  --group-action-bg-selected: initial;
-  --group-action-fg-selected: initial;
-  --group-action-border-selected: initial;
+  --group-action-bg-pressed: initial;
+  --group-action-fg-pressed: initial;
+  --group-action-border-pressed: initial;
   --group-action-bg-disabled: initial;
   --group-action-border-disabled: initial;
 
@@ -96,19 +96,19 @@
 /* field: paints like a standalone Input or Select (styles/recipes/field-control.css), so a group sits level with them. */
 .input-group[data-group-variant='field'] {
   --input-group-divider: var(--border);
-  --input-group-bg: var(--tone-surface);
+  --input-group-bg: var(--tone-strong);
   --input-group-border: var(--border);
   --input-group-bg-disabled: var(--disabled);
   --input-group-border-disabled: var(--disabled-border);
   --group-field-fg: currentcolor;
   --group-field-fg-hover: currentcolor;
   --group-field-border-hover: var(--border);
-  --group-field-bg-active: var(--tone-surface-hover);
+  --group-field-bg-active: var(--tone-strong-hover);
   --group-field-fg-active: currentcolor;
   --group-field-border-active: var(--border);
-  --group-field-bg-selected: var(--tone-surface);
-  --group-field-fg-selected: currentcolor;
-  --group-field-border-selected: var(--border);
+  --group-field-bg-pressed: var(--tone-strong);
+  --group-field-fg-pressed: currentcolor;
+  --group-field-border-pressed: var(--border);
   
   /* Hover and focus fill, as a bare Input has them. The focus border and halo come from state-ring-group. Focus comes last and wins. */
   &:hover:not([data-disabled], :has(> .field-control:disabled)) {

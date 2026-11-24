@@ -152,7 +152,7 @@ export const Required: Story = {
   render: (args) => (
     <Field>
       <FieldLabel htmlFor="input-required">
-        Required Field <span style={{ color: 'var(--destructive)' }}>*</span>
+        Required Field <span style={{ color: 'var(--destructive-strong)' }}>*</span>
       </FieldLabel>
       <Input {...args} id="input-required" placeholder="This field is required" required />
       <FieldDescription>This field must be filled out.</FieldDescription>

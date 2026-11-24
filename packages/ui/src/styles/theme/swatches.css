@@ -4,18 +4,23 @@
  * change with the theme. The slots below it only alias a ladder step; no hue redefines a Tailwind value.
  *
  * Slots per hue: solid · solid-foreground · subtle · subtle-foreground, and the derived hover · border · surface ·
- * surface-foreground. variants/tone.css aliases the slots; theme/base.css aliases the gray ladder.
+ * surface-foreground, foreground · subtle-hover · subtle-pressed (the subtle fill one and two ladder steps on), strong-disabled · subtle-disabled ·
+ * disabled-border · disabled-foreground, muted-foreground. variants/tone.css aliases the slots; theme/base.css aliases the gray ladder.
  *   light: solid=600, foreground=white (or 950 on yellow, lime, amber), subtle=100, subtle-foreground=800
  *   dark:  solid=400, foreground=950, subtle=900, subtle-foreground=200
  * The gray family (slate, gray, neutral, zinc, stone, mauve, olive, mist, taupe) takes subtle=200 (light) and 800 (dark),
- * because 100 is the page background there and the fill would disappear.
+ * because 100 is the page background there and the fill would disappear; their subtle-hover and subtle-pressed
+ * step from there (300, 400 light; 700, 600 dark). Other hues: 200, 300 light; 800, 700 dark.
+ * strong-disabled, disabled-border, disabled-foreground, muted-foreground use base.css's steps on the hue's own ladder
+ * (light 300, 400, 500, 600; dark 800, 700, 500, 400). subtle-disabled is the subtle fill at 50%, so it always sits
+ * below the fill it dims.
  *
  * teal: the app brand (primary alias). Its four slots are custom OKLCH, not Tailwind teal; its ladder is Tailwind's.
  * Source steps: tailwindcss@4.3.5 theme.css.
  *
  * Derived slots are declared in both blocks so each resolves against its own mode's solid and subtle, even when
  * .dark sits on a descendant of :root. Hover steps darker in light (-0.06) and lighter in dark (+0.05).
- * Role alias: --primary: var(--teal)
+ * Role alias: --primary-strong: var(--teal-strong)
  */
 
 :root {
@@ -31,15 +36,28 @@
   --red-800: oklch(0.444 0.177 26.899);
   --red-900: oklch(0.396 0.141 25.723);
   --red-950: oklch(0.258 0.092 26.042);
-  --red: var(--red-600);
-  --red-foreground: oklch(0.985 0 0);
+  
+  --red-strong: var(--red-600);
+  --red-strong-foreground: oklch(0.985 0 0);
+  --red-strong-hover: oklch(from var(--red-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --red-strong-disabled: var(--red-300);
+
   --red-subtle: var(--red-100);
   --red-subtle-foreground: var(--red-800);
-  --red-hover: oklch(from var(--red) clamp(0, calc(l - 0.06), 1) c h);
-  --red-border: oklch(from var(--red) l c h / 40%);
+  --red-subtle-pressed: var(--red-300);
+  --red-subtle-hover: var(--red-200);
+  --red-subtle-disabled: color-mix(in oklab, var(--red-subtle) 50%, transparent);
+
+  --red-plain-foreground: var(--red-strong);
+  --red-plain-border: oklch(from var(--red-strong) l c h / 40%);
+  --red-plain-border-disabled: var(--red-400);
+  --red-plain-foreground-disabled: var(--red-500);
+  --red-plain-foreground-muted: var(--red-600);
+  
   --red-surface: oklch(from var(--red-subtle) l c h / 50%);
   --red-surface-foreground: var(--red-subtle-foreground);
-
+  --red-surface-border: oklch(from var(--red-strong) l c h / 40%);
+  
   /* orange */
   --orange-50: oklch(0.98 0.016 73.684);
   --orange-100: oklch(0.954 0.038 75.164);
@@ -52,16 +70,23 @@
   --orange-800: oklch(0.47 0.157 37.304);
   --orange-900: oklch(0.408 0.123 38.172);
   --orange-950: oklch(0.266 0.079 36.259);
-  --orange: var(--orange-600);
-  --orange-foreground: oklch(0.985 0 0);
+  --orange-strong: var(--orange-600);
+  --orange-strong-foreground: oklch(0.985 0 0);
+  --orange-strong-hover: oklch(from var(--orange-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --orange-strong-disabled: var(--orange-300);
   --orange-subtle: var(--orange-100);
   --orange-subtle-foreground: var(--orange-800);
-  --orange-fixed: var(--orange-600);
-  --orange-fixed-foreground: oklch(0.985 0 0);
-  --orange-hover: oklch(from var(--orange) clamp(0, calc(l - 0.06), 1) c h);
-  --orange-border: oklch(from var(--orange) l c h / 40%);
+  --orange-subtle-pressed: var(--orange-300);
+  --orange-subtle-hover: var(--orange-200);
+  --orange-subtle-disabled: color-mix(in oklab, var(--orange-subtle) 50%, transparent);
+  --orange-plain-foreground: var(--orange-strong);
+  --orange-plain-border: oklch(from var(--orange-strong) l c h / 40%);
+  --orange-plain-border-disabled: var(--orange-400);
+  --orange-plain-foreground-disabled: var(--orange-500);
+  --orange-plain-foreground-muted: var(--orange-600);
   --orange-surface: oklch(from var(--orange-subtle) l c h / 50%);
   --orange-surface-foreground: var(--orange-subtle-foreground);
+  --orange-surface-border: oklch(from var(--orange-strong) l c h / 40%);
 
   /* amber */
   --amber-50: oklch(0.987 0.022 95.277);
@@ -75,14 +100,23 @@
   --amber-800: oklch(0.473 0.137 46.201);
   --amber-900: oklch(0.414 0.112 45.904);
   --amber-950: oklch(0.279 0.077 45.635);
-  --amber: var(--amber-600);
-  --amber-foreground: var(--amber-950);
+  --amber-strong: var(--amber-600);
+  --amber-strong-foreground: var(--amber-950);
+  --amber-strong-hover: oklch(from var(--amber-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --amber-strong-disabled: var(--amber-300);
   --amber-subtle: var(--amber-100);
   --amber-subtle-foreground: var(--amber-800);
-  --amber-hover: oklch(from var(--amber) clamp(0, calc(l - 0.06), 1) c h);
-  --amber-border: oklch(from var(--amber) l c h / 40%);
+  --amber-subtle-pressed: var(--amber-300);
+  --amber-subtle-hover: var(--amber-200);
+  --amber-subtle-disabled: color-mix(in oklab, var(--amber-subtle) 50%, transparent);
+  --amber-plain-foreground: var(--amber-strong);
+  --amber-plain-border: oklch(from var(--amber-strong) l c h / 40%);
+  --amber-plain-border-disabled: var(--amber-400);
+  --amber-plain-foreground-disabled: var(--amber-500);
+  --amber-plain-foreground-muted: var(--amber-600);
   --amber-surface: oklch(from var(--amber-subtle) l c h / 50%);
   --amber-surface-foreground: var(--amber-subtle-foreground);
+  --amber-surface-border: oklch(from var(--amber-strong) l c h / 40%);
 
   /* yellow */
   --yellow-50: oklch(0.987 0.026 102.212);
@@ -96,14 +130,23 @@
   --yellow-800: oklch(0.476 0.114 61.907);
   --yellow-900: oklch(0.421 0.095 57.708);
   --yellow-950: oklch(0.286 0.066 53.813);
-  --yellow: var(--yellow-600);
-  --yellow-foreground: var(--yellow-950);
+  --yellow-strong: var(--yellow-600);
+  --yellow-strong-foreground: var(--yellow-950);
+  --yellow-strong-hover: oklch(from var(--yellow-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --yellow-strong-disabled: var(--yellow-300);
   --yellow-subtle: var(--yellow-100);
   --yellow-subtle-foreground: var(--yellow-800);
-  --yellow-hover: oklch(from var(--yellow) clamp(0, calc(l - 0.06), 1) c h);
-  --yellow-border: oklch(from var(--yellow) l c h / 40%);
+  --yellow-subtle-pressed: var(--yellow-300);
+  --yellow-subtle-hover: var(--yellow-200);
+  --yellow-subtle-disabled: color-mix(in oklab, var(--yellow-subtle) 50%, transparent);
+  --yellow-plain-foreground: var(--yellow-subtle-foreground);
+  --yellow-plain-border: oklch(from var(--yellow-strong) l c h / 40%);
+  --yellow-plain-border-disabled: var(--yellow-400);
+  --yellow-plain-foreground-disabled: var(--yellow-500);
+  --yellow-plain-foreground-muted: var(--yellow-600);
   --yellow-surface: oklch(from var(--yellow-subtle) l c h / 50%);
   --yellow-surface-foreground: var(--yellow-subtle-foreground);
+  --yellow-surface-border: oklch(from var(--yellow-strong) l c h / 40%);
 
   /* lime */
   --lime-50: oklch(0.986 0.031 120.757);
@@ -117,14 +160,23 @@
   --lime-800: oklch(0.453 0.124 130.933);
   --lime-900: oklch(0.405 0.101 131.063);
   --lime-950: oklch(0.274 0.072 132.109);
-  --lime: var(--lime-600);
-  --lime-foreground: var(--lime-950);
+  --lime-strong: var(--lime-600);
+  --lime-strong-foreground: var(--lime-950);
+  --lime-strong-hover: oklch(from var(--lime-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --lime-strong-disabled: var(--lime-300);
   --lime-subtle: var(--lime-100);
   --lime-subtle-foreground: var(--lime-800);
-  --lime-hover: oklch(from var(--lime) clamp(0, calc(l - 0.06), 1) c h);
-  --lime-border: oklch(from var(--lime) l c h / 40%);
+  --lime-subtle-pressed: var(--lime-300);
+  --lime-subtle-hover: var(--lime-200);
+  --lime-subtle-disabled: color-mix(in oklab, var(--lime-subtle) 50%, transparent);
+  --lime-plain-foreground: var(--lime-subtle-foreground);
+  --lime-plain-border: oklch(from var(--lime-strong) l c h / 40%);
+  --lime-plain-border-disabled: var(--lime-400);
+  --lime-plain-foreground-disabled: var(--lime-500);
+  --lime-plain-foreground-muted: var(--lime-600);
   --lime-surface: oklch(from var(--lime-subtle) l c h / 50%);
   --lime-surface-foreground: var(--lime-subtle-foreground);
+  --lime-surface-border: oklch(from var(--lime-strong) l c h / 40%);
 
   /* green */
   --green-50: oklch(0.982 0.018 155.826);
@@ -138,16 +190,23 @@
   --green-800: oklch(0.448 0.119 151.328);
   --green-900: oklch(0.393 0.095 152.535);
   --green-950: oklch(0.266 0.065 152.934);
-  --green: var(--green-600);
-  --green-foreground: oklch(0.985 0 0);
+  --green-strong: var(--green-600);
+  --green-strong-foreground: oklch(0.985 0 0);
+  --green-strong-hover: oklch(from var(--green-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --green-strong-disabled: var(--green-300);
   --green-subtle: var(--green-100);
   --green-subtle-foreground: var(--green-800);
-  --green-fixed: var(--green-600);
-  --green-fixed-foreground: oklch(0.985 0 0);
-  --green-hover: oklch(from var(--green) clamp(0, calc(l - 0.06), 1) c h);
-  --green-border: oklch(from var(--green) l c h / 40%);
+  --green-subtle-pressed: var(--green-300);
+  --green-subtle-hover: var(--green-200);
+  --green-subtle-disabled: color-mix(in oklab, var(--green-subtle) 50%, transparent);
+  --green-plain-foreground: var(--green-strong);
+  --green-plain-border: oklch(from var(--green-strong) l c h / 40%);
+  --green-plain-border-disabled: var(--green-400);
+  --green-plain-foreground-disabled: var(--green-500);
+  --green-plain-foreground-muted: var(--green-600);
   --green-surface: oklch(from var(--green-subtle) l c h / 50%);
   --green-surface-foreground: var(--green-subtle-foreground);
+  --green-surface-border: oklch(from var(--green-strong) l c h / 40%);
 
   /* emerald */
   --emerald-50: oklch(0.979 0.021 166.113);
@@ -161,16 +220,23 @@
   --emerald-800: oklch(0.432 0.095 166.913);
   --emerald-900: oklch(0.378 0.077 168.94);
   --emerald-950: oklch(0.262 0.051 172.552);
-  --emerald: var(--emerald-600);
-  --emerald-foreground: oklch(0.985 0 0);
+  --emerald-strong: var(--emerald-600);
+  --emerald-strong-foreground: oklch(0.985 0 0);
+  --emerald-strong-hover: oklch(from var(--emerald-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --emerald-strong-disabled: var(--emerald-300);
   --emerald-subtle: var(--emerald-100);
   --emerald-subtle-foreground: var(--emerald-800);
-  --emerald-fixed: var(--emerald-600);
-  --emerald-fixed-foreground: oklch(0.985 0 0);
-  --emerald-hover: oklch(from var(--emerald) clamp(0, calc(l - 0.06), 1) c h);
-  --emerald-border: oklch(from var(--emerald) l c h / 40%);
+  --emerald-subtle-pressed: var(--emerald-300);
+  --emerald-subtle-hover: var(--emerald-200);
+  --emerald-subtle-disabled: color-mix(in oklab, var(--emerald-subtle) 50%, transparent);
+  --emerald-plain-foreground: var(--emerald-strong);
+  --emerald-plain-border: oklch(from var(--emerald-strong) l c h / 40%);
+  --emerald-plain-border-disabled: var(--emerald-400);
+  --emerald-plain-foreground-disabled: var(--emerald-500);
+  --emerald-plain-foreground-muted: var(--emerald-600);
   --emerald-surface: oklch(from var(--emerald-subtle) l c h / 50%);
   --emerald-surface-foreground: var(--emerald-subtle-foreground);
+  --emerald-surface-border: oklch(from var(--emerald-strong) l c h / 40%);
 
   /* teal */
   --teal-50: oklch(0.984 0.014 180.72);
@@ -184,16 +250,23 @@
   --teal-800: oklch(0.437 0.078 188.216);
   --teal-900: oklch(0.386 0.063 188.416);
   --teal-950: oklch(0.277 0.046 192.524);
-  --teal: oklch(0.508 0.118 165.612);
-  --teal-foreground: oklch(0.979 0.021 166.113);
+  --teal-strong: oklch(0.508 0.118 165.612);
+  --teal-strong-foreground: oklch(0.979 0.021 166.113);
+  --teal-strong-hover: oklch(from var(--teal-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --teal-strong-disabled: var(--teal-300);
   --teal-subtle: oklch(0.93 0.045 166);
   --teal-subtle-foreground: oklch(0.42 0.1 166);
-  --teal-fixed: oklch(0.508 0.118 165.612);
-  --teal-fixed-foreground: oklch(0.979 0.021 166.113);
-  --teal-hover: oklch(from var(--teal) clamp(0, calc(l - 0.06), 1) c h);
-  --teal-border: oklch(from var(--teal) l c h / 40%);
+  --teal-subtle-pressed: var(--teal-300);
+  --teal-subtle-hover: var(--teal-200);
+  --teal-subtle-disabled: color-mix(in oklab, var(--teal-subtle) 50%, transparent);
+  --teal-plain-foreground: var(--teal-strong);
+  --teal-plain-border: oklch(from var(--teal-strong) l c h / 40%);
+  --teal-plain-border-disabled: var(--teal-400);
+  --teal-plain-foreground-disabled: var(--teal-500);
+  --teal-plain-foreground-muted: var(--teal-600);
   --teal-surface: oklch(from var(--teal-subtle) l c h / 50%);
   --teal-surface-foreground: var(--teal-subtle-foreground);
+  --teal-surface-border: oklch(from var(--teal-strong) l c h / 40%);
 
   /* cyan */
   --cyan-50: oklch(0.984 0.019 200.873);
@@ -207,16 +280,23 @@
   --cyan-800: oklch(0.45 0.085 224.283);
   --cyan-900: oklch(0.398 0.07 227.392);
   --cyan-950: oklch(0.302 0.056 229.695);
-  --cyan: var(--cyan-600);
-  --cyan-foreground: oklch(0.985 0 0);
+  --cyan-strong: var(--cyan-600);
+  --cyan-strong-foreground: oklch(0.985 0 0);
+  --cyan-strong-hover: oklch(from var(--cyan-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --cyan-strong-disabled: var(--cyan-300);
   --cyan-subtle: var(--cyan-100);
   --cyan-subtle-foreground: var(--cyan-800);
-  --cyan-fixed: var(--cyan-600);
-  --cyan-fixed-foreground: oklch(0.985 0 0);
-  --cyan-hover: oklch(from var(--cyan) clamp(0, calc(l - 0.06), 1) c h);
-  --cyan-border: oklch(from var(--cyan) l c h / 40%);
+  --cyan-subtle-pressed: var(--cyan-300);
+  --cyan-subtle-hover: var(--cyan-200);
+  --cyan-subtle-disabled: color-mix(in oklab, var(--cyan-subtle) 50%, transparent);
+  --cyan-plain-foreground: var(--cyan-strong);
+  --cyan-plain-border: oklch(from var(--cyan-strong) l c h / 40%);
+  --cyan-plain-border-disabled: var(--cyan-400);
+  --cyan-plain-foreground-disabled: var(--cyan-500);
+  --cyan-plain-foreground-muted: var(--cyan-600);
   --cyan-surface: oklch(from var(--cyan-subtle) l c h / 50%);
   --cyan-surface-foreground: var(--cyan-subtle-foreground);
+  --cyan-surface-border: oklch(from var(--cyan-strong) l c h / 40%);
 
   /* sky */
   --sky-50: oklch(0.977 0.013 236.62);
@@ -230,16 +310,23 @@
   --sky-800: oklch(0.443 0.11 240.79);
   --sky-900: oklch(0.391 0.09 240.876);
   --sky-950: oklch(0.293 0.066 243.157);
-  --sky: var(--sky-600);
-  --sky-foreground: oklch(0.985 0 0);
+  --sky-strong: var(--sky-600);
+  --sky-strong-foreground: oklch(0.985 0 0);
+  --sky-strong-hover: oklch(from var(--sky-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --sky-strong-disabled: var(--sky-300);
   --sky-subtle: var(--sky-100);
   --sky-subtle-foreground: var(--sky-800);
-  --sky-fixed: var(--sky-600);
-  --sky-fixed-foreground: oklch(0.985 0 0);
-  --sky-hover: oklch(from var(--sky) clamp(0, calc(l - 0.06), 1) c h);
-  --sky-border: oklch(from var(--sky) l c h / 40%);
+  --sky-subtle-pressed: var(--sky-300);
+  --sky-subtle-hover: var(--sky-200);
+  --sky-subtle-disabled: color-mix(in oklab, var(--sky-subtle) 50%, transparent);
+  --sky-plain-foreground: var(--sky-strong);
+  --sky-plain-border: oklch(from var(--sky-strong) l c h / 40%);
+  --sky-plain-border-disabled: var(--sky-400);
+  --sky-plain-foreground-disabled: var(--sky-500);
+  --sky-plain-foreground-muted: var(--sky-600);
   --sky-surface: oklch(from var(--sky-subtle) l c h / 50%);
   --sky-surface-foreground: var(--sky-subtle-foreground);
+  --sky-surface-border: oklch(from var(--sky-strong) l c h / 40%);
 
   /* blue */
   --blue-50: oklch(0.97 0.014 254.604);
@@ -253,16 +340,23 @@
   --blue-800: oklch(0.424 0.199 265.638);
   --blue-900: oklch(0.379 0.146 265.522);
   --blue-950: oklch(0.282 0.091 267.935);
-  --blue: var(--blue-600);
-  --blue-foreground: oklch(0.985 0 0);
+  --blue-strong: var(--blue-600);
+  --blue-strong-foreground: oklch(0.985 0 0);
+  --blue-strong-hover: oklch(from var(--blue-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --blue-strong-disabled: var(--blue-300);
   --blue-subtle: var(--blue-100);
   --blue-subtle-foreground: var(--blue-800);
-  --blue-fixed: var(--blue-600);
-  --blue-fixed-foreground: oklch(0.985 0 0);
-  --blue-hover: oklch(from var(--blue) clamp(0, calc(l - 0.06), 1) c h);
-  --blue-border: oklch(from var(--blue) l c h / 40%);
+  --blue-subtle-pressed: var(--blue-300);
+  --blue-subtle-hover: var(--blue-200);
+  --blue-subtle-disabled: color-mix(in oklab, var(--blue-subtle) 50%, transparent);
+  --blue-plain-foreground: var(--blue-strong);
+  --blue-plain-border: oklch(from var(--blue-strong) l c h / 40%);
+  --blue-plain-border-disabled: var(--blue-400);
+  --blue-plain-foreground-disabled: var(--blue-500);
+  --blue-plain-foreground-muted: var(--blue-600);
   --blue-surface: oklch(from var(--blue-subtle) l c h / 50%);
   --blue-surface-foreground: var(--blue-subtle-foreground);
+  --blue-surface-border: oklch(from var(--blue-strong) l c h / 40%);
 
   /* indigo */
   --indigo-50: oklch(0.962 0.018 272.314);
@@ -276,16 +370,23 @@
   --indigo-800: oklch(0.398 0.195 277.366);
   --indigo-900: oklch(0.359 0.144 278.697);
   --indigo-950: oklch(0.257 0.09 281.288);
-  --indigo: var(--indigo-600);
-  --indigo-foreground: oklch(0.985 0 0);
+  --indigo-strong: var(--indigo-600);
+  --indigo-strong-foreground: oklch(0.985 0 0);
+  --indigo-strong-hover: oklch(from var(--indigo-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --indigo-strong-disabled: var(--indigo-300);
   --indigo-subtle: var(--indigo-100);
   --indigo-subtle-foreground: var(--indigo-800);
-  --indigo-fixed: var(--indigo-600);
-  --indigo-fixed-foreground: oklch(0.985 0 0);
-  --indigo-hover: oklch(from var(--indigo) clamp(0, calc(l - 0.06), 1) c h);
-  --indigo-border: oklch(from var(--indigo) l c h / 40%);
+  --indigo-subtle-pressed: var(--indigo-300);
+  --indigo-subtle-hover: var(--indigo-200);
+  --indigo-subtle-disabled: color-mix(in oklab, var(--indigo-subtle) 50%, transparent);
+  --indigo-plain-foreground: var(--indigo-strong);
+  --indigo-plain-border: oklch(from var(--indigo-strong) l c h / 40%);
+  --indigo-plain-border-disabled: var(--indigo-400);
+  --indigo-plain-foreground-disabled: var(--indigo-500);
+  --indigo-plain-foreground-muted: var(--indigo-600);
   --indigo-surface: oklch(from var(--indigo-subtle) l c h / 50%);
   --indigo-surface-foreground: var(--indigo-subtle-foreground);
+  --indigo-surface-border: oklch(from var(--indigo-strong) l c h / 40%);
 
   /* violet */
   --violet-50: oklch(0.969 0.016 293.756);
@@ -299,16 +400,23 @@
   --violet-800: oklch(0.432 0.232 292.759);
   --violet-900: oklch(0.38 0.189 293.745);
   --violet-950: oklch(0.283 0.141 291.089);
-  --violet: var(--violet-600);
-  --violet-foreground: oklch(0.985 0 0);
+  --violet-strong: var(--violet-600);
+  --violet-strong-foreground: oklch(0.985 0 0);
+  --violet-strong-hover: oklch(from var(--violet-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --violet-strong-disabled: var(--violet-300);
   --violet-subtle: var(--violet-100);
   --violet-subtle-foreground: var(--violet-800);
-  --violet-fixed: var(--violet-600);
-  --violet-fixed-foreground: oklch(0.985 0 0);
-  --violet-hover: oklch(from var(--violet) clamp(0, calc(l - 0.06), 1) c h);
-  --violet-border: oklch(from var(--violet) l c h / 40%);
+  --violet-subtle-pressed: var(--violet-300);
+  --violet-subtle-hover: var(--violet-200);
+  --violet-subtle-disabled: color-mix(in oklab, var(--violet-subtle) 50%, transparent);
+  --violet-plain-foreground: var(--violet-strong);
+  --violet-plain-border: oklch(from var(--violet-strong) l c h / 40%);
+  --violet-plain-border-disabled: var(--violet-400);
+  --violet-plain-foreground-disabled: var(--violet-500);
+  --violet-plain-foreground-muted: var(--violet-600);
   --violet-surface: oklch(from var(--violet-subtle) l c h / 50%);
   --violet-surface-foreground: var(--violet-subtle-foreground);
+  --violet-surface-border: oklch(from var(--violet-strong) l c h / 40%);
 
   /* purple */
   --purple-50: oklch(0.977 0.014 308.299);
@@ -322,16 +430,23 @@
   --purple-800: oklch(0.438 0.218 303.724);
   --purple-900: oklch(0.381 0.176 304.987);
   --purple-950: oklch(0.291 0.149 302.717);
-  --purple: var(--purple-600);
-  --purple-foreground: oklch(0.985 0 0);
+  --purple-strong: var(--purple-600);
+  --purple-strong-foreground: oklch(0.985 0 0);
+  --purple-strong-hover: oklch(from var(--purple-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --purple-strong-disabled: var(--purple-300);
   --purple-subtle: var(--purple-100);
   --purple-subtle-foreground: var(--purple-800);
-  --purple-fixed: var(--purple-600);
-  --purple-fixed-foreground: oklch(0.985 0 0);
-  --purple-hover: oklch(from var(--purple) clamp(0, calc(l - 0.06), 1) c h);
-  --purple-border: oklch(from var(--purple) l c h / 40%);
+  --purple-subtle-pressed: var(--purple-300);
+  --purple-subtle-hover: var(--purple-200);
+  --purple-subtle-disabled: color-mix(in oklab, var(--purple-subtle) 50%, transparent);
+  --purple-plain-foreground: var(--purple-strong);
+  --purple-plain-border: oklch(from var(--purple-strong) l c h / 40%);
+  --purple-plain-border-disabled: var(--purple-400);
+  --purple-plain-foreground-disabled: var(--purple-500);
+  --purple-plain-foreground-muted: var(--purple-600);
   --purple-surface: oklch(from var(--purple-subtle) l c h / 50%);
   --purple-surface-foreground: var(--purple-subtle-foreground);
+  --purple-surface-border: oklch(from var(--purple-strong) l c h / 40%);
 
   /* fuchsia */
   --fuchsia-50: oklch(0.977 0.017 320.058);
@@ -345,14 +460,23 @@
   --fuchsia-800: oklch(0.452 0.211 324.591);
   --fuchsia-900: oklch(0.401 0.17 325.612);
   --fuchsia-950: oklch(0.293 0.136 325.661);
-  --fuchsia: var(--fuchsia-600);
-  --fuchsia-foreground: oklch(0.985 0 0);
+  --fuchsia-strong: var(--fuchsia-600);
+  --fuchsia-strong-foreground: oklch(0.985 0 0);
+  --fuchsia-strong-hover: oklch(from var(--fuchsia-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --fuchsia-strong-disabled: var(--fuchsia-300);
   --fuchsia-subtle: var(--fuchsia-100);
   --fuchsia-subtle-foreground: var(--fuchsia-800);
-  --fuchsia-hover: oklch(from var(--fuchsia) clamp(0, calc(l - 0.06), 1) c h);
-  --fuchsia-border: oklch(from var(--fuchsia) l c h / 40%);
+  --fuchsia-subtle-pressed: var(--fuchsia-300);
+  --fuchsia-subtle-hover: var(--fuchsia-200);
+  --fuchsia-subtle-disabled: color-mix(in oklab, var(--fuchsia-subtle) 50%, transparent);
+  --fuchsia-plain-foreground: var(--fuchsia-strong);
+  --fuchsia-plain-border: oklch(from var(--fuchsia-strong) l c h / 40%);
+  --fuchsia-plain-border-disabled: var(--fuchsia-400);
+  --fuchsia-plain-foreground-disabled: var(--fuchsia-500);
+  --fuchsia-plain-foreground-muted: var(--fuchsia-600);
   --fuchsia-surface: oklch(from var(--fuchsia-subtle) l c h / 50%);
   --fuchsia-surface-foreground: var(--fuchsia-subtle-foreground);
+  --fuchsia-surface-border: oklch(from var(--fuchsia-strong) l c h / 40%);
 
   /* pink */
   --pink-50: oklch(0.971 0.014 343.198);
@@ -366,16 +490,23 @@
   --pink-800: oklch(0.459 0.187 3.815);
   --pink-900: oklch(0.408 0.153 2.432);
   --pink-950: oklch(0.284 0.109 3.907);
-  --pink: var(--pink-600);
-  --pink-foreground: oklch(0.985 0 0);
+  --pink-strong: var(--pink-600);
+  --pink-strong-foreground: oklch(0.985 0 0);
+  --pink-strong-hover: oklch(from var(--pink-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --pink-strong-disabled: var(--pink-300);
   --pink-subtle: var(--pink-100);
   --pink-subtle-foreground: var(--pink-800);
-  --pink-fixed: var(--pink-600);
-  --pink-fixed-foreground: oklch(0.985 0 0);
-  --pink-hover: oklch(from var(--pink) clamp(0, calc(l - 0.06), 1) c h);
-  --pink-border: oklch(from var(--pink) l c h / 40%);
+  --pink-subtle-pressed: var(--pink-300);
+  --pink-subtle-hover: var(--pink-200);
+  --pink-subtle-disabled: color-mix(in oklab, var(--pink-subtle) 50%, transparent);
+  --pink-plain-foreground: var(--pink-strong);
+  --pink-plain-border: oklch(from var(--pink-strong) l c h / 40%);
+  --pink-plain-border-disabled: var(--pink-400);
+  --pink-plain-foreground-disabled: var(--pink-500);
+  --pink-plain-foreground-muted: var(--pink-600);
   --pink-surface: oklch(from var(--pink-subtle) l c h / 50%);
   --pink-surface-foreground: var(--pink-subtle-foreground);
+  --pink-surface-border: oklch(from var(--pink-strong) l c h / 40%);
 
   /* rose */
   --rose-50: oklch(0.969 0.015 12.422);
@@ -389,16 +520,23 @@
   --rose-800: oklch(0.455 0.188 13.697);
   --rose-900: oklch(0.41 0.159 10.272);
   --rose-950: oklch(0.271 0.105 12.094);
-  --rose: var(--rose-600);
-  --rose-foreground: oklch(0.985 0 0);
+  --rose-strong: var(--rose-600);
+  --rose-strong-foreground: oklch(0.985 0 0);
+  --rose-strong-hover: oklch(from var(--rose-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --rose-strong-disabled: var(--rose-300);
   --rose-subtle: var(--rose-100);
   --rose-subtle-foreground: var(--rose-800);
-  --rose-fixed: var(--rose-600);
-  --rose-fixed-foreground: oklch(0.985 0 0);
-  --rose-hover: oklch(from var(--rose) clamp(0, calc(l - 0.06), 1) c h);
-  --rose-border: oklch(from var(--rose) l c h / 40%);
+  --rose-subtle-pressed: var(--rose-300);
+  --rose-subtle-hover: var(--rose-200);
+  --rose-subtle-disabled: color-mix(in oklab, var(--rose-subtle) 50%, transparent);
+  --rose-plain-foreground: var(--rose-strong);
+  --rose-plain-border: oklch(from var(--rose-strong) l c h / 40%);
+  --rose-plain-border-disabled: var(--rose-400);
+  --rose-plain-foreground-disabled: var(--rose-500);
+  --rose-plain-foreground-muted: var(--rose-600);
   --rose-surface: oklch(from var(--rose-subtle) l c h / 50%);
   --rose-surface-foreground: var(--rose-subtle-foreground);
+  --rose-surface-border: oklch(from var(--rose-strong) l c h / 40%);
 
   /* slate */
   --slate-50: oklch(0.984 0.003 247.858);
@@ -412,14 +550,23 @@
   --slate-800: oklch(0.279 0.041 260.031);
   --slate-900: oklch(0.208 0.042 265.755);
   --slate-950: oklch(0.129 0.042 264.695);
-  --slate: var(--slate-600);
-  --slate-foreground: oklch(0.985 0 0);
+  --slate-strong: var(--slate-600);
+  --slate-strong-foreground: oklch(0.985 0 0);
+  --slate-strong-hover: oklch(from var(--slate-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --slate-strong-disabled: var(--slate-300);
   --slate-subtle: var(--slate-200);
   --slate-subtle-foreground: var(--slate-800);
-  --slate-hover: oklch(from var(--slate) clamp(0, calc(l - 0.06), 1) c h);
-  --slate-border: oklch(from var(--slate) l c h / 40%);
+  --slate-subtle-pressed: var(--slate-400);
+  --slate-subtle-hover: var(--slate-300);
+  --slate-subtle-disabled: color-mix(in oklab, var(--slate-subtle) 50%, transparent);
+  --slate-plain-foreground: var(--slate-strong);
+  --slate-plain-border: oklch(from var(--slate-strong) l c h / 40%);
+  --slate-plain-border-disabled: var(--slate-400);
+  --slate-plain-foreground-disabled: var(--slate-500);
+  --slate-plain-foreground-muted: var(--slate-600);
   --slate-surface: oklch(from var(--slate-subtle) l c h / 50%);
   --slate-surface-foreground: var(--slate-subtle-foreground);
+  --slate-surface-border: oklch(from var(--slate-strong) l c h / 40%);
 
   /* gray */
   --gray-50: oklch(0.985 0.002 247.839);
@@ -433,14 +580,23 @@
   --gray-800: oklch(0.278 0.033 256.848);
   --gray-900: oklch(0.21 0.034 264.665);
   --gray-950: oklch(0.13 0.028 261.692);
-  --gray: var(--gray-600);
-  --gray-foreground: oklch(0.985 0 0);
+  --gray-strong: var(--gray-600);
+  --gray-strong-foreground: oklch(0.985 0 0);
+  --gray-strong-hover: oklch(from var(--gray-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --gray-strong-disabled: var(--gray-300);
   --gray-subtle: var(--gray-200);
   --gray-subtle-foreground: var(--gray-800);
-  --gray-hover: oklch(from var(--gray) clamp(0, calc(l - 0.06), 1) c h);
-  --gray-border: oklch(from var(--gray) l c h / 40%);
+  --gray-subtle-pressed: var(--gray-400);
+  --gray-subtle-hover: var(--gray-300);
+  --gray-subtle-disabled: color-mix(in oklab, var(--gray-subtle) 50%, transparent);
+  --gray-plain-foreground: var(--gray-strong);
+  --gray-plain-border: oklch(from var(--gray-strong) l c h / 40%);
+  --gray-plain-border-disabled: var(--gray-400);
+  --gray-plain-foreground-disabled: var(--gray-500);
+  --gray-plain-foreground-muted: var(--gray-600);
   --gray-surface: oklch(from var(--gray-subtle) l c h / 50%);
   --gray-surface-foreground: var(--gray-subtle-foreground);
+  --gray-surface-border: oklch(from var(--gray-strong) l c h / 40%);
 
   /* neutral */
   --neutral-50: oklch(0.985 0 0);
@@ -454,14 +610,23 @@
   --neutral-800: oklch(0.269 0 0);
   --neutral-900: oklch(0.205 0 0);
   --neutral-950: oklch(0.145 0 0);
-  --neutral: var(--neutral-600);
-  --neutral-foreground: oklch(0.985 0 0);
+  --neutral-strong: var(--neutral-600);
+  --neutral-strong-foreground: oklch(0.985 0 0);
+  --neutral-strong-hover: oklch(from var(--neutral-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --neutral-strong-disabled: var(--neutral-300);
   --neutral-subtle: var(--neutral-200);
   --neutral-subtle-foreground: var(--neutral-800);
-  --neutral-hover: oklch(from var(--neutral) clamp(0, calc(l - 0.06), 1) c h);
-  --neutral-border: oklch(from var(--neutral) l c h / 40%);
+  --neutral-subtle-pressed: var(--neutral-400);
+  --neutral-subtle-hover: var(--neutral-300);
+  --neutral-subtle-disabled: color-mix(in oklab, var(--neutral-subtle) 50%, transparent);
+  --neutral-plain-foreground: var(--neutral-strong);
+  --neutral-plain-border: oklch(from var(--neutral-strong) l c h / 40%);
+  --neutral-plain-border-disabled: var(--neutral-400);
+  --neutral-plain-foreground-disabled: var(--neutral-500);
+  --neutral-plain-foreground-muted: var(--neutral-600);
   --neutral-surface: oklch(from var(--neutral-subtle) l c h / 50%);
   --neutral-surface-foreground: var(--neutral-subtle-foreground);
+  --neutral-surface-border: oklch(from var(--neutral-strong) l c h / 40%);
 
   /* zinc */
   --zinc-50: oklch(0.985 0 0);
@@ -475,14 +640,23 @@
   --zinc-800: oklch(0.274 0.006 286.033);
   --zinc-900: oklch(0.21 0.006 285.885);
   --zinc-950: oklch(0.141 0.005 285.823);
-  --zinc: var(--zinc-600);
-  --zinc-foreground: oklch(0.985 0 0);
+  --zinc-strong: var(--zinc-600);
+  --zinc-strong-foreground: oklch(0.985 0 0);
+  --zinc-strong-hover: oklch(from var(--zinc-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --zinc-strong-disabled: var(--zinc-300);
   --zinc-subtle: var(--zinc-200);
   --zinc-subtle-foreground: var(--zinc-800);
-  --zinc-hover: oklch(from var(--zinc) clamp(0, calc(l - 0.06), 1) c h);
-  --zinc-border: oklch(from var(--zinc) l c h / 40%);
+  --zinc-subtle-pressed: var(--zinc-400);
+  --zinc-subtle-hover: var(--zinc-300);
+  --zinc-subtle-disabled: color-mix(in oklab, var(--zinc-subtle) 50%, transparent);
+  --zinc-plain-foreground: var(--zinc-strong);
+  --zinc-plain-border: oklch(from var(--zinc-strong) l c h / 40%);
+  --zinc-plain-border-disabled: var(--zinc-400);
+  --zinc-plain-foreground-disabled: var(--zinc-500);
+  --zinc-plain-foreground-muted: var(--zinc-600);
   --zinc-surface: oklch(from var(--zinc-subtle) l c h / 50%);
   --zinc-surface-foreground: var(--zinc-subtle-foreground);
+  --zinc-surface-border: oklch(from var(--zinc-strong) l c h / 40%);
 
   /* stone */
   --stone-50: oklch(0.985 0.001 106.423);
@@ -496,14 +670,23 @@
   --stone-800: oklch(0.268 0.007 34.298);
   --stone-900: oklch(0.216 0.006 56.043);
   --stone-950: oklch(0.147 0.004 49.25);
-  --stone: var(--stone-600);
-  --stone-foreground: oklch(0.985 0 0);
+  --stone-strong: var(--stone-600);
+  --stone-strong-foreground: oklch(0.985 0 0);
+  --stone-strong-hover: oklch(from var(--stone-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --stone-strong-disabled: var(--stone-300);
   --stone-subtle: var(--stone-200);
   --stone-subtle-foreground: var(--stone-800);
-  --stone-hover: oklch(from var(--stone) clamp(0, calc(l - 0.06), 1) c h);
-  --stone-border: oklch(from var(--stone) l c h / 40%);
+  --stone-subtle-pressed: var(--stone-400);
+  --stone-subtle-hover: var(--stone-300);
+  --stone-subtle-disabled: color-mix(in oklab, var(--stone-subtle) 50%, transparent);
+  --stone-plain-foreground: var(--stone-strong);
+  --stone-plain-border: oklch(from var(--stone-strong) l c h / 40%);
+  --stone-plain-border-disabled: var(--stone-400);
+  --stone-plain-foreground-disabled: var(--stone-500);
+  --stone-plain-foreground-muted: var(--stone-600);
   --stone-surface: oklch(from var(--stone-subtle) l c h / 50%);
   --stone-surface-foreground: var(--stone-subtle-foreground);
+  --stone-surface-border: oklch(from var(--stone-strong) l c h / 40%);
 
   /* mauve */
   --mauve-50: oklch(0.985 0 0);
@@ -517,14 +700,23 @@
   --mauve-800: oklch(0.263 0.024 320.12);
   --mauve-900: oklch(0.212 0.019 322.12);
   --mauve-950: oklch(0.145 0.008 326);
-  --mauve: var(--mauve-600);
-  --mauve-foreground: oklch(0.985 0 0);
+  --mauve-strong: var(--mauve-600);
+  --mauve-strong-foreground: oklch(0.985 0 0);
+  --mauve-strong-hover: oklch(from var(--mauve-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --mauve-strong-disabled: var(--mauve-300);
   --mauve-subtle: var(--mauve-200);
   --mauve-subtle-foreground: var(--mauve-800);
-  --mauve-hover: oklch(from var(--mauve) clamp(0, calc(l - 0.06), 1) c h);
-  --mauve-border: oklch(from var(--mauve) l c h / 40%);
+  --mauve-subtle-pressed: var(--mauve-400);
+  --mauve-subtle-hover: var(--mauve-300);
+  --mauve-subtle-disabled: color-mix(in oklab, var(--mauve-subtle) 50%, transparent);
+  --mauve-plain-foreground: var(--mauve-strong);
+  --mauve-plain-border: oklch(from var(--mauve-strong) l c h / 40%);
+  --mauve-plain-border-disabled: var(--mauve-400);
+  --mauve-plain-foreground-disabled: var(--mauve-500);
+  --mauve-plain-foreground-muted: var(--mauve-600);
   --mauve-surface: oklch(from var(--mauve-subtle) l c h / 50%);
   --mauve-surface-foreground: var(--mauve-subtle-foreground);
+  --mauve-surface-border: oklch(from var(--mauve-strong) l c h / 40%);
 
   /* olive */
   --olive-50: oklch(0.988 0.003 106.5);
@@ -538,14 +730,23 @@
   --olive-800: oklch(0.286 0.016 107.4);
   --olive-900: oklch(0.228 0.013 107.4);
   --olive-950: oklch(0.153 0.006 107.1);
-  --olive: var(--olive-600);
-  --olive-foreground: oklch(0.985 0 0);
+  --olive-strong: var(--olive-600);
+  --olive-strong-foreground: oklch(0.985 0 0);
+  --olive-strong-hover: oklch(from var(--olive-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --olive-strong-disabled: var(--olive-300);
   --olive-subtle: var(--olive-200);
   --olive-subtle-foreground: var(--olive-800);
-  --olive-hover: oklch(from var(--olive) clamp(0, calc(l - 0.06), 1) c h);
-  --olive-border: oklch(from var(--olive) l c h / 40%);
+  --olive-subtle-pressed: var(--olive-400);
+  --olive-subtle-hover: var(--olive-300);
+  --olive-subtle-disabled: color-mix(in oklab, var(--olive-subtle) 50%, transparent);
+  --olive-plain-foreground: var(--olive-strong);
+  --olive-plain-border: oklch(from var(--olive-strong) l c h / 40%);
+  --olive-plain-border-disabled: var(--olive-400);
+  --olive-plain-foreground-disabled: var(--olive-500);
+  --olive-plain-foreground-muted: var(--olive-600);
   --olive-surface: oklch(from var(--olive-subtle) l c h / 50%);
   --olive-surface-foreground: var(--olive-subtle-foreground);
+  --olive-surface-border: oklch(from var(--olive-strong) l c h / 40%);
 
   /* mist */
   --mist-50: oklch(0.987 0.002 197.1);
@@ -559,14 +760,23 @@
   --mist-800: oklch(0.275 0.011 216.9);
   --mist-900: oklch(0.218 0.008 223.9);
   --mist-950: oklch(0.148 0.004 228.8);
-  --mist: var(--mist-600);
-  --mist-foreground: oklch(0.985 0 0);
+  --mist-strong: var(--mist-600);
+  --mist-strong-foreground: oklch(0.985 0 0);
+  --mist-strong-hover: oklch(from var(--mist-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --mist-strong-disabled: var(--mist-300);
   --mist-subtle: var(--mist-200);
   --mist-subtle-foreground: var(--mist-800);
-  --mist-hover: oklch(from var(--mist) clamp(0, calc(l - 0.06), 1) c h);
-  --mist-border: oklch(from var(--mist) l c h / 40%);
+  --mist-subtle-pressed: var(--mist-400);
+  --mist-subtle-hover: var(--mist-300);
+  --mist-subtle-disabled: color-mix(in oklab, var(--mist-subtle) 50%, transparent);
+  --mist-plain-foreground: var(--mist-strong);
+  --mist-plain-border: oklch(from var(--mist-strong) l c h / 40%);
+  --mist-plain-border-disabled: var(--mist-400);
+  --mist-plain-foreground-disabled: var(--mist-500);
+  --mist-plain-foreground-muted: var(--mist-600);
   --mist-surface: oklch(from var(--mist-subtle) l c h / 50%);
   --mist-surface-foreground: var(--mist-subtle-foreground);
+  --mist-surface-border: oklch(from var(--mist-strong) l c h / 40%);
 
   /* taupe */
   --taupe-50: oklch(0.986 0.002 67.8);
@@ -580,274 +790,517 @@
   --taupe-800: oklch(0.268 0.011 36.5);
   --taupe-900: oklch(0.214 0.009 43.1);
   --taupe-950: oklch(0.147 0.004 49.3);
-  --taupe: var(--taupe-600);
-  --taupe-foreground: oklch(0.985 0 0);
+  --taupe-strong: var(--taupe-600);
+  --taupe-strong-foreground: oklch(0.985 0 0);
+  --taupe-strong-hover: oklch(from var(--taupe-strong) clamp(0, calc(l - 0.06), 1) c h);
+  --taupe-strong-disabled: var(--taupe-300);
   --taupe-subtle: var(--taupe-200);
   --taupe-subtle-foreground: var(--taupe-800);
-  --taupe-hover: oklch(from var(--taupe) clamp(0, calc(l - 0.06), 1) c h);
-  --taupe-border: oklch(from var(--taupe) l c h / 40%);
+  --taupe-subtle-pressed: var(--taupe-400);
+  --taupe-subtle-hover: var(--taupe-300);
+  --taupe-subtle-disabled: color-mix(in oklab, var(--taupe-subtle) 50%, transparent);
+  --taupe-plain-foreground: var(--taupe-strong);
+  --taupe-plain-border: oklch(from var(--taupe-strong) l c h / 40%);
+  --taupe-plain-border-disabled: var(--taupe-400);
+  --taupe-plain-foreground-disabled: var(--taupe-500);
+  --taupe-plain-foreground-muted: var(--taupe-600);
   --taupe-surface: oklch(from var(--taupe-subtle) l c h / 50%);
   --taupe-surface-foreground: var(--taupe-subtle-foreground);
+  --taupe-surface-border: oklch(from var(--taupe-strong) l c h / 40%);
 }
 
 .dark {
   /* red */
-  --red: var(--red-400);
-  --red-foreground: var(--red-950);
+  --red-strong: var(--red-400);
+  --red-strong-foreground: var(--red-950);
+  --red-strong-hover: oklch(from var(--red-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --red-strong-disabled: var(--red-800);
   --red-subtle: var(--red-900);
   --red-subtle-foreground: var(--red-200);
-  --red-hover: oklch(from var(--red) clamp(0, calc(l + 0.05), 1) c h);
-  --red-border: oklch(from var(--red) l c h / 40%);
+  --red-subtle-pressed: var(--red-700);
+  --red-subtle-hover: var(--red-800);
+  --red-subtle-disabled: color-mix(in oklab, var(--red-subtle) 50%, transparent);
+  --red-plain-foreground: var(--red-strong);
+  --red-plain-border: oklch(from var(--red-strong) l c h / 40%);
+  --red-plain-border-disabled: var(--red-700);
+  --red-plain-foreground-disabled: var(--red-500);
+  --red-plain-foreground-muted: var(--red-400);
   --red-surface: oklch(from var(--red-subtle) l c h / 50%);
   --red-surface-foreground: var(--red-subtle-foreground);
+  --red-surface-border: oklch(from var(--red-strong) l c h / 40%);
 
   /* orange */
-  --orange: var(--orange-400);
-  --orange-foreground: var(--orange-950);
+  --orange-strong: var(--orange-400);
+  --orange-strong-foreground: var(--orange-950);
+  --orange-strong-hover: oklch(from var(--orange-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --orange-strong-disabled: var(--orange-800);
   --orange-subtle: var(--orange-900);
   --orange-subtle-foreground: var(--orange-200);
-  --orange-hover: oklch(from var(--orange) clamp(0, calc(l + 0.05), 1) c h);
-  --orange-border: oklch(from var(--orange) l c h / 40%);
+  --orange-subtle-pressed: var(--orange-700);
+  --orange-subtle-hover: var(--orange-800);
+  --orange-subtle-disabled: color-mix(in oklab, var(--orange-subtle) 50%, transparent);
+  --orange-plain-foreground: var(--orange-strong);
+  --orange-plain-border: oklch(from var(--orange-strong) l c h / 40%);
+  --orange-plain-border-disabled: var(--orange-700);
+  --orange-plain-foreground-disabled: var(--orange-500);
+  --orange-plain-foreground-muted: var(--orange-400);
   --orange-surface: oklch(from var(--orange-subtle) l c h / 50%);
   --orange-surface-foreground: var(--orange-subtle-foreground);
+  --orange-surface-border: oklch(from var(--orange-strong) l c h / 40%);
 
   /* amber */
-  --amber: var(--amber-400);
-  --amber-foreground: var(--amber-950);
+  --amber-strong: var(--amber-400);
+  --amber-strong-foreground: var(--amber-950);
+  --amber-strong-hover: oklch(from var(--amber-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --amber-strong-disabled: var(--amber-800);
   --amber-subtle: var(--amber-900);
   --amber-subtle-foreground: var(--amber-200);
-  --amber-hover: oklch(from var(--amber) clamp(0, calc(l + 0.05), 1) c h);
-  --amber-border: oklch(from var(--amber) l c h / 40%);
+  --amber-subtle-pressed: var(--amber-700);
+  --amber-subtle-hover: var(--amber-800);
+  --amber-subtle-disabled: color-mix(in oklab, var(--amber-subtle) 50%, transparent);
+  --amber-plain-foreground: var(--amber-strong);
+  --amber-plain-border: oklch(from var(--amber-strong) l c h / 40%);
+  --amber-plain-border-disabled: var(--amber-700);
+  --amber-plain-foreground-disabled: var(--amber-500);
+  --amber-plain-foreground-muted: var(--amber-400);
   --amber-surface: oklch(from var(--amber-subtle) l c h / 50%);
   --amber-surface-foreground: var(--amber-subtle-foreground);
+  --amber-surface-border: oklch(from var(--amber-strong) l c h / 40%);
 
   /* yellow */
-  --yellow: var(--yellow-400);
-  --yellow-foreground: var(--yellow-950);
+  --yellow-strong: var(--yellow-400);
+  --yellow-strong-foreground: var(--yellow-950);
+  --yellow-strong-hover: oklch(from var(--yellow-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --yellow-strong-disabled: var(--yellow-800);
   --yellow-subtle: var(--yellow-900);
   --yellow-subtle-foreground: var(--yellow-200);
-  --yellow-hover: oklch(from var(--yellow) clamp(0, calc(l + 0.05), 1) c h);
-  --yellow-border: oklch(from var(--yellow) l c h / 40%);
+  --yellow-subtle-pressed: var(--yellow-700);
+  --yellow-subtle-hover: var(--yellow-800);
+  --yellow-subtle-disabled: color-mix(in oklab, var(--yellow-subtle) 50%, transparent);
+  --yellow-plain-foreground: var(--yellow-subtle-foreground);
+  --yellow-plain-border: oklch(from var(--yellow-strong) l c h / 40%);
+  --yellow-plain-border-disabled: var(--yellow-700);
+  --yellow-plain-foreground-disabled: var(--yellow-500);
+  --yellow-plain-foreground-muted: var(--yellow-400);
   --yellow-surface: oklch(from var(--yellow-subtle) l c h / 50%);
   --yellow-surface-foreground: var(--yellow-subtle-foreground);
+  --yellow-surface-border: oklch(from var(--yellow-strong) l c h / 40%);
 
   /* lime */
-  --lime: var(--lime-400);
-  --lime-foreground: var(--lime-950);
+  --lime-strong: var(--lime-400);
+  --lime-strong-foreground: var(--lime-950);
+  --lime-strong-hover: oklch(from var(--lime-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --lime-strong-disabled: var(--lime-800);
   --lime-subtle: var(--lime-900);
   --lime-subtle-foreground: var(--lime-200);
-  --lime-hover: oklch(from var(--lime) clamp(0, calc(l + 0.05), 1) c h);
-  --lime-border: oklch(from var(--lime) l c h / 40%);
+  --lime-subtle-pressed: var(--lime-700);
+  --lime-subtle-hover: var(--lime-800);
+  --lime-subtle-disabled: color-mix(in oklab, var(--lime-subtle) 50%, transparent);
+  --lime-plain-foreground: var(--lime-subtle-foreground);
+  --lime-plain-border: oklch(from var(--lime-strong) l c h / 40%);
+  --lime-plain-border-disabled: var(--lime-700);
+  --lime-plain-foreground-disabled: var(--lime-500);
+  --lime-plain-foreground-muted: var(--lime-400);
   --lime-surface: oklch(from var(--lime-subtle) l c h / 50%);
   --lime-surface-foreground: var(--lime-subtle-foreground);
+  --lime-surface-border: oklch(from var(--lime-strong) l c h / 40%);
 
   /* green */
-  --green: var(--green-400);
-  --green-foreground: var(--green-950);
+  --green-strong: var(--green-400);
+  --green-strong-foreground: var(--green-950);
+  --green-strong-hover: oklch(from var(--green-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --green-strong-disabled: var(--green-800);
   --green-subtle: var(--green-900);
   --green-subtle-foreground: var(--green-200);
-  --green-hover: oklch(from var(--green) clamp(0, calc(l + 0.05), 1) c h);
-  --green-border: oklch(from var(--green) l c h / 40%);
+  --green-subtle-pressed: var(--green-700);
+  --green-subtle-hover: var(--green-800);
+  --green-subtle-disabled: color-mix(in oklab, var(--green-subtle) 50%, transparent);
+  --green-plain-foreground: var(--green-strong);
+  --green-plain-border: oklch(from var(--green-strong) l c h / 40%);
+  --green-plain-border-disabled: var(--green-700);
+  --green-plain-foreground-disabled: var(--green-500);
+  --green-plain-foreground-muted: var(--green-400);
   --green-surface: oklch(from var(--green-subtle) l c h / 50%);
   --green-surface-foreground: var(--green-subtle-foreground);
+  --green-surface-border: oklch(from var(--green-strong) l c h / 40%);
 
   /* emerald */
-  --emerald: var(--emerald-400);
-  --emerald-foreground: var(--emerald-950);
+  --emerald-strong: var(--emerald-400);
+  --emerald-strong-foreground: var(--emerald-950);
+  --emerald-strong-hover: oklch(from var(--emerald-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --emerald-strong-disabled: var(--emerald-800);
   --emerald-subtle: var(--emerald-900);
   --emerald-subtle-foreground: var(--emerald-200);
-  --emerald-hover: oklch(from var(--emerald) clamp(0, calc(l + 0.05), 1) c h);
-  --emerald-border: oklch(from var(--emerald) l c h / 40%);
+  --emerald-subtle-pressed: var(--emerald-700);
+  --emerald-subtle-hover: var(--emerald-800);
+  --emerald-subtle-disabled: color-mix(in oklab, var(--emerald-subtle) 50%, transparent);
+  --emerald-plain-foreground: var(--emerald-strong);
+  --emerald-plain-border: oklch(from var(--emerald-strong) l c h / 40%);
+  --emerald-plain-border-disabled: var(--emerald-700);
+  --emerald-plain-foreground-disabled: var(--emerald-500);
+  --emerald-plain-foreground-muted: var(--emerald-400);
   --emerald-surface: oklch(from var(--emerald-subtle) l c h / 50%);
   --emerald-surface-foreground: var(--emerald-subtle-foreground);
+  --emerald-surface-border: oklch(from var(--emerald-strong) l c h / 40%);
 
   /* teal */
-  --teal: oklch(0.78 0.12 166.5);
-  --teal-foreground: oklch(0.2 0.03 166);
+  --teal-strong: oklch(0.78 0.12 166.5);
+  --teal-strong-foreground: oklch(0.2 0.03 166);
+  --teal-strong-hover: oklch(from var(--teal-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --teal-strong-disabled: var(--teal-800);
   --teal-subtle: oklch(0.33 0.045 166.5);
   --teal-subtle-foreground: oklch(0.88 0.06 166.5);
-  --teal-hover: oklch(from var(--teal) clamp(0, calc(l + 0.05), 1) c h);
-  --teal-border: oklch(from var(--teal) l c h / 40%);
+  --teal-subtle-pressed: var(--teal-700);
+  --teal-subtle-hover: var(--teal-800);
+  --teal-subtle-disabled: color-mix(in oklab, var(--teal-subtle) 50%, transparent);
+  --teal-plain-foreground: var(--teal-strong);
+  --teal-plain-border: oklch(from var(--teal-strong) l c h / 40%);
+  --teal-plain-border-disabled: var(--teal-700);
+  --teal-plain-foreground-disabled: var(--teal-500);
+  --teal-plain-foreground-muted: var(--teal-400);
   --teal-surface: oklch(from var(--teal-subtle) l c h / 50%);
   --teal-surface-foreground: var(--teal-subtle-foreground);
+  --teal-surface-border: oklch(from var(--teal-strong) l c h / 40%);
 
   /* cyan */
-  --cyan: var(--cyan-400);
-  --cyan-foreground: var(--cyan-950);
+  --cyan-strong: var(--cyan-400);
+  --cyan-strong-foreground: var(--cyan-950);
+  --cyan-strong-hover: oklch(from var(--cyan-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --cyan-strong-disabled: var(--cyan-800);
   --cyan-subtle: var(--cyan-900);
   --cyan-subtle-foreground: var(--cyan-200);
-  --cyan-hover: oklch(from var(--cyan) clamp(0, calc(l + 0.05), 1) c h);
-  --cyan-border: oklch(from var(--cyan) l c h / 40%);
+  --cyan-subtle-pressed: var(--cyan-700);
+  --cyan-subtle-hover: var(--cyan-800);
+  --cyan-subtle-disabled: color-mix(in oklab, var(--cyan-subtle) 50%, transparent);
+  --cyan-plain-foreground: var(--cyan-strong);
+  --cyan-plain-border: oklch(from var(--cyan-strong) l c h / 40%);
+  --cyan-plain-border-disabled: var(--cyan-700);
+  --cyan-plain-foreground-disabled: var(--cyan-500);
+  --cyan-plain-foreground-muted: var(--cyan-400);
   --cyan-surface: oklch(from var(--cyan-subtle) l c h / 50%);
   --cyan-surface-foreground: var(--cyan-subtle-foreground);
+  --cyan-surface-border: oklch(from var(--cyan-strong) l c h / 40%);
 
   /* sky */
-  --sky: var(--sky-400);
-  --sky-foreground: var(--sky-950);
+  --sky-strong: var(--sky-400);
+  --sky-strong-foreground: var(--sky-950);
+  --sky-strong-hover: oklch(from var(--sky-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --sky-strong-disabled: var(--sky-800);
   --sky-subtle: var(--sky-900);
   --sky-subtle-foreground: var(--sky-200);
-  --sky-hover: oklch(from var(--sky) clamp(0, calc(l + 0.05), 1) c h);
-  --sky-border: oklch(from var(--sky) l c h / 40%);
+  --sky-subtle-pressed: var(--sky-700);
+  --sky-subtle-hover: var(--sky-800);
+  --sky-subtle-disabled: color-mix(in oklab, var(--sky-subtle) 50%, transparent);
+  --sky-plain-foreground: var(--sky-strong);
+  --sky-plain-border: oklch(from var(--sky-strong) l c h / 40%);
+  --sky-plain-border-disabled: var(--sky-700);
+  --sky-plain-foreground-disabled: var(--sky-500);
+  --sky-plain-foreground-muted: var(--sky-400);
   --sky-surface: oklch(from var(--sky-subtle) l c h / 50%);
   --sky-surface-foreground: var(--sky-subtle-foreground);
+  --sky-surface-border: oklch(from var(--sky-strong) l c h / 40%);
 
   /* blue */
-  --blue: var(--blue-400);
-  --blue-foreground: var(--blue-950);
+  --blue-strong: var(--blue-400);
+  --blue-strong-foreground: var(--blue-950);
+  --blue-strong-hover: oklch(from var(--blue-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --blue-strong-disabled: var(--blue-800);
   --blue-subtle: var(--blue-900);
   --blue-subtle-foreground: var(--blue-200);
-  --blue-hover: oklch(from var(--blue) clamp(0, calc(l + 0.05), 1) c h);
-  --blue-border: oklch(from var(--blue) l c h / 40%);
+  --blue-subtle-pressed: var(--blue-700);
+  --blue-subtle-hover: var(--blue-800);
+  --blue-subtle-disabled: color-mix(in oklab, var(--blue-subtle) 50%, transparent);
+  --blue-plain-foreground: var(--blue-strong);
+  --blue-plain-border: oklch(from var(--blue-strong) l c h / 40%);
+  --blue-plain-border-disabled: var(--blue-700);
+  --blue-plain-foreground-disabled: var(--blue-500);
+  --blue-plain-foreground-muted: var(--blue-400);
   --blue-surface: oklch(from var(--blue-subtle) l c h / 50%);
   --blue-surface-foreground: var(--blue-subtle-foreground);
+  --blue-surface-border: oklch(from var(--blue-strong) l c h / 40%);
 
   /* indigo */
-  --indigo: var(--indigo-400);
-  --indigo-foreground: var(--indigo-950);
+  --indigo-strong: var(--indigo-400);
+  --indigo-strong-foreground: var(--indigo-950);
+  --indigo-strong-hover: oklch(from var(--indigo-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --indigo-strong-disabled: var(--indigo-800);
   --indigo-subtle: var(--indigo-900);
   --indigo-subtle-foreground: var(--indigo-200);
-  --indigo-hover: oklch(from var(--indigo) clamp(0, calc(l + 0.05), 1) c h);
-  --indigo-border: oklch(from var(--indigo) l c h / 40%);
+  --indigo-subtle-pressed: var(--indigo-700);
+  --indigo-subtle-hover: var(--indigo-800);
+  --indigo-subtle-disabled: color-mix(in oklab, var(--indigo-subtle) 50%, transparent);
+  --indigo-plain-foreground: var(--indigo-strong);
+  --indigo-plain-border: oklch(from var(--indigo-strong) l c h / 40%);
+  --indigo-plain-border-disabled: var(--indigo-700);
+  --indigo-plain-foreground-disabled: var(--indigo-500);
+  --indigo-plain-foreground-muted: var(--indigo-400);
   --indigo-surface: oklch(from var(--indigo-subtle) l c h / 50%);
   --indigo-surface-foreground: var(--indigo-subtle-foreground);
+  --indigo-surface-border: oklch(from var(--indigo-strong) l c h / 40%);
 
   /* violet */
-  --violet: var(--violet-400);
-  --violet-foreground: var(--violet-950);
+  --violet-strong: var(--violet-400);
+  --violet-strong-foreground: var(--violet-950);
+  --violet-strong-hover: oklch(from var(--violet-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --violet-strong-disabled: var(--violet-800);
   --violet-subtle: var(--violet-900);
   --violet-subtle-foreground: var(--violet-200);
-  --violet-hover: oklch(from var(--violet) clamp(0, calc(l + 0.05), 1) c h);
-  --violet-border: oklch(from var(--violet) l c h / 40%);
+  --violet-subtle-pressed: var(--violet-700);
+  --violet-subtle-hover: var(--violet-800);
+  --violet-subtle-disabled: color-mix(in oklab, var(--violet-subtle) 50%, transparent);
+  --violet-plain-foreground: var(--violet-strong);
+  --violet-plain-border: oklch(from var(--violet-strong) l c h / 40%);
+  --violet-plain-border-disabled: var(--violet-700);
+  --violet-plain-foreground-disabled: var(--violet-500);
+  --violet-plain-foreground-muted: var(--violet-400);
   --violet-surface: oklch(from var(--violet-subtle) l c h / 50%);
   --violet-surface-foreground: var(--violet-subtle-foreground);
+  --violet-surface-border: oklch(from var(--violet-strong) l c h / 40%);
 
   /* purple */
-  --purple: var(--purple-400);
-  --purple-foreground: var(--purple-950);
+  --purple-strong: var(--purple-400);
+  --purple-strong-foreground: var(--purple-950);
+  --purple-strong-hover: oklch(from var(--purple-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --purple-strong-disabled: var(--purple-800);
   --purple-subtle: var(--purple-900);
   --purple-subtle-foreground: var(--purple-200);
-  --purple-hover: oklch(from var(--purple) clamp(0, calc(l + 0.05), 1) c h);
-  --purple-border: oklch(from var(--purple) l c h / 40%);
+  --purple-subtle-pressed: var(--purple-700);
+  --purple-subtle-hover: var(--purple-800);
+  --purple-subtle-disabled: color-mix(in oklab, var(--purple-subtle) 50%, transparent);
+  --purple-plain-foreground: var(--purple-strong);
+  --purple-plain-border: oklch(from var(--purple-strong) l c h / 40%);
+  --purple-plain-border-disabled: var(--purple-700);
+  --purple-plain-foreground-disabled: var(--purple-500);
+  --purple-plain-foreground-muted: var(--purple-400);
   --purple-surface: oklch(from var(--purple-subtle) l c h / 50%);
   --purple-surface-foreground: var(--purple-subtle-foreground);
+  --purple-surface-border: oklch(from var(--purple-strong) l c h / 40%);
 
   /* fuchsia */
-  --fuchsia: var(--fuchsia-400);
-  --fuchsia-foreground: var(--fuchsia-950);
+  --fuchsia-strong: var(--fuchsia-400);
+  --fuchsia-strong-foreground: var(--fuchsia-950);
+  --fuchsia-strong-hover: oklch(from var(--fuchsia-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --fuchsia-strong-disabled: var(--fuchsia-800);
   --fuchsia-subtle: var(--fuchsia-900);
   --fuchsia-subtle-foreground: var(--fuchsia-200);
-  --fuchsia-hover: oklch(from var(--fuchsia) clamp(0, calc(l + 0.05), 1) c h);
-  --fuchsia-border: oklch(from var(--fuchsia) l c h / 40%);
+  --fuchsia-subtle-pressed: var(--fuchsia-700);
+  --fuchsia-subtle-hover: var(--fuchsia-800);
+  --fuchsia-subtle-disabled: color-mix(in oklab, var(--fuchsia-subtle) 50%, transparent);
+  --fuchsia-plain-foreground: var(--fuchsia-strong);
+  --fuchsia-plain-border: oklch(from var(--fuchsia-strong) l c h / 40%);
+  --fuchsia-plain-border-disabled: var(--fuchsia-700);
+  --fuchsia-plain-foreground-disabled: var(--fuchsia-500);
+  --fuchsia-plain-foreground-muted: var(--fuchsia-400);
   --fuchsia-surface: oklch(from var(--fuchsia-subtle) l c h / 50%);
   --fuchsia-surface-foreground: var(--fuchsia-subtle-foreground);
+  --fuchsia-surface-border: oklch(from var(--fuchsia-strong) l c h / 40%);
 
   /* pink */
-  --pink: var(--pink-400);
-  --pink-foreground: var(--pink-950);
+  --pink-strong: var(--pink-400);
+  --pink-strong-foreground: var(--pink-950);
+  --pink-strong-hover: oklch(from var(--pink-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --pink-strong-disabled: var(--pink-800);
   --pink-subtle: var(--pink-900);
   --pink-subtle-foreground: var(--pink-200);
-  --pink-hover: oklch(from var(--pink) clamp(0, calc(l + 0.05), 1) c h);
-  --pink-border: oklch(from var(--pink) l c h / 40%);
+  --pink-subtle-pressed: var(--pink-700);
+  --pink-subtle-hover: var(--pink-800);
+  --pink-subtle-disabled: color-mix(in oklab, var(--pink-subtle) 50%, transparent);
+  --pink-plain-foreground: var(--pink-strong);
+  --pink-plain-border: oklch(from var(--pink-strong) l c h / 40%);
+  --pink-plain-border-disabled: var(--pink-700);
+  --pink-plain-foreground-disabled: var(--pink-500);
+  --pink-plain-foreground-muted: var(--pink-400);
   --pink-surface: oklch(from var(--pink-subtle) l c h / 50%);
   --pink-surface-foreground: var(--pink-subtle-foreground);
+  --pink-surface-border: oklch(from var(--pink-strong) l c h / 40%);
 
   /* rose */
-  --rose: var(--rose-400);
-  --rose-foreground: var(--rose-950);
+  --rose-strong: var(--rose-400);
+  --rose-strong-foreground: var(--rose-950);
+  --rose-strong-hover: oklch(from var(--rose-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --rose-strong-disabled: var(--rose-800);
   --rose-subtle: var(--rose-900);
   --rose-subtle-foreground: var(--rose-200);
-  --rose-hover: oklch(from var(--rose) clamp(0, calc(l + 0.05), 1) c h);
-  --rose-border: oklch(from var(--rose) l c h / 40%);
+  --rose-subtle-pressed: var(--rose-700);
+  --rose-subtle-hover: var(--rose-800);
+  --rose-subtle-disabled: color-mix(in oklab, var(--rose-subtle) 50%, transparent);
+  --rose-plain-foreground: var(--rose-strong);
+  --rose-plain-border: oklch(from var(--rose-strong) l c h / 40%);
+  --rose-plain-border-disabled: var(--rose-700);
+  --rose-plain-foreground-disabled: var(--rose-500);
+  --rose-plain-foreground-muted: var(--rose-400);
   --rose-surface: oklch(from var(--rose-subtle) l c h / 50%);
   --rose-surface-foreground: var(--rose-subtle-foreground);
+  --rose-surface-border: oklch(from var(--rose-strong) l c h / 40%);
 
   /* slate */
-  --slate: var(--slate-400);
-  --slate-foreground: var(--slate-950);
+  --slate-strong: var(--slate-400);
+  --slate-strong-foreground: var(--slate-950);
+  --slate-strong-hover: oklch(from var(--slate-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --slate-strong-disabled: var(--slate-800);
   --slate-subtle: var(--slate-800);
   --slate-subtle-foreground: var(--slate-200);
-  --slate-hover: oklch(from var(--slate) clamp(0, calc(l + 0.05), 1) c h);
-  --slate-border: oklch(from var(--slate) l c h / 40%);
+  --slate-subtle-pressed: var(--slate-600);
+  --slate-subtle-hover: var(--slate-700);
+  --slate-subtle-disabled: color-mix(in oklab, var(--slate-subtle) 50%, transparent);
+  --slate-plain-foreground: var(--slate-strong);
+  --slate-plain-border: oklch(from var(--slate-strong) l c h / 40%);
+  --slate-plain-border-disabled: var(--slate-700);
+  --slate-plain-foreground-disabled: var(--slate-500);
+  --slate-plain-foreground-muted: var(--slate-400);
   --slate-surface: oklch(from var(--slate-subtle) l c h / 50%);
   --slate-surface-foreground: var(--slate-subtle-foreground);
+  --slate-surface-border: oklch(from var(--slate-strong) l c h / 40%);
 
   /* gray */
-  --gray: var(--gray-400);
-  --gray-foreground: var(--gray-950);
+  --gray-strong: var(--gray-400);
+  --gray-strong-foreground: var(--gray-950);
+  --gray-strong-hover: oklch(from var(--gray-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --gray-strong-disabled: var(--gray-800);
   --gray-subtle: var(--gray-800);
   --gray-subtle-foreground: var(--gray-200);
-  --gray-hover: oklch(from var(--gray) clamp(0, calc(l + 0.05), 1) c h);
-  --gray-border: oklch(from var(--gray) l c h / 40%);
+  --gray-subtle-pressed: var(--gray-600);
+  --gray-subtle-hover: var(--gray-700);
+  --gray-subtle-disabled: color-mix(in oklab, var(--gray-subtle) 50%, transparent);
+  --gray-plain-foreground: var(--gray-strong);
+  --gray-plain-border: oklch(from var(--gray-strong) l c h / 40%);
+  --gray-plain-border-disabled: var(--gray-700);
+  --gray-plain-foreground-disabled: var(--gray-500);
+  --gray-plain-foreground-muted: var(--gray-400);
   --gray-surface: oklch(from var(--gray-subtle) l c h / 50%);
   --gray-surface-foreground: var(--gray-subtle-foreground);
+  --gray-surface-border: oklch(from var(--gray-strong) l c h / 40%);
 
   /* neutral */
-  --neutral: var(--neutral-400);
-  --neutral-foreground: var(--neutral-950);
+  --neutral-strong: var(--neutral-400);
+  --neutral-strong-foreground: var(--neutral-950);
+  --neutral-strong-hover: oklch(from var(--neutral-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --neutral-strong-disabled: var(--neutral-800);
   --neutral-subtle: var(--neutral-800);
   --neutral-subtle-foreground: var(--neutral-200);
-  --neutral-hover: oklch(from var(--neutral) clamp(0, calc(l + 0.05), 1) c h);
-  --neutral-border: oklch(from var(--neutral) l c h / 40%);
+  --neutral-subtle-pressed: var(--neutral-600);
+  --neutral-subtle-hover: var(--neutral-700);
+  --neutral-subtle-disabled: color-mix(in oklab, var(--neutral-subtle) 50%, transparent);
+  --neutral-plain-foreground: var(--neutral-strong);
+  --neutral-plain-border: oklch(from var(--neutral-strong) l c h / 40%);
+  --neutral-plain-border-disabled: var(--neutral-700);
+  --neutral-plain-foreground-disabled: var(--neutral-500);
+  --neutral-plain-foreground-muted: var(--neutral-400);
   --neutral-surface: oklch(from var(--neutral-subtle) l c h / 50%);
   --neutral-surface-foreground: var(--neutral-subtle-foreground);
+  --neutral-surface-border: oklch(from var(--neutral-strong) l c h / 40%);
 
   /* zinc */
-  --zinc: var(--zinc-400);
-  --zinc-foreground: var(--zinc-950);
+  --zinc-strong: var(--zinc-400);
+  --zinc-strong-foreground: var(--zinc-950);
+  --zinc-strong-hover: oklch(from var(--zinc-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --zinc-strong-disabled: var(--zinc-800);
   --zinc-subtle: var(--zinc-800);
   --zinc-subtle-foreground: var(--zinc-200);
-  --zinc-hover: oklch(from var(--zinc) clamp(0, calc(l + 0.05), 1) c h);
-  --zinc-border: oklch(from var(--zinc) l c h / 40%);
+  --zinc-subtle-pressed: var(--zinc-600);
+  --zinc-subtle-hover: var(--zinc-700);
+  --zinc-subtle-disabled: color-mix(in oklab, var(--zinc-subtle) 50%, transparent);
+  --zinc-plain-foreground: var(--zinc-strong);
+  --zinc-plain-border: oklch(from var(--zinc-strong) l c h / 40%);
+  --zinc-plain-border-disabled: var(--zinc-700);
+  --zinc-plain-foreground-disabled: var(--zinc-500);
+  --zinc-plain-foreground-muted: var(--zinc-400);
   --zinc-surface: oklch(from var(--zinc-subtle) l c h / 50%);
   --zinc-surface-foreground: var(--zinc-subtle-foreground);
+  --zinc-surface-border: oklch(from var(--zinc-strong) l c h / 40%);
 
   /* stone */
-  --stone: var(--stone-400);
-  --stone-foreground: var(--stone-950);
+  --stone-strong: var(--stone-400);
+  --stone-strong-foreground: var(--stone-950);
+  --stone-strong-hover: oklch(from var(--stone-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --stone-strong-disabled: var(--stone-800);
   --stone-subtle: var(--stone-800);
   --stone-subtle-foreground: var(--stone-200);
-  --stone-hover: oklch(from var(--stone) clamp(0, calc(l + 0.05), 1) c h);
-  --stone-border: oklch(from var(--stone) l c h / 40%);
+  --stone-subtle-pressed: var(--stone-600);
+  --stone-subtle-hover: var(--stone-700);
+  --stone-subtle-disabled: color-mix(in oklab, var(--stone-subtle) 50%, transparent);
+  --stone-plain-foreground: var(--stone-strong);
+  --stone-plain-border: oklch(from var(--stone-strong) l c h / 40%);
+  --stone-plain-border-disabled: var(--stone-700);
+  --stone-plain-foreground-disabled: var(--stone-500);
+  --stone-plain-foreground-muted: var(--stone-400);
   --stone-surface: oklch(from var(--stone-subtle) l c h / 50%);
   --stone-surface-foreground: var(--stone-subtle-foreground);
+  --stone-surface-border: oklch(from var(--stone-strong) l c h / 40%);
 
   /* mauve */
-  --mauve: var(--mauve-400);
-  --mauve-foreground: var(--mauve-950);
+  --mauve-strong: var(--mauve-400);
+  --mauve-strong-foreground: var(--mauve-950);
+  --mauve-strong-hover: oklch(from var(--mauve-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --mauve-strong-disabled: var(--mauve-800);
   --mauve-subtle: var(--mauve-800);
   --mauve-subtle-foreground: var(--mauve-200);
-  --mauve-hover: oklch(from var(--mauve) clamp(0, calc(l + 0.05), 1) c h);
-  --mauve-border: oklch(from var(--mauve) l c h / 40%);
+  --mauve-subtle-pressed: var(--mauve-600);
+  --mauve-subtle-hover: var(--mauve-700);
+  --mauve-subtle-disabled: color-mix(in oklab, var(--mauve-subtle) 50%, transparent);
+  --mauve-plain-foreground: var(--mauve-strong);
+  --mauve-plain-border: oklch(from var(--mauve-strong) l c h / 40%);
+  --mauve-plain-border-disabled: var(--mauve-700);
+  --mauve-plain-foreground-disabled: var(--mauve-500);
+  --mauve-plain-foreground-muted: var(--mauve-400);
   --mauve-surface: oklch(from var(--mauve-subtle) l c h / 50%);
   --mauve-surface-foreground: var(--mauve-subtle-foreground);
+  --mauve-surface-border: oklch(from var(--mauve-strong) l c h / 40%);
 
   /* olive */
-  --olive: var(--olive-400);
-  --olive-foreground: var(--olive-950);
+  --olive-strong: var(--olive-400);
+  --olive-strong-foreground: var(--olive-950);
+  --olive-strong-hover: oklch(from var(--olive-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --olive-strong-disabled: var(--olive-800);
   --olive-subtle: var(--olive-800);
   --olive-subtle-foreground: var(--olive-200);
-  --olive-hover: oklch(from var(--olive) clamp(0, calc(l + 0.05), 1) c h);
-  --olive-border: oklch(from var(--olive) l c h / 40%);
+  --olive-subtle-pressed: var(--olive-600);
+  --olive-subtle-hover: var(--olive-700);
+  --olive-subtle-disabled: color-mix(in oklab, var(--olive-subtle) 50%, transparent);
+  --olive-plain-foreground: var(--olive-strong);
+  --olive-plain-border: oklch(from var(--olive-strong) l c h / 40%);
+  --olive-plain-border-disabled: var(--olive-700);
+  --olive-plain-foreground-disabled: var(--olive-500);
+  --olive-plain-foreground-muted: var(--olive-400);
   --olive-surface: oklch(from var(--olive-subtle) l c h / 50%);
   --olive-surface-foreground: var(--olive-subtle-foreground);
+  --olive-surface-border: oklch(from var(--olive-strong) l c h / 40%);
 
   /* mist */
-  --mist: var(--mist-400);
-  --mist-foreground: var(--mist-950);
+  --mist-strong: var(--mist-400);
+  --mist-strong-foreground: var(--mist-950);
+  --mist-strong-hover: oklch(from var(--mist-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --mist-strong-disabled: var(--mist-800);
   --mist-subtle: var(--mist-800);
   --mist-subtle-foreground: var(--mist-200);
-  --mist-hover: oklch(from var(--mist) clamp(0, calc(l + 0.05), 1) c h);
-  --mist-border: oklch(from var(--mist) l c h / 40%);
+  --mist-subtle-pressed: var(--mist-600);
+  --mist-subtle-hover: var(--mist-700);
+  --mist-subtle-disabled: color-mix(in oklab, var(--mist-subtle) 50%, transparent);
+  --mist-plain-foreground: var(--mist-strong);
+  --mist-plain-border: oklch(from var(--mist-strong) l c h / 40%);
+  --mist-plain-border-disabled: var(--mist-700);
+  --mist-plain-foreground-disabled: var(--mist-500);
+  --mist-plain-foreground-muted: var(--mist-400);
   --mist-surface: oklch(from var(--mist-subtle) l c h / 50%);
   --mist-surface-foreground: var(--mist-subtle-foreground);
+  --mist-surface-border: oklch(from var(--mist-strong) l c h / 40%);
 
   /* taupe */
-  --taupe: var(--taupe-400);
-  --taupe-foreground: var(--taupe-950);
+  --taupe-strong: var(--taupe-400);
+  --taupe-strong-foreground: var(--taupe-950);
+  --taupe-strong-hover: oklch(from var(--taupe-strong) clamp(0, calc(l + 0.05), 1) c h);
+  --taupe-strong-disabled: var(--taupe-800);
   --taupe-subtle: var(--taupe-800);
   --taupe-subtle-foreground: var(--taupe-200);
-  --taupe-hover: oklch(from var(--taupe) clamp(0, calc(l + 0.05), 1) c h);
-  --taupe-border: oklch(from var(--taupe) l c h / 40%);
+  --taupe-subtle-pressed: var(--taupe-600);
+  --taupe-subtle-hover: var(--taupe-700);
+  --taupe-subtle-disabled: color-mix(in oklab, var(--taupe-subtle) 50%, transparent);
+  --taupe-plain-foreground: var(--taupe-strong);
+  --taupe-plain-border: oklch(from var(--taupe-strong) l c h / 40%);
+  --taupe-plain-border-disabled: var(--taupe-700);
+  --taupe-plain-foreground-disabled: var(--taupe-500);
+  --taupe-plain-foreground-muted: var(--taupe-400);
   --taupe-surface: oklch(from var(--taupe-subtle) l c h / 50%);
   --taupe-surface-foreground: var(--taupe-subtle-foreground);
+  --taupe-surface-border: oklch(from var(--taupe-strong) l c h / 40%);
 }

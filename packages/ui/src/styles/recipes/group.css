@@ -100,7 +100,7 @@
  * --group-action-*. Each falls back to the child's own --variant-*, so a child outside a group paints as before:
  * var(--group-action-bg, var(--variant-bg)).
  *
- * Only identity slots are handed down: bg, fg and border at rest, hover, active and selected, plus the disabled
+ * Only identity slots are handed down: bg, fg and border at rest, hover, active and pressed, plus the disabled
  * fill and edge. Focus, invalid, disabled text, ring and placeholder stay with the child.
  * A slot the emphasis does not define stays invalid here, so the child falls back to its own.
  *
@@ -118,9 +118,9 @@
   --group-action-bg-active: var(--variant-bg-active);
   --group-action-fg-active: var(--variant-fg-active);
   --group-action-border-active: var(--variant-border-active);
-  --group-action-bg-selected: var(--variant-bg-selected);
-  --group-action-fg-selected: var(--variant-fg-selected);
-  --group-action-border-selected: var(--variant-border-selected);
+  --group-action-bg-pressed: var(--variant-bg-pressed);
+  --group-action-fg-pressed: var(--variant-fg-pressed);
+  --group-action-border-pressed: var(--variant-border-pressed);
   --group-action-bg-disabled: var(--variant-bg-disabled);
   --group-action-border-disabled: var(--variant-border-disabled);
   
@@ -140,9 +140,9 @@
   --group-field-fg-active: var(--variant-fg-active);
   --group-field-border-active: var(--variant-border-active);
 
-  --group-field-bg-selected: var(--variant-bg-selected);
-  --group-field-fg-selected: var(--variant-fg-selected);
-  --group-field-border-selected: var(--variant-border-selected);
+  --group-field-bg-pressed: var(--variant-bg-pressed);
+  --group-field-fg-pressed: var(--variant-fg-pressed);
+  --group-field-border-pressed: var(--variant-border-pressed);
 
   --group-field-bg-disabled: var(--variant-bg-disabled);
   --group-field-border-disabled: var(--variant-border-disabled);

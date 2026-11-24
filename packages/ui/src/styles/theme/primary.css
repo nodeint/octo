@@ -1,14 +1,12 @@
 /*
  * Primary color role. It aliases a swatch, and a data-appearance-primary rebind swaps the swatch.
- * Only a solid fill keeps an on-fill pair: `--primary-foreground`, `--primary-fixed-foreground`.
- * --primary-hover aliases the swatch's -hover slot, which already steps down in light and up in dark.
+ * Only a solid fill keeps an on-fill pair: `--primary-strong-foreground`.
+ * --primary-strong-hover aliases the swatch's -hover slot, which already steps down in light and up in dark.
  */
 :root {
-  --primary: var(--teal);
-  --primary-hover: var(--teal-hover);
-  --primary-foreground: var(--teal-foreground);
+  --primary-strong: var(--teal-strong);
+  --primary-strong-hover: var(--teal-strong-hover);
+  --primary-strong-foreground: var(--teal-strong-foreground);
   --primary-subtle: var(--teal-subtle);
   --primary-subtle-foreground: var(--teal-subtle-foreground);
-  --primary-fixed: var(--teal-fixed);
-  --primary-fixed-foreground: var(--teal-fixed-foreground);
 }

@@ -229,7 +229,7 @@ button.item:hover {
 }
 
 .item-description > a:hover {
-  color: var(--primary);
+  color: var(--primary-strong);
 }
 
 .item-meta {

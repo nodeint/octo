@@ -58,8 +58,8 @@
 }
 
 .bubble[data-variant='default'] > .bubble-content {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
+  background-color: var(--primary-strong);
+  color: var(--primary-strong-foreground);
 }
 
 .bubble[data-variant='secondary'] > .bubble-content {

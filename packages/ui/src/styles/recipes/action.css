@@ -75,9 +75,9 @@
 .action[aria-expanded='true'],
 .action[aria-pressed='true'],
 .action[data-pressed] {
-  background-color: var(--group-action-bg-selected, var(--variant-bg-selected));
-  border-color: var(--group-action-border-selected, var(--variant-border-selected));
-  color: var(--group-action-fg-selected, var(--variant-fg-selected));
+  background-color: var(--group-action-bg-pressed, var(--variant-bg-pressed));
+  border-color: var(--group-action-border-pressed, var(--variant-border-pressed));
+  color: var(--group-action-fg-pressed, var(--variant-fg-pressed));
 }
 
 /* Focus: focus border plus a soft halo, matching input. The transparent outline still shows in forced-colors mode. */

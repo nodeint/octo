@@ -47,7 +47,7 @@
 }
 
 .field[data-invalid='true'] {
-  color: var(--destructive);
+  color: var(--destructive-strong);
 }
 
 .field[data-orientation='vertical'],
@@ -174,7 +174,7 @@
 }
 
 .field-description > a:hover {
-  color: var(--primary);
+  color: var(--primary-strong);
 }
 
 .field[data-orientation='horizontal'] .field-description {
@@ -213,7 +213,7 @@
 .field-error {
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
-  color: var(--destructive);
+  color: var(--destructive-strong);
 }
 
 .field-error-list {

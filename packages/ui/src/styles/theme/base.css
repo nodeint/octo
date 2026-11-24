@@ -6,7 +6,7 @@
  * defined in swatches.css only. data-appearance-base rebinds the whole scale to another gray hue (appearance/base.css).
  *
  * Roles: a neutral surface has no foreground of its own: text on it reads the foreground-* ladder.
- * Only a solid emphasis fill keeps an on-fill pair: primary, primary-subtle, primary-fixed, and the statuses.
+ * Only a solid emphasis fill keeps an on-fill pair: primary, primary-subtle, and the statuses.
  */
 :root {
   --base-light: #fff;
@@ -37,7 +37,7 @@
   --border: var(--base-300);
   --border-surface: oklch(from var(--foreground) l c h / 10%);
 
-  --ring: var(--primary);
+  --ring: var(--primary-strong);
 
   /*
   * Foreground: the text and glyph axis. Aliases only. Raw oklch stays in the scale files.
