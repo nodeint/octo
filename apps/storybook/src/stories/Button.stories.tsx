@@ -39,7 +39,7 @@ const SIZE_LABELS = {
 } as const satisfies Record<ButtonSize, string>;
 
 const meta = {
-  title: 'Form/Button',
+  title: 'General/Button',
   component: Button,
   tags: ['autodocs'],
   args: { children: 'Button' },

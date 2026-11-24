@@ -7,8 +7,8 @@ import {
   type ButtonShape,
   type ButtonSize,
   type ButtonVariant,
-} from '../../form/button/Button';
-import { type ButtonGroupSize, type ButtonGroupVariant } from '../../form/button-group/ButtonGroup';
+} from '../../general/button/Button';
+import { type ButtonGroupSize, type ButtonGroupVariant } from '../../general/button-group/ButtonGroup';
 import { type ToggleSize } from '../../form/toggle/Toggle';
 
 type ToolbarOrientation = 'horizontal' | 'vertical'

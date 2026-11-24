@@ -2,7 +2,7 @@ import { Dialog as SheetPrimitive } from '@base-ui/react/dialog';
 import * as React from 'react';
 
 import { cn } from '../../../lib/utils';
-import { Button } from '../../form/button/Button';
+import { Button } from '../../general/button/Button';
 import { Icon } from '../../typography/icon/Icon';
 
 type SheetSide = 'top' | 'right' | 'bottom' | 'left'

@@ -2,7 +2,7 @@ import { Dialog as DialogPrimitive } from '@base-ui/react/dialog';
 import * as React from 'react';
 
 import { cn } from '../../../lib/utils';
-import { Button } from '../../form/button/Button';
+import { Button } from '../../general/button/Button';
 import { Box } from '../../layout/box/Box';
 import { ScrollArea } from '../../layout/scroll-area/ScrollArea';
 import { Icon } from '../../typography/icon/Icon';

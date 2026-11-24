@@ -4,7 +4,7 @@ import { Combobox as ComboboxPrimitive } from '@base-ui/react';
 import * as React from 'react';
 
 import { cn } from '../../../lib/utils';
-import { Button } from '../../form/button/Button';
+import { Button } from '../../general/button/Button';
 import { Input } from '../../form/input/Input';
 import {
   InputGroup,

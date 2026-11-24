@@ -1,4 +1,5 @@
-import * as React from 'react';
+import { mergeProps } from '@base-ui/react/merge-props';
+import { useRender } from '@base-ui/react/use-render';
 
 import { cn } from '../../../lib/utils';
 
@@ -21,63 +22,49 @@ const ALERT_TONE = {
   destructive: 'destructive',
 } as const satisfies Record<AlertVariant, string>;
 
-type AlertProps = React.ComponentProps<'div'> & {
+type AlertProps = useRender.ComponentProps<'div'> & {
   variant?: AlertVariant
 }
 
 function Alert({
   className,
   variant = 'default',
+  render,
   ...props
 }: AlertProps): React.JSX.Element {
-  return (
-    <div
-      data-slot="alert"
-      data-variant={variant}
-      data-tone={ALERT_TONE[variant]}
-      data-emphasis="surface"
-      role={ALERT_ROLE[variant]}
-      className={cn('alert', className)}
-      {...props}
-    />
-  );
+  return useRender({
+    defaultTagName: 'div',
+    props: mergeProps<'div'>(
+      {
+        role: ALERT_ROLE[variant],
+        className: cn('alert', className),
+      },
+      props
+    ),
+    render,
+    state: {
+      slot: 'alert',
+      variant,
+      tone: ALERT_TONE[variant],
+      emphasis: 'surface',
+    },
+  });
 }
 
-function AlertTitle({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
-  return (
-    <div
-      data-slot="alert-title"
-      className={cn(
-        'alert-title',
-        className
-      )}
-      {...props}
-    />
-  );
+function createAlertPart(slot: string): (props: useRender.ComponentProps<'div'>) => React.JSX.Element {
+  return function AlertPart({ className, render, ...props }) {
+    return useRender({
+      defaultTagName: 'div',
+      props: mergeProps<'div'>({ className: cn(slot) }, { className }, props),
+      render,
+      state: { slot },
+    });
+  };
 }
 
-function AlertDescription({
-  className,
-  ...props
-}: React.ComponentProps<'div'>): React.JSX.Element {
-  return (
-    <div
-      data-slot="alert-description"
-      className={cn('alert-description', className)}
-      {...props}
-    />
-  );
-}
-
-function AlertAction({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
-  return (
-    <div
-      data-slot="alert-action"
-      className={cn('alert-action', className)}
-      {...props}
-    />
-  );
-}
+const AlertTitle = createAlertPart('alert-title');
+const AlertDescription = createAlertPart('alert-description');
+const AlertAction = createAlertPart('alert-action');
 
 export { Alert, AlertAction, AlertDescription, AlertTitle };
 export type { AlertProps, AlertVariant };

@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { type ButtonPaint, resolveButtonPaint } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
-import type { ButtonShape, ButtonSize } from '../../form/button/Button';
+import type { ButtonShape, ButtonSize } from '../../general/button/Button';
 import { Icon } from '../../typography/icon/Icon';
 import type { OverlayWidth } from '../overlay-width';
 

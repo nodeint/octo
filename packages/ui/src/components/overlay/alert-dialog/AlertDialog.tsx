@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import { type ButtonPaint, toButtonPaint } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
-import { Button } from '../../form/button/Button';
+import { Button } from '../../general/button/Button';
 
 type AlertDialogSize = 'md' | 'sm'
 

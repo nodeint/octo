@@ -3,7 +3,7 @@ import * as React from 'react';
 import { type OmitFromUnion, withDefaultVariant } from '../../../lib/action-paint';
 import { type GroupFieldVariant, resolveGroupPaint } from '../../../lib/group-paint';
 import { cn } from '../../../lib/utils';
-import { Button } from '../../form/button/Button';
+import { Button } from '../../general/button/Button';
 
 type InputGroupAddonAlign = 'inline-start' | 'inline-end' | 'block-start' | 'block-end'
 type InputGroupVariant = Exclude<GroupFieldVariant, 'secondary'>

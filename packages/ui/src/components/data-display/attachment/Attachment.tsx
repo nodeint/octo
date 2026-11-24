@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { withDefaultVariant } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
-import { Button } from '../../form/button/Button';
+import { Button } from '../../general/button/Button';
 
 type AttachmentState = 'idle' | 'uploading' | 'processing' | 'error' | 'done'
 type AttachmentSize = 'md' | 'sm' | 'xs'
@@ -14,7 +14,7 @@ const ATTACHMENT_MEDIA_SIZE = { md: 'lg', sm: 'sm', xs: 'xs' } as const satisfie
 type AttachmentOrientation = 'horizontal' | 'vertical'
 type AttachmentMediaVariant = 'icon' | 'image'
 
-type AttachmentProps = React.ComponentProps<'div'> & {
+type AttachmentProps = useRender.ComponentProps<'div'> & {
   state?: AttachmentState
   size?: AttachmentSize
   orientation?: AttachmentOrientation
@@ -25,90 +25,71 @@ function Attachment({
   state = 'done',
   size = 'md',
   orientation = 'horizontal',
+  render,
   ...props
 }: AttachmentProps): React.JSX.Element {
-  return (
-    <div
-      data-slot="attachment"
-      data-state={state}
-      data-size={size}
-      data-media-size={ATTACHMENT_MEDIA_SIZE[size]}
-      data-orientation={orientation}
-      className={cn('attachment', className)}
-      {...props}
-    />
-  );
+  return useRender({
+    defaultTagName: 'div',
+    props: mergeProps<'div'>(
+      {
+        className: cn('attachment', className),
+        'data-media-size': ATTACHMENT_MEDIA_SIZE[size],
+      } as React.ComponentProps<'div'>,
+      props
+    ),
+    render,
+    state: {
+      slot: 'attachment',
+      state,
+      size,
+      orientation,
+    },
+  });
 }
 
 function AttachmentMedia({
   className,
   variant = 'icon',
+  render,
   ...props
-}: React.ComponentProps<'div'> & {
+}: useRender.ComponentProps<'div'> & {
   variant?: AttachmentMediaVariant
 }): React.JSX.Element {
-  return (
-    <div
-      data-slot="attachment-media"
-      data-variant={variant}
-      data-media-fit={variant === 'image' ? 'image' : undefined}
-      className={cn('media-frame attachment-media', className)}
-      {...props}
-    />
-  );
+  return useRender({
+    defaultTagName: 'div',
+    props: mergeProps<'div'>(
+      {
+        className: cn('media-frame attachment-media', className),
+        'data-media-fit': variant === 'image' ? 'image' : undefined,
+      } as React.ComponentProps<'div'>,
+      props
+    ),
+    render,
+    state: {
+      slot: 'attachment-media',
+      variant,
+    },
+  });
 }
 
-function AttachmentContent({
-  className,
-  ...props
-}: React.ComponentProps<'div'>): React.JSX.Element {
-  return (
-    <div
-      data-slot="attachment-content"
-      className={cn('attachment-content', className)}
-      {...props}
-    />
-  );
+function createPart(
+  tag: 'div' | 'span',
+  slot: string,
+): (props: useRender.ComponentProps<'div'>) => React.JSX.Element {
+  return function AttachmentPart({ className, render, ...props }) {
+    return useRender({
+      defaultTagName: tag,
+      props: mergeProps<'div'>({ className: cn(slot, className) }, props),
+      render,
+      state: { slot },
+    });
+  };
 }
 
-function AttachmentTitle({
-  className,
-  ...props
-}: React.ComponentProps<'span'>): React.JSX.Element {
-  return (
-    <span
-      data-slot="attachment-title"
-      className={cn('attachment-title', className)}
-      {...props}
-    />
-  );
-}
-
-function AttachmentDescription({
-  className,
-  ...props
-}: React.ComponentProps<'span'>): React.JSX.Element {
-  return (
-    <span
-      data-slot="attachment-description"
-      className={cn('attachment-description', className)}
-      {...props}
-    />
-  );
-}
-
-function AttachmentActions({
-  className,
-  ...props
-}: React.ComponentProps<'div'>): React.JSX.Element {
-  return (
-    <div
-      data-slot="attachment-actions"
-      className={cn('attachment-actions', className)}
-      {...props}
-    />
-  );
-}
+const AttachmentContent = createPart('div', 'attachment-content');
+const AttachmentTitle = createPart('span', 'attachment-title');
+const AttachmentDescription = createPart('span', 'attachment-description');
+const AttachmentActions = createPart('div', 'attachment-actions');
 
 function AttachmentAction({
   className,
@@ -160,15 +141,7 @@ function AttachmentTrigger({
   });
 }
 
-function AttachmentGroup({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
-  return (
-    <div
-      data-slot="attachment-group"
-      className={cn('attachment-group', className)}
-      {...props}
-    />
-  );
-}
+const AttachmentGroup = createPart('div', 'attachment-group');
 
 export {
   Attachment,

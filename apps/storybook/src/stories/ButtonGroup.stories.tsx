@@ -60,7 +60,7 @@ const CURRENCIES = [
 ] as const;
 
 const meta = {
-  title: 'Form/ButtonGroup',
+  title: 'General/ButtonGroup',
   component: ButtonGroup,
   tags: ['autodocs'],
   argTypes: {
