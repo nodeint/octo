@@ -28,7 +28,7 @@ function Badge({
     defaultTagName: 'span',
     props: mergeProps<'span'>(
       {
-        className: cn('badge', className),
+        className: cn('chip', 'badge', className),
       },
       props
     ),

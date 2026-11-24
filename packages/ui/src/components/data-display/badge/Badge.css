@@ -1,22 +1,15 @@
 /*
- * Static look matches the action controls (button): same height, inset, gap, glyph, pill corner and type
- * role per step, and the shared --variant-* colors at rest. Focus ring and invalid paint apply when
- * a badge is rendered as a link or other focusable element. Height follows the control ladder; default size is sm.
+ * A badge is a chip painted by the shared --variant-* colors, with a pill corner. The chip recipe owns the size
+ * step (height, inset, gap, glyph, type role); this file keeps the paint, the pill corner and the link and focus states.
+ * Focus ring and invalid paint apply when a badge is rendered as a link or other focusable element.
  */
 .badge {
-  display: inline-flex;
+  --chip-bg: var(--variant-bg);
+  --chip-fg: var(--variant-fg);
+  --chip-border: var(--border-width-thin);
   flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
   overflow: hidden;
   border: var(--border-width-thin) solid var(--variant-border, transparent);
-  background-color: var(--variant-bg);
-  color: var(--variant-fg);
-  white-space: nowrap;
-  font-weight: var(--role-body-weight);
-  font-size: var(--role-body-size);
-  line-height: var(--role-body-leading);
   outline: none;
   transition-property: color, background-color, border-color, box-shadow, transform, opacity;
   transition-duration: var(--default-transition-duration);
@@ -34,62 +27,26 @@
   box-shadow: var(--state-invalid-shadow);
 }
 
-/* Icon glyph beside the text. A size-* class on the svg opts out. */
-.badge svg {
-  pointer-events: none;
-  flex-shrink: 0;
-}
-
+/* Pill corner per size step. */
 .badge[data-size='xs'] {
-  height: var(--control-height-xs);
-  padding-inline: calc(var(--control-px-xs) - var(--border-width-thin));
-  gap: var(--control-gap-xs);
-  border-radius: var(--radius-pill-xs);
-  font-size: var(--role-body-sm-size);
-  line-height: var(--role-body-sm-leading);
-  font-weight: var(--role-body-sm-weight);
-}
-
-.badge[data-size='xs'] > svg {
-  width: var(--control-icon-xs);
-  height: var(--control-icon-xs);
+  --chip-radius: var(--radius-pill-xs);
 }
 
 .badge[data-size='sm'] {
-  height: var(--control-height-sm);
-  padding-inline: calc(var(--control-px-sm) - var(--border-width-thin));
-  gap: var(--control-gap-sm);
-  border-radius: var(--radius-pill-sm);
-}
-
-.badge[data-size='sm'] > svg {
-  width: var(--control-icon-sm);
-  height: var(--control-icon-sm);
+  --chip-radius: var(--radius-pill-sm);
 }
 
 .badge[data-size='md'] {
-  height: var(--control-height-md);
-  padding-inline: calc(var(--control-px-md) - var(--border-width-thin));
-  gap: var(--control-gap-md);
-  border-radius: var(--radius-pill-md);
-}
-
-.badge[data-size='md'] > svg {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+  --chip-radius: var(--radius-pill-md);
 }
 
 .badge[data-size='lg'] {
-  height: var(--control-height-lg);
-  padding-inline: calc(var(--control-px-lg) - var(--border-width-thin));
-  gap: var(--control-gap-lg);
-  border-radius: var(--radius-pill-lg);
+  --chip-radius: var(--radius-pill-lg);
 }
 
-/* The control scale has no lg icon step; lg keeps the md glyph, as a large button does. */
-.badge[data-size='lg'] > svg {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+.badge svg {
+  pointer-events: none;
+  flex-shrink: 0;
 }
 
 /* Links step to the variant's hover paint, as a button does. */

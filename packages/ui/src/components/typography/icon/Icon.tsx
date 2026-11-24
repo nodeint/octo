@@ -51,7 +51,7 @@ function resolveCatalogName(name: string): IconName | null {
  */
 export function Icon({
   name,
-  size,
+  size = 'md',
   className,
   ...svgProps }: IconProps): ReactNode {
   if (!isPresentName(name)) {

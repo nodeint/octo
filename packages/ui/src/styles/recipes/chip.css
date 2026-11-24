@@ -1,18 +1,20 @@
 /*
- * The chip skin: a small, muted, inline label such as a key cap or a selected-value tag.
+ * The chip skin: a small inline label such as a key cap, a selected-value tag or a badge.
  * A component sets the input tokens on its own root to differ: --chip-px, --chip-gap, --chip-min-width,
- * --chip-bg, --chip-fg.
+ * --chip-bg, --chip-fg, --chip-radius, --chip-border (width of a border it paints, taken out of the inset).
+ * data-size picks one step of the control ladder: xs, sm, md, lg. Without it a chip is xs-high.
+ * A component's own --chip-px and --chip-gap win over the size step.
  */
 .chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--chip-gap, var(--control-gap-xs));
+  gap: var(--chip-gap, var(--chip-size-gap, var(--control-gap-xs)));
   width: fit-content;
-  height: var(--control-height-xs);
+  height: var(--chip-size-height, var(--control-height-xs));
   min-width: var(--chip-min-width, 0);
-  padding-inline: var(--chip-px, var(--space-sm));
-  border-radius: var(--radius-xs);
+  padding-inline: calc(var(--chip-px, var(--chip-size-px, var(--space-sm))) - var(--chip-border, 0px));
+  border-radius: var(--chip-radius, var(--radius-xs));
   background-color: var(--chip-bg, var(--muted));
   color: var(--chip-fg, var(--role-label-sm-color));
   font-size: var(--role-label-sm-size);
@@ -21,7 +23,43 @@
   white-space: nowrap;
 }
 
-.chip svg:not([class*='size-']) {
-  width: var(--control-glyph-xs);
-  height: var(--control-glyph-xs);
+.chip[data-size='xs'] {
+  --chip-size-height: var(--control-height-xs);
+  --chip-size-px: var(--control-px-xs);
+  --chip-size-gap: var(--control-gap-xs);
+  --icon-size: var(--control-icon-xs);
+
+  font-size: var(--role-body-sm-size);
+  line-height: var(--role-body-sm-leading);
+  font-weight: var(--role-body-sm-weight);
+}
+
+.chip[data-size='sm'],
+.chip[data-size='md'],
+.chip[data-size='lg'] {
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+}
+
+.chip[data-size='sm'] {
+  --chip-size-height: var(--control-height-sm);
+  --chip-size-px: var(--control-px-sm);
+  --chip-size-gap: var(--control-gap-sm);
+  --icon-size: var(--control-icon-sm);
+}
+
+.chip[data-size='md'] {
+  --chip-size-height: var(--control-height-md);
+  --chip-size-px: var(--control-px-md);
+  --chip-size-gap: var(--control-gap-md);
+  --icon-size: var(--control-icon-md);
+}
+
+/* The control scale has no lg glyph step; lg keeps the md glyph, as a large button does. */
+.chip[data-size='lg'] {
+  --chip-size-height: var(--control-height-lg);
+  --chip-size-px: var(--control-px-lg);
+  --chip-size-gap: var(--control-gap-lg);
+  --icon-size: var(--control-icon-md);
 }
