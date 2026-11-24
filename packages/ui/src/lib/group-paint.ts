@@ -7,14 +7,14 @@ type GroupVariant = 'outline' | 'secondary' | 'ghost'
 type GroupFieldVariant = GroupVariant | 'field'
 
 interface GroupPaint {
-  tone: 'neutral' | 'field'
+  tone: 'base' | 'field'
   emphasis: 'soft' | 'outline' | 'ghost' | 'field'
 }
 
 const GROUP_PRESETS: Record<GroupFieldVariant, GroupPaint> = {
-  outline: { tone: 'neutral', emphasis: 'outline' },
-  secondary: { tone: 'neutral', emphasis: 'soft' },
-  ghost: { tone: 'neutral', emphasis: 'ghost' },
+  outline: { tone: 'base', emphasis: 'outline' },
+  secondary: { tone: 'base', emphasis: 'soft' },
+  ghost: { tone: 'base', emphasis: 'ghost' },
   field: { tone: 'field', emphasis: 'field' },
 };
 

@@ -16,7 +16,7 @@ const ALERT_ROLE: Record<AlertVariant, 'alert' | 'status'> = {
 };
 
 const ALERT_TONE = {
-  default: 'neutral',
+  default: 'base',
   info: 'info',
   success: 'success',
   warning: 'warning',

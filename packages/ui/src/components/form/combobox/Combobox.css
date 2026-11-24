@@ -231,10 +231,6 @@
   outline: none;
 }
 
-.combobox-chips-input::placeholder {
-  color: var(--variant-fg-placeholder);
-}
-
 /* A clear or trigger button inside a combobox input row keeps its own hover; no pressed fill. */
 .combobox-pressed-reset[data-pressed] {
   background-color: transparent;

@@ -2,8 +2,8 @@
  * Emphasis axis: data-emphasis builds the --variant-* slots a component reads from the --tone-* roles (variants/tone.css).
  *   data-emphasis  how the tone is painted: solid, soft, outline, ghost, muted, link, plain, surface, field. Maps roles to the identity slots.
  * A component never names a color or a tone; it paints from --variant-*. Only the blocks in variants/
- * read --tone-*. Exposed action pairs: primary solid, primary link, neutral soft, outline, ghost, destructive soft.
- * The surface emphasis paints a static callout (alert): neutral, destructive, success, warning, info.
+ * read --tone-*. Exposed action pairs: primary solid, primary link, base soft, outline, ghost, destructive soft.
+ * The surface emphasis paints a static callout (alert): base, destructive, success, warning, info.
  * The field emphasis paints a text field (input, textarea, select and combobox trigger) with the field tone only.
  *   bg / fg / border          at rest
  *   *-hover, *-active         pointer states; an emphasis with no distinct state repeats its rest value
@@ -114,10 +114,10 @@
 }
 
 /*
- * A toned outline paints the tone's text and edge. The neutral outline above keeps currentcolor and --border,
- * which is what the neutral button and badge rely on. A tone without an edge role (primary) keeps --border.
+ * A toned outline paints the tone's text and edge. The base outline above keeps currentcolor and --border,
+ * which is what the base button and badge rely on. A tone without an edge role (primary) keeps --border.
  */
-[data-emphasis='outline']:not([data-tone='neutral']) {
+[data-emphasis='outline']:not([data-tone='base']) {
   --variant-fg: var(--tone-text);
   --variant-fg-hover: var(--tone-text);
   --variant-fg-active: var(--tone-text);

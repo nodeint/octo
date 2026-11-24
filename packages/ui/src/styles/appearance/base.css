@@ -1,0 +1,129 @@
+/*
+ * Base axis: data-appearance-base = a gray-family swatch id | omit (gray).
+ * Rebinds the 11 base steps to that hue, so every surface, border, and text role retints with it.
+ */
+:root[data-appearance-base='slate'] {
+  --base-50: var(--slate-50);
+  --base-100: var(--slate-100);
+  --base-200: var(--slate-200);
+  --base-300: var(--slate-300);
+  --base-400: var(--slate-400);
+  --base-500: var(--slate-500);
+  --base-600: var(--slate-600);
+  --base-700: var(--slate-700);
+  --base-800: var(--slate-800);
+  --base-900: var(--slate-900);
+  --base-950: var(--slate-950);
+}
+
+:root[data-appearance-base='gray'] {
+  --base-50: var(--gray-50);
+  --base-100: var(--gray-100);
+  --base-200: var(--gray-200);
+  --base-300: var(--gray-300);
+  --base-400: var(--gray-400);
+  --base-500: var(--gray-500);
+  --base-600: var(--gray-600);
+  --base-700: var(--gray-700);
+  --base-800: var(--gray-800);
+  --base-900: var(--gray-900);
+  --base-950: var(--gray-950);
+}
+
+:root[data-appearance-base='neutral'] {
+  --base-50: var(--neutral-50);
+  --base-100: var(--neutral-100);
+  --base-200: var(--neutral-200);
+  --base-300: var(--neutral-300);
+  --base-400: var(--neutral-400);
+  --base-500: var(--neutral-500);
+  --base-600: var(--neutral-600);
+  --base-700: var(--neutral-700);
+  --base-800: var(--neutral-800);
+  --base-900: var(--neutral-900);
+  --base-950: var(--neutral-950);
+}
+
+:root[data-appearance-base='zinc'] {
+  --base-50: var(--zinc-50);
+  --base-100: var(--zinc-100);
+  --base-200: var(--zinc-200);
+  --base-300: var(--zinc-300);
+  --base-400: var(--zinc-400);
+  --base-500: var(--zinc-500);
+  --base-600: var(--zinc-600);
+  --base-700: var(--zinc-700);
+  --base-800: var(--zinc-800);
+  --base-900: var(--zinc-900);
+  --base-950: var(--zinc-950);
+}
+
+:root[data-appearance-base='stone'] {
+  --base-50: var(--stone-50);
+  --base-100: var(--stone-100);
+  --base-200: var(--stone-200);
+  --base-300: var(--stone-300);
+  --base-400: var(--stone-400);
+  --base-500: var(--stone-500);
+  --base-600: var(--stone-600);
+  --base-700: var(--stone-700);
+  --base-800: var(--stone-800);
+  --base-900: var(--stone-900);
+  --base-950: var(--stone-950);
+}
+
+:root[data-appearance-base='mauve'] {
+  --base-50: var(--mauve-50);
+  --base-100: var(--mauve-100);
+  --base-200: var(--mauve-200);
+  --base-300: var(--mauve-300);
+  --base-400: var(--mauve-400);
+  --base-500: var(--mauve-500);
+  --base-600: var(--mauve-600);
+  --base-700: var(--mauve-700);
+  --base-800: var(--mauve-800);
+  --base-900: var(--mauve-900);
+  --base-950: var(--mauve-950);
+}
+
+:root[data-appearance-base='olive'] {
+  --base-50: var(--olive-50);
+  --base-100: var(--olive-100);
+  --base-200: var(--olive-200);
+  --base-300: var(--olive-300);
+  --base-400: var(--olive-400);
+  --base-500: var(--olive-500);
+  --base-600: var(--olive-600);
+  --base-700: var(--olive-700);
+  --base-800: var(--olive-800);
+  --base-900: var(--olive-900);
+  --base-950: var(--olive-950);
+}
+
+:root[data-appearance-base='mist'] {
+  --base-50: var(--mist-50);
+  --base-100: var(--mist-100);
+  --base-200: var(--mist-200);
+  --base-300: var(--mist-300);
+  --base-400: var(--mist-400);
+  --base-500: var(--mist-500);
+  --base-600: var(--mist-600);
+  --base-700: var(--mist-700);
+  --base-800: var(--mist-800);
+  --base-900: var(--mist-900);
+  --base-950: var(--mist-950);
+}
+
+:root[data-appearance-base='taupe'] {
+  --base-50: var(--taupe-50);
+  --base-100: var(--taupe-100);
+  --base-200: var(--taupe-200);
+  --base-300: var(--taupe-300);
+  --base-400: var(--taupe-400);
+  --base-500: var(--taupe-500);
+  --base-600: var(--taupe-600);
+  --base-700: var(--taupe-700);
+  --base-800: var(--taupe-800);
+  --base-900: var(--taupe-900);
+  --base-950: var(--taupe-950);
+}

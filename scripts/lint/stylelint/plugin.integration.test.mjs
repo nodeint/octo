@@ -40,8 +40,7 @@ async function lint(rel, code) {
 beforeEach(() => {
   root = mkdtempSync(join(tmpdir(), 'stylelint-plugin-'));
   put('src/styles/theme/swatches.css', ':root { --blue: 1; }');
-  put('src/styles/theme/neutral.css', ':root { --neutral-1: 1; }');
-  put('src/styles/theme/surface.css', ':root { --card: var(--neutral-1); }');
+  put('src/styles/theme/base.css', ':root { --base-1: 1; --card: var(--base-1); }');
   put('src/styles/layout/space.css', ':root { --space-sm: 4px; }');
 });
 
@@ -53,10 +52,14 @@ test('errors on a component read of a swatch step', async () => {
   ]);
 });
 
-test('errors on a component read of a neutral step', async () => {
-  expect(await lint(COMPONENT, '.x { a: var(--neutral-1); }')).toEqual([
-    expect.stringMatching(/^error: .*raw color token "--neutral-1"/),
+test('errors on a component read of a base step', async () => {
+  expect(await lint(COMPONENT, '.x { a: var(--base-1); }')).toEqual([
+    expect.stringMatching(/^error: .*raw color token "--base-1"/),
   ]);
+});
+
+test('accepts a component read of a role declared in base.css', async () => {
+  expect(await lint(COMPONENT, '.x { a: var(--card); }')).toEqual([]);
 });
 
 test('accepts a component read of a theme role and a layout token', async () => {
@@ -86,7 +89,7 @@ test('errors when a layout file reads a theme token', async () => {
 });
 
 test('accepts a theme file reading a raw step of its own axis', async () => {
-  expect(await lint('src/styles/theme/b.css', ':root { --y: var(--neutral-1); }')).toEqual([]);
+  expect(await lint('src/styles/theme/b.css', ':root { --y: var(--base-1); }')).toEqual([]);
 });
 
 test('does not check typography.css, components.css or appearance files', async () => {
@@ -119,7 +122,7 @@ test('still errors on a raw color read in utilities.css', async () => {
 });
 
 test('accepts .dark in a theme file', async () => {
-  expect(await lint('src/styles/theme/b.css', '.dark { --y: var(--neutral-1); }')).toEqual([]);
+  expect(await lint('src/styles/theme/b.css', '.dark { --y: var(--base-1); }')).toEqual([]);
 });
 
 test('accepts .dark in an appearance file', async () => {

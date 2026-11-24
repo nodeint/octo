@@ -82,14 +82,6 @@
   --tab-active-focus-border-color: var(--ring);
   --tab-line-active-border-color: transparent;
   --tab-line-active-focus-border-color: var(--ring);
-
-  /* Sidebar */
-  --sidebar: var(--neutral-4);
-  --sidebar-primary: var(--primary);
-  --sidebar-primary-foreground: var(--primary-foreground);
-  --sidebar-accent: var(--neutral-8);
-  --sidebar-border: var(--neutral-9);
-  --sidebar-ring: var(--ring);
 }
 
 .dark {

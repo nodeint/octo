@@ -71,14 +71,7 @@ export const CustomColors: Story = {
       'fuchsia',
       'pink',
       'rose',
-      'slate',
       'gray',
-      'zinc',
-      'stone',
-      'mauve',
-      'olive',
-      'mist',
-      'taupe',
     ] as const satisfies readonly MediaTone[];
     return (
       <Stack gap="lg">

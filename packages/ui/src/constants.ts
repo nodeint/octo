@@ -347,6 +347,7 @@ export const COLOR_NAMES = [
     'rose',
     'slate',
     'gray',
+    'neutral',
     'zinc',
     'stone',
     'mauve',

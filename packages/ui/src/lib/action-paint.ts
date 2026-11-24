@@ -3,7 +3,7 @@
  * `variant` is a preset name for one approved pair. A caller passes `variant`, or `tone` with `emphasis`.
  * The CSS sets live in styles/variants/.
  */
-type ActionTone = 'neutral' | 'primary' | 'destructive'
+type ActionTone = 'base' | 'primary' | 'destructive'
 type ActionEmphasis = 'solid' | 'soft' | 'outline' | 'ghost' | 'link' | 'muted'
 
 type ButtonVariant =
@@ -20,7 +20,7 @@ type ToggleEmphasis = ToggleVariant
 /** The only exposed tone and emphasis pairs. */
 type ButtonAxes =
   | { tone: 'primary', emphasis: 'solid' | 'link' }
-  | { tone: 'neutral', emphasis: 'soft' | 'outline' | 'ghost' | 'muted' }
+  | { tone: 'base', emphasis: 'soft' | 'outline' | 'ghost' | 'muted' }
   | { tone: 'destructive', emphasis: 'soft' }
 
 type ButtonPaint =
@@ -44,10 +44,10 @@ interface ResolvedPaint {
 
 const BUTTON_PRESETS: Record<ButtonVariant, ButtonAxes> = {
   default: { tone: 'primary', emphasis: 'solid' },
-  secondary: { tone: 'neutral', emphasis: 'soft' },
-  outline: { tone: 'neutral', emphasis: 'outline' },
-  ghost: { tone: 'neutral', emphasis: 'ghost' },
-  muted: { tone: 'neutral', emphasis: 'muted' },
+  secondary: { tone: 'base', emphasis: 'soft' },
+  outline: { tone: 'base', emphasis: 'outline' },
+  ghost: { tone: 'base', emphasis: 'ghost' },
+  muted: { tone: 'base', emphasis: 'muted' },
   destructive: { tone: 'destructive', emphasis: 'soft' },
   link: { tone: 'primary', emphasis: 'link' },
 };
@@ -63,12 +63,12 @@ function resolveButtonPaint(
   return BUTTON_PRESETS[variant ?? fallback];
 }
 
-/** Resolve a toggle preset or emphasis; tone is always neutral. */
+/** Resolve a toggle preset or emphasis; tone is always base. */
 function resolveTogglePaint(
   { variant, emphasis }: { variant?: ToggleVariant, emphasis?: ToggleEmphasis },
   fallback: ToggleVariant,
 ): ResolvedPaint {
-  return { tone: 'neutral', emphasis: emphasis ?? variant ?? fallback };
+  return { tone: 'base', emphasis: emphasis ?? variant ?? fallback };
 }
 
 /** Apply a forwarder's default preset unless the caller chose a preset or an axis pair. */

@@ -1,0 +1,94 @@
+/*
+ * Base scale and the surface, border, and text roles built on it. Aliases only; raw oklch stays in swatches.css.
+ *
+ * Scale: --base-50 (lightest) to --base-950 (darkest), the Tailwind ladder. A step keeps its lightness in light
+ * and dark; the roles below pick a different step per mode. The steps alias one gray-family swatch, so the tint is
+ * defined in swatches.css only. data-appearance-base rebinds the whole scale to another gray hue (appearance/base.css).
+ *
+ * Roles: a neutral surface has no foreground of its own: text on it reads the foreground-* ladder.
+ * Only a solid emphasis fill keeps an on-fill pair: primary, primary-subtle, primary-fixed, and the statuses.
+ */
+:root {
+  --base-50: var(--gray-50);
+  --base-100: var(--gray-100);
+  --base-200: var(--gray-200);
+  --base-300: var(--gray-300);
+  --base-400: var(--gray-400);
+  --base-500: var(--gray-500);
+  --base-600: var(--gray-600);
+  --base-700: var(--gray-700);
+  --base-800: var(--gray-800);
+  --base-900: var(--gray-900);
+  --base-950: var(--gray-950);
+
+  --card: var(--base-50);
+  --dialog: var(--base-50);
+  --popover: var(--base-50);
+  --toolbar: var(--base-200);
+
+  --background: var(--base-50);
+  --secondary: var(--base-100);
+  --tertiary: var(--base-200);
+  --accent: var(--base-300);
+  --muted: var(--base-400);
+
+  /* Hover and keyboard highlight of a row. Selected and open use accent. */
+  --hover: oklch(from var(--foreground) l c h / 10%);
+
+  /* Disabled is its own paint, not an opacity: quiet fill and quiet edge, with foreground-disabled text. */
+  --disabled: var(--base-300);
+  --disabled-border: var(--base-400);
+
+  --overlay: oklch(0 0 0 / 10%);
+
+  --separator: var(--base-300);
+  --border: var(--base-300);
+  --border-surface: oklch(from var(--foreground) l c h / 10%);
+
+  --border-control: var(--base-500);
+  --ring: var(--primary);
+
+  /*
+  * Foreground: the text and glyph axis. Aliases only. Raw oklch stays in the scale files.
+  * One ladder for every neutral surface. A surface role carries no text color of its own.
+  * Each step reads at 4.5:1 on the surfaces it is documented for.
+  *   foreground   body text, titles, and a control that is hovered, selected, or pressed
+  *   foreground-muted     secondary text, descriptions, and a navigation row or quiet control at rest
+  *   foreground-subtle    placeholders, section labels, and metadata that the page can do without
+  *   foreground-disabled  a disabled control. Not content
+  * A solid emphasis fill (primary, a status) keeps its own on-fill pair: `*-foreground`.
+  */
+  --foreground: var(--base-900);
+  --foreground-subtle: var(--base-700);
+  --foreground-muted: var(--base-600);
+  --foreground-disabled: var(--base-500);
+  --placeholder: color-mix(in oklab, currentColor 50%, transparent);
+}
+
+.dark {
+  --overlay: oklch(0 0 0 / 30%);
+
+  --background: var(--base-950);
+
+  --card: var(--base-900);
+  --dialog: var(--base-900);
+  --popover: var(--base-800);
+  --toolbar: var(--base-800);
+
+  --secondary: var(--base-800);
+  --muted: var(--base-800);
+  --tertiary: var(--base-700);
+  --accent: var(--base-600);
+
+  --disabled: var(--base-800);
+  --disabled-border: var(--base-700);
+
+  --separator: var(--base-700);
+  --border: var(--base-700);
+  --border-control: var(--base-500);
+
+  --foreground: var(--base-100);
+  --foreground-subtle: var(--base-300);
+  --foreground-muted: var(--base-400);
+  --foreground-disabled: var(--base-500);
+}

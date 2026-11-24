@@ -22,10 +22,12 @@ export const APPEARANCE_AXES = [
     ],
   },
   {
-    key: 'neutral',
-    label: 'Neutral',
-    dataset: 'appearanceNeutral',
-    options: [DEFAULT_OPTION, 'slate', 'zinc', 'stone'],
+    key: 'base',
+    label: 'Base',
+    dataset: 'appearanceBase',
+    options: [
+      DEFAULT_OPTION, 'slate', 'gray', 'neutral', 'zinc', 'stone', 'mauve', 'olive', 'mist', 'taupe',
+    ],
   },
   {
     key: 'font',
@@ -44,7 +46,7 @@ export const APPEARANCE_AXES = [
 export const INITIAL_APPEARANCE: Readonly<Record<string, string>> = {
   theme: 'light',
   primary: DEFAULT_OPTION,
-  neutral: DEFAULT_OPTION,
+  base: DEFAULT_OPTION,
   font: DEFAULT_OPTION,
   glass: DEFAULT_OPTION,
 };

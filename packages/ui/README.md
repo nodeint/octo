@@ -42,7 +42,7 @@ A stylesheet is a recipe when all of these hold:
 2. Shared. At least two components add the recipe's classes. One component with variants is component CSS.
 3. Reads like component CSS. It reads theme roles, layout and component tokens, the documented `--group-*` and
    `--variant-*` hooks and its own private hooks (for example `--menu-gap`), and no raw color step from
-   `theme/swatches.css` or `theme/neutral.css`. It declares no theme values: no `:root` or `.dark` block.
+   `theme/swatches.css` or `theme/base.css`. It declares no theme values: no `:root` or `.dark` block.
    A private hook it declares takes its value from a token.
    The exception is the sets a recipe owns: `[data-action-size]` in `action.css`, `[data-field-size]` in
    `field-control.css`, and `[data-group-size]` and `[data-emphasis]` in `group.css` declare component tokens
@@ -105,7 +105,7 @@ An exception applies only while a migration is in progress. A new exception need
 - Tokens live in three axes: `theme/` (color and elevation), `layout/` (size, space, radius, border widths, motion,
   z-index, opacity), and `typography.css`. An axis file reads only its own axis, except `typography.css`,
   which reads the `--foreground-*` text colors from `theme/`.
-- `theme/swatches.css` and `theme/neutral.css` are raw color scales. The other `theme/` files build roles on them;
+- `theme/swatches.css` and `theme/base.css` are raw color scales. The other `theme/` files build roles on them;
   components, recipes, `base.css`, and `utilities.css` read the roles, never a raw step.
 - `components.css` holds per-part tokens: switch, radio, checkbox, slider, avatar, scrollbar, tooltip, floating,
   tab, and sidebar. It may read any axis.
@@ -115,8 +115,8 @@ An exception applies only while a migration is in progress. A new exception need
   A group's `variant` maps to a tone and emphasis pair (`lib/group-paint.ts`); the root carries `data-tone` and
   `data-emphasis`, and `group.css` only aliases the resulting `--variant-*` slots to `--group-*`, so it declares no color.
   A group overrides only the tokens that differ, on its own root, with a comment that gives the reason.
-- Paint has two axes in `styles/variants/`: `data-tone` (`neutral`, `primary`, `destructive`, `success`,
-  `warning`, `info`, `field`, and 20 swatch hues aliased from `theme/swatches.css`) declares `--tone-*` roles and the focus ring, and `data-emphasis` (`solid`, `soft`,
+- Paint has two axes in `styles/variants/`: `data-tone` (`base`, `primary`, `destructive`, `success`,
+  `warning`, `info`, `field`, and 21 swatch hues aliased from `theme/swatches.css`) declares `--tone-*` roles and the focus ring, and `data-emphasis` (`solid`, `soft`,
   `outline`, `ghost`, `muted`, `link`, `surface`, `field`) maps the roles to the `--variant-*` slots.
   `Alert` is not an action: it sets `data-tone` from its `variant` and `data-emphasis="surface"`, a static callout
   painted from `--tone-surface`, `--tone-border`, and `--tone-surface-foreground` (`--variant-fg-secondary`).
@@ -126,7 +126,7 @@ An exception applies only while a migration is in progress. A new exception need
   Only those blocks read `--tone-*`; recipes and components read `--variant-*` and never name a tone.
   `Button` and its forwarders keep `variant` as a preset for one approved pair; a caller passes `variant`,
   or `tone` with `emphasis`, never both. Only the six mapped pairs are exposed (`lib/action-paint.ts`).
-  `Toggle` and `ToolbarToggle` take `variant` or `emphasis` alone (`ghost` or `outline`); their tone is fixed to `neutral`.
+  `Toggle` and `ToolbarToggle` take `variant` or `emphasis` alone (`ghost` or `outline`); their tone is fixed to `base`.
 - Put an appearance axis in its own file under `src/styles/appearance/`. The appearance layer sits above components,
   so an axis rebinds a token whatever layer declares it. Put a helper class in `src/styles/utilities.css`.
 - Component, recipe, and `base.css` CSS never select `.dark`; put theme-dependent values in a `theme/` file as a

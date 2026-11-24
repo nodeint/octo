@@ -1,6 +1,6 @@
 /*
  * Interaction state roles: the focus ring and the invalid ring colors. One source for every control, so a change
- * to the ring lands everywhere. Aliases only; the colors come from --ring (surface.css) and --destructive (status.css).
+ * to the ring lands everywhere. Aliases only; the colors come from --ring (base.css) and --destructive (status.css).
  *   state-focus-border, state-invalid-border     border color while focused or invalid
  *   state-halo-strength                          share of that color in the halo around the control
  *   state-focus-halo, state-invalid-halo         the halo color

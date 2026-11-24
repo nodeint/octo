@@ -1,13 +1,11 @@
 /*
  * Theme axis: color and elevation. The only axis with a `.dark` block.
- * Swatches and the neutral scale come first, then the roles and the effects built on them.
+ * Swatches come first, then the base scale and roles, then the effects built on them.
  * The appearance/ files are imported after this axis so live maps win.
  */
 @import "./swatches.css";
-@import "./neutral.css";
+@import "./base.css";
 @import "./primary.css";
 @import "./status.css";
-@import "./surface.css";
 @import "./state.css";
-@import "./charts.css";
 @import "./shadow.css";

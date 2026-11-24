@@ -8,7 +8,7 @@
 }
 
 /* The label flips to the on-fill color while the fill darkens. Fading both makes them cross at similar lightness and the label blinks out. */
-.button[data-emphasis='soft']:not([data-tone='neutral']) {
+.button[data-emphasis='soft']:not([data-tone='base']) {
   transition-property: background-color, border-color, box-shadow, transform, opacity;
 }
 

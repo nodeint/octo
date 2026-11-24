@@ -18,13 +18,14 @@ type SwatchTone =
   | 'rose'
   | 'slate'
   | 'gray'
+  | 'neutral'
   | 'zinc'
   | 'stone'
   | 'mauve'
   | 'olive'
   | 'mist'
   | 'taupe'
-type SurfaceTone = 'neutral' | 'primary' | 'destructive' | 'success' | 'warning' | 'info' | SwatchTone
+type SurfaceTone = 'base' | 'primary' | 'destructive' | 'success' | 'warning' | 'info' | SwatchTone
 type SurfaceEmphasis = 'solid' | 'soft' | 'plain' | 'muted' | 'outline'
 
 type SurfaceVariant =
@@ -52,11 +53,11 @@ interface ResolvedSurfacePaint {
 
 const SURFACE_PRESETS: Record<SurfaceVariant, SurfaceAxes> = {
   default: { tone: 'primary', emphasis: 'solid' },
-  secondary: { tone: 'neutral', emphasis: 'soft' },
+  secondary: { tone: 'base', emphasis: 'soft' },
   destructive: { tone: 'destructive', emphasis: 'soft' },
-  outline: { tone: 'neutral', emphasis: 'outline' },
-  plain: { tone: 'neutral', emphasis: 'plain' },
-  muted: { tone: 'neutral', emphasis: 'muted' },
+  outline: { tone: 'base', emphasis: 'outline' },
+  plain: { tone: 'base', emphasis: 'plain' },
+  muted: { tone: 'base', emphasis: 'muted' },
   success: { tone: 'success', emphasis: 'soft' },
   warning: { tone: 'warning', emphasis: 'soft' },
   info: { tone: 'info', emphasis: 'soft' },

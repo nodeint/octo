@@ -1,6 +1,6 @@
 /*
  * Primary axis: data-appearance-primary = ColorName id | omit.
- * Rebinds primary, its hover, and sidebar-primary. Chart follows --primary.
+ * Rebinds primary, its hover, and sidebar-primary.
  */
 :root[data-appearance-primary='teal'] {
   --primary: var(--teal);

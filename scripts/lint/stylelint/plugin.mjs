@@ -2,7 +2,7 @@
  * Local Stylelint plugin for the `@workspace/ui` token axes.
  *
  * - `octo/token-tier`: a component, recipe, `base.css` or `utilities.css` must not read a raw color scale
- *   (`styles/theme/swatches.css`, `styles/theme/neutral.css`); it reads a theme role. A `theme/` file reads only
+ *   (`styles/theme/swatches.css` and the `--base-<n>` steps in `styles/theme/base.css`); it reads a theme role. A `theme/` file reads only
  *   `theme/` tokens, and a `layout/` file reads only `layout/` tokens.
  * - `octo/no-theme-selector`: component, recipe, and `base.css` files must not select `.dark`.
  *   `utilities.css` may select it.
@@ -20,7 +20,9 @@ import stylelint from 'stylelint';
 const { createPlugin, utils } = stylelint;
 
 const AXES = ['theme', 'layout'];
-const RAW_FILES = ['swatches.css', 'neutral.css'];
+const RAW_FILES = ['swatches.css'];
+/** A raw step declared outside a raw file: the base scale, which shares base.css with the roles built on it. */
+const RAW_TOKEN = /^--base-\d+$/;
 const TOKEN_DECLARATION = /(^|[\s;{])(--[\w-]+)\s*:/g;
 const VAR_READ = /var\(\s*(--[\w-]+)/g;
 
@@ -53,10 +55,11 @@ export function buildTokenIndex(stylesDir) {
   const index = new Map();
   for (const axis of AXES) {
     for (const file of listCssFiles(join(stylesDir, axis))) {
-      const raw = axis === 'theme' && RAW_FILES.includes(path.basename(file));
+      const rawFile = axis === 'theme' && RAW_FILES.includes(path.basename(file));
       const source = readFileSync(file, 'utf8').replaceAll(/\/\*[\s\S]*?\*\//g, '');
       for (const match of source.matchAll(TOKEN_DECLARATION)) {
-        if (!index.has(match[2])) index.set(match[2], { axis, raw });
+        if (index.has(match[2])) continue;
+        index.set(match[2], { axis, raw: rawFile || (axis === 'theme' && RAW_TOKEN.test(match[2])) });
       }
     }
   }
