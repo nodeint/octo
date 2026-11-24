@@ -80,8 +80,8 @@
 
 .avatar[data-size='md'] .avatar-badge,
 .avatar[data-size='lg'] .avatar-badge {
-  width: var(--control-glyph-xs);
-  height: var(--control-glyph-xs);
+  width: var(--avatar-badge-size);
+  height: var(--avatar-badge-size);
 }
 
 .avatar[data-size='md'] .avatar-badge > svg,
@@ -119,8 +119,8 @@
 }
 
 .avatar-group-count > svg {
-  width: var(--control-glyph-md);
-  height: var(--control-glyph-md);
+  width: var(--control-icon-lg);
+  height: var(--control-icon-lg);
 }
 
 .avatar-group:has([data-size='sm']) .avatar-group-count {
@@ -129,8 +129,8 @@
 }
 
 .avatar-group:has([data-size='sm']) .avatar-group-count > svg {
-  width: var(--control-glyph-sm);
-  height: var(--control-glyph-sm);
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
 }
 
 .avatar-group:has([data-size='lg']) .avatar-group-count {

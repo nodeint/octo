@@ -148,8 +148,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--control-glyph-md);
-  height: var(--control-glyph-md);
+  width: var(--control-icon-lg);
+  height: var(--control-icon-lg);
 }
 
 .select-separator {

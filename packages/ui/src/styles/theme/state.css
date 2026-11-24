@@ -16,3 +16,12 @@
   --state-focus-halo: color-mix(in oklab, var(--state-focus-border) var(--state-halo-strength), transparent);
   --state-invalid-halo: color-mix(in oklab, var(--state-invalid-border) var(--state-halo-strength), transparent);
 }
+
+/* The halo shapes behind the state-* colors (theme/state.css); the width is a layout token, so they live here. */
+:root,
+.dark {
+  --focus-width: 0.1875rem;
+  --focus-offset: -0.1875rem;
+  --state-focus-shadow: 0 0 0 var(--focus-width) var(--state-focus-halo);
+  --state-invalid-shadow: 0 0 0 var(--focus-width) var(--state-invalid-halo);
+}

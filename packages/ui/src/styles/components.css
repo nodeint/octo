@@ -2,10 +2,11 @@
  * Control parts: the inner geometry of a control that is not a control size. A component reads one of these;
  * a theme sets it to reshape the part without touching the component.
  *   switch     track and thumb, per switch size
- *   radio      the dot inside a selected radio
+ *   radio      the box and the dot inside a selected radio
+ *   checkbox   the box
  *   avatar     the status badge, per avatar size
  *   scrollbar  the thickness, edge inset, and thumb radius of a scrollbar
- *   slider     the thickness of the track
+ *   slider     the thickness of the track and the thumb size
  *   tooltip    the arrow
  *   floating   how far a floating panel slides in from its anchor
  *   tab        the underline that marks the selected tab, and the active trigger's paint
@@ -19,36 +20,40 @@
 
 :root {
   /* Switch: track and thumb, per switch size */
-  --switch-track-height-md: var(--control-glyph-md); /* 20 */
+  --switch-track-height-md: 1.25rem;
   --switch-track-width-md: 2rem;
-  --switch-thumb-size-md: var(--control-glyph-sm); /* 16 */
+  --switch-thumb-size-md: 1rem;
   --switch-track-height-sm: 0.875rem;
   --switch-track-width-sm: 1.5rem;
-  --switch-thumb-size-sm: var(--control-glyph-xs); /* 12 */
+  --switch-thumb-size-sm: 0.75rem;
   --switch-thumb-inset: var(--space-xxs); /* 2 */
   --switch-radius: var(--radius-round);
   --switch-thumb-radius: var(--radius-round);
   --switch-thumb-checked-background: var(--background);
   --switch-thumb-unchecked-background: var(--background);
 
-  /* Radio: the dot inside a selected radio */
-  --radio-dot-size: calc(var(--control-glyph-sm) / 2); /* half the radio box, 8 */
+  /* Radio: the box and the dot inside a selected radio */
+  --radio-size: 1rem;
+  --radio-dot-size: calc(var(--radio-size) / 2); /* half the radio box, 8 */
   --radio-radius: var(--radius-round);
   --radio-indicator-radius: var(--radius-round);
   --radio-background: transparent;
 
-  /* Checkbox: corner radius */
+  /* Checkbox: box size and corner radius */
+  --checkbox-size: 1.25rem;
   --checkbox-radius: var(--radius-xs);
   --checkbox-background: transparent;
   --checkbox-checked-disabled-background: var(--disabled);
 
-  /* Slider: track thickness and corner radii */
+  /* Slider: track thickness, thumb size, and corner radii */
+  --slider-thumb-size: 1rem;
   --slider-track-height: var(--space-xs); /* 4 */
   --slider-track-radius: var(--radius-round);
   --slider-indicator-radius: var(--radius-round);
   --slider-thumb-radius: var(--radius-round);
 
-  /* Avatar: corner radii of the avatar, its status badge, and its count */
+  /* Avatar: status badge size, and corner radii of the avatar, its status badge, and its count */
+  --avatar-badge-size: 0.75rem;
   --avatar-radius: var(--radius-round);
   --avatar-badge-radius: var(--radius-round);
   --avatar-count-radius: var(--radius-round);

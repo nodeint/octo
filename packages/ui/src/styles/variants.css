@@ -122,13 +122,6 @@
   --tone-border: var(--info-border);
 }
 
-/* The halo shapes behind the state-* colors (theme/state.css); the width is a layout token, so they live here. */
-:root,
-.dark {
-  --state-focus-shadow: 0 0 0 var(--focus-width) var(--state-focus-halo);
-  --state-invalid-shadow: 0 0 0 var(--focus-width) var(--state-invalid-halo);
-}
-
 /* State slots shared by every action: focus, invalid, disabled text. Resolves on each element against its own tone. */
 [data-tone] {
   --variant-ring: var(--tone-ring);

@@ -4,8 +4,8 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: var(--control-glyph-md);
-  height: var(--control-glyph-md);
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
   border-width: var(--border-width-thin);
   border-style: solid;
   --choice-control-border: var(--border-control);
@@ -46,6 +46,6 @@
 }
 
 .checkbox-indicator > svg {
-  width: var(--control-glyph-xs);
-  height: var(--control-glyph-xs);
+  width: var(--control-icon-xs);
+  height: var(--control-icon-xs);
 }

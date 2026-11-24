@@ -1,0 +1,11 @@
+/**
+ * Icon size: the icon inside a control, beside its text.
+ * Primer has no icon size, so the steps read its base size.
+ */
+
+:root {
+  --control-icon-xs: 0.75rem; /* primer: --base-size-12 */
+  --control-icon-sm: 0.875rem; /* 14, between the Primer steps 12 and 16 */
+  --control-icon-md: 1rem; /* primer: --base-size-16 */
+  --control-icon-lg: 1.25rem; /* primer: --base-size-20 */
+}

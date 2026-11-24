@@ -80,8 +80,8 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: var(--control-glyph-sm);
-  height: var(--control-glyph-sm);
+  width: var(--control-icon-md);
+  height: var(--control-icon-md);
 }
 
 .trace-icon svg:not([class*='size-']) {

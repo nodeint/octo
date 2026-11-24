@@ -9,8 +9,8 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: var(--control-glyph-sm);
-  height: var(--control-glyph-sm);
+  width: var(--radio-size);
+  height: var(--radio-size);
   border-width: var(--border-width-thin);
   border-style: solid;
   --choice-control-border: var(--border-control);

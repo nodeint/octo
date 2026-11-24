@@ -3,6 +3,7 @@
  * A theme can override these variables. Values are plain; Primer is only a reference.
  */
 @import "./control.css";
+@import "./icon.css";
 @import "./size.css";
 @import "./radius.css";
 @import "./space.css";
