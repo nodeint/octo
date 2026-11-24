@@ -4,17 +4,18 @@
  * --chip-bg, --chip-fg, --chip-radius, --chip-border (width of a border it paints, taken out of the inset).
  * data-size picks one step of the control ladder: xs, sm, md, lg. Without it a chip is xs-high.
  * A component's own --chip-px and --chip-gap win over the size step.
+ * Inside a group, the group's --group-item-* (height, px, gap, radius, icon) win over both: see group.css.
  */
 .chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--chip-gap, var(--chip-size-gap, var(--control-gap-xs)));
+  gap: var(--group-item-gap, var(--chip-gap, var(--chip-size-gap, var(--control-gap-xs))));
   width: fit-content;
-  height: var(--chip-size-height, var(--control-height-xs));
+  height: var(--group-item-height, var(--chip-size-height, var(--control-height-xs)));
   min-width: var(--chip-min-width, 0);
-  padding-inline: calc(var(--chip-px, var(--chip-size-px, var(--space-sm))) - var(--chip-border, 0px));
-  border-radius: var(--chip-radius, var(--radius-xs));
+  padding-inline: calc(var(--group-item-px, var(--chip-px, var(--chip-size-px, var(--space-sm)))) - var(--chip-border, 0px));
+  border-radius: var(--group-item-radius, var(--chip-radius, var(--radius-xs)));
   background-color: var(--chip-bg, var(--muted));
   color: var(--chip-fg, var(--role-label-sm-color));
   font-size: var(--role-label-sm-size);
@@ -27,7 +28,7 @@
   --chip-size-height: var(--control-height-xs);
   --chip-size-px: var(--control-px-xs);
   --chip-size-gap: var(--control-gap-xs);
-  --icon-size: var(--control-icon-xs);
+  --icon-size: var(--group-item-icon, var(--control-icon-xs));
 
   font-size: var(--role-body-sm-size);
   line-height: var(--role-body-sm-leading);
@@ -46,14 +47,14 @@
   --chip-size-height: var(--control-height-sm);
   --chip-size-px: var(--control-px-sm);
   --chip-size-gap: var(--control-gap-sm);
-  --icon-size: var(--control-icon-sm);
+  --icon-size: var(--group-item-icon, var(--control-icon-sm));
 }
 
 .chip[data-size='md'] {
   --chip-size-height: var(--control-height-md);
   --chip-size-px: var(--control-px-md);
   --chip-size-gap: var(--control-gap-md);
-  --icon-size: var(--control-icon-md);
+  --icon-size: var(--group-item-icon, var(--control-icon-md));
 }
 
 /* The control scale has no lg glyph step; lg keeps the md glyph, as a large button does. */
@@ -61,5 +62,5 @@
   --chip-size-height: var(--control-height-lg);
   --chip-size-px: var(--control-px-lg);
   --chip-size-gap: var(--control-gap-lg);
-  --icon-size: var(--control-icon-md);
+  --icon-size: var(--group-item-icon, var(--control-icon-md));
 }

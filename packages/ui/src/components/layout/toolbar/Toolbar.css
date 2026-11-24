@@ -7,12 +7,20 @@
 .toolbar {
   --group-bg: var(--variant-bg);
   --group-border: var(--variant-border);
-    /* Items take the group's item step (--group-item-*), one below the rail's own. A button's own size prop no longer changes it. */
+
+  /* Items take the group's item step (--group-item-*), one below the rail's own. A button's own size prop no longer changes it. */
   --group-action-height: var(--group-item-height);
   --group-action-px: var(--group-item-px);
   --group-action-gap: var(--group-item-gap);
   --group-action-icon: var(--group-item-icon);
   --group-action-radius: var(--group-item-radius);
+  
+  --group-field-height: var(--group-item-height);
+  --group-field-px: var(--group-item-px);
+  --group-field-gap: var(--group-item-gap);
+  --group-field-icon: var(--group-item-icon);
+  --group-field-radius: var(--group-item-radius);
+  
   /* A field inside the rail rests without fill or edge. It is independent: focus and invalid are drawn by the field itself. */
   --group-field-bg: transparent;
   --group-field-border: transparent;
@@ -24,33 +32,56 @@
   align-items: center;
   gap: var(--group-gap);
   width: fit-content;
-  height: var(--group-field-height);
+  height: var(--group-height);
   border: var(--border-width-thin) solid var(--group-border);
-  border-radius: var(--group-radius );
+  border-radius: var(--group-radius);
   background-color: var(--group-bg);
   color: var(--foreground);
-}
 
-/* A vertical rail grows with its items and is block-shaped. */
-.toolbar[data-orientation='vertical'] {
-  flex-direction: column;
-  height: auto;
-  border-radius: var(--radius-field-block);
-}
+  /* A vertical rail grows with its items and is block-shaped. */
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+    height: auto;
+    border-radius: var(--radius-field-block);
+    min-width: var(--group-height);
+    padding-block: var(--group-px);
 
-.toolbar[data-disabled] {
-  pointer-events: none;
-  color: var(--foreground-disabled);
+    & .toolbar-group {
+      flex-direction: column;
+    }
+  }
+
+  &[data-disabled] {
+    pointer-events: none;
+    color: var(--foreground-disabled);
+  }
+
+  /*
+   * Horizontal rail: an input runs edge to edge, as a field in a button-group does. The rail's border takes
+   * a border width on each side, so the input grows over it with a negative margin (an input a border
+   * taller than the rail's inner box would otherwise sit inside it with a gap). It is raised on focus so its
+   * ring and border cover the rail's edge, and its outer corners follow the rail's corner, not the field's.
+   */
+  &[data-orientation='horizontal'] {
+    padding-inline: var(--group-px);
+  }
+
+  &[data-group-variant='outline'] {
+    --group-action-border: transparent;
+    --group-action-border-hover: transparent;
+    --group-action-border-active: transparent;
+    --group-action-border-pressed: transparent;
+    --group-action-border-disabled: transparent;
+    --group-field-border-hover: transparent;
+    --group-field-border-active: transparent;
+    --group-field-border-pressed: transparent;
+  }
 }
 
 .toolbar-group {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
-}
-
-.toolbar[data-orientation='vertical'] .toolbar-group {
-  flex-direction: column;
+  gap: var(--group-gap);
 }
 
 /* The control skin comes from the shared `.button` class on the element. */
@@ -65,11 +96,11 @@
   line-height: var(--role-description-leading);
   color: var(--role-description-color);
   text-underline-offset: 4px;
-}
 
-.toolbar-link:hover {
-  color: var(--foreground);
-  text-decoration-line: underline;
+  &:hover {
+    color: var(--foreground);
+    text-decoration-line: underline;
+  }
 }
 
 /* The input skin comes from the shared `.input` class on the element. */
@@ -77,78 +108,19 @@
   min-width: 0;
 }
 
-/*
- * Horizontal rail: an input runs edge to edge, as a field in a button-group does. The rail's border takes
- * a border width on each side, so the input grows over it with a negative margin (an input a border
- * taller than the rail's inner box would otherwise sit inside it with a gap). It is raised on focus so its
- * ring and border cover the rail's edge, and its outer corners follow the rail's corner, not the field's.
- */
-.toolbar[data-orientation='horizontal'] > .toolbar-input {
-  position: relative;
-  height: calc(100% + var(--border-width-thin) * 2);
-  margin-block: calc(var(--border-width-thin) * -1);
-  border-radius: var(--group-radius );
-}
-
-.toolbar[data-orientation='horizontal'] > .toolbar-input:focus-visible,
-.toolbar[data-orientation='horizontal'] > .toolbar-input[aria-invalid='true'] {
-  z-index: var(--z-raised);
-}
-
-.toolbar[data-orientation='horizontal'] > .toolbar-input:last-child {
-  margin-inline-end: calc(var(--border-width-thin) * -1);
-}
-
-.toolbar[data-orientation='horizontal'] > .toolbar-input:first-child {
-  margin-inline-start: calc(var(--border-width-thin) * -1);
-}
-
-/* An input after another item joins it: square on the joined side. */
-.toolbar[data-orientation='horizontal'] > * + .toolbar-input {
-  border-start-start-radius: 0;
-  border-end-start-radius: 0;
-}
-
-/* An input followed by another item joins it too: square on the joined side, and the gap closed. */
-.toolbar[data-orientation='horizontal'] > .toolbar-input:not(:last-child) {
-  margin-inline-end: calc(var(--group-gap) * -1);
-  border-start-end-radius: 0;
-  border-end-end-radius: 0;
-}
-
 .toolbar-separator {
   flex-shrink: 0;
   background-color: var(--border);
-}
 
-/* Perpendicular to the toolbar axis; Base UI sets the orientation. It stretches across the rail, which has no inset. */
-.toolbar-separator[data-orientation='vertical'] {
-  width: var(--border-width-thin);
-  align-self: stretch;
-}
+  /* Perpendicular to the toolbar axis; Base UI sets the orientation. It stretches across the rail, which has no inset. */
+  &[data-orientation='vertical'] {
+    width: var(--border-width-thin);
+    align-self: stretch;
+  }
 
-/* Horizontal rail: the separator spans the rail edge to edge, as an input beside it does, and the input closes the rail's gap to it. */
-.toolbar[data-orientation='horizontal'] > .toolbar-separator[data-orientation='vertical'] {
-  margin-block: calc(var(--border-width-thin) * -1);
-}
-
-.toolbar[data-orientation='horizontal'] > .toolbar-separator + .toolbar-input {
-  margin-inline-start: calc(var(--group-gap) * -1);
-}
-
-.toolbar-separator[data-orientation='horizontal'] {
-  width: auto;
-  height: var(--border-width-thin);
-  align-self: stretch;
-}
-
-.toolbar[data-group-variant='outline'] {
-  --group-action-border: transparent;
-  --group-action-border-hover: transparent;
-  --group-action-border-active: transparent;
-  --group-action-border-pressed: transparent;
-  --group-action-border-disabled: transparent;
-  --group-field-border-hover: transparent;
-  --group-field-border-active: transparent;
-  --group-field-border-pressed: transparent;
+  &[data-orientation='horizontal'] {
+    width: auto;
+    height: var(--border-width-thin);
+    align-self: stretch;
+  }
 }

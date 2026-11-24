@@ -63,7 +63,7 @@
   gap: var(--group-gap);
   height: var(--group-field-height);
   border: var(--border-width-thin) solid var(--input-group-border);
-  border-radius: var(--group-radius );
+  border-radius: var(--group-radius);
   background-color: var(--input-group-bg);
   color: var(--group-field-fg);
   outline: none;
@@ -71,208 +71,152 @@
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
-}
 
-/*
- * Group variants: data-group-variant sets the group's own border and fill (--input-group-*). The colors its fields
- * read for text and states come from the shared set (styles/recipes/group.css), except in `field`,
- * which has no shared set and keeps its own. Border, fill and disabled paint are not passed down:
- * the group zeroes them for its fields above.
- */
-.input-group[data-group-variant='outline'] {
-  --input-group-divider: var(--border);
-  --input-group-bg: transparent;
-  --input-group-border: var(--border);
-  --input-group-bg-disabled: transparent;
-  --input-group-border-disabled: var(--border);
-}
-
-.input-group[data-group-variant='ghost'] {
-  --input-group-divider: var(--border);
-  --input-group-bg: transparent;
-  --input-group-border: transparent;
-  --input-group-bg-disabled: transparent;
-  --input-group-border-disabled: transparent;
-}
-
-/* field: paints like a standalone Input or Select (styles/recipes/field-control.css), so a group sits level with them. */
-.input-group[data-group-variant='field'] {
-  --input-group-divider: var(--border);
-  --input-group-bg: var(--tone-strong);
-  --input-group-border: var(--border);
-  --input-group-bg-disabled: var(--disabled);
-  --input-group-border-disabled: var(--disabled-border);
-  --group-field-fg: currentcolor;
-  --group-field-fg-hover: currentcolor;
-  --group-field-border-hover: var(--border);
-  --group-field-bg-active: var(--tone-strong-hover);
-  --group-field-fg-active: currentcolor;
-  --group-field-border-active: var(--border);
-  --group-field-bg-pressed: var(--tone-strong);
-  --group-field-fg-pressed: currentcolor;
-  --group-field-border-pressed: var(--border);
-  
-  /* Hover and focus fill, as a bare Input has them. The focus border and halo come from state-ring-group. Focus comes last and wins. */
-  &:hover:not([data-disabled], :has(> .field-control:disabled)) {
-    background-color: var(--variant-bg-hover);
+  /*
+   * Group variants: data-group-variant sets the group's own border and fill (--input-group-*). The colors its fields
+   * read for text and states come from the shared set (styles/recipes/group.css), except in `field`,
+   * which has no shared set and keeps its own. Border, fill and disabled paint are not passed down:
+   * the group zeroes them for its fields above.
+   */
+  &[data-group-variant='outline'] {
+    --input-group-divider: var(--border);
+    --input-group-bg: transparent;
+    --input-group-border: var(--border);
+    --input-group-bg-disabled: transparent;
+    --input-group-border-disabled: var(--border);
   }
 
-  &:has(> .field-control:focus):not([data-disabled], :has(> .field-control:disabled)) {
-    background-color: var(--variant-bg-focus);
+  &[data-group-variant='ghost'] {
+    --input-group-divider: var(--border);
+    --input-group-bg: transparent;
+    --input-group-border: transparent;
+    --input-group-bg-disabled: transparent;
+    --input-group-border-disabled: transparent;
   }
-}
 
+  /* field: paints like a standalone Input or Select (styles/recipes/field-control.css), so a group sits level with them. */
+  &[data-group-variant='field'] {
+    --input-group-divider: var(--border);
+    --input-group-bg: var(--tone-strong);
+    --input-group-border: var(--border);
+    --input-group-bg-disabled: var(--disabled);
+    --input-group-border-disabled: var(--disabled-border);
+    --group-field-fg: currentcolor;
+    --group-field-fg-hover: currentcolor;
+    --group-field-border-hover: var(--border);
+    --group-field-bg-active: var(--tone-strong-hover);
+    --group-field-fg-active: currentcolor;
+    --group-field-border-active: var(--border);
+    --group-field-bg-pressed: var(--tone-strong);
+    --group-field-fg-pressed: currentcolor;
+    --group-field-border-pressed: var(--border);
 
-/* Multi line (block addon or textarea): auto height and stretched items, with the block corner. */
-.input-group:has(> [data-align='block-end']),
-.input-group:has(> [data-align='block-start']),
-.input-group:has(> [data-slot='textarea']) {
-  height: auto;
-  align-items: stretch;
-  border-radius: var(--radius-field-block);
-}
+    /* Hover and focus fill, as a bare Input has them. The focus border and halo come from state-ring-group. Focus comes last and wins. */
+    &:hover:not([data-disabled], :has(> .field-control:disabled)) {
+      background-color: var(--variant-bg-hover);
+    }
 
-.input-group:has(> [data-align='block-end']),
-.input-group:has(> [data-align='block-start']) {
-  flex-direction: column;
-}
+    &:has(> .field-control:focus):not([data-disabled], :has(> .field-control:disabled)) {
+      background-color: var(--variant-bg-focus);
+    }
+  }
 
-.input-group[data-disabled],
-.input-group:has(> .field-control:disabled) {
-  border-color: var(--input-group-border-disabled);
-  background-color: var(--input-group-bg-disabled);
-  color: var(--foreground-disabled);
-}
+  /* Multi line (block addon or textarea): auto height and stretched items, with the block corner. */
+  &:has(> [data-align='block-end']),
+  &:has(> [data-align='block-start']),
+  &:has(> [data-slot='textarea']) {
+    height: auto;
+    align-items: stretch;
+    border-radius: var(--radius-field-block);
+  }
 
-/* A field pads by the side its addon sits on (read as --group-field-padding-* by the field). */
-.input-group:has(> [data-align='block-end']) {
-  --group-field-padding-block-start: var(--space-md);
-}
+  &:has(> [data-align='block-end']),
+  &:has(> [data-align='block-start']) {
+    flex-direction: column;
+  }
 
-.input-group:has(> [data-align='block-start']) {
-  --group-field-padding-block-end: var(--space-md);
-}
+  &[data-disabled],
+  &:has(> .field-control:disabled) {
+    border-color: var(--input-group-border-disabled);
+    background-color: var(--input-group-bg-disabled);
+    color: var(--foreground-disabled);
+  }
 
-.input-group:has(> [data-align='inline-end']) {
-  --group-field-padding-inline-end: var(--space-sm);
-}
+  /*
+   * A field's own inline padding would double the addon's inset (the addon pads its outer edge), so it is 0 on a side that
+   * has an addon. Only an addon that ends in a button or kbd on the field's side gets an inset back; a text addon reads as
+   * part of the line.
+   */
 
-.input-group:has(> [data-align='inline-start']) {
-  --group-field-padding-inline-start: var(--space-sm);
+  &:has(> [data-align='inline-start']) {
+    --group-field-padding-inline-start: 0;
+  }
+
+  &:has(> [data-align='inline-end']) {
+    --group-field-padding-inline-end: 0;
+  }
 }
 
 .input-group-addon {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-xs);
+  gap: var(--group-gap);
   cursor: text;
   font-size: var(--role-label-size);
   line-height: var(--role-label-leading);
   font-weight: var(--role-label-weight);
   color: var(--foreground-muted);
   user-select: none;
-}
 
-/* A glyph inside an action takes its size from the action recipe. */
-.input-group-addon :not(.action) > svg:not([class*='size-']),
-.input-group-addon > svg:not([class*='size-']) {
-  width: var(--group-action-icon, var(--control-icon-md));
-  height: var(--group-action-icon, var(--control-icon-md));
-  pointer-events: none;
-  flex-shrink: 0;
-}
+  /* a direct-child button or kbd tucks toward the edge */
+  &[data-align='inline-start'] {
+    order: -1;
+    padding-inline-start: calc(var(--group-field-px) / 2);
+    &:has(button:first-child),
+    &:has(kbd:first-child)  {
+      padding-inline-start: var(--group-px);
+    }
+  }
 
-/* a direct-child button or kbd tucks toward the edge */
-.input-group-addon[data-align='inline-start'] {
-  order: -1;
-  padding-inline-start: var(--space-sm);
-}
+  &[data-align='inline-end'] {
+    order: 1;
+    
+    padding-inline-end: calc(var(--group-field-px) / 2);
+    &:has(button:last-child),
+    &:has(kbd:last-child) {
+      padding-inline-end: var(--group-px);
+    }
+  }
 
-.input-group-addon[data-align='inline-start']:has(> button) {
-  margin-inline-start: calc(var(--space-xs) * -1);
-}
+  &[data-align='block-start'] {
+    order: -1;
+    width: 100%;
+    justify-content: flex-start;
+    padding-inline: var(--group-field-px);
+    padding-block-start: var(--group-field-px);
+  }
 
-.input-group-addon[data-align='inline-start']:has(> kbd) {
-  margin-inline-start: calc(var(--space-xxs) * -1);
-}
+  &[data-align='block-end'] {
+    order: 1;
+    width: 100%;
+    justify-content: flex-start;
+    padding-inline: var(--group-field-px);
+    padding-block-end: var(--group-field-px);
+  }
 
-.input-group-addon[data-align='inline-end'] {
-  order: 1;
-  padding-inline-end: var(--space-sm);
-}
-
-.input-group-addon[data-align='inline-end']:has(> button) {
-  margin-inline-end: calc(var(--space-xs) * -1);
-}
-
-.input-group-addon[data-align='inline-end']:has(> kbd) {
-  margin-inline-end: calc(var(--space-xxs) * -1);
-}
-
-.input-group-addon[data-align='block-start'] {
-  order: -1;
-  width: 100%;
-  justify-content: flex-start;
-  padding-inline: var(--space-md);
-  padding-block-start: var(--space-md);
-}
-
-.input-group-addon[data-align='block-start'].border-b {
-  border-bottom: var(--border-width-thin) solid var(--input-group-divider);
-  padding-block-end: var(--space-md);
-}
-
-.input-group-addon[data-align='block-end'] {
-  order: 1;
-  width: 100%;
-  justify-content: flex-start;
-  padding-inline: var(--space-md);
-  padding-block-end: var(--space-md);
-}
-
-.input-group-addon[data-align='block-end'].border-t {
-  border-top: var(--border-width-thin) solid var(--input-group-divider);
-}
-
-/* a group with a direct field gives block addons less padding */
-.input-group:has(> .field-control) .input-group-addon[data-align='block-start'] {
-  padding-block-start: var(--space-sm);
-}
-
-.input-group:has(> .field-control) .input-group-addon[data-align='block-end'] {
-  padding-block-end: var(--space-sm);
 }
 
 .input-group-button {
   display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  font-size: var(--role-body-size);
-  line-height: var(--role-body-leading);
-}
-
-.input-group-button[data-shape='default'] svg:not([class*='size-']) {
-  --icon-size: var(--control-icon-sm);
-}
-
-.input-group-button[data-shape='icon'] {
-  padding: 0;
 }
 
 .input-group-text {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--group-gap);
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);
   font-weight: var(--role-description-weight);
   color: var(--role-description-color);
-}
-
-.input-group-text svg:not([class*='size-']) {
-  width: var(--group-action-icon, var(--control-icon-md));
-  height: var(--group-action-icon, var(--control-icon-md));
-  pointer-events: none;
-  flex-shrink: 0;
 }
