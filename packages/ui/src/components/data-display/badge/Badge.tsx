@@ -1,42 +1,29 @@
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
 
+import { resolveSurfacePaint, type SurfacePaint, type SurfaceVariant } from '../../../lib/surface-paint';
 import { cn } from '../../../lib/utils';
 
-type BadgeVariant =
-  | 'default'
-  | 'secondary'
-  | 'destructive'
-  | 'outline'
-  | 'success'
-  | 'warning'
-  | 'info'
-/** The shared values render a tone and emphasis pair; a status value paints in Badge.css. */
-const BADGE_AXES: Record<BadgeVariant, { tone?: string, emphasis?: string }> = {
-  default: { tone: 'primary', emphasis: 'solid' },
-  secondary: { tone: 'neutral', emphasis: 'soft' },
-  destructive: { tone: 'destructive', emphasis: 'soft' },
-  outline: { tone: 'neutral', emphasis: 'outline' },
-  success: {},
-  warning: {},
-  info: {},
-};
+type BadgeVariant = SurfaceVariant
+
 /** Control-h steps only: xs → control-xs · sm → control-sm · md → control-md · lg → control-lg. */
 type BadgeSize = 'xs' | 'sm' | 'md' | 'lg'
 
-type BadgeProps = useRender.ComponentProps<'span'> & {
-  variant?: BadgeVariant
+type BadgeProps = useRender.ComponentProps<'span'> & SurfacePaint & {
   /** Default `sm` (compact status chrome). Use `md` to align with control-md rows. */
   size?: BadgeSize
 }
 
 function Badge({
   className,
-  variant = 'default',
+  variant,
+  tone,
+  emphasis,
   size = 'xs',
   render,
   ...props
 }: BadgeProps): React.JSX.Element {
+  const paint = resolveSurfacePaint({ variant, tone, emphasis }, 'default');
   return useRender({
     defaultTagName: 'span',
     props: mergeProps<'span'>(
@@ -46,12 +33,12 @@ function Badge({
       props
     ),
     render,
-    // Base UI maps state keys → data-* (data-slot, data-variant, data-size)
+    // Base UI maps state keys → data-* (data-slot, data-size, data-tone, data-emphasis)
     state: {
       slot: 'badge',
-      variant,
       size,
-      ...BADGE_AXES[variant],
+      tone: paint.tone,
+      emphasis: paint.emphasis,
     },
     });
 }

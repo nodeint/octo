@@ -2,7 +2,6 @@
  * Static look matches the action controls (button): same height, inset, gap, glyph, pill corner and type
  * role per step, and the shared --variant-* colors at rest. Focus ring and invalid paint apply when
  * a badge is rendered as a link or other focusable element. Height follows the control ladder; default size is sm.
- * success, warning and info are status variants that variants.css does not define.
  */
 .badge {
   display: inline-flex;
@@ -98,20 +97,4 @@ a.badge:hover {
   background-color: var(--variant-bg-hover);
   border-color: var(--variant-border-hover);
   color: var(--variant-fg-hover);
-}
-
-/* Status chrome uses semantic tokens, for sync, log and status badges. */
-.badge[data-variant='success'] {
-  background-color: var(--success-subtle);
-  color: var(--success-subtle-foreground);
-}
-
-.badge[data-variant='warning'] {
-  background-color: var(--warning-subtle);
-  color: var(--warning-subtle-foreground);
-}
-
-.badge[data-variant='info'] {
-  background-color: var(--info-subtle);
-  color: var(--info-subtle-foreground);
 }

@@ -67,17 +67,6 @@ function Person({ person }: { person: (typeof PEOPLE)[keyof typeof PEOPLE] }) {
   );
 }
 
-function People({ count }: { count?: React.ReactNode }) {
-  return (
-    <AvatarGroup style={GRAYSCALE}>
-      <Person person={PEOPLE.shadcn} />
-      <Person person={PEOPLE.maxleiter} />
-      <Person person={PEOPLE.evilrabbit} />
-      {count}
-    </AvatarGroup>
-  );
-}
-
 export const Demo: Story = {
   render: () => (
     <Inline gap="xl">
@@ -90,7 +79,12 @@ export const Demo: Story = {
         <AvatarFallback>ER</AvatarFallback>
         <AvatarBadge style={ONLINE} />
       </Avatar>
-      <People count={<AvatarGroupCount>+3</AvatarGroupCount>} />
+      <AvatarGroup style={GRAYSCALE}>
+        <Person person={PEOPLE.shadcn} />
+        <Person person={PEOPLE.maxleiter} />
+        <Person person={PEOPLE.evilrabbit} />
+        <AvatarGroupCount>+3</AvatarGroupCount>
+      </AvatarGroup>
     </Inline>
   ),
 };
@@ -138,24 +132,38 @@ export const BadgeWithIcon: Story = {
 
 export const Group: Story = {
   name: 'Avatar Group',
-  render: () => <People />,
+  render: () => (
+    <AvatarGroup style={GRAYSCALE}>
+      <Person person={PEOPLE.shadcn} />
+      <Person person={PEOPLE.maxleiter} />
+      <Person person={PEOPLE.evilrabbit} />
+    </AvatarGroup>
+  ),
 };
 
 export const GroupCount: Story = {
   name: 'Avatar Group Count',
-  render: () => <People count={<AvatarGroupCount>+3</AvatarGroupCount>} />,
+  render: () => (
+    <AvatarGroup style={GRAYSCALE}>
+      <Person person={PEOPLE.shadcn} />
+      <Person person={PEOPLE.maxleiter} />
+      <Person person={PEOPLE.evilrabbit} />
+      <AvatarGroupCount>+3</AvatarGroupCount>
+    </AvatarGroup>
+  ),
 };
 
 export const GroupWithIcon: Story = {
   name: 'Avatar Group with Icon',
   render: () => (
-    <People
-      count={
-        <AvatarGroupCount>
-          <Icon name="plus" />
-        </AvatarGroupCount>
-      }
-    />
+    <AvatarGroup style={GRAYSCALE}>
+      <Person person={PEOPLE.shadcn} />
+      <Person person={PEOPLE.maxleiter} />
+      <Person person={PEOPLE.evilrabbit} />
+      <AvatarGroupCount>
+        <Icon name="plus" />
+      </AvatarGroupCount>
+    </AvatarGroup>
   ),
 };
 
@@ -210,7 +218,12 @@ export const Rtl: Story = {
           <AvatarFallback>ER</AvatarFallback>
           <AvatarBadge style={ONLINE} />
         </Avatar>
-        <People count={<AvatarGroupCount>+٣</AvatarGroupCount>} />
+        <AvatarGroup style={GRAYSCALE}>
+          <Person person={PEOPLE.shadcn} />
+          <Person person={PEOPLE.maxleiter} />
+          <Person person={PEOPLE.evilrabbit} />
+          <AvatarGroupCount>+3</AvatarGroupCount>
+        </AvatarGroup>
       </Inline>
     </div>
   ),

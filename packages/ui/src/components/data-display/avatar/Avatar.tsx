@@ -1,5 +1,6 @@
 import { Avatar as AvatarPrimitive } from '@base-ui/react/avatar';
-import * as React from 'react';
+import { mergeProps } from '@base-ui/react/merge-props';
+import { useRender } from '@base-ui/react/use-render';
 
 import { cn } from '../../../lib/utils';
 
@@ -50,43 +51,43 @@ function AvatarFallback({
   );
 }
 
-function AvatarBadge({ className, ...props }: React.ComponentProps<'span'>): React.JSX.Element {
-  return (
-    <span
-      data-slot="avatar-badge"
-      className={cn(
-        'avatar-badge',
-        className
-      )}
-      {...props}
-    />
-  );
+function AvatarBadge({
+  className,
+  render,
+  ...props
+}: useRender.ComponentProps<'span'>): React.JSX.Element {
+  return useRender({
+    defaultTagName: 'span',
+    props: mergeProps<'span'>({ className: cn('avatar-badge', className) }, props),
+    render,
+    state: { slot: 'avatar-badge' },
+  });
 }
 
-function AvatarGroup({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
-  return (
-    <div
-      data-slot="avatar-group"
-      className={cn('avatar-group', className)}
-      {...props}
-    />
-  );
+function AvatarGroup({
+  className,
+  render,
+  ...props
+}: useRender.ComponentProps<'div'>): React.JSX.Element {
+  return useRender({
+    defaultTagName: 'div',
+    props: mergeProps<'div'>({ className: cn('avatar-group', className) }, props),
+    render,
+    state: { slot: 'avatar-group' },
+  });
 }
 
 function AvatarGroupCount({
   className,
+  render,
   ...props
-}: React.ComponentProps<'div'>): React.JSX.Element {
-  return (
-    <div
-      data-slot="avatar-group-count"
-      className={cn(
-        'avatar-group-count',
-        className
-      )}
-      {...props}
-    />
-  );
+}: useRender.ComponentProps<'div'>): React.JSX.Element {
+  return useRender({
+    defaultTagName: 'div',
+    props: mergeProps<'div'>({ className: cn('avatar-group-count', className) }, props),
+    render,
+    state: { slot: 'avatar-group-count' },
+  });
 }
 
 export {

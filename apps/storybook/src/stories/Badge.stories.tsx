@@ -34,7 +34,7 @@ type Story = StoryObj<typeof meta>;
  */
 
 export const Demo: Story = {
-  render: (args) => (
+  render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
     <Inline>
       <Badge {...args}>Badge</Badge>
       <Badge {...args} variant="secondary">
@@ -51,7 +51,7 @@ export const Demo: Story = {
 };
 
 export const Variants: Story = {
-  render: (args) => (
+  render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
     <Inline>
       <Badge {...args}>Default</Badge>
       <Badge {...args} variant="secondary">
@@ -78,7 +78,7 @@ export const Variants: Story = {
 
 export const WithIcon: Story = {
   name: 'With Icon',
-  render: (args) => (
+  render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
     <Inline>
       <Badge {...args} variant="secondary">
         <Icon name="shield-check" />
@@ -94,7 +94,7 @@ export const WithIcon: Story = {
 
 export const WithSpinner: Story = {
   name: 'With Spinner',
-  render: (args) => (
+  render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
     <Inline>
       <Badge {...args} variant="destructive">
         <Spinner />
@@ -110,7 +110,7 @@ export const WithSpinner: Story = {
 
 export const AsLink: Story = {
   name: 'Link',
-  render: (args) => (
+  render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
     <Badge {...args} render={<a href="#link" />}>
       Open Link
       <Icon name="external-link" />
@@ -120,7 +120,7 @@ export const AsLink: Story = {
 
 export const CustomColors: Story = {
   name: 'Custom Colors',
-  render: (args) => (
+  render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
     <Inline>
       <Badge {...args} style={{ backgroundColor: '#eff6ff', color: '#1d4ed8' }}>
         Blue
@@ -143,7 +143,7 @@ export const CustomColors: Story = {
 
 export const Rtl: Story = {
   name: 'RTL',
-  render: (args) => (
+  render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
     <Inline dir="rtl">
       <Badge {...args}>شارة</Badge>
       <Badge {...args} variant="secondary">
