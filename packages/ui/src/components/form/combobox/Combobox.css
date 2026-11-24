@@ -64,7 +64,7 @@
 .combobox-content > [data-slot='input-group'] {
   height: var(--control-height-md);
   margin: var(--space-xs) var(--space-xs) 0;
-  border-color: var(--border-control);
+  border-color: var(--border);
   background-color: var(--muted);
   box-shadow: none;
 }
@@ -102,7 +102,7 @@
 }
 
 .combobox-item[data-highlighted] {
-  background-color: var(--hover);
+  background-color: var(--accent);
   color: var(--foreground);
 }
 
@@ -163,7 +163,7 @@
 .combobox-separator {
   height: 1px;
   margin: var(--space-xs) calc(var(--space-xs) * -1);
-  background-color: var(--separator);
+  background-color: var(--border);
 }
 
 .combobox-chips {

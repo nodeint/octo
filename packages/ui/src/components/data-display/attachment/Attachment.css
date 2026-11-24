@@ -28,7 +28,7 @@
 
 /* a clickable root child: depth is the hover contract */
 .attachment:has(> a, > button):hover {
-  background-color: var(--hover);
+  background-color: var(--accent);
 }
 
 /* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */

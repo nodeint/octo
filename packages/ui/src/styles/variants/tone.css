@@ -7,6 +7,18 @@
  * The field tone is the one exception to "same values in light and dark": it declares its own fill and has a `.dark` block.
  */
 
+/* State slots shared by every action: focus, invalid, disabled text. Resolves on each element against its own tone. */
+[data-tone] {
+  --variant-ring: var(--tone-ring);
+  --variant-border-focus: var(--tone-ring);
+  --variant-border-invalid: var(--state-invalid-border);
+  --variant-fg-disabled: var(--foreground-disabled);
+  --variant-fg-placeholder: var(--placeholder);
+  --variant-shadow-focus: 0 0 0 var(--focus-width)
+    color-mix(in oklab, var(--variant-ring) var(--state-halo-strength), transparent);
+  --variant-shadow-invalid: var(--state-invalid-shadow);
+}
+
 /* Swatch tones: each aliases one hue of theme/swatches.css. Light-on-light hues (yellow, lime) take their text from the subtle foreground. */
 [data-tone='orange'] {
   --tone-strong: var(--orange);
@@ -15,7 +27,7 @@
   --tone-subtle: var(--orange-subtle);
   --tone-subtle-foreground: var(--orange-subtle-foreground);
   --tone-selected: var(--orange-subtle);
-  --tone-text: var(--orange);
+  --tone-foreground: var(--orange);
   --tone-ring: var(--orange);
   --tone-surface: var(--orange-surface);
   --tone-surface-foreground: var(--orange-surface-foreground);
@@ -29,7 +41,7 @@
   --tone-subtle: var(--yellow-subtle);
   --tone-subtle-foreground: var(--yellow-subtle-foreground);
   --tone-selected: var(--yellow-subtle);
-  --tone-text: var(--yellow-subtle-foreground);
+  --tone-foreground: var(--yellow-subtle-foreground);
   --tone-ring: var(--yellow);
   --tone-surface: var(--yellow-surface);
   --tone-surface-foreground: var(--yellow-surface-foreground);
@@ -43,7 +55,7 @@
   --tone-subtle: var(--lime-subtle);
   --tone-subtle-foreground: var(--lime-subtle-foreground);
   --tone-selected: var(--lime-subtle);
-  --tone-text: var(--lime-subtle-foreground);
+  --tone-foreground: var(--lime-subtle-foreground);
   --tone-ring: var(--lime);
   --tone-surface: var(--lime-surface);
   --tone-surface-foreground: var(--lime-surface-foreground);
@@ -57,7 +69,7 @@
   --tone-subtle: var(--emerald-subtle);
   --tone-subtle-foreground: var(--emerald-subtle-foreground);
   --tone-selected: var(--emerald-subtle);
-  --tone-text: var(--emerald);
+  --tone-foreground: var(--emerald);
   --tone-ring: var(--emerald);
   --tone-surface: var(--emerald-surface);
   --tone-surface-foreground: var(--emerald-surface-foreground);
@@ -71,7 +83,7 @@
   --tone-subtle: var(--cyan-subtle);
   --tone-subtle-foreground: var(--cyan-subtle-foreground);
   --tone-selected: var(--cyan-subtle);
-  --tone-text: var(--cyan);
+  --tone-foreground: var(--cyan);
   --tone-ring: var(--cyan);
   --tone-surface: var(--cyan-surface);
   --tone-surface-foreground: var(--cyan-surface-foreground);
@@ -85,7 +97,7 @@
   --tone-subtle: var(--blue-subtle);
   --tone-subtle-foreground: var(--blue-subtle-foreground);
   --tone-selected: var(--blue-subtle);
-  --tone-text: var(--blue);
+  --tone-foreground: var(--blue);
   --tone-ring: var(--blue);
   --tone-surface: var(--blue-surface);
   --tone-surface-foreground: var(--blue-surface-foreground);
@@ -99,7 +111,7 @@
   --tone-subtle: var(--indigo-subtle);
   --tone-subtle-foreground: var(--indigo-subtle-foreground);
   --tone-selected: var(--indigo-subtle);
-  --tone-text: var(--indigo);
+  --tone-foreground: var(--indigo);
   --tone-ring: var(--indigo);
   --tone-surface: var(--indigo-surface);
   --tone-surface-foreground: var(--indigo-surface-foreground);
@@ -113,7 +125,7 @@
   --tone-subtle: var(--violet-subtle);
   --tone-subtle-foreground: var(--violet-subtle-foreground);
   --tone-selected: var(--violet-subtle);
-  --tone-text: var(--violet);
+  --tone-foreground: var(--violet);
   --tone-ring: var(--violet);
   --tone-surface: var(--violet-surface);
   --tone-surface-foreground: var(--violet-surface-foreground);
@@ -127,7 +139,7 @@
   --tone-subtle: var(--purple-subtle);
   --tone-subtle-foreground: var(--purple-subtle-foreground);
   --tone-selected: var(--purple-subtle);
-  --tone-text: var(--purple);
+  --tone-foreground: var(--purple);
   --tone-ring: var(--purple);
   --tone-surface: var(--purple-surface);
   --tone-surface-foreground: var(--purple-surface-foreground);
@@ -141,7 +153,7 @@
   --tone-subtle: var(--fuchsia-subtle);
   --tone-subtle-foreground: var(--fuchsia-subtle-foreground);
   --tone-selected: var(--fuchsia-subtle);
-  --tone-text: var(--fuchsia);
+  --tone-foreground: var(--fuchsia);
   --tone-ring: var(--fuchsia);
   --tone-surface: var(--fuchsia-surface);
   --tone-surface-foreground: var(--fuchsia-surface-foreground);
@@ -155,7 +167,7 @@
   --tone-subtle: var(--pink-subtle);
   --tone-subtle-foreground: var(--pink-subtle-foreground);
   --tone-selected: var(--pink-subtle);
-  --tone-text: var(--pink);
+  --tone-foreground: var(--pink);
   --tone-ring: var(--pink);
   --tone-surface: var(--pink-surface);
   --tone-surface-foreground: var(--pink-surface-foreground);
@@ -169,7 +181,7 @@
   --tone-subtle: var(--rose-subtle);
   --tone-subtle-foreground: var(--rose-subtle-foreground);
   --tone-selected: var(--rose-subtle);
-  --tone-text: var(--rose);
+  --tone-foreground: var(--rose);
   --tone-ring: var(--rose);
   --tone-surface: var(--rose-surface);
   --tone-surface-foreground: var(--rose-surface-foreground);
@@ -183,7 +195,7 @@
   --tone-subtle: var(--slate-subtle);
   --tone-subtle-foreground: var(--slate-subtle-foreground);
   --tone-selected: var(--slate-subtle);
-  --tone-text: var(--slate);
+  --tone-foreground: var(--slate);
   --tone-ring: var(--slate);
   --tone-surface: var(--slate-surface);
   --tone-surface-foreground: var(--slate-surface-foreground);
@@ -197,7 +209,7 @@
   --tone-subtle: var(--gray-subtle);
   --tone-subtle-foreground: var(--gray-subtle-foreground);
   --tone-selected: var(--gray-subtle);
-  --tone-text: var(--gray);
+  --tone-foreground: var(--gray);
   --tone-ring: var(--gray);
   --tone-surface: var(--gray-surface);
   --tone-surface-foreground: var(--gray-surface-foreground);
@@ -211,7 +223,7 @@
   --tone-subtle: var(--neutral-subtle);
   --tone-subtle-foreground: var(--neutral-subtle-foreground);
   --tone-selected: var(--neutral-subtle);
-  --tone-text: var(--neutral);
+  --tone-foreground: var(--neutral);
   --tone-ring: var(--neutral);
   --tone-surface: var(--neutral-surface);
   --tone-surface-foreground: var(--neutral-surface-foreground);
@@ -225,7 +237,7 @@
   --tone-subtle: var(--zinc-subtle);
   --tone-subtle-foreground: var(--zinc-subtle-foreground);
   --tone-selected: var(--zinc-subtle);
-  --tone-text: var(--zinc);
+  --tone-foreground: var(--zinc);
   --tone-ring: var(--zinc);
   --tone-surface: var(--zinc-surface);
   --tone-surface-foreground: var(--zinc-surface-foreground);
@@ -239,7 +251,7 @@
   --tone-subtle: var(--stone-subtle);
   --tone-subtle-foreground: var(--stone-subtle-foreground);
   --tone-selected: var(--stone-subtle);
-  --tone-text: var(--stone);
+  --tone-foreground: var(--stone);
   --tone-ring: var(--stone);
   --tone-surface: var(--stone-surface);
   --tone-surface-foreground: var(--stone-surface-foreground);
@@ -253,7 +265,7 @@
   --tone-subtle: var(--mauve-subtle);
   --tone-subtle-foreground: var(--mauve-subtle-foreground);
   --tone-selected: var(--mauve-subtle);
-  --tone-text: var(--mauve);
+  --tone-foreground: var(--mauve);
   --tone-ring: var(--mauve);
   --tone-surface: var(--mauve-surface);
   --tone-surface-foreground: var(--mauve-surface-foreground);
@@ -267,7 +279,7 @@
   --tone-subtle: var(--olive-subtle);
   --tone-subtle-foreground: var(--olive-subtle-foreground);
   --tone-selected: var(--olive-subtle);
-  --tone-text: var(--olive);
+  --tone-foreground: var(--olive);
   --tone-ring: var(--olive);
   --tone-surface: var(--olive-surface);
   --tone-surface-foreground: var(--olive-surface-foreground);
@@ -281,7 +293,7 @@
   --tone-subtle: var(--mist-subtle);
   --tone-subtle-foreground: var(--mist-subtle-foreground);
   --tone-selected: var(--mist-subtle);
-  --tone-text: var(--mist);
+  --tone-foreground: var(--mist);
   --tone-ring: var(--mist);
   --tone-surface: var(--mist-surface);
   --tone-surface-foreground: var(--mist-surface-foreground);
@@ -292,57 +304,51 @@
   --tone-strong: var(--taupe);
   --tone-strong-hover: var(--taupe-hover);
   --tone-strong-foreground: var(--taupe-foreground);
+
   --tone-subtle: var(--taupe-subtle);
   --tone-subtle-foreground: var(--taupe-subtle-foreground);
-  --tone-selected: var(--taupe-subtle);
-  --tone-text: var(--taupe);
-  --tone-ring: var(--taupe);
+  
   --tone-surface: var(--taupe-surface);
   --tone-surface-foreground: var(--taupe-surface-foreground);
+
+  --tone-selected: var(--taupe-subtle);
+  --tone-foreground: var(--taupe);
+  --tone-ring: var(--taupe);
   --tone-border: var(--taupe-border);
 }
 
-/* State slots shared by every action: focus, invalid, disabled text. Resolves on each element against its own tone. */
-[data-tone] {
-  --variant-ring: var(--tone-ring);
-  --variant-border-focus: var(--tone-ring);
-  --variant-border-invalid: var(--state-invalid-border);
-  --variant-fg-disabled: var(--foreground-disabled);
-  --variant-fg-placeholder: var(--placeholder);
-  --variant-shadow-focus: 0 0 0 var(--focus-width)
-    color-mix(in oklab, var(--variant-ring) var(--state-halo-strength), transparent);
-  --variant-shadow-invalid: var(--state-invalid-shadow);
-}
 
 /*
  * Tone roles: strong fill (+hover, text on it), subtle fill (+text), selected fill, tone text on a plain surface, ring,
  * and the callout surface (fill, edge, secondary text) read by the surface emphasis.
  */
 [data-tone='base'] {
-  --tone-strong: var(--background);
-  --tone-strong-hover: var(--tertiary);
+  --tone-strong: var(--secondary);
+  --tone-strong-hover: var(--accent);
   --tone-strong-foreground: var(--foreground);
 
   --tone-subtle: var(--secondary);
   --tone-subtle-foreground: var(--foreground);
 
-  --tone-selected: var(--accent);
-  --tone-text: var(--foreground);
-  --tone-ring: var(--ring);
-  --tone-border: var(--border);
-
   --tone-surface: var(--card);
-  --tone-surface-foreground: var(--role-description-color);
+  --tone-surface-foreground: var(--foreground);
+
+  --tone-selected: var(--accent);
+  --tone-foreground: var(--foreground);
+  --tone-ring: var(--state-focus-border);
+  --tone-border: var(--border);
 }
 
 [data-tone='primary'] {
   --tone-strong: var(--primary);
   --tone-strong-hover: var(--primary-hover);
   --tone-strong-foreground: var(--primary-foreground);
+
   --tone-subtle: var(--secondary);
   --tone-subtle-foreground: var(--foreground);
+
   --tone-selected: var(--accent);
-  --tone-text: var(--primary);
+  --tone-foreground: var(--primary);
   --tone-ring: var(--ring);
 }
 
@@ -353,7 +359,7 @@
   --tone-subtle: var(--destructive-subtle);
   --tone-subtle-foreground: var(--destructive-subtle-foreground);
   --tone-selected: var(--destructive-subtle);
-  --tone-text: var(--destructive);
+  --tone-foreground: var(--destructive);
   --tone-ring: var(--destructive);
   --tone-surface: var(--destructive-surface);
   --tone-surface-foreground: var(--destructive-surface-foreground);
@@ -365,18 +371,17 @@
  * specific to this tone. Not exposed to actions.
  */
 [data-tone='field'] {
-  --tone-surface: transparent;
-  --tone-surface-hover: transparent;
-  --tone-surface-focus: transparent;
-  --tone-border: var(--border-control);
+  --tone-surface: var(--card);
+  --tone-surface-hover: var(--card);
+  --tone-surface-focus: var(--card);
+  --tone-border: var(--border);
   --tone-ring: var(--ring);
-}
 
-/* Open on a light page, tinted in dark. */
-.dark [data-tone='field'] {
-  --tone-surface: var(--muted);
-  --tone-surface-hover: var(--secondary);
-  --tone-surface-focus: var(--secondary);
+  .dark & {
+    --tone-surface: var(--card);
+    --tone-surface-hover: var(--secondary);
+    --tone-surface-focus: var(--secondary);
+  }
 }
 
 [data-tone='success'] {
@@ -386,7 +391,7 @@
   --tone-subtle: var(--success-subtle);
   --tone-subtle-foreground: var(--success-subtle-foreground);
   --tone-selected: var(--success-subtle);
-  --tone-text: var(--success);
+  --tone-foreground: var(--success);
   --tone-ring: var(--success);
   --tone-surface: var(--success-surface);
   --tone-surface-foreground: var(--success-surface-foreground);
@@ -400,7 +405,7 @@
   --tone-subtle: var(--warning-subtle);
   --tone-subtle-foreground: var(--warning-subtle-foreground);
   --tone-selected: var(--warning-subtle);
-  --tone-text: var(--warning);
+  --tone-foreground: var(--warning);
   --tone-ring: var(--warning);
   --tone-surface: var(--warning-surface);
   --tone-surface-foreground: var(--warning-surface-foreground);
@@ -414,7 +419,7 @@
   --tone-subtle: var(--info-subtle);
   --tone-subtle-foreground: var(--info-subtle-foreground);
   --tone-selected: var(--info-subtle);
-  --tone-text: var(--info);
+  --tone-foreground: var(--info);
   --tone-ring: var(--info);
   --tone-surface: var(--info-surface);
   --tone-surface-foreground: var(--info-surface-foreground);

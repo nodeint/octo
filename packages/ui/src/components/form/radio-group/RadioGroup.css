@@ -13,7 +13,7 @@
   height: var(--radio-size);
   border-width: var(--border-width-thin);
   border-style: solid;
-  --choice-control-border: var(--border-control);
+  --choice-control-border: var(--border);
   border-radius: var(--radio-radius);
   background-color: var(--radio-background);
 }

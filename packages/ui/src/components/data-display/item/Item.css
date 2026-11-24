@@ -65,7 +65,7 @@
 
 a.item:hover,
 button.item:hover {
-  background-color: var(--hover);
+  background-color: var(--accent);
 }
 
 .item[data-variant='outline'] {
@@ -116,7 +116,7 @@ button.item:hover {
 }
 
 .item:has(.item-trigger):hover {
-  background-color: var(--hover);
+  background-color: var(--accent);
 }
 
 .item:has(.item-trigger:focus-visible) {

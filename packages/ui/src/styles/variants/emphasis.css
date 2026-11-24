@@ -34,19 +34,21 @@
 }
 
 [data-emphasis='soft'] {
-  --variant-bg: var(--tone-subtle);
-  --variant-fg: var(--tone-subtle-foreground);
-  --variant-border: transparent;
-  --variant-bg-hover: var(--tone-strong);
-  --variant-fg-hover: var(--tone-strong-foreground);
-  --variant-border-hover: transparent;
+  --variant-bg: var(--tone-strong);
+  --variant-bg-hover: var(--tone-strong-hover);
   --variant-bg-active: var(--tone-strong-hover);
-  --variant-fg-active: var(--tone-strong-foreground);
-  --variant-border-active: transparent;
   --variant-bg-selected: var(--tone-selected);
-  --variant-fg-selected: var(--tone-subtle-foreground);
-  --variant-border-selected: transparent;
   --variant-bg-disabled: var(--disabled);
+
+  --variant-fg: var(--tone-strong-foreground);
+  --variant-fg-hover: var(--tone-strong-foreground);
+  --variant-fg-active: var(--tone-strong-foreground);
+  --variant-fg-selected: var(--foreground-disabled);
+
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-selected: transparent;
   --variant-border-disabled: transparent;
 }
 
@@ -54,10 +56,10 @@
   --variant-bg: transparent;
   --variant-fg: currentcolor;
   --variant-border: var(--border);
-  --variant-bg-hover: var(--tertiary);
+  --variant-bg-hover: var(--accent);
   --variant-fg-hover: var(--foreground);
   --variant-border-hover: var(--border);
-  --variant-bg-active: var(--tertiary);
+  --variant-bg-active: var(--accent);
   --variant-fg-active: var(--foreground);
   --variant-border-active: var(--border);
   --variant-bg-selected: var(--muted);
@@ -73,10 +75,10 @@
   --variant-bg: transparent;
   --variant-fg: var(--foreground);
   --variant-border: transparent;
-  --variant-bg-hover: var(--tertiary);
+  --variant-bg-hover: var(--accent);
   --variant-fg-hover: var(--foreground);
   --variant-border-hover: transparent;
-  --variant-bg-active: var(--tertiary);
+  --variant-bg-active: var(--accent);
   --variant-fg-active: var(--foreground);
   --variant-border-active: transparent;
   --variant-bg-selected: var(--accent);
@@ -98,16 +100,16 @@
 [data-emphasis='link'],
 [data-emphasis='plain'] {
   --variant-bg: transparent;
-  --variant-fg: var(--tone-text);
+  --variant-fg: var(--tone-foreground);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
-  --variant-fg-hover: var(--tone-text);
+  --variant-fg-hover: var(--tone-foreground);
   --variant-border-hover: transparent;
   --variant-bg-active: transparent;
-  --variant-fg-active: var(--tone-text);
+  --variant-fg-active: var(--tone-foreground);
   --variant-border-active: transparent;
   --variant-bg-selected: transparent;
-  --variant-fg-selected: var(--tone-text);
+  --variant-fg-selected: var(--tone-foreground);
   --variant-border-selected: transparent;
   --variant-bg-disabled: transparent;
   --variant-border-disabled: transparent;
@@ -118,10 +120,10 @@
  * which is what the base button and badge rely on. A tone without an edge role (primary) keeps --border.
  */
 [data-emphasis='outline']:not([data-tone='base']) {
-  --variant-fg: var(--tone-text);
-  --variant-fg-hover: var(--tone-text);
-  --variant-fg-active: var(--tone-text);
-  --variant-fg-selected: var(--tone-text);
+  --variant-fg: var(--tone-foreground);
+  --variant-fg-hover: var(--tone-foreground);
+  --variant-fg-active: var(--tone-foreground);
+  --variant-fg-selected: var(--tone-foreground);
   --variant-border: var(--tone-border, var(--border));
   --variant-border-hover: var(--tone-border, var(--border));
   --variant-border-active: var(--tone-border, var(--border));
@@ -131,7 +133,7 @@
 /* A static callout: tinted surface, soft edge, tone-colored text, quieter secondary text. No pointer states. */
 [data-emphasis='surface'] {
   --variant-bg: var(--tone-surface);
-  --variant-fg: var(--tone-text);
+  --variant-fg: var(--tone-foreground);
   --variant-fg-secondary: var(--tone-surface-foreground);
   --variant-border: var(--tone-border);
 }
@@ -139,15 +141,14 @@
 /* A text field: the tone's surface and border at rest, its hover fill for the select and combobox triggers. Field tone only. */
 [data-emphasis='field'] {
   --variant-bg: var(--tone-surface);
-  --variant-fg: currentcolor;
-  --variant-border: var(--tone-border);
-
   --variant-bg-hover: var(--tone-surface-hover);
-  --variant-fg-hover: currentcolor;
-
   --variant-bg-focus: var(--tone-surface-focus);
+  --variant-bg-disabled: var(--disabled);
+
+  --variant-fg: currentcolor;
+  --variant-fg-hover: currentcolor;
   --variant-fg-focus: currentcolor;
 
-  --variant-bg-disabled: var(--disabled);
+  --variant-border: var(--tone-border);
   --variant-border-disabled: var(--disabled-border);
 }

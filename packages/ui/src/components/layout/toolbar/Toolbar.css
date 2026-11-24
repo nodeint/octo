@@ -77,7 +77,7 @@
 
 .toolbar-separator {
   flex-shrink: 0;
-  background-color: var(--separator);
+  background-color: var(--border);
 }
 
 /* Perpendicular to the toolbar axis; Base UI sets the orientation. It stretches across the rail, which has no inset. */

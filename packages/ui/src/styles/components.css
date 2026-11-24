@@ -19,6 +19,10 @@
  */
 
 :root {
+  --card: var(--base-light);
+  --dialog: var(--base-light);
+  --popover: var(--base-light);
+
   /* Switch: track and thumb, per switch size */
   --switch-track-height-md: 1.25rem;
   --switch-track-width-md: 2rem;
@@ -79,12 +83,16 @@
   --tab-trigger-shrink: var(--border-width-thin); /* 1, the tab's own border */
   --tab-active-background: var(--background);
   --tab-active-border-color: transparent;
-  --tab-active-focus-border-color: var(--ring);
+  --tab-active-focus-border-color: var(--state-focus-border);
   --tab-line-active-border-color: transparent;
-  --tab-line-active-focus-border-color: var(--ring);
+  --tab-line-active-focus-border-color: var(--state-focus-border);
 }
 
 .dark {
+  --card: var(--base-dark);
+  --dialog: var(--base-dark);
+  --popover: var(--base-dark);
+
   /* Switch */
   --switch-thumb-checked-background: var(--primary-foreground);
   --switch-thumb-unchecked-background: var(--foreground);
@@ -101,8 +109,8 @@
 
   /* Tab */
   --tab-active-background: var(--muted);
-  --tab-active-border-color: var(--border-control);
-  --tab-active-focus-border-color: var(--border-control);
+  --tab-active-border-color: var(--border);
+  --tab-active-focus-border-color: var(--border);
   --tab-line-active-border-color: transparent;
   --tab-line-active-focus-border-color: transparent;
 }

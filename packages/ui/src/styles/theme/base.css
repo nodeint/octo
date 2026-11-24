@@ -9,6 +9,9 @@
  * Only a solid emphasis fill keeps an on-fill pair: primary, primary-subtle, primary-fixed, and the statuses.
  */
 :root {
+  --base-light: #fff;
+  --base-dark: #000;
+
   --base-50: var(--gray-50);
   --base-100: var(--gray-100);
   --base-200: var(--gray-200);
@@ -18,34 +21,22 @@
   --base-600: var(--gray-600);
   --base-700: var(--gray-700);
   --base-800: var(--gray-800);
-  --base-900: var(--gray-900);
+  --base-dark: var(--gray-900);
   --base-950: var(--gray-950);
-
-  --card: var(--base-50);
-  --dialog: var(--base-50);
-  --popover: var(--base-50);
-  --toolbar: var(--base-200);
 
   --background: var(--base-50);
   --secondary: var(--base-100);
-  --tertiary: var(--base-200);
-  --accent: var(--base-300);
-  --muted: var(--base-400);
+  --accent: var(--base-200);
+  --muted: var(--base-300);
 
-  /* Hover and keyboard highlight of a row. Selected and open use accent. */
-  --hover: oklch(from var(--foreground) l c h / 10%);
-
-  /* Disabled is its own paint, not an opacity: quiet fill and quiet edge, with foreground-disabled text. */
   --disabled: var(--base-300);
   --disabled-border: var(--base-400);
 
   --overlay: oklch(0 0 0 / 10%);
 
-  --separator: var(--base-300);
   --border: var(--base-300);
   --border-surface: oklch(from var(--foreground) l c h / 10%);
 
-  --border-control: var(--base-500);
   --ring: var(--primary);
 
   /*
@@ -58,10 +49,11 @@
   *   foreground-disabled  a disabled control. Not content
   * A solid emphasis fill (primary, a status) keeps its own on-fill pair: `*-foreground`.
   */
-  --foreground: var(--base-900);
+  --foreground: var(--base-dark);
   --foreground-subtle: var(--base-700);
   --foreground-muted: var(--base-600);
   --foreground-disabled: var(--base-500);
+
   --placeholder: color-mix(in oklab, currentColor 50%, transparent);
 }
 
@@ -70,22 +62,16 @@
 
   --background: var(--base-950);
 
-  --card: var(--base-900);
-  --dialog: var(--base-900);
-  --popover: var(--base-800);
-  --toolbar: var(--base-800);
 
   --secondary: var(--base-800);
   --muted: var(--base-800);
-  --tertiary: var(--base-700);
   --accent: var(--base-600);
 
   --disabled: var(--base-800);
   --disabled-border: var(--base-700);
 
-  --separator: var(--base-700);
   --border: var(--base-700);
-  --border-control: var(--base-500);
+  --border: var(--base-500);
 
   --foreground: var(--base-100);
   --foreground-subtle: var(--base-300);

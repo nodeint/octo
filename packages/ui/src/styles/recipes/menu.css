@@ -40,7 +40,7 @@
 }
 
 .menu-row:is(:hover, :focus) {
-  background-color: var(--hover);
+  background-color: var(--accent);
   color: var(--foreground);
 }
 
@@ -127,7 +127,7 @@
   flex-shrink: 0;
   height: 1px;
   margin-inline: calc(var(--menu-pad, var(--space-xs)) * -1);
-  background-color: var(--separator);
+  background-color: var(--border);
 }
 
 /* Bleeds to the menu edges by default; `inset` keeps it inside the menu padding. */

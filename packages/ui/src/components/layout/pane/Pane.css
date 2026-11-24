@@ -41,12 +41,12 @@
 
 .pane-header {
   margin-block-start: calc(var(--inset) * -1);
-  border-bottom: var(--border-width-thin) solid var(--separator);
+  border-bottom: var(--border-width-thin) solid var(--border-surface);
 }
 
 .pane-footer {
   margin-block-end: calc(var(--inset) * -1);
-  border-top: var(--border-width-thin) solid var(--separator);
+  border-top: var(--border-width-thin) solid var(--border-surface);
   border-bottom-left-radius: var(--radius-surface-md);
   border-bottom-right-radius: var(--radius-surface-md);
   background-color: var(--muted);

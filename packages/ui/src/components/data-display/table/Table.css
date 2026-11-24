@@ -13,7 +13,7 @@
 }
 
 .table-header tr {
-  border-bottom: var(--border-width-thin) solid var(--separator);
+  border-bottom: var(--border-width-thin) solid var(--border-surface);
 }
 
 .table-body tr:last-child {
@@ -21,7 +21,7 @@
 }
 
 .table-footer {
-  border-top: var(--border-width-thin) solid var(--separator);
+  border-top: var(--border-width-thin) solid var(--border-surface);
   background-color: var(--muted);
   font-size: var(--role-label-size);
   line-height: var(--role-label-leading);
@@ -33,14 +33,14 @@
 }
 
 .table-row {
-  border-bottom: var(--border-width-thin) solid var(--separator);
+  border-bottom: var(--border-width-thin) solid var(--border-surface);
   transition-property: color, background-color;
   transition-duration: var(--motion-duration-fast);
   transition-timing-function: var(--default-transition-timing-function);
 }
 
 .table-row:hover {
-  background-color: var(--hover);
+  background-color: var(--accent);
 }
 
 .table-row:has([aria-expanded='true']),
