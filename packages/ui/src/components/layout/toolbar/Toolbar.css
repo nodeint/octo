@@ -3,20 +3,11 @@
  * data-group-variant sets the --group-action-* / --group-field-* colors (below) and
  * data-group-size sets the rail height and its corner (styles/recipes/group.css) and the item step (--group-item-*). Unlike a button-group
  * its items are spaced, not joined, so none of the join rules apply.
- * The rail paints its own fill and edge per variant (--toolbar-fill, --toolbar-edge, at the end of this file).
  */
 .toolbar {
-  /* Size tokens come from data-group-size (styles/recipes/group.css): the rail is a field's height, as an input-group is. */
-  display: flex;
-  align-items: center;
-  gap: var(--space-xxs);
-  width: fit-content;
-  height: var(--group-field-height);
-  border: var(--border-width-thin) solid var(--toolbar-edge);
-  border-radius: var(--group-corner);
-  background-color: var(--toolbar-fill);
-  color: var(--foreground);
-  /* Items take the group's item step (--group-item-*), one below the rail's own. A button's own size prop no longer changes it. */
+  --group-bg: var(--variant-bg);
+  --group-border: var(--variant-border);
+    /* Items take the group's item step (--group-item-*), one below the rail's own. A button's own size prop no longer changes it. */
   --group-action-height: var(--group-item-height);
   --group-action-px: var(--group-item-px);
   --group-action-gap: var(--group-item-gap);
@@ -27,6 +18,17 @@
   --group-field-border: transparent;
   --group-field-bg-disabled: transparent;
   --group-field-border-disabled: transparent;
+
+  /* Size tokens come from data-group-size (styles/recipes/group.css): the rail is a field's height, as an input-group is. */
+  display: flex;
+  align-items: center;
+  gap: var(--group-gap);
+  width: fit-content;
+  height: var(--group-field-height);
+  border: var(--border-width-thin) solid var(--group-border);
+  border-radius: var(--group-radius );
+  background-color: var(--group-bg);
+  color: var(--foreground);
 }
 
 /* A vertical rail grows with its items and is block-shaped. */
@@ -75,6 +77,45 @@
   min-width: 0;
 }
 
+/*
+ * Horizontal rail: an input runs edge to edge, as a field in a button-group does. The rail's border takes
+ * a border width on each side, so the input grows over it with a negative margin (an input a border
+ * taller than the rail's inner box would otherwise sit inside it with a gap). It is raised on focus so its
+ * ring and border cover the rail's edge, and its outer corners follow the rail's corner, not the field's.
+ */
+.toolbar[data-orientation='horizontal'] > .toolbar-input {
+  position: relative;
+  height: calc(100% + var(--border-width-thin) * 2);
+  margin-block: calc(var(--border-width-thin) * -1);
+  border-radius: var(--group-radius );
+}
+
+.toolbar[data-orientation='horizontal'] > .toolbar-input:focus-visible,
+.toolbar[data-orientation='horizontal'] > .toolbar-input[aria-invalid='true'] {
+  z-index: var(--z-raised);
+}
+
+.toolbar[data-orientation='horizontal'] > .toolbar-input:last-child {
+  margin-inline-end: calc(var(--border-width-thin) * -1);
+}
+
+.toolbar[data-orientation='horizontal'] > .toolbar-input:first-child {
+  margin-inline-start: calc(var(--border-width-thin) * -1);
+}
+
+/* An input after another item joins it: square on the joined side. */
+.toolbar[data-orientation='horizontal'] > * + .toolbar-input {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+/* An input followed by another item joins it too: square on the joined side, and the gap closed. */
+.toolbar[data-orientation='horizontal'] > .toolbar-input:not(:last-child) {
+  margin-inline-end: calc(var(--group-gap) * -1);
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
 .toolbar-separator {
   flex-shrink: 0;
   background-color: var(--border);
@@ -86,22 +127,22 @@
   align-self: stretch;
 }
 
+/* Horizontal rail: the separator spans the rail edge to edge, as an input beside it does, and the input closes the rail's gap to it. */
+.toolbar[data-orientation='horizontal'] > .toolbar-separator[data-orientation='vertical'] {
+  margin-block: calc(var(--border-width-thin) * -1);
+}
+
+.toolbar[data-orientation='horizontal'] > .toolbar-separator + .toolbar-input {
+  margin-inline-start: calc(var(--group-gap) * -1);
+}
+
 .toolbar-separator[data-orientation='horizontal'] {
   width: auto;
   height: var(--border-width-thin);
   align-self: stretch;
 }
 
-/*
- * Group variants: the colors come from the shared set (styles/recipes/group.css).
- * The rail also paints the group's fill and edge (--toolbar-fill, --toolbar-edge), as an input-group does,
- * and overrides only the tokens that differ from the shared set.
- */
-/* outline: the rail carries the border (one outline around the row, not one per item), so every item border
-   and the field hover, active and pressed borders are transparent. */
 .toolbar[data-group-variant='outline'] {
-  --toolbar-fill: transparent;
-  --toolbar-edge: var(--border);
   --group-action-border: transparent;
   --group-action-border-hover: transparent;
   --group-action-border-active: transparent;
@@ -110,17 +151,4 @@
   --group-field-border-hover: transparent;
   --group-field-border-active: transparent;
   --group-field-border-pressed: transparent;
-}
-
-/* secondary: the rail carries the fill, so an item rests transparent. */
-.toolbar[data-group-variant='secondary'] {
-  --toolbar-fill: var(--secondary);
-  --toolbar-edge: transparent;
-  --group-action-bg: transparent;
-}
-
-/* ghost: the shared set, with the rail paint only. */
-.toolbar[data-group-variant='ghost'] {
-  --toolbar-fill: transparent;
-  --toolbar-edge: transparent;
 }

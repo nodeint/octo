@@ -54,14 +54,16 @@
   --group-action-bg-disabled: initial;
   --group-action-border-disabled: initial;
 
+  /* Fields and addons sit flush: their insets come from the field and addon tokens, not a gap. */
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
   min-width: 0;
+  gap: var(--group-gap);
   height: var(--group-field-height);
   border: var(--border-width-thin) solid var(--input-group-border);
-  border-radius: var(--group-corner);
+  border-radius: var(--group-radius );
   background-color: var(--input-group-bg);
   color: var(--group-field-fg);
   outline: none;

@@ -13,18 +13,23 @@
  * child's own size attribute cannot override them.
  *   --group-action-*   buttons and toggles: height, px, gap, icon, radius
  *   --group-field-*    inputs, select triggers, comboboxes: height, px, gap, radius
- *   --group-corner     the group's own corner when it paints a box (input-group, toolbar)
+ *   --group-gap        the space between a group's direct items; a group reads it for its own `gap`. button-group sets it to 0 (its items join)
+ *   --group-radius      the group's own corner when it paints a box (input-group, toolbar)
  *   --group-item-*     the step an action takes when it sits inside a group's own border (input-group addon, toolbar):
  *                      one step below the group, xs stays xs. height, px, gap, icon, radius. Such a group aliases these
  *                      to --group-action-* on its root, so it never copies the set.
  * The steps and their raw values live in layout/control.css and layout/radius.css, as in the size sets in action.css and field-control.css.
  */
+.group {
+  --group-gap: var(--space-xxs);
+}
+
 .group[data-group-size='xs'] {
   --group-field-height: var(--control-height-xs);
   --group-field-px: var(--control-px-xs);
   --group-field-gap: var(--control-gap-xs);
   --group-field-radius: var(--radius-field-xs);
-  --group-corner: var(--radius-field-xs);
+  --group-radius: var(--radius-field-xs);
   --group-action-height: var(--control-height-xs);
   --group-action-px: var(--control-px-xs);
   --group-action-gap: var(--control-gap-xs);
@@ -42,7 +47,7 @@
   --group-field-px: var(--control-px-sm);
   --group-field-gap: var(--control-gap-sm);
   --group-field-radius: var(--radius-field-sm);
-  --group-corner: var(--radius-field-sm);
+  --group-radius : var(--radius-field-sm);
   --group-action-height: var(--control-height-sm);
   --group-action-px: var(--control-px-sm);
   --group-action-gap: var(--control-gap-sm);
@@ -60,7 +65,7 @@
   --group-field-px: var(--control-px-md);
   --group-field-gap: var(--control-gap-md);
   --group-field-radius: var(--radius-field-md);
-  --group-corner: var(--radius-field-md);
+  --group-radius : var(--radius-field-md);
   --group-action-height: var(--control-height-md);
   --group-action-px: var(--control-px-md);
   --group-action-gap: var(--control-gap-md);
@@ -78,7 +83,7 @@
   --group-field-px: var(--control-px-lg);
   --group-field-gap: var(--control-gap-lg);
   --group-field-radius: var(--radius-field-lg);
-  --group-corner: var(--radius-field-lg);
+  --group-radius : var(--radius-field-lg);
   --group-action-height: var(--control-height-lg);
   --group-action-px: var(--control-px-lg);
   --group-action-gap: var(--control-gap-lg);
