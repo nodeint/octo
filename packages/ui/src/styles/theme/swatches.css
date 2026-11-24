@@ -1,6 +1,7 @@
 /**
- * Named color swatches — the Tailwind default palette (4 slots each).
- * Shape per hue: solid · solid-foreground · subtle · subtle-foreground.
+ * Named color swatches — the Tailwind default palette, the single source of every color in the package.
+ * Shape per hue: solid · solid-foreground · subtle · subtle-foreground, plus the derived
+ * hover · border · surface · surface-foreground (last block). variants/tone.css only aliases these.
  *
  * Ladder (except teal): Tailwind steps
  *   light: solid=600, fg=white (or 950 on yellow/lime/amber), subtle=~100, subtle-fg=800
@@ -8,238 +9,541 @@
  * Subtle sits one step past 50/950 so it separates from the neutral surfaces.
  *
  * teal: app brand (primary alias) — custom OKLCH, not TW teal-500.
- * Source steps: tailwindcss@4.3.1 theme.css
+ * Source steps: tailwindcss@4.3.1 theme.css; zinc, stone, mauve, olive, mist, taupe (neutral is not included) from 4.3.5
  *
  * Utilities: bg-red, text-red-foreground, bg-blue-subtle, text-blue-subtle-foreground, …
  * Role alias: --primary: var(--teal)
  */
 
+/*
+ * Derived slots (-hover, -border, -surface, -surface-foreground) are declared in both blocks so each resolves
+ * against its own mode's solid and subtle, even when .dark sits on a descendant of :root.
+ * Hover steps darker in light (-0.06) and lighter in dark (+0.05).
+ */
 :root {
   /* red */
   --red: oklch(0.577 0.245 27.325);
   --red-foreground: oklch(0.985 0 0);
   --red-subtle: oklch(0.931 0.03 17.38);
   --red-subtle-foreground: oklch(0.444 0.177 26.899);
+  --red-hover: oklch(from var(--red) clamp(0, calc(l - 0.06), 1) c h);
+  --red-border: oklch(from var(--red) l c h / 40%);
+  --red-surface: oklch(from var(--red-subtle) l c h / 50%);
+  --red-surface-foreground: var(--red-subtle-foreground);
+
   /* orange */
   --orange: oklch(0.646 0.222 41.116);
   --orange-foreground: oklch(0.985 0 0);
   --orange-subtle: oklch(0.94 0.03 73.684);
   --orange-subtle-foreground: oklch(0.47 0.157 37.304);
+  --orange-fixed: oklch(0.646 0.222 41.116);
+  --orange-fixed-foreground: oklch(0.985 0 0);
+  --orange-hover: oklch(from var(--orange) clamp(0, calc(l - 0.06), 1) c h);
+  --orange-border: oklch(from var(--orange) l c h / 40%);
+  --orange-surface: oklch(from var(--orange-subtle) l c h / 50%);
+  --orange-surface-foreground: var(--orange-subtle-foreground);
+
   /* amber */
   --amber: oklch(0.666 0.179 58.318);
   --amber-foreground: oklch(0.279 0.077 45.635);
   --amber-subtle: oklch(0.947 0.0396 95.277);
   --amber-subtle-foreground: oklch(0.473 0.137 46.201);
+  --amber-hover: oklch(from var(--amber) clamp(0, calc(l - 0.06), 1) c h);
+  --amber-border: oklch(from var(--amber) l c h / 40%);
+  --amber-surface: oklch(from var(--amber-subtle) l c h / 50%);
+  --amber-surface-foreground: var(--amber-subtle-foreground);
+
   /* yellow */
   --yellow: oklch(0.681 0.162 75.834);
   --yellow-foreground: oklch(0.286 0.066 53.813);
   --yellow-subtle: oklch(0.947 0.045 102.212);
   --yellow-subtle-foreground: oklch(0.476 0.114 61.907);
+  --yellow-hover: oklch(from var(--yellow) clamp(0, calc(l - 0.06), 1) c h);
+  --yellow-border: oklch(from var(--yellow) l c h / 40%);
+  --yellow-surface: oklch(from var(--yellow-subtle) l c h / 50%);
+  --yellow-surface-foreground: var(--yellow-subtle-foreground);
+
   /* lime */
   --lime: oklch(0.648 0.2 131.684);
   --lime-foreground: oklch(0.274 0.072 132.109);
   --lime-subtle: oklch(0.946 0.045 120.757);
   --lime-subtle-foreground: oklch(0.453 0.124 130.933);
+  --lime-hover: oklch(from var(--lime) clamp(0, calc(l - 0.06), 1) c h);
+  --lime-border: oklch(from var(--lime) l c h / 40%);
+  --lime-surface: oklch(from var(--lime-subtle) l c h / 50%);
+  --lime-surface-foreground: var(--lime-subtle-foreground);
+
   /* green */
   --green: oklch(0.627 0.194 149.214);
   --green-foreground: oklch(0.985 0 0);
   --green-subtle: oklch(0.942 0.0324 155.826);
   --green-subtle-foreground: oklch(0.448 0.119 151.328);
+  --green-fixed: oklch(0.627 0.194 149.214);
+  --green-fixed-foreground: oklch(0.985 0 0);
+  --green-hover: oklch(from var(--green) clamp(0, calc(l - 0.06), 1) c h);
+  --green-border: oklch(from var(--green) l c h / 40%);
+  --green-surface: oklch(from var(--green-subtle) l c h / 50%);
+  --green-surface-foreground: var(--green-subtle-foreground);
+
   /* emerald */
   --emerald: oklch(0.596 0.145 163.225);
   --emerald-foreground: oklch(0.985 0 0);
   --emerald-subtle: oklch(0.939 0.0378 166.113);
   --emerald-subtle-foreground: oklch(0.432 0.095 166.913);
+  --emerald-fixed: oklch(0.596 0.145 163.225);
+  --emerald-fixed-foreground: oklch(0.985 0 0);
+  --emerald-hover: oklch(from var(--emerald) clamp(0, calc(l - 0.06), 1) c h);
+  --emerald-border: oklch(from var(--emerald) l c h / 40%);
+  --emerald-surface: oklch(from var(--emerald-subtle) l c h / 50%);
+  --emerald-surface-foreground: var(--emerald-subtle-foreground);
+
   /* teal */
   --teal: oklch(0.508 0.118 165.612);
   --teal-foreground: oklch(0.979 0.021 166.113);
   --teal-subtle: oklch(0.93 0.045 166);
   --teal-subtle-foreground: oklch(0.42 0.1 166);
+  --teal-fixed: oklch(0.508 0.118 165.612);
+  --teal-fixed-foreground: oklch(0.979 0.021 166.113);
+  --teal-hover: oklch(from var(--teal) clamp(0, calc(l - 0.06), 1) c h);
+  --teal-border: oklch(from var(--teal) l c h / 40%);
+  --teal-surface: oklch(from var(--teal-subtle) l c h / 50%);
+  --teal-surface-foreground: var(--teal-subtle-foreground);
+
   /* cyan */
   --cyan: oklch(0.609 0.126 221.723);
   --cyan-foreground: oklch(0.985 0 0);
   --cyan-subtle: oklch(0.944 0.0342 200.873);
   --cyan-subtle-foreground: oklch(0.45 0.085 224.283);
+  --cyan-fixed: oklch(0.609 0.126 221.723);
+  --cyan-fixed-foreground: oklch(0.985 0 0);
+  --cyan-hover: oklch(from var(--cyan) clamp(0, calc(l - 0.06), 1) c h);
+  --cyan-border: oklch(from var(--cyan) l c h / 40%);
+  --cyan-surface: oklch(from var(--cyan-subtle) l c h / 50%);
+  --cyan-surface-foreground: var(--cyan-subtle-foreground);
+
   /* sky */
   --sky: oklch(0.588 0.158 241.966);
   --sky-foreground: oklch(0.985 0 0);
   --sky-subtle: oklch(0.937 0.03 236.62);
   --sky-subtle-foreground: oklch(0.443 0.11 240.79);
+  --sky-fixed: oklch(0.588 0.158 241.966);
+  --sky-fixed-foreground: oklch(0.985 0 0);
+  --sky-hover: oklch(from var(--sky) clamp(0, calc(l - 0.06), 1) c h);
+  --sky-border: oklch(from var(--sky) l c h / 40%);
+  --sky-surface: oklch(from var(--sky-subtle) l c h / 50%);
+  --sky-surface-foreground: var(--sky-subtle-foreground);
+
   /* blue */
   --blue: oklch(0.546 0.245 262.881);
   --blue-foreground: oklch(0.985 0 0);
   --blue-subtle: oklch(0.93 0.03 254.604);
   --blue-subtle-foreground: oklch(0.424 0.199 265.638);
+  --blue-fixed: oklch(0.546 0.245 262.881);
+  --blue-fixed-foreground: oklch(0.985 0 0);
+  --blue-hover: oklch(from var(--blue) clamp(0, calc(l - 0.06), 1) c h);
+  --blue-border: oklch(from var(--blue) l c h / 40%);
+  --blue-surface: oklch(from var(--blue-subtle) l c h / 50%);
+  --blue-surface-foreground: var(--blue-subtle-foreground);
+
   /* indigo */
   --indigo: oklch(0.511 0.262 276.966);
   --indigo-foreground: oklch(0.985 0 0);
   --indigo-subtle: oklch(0.922 0.0324 272.314);
   --indigo-subtle-foreground: oklch(0.398 0.195 277.366);
+  --indigo-fixed: oklch(0.511 0.262 276.966);
+  --indigo-fixed-foreground: oklch(0.985 0 0);
+  --indigo-hover: oklch(from var(--indigo) clamp(0, calc(l - 0.06), 1) c h);
+  --indigo-border: oklch(from var(--indigo) l c h / 40%);
+  --indigo-surface: oklch(from var(--indigo-subtle) l c h / 50%);
+  --indigo-surface-foreground: var(--indigo-subtle-foreground);
+
   /* violet */
   --violet: oklch(0.541 0.281 293.009);
   --violet-foreground: oklch(0.985 0 0);
   --violet-subtle: oklch(0.929 0.03 293.756);
   --violet-subtle-foreground: oklch(0.432 0.232 292.759);
+  --violet-fixed: oklch(0.541 0.281 293.009);
+  --violet-fixed-foreground: oklch(0.985 0 0);
+  --violet-hover: oklch(from var(--violet) clamp(0, calc(l - 0.06), 1) c h);
+  --violet-border: oklch(from var(--violet) l c h / 40%);
+  --violet-surface: oklch(from var(--violet-subtle) l c h / 50%);
+  --violet-surface-foreground: var(--violet-subtle-foreground);
+
   /* purple */
   --purple: oklch(0.558 0.288 302.321);
   --purple-foreground: oklch(0.985 0 0);
   --purple-subtle: oklch(0.937 0.03 308.299);
   --purple-subtle-foreground: oklch(0.438 0.218 303.724);
+  --purple-fixed: oklch(0.558 0.288 302.321);
+  --purple-fixed-foreground: oklch(0.985 0 0);
+  --purple-hover: oklch(from var(--purple) clamp(0, calc(l - 0.06), 1) c h);
+  --purple-border: oklch(from var(--purple) l c h / 40%);
+  --purple-surface: oklch(from var(--purple-subtle) l c h / 50%);
+  --purple-surface-foreground: var(--purple-subtle-foreground);
+
   /* fuchsia */
   --fuchsia: oklch(0.591 0.293 322.896);
   --fuchsia-foreground: oklch(0.985 0 0);
   --fuchsia-subtle: oklch(0.937 0.0306 320.058);
   --fuchsia-subtle-foreground: oklch(0.452 0.211 324.591);
+  --fuchsia-hover: oklch(from var(--fuchsia) clamp(0, calc(l - 0.06), 1) c h);
+  --fuchsia-border: oklch(from var(--fuchsia) l c h / 40%);
+  --fuchsia-surface: oklch(from var(--fuchsia-subtle) l c h / 50%);
+  --fuchsia-surface-foreground: var(--fuchsia-subtle-foreground);
+
   /* pink */
   --pink: oklch(0.592 0.249 0.584);
   --pink-foreground: oklch(0.985 0 0);
   --pink-subtle: oklch(0.931 0.03 343.198);
   --pink-subtle-foreground: oklch(0.459 0.187 3.815);
+  --pink-fixed: oklch(0.592 0.249 0.584);
+  --pink-fixed-foreground: oklch(0.985 0 0);
+  --pink-hover: oklch(from var(--pink) clamp(0, calc(l - 0.06), 1) c h);
+  --pink-border: oklch(from var(--pink) l c h / 40%);
+  --pink-surface: oklch(from var(--pink-subtle) l c h / 50%);
+  --pink-surface-foreground: var(--pink-subtle-foreground);
+
   /* rose */
   --rose: oklch(0.586 0.253 17.585);
   --rose-foreground: oklch(0.985 0 0);
   --rose-subtle: oklch(0.929 0.03 12.422);
   --rose-subtle-foreground: oklch(0.455 0.188 13.697);
+  --rose-fixed: oklch(0.586 0.253 17.585);
+  --rose-fixed-foreground: oklch(0.985 0 0);
+  --rose-hover: oklch(from var(--rose) clamp(0, calc(l - 0.06), 1) c h);
+  --rose-border: oklch(from var(--rose) l c h / 40%);
+  --rose-surface: oklch(from var(--rose-subtle) l c h / 50%);
+  --rose-surface-foreground: var(--rose-subtle-foreground);
+
   /* slate */
   --slate: oklch(0.446 0.043 257.281);
   --slate-foreground: oklch(0.985 0 0);
   --slate-subtle: oklch(0.94 0.004 247.858);
   --slate-subtle-foreground: oklch(0.279 0.041 260.031);
+  --slate-hover: oklch(from var(--slate) clamp(0, calc(l - 0.06), 1) c h);
+  --slate-border: oklch(from var(--slate) l c h / 40%);
+  --slate-surface: oklch(from var(--slate-subtle) l c h / 50%);
+  --slate-surface-foreground: var(--slate-subtle-foreground);
+
   /* gray */
   --gray: oklch(0.446 0.03 256.802);
   --gray-foreground: oklch(0.985 0 0);
   --gray-subtle: oklch(0.94 0.004 247.839);
   --gray-subtle-foreground: oklch(0.278 0.033 256.848);
+  --gray-hover: oklch(from var(--gray) clamp(0, calc(l - 0.06), 1) c h);
+  --gray-border: oklch(from var(--gray) l c h / 40%);
+  --gray-surface: oklch(from var(--gray-subtle) l c h / 50%);
+  --gray-surface-foreground: var(--gray-subtle-foreground);
+
   /* zinc */
   --zinc: oklch(0.442 0.017 285.786);
   --zinc-foreground: oklch(0.985 0 0);
   --zinc-subtle: oklch(0.94 0.004 0);
   --zinc-subtle-foreground: oklch(0.274 0.006 286.033);
-  /* neutral */
-  --neutral: oklch(0.439 0 0);
-  --neutral-foreground: oklch(0.985 0 0);
-  --neutral-subtle: oklch(0.94 0.004 0);
-  --neutral-subtle-foreground: oklch(0.269 0 0);
+  --zinc-hover: oklch(from var(--zinc) clamp(0, calc(l - 0.06), 1) c h);
+  --zinc-border: oklch(from var(--zinc) l c h / 40%);
+  --zinc-surface: oklch(from var(--zinc-subtle) l c h / 50%);
+  --zinc-surface-foreground: var(--zinc-subtle-foreground);
+
   /* stone */
   --stone: oklch(0.444 0.011 73.639);
   --stone-foreground: oklch(0.985 0 0);
   --stone-subtle: oklch(0.94 0.004 106.423);
   --stone-subtle-foreground: oklch(0.268 0.007 34.298);
+  --stone-hover: oklch(from var(--stone) clamp(0, calc(l - 0.06), 1) c h);
+  --stone-border: oklch(from var(--stone) l c h / 40%);
+  --stone-surface: oklch(from var(--stone-subtle) l c h / 50%);
+  --stone-surface-foreground: var(--stone-subtle-foreground);
 
-  /* Light solid, frozen for both modes. Primary-fixed aliases these. */
-  --teal-fixed: oklch(0.508 0.118 165.612);
-  --teal-fixed-foreground: oklch(0.979 0.021 166.113);
-  --blue-fixed: oklch(0.546 0.245 262.881);
-  --blue-fixed-foreground: oklch(0.985 0 0);
-  --indigo-fixed: oklch(0.511 0.262 276.966);
-  --indigo-fixed-foreground: oklch(0.985 0 0);
-  --violet-fixed: oklch(0.541 0.281 293.009);
-  --violet-fixed-foreground: oklch(0.985 0 0);
-  --purple-fixed: oklch(0.558 0.288 302.321);
-  --purple-fixed-foreground: oklch(0.985 0 0);
-  --rose-fixed: oklch(0.586 0.253 17.585);
-  --rose-fixed-foreground: oklch(0.985 0 0);
-  --pink-fixed: oklch(0.592 0.249 0.584);
-  --pink-fixed-foreground: oklch(0.985 0 0);
-  --orange-fixed: oklch(0.646 0.222 41.116);
-  --orange-fixed-foreground: oklch(0.985 0 0);
-  --green-fixed: oklch(0.627 0.194 149.214);
-  --green-fixed-foreground: oklch(0.985 0 0);
-  --emerald-fixed: oklch(0.596 0.145 163.225);
-  --emerald-fixed-foreground: oklch(0.985 0 0);
-  --cyan-fixed: oklch(0.609 0.126 221.723);
-  --cyan-fixed-foreground: oklch(0.985 0 0);
-  --sky-fixed: oklch(0.588 0.158 241.966);
-  --sky-fixed-foreground: oklch(0.985 0 0);
+  /* mauve */
+  --mauve: oklch(0.435 0.029 321.78);
+  --mauve-foreground: oklch(0.985 0 0);
+  --mauve-subtle: oklch(0.94 0.004 325.6);
+  --mauve-subtle-foreground: oklch(0.263 0.024 320.12);
+  --mauve-hover: oklch(from var(--mauve) clamp(0, calc(l - 0.06), 1) c h);
+  --mauve-border: oklch(from var(--mauve) l c h / 40%);
+  --mauve-surface: oklch(from var(--mauve-subtle) l c h / 50%);
+  --mauve-surface-foreground: var(--mauve-subtle-foreground);
+
+  /* olive */
+  --olive: oklch(0.466 0.025 107.3);
+  --olive-foreground: oklch(0.985 0 0);
+  --olive-subtle: oklch(0.94 0.005 106.5);
+  --olive-subtle-foreground: oklch(0.286 0.016 107.4);
+  --olive-hover: oklch(from var(--olive) clamp(0, calc(l - 0.06), 1) c h);
+  --olive-border: oklch(from var(--olive) l c h / 40%);
+  --olive-surface: oklch(from var(--olive-subtle) l c h / 50%);
+  --olive-surface-foreground: var(--olive-subtle-foreground);
+
+  /* mist */
+  --mist: oklch(0.45 0.017 213.2);
+  --mist-foreground: oklch(0.985 0 0);
+  --mist-subtle: oklch(0.94 0.003 197.1);
+  --mist-subtle-foreground: oklch(0.275 0.011 216.9);
+  --mist-hover: oklch(from var(--mist) clamp(0, calc(l - 0.06), 1) c h);
+  --mist-border: oklch(from var(--mist) l c h / 40%);
+  --mist-surface: oklch(from var(--mist-subtle) l c h / 50%);
+  --mist-surface-foreground: var(--mist-subtle-foreground);
+
+  /* taupe */
+  --taupe: oklch(0.438 0.017 39.3);
+  --taupe-foreground: oklch(0.985 0 0);
+  --taupe-subtle: oklch(0.94 0.003 17.2);
+  --taupe-subtle-foreground: oklch(0.268 0.011 36.5);
+  --taupe-hover: oklch(from var(--taupe) clamp(0, calc(l - 0.06), 1) c h);
+  --taupe-border: oklch(from var(--taupe) l c h / 40%);
+  --taupe-surface: oklch(from var(--taupe-subtle) l c h / 50%);
+  --taupe-surface-foreground: var(--taupe-subtle-foreground);
 }
 
 .dark {
+  /* red */
   --red: oklch(0.704 0.191 22.216);
   --red-foreground: oklch(0.258 0.092 26.042);
   --red-subtle: oklch(0.308 0.092 26.042);
   --red-subtle-foreground: oklch(0.885 0.062 18.334);
+  --red-hover: oklch(from var(--red) clamp(0, calc(l + 0.05), 1) c h);
+  --red-border: oklch(from var(--red) l c h / 40%);
+  --red-surface: oklch(from var(--red-subtle) l c h / 50%);
+  --red-surface-foreground: var(--red-subtle-foreground);
+
+  /* orange */
   --orange: oklch(0.75 0.183 55.934);
   --orange-foreground: oklch(0.266 0.079 36.259);
   --orange-subtle: oklch(0.316 0.079 36.259);
   --orange-subtle-foreground: oklch(0.901 0.076 70.697);
+  --orange-hover: oklch(from var(--orange) clamp(0, calc(l + 0.05), 1) c h);
+  --orange-border: oklch(from var(--orange) l c h / 40%);
+  --orange-surface: oklch(from var(--orange-subtle) l c h / 50%);
+  --orange-surface-foreground: var(--orange-subtle-foreground);
+
+  /* amber */
   --amber: oklch(0.828 0.189 84.429);
   --amber-foreground: oklch(0.279 0.077 45.635);
   --amber-subtle: oklch(0.329 0.077 45.635);
   --amber-subtle-foreground: oklch(0.924 0.12 95.746);
+  --amber-hover: oklch(from var(--amber) clamp(0, calc(l + 0.05), 1) c h);
+  --amber-border: oklch(from var(--amber) l c h / 40%);
+  --amber-surface: oklch(from var(--amber-subtle) l c h / 50%);
+  --amber-surface-foreground: var(--amber-subtle-foreground);
+
+  /* yellow */
   --yellow: oklch(0.852 0.199 91.936);
   --yellow-foreground: oklch(0.286 0.066 53.813);
   --yellow-subtle: oklch(0.336 0.066 53.813);
   --yellow-subtle-foreground: oklch(0.945 0.129 101.54);
+  --yellow-hover: oklch(from var(--yellow) clamp(0, calc(l + 0.05), 1) c h);
+  --yellow-border: oklch(from var(--yellow) l c h / 40%);
+  --yellow-surface: oklch(from var(--yellow-subtle) l c h / 50%);
+  --yellow-surface-foreground: var(--yellow-subtle-foreground);
+
+  /* lime */
   --lime: oklch(0.841 0.238 128.85);
   --lime-foreground: oklch(0.274 0.072 132.109);
   --lime-subtle: oklch(0.324 0.072 132.109);
   --lime-subtle-foreground: oklch(0.938 0.127 124.321);
+  --lime-hover: oklch(from var(--lime) clamp(0, calc(l + 0.05), 1) c h);
+  --lime-border: oklch(from var(--lime) l c h / 40%);
+  --lime-surface: oklch(from var(--lime-subtle) l c h / 50%);
+  --lime-surface-foreground: var(--lime-subtle-foreground);
+
+  /* green */
   --green: oklch(0.792 0.209 151.711);
   --green-foreground: oklch(0.266 0.065 152.934);
   --green-subtle: oklch(0.316 0.065 152.934);
   --green-subtle-foreground: oklch(0.925 0.084 155.995);
+  --green-hover: oklch(from var(--green) clamp(0, calc(l + 0.05), 1) c h);
+  --green-border: oklch(from var(--green) l c h / 40%);
+  --green-surface: oklch(from var(--green-subtle) l c h / 50%);
+  --green-surface-foreground: var(--green-subtle-foreground);
+
+  /* emerald */
   --emerald: oklch(0.765 0.177 163.223);
   --emerald-foreground: oklch(0.262 0.051 172.552);
   --emerald-subtle: oklch(0.312 0.051 172.552);
   --emerald-subtle-foreground: oklch(0.905 0.093 164.15);
+  --emerald-hover: oklch(from var(--emerald) clamp(0, calc(l + 0.05), 1) c h);
+  --emerald-border: oklch(from var(--emerald) l c h / 40%);
+  --emerald-surface: oklch(from var(--emerald-subtle) l c h / 50%);
+  --emerald-surface-foreground: var(--emerald-subtle-foreground);
+
+  /* teal */
   --teal: oklch(0.78 0.12 166.5);
   --teal-foreground: oklch(0.2 0.03 166);
   --teal-subtle: oklch(0.33 0.045 166.5);
   --teal-subtle-foreground: oklch(0.88 0.06 166.5);
+  --teal-hover: oklch(from var(--teal) clamp(0, calc(l + 0.05), 1) c h);
+  --teal-border: oklch(from var(--teal) l c h / 40%);
+  --teal-surface: oklch(from var(--teal-subtle) l c h / 50%);
+  --teal-surface-foreground: var(--teal-subtle-foreground);
+
+  /* cyan */
   --cyan: oklch(0.789 0.154 211.53);
   --cyan-foreground: oklch(0.302 0.056 229.695);
   --cyan-subtle: oklch(0.352 0.056 229.695);
   --cyan-subtle-foreground: oklch(0.917 0.08 205.041);
+  --cyan-hover: oklch(from var(--cyan) clamp(0, calc(l + 0.05), 1) c h);
+  --cyan-border: oklch(from var(--cyan) l c h / 40%);
+  --cyan-surface: oklch(from var(--cyan-subtle) l c h / 50%);
+  --cyan-surface-foreground: var(--cyan-subtle-foreground);
+
+  /* sky */
   --sky: oklch(0.746 0.16 232.661);
   --sky-foreground: oklch(0.293 0.066 243.157);
   --sky-subtle: oklch(0.343 0.066 243.157);
   --sky-subtle-foreground: oklch(0.901 0.058 230.902);
+  --sky-hover: oklch(from var(--sky) clamp(0, calc(l + 0.05), 1) c h);
+  --sky-border: oklch(from var(--sky) l c h / 40%);
+  --sky-surface: oklch(from var(--sky-subtle) l c h / 50%);
+  --sky-surface-foreground: var(--sky-subtle-foreground);
+
+  /* blue */
   --blue: oklch(0.707 0.165 254.624);
   --blue-foreground: oklch(0.282 0.091 267.935);
   --blue-subtle: oklch(0.332 0.091 267.935);
   --blue-subtle-foreground: oklch(0.882 0.059 254.128);
+  --blue-hover: oklch(from var(--blue) clamp(0, calc(l + 0.05), 1) c h);
+  --blue-border: oklch(from var(--blue) l c h / 40%);
+  --blue-surface: oklch(from var(--blue-subtle) l c h / 50%);
+  --blue-surface-foreground: var(--blue-subtle-foreground);
+
+  /* indigo */
   --indigo: oklch(0.673 0.182 276.935);
   --indigo-foreground: oklch(0.257 0.09 281.288);
   --indigo-subtle: oklch(0.307 0.09 281.288);
   --indigo-subtle-foreground: oklch(0.87 0.065 274.039);
+  --indigo-hover: oklch(from var(--indigo) clamp(0, calc(l + 0.05), 1) c h);
+  --indigo-border: oklch(from var(--indigo) l c h / 40%);
+  --indigo-surface: oklch(from var(--indigo-subtle) l c h / 50%);
+  --indigo-surface-foreground: var(--indigo-subtle-foreground);
+
+  /* violet */
   --violet: oklch(0.702 0.183 293.541);
   --violet-foreground: oklch(0.283 0.141 291.089);
   --violet-subtle: oklch(0.333 0.141 291.089);
   --violet-subtle-foreground: oklch(0.894 0.057 293.283);
+  --violet-hover: oklch(from var(--violet) clamp(0, calc(l + 0.05), 1) c h);
+  --violet-border: oklch(from var(--violet) l c h / 40%);
+  --violet-surface: oklch(from var(--violet-subtle) l c h / 50%);
+  --violet-surface-foreground: var(--violet-subtle-foreground);
+
+  /* purple */
   --purple: oklch(0.714 0.203 305.504);
   --purple-foreground: oklch(0.291 0.149 302.717);
   --purple-subtle: oklch(0.341 0.149 302.717);
   --purple-subtle-foreground: oklch(0.902 0.063 306.703);
+  --purple-hover: oklch(from var(--purple) clamp(0, calc(l + 0.05), 1) c h);
+  --purple-border: oklch(from var(--purple) l c h / 40%);
+  --purple-surface: oklch(from var(--purple-subtle) l c h / 50%);
+  --purple-surface-foreground: var(--purple-subtle-foreground);
+
+  /* fuchsia */
   --fuchsia: oklch(0.74 0.238 322.16);
   --fuchsia-foreground: oklch(0.293 0.136 325.661);
   --fuchsia-subtle: oklch(0.343 0.136 325.661);
   --fuchsia-subtle-foreground: oklch(0.903 0.076 319.62);
+  --fuchsia-hover: oklch(from var(--fuchsia) clamp(0, calc(l + 0.05), 1) c h);
+  --fuchsia-border: oklch(from var(--fuchsia) l c h / 40%);
+  --fuchsia-surface: oklch(from var(--fuchsia-subtle) l c h / 50%);
+  --fuchsia-surface-foreground: var(--fuchsia-subtle-foreground);
+
+  /* pink */
   --pink: oklch(0.718 0.202 349.761);
   --pink-foreground: oklch(0.284 0.109 3.907);
   --pink-subtle: oklch(0.334 0.109 3.907);
   --pink-subtle-foreground: oklch(0.899 0.061 343.231);
+  --pink-hover: oklch(from var(--pink) clamp(0, calc(l + 0.05), 1) c h);
+  --pink-border: oklch(from var(--pink) l c h / 40%);
+  --pink-surface: oklch(from var(--pink-subtle) l c h / 50%);
+  --pink-surface-foreground: var(--pink-subtle-foreground);
+
+  /* rose */
   --rose: oklch(0.712 0.194 13.428);
   --rose-foreground: oklch(0.271 0.105 12.094);
   --rose-subtle: oklch(0.321 0.105 12.094);
   --rose-subtle-foreground: oklch(0.892 0.058 10.001);
+  --rose-hover: oklch(from var(--rose) clamp(0, calc(l + 0.05), 1) c h);
+  --rose-border: oklch(from var(--rose) l c h / 40%);
+  --rose-surface: oklch(from var(--rose-subtle) l c h / 50%);
+  --rose-surface-foreground: var(--rose-subtle-foreground);
+
+  /* slate */
   --slate: oklch(0.704 0.04 256.788);
   --slate-foreground: oklch(0.129 0.042 264.695);
   --slate-subtle: oklch(0.3 0.042 264.695);
   --slate-subtle-foreground: oklch(0.929 0.013 255.508);
+  --slate-hover: oklch(from var(--slate) clamp(0, calc(l + 0.05), 1) c h);
+  --slate-border: oklch(from var(--slate) l c h / 40%);
+  --slate-surface: oklch(from var(--slate-subtle) l c h / 50%);
+  --slate-surface-foreground: var(--slate-subtle-foreground);
+
+  /* gray */
   --gray: oklch(0.707 0.022 261.325);
   --gray-foreground: oklch(0.13 0.028 261.692);
   --gray-subtle: oklch(0.3 0.028 261.692);
   --gray-subtle-foreground: oklch(0.928 0.006 264.531);
+  --gray-hover: oklch(from var(--gray) clamp(0, calc(l + 0.05), 1) c h);
+  --gray-border: oklch(from var(--gray) l c h / 40%);
+  --gray-surface: oklch(from var(--gray-subtle) l c h / 50%);
+  --gray-surface-foreground: var(--gray-subtle-foreground);
+
+  /* zinc */
   --zinc: oklch(0.705 0.015 286.067);
   --zinc-foreground: oklch(0.141 0.005 285.823);
   --zinc-subtle: oklch(0.3 0.01 285.823);
   --zinc-subtle-foreground: oklch(0.92 0.004 286.32);
-  --neutral: oklch(0.708 0 0);
-  --neutral-foreground: oklch(0.145 0 0);
-  --neutral-subtle: oklch(0.3 0.01 0);
-  --neutral-subtle-foreground: oklch(0.922 0 0);
+  --zinc-hover: oklch(from var(--zinc) clamp(0, calc(l + 0.05), 1) c h);
+  --zinc-border: oklch(from var(--zinc) l c h / 40%);
+  --zinc-surface: oklch(from var(--zinc-subtle) l c h / 50%);
+  --zinc-surface-foreground: var(--zinc-subtle-foreground);
+
+  /* stone */
   --stone: oklch(0.709 0.01 56.259);
   --stone-foreground: oklch(0.147 0.004 49.25);
   --stone-subtle: oklch(0.3 0.01 49.25);
   --stone-subtle-foreground: oklch(0.923 0.003 48.717);
+  --stone-hover: oklch(from var(--stone) clamp(0, calc(l + 0.05), 1) c h);
+  --stone-border: oklch(from var(--stone) l c h / 40%);
+  --stone-surface: oklch(from var(--stone-subtle) l c h / 50%);
+  --stone-surface-foreground: var(--stone-subtle-foreground);
+
+  /* mauve */
+  --mauve: oklch(0.711 0.019 323.02);
+  --mauve-foreground: oklch(0.145 0.008 326);
+  --mauve-subtle: oklch(0.3 0.01 326);
+  --mauve-subtle-foreground: oklch(0.922 0.005 325.62);
+  --mauve-hover: oklch(from var(--mauve) clamp(0, calc(l + 0.05), 1) c h);
+  --mauve-border: oklch(from var(--mauve) l c h / 40%);
+  --mauve-surface: oklch(from var(--mauve-subtle) l c h / 50%);
+  --mauve-surface-foreground: var(--mauve-subtle-foreground);
+
+  /* olive */
+  --olive: oklch(0.737 0.021 106.9);
+  --olive-foreground: oklch(0.153 0.006 107.1);
+  --olive-subtle: oklch(0.3 0.01 107.1);
+  --olive-subtle-foreground: oklch(0.93 0.007 106.5);
+  --olive-hover: oklch(from var(--olive) clamp(0, calc(l + 0.05), 1) c h);
+  --olive-border: oklch(from var(--olive) l c h / 40%);
+  --olive-surface: oklch(from var(--olive-subtle) l c h / 50%);
+  --olive-surface-foreground: var(--olive-subtle-foreground);
+
+  /* mist */
+  --mist: oklch(0.723 0.014 214.4);
+  --mist-foreground: oklch(0.148 0.004 228.8);
+  --mist-subtle: oklch(0.3 0.01 228.8);
+  --mist-subtle-foreground: oklch(0.925 0.005 214.3);
+  --mist-hover: oklch(from var(--mist) clamp(0, calc(l + 0.05), 1) c h);
+  --mist-border: oklch(from var(--mist) l c h / 40%);
+  --mist-surface: oklch(from var(--mist-subtle) l c h / 50%);
+  --mist-surface-foreground: var(--mist-subtle-foreground);
+
+  /* taupe */
+  --taupe: oklch(0.714 0.014 41.2);
+  --taupe-foreground: oklch(0.147 0.004 49.3);
+  --taupe-subtle: oklch(0.3 0.01 49.3);
+  --taupe-subtle-foreground: oklch(0.922 0.005 34.3);
+  --taupe-hover: oklch(from var(--taupe) clamp(0, calc(l + 0.05), 1) c h);
+  --taupe-border: oklch(from var(--taupe) l c h / 40%);
+  --taupe-surface: oklch(from var(--taupe-subtle) l c h / 50%);
+  --taupe-surface-foreground: var(--taupe-subtle-foreground);
 }

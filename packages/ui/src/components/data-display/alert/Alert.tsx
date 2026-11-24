@@ -1,6 +1,7 @@
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
 
+import type { SwatchTone } from '../../../lib/surface-paint';
 import { cn } from '../../../lib/utils';
 
 type AlertVariant = 'default' | 'info' | 'success' | 'warning' | 'destructive'
@@ -24,11 +25,14 @@ const ALERT_TONE = {
 
 type AlertProps = useRender.ComponentProps<'div'> & {
   variant?: AlertVariant
+  /** A swatch hue for a custom callout; replaces the tone the variant implies. */
+  tone?: SwatchTone
 }
 
 function Alert({
   className,
   variant = 'default',
+  tone,
   render,
   ...props
 }: AlertProps): React.JSX.Element {
@@ -45,7 +49,7 @@ function Alert({
     state: {
       slot: 'alert',
       variant,
-      tone: ALERT_TONE[variant],
+      tone: tone ?? ALERT_TONE[variant],
       emphasis: 'surface',
     },
   });

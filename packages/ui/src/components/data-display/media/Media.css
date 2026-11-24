@@ -1,10 +1,7 @@
+/* A media tile is painted by the shared --variant-* colors, like a badge; the paint comes from data-tone and data-emphasis. */
 .media {
-  --media-background: var(--primary-subtle);
-  --media-foreground: var(--primary-subtle-foreground);
+  --media-background: var(--variant-bg);
+  --media-foreground: var(--variant-fg);
+  border: var(--border-width-thin) solid var(--variant-border, transparent);
   aspect-ratio: 1;
-}
-
-.media[data-variant='plain'] {
-  --media-background: transparent;
-  --media-foreground: var(--primary);
 }

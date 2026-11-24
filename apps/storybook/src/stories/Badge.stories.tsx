@@ -120,22 +120,22 @@ export const AsLink: Story = {
 
 export const CustomColors: Story = {
   name: 'Custom Colors',
-  render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
+  render: ({ tone: _tone, emphasis: _emphasis, variant: _variant, ...args }) => (
     <Inline>
-      <Badge {...args} style={{ backgroundColor: '#eff6ff', color: '#1d4ed8' }}>
+      <Badge {...args} tone="blue" emphasis="soft">
         Blue
       </Badge>
-      <Badge {...args} style={{ backgroundColor: '#f0fdf4', color: '#15803d' }}>
-        Green
+      <Badge {...args} tone="emerald" emphasis="soft">
+        Emerald
       </Badge>
-      <Badge {...args} style={{ backgroundColor: '#f0f9ff', color: '#0369a1' }}>
-        Sky
+      <Badge {...args} tone="cyan" emphasis="soft">
+        Cyan
       </Badge>
-      <Badge {...args} style={{ backgroundColor: '#faf5ff', color: '#7e22ce' }}>
+      <Badge {...args} tone="purple" emphasis="soft">
         Purple
       </Badge>
-      <Badge {...args} style={{ backgroundColor: '#fef2f2', color: '#b91c1c' }}>
-        Red
+      <Badge {...args} tone="rose" emphasis="soft">
+        Rose
       </Badge>
     </Inline>
   ),

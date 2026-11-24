@@ -1,9 +1,10 @@
 /*
  * Primary axis: data-appearance-primary = ColorName id | omit.
- * Rebinds primary and sidebar-primary. Chart follows --primary.
+ * Rebinds primary, its hover, and sidebar-primary. Chart follows --primary.
  */
 :root[data-appearance-primary='teal'] {
   --primary: var(--teal);
+  --primary-hover: var(--teal-hover);
   --primary-foreground: var(--teal-foreground);
   --sidebar-primary: var(--teal);
   --sidebar-primary-foreground: var(--teal-foreground);
@@ -15,6 +16,7 @@
 
 :root[data-appearance-primary='blue'] {
   --primary: var(--blue);
+  --primary-hover: var(--blue-hover);
   --primary-foreground: var(--blue-foreground);
   --sidebar-primary: var(--blue);
   --sidebar-primary-foreground: var(--blue-foreground);
@@ -26,6 +28,7 @@
 
 :root[data-appearance-primary='indigo'] {
   --primary: var(--indigo);
+  --primary-hover: var(--indigo-hover);
   --primary-foreground: var(--indigo-foreground);
   --sidebar-primary: var(--indigo);
   --sidebar-primary-foreground: var(--indigo-foreground);
@@ -37,6 +40,7 @@
 
 :root[data-appearance-primary='violet'] {
   --primary: var(--violet);
+  --primary-hover: var(--violet-hover);
   --primary-foreground: var(--violet-foreground);
   --sidebar-primary: var(--violet);
   --sidebar-primary-foreground: var(--violet-foreground);
@@ -48,6 +52,7 @@
 
 :root[data-appearance-primary='purple'] {
   --primary: var(--purple);
+  --primary-hover: var(--purple-hover);
   --primary-foreground: var(--purple-foreground);
   --sidebar-primary: var(--purple);
   --sidebar-primary-foreground: var(--purple-foreground);
@@ -59,6 +64,7 @@
 
 :root[data-appearance-primary='rose'] {
   --primary: var(--rose);
+  --primary-hover: var(--rose-hover);
   --primary-foreground: var(--rose-foreground);
   --sidebar-primary: var(--rose);
   --sidebar-primary-foreground: var(--rose-foreground);
@@ -70,6 +76,7 @@
 
 :root[data-appearance-primary='pink'] {
   --primary: var(--pink);
+  --primary-hover: var(--pink-hover);
   --primary-foreground: var(--pink-foreground);
   --sidebar-primary: var(--pink);
   --sidebar-primary-foreground: var(--pink-foreground);
@@ -81,6 +88,7 @@
 
 :root[data-appearance-primary='orange'] {
   --primary: var(--orange);
+  --primary-hover: var(--orange-hover);
   --primary-foreground: var(--orange-foreground);
   --sidebar-primary: var(--orange);
   --sidebar-primary-foreground: var(--orange-foreground);
@@ -92,6 +100,7 @@
 
 :root[data-appearance-primary='green'] {
   --primary: var(--green);
+  --primary-hover: var(--green-hover);
   --primary-foreground: var(--green-foreground);
   --sidebar-primary: var(--green);
   --sidebar-primary-foreground: var(--green-foreground);
@@ -103,6 +112,7 @@
 
 :root[data-appearance-primary='emerald'] {
   --primary: var(--emerald);
+  --primary-hover: var(--emerald-hover);
   --primary-foreground: var(--emerald-foreground);
   --sidebar-primary: var(--emerald);
   --sidebar-primary-foreground: var(--emerald-foreground);
@@ -114,6 +124,7 @@
 
 :root[data-appearance-primary='cyan'] {
   --primary: var(--cyan);
+  --primary-hover: var(--cyan-hover);
   --primary-foreground: var(--cyan-foreground);
   --sidebar-primary: var(--cyan);
   --sidebar-primary-foreground: var(--cyan-foreground);
@@ -125,6 +136,7 @@
 
 :root[data-appearance-primary='sky'] {
   --primary: var(--sky);
+  --primary-hover: var(--sky-hover);
   --primary-foreground: var(--sky-foreground);
   --sidebar-primary: var(--sky);
   --sidebar-primary-foreground: var(--sky-foreground);

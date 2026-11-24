@@ -116,7 +116,7 @@ An exception applies only while a migration is in progress. A new exception need
   `data-emphasis`, and `group.css` only aliases the resulting `--variant-*` slots to `--group-*`, so it declares no color.
   A group overrides only the tokens that differ, on its own root, with a comment that gives the reason.
 - Paint has two axes in `styles/variants/`: `data-tone` (`neutral`, `primary`, `destructive`, `success`,
-  `warning`, `info`, `field`) declares `--tone-*` roles and the focus ring, and `data-emphasis` (`solid`, `soft`,
+  `warning`, `info`, `field`, and 20 swatch hues aliased from `theme/swatches.css`) declares `--tone-*` roles and the focus ring, and `data-emphasis` (`solid`, `soft`,
   `outline`, `ghost`, `muted`, `link`, `surface`, `field`) maps the roles to the `--variant-*` slots.
   `Alert` is not an action: it sets `data-tone` from its `variant` and `data-emphasis="surface"`, a static callout
   painted from `--tone-surface`, `--tone-border`, and `--tone-surface-foreground` (`--variant-fg-secondary`).

@@ -19,7 +19,7 @@
 [data-media-size='sm'] {
   --media-size: var(--control-height-sm);
   --media-radius: var(--radius-surface-md);
-  --media-icon-size: var(--control-icon-md);
+  --media-icon-size: var(--control-icon-sm);
 }
 
 [data-media-size='md'] {
@@ -31,13 +31,13 @@
 [data-media-size='lg'] {
   --media-size: var(--control-height-lg);
   --media-radius: var(--radius-surface-md);
-  --media-icon-size: var(--control-icon-md);
+  --media-icon-size: var(--control-icon-lg);
 }
 
 [data-media-size='xl'] {
   --media-size: var(--control-height-xl);
   --media-radius: var(--radius-surface-md);
-  --media-icon-size: var(--control-icon-md);
+  --media-icon-size: var(--control-icon-lg);
 }
 
 .media-frame {

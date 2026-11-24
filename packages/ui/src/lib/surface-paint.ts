@@ -3,22 +3,43 @@
  * `variant` is a preset name for one approved pair. A caller passes `variant`, or `tone` with `emphasis`.
  * The CSS sets live in styles/variants/.
  */
-type SurfaceTone = 'neutral' | 'primary' | 'destructive' | 'success' | 'warning' | 'info'
-type SurfaceEmphasis = 'solid' | 'soft' | 'outline'
+type SwatchTone =
+  | 'orange'
+  | 'yellow'
+  | 'lime'
+  | 'emerald'
+  | 'cyan'
+  | 'blue'
+  | 'indigo'
+  | 'violet'
+  | 'purple'
+  | 'fuchsia'
+  | 'pink'
+  | 'rose'
+  | 'slate'
+  | 'gray'
+  | 'zinc'
+  | 'stone'
+  | 'mauve'
+  | 'olive'
+  | 'mist'
+  | 'taupe'
+type SurfaceTone = 'neutral' | 'primary' | 'destructive' | 'success' | 'warning' | 'info' | SwatchTone
+type SurfaceEmphasis = 'solid' | 'soft' | 'plain' | 'muted' | 'outline'
 
 type SurfaceVariant =
   | 'default'
   | 'secondary'
   | 'destructive'
   | 'outline'
+  | 'plain'
+  | 'muted'
   | 'success'
   | 'warning'
   | 'info'
 
-/** The only exposed tone and emphasis pairs. Outline paints a fixed border, so only the neutral tone has it. */
-type SurfaceAxes =
-  | { tone: SurfaceTone, emphasis: 'solid' | 'soft' }
-  | { tone: 'neutral', emphasis: 'outline' }
+/** The exposed tone and emphasis pairs: every emphasis takes every tone. */
+type SurfaceAxes = { tone: SurfaceTone, emphasis: SurfaceEmphasis }
 
 type SurfacePaint =
   | { variant?: SurfaceVariant, tone?: never, emphasis?: never }
@@ -34,6 +55,8 @@ const SURFACE_PRESETS: Record<SurfaceVariant, SurfaceAxes> = {
   secondary: { tone: 'neutral', emphasis: 'soft' },
   destructive: { tone: 'destructive', emphasis: 'soft' },
   outline: { tone: 'neutral', emphasis: 'outline' },
+  plain: { tone: 'neutral', emphasis: 'plain' },
+  muted: { tone: 'neutral', emphasis: 'muted' },
   success: { tone: 'success', emphasis: 'soft' },
   warning: { tone: 'warning', emphasis: 'soft' },
   info: { tone: 'info', emphasis: 'soft' },
@@ -51,4 +74,12 @@ function resolveSurfacePaint(
 }
 
 export { resolveSurfacePaint };
-export type { ResolvedSurfacePaint, SurfaceAxes, SurfaceEmphasis, SurfacePaint, SurfaceTone, SurfaceVariant };
+export type {
+  ResolvedSurfacePaint,
+  SurfaceAxes,
+  SurfaceEmphasis,
+  SurfacePaint,
+  SurfaceTone,
+  SurfaceVariant,
+  SwatchTone,
+};

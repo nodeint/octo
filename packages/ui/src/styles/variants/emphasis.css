@@ -1,6 +1,6 @@
 /*
  * Emphasis axis: data-emphasis builds the --variant-* slots a component reads from the --tone-* roles (variants/tone.css).
- *   data-emphasis  how the tone is painted: solid, soft, outline, ghost, muted, link, surface, field. Maps roles to the identity slots.
+ *   data-emphasis  how the tone is painted: solid, soft, outline, ghost, muted, link, plain, surface, field. Maps roles to the identity slots.
  * A component never names a color or a tone; it paints from --variant-*. Only the blocks in variants/
  * read --tone-*. Exposed action pairs: primary solid, primary link, neutral soft, outline, ghost, destructive soft.
  * The surface emphasis paints a static callout (alert): neutral, destructive, success, warning, info.
@@ -94,7 +94,9 @@
   --variant-fg: var(--foreground-muted);
 }
 
-[data-emphasis='link'] {
+/* plain: the tone's text on no fill, no edge. Same paint as link, named for a static mark. */
+[data-emphasis='link'],
+[data-emphasis='plain'] {
   --variant-bg: transparent;
   --variant-fg: var(--tone-text);
   --variant-border: transparent;
@@ -109,6 +111,21 @@
   --variant-border-selected: transparent;
   --variant-bg-disabled: transparent;
   --variant-border-disabled: transparent;
+}
+
+/*
+ * A toned outline paints the tone's text and edge. The neutral outline above keeps currentcolor and --border,
+ * which is what the neutral button and badge rely on. A tone without an edge role (primary) keeps --border.
+ */
+[data-emphasis='outline']:not([data-tone='neutral']) {
+  --variant-fg: var(--tone-text);
+  --variant-fg-hover: var(--tone-text);
+  --variant-fg-active: var(--tone-text);
+  --variant-fg-selected: var(--tone-text);
+  --variant-border: var(--tone-border, var(--border));
+  --variant-border-hover: var(--tone-border, var(--border));
+  --variant-border-active: var(--tone-border, var(--border));
+  --variant-border-selected: var(--tone-border, var(--border));
 }
 
 /* A static callout: tinted surface, soft edge, tone-colored text, quieter secondary text. No pointer states. */

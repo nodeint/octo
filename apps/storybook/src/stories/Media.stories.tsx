@@ -1,8 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Icon, Inline, Media, Stack, Text } from '@workspace/ui';
 
+type MediaTone = NonNullable<React.ComponentProps<typeof Media>['tone']>;
+
 const SIZES = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
-const VARIANTS = ['subtle', 'plain'] as const;
+const VARIANTS = [
+  'default',
+  'secondary',
+  'destructive',
+  'outline',
+  'success',
+  'warning',
+  'info',
+  'plain',
+  'muted'
+] as const;
+
 
 const meta = {
   title: 'Data Display/Media',
@@ -10,7 +23,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     size: { control: 'inline-radio', options: SIZES },
-    variant: { control: 'inline-radio', options: VARIANTS },
+    variant: { control: 'select', options: VARIANTS },
   },
 } satisfies Meta<typeof Media>;
 
@@ -19,8 +32,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-  args: { size: 'md', variant: 'subtle' },
-  render: (args) => (
+  args: { size: 'md' },
+  render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
     <Media {...args}>
       <Icon name="sparkles" />
     </Media>
@@ -35,11 +48,52 @@ export const Variants: Story = {
           <Media variant={variant}>
             <Icon name="star" />
           </Media>
-          <Text variant="description">{variant}</Text>
         </Stack>
       ))}
     </Inline>
   ),
+};
+
+export const CustomColors: Story = {
+  name: 'Custom Colors',
+  render: () => {
+    const EMPHASES = ['solid', 'soft', 'outline', 'plain'] as const;
+    const TONES = [
+      'orange',
+      'yellow',
+      'lime',
+      'emerald',
+      'cyan',
+      'blue',
+      'indigo',
+      'violet',
+      'purple',
+      'fuchsia',
+      'pink',
+      'rose',
+      'slate',
+      'gray',
+      'zinc',
+      'stone',
+      'mauve',
+      'olive',
+      'mist',
+      'taupe',
+    ] as const satisfies readonly MediaTone[];
+    return (
+      <Stack gap="lg">
+        {EMPHASES.map((emphasis) => (
+          <Inline key={emphasis} gap="lg">
+            {TONES.map((tone) => (
+              <Media key={tone} tone={tone} emphasis={emphasis}>
+                <Icon name="star" />
+              </Media>
+            ))}
+          </Inline>
+        ))}
+      </Stack>
+    );
+  }
 };
 
 export const Sizes: Story = {
@@ -50,24 +104,8 @@ export const Sizes: Story = {
           <Media size={size}>
             <Icon name="star" />
           </Media>
-          <Text variant="description">{size}</Text>
         </Stack>
       ))}
-    </Inline>
-  ),
-};
-
-export const SizeAndVariant: Story = {
-  name: 'Size and Variant',
-  render: () => (
-    <Inline gap="lg">
-      {SIZES.flatMap((size) =>
-        VARIANTS.map((variant) => (
-          <Media key={`${size}-${variant}`} size={size} variant={variant}>
-            <Icon name="heart" />
-          </Media>
-        )),
-      )}
     </Inline>
   ),
 };

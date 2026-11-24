@@ -348,8 +348,11 @@ export const COLOR_NAMES = [
     'slate',
     'gray',
     'zinc',
-    'neutral',
     'stone',
+    'mauve',
+    'olive',
+    'mist',
+    'taupe',
 ] as const;
 
 /** Named swatch id (Tailwind-aligned palette + app teal brand). */

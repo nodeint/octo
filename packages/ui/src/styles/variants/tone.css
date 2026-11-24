@@ -1,9 +1,292 @@
 /*
- * Tone axis: data-tone picks which colors: neutral, primary, destructive, success, warning, info, field.
+ * Tone axis: data-tone picks which colors: neutral, primary, destructive, success, warning, info, field,
+ * and 20 swatch hues (orange, yellow, lime, emerald, cyan, blue, indigo, violet, purple, fuchsia, pink, rose, slate, gray,
+ * zinc, stone, mauve, olive, mist, taupe).
  * Declares the --tone-* roles and the state slots shared by every action (focus ring, invalid, disabled text).
  * Only the blocks in variants/ read --tone-*; a component never names a color or a tone.
  * The field tone is the one exception to "same values in light and dark": it declares its own fill and has a `.dark` block.
  */
+
+/* Swatch tones: each aliases one hue of theme/swatches.css. Light-on-light hues (yellow, lime) take their text from the subtle foreground. */
+[data-tone='orange'] {
+  --tone-strong: var(--orange);
+  --tone-strong-hover: var(--orange-hover);
+  --tone-strong-foreground: var(--orange-foreground);
+  --tone-subtle: var(--orange-subtle);
+  --tone-subtle-foreground: var(--orange-subtle-foreground);
+  --tone-selected: var(--orange-subtle);
+  --tone-text: var(--orange);
+  --tone-ring: var(--orange);
+  --tone-surface: var(--orange-surface);
+  --tone-surface-foreground: var(--orange-surface-foreground);
+  --tone-border: var(--orange-border);
+}
+
+[data-tone='yellow'] {
+  --tone-strong: var(--yellow);
+  --tone-strong-hover: var(--yellow-hover);
+  --tone-strong-foreground: var(--yellow-foreground);
+  --tone-subtle: var(--yellow-subtle);
+  --tone-subtle-foreground: var(--yellow-subtle-foreground);
+  --tone-selected: var(--yellow-subtle);
+  --tone-text: var(--yellow-subtle-foreground);
+  --tone-ring: var(--yellow);
+  --tone-surface: var(--yellow-surface);
+  --tone-surface-foreground: var(--yellow-surface-foreground);
+  --tone-border: var(--yellow-border);
+}
+
+[data-tone='lime'] {
+  --tone-strong: var(--lime);
+  --tone-strong-hover: var(--lime-hover);
+  --tone-strong-foreground: var(--lime-foreground);
+  --tone-subtle: var(--lime-subtle);
+  --tone-subtle-foreground: var(--lime-subtle-foreground);
+  --tone-selected: var(--lime-subtle);
+  --tone-text: var(--lime-subtle-foreground);
+  --tone-ring: var(--lime);
+  --tone-surface: var(--lime-surface);
+  --tone-surface-foreground: var(--lime-surface-foreground);
+  --tone-border: var(--lime-border);
+}
+
+[data-tone='emerald'] {
+  --tone-strong: var(--emerald);
+  --tone-strong-hover: var(--emerald-hover);
+  --tone-strong-foreground: var(--emerald-foreground);
+  --tone-subtle: var(--emerald-subtle);
+  --tone-subtle-foreground: var(--emerald-subtle-foreground);
+  --tone-selected: var(--emerald-subtle);
+  --tone-text: var(--emerald);
+  --tone-ring: var(--emerald);
+  --tone-surface: var(--emerald-surface);
+  --tone-surface-foreground: var(--emerald-surface-foreground);
+  --tone-border: var(--emerald-border);
+}
+
+[data-tone='cyan'] {
+  --tone-strong: var(--cyan);
+  --tone-strong-hover: var(--cyan-hover);
+  --tone-strong-foreground: var(--cyan-foreground);
+  --tone-subtle: var(--cyan-subtle);
+  --tone-subtle-foreground: var(--cyan-subtle-foreground);
+  --tone-selected: var(--cyan-subtle);
+  --tone-text: var(--cyan);
+  --tone-ring: var(--cyan);
+  --tone-surface: var(--cyan-surface);
+  --tone-surface-foreground: var(--cyan-surface-foreground);
+  --tone-border: var(--cyan-border);
+}
+
+[data-tone='blue'] {
+  --tone-strong: var(--blue);
+  --tone-strong-hover: var(--blue-hover);
+  --tone-strong-foreground: var(--blue-foreground);
+  --tone-subtle: var(--blue-subtle);
+  --tone-subtle-foreground: var(--blue-subtle-foreground);
+  --tone-selected: var(--blue-subtle);
+  --tone-text: var(--blue);
+  --tone-ring: var(--blue);
+  --tone-surface: var(--blue-surface);
+  --tone-surface-foreground: var(--blue-surface-foreground);
+  --tone-border: var(--blue-border);
+}
+
+[data-tone='indigo'] {
+  --tone-strong: var(--indigo);
+  --tone-strong-hover: var(--indigo-hover);
+  --tone-strong-foreground: var(--indigo-foreground);
+  --tone-subtle: var(--indigo-subtle);
+  --tone-subtle-foreground: var(--indigo-subtle-foreground);
+  --tone-selected: var(--indigo-subtle);
+  --tone-text: var(--indigo);
+  --tone-ring: var(--indigo);
+  --tone-surface: var(--indigo-surface);
+  --tone-surface-foreground: var(--indigo-surface-foreground);
+  --tone-border: var(--indigo-border);
+}
+
+[data-tone='violet'] {
+  --tone-strong: var(--violet);
+  --tone-strong-hover: var(--violet-hover);
+  --tone-strong-foreground: var(--violet-foreground);
+  --tone-subtle: var(--violet-subtle);
+  --tone-subtle-foreground: var(--violet-subtle-foreground);
+  --tone-selected: var(--violet-subtle);
+  --tone-text: var(--violet);
+  --tone-ring: var(--violet);
+  --tone-surface: var(--violet-surface);
+  --tone-surface-foreground: var(--violet-surface-foreground);
+  --tone-border: var(--violet-border);
+}
+
+[data-tone='purple'] {
+  --tone-strong: var(--purple);
+  --tone-strong-hover: var(--purple-hover);
+  --tone-strong-foreground: var(--purple-foreground);
+  --tone-subtle: var(--purple-subtle);
+  --tone-subtle-foreground: var(--purple-subtle-foreground);
+  --tone-selected: var(--purple-subtle);
+  --tone-text: var(--purple);
+  --tone-ring: var(--purple);
+  --tone-surface: var(--purple-surface);
+  --tone-surface-foreground: var(--purple-surface-foreground);
+  --tone-border: var(--purple-border);
+}
+
+[data-tone='fuchsia'] {
+  --tone-strong: var(--fuchsia);
+  --tone-strong-hover: var(--fuchsia-hover);
+  --tone-strong-foreground: var(--fuchsia-foreground);
+  --tone-subtle: var(--fuchsia-subtle);
+  --tone-subtle-foreground: var(--fuchsia-subtle-foreground);
+  --tone-selected: var(--fuchsia-subtle);
+  --tone-text: var(--fuchsia);
+  --tone-ring: var(--fuchsia);
+  --tone-surface: var(--fuchsia-surface);
+  --tone-surface-foreground: var(--fuchsia-surface-foreground);
+  --tone-border: var(--fuchsia-border);
+}
+
+[data-tone='pink'] {
+  --tone-strong: var(--pink);
+  --tone-strong-hover: var(--pink-hover);
+  --tone-strong-foreground: var(--pink-foreground);
+  --tone-subtle: var(--pink-subtle);
+  --tone-subtle-foreground: var(--pink-subtle-foreground);
+  --tone-selected: var(--pink-subtle);
+  --tone-text: var(--pink);
+  --tone-ring: var(--pink);
+  --tone-surface: var(--pink-surface);
+  --tone-surface-foreground: var(--pink-surface-foreground);
+  --tone-border: var(--pink-border);
+}
+
+[data-tone='rose'] {
+  --tone-strong: var(--rose);
+  --tone-strong-hover: var(--rose-hover);
+  --tone-strong-foreground: var(--rose-foreground);
+  --tone-subtle: var(--rose-subtle);
+  --tone-subtle-foreground: var(--rose-subtle-foreground);
+  --tone-selected: var(--rose-subtle);
+  --tone-text: var(--rose);
+  --tone-ring: var(--rose);
+  --tone-surface: var(--rose-surface);
+  --tone-surface-foreground: var(--rose-surface-foreground);
+  --tone-border: var(--rose-border);
+}
+
+[data-tone='slate'] {
+  --tone-strong: var(--slate);
+  --tone-strong-hover: var(--slate-hover);
+  --tone-strong-foreground: var(--slate-foreground);
+  --tone-subtle: var(--slate-subtle);
+  --tone-subtle-foreground: var(--slate-subtle-foreground);
+  --tone-selected: var(--slate-subtle);
+  --tone-text: var(--slate);
+  --tone-ring: var(--slate);
+  --tone-surface: var(--slate-surface);
+  --tone-surface-foreground: var(--slate-surface-foreground);
+  --tone-border: var(--slate-border);
+}
+
+[data-tone='gray'] {
+  --tone-strong: var(--gray);
+  --tone-strong-hover: var(--gray-hover);
+  --tone-strong-foreground: var(--gray-foreground);
+  --tone-subtle: var(--gray-subtle);
+  --tone-subtle-foreground: var(--gray-subtle-foreground);
+  --tone-selected: var(--gray-subtle);
+  --tone-text: var(--gray);
+  --tone-ring: var(--gray);
+  --tone-surface: var(--gray-surface);
+  --tone-surface-foreground: var(--gray-surface-foreground);
+  --tone-border: var(--gray-border);
+}
+
+[data-tone='zinc'] {
+  --tone-strong: var(--zinc);
+  --tone-strong-hover: var(--zinc-hover);
+  --tone-strong-foreground: var(--zinc-foreground);
+  --tone-subtle: var(--zinc-subtle);
+  --tone-subtle-foreground: var(--zinc-subtle-foreground);
+  --tone-selected: var(--zinc-subtle);
+  --tone-text: var(--zinc);
+  --tone-ring: var(--zinc);
+  --tone-surface: var(--zinc-surface);
+  --tone-surface-foreground: var(--zinc-surface-foreground);
+  --tone-border: var(--zinc-border);
+}
+
+[data-tone='stone'] {
+  --tone-strong: var(--stone);
+  --tone-strong-hover: var(--stone-hover);
+  --tone-strong-foreground: var(--stone-foreground);
+  --tone-subtle: var(--stone-subtle);
+  --tone-subtle-foreground: var(--stone-subtle-foreground);
+  --tone-selected: var(--stone-subtle);
+  --tone-text: var(--stone);
+  --tone-ring: var(--stone);
+  --tone-surface: var(--stone-surface);
+  --tone-surface-foreground: var(--stone-surface-foreground);
+  --tone-border: var(--stone-border);
+}
+
+[data-tone='mauve'] {
+  --tone-strong: var(--mauve);
+  --tone-strong-hover: var(--mauve-hover);
+  --tone-strong-foreground: var(--mauve-foreground);
+  --tone-subtle: var(--mauve-subtle);
+  --tone-subtle-foreground: var(--mauve-subtle-foreground);
+  --tone-selected: var(--mauve-subtle);
+  --tone-text: var(--mauve);
+  --tone-ring: var(--mauve);
+  --tone-surface: var(--mauve-surface);
+  --tone-surface-foreground: var(--mauve-surface-foreground);
+  --tone-border: var(--mauve-border);
+}
+
+[data-tone='olive'] {
+  --tone-strong: var(--olive);
+  --tone-strong-hover: var(--olive-hover);
+  --tone-strong-foreground: var(--olive-foreground);
+  --tone-subtle: var(--olive-subtle);
+  --tone-subtle-foreground: var(--olive-subtle-foreground);
+  --tone-selected: var(--olive-subtle);
+  --tone-text: var(--olive);
+  --tone-ring: var(--olive);
+  --tone-surface: var(--olive-surface);
+  --tone-surface-foreground: var(--olive-surface-foreground);
+  --tone-border: var(--olive-border);
+}
+
+[data-tone='mist'] {
+  --tone-strong: var(--mist);
+  --tone-strong-hover: var(--mist-hover);
+  --tone-strong-foreground: var(--mist-foreground);
+  --tone-subtle: var(--mist-subtle);
+  --tone-subtle-foreground: var(--mist-subtle-foreground);
+  --tone-selected: var(--mist-subtle);
+  --tone-text: var(--mist);
+  --tone-ring: var(--mist);
+  --tone-surface: var(--mist-surface);
+  --tone-surface-foreground: var(--mist-surface-foreground);
+  --tone-border: var(--mist-border);
+}
+
+[data-tone='taupe'] {
+  --tone-strong: var(--taupe);
+  --tone-strong-hover: var(--taupe-hover);
+  --tone-strong-foreground: var(--taupe-foreground);
+  --tone-subtle: var(--taupe-subtle);
+  --tone-subtle-foreground: var(--taupe-subtle-foreground);
+  --tone-selected: var(--taupe-subtle);
+  --tone-text: var(--taupe);
+  --tone-ring: var(--taupe);
+  --tone-surface: var(--taupe-surface);
+  --tone-surface-foreground: var(--taupe-surface-foreground);
+  --tone-border: var(--taupe-border);
+}
 
 /* State slots shared by every action: focus, invalid, disabled text. Resolves on each element against its own tone. */
 [data-tone] {

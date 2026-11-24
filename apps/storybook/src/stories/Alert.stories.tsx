@@ -134,10 +134,7 @@ export const Action: Story = {
 export const CustomColors: Story = {
   name: 'Custom Colors',
   render: (args) => (
-    <Alert
-      {...args}
-      style={{ backgroundColor: '#fffbeb', borderColor: '#fde68a', color: '#78350f' }}
-    >
+    <Alert {...args} tone="purple">
       <Icon name="triangle-alert" />
       <AlertTitle>Your subscription will expire in 3 days.</AlertTitle>
       <AlertDescription>
