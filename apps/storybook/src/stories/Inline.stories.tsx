@@ -3,9 +3,12 @@ import { Box, Inline } from '@workspace/ui';
 
 import { storyWidthDecorator } from '../story-width';
 
+const ALIGNS = ['start', 'center', 'end'] as const;
 const GAPS = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl'] as const;
 
-function Block({ children, wide }: { children?: React.ReactNode; wide?: boolean }): React.JSX.Element {
+function Block(
+  { children, wide, height = '2rem' }: { children?: React.ReactNode; wide?: boolean; height?: string },
+): React.JSX.Element {
   return (
     <Box
       radius="sm"
@@ -16,7 +19,7 @@ function Block({ children, wide }: { children?: React.ReactNode; wide?: boolean 
         alignItems: 'center',
         justifyContent: 'center',
         width: wide ? '7rem' : '2.5rem',
-        height: '2rem',
+        height,
         fontSize: '0.75rem',
       }}
     >
@@ -31,6 +34,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     gap: { control: 'select', options: GAPS },
+    align: { control: 'inline-radio', options: [undefined, ...ALIGNS] },
   },
   parameters: { storyWidth: 'md' },
   decorators: [storyWidthDecorator],
@@ -48,6 +52,20 @@ export const Demo: Story = {
       <Block>2</Block>
       <Block>3</Block>
     </Inline>
+  ),
+};
+
+export const Align: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      {ALIGNS.map((align) => (
+        <Inline key={align} align={align}>
+          <Block height="2rem">{align}</Block>
+          <Block height="3.5rem" />
+          <Block height="1.5rem" />
+        </Inline>
+      ))}
+    </div>
   ),
 };
 

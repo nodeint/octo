@@ -3,15 +3,16 @@ import { Box, Stack } from '@workspace/ui';
 
 import { storyWidthDecorator } from '../story-width';
 
+const ALIGNS = ['start', 'center', 'end'] as const;
 const GAPS = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl'] as const;
 
-function Block({ children }: { children?: React.ReactNode }): React.JSX.Element {
+function Block({ children, width }: { children?: React.ReactNode; width?: string }): React.JSX.Element {
   return (
     <Box
       radius="sm"
       surface="muted"
       border="thin"
-      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '2rem', fontSize: '0.75rem' }}
+      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width, height: '2rem', fontSize: '0.75rem' }}
     >
       {children}
     </Box>
@@ -24,6 +25,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     gap: { control: 'select', options: GAPS },
+    align: { control: 'inline-radio', options: [undefined, ...ALIGNS] },
     surface: { control: 'select', options: [undefined, 'background', 'card', 'muted', 'accent'] },
     radius: { control: 'select', options: [undefined, 'xs', 'sm', 'md', 'lg'] },
     border: { control: 'inline-radio', options: [undefined, 'thin', 'thick'] },
@@ -44,6 +46,21 @@ export const Demo: Story = {
       <Block>2</Block>
       <Block>3</Block>
     </Stack>
+  ),
+};
+
+export const Align: Story = {
+  parameters: { storyWidth: 'lg' },
+  render: () => (
+    <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+      {ALIGNS.map((align) => (
+        <Stack key={align} align={align} style={{ flex: 1 }}>
+          <Block width="4rem">{align}</Block>
+          <Block width="6rem" />
+          <Block width="2rem" />
+        </Stack>
+      ))}
+    </div>
   ),
 };
 

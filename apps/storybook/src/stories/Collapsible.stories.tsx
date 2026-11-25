@@ -41,67 +41,48 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-function DetailRow({ title, value }: { title: string; value: string }): React.JSX.Element {
-  return (
-    <Box radius="sm" border="thin" style={{ padding: '0.5rem 1rem' }}>
-      <Text as="p" variant="label">{title}</Text>
-      <Text as="p" variant="description">{value}</Text>
-    </Box>
-  );
-}
-
-function OrderDemo({ dir, texts }: { dir?: 'rtl'; texts: Record<string, string> }): React.JSX.Element {
-  const [isOpen, setIsOpen] = React.useState(false);
-  return (
-    <Collapsible open={isOpen} onOpenChange={setIsOpen} dir={dir}>
+export const Demo: Story = {
+  render: () => (
+    <Collapsible>
       <Stack>
         <Flex align="center" justify="space-between" px="md">
-          <Text as="h4" variant="title-sm">{texts.order}</Text>
+          <Text as="h4" variant="title-sm">Order #4189</Text>
           <CollapsibleTrigger render={<Button variant="ghost" shape="icon" size="sm" aria-label="Toggle details" />}>
             <Icon name="chevron-down" />
           </CollapsibleTrigger>
         </Flex>
         <Flex radius="sm" border="thin" justify="space-between" px="md" py="sm">
-          <Text variant="description">{texts.status}</Text>
-          <Text variant="label">{texts.shipped}</Text>
+          <Text variant="description">Status</Text>
+          <Text variant="label">Shipped</Text>
         </Flex>
         <CollapsibleContent>
           <Stack>
-            <DetailRow title={texts.address} value="100 Market St, San Francisco" />
-            <DetailRow title={texts.items} value={texts.itemsValue} />
+            <Box radius="sm" border="thin" px="md" py="sm">
+              <Text as="p" variant="label">Shipping address</Text>
+              <Text as="p" variant="description">100 Market St, San Francisco</Text>
+            </Box>
+            <Box radius="sm" border="thin" px="md" py="sm">
+              <Text as="p" variant="label">Items</Text>
+              <Text as="p" variant="description">2x Studio Headphones</Text>
+            </Box>
           </Stack>
         </CollapsibleContent>
       </Stack>
     </Collapsible>
-  );
-}
-
-export const Demo: Story = {
-  render: () => (
-    <OrderDemo
-      texts={{
-        order: 'Order #4189',
-        status: 'Status',
-        shipped: 'Shipped',
-        address: 'Shipping address',
-        items: 'Items',
-        itemsValue: '2x Studio Headphones',
-      }}
-    />
   ),
 };
 
 export const Basic: Story = {
   render: (args) => (
     <Collapsible {...args}>
-      <CollapsibleTrigger render={<Button variant="ghost" style={{ width: '100%' }} />}>
+      <CollapsibleTrigger render={<Button variant="ghost" />}>
         Product details
         <Icon name="chevron-down" />
       </CollapsibleTrigger>
       <CollapsibleContent>
-        <Stack style={{ padding: '0.625rem', paddingBlockStart: 0, alignItems: 'flex-start' }}>
+        <Stack p="md" align='start'>
           <Text>This panel can be expanded or collapsed to reveal additional content.</Text>
-          <Button size="xs">Learn More</Button>
+          <Button variant='link'>Learn More</Button>
         </Stack>
       </CollapsibleContent>
     </Collapsible>
@@ -198,16 +179,31 @@ export const FileTree: Story = {
 
 export const Rtl: Story = {
   render: () => (
-    <OrderDemo
-      dir="rtl"
-      texts={{
-        order: 'الطلب #4189',
-        status: 'الحالة',
-        shipped: 'تم الشحن',
-        address: 'عنوان الشحن',
-        items: 'العناصر',
-        itemsValue: '2x سماعات الاستوديو',
-      }}
-    />
+    <Collapsible dir="rtl">
+      <Stack>
+        <Flex align="center" justify="space-between" px="md">
+          <Text as="h4" variant="title-sm">الطلب #4189</Text>
+          <CollapsibleTrigger render={<Button variant="ghost" shape="icon" size="sm" aria-label="Toggle details" />}>
+            <Icon name="chevron-down" />
+          </CollapsibleTrigger>
+        </Flex>
+        <Flex radius="sm" border="thin" justify="space-between" px="md" py="sm">
+          <Text variant="description">الحالة</Text>
+          <Text variant="label">تم الشحن</Text>
+        </Flex>
+        <CollapsibleContent>
+          <Stack>
+            <Box radius="sm" border="thin" px="md" py="sm">
+              <Text as="p" variant="label">عنوان الشحن</Text>
+              <Text as="p" variant="description">100 Market St, San Francisco</Text>
+            </Box>
+            <Box radius="sm" border="thin" px="md" py="sm">
+              <Text as="p" variant="label">العناصر</Text>
+              <Text as="p" variant="description">2x سماعات الاستوديو</Text>
+            </Box>
+          </Stack>
+        </CollapsibleContent>
+      </Stack>
+    </Collapsible>
   ),
 };
