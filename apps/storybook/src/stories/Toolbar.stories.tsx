@@ -11,7 +11,7 @@ import {
 } from '@workspace/ui';
 
 const meta = {
-  title: 'Layout/Toolbar',
+  title: 'General/Toolbar',
   component: Toolbar,
   tags: ['autodocs'],
   argTypes: {

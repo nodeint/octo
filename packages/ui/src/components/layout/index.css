@@ -6,7 +6,5 @@
 @import "./grid/Grid.css";
 @import "./pane/Pane.css";
 @import "./separator/Separator.css";
-@import "./toolbar/Toolbar.css";
 @import "./collapsible/Collapsible.css";
-@import "./collapsible-toolbar/CollapsibleToolbar.css";
 @import "./scroll-area/ScrollArea.css";

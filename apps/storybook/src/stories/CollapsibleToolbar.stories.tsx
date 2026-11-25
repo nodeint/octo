@@ -8,7 +8,7 @@ import {
 } from '@workspace/ui';
 
 const meta = {
-  title: 'Layout/CollapsibleToolbar',
+  title: 'General/CollapsibleToolbar',
   component: CollapsibleToolbar,
   tags: ['autodocs'],
   argTypes: {

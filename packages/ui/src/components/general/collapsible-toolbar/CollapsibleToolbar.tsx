@@ -4,7 +4,7 @@ import { useCollapsibleToolbar } from '../../../hooks/use-collapsible-toolbar';
 import type { OmitFromUnion } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
 import { Collapsible, CollapsibleContent } from '../../layout/collapsible/Collapsible';
-import { Toolbar, ToolbarToggle } from '../../layout/toolbar/Toolbar';
+import { Toolbar, ToolbarToggle } from '../toolbar/Toolbar';
 import { Icon } from '../../typography/icon/Icon';
 
 type CollapsibleToolbarOrientation = 'horizontal' | 'vertical'
