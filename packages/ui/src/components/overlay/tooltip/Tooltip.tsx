@@ -47,7 +47,7 @@ function TooltipContent({
       >
         <TooltipPrimitive.Popup
           data-slot="tooltip-content"
-          className={cn('floating-panel tooltip-content', className)}
+          className={cn('floating-content tooltip-content', className)}
           {...props}
         >
           {children}

@@ -2,8 +2,10 @@
  * Anchored panels: popover, tooltip, dropdown menu and context menu. A component adds the classes it needs
  * beside its own.
  *   floating-positioner  the Base UI positioner: stacking and focus ring
- *   floating-panel       the popup: stacking, and the slide-in and zoom-out motion from the side it opens toward
- *   floating-surface     a filled panel: popover fill, edge, radius, minimum width and the `data-size` width
+ *   floating-content     the popup: stacking, fill, edge, minimum width, corner, and the slide-in and zoom-out motion from the
+ *                        side it opens toward. `data-size` sets width and corner (xxs/xs → xs, sm → sm, md → md, lg/xl → lg)
+ *   floating-radius      only the corner (`--floating-radius`, default --radius-overlay-sm), for a popup with its own fill and motion
+ * A component never declares `border-radius`; `--floating-radius` overrides the corner.
  * Motion reads `data-open` / `data-closed` (Base UI) and slides by `--floating-slide-distance`.
  * The `overlay-*` keyframes live in overlay.css.
  */
@@ -13,78 +15,86 @@
   outline: none;
 }
 
-.floating-panel {
+.floating-content {
   z-index: var(--z-floating);
+  width: var(--floating-size-width, auto);
+  min-width: var(--overlay-xxs);
+  border-radius: var(--floating-radius, var(--floating-size-radius, var(--radius-overlay-sm)));
+  background-color: var(--popover);
+  color: var(--foreground);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--border-surface);
+  outline: none;
   transform-origin: var(--transform-origin);
   animation-duration: var(--motion-duration-fast);
 }
 
-.floating-panel[data-side='bottom'] {
+.floating-content[data-side='bottom'] {
   --overlay-y: calc(var(--floating-slide-distance) * -1);
 }
 
-.floating-panel[data-side='top'] {
+.floating-content[data-side='top'] {
   --overlay-y: var(--floating-slide-distance);
 }
 
-.floating-panel[data-side='inline-end'],
-.floating-panel[data-side='right'] {
+.floating-content[data-side='inline-end'],
+.floating-content[data-side='right'] {
   --overlay-x: calc(var(--floating-slide-distance) * -1);
 }
 
-.floating-panel[data-side='inline-start'],
-.floating-panel[data-side='left'] {
+.floating-content[data-side='inline-start'],
+.floating-content[data-side='left'] {
   --overlay-x: var(--floating-slide-distance);
 }
 
-.floating-panel[data-open],
-.floating-panel[data-state='delayed-open'] {
+.floating-content[data-open],
+.floating-content[data-state='delayed-open'] {
   animation-name: overlay-slide-in;
   animation-timing-function: var(--ease-enter);
 }
 
-.floating-panel[data-closed] {
+.floating-content[data-closed] {
   animation-name: overlay-zoom-out;
   animation-timing-function: var(--ease-exit);
   animation-fill-mode: forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .floating-panel {
+  .floating-content {
     animation-duration: 1ms;
   }
 }
 
-.floating-surface {
-  min-width: var(--overlay-xxs);
-  border-radius: var(--radius-overlay-sm);
-  background-color: var(--popover);
-  color: var(--foreground);
-  box-shadow: 0 0 0 var(--border-width-thin) var(--border-surface);
-  outline: none;
+.floating-radius {
+  border-radius: var(--floating-radius, var(--radius-overlay-sm));
 }
 
-/* Width from the overlay scale; no data-size keeps its own width. */
-.floating-surface[data-size='xxs'] {
-  width: var(--overlay-xxs);
+/* Each step only sets the width and corner tokens the surface reads; no data-size keeps its own width and the sm corner. */
+.floating-content[data-size='xxs'] {
+  --floating-size-width: var(--overlay-xxs);
+  --floating-size-radius: var(--radius-overlay-xs);
 }
 
-.floating-surface[data-size='xs'] {
-  width: var(--overlay-xs);
+.floating-content[data-size='xs'] {
+  --floating-size-width: var(--overlay-xs);
+  --floating-size-radius: var(--radius-overlay-xs);
 }
 
-.floating-surface[data-size='sm'] {
-  width: var(--overlay-sm);
+.floating-content[data-size='sm'] {
+  --floating-size-width: var(--overlay-sm);
+  --floating-size-radius: var(--radius-overlay-sm);
 }
 
-.floating-surface[data-size='md'] {
-  width: var(--overlay-md);
+.floating-content[data-size='md'] {
+  --floating-size-width: var(--overlay-md);
+  --floating-size-radius: var(--radius-overlay-md);
 }
 
-.floating-surface[data-size='lg'] {
-  width: var(--overlay-lg);
+.floating-content[data-size='lg'] {
+  --floating-size-width: var(--overlay-lg);
+  --floating-size-radius: var(--radius-overlay-lg);
 }
 
-.floating-surface[data-size='xl'] {
-  width: var(--overlay-xl);
+.floating-content[data-size='xl'] {
+  --floating-size-width: var(--overlay-xl);
+  --floating-size-radius: var(--radius-overlay-lg);
 }

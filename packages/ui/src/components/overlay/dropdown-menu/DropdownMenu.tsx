@@ -84,7 +84,7 @@ function DropdownMenuContent({
         <MenuPrimitive.Popup
           data-slot="dropdown-menu-content"
           data-size={size}
-          className={cn('menu-content floating-panel floating-surface dropdown-menu-content', className)}
+          className={cn('menu-content floating-content dropdown-menu-content', className)}
           {...props}
         />
       </MenuPrimitive.Positioner>

@@ -64,7 +64,7 @@ function ContextMenuContent({
         <ContextMenuPrimitive.Popup
           data-slot="context-menu-content"
           data-size={size}
-          className={cn('menu-content floating-panel floating-surface context-menu-content', className)}
+          className={cn('menu-content floating-content context-menu-content', className)}
           {...props}
         />
       </ContextMenuPrimitive.Positioner>

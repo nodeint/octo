@@ -76,7 +76,6 @@
   padding: var(--overlay-pad-xs);
   overflow-x: hidden;
   overflow-y: auto;
-  border-radius: var(--radius-overlay-sm);
   background-color: var(--popover);
   color: var(--foreground);
   box-shadow: 0 0 0 var(--border-width-thin) var(--border-surface);

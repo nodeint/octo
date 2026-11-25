@@ -47,7 +47,6 @@
   max-width: var(--available-width);
   min-width: var(--anchor-width);
   overflow: hidden;
-  border-radius: var(--radius-overlay-sm);
   background-color: var(--popover);
   color: var(--foreground);
   box-shadow: 0 0 0 var(--border-width-thin) var(--border-surface);

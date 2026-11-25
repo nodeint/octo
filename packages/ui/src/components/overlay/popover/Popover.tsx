@@ -52,7 +52,7 @@ function PopoverContent({
           data-size={size}
           data-inset={inset}
           data-width={anchorWidth ? 'anchor' : undefined}
-          className={cn('floating-panel floating-surface popover-content', className)}
+          className={cn('floating-content popover-content', className)}
           {...props}
         />
       </PopoverPrimitive.Positioner>

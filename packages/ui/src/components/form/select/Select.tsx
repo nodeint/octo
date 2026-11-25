@@ -86,7 +86,7 @@ function SelectContent({
         <SelectPrimitive.Popup
           data-slot="select-content"
           data-align-trigger={alignItemWithTrigger}
-          className={cn('select-content', className)}
+          className={cn('floating-radius select-content', className)}
           {...props}
         >
           <SelectScrollUpButton />

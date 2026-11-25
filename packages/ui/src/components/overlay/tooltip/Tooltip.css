@@ -3,10 +3,11 @@
   align-items: center;
   gap: var(--space-xs);
   width: fit-content;
+  min-width: 0;
   max-width: var(--overlay-sm);
   padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius-overlay-xs);
   background-color: var(--foreground);
+  box-shadow: none;
   font-size: var(--role-body-sm-size);
   line-height: var(--role-body-sm-leading);
   font-weight: var(--role-body-sm-weight);

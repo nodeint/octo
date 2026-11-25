@@ -190,7 +190,7 @@ function ComboboxContent({
           data-slot="combobox-content"
           data-chips={!!anchor}
           className={cn(
-            'combobox-content',
+            'floating-radius combobox-content',
             className
           )}
           {...props}
