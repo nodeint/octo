@@ -45,6 +45,13 @@
   border-radius: var(--radius-surface-lg);
 }
 
+/* painted by tone and emphasis: the colors come from the --variant-* set that data-paint picks in styles/variants/ */
+[data-box-paint] {
+  background-color: var(--variant-bg);
+  color: var(--variant-fg);
+  box-shadow: var(--box-elevation, 0 0 #0000), 0 0 0 var(--border-width-thin) var(--variant-border, transparent);
+}
+
 [data-box-surface='background'] {
   --surface: var(--background);
   background-color: var(--surface);

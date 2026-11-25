@@ -1,3 +1,6 @@
+import { paintName } from '../../../lib/paint';
+import type { SurfaceAxes } from '../../../lib/surface-paint';
+
 type BoxRadius = 'xs' | 'sm' | 'md' | 'lg';
 type BoxSurface = 'background' | 'card' | 'muted' | 'popover' | 'sidebar' | 'accent';
 type BoxBorder = 'thin' | 'thick';
@@ -19,7 +22,10 @@ type BoxPaddingSide = BoxPadding | '0' | 'inset';
  */
 type BoxBleed = 'x' | 'y' | 'all' | 'top' | 'bottom' | 'start' | 'end';
 
-type BoxProps = React.ComponentProps<'div'> & {
+/** Without `tone` and `emphasis` the box is not painted; with both it takes the paint of that pair. */
+type BoxPaint = SurfaceAxes | { tone?: never, emphasis?: never }
+
+type BoxProps = React.ComponentProps<'div'> & BoxPaint & {
   /**
    * Extends the box to the edges of the container that pads it, by a negative margin of `--inset`.
    * The container declares `--inset` with the same value as its padding; without one the bleed is 0.
@@ -57,6 +63,8 @@ type BoxProps = React.ComponentProps<'div'> & {
 };
 
 function Box({
+  tone,
+  emphasis,
   bleed,
   radius,
   surface,
@@ -72,9 +80,12 @@ function Box({
   pe,
   ...props
 }: BoxProps): React.JSX.Element {
+  const paint = tone === undefined ? undefined : paintName({ tone, emphasis });
   return (
     <div
       data-slot="box"
+      data-paint={paint}
+      data-box-paint={paint === undefined ? undefined : ''}
       data-box-bleed={bleed}
       data-box-radius={radius}
       data-box-surface={surface}
@@ -100,6 +111,7 @@ export type {
   BoxGap,
   BoxPadding,
   BoxPaddingSide,
+  BoxPaint,
   BoxProps,
   BoxRadius,
   BoxShadow,

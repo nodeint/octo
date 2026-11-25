@@ -3,16 +3,6 @@
   flex-direction: column;
 }
 
-.pane[data-paint] {
-  background-color: var(--variant-bg);
-  color: var(--variant-fg);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  box-shadow:
-    var(--shadow-sm),
-    0 0 0 var(--border-width-thin) var(--variant-border, transparent);
-}
-
 /* header and footer keep their size; the body is a ScrollArea that takes the free space */
 .pane-header,
 .pane-footer {

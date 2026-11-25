@@ -1,15 +1,13 @@
 import type * as React from 'react';
 
-import { paintName } from '../../../lib/paint';
-import type { SurfaceAxes } from '../../../lib/surface-paint';
 import { cn } from '../../../lib/utils';
 import { Box, type BoxProps } from '../box/Box';
 import { Flex, type FlexProps } from '../flex/Flex';
 import { ScrollArea, type ScrollAreaProps } from '../scroll-area/ScrollArea';
 import { Separator } from '../separator/Separator';
 
-/** Without `tone` and `emphasis` the pane keeps its glass sidebar surface; with both it is painted by them. */
-type PaneProps = FlexProps & (SurfaceAxes | { tone?: never, emphasis?: never })
+/** `tone` and `emphasis` are the Box paint; the pane defaults them to `base` and `outline`. */
+type PaneProps = FlexProps
 
 function Pane({
   className,
@@ -24,7 +22,8 @@ function Pane({
       p={p}
       radius={radius}
       data-slot="pane"
-      data-paint={paintName({ tone, emphasis })}
+      tone={tone}
+      emphasis={emphasis}
       className={cn('pane', className)}
       {...props}
     />

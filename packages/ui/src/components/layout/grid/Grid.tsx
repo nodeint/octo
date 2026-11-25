@@ -12,7 +12,7 @@ type GridResponsiveColumns = {
   lg?: GridColumns;
 };
 
-type GridProps = Omit<BoxProps, 'columns'> & {
+type GridProps = BoxProps & {
   /** Equal columns, or a count per breakpoint. */
   columns?: GridColumns | GridResponsiveColumns;
 };
