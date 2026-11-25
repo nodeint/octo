@@ -70,7 +70,7 @@ function DialogContent({
         data-size={size}
         data-fill={fill ? '' : undefined}
         data-variant={variant}
-        className={cn('modal-content modal-centered dialog-content', className)}
+        className={cn('panel modal-content modal-centered dialog-content', className)}
         {...props}
       >
         <DialogFillContext.Provider value={fill}>{children}</DialogFillContext.Provider>
@@ -153,7 +153,7 @@ function DialogFooter({
     <div
       data-slot="dialog-footer"
       data-layout={layout}
-      className={cn('modal-footer dialog-footer', className)}
+      className={cn('panel-footer modal-footer dialog-footer', className)}
       {...props}
     >
       {children}

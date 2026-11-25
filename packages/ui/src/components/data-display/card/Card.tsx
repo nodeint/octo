@@ -17,7 +17,8 @@ function Card({
     <div
       data-slot="card"
       data-size={size}
-      className={cn('card', className)}
+      data-panel-size={size}
+      className={cn('panel card', className)}
       {...props}
     />
   );
@@ -90,7 +91,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<'div'>): React
   return (
     <div
       data-slot="card-footer"
-      className={cn('card-footer', className)}
+      className={cn('panel-footer card-footer', className)}
       {...props}
     />
   );

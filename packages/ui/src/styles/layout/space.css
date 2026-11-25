@@ -1,6 +1,6 @@
 /**
  * Space: the raw steps, var(--space-md), var(--space-xs), … A theme sets --space-*.
- * Components and consumers read the roles further down in this file (--gap-*, --inset-*, --panel-*), not these steps.
+ * Components and consumers read the roles further down in this file (--gap-*, --inset-*), not these steps.
  */
 
 :root {
@@ -21,8 +21,7 @@
  *   overlay-pad  padding of a floating panel
  *   gap    xxs · xs · sm · md · lg · xl · 2xl · 3xl (space between children; Box `gap`)
  *   inset  xs · sm · md · lg · xl (padding of one box)
- *   panel  --panel-inset, --panel-inset-compact, --panel-gap: one rhythm for every panel (dialog, alert-dialog,
- *          sheet, card, pane). A panel reads these; it does not pick a space step of its own.
+ *   panel  --panel-inset and --panel-gap are declared by the size set in recipes/panel.css, not here.
  * A theme can retune one role without touching the others.
  */
 
@@ -48,7 +47,4 @@
   --inset-xl: var(--space-xl);
   
   --inset: 0px; /* the padding the nearest container gives its children; a container re-declares it, Box bleed reads it */
-  --panel-inset: var(--inset-md); /* padding of a panel: dialog, sheet, card, pane */
-  --panel-inset-compact: var(--inset-sm); /* the same for a compact panel (card size=sm) */
-  --panel-gap: var(--gap-md); /* between the header, body, and footer of a panel */
 }

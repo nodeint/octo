@@ -36,7 +36,7 @@
 
 /* no padding or gap: an app shell owns the whole panel */
 .dialog-content[data-variant='bare'] {
-  --modal-gap: 0px;
+  --panel-stack-gap: 0px;
   overflow: hidden;
   --inset: 0px;
 }

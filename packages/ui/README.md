@@ -31,7 +31,7 @@ src/
 
 A recipe is a stylesheet in `src/styles/recipes/` that gives a kind of element its skin. It binds token roles to
 properties and states for every element that opts in by adding the recipe's class
-(`action`, `chip`, `field-control`, `group`, `media-frame`, `menu-row`, `state-ring-group`).
+(`action`, `chip`, `field-control`, `group`, `media-frame`, `menu-row`, `panel`, `state-ring-group`).
 Recipes live in the `recipes` cascade layer, which sits below `components`: a component rule beats a recipe rule
 whatever the specificity, so a component overrides a recipe without raising its selector.
 
@@ -47,6 +47,7 @@ A stylesheet is a recipe when all of these hold:
    The exception is the sets a recipe owns: `[data-action-size]` in `action.css`, `[data-field-size]` in
    `field-control.css`, and `[data-group-size]` in `group.css` declare component tokens
    (`--action-*`, `--field-*`, `--group-*`) from the control and radius scales (`--control-*`, `--radius-*`).
+   `[data-panel-size]` in `panel.css` declares `--panel-inset` and `--panel-gap` from the `--inset-*` and `--gap-*` roles.
    `octo/token-tier` skips custom properties declared in a recipe.
    `group.css` opts in by the `group` class, but it only hands `--group-*` tokens to the actions and fields inside a group.
 4. Owns its own parts only. It may lay out the parts it owns (`.menu-content` stacks `.menu-row`s).
@@ -80,9 +81,16 @@ A part sets `--media-size` (or `--media-width` and `--media-height`), `--media-r
 `--media-foreground` and `--media-icon-size` on its own root, and an image part adds `data-media-fit="image"`.
 
 `overlay.css` holds only the `overlay-*` keyframes shared by modal and anchored overlays; it has no selectors.
+`panel.css` is the `panel` shell (flex column, inset, gap) and the `panel-footer` band that card, dialog, alert dialog and
+sheet share. It owns the panel size: `data-panel-size` (`xs`, `sm`, `md`, `lg`; `md` without the attribute) sets
+`--panel-inset`, `--panel-gap` and `--panel-radius` (from the `--radius-panel-*` scale), and no component declares them;
+a component reads `--panel-radius` for its own corners. A bare variant sets `--panel-stack-gap` and `--panel-padding`.
+`data-panel-size` is separate from `data-size`.
+
 `modal.css` is the modal skin (`modal-overlay`, `modal-content`, `modal-footer`, `modal-title`, `modal-description`,
-`modal-close-button`) that dialog, alert dialog and sheet opt into by class. A component sets its input tokens
-(`--modal-background`, `--modal-shadow`, `--modal-gap`, `--modal-padding`, `--modal-footer-direction`) on its own root.
+`modal-close-button`) that dialog, alert dialog and sheet opt into by class, next to `panel` and `panel-footer`.
+It keeps only the scrim, position, animation, close button and footer direction. A component sets its input tokens
+(`--modal-background`, `--modal-shadow`, `--modal-footer-direction`) on its own root.
 
 ### Recorded exceptions
 

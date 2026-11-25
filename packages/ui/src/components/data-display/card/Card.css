@@ -3,13 +3,8 @@
  * Header, title, description and action share their rules with Section (section.css).
  */
 .card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--panel-gap);
-  --inset: var(--panel-inset);
-  padding: var(--inset);
   overflow: hidden;
-  border-radius: var(--radius-surface-md);
+  border-radius: var(--panel-radius);
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);
@@ -22,10 +17,6 @@
   transition-timing-function: var(--default-transition-timing-function);
 }
 
-.card[data-size='sm'] {
-  --panel-inset: var(--panel-inset-compact);
-}
-
 /* bleed: direct first/last-child img or card-media */
 .card > img,
 .card > [data-slot='card-media'] {
@@ -35,15 +26,15 @@
 .card > img:first-child,
 .card > [data-slot='card-media']:first-child {
   margin-block-start: calc(var(--inset) * -1);
-  border-top-left-radius: var(--radius-surface-md);
-  border-top-right-radius: var(--radius-surface-md);
+  border-top-left-radius: var(--panel-radius);
+  border-top-right-radius: var(--panel-radius);
 }
 
 .card > img:last-child,
 .card > [data-slot='card-media']:last-child {
   margin-block-end: calc(var(--inset) * -1);
-  border-bottom-left-radius: var(--radius-surface-md);
-  border-bottom-right-radius: var(--radius-surface-md);
+  border-bottom-left-radius: var(--panel-radius);
+  border-bottom-right-radius: var(--panel-radius);
 }
 
 .card-header {
@@ -88,15 +79,7 @@
   opacity: 1;
 }
 
-/* footer band: top rule on the muted fill, bleeds to the bottom and sides, pads itself */
+/* the footer band comes from recipes/panel.css (.panel-footer) */
 .card-footer {
-  display: flex;
   align-items: center;
-  margin-inline: calc(var(--inset) * -1);
-  margin-block-end: calc(var(--inset) * -1);
-  padding: var(--panel-inset);
-  border-top: var(--border-width-thin) solid var(--border-surface);
-  border-bottom-left-radius: var(--radius-surface-md);
-  border-bottom-right-radius: var(--radius-surface-md);
-  background-color: var(--muted);
 }

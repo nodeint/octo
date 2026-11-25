@@ -1,0 +1,64 @@
+/*
+ * Panel: the flex column with an inset and a gap that card, dialog, alert dialog and sheet share, plus the
+ * footer band that bleeds past the inset. A component adds the classes and picks a size.
+ *
+ * Input tokens a component may set on its own root:
+ *   --panel-padding       replaces the shell padding (default: the inset), for a bare or re-padded panel
+ *   --panel-stack-gap     replaces the gap between parts (default: --panel-gap)
+ *
+ * Size set: data-panel-size picks --panel-inset, --panel-gap and --panel-radius (one scale for every panel). Without the attribute a panel is md.
+ * data-panel-size is separate from data-size, which components use for their own scales (dialog width, card density).
+ *   xs  --inset-xs  --gap-sm  --radius-panel-xs
+ *   sm  --inset-sm  --gap-md  --radius-panel-sm
+ *   md  --inset-md  --gap-md  --radius-panel-md
+ *   lg  --inset-lg  --gap-lg  --radius-panel-lg
+ * The steps live in layout/space.css and layout/radius.css. A component never declares --panel-inset, --panel-gap
+ * or --panel-radius; it reads --panel-radius for its own corners.
+ */
+.panel {
+  --panel-inset: var(--inset-md);
+  --panel-gap: var(--gap-md);
+  --panel-radius: var(--radius-panel-md);
+}
+
+.panel[data-panel-size='xs'] {
+  --panel-inset: var(--inset-xs);
+  --panel-gap: var(--gap-sm);
+  --panel-radius: var(--radius-panel-xs);
+}
+
+.panel[data-panel-size='sm'] {
+  --panel-inset: var(--inset-sm);
+  --panel-gap: var(--gap-md);
+  --panel-radius: var(--radius-panel-sm);
+}
+
+.panel[data-panel-size='lg'] {
+  --panel-inset: var(--inset-lg);
+  --panel-gap: var(--gap-lg);
+  --panel-radius: var(--radius-panel-lg);
+}
+
+/* Shell: parts stack with the gap, and --inset tells bleed regions how far to reach. */
+.panel {
+  display: flex;
+  flex-direction: column;
+  --inset: var(--panel-inset);
+  /* Initialized on every panel: custom properties inherit, so a bare panel's override must not reach a nested panel. */
+  --panel-stack-gap: var(--panel-gap);
+  --panel-padding: var(--inset);
+  gap: var(--panel-stack-gap);
+  padding: var(--panel-padding);
+}
+
+/* Footer band: top rule on the muted fill, bleeds to the bottom and sides, pads itself. */
+.panel-footer {
+  display: flex;
+  margin-inline: calc(var(--inset) * -1);
+  margin-block-end: calc(var(--inset) * -1);
+  padding: var(--panel-inset);
+  border-top: var(--border-width-thin) solid var(--border-surface);
+  border-bottom-left-radius: var(--panel-radius);
+  border-bottom-right-radius: var(--panel-radius);
+  background-color: var(--muted);
+}

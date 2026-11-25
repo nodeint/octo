@@ -2,6 +2,7 @@
   * Corner radius scale: --radius-xs · --radius-sm · --radius-md · --radius-lg. Plain steps with no meaning.
  * A component reads its set and never the scale, so one set decides the shape of a whole family.
  *   --radius-surface-*  every content surface and the rows inside it: card, pane, alert, item, menu row. xs … lg
+ *   --radius-panel-*    the corner of a panel (card, dialog, alert dialog, sheet) and its footer band; panel.css picks the step by data-panel-size. xs … lg
  *   --radius-overlay-*  the container of a floating layer only, never its children: xs = tooltip, sm = menu/select/popover, lg = dialog/sheet. xs … lg
  *   --radius-<part>     one control part with its own shape: defined per part in ../components.css
  *   --radius-field-*    text fields: input, select trigger. xs … lg follow --control-height-*; values come from the scale
@@ -32,6 +33,11 @@
   --radius-overlay-sm: var(--radius-sm);
   --radius-overlay-md: var(--radius-md);
   --radius-overlay-lg: var(--radius-lg);
+
+  --radius-panel-xs: var(--radius-xs);
+  --radius-panel-sm: var(--radius-sm);
+  --radius-panel-md: var(--radius-md);
+  --radius-panel-lg: var(--radius-lg);
 
   --radius-field-xs: var(--radius-xs);
   --radius-field-sm: var(--radius-sm);

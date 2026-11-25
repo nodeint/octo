@@ -54,7 +54,7 @@ function SheetContent({
         data-slot="sheet-content"
         data-side={side}
         data-variant={variant}
-        className={cn('modal-content sheet-content', className)}
+        className={cn('panel modal-content sheet-content', className)}
         {...props}
       >
         {children}
@@ -90,7 +90,7 @@ function SheetFooter({ className, ...props }: React.ComponentProps<'div'>): Reac
   return (
     <div
       data-slot="sheet-footer"
-      className={cn('modal-footer sheet-footer', className)}
+      className={cn('panel-footer modal-footer sheet-footer', className)}
       {...props}
     />
   );

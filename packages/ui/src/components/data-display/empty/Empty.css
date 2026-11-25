@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--panel-gap);
+  gap: var(--gap-md);
   width: 100%;
   min-width: 0;
   padding: var(--inset-xl);

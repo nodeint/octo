@@ -85,9 +85,9 @@
 
 /* no surface, gap, or edge: a pane paints the sheet and the sheet only insets it */
 .sheet-content[data-variant='bare'] {
-  --modal-gap: 0px;
+  --panel-stack-gap: 0px;
   --modal-background: transparent;
-  --modal-padding: var(--space-sm);
+  --panel-padding: var(--space-sm);
   /* The surface ring and the sheet shadow are both box-shadow. The pane paints its own. */
   --modal-shadow: none;
   border-width: 0;

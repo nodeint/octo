@@ -52,7 +52,7 @@ function AlertDialogContent({
         data-slot="alert-dialog-content"
         data-size={size}
         className={cn(
-          'modal-content modal-centered alert-dialog-content',
+          'panel modal-content modal-centered alert-dialog-content',
           className
         )}
         {...props}
@@ -85,7 +85,7 @@ function AlertDialogFooter({
     <div
       data-slot="alert-dialog-footer"
       className={cn(
-        'modal-footer alert-dialog-footer',
+        'panel-footer modal-footer alert-dialog-footer',
         className
       )}
       {...props}

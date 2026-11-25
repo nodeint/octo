@@ -3,7 +3,9 @@
  * alert dialog and sheet. A component adds the classes it needs. Keyframes live in overlay.css.
  *
  * Input tokens a component may set on its own root:
- *   --modal-background, --modal-shadow, --modal-gap, --modal-padding, --modal-footer-direction
+ *   --modal-background, --modal-shadow, --modal-footer-direction
+ * Shell layout, inset, gap and the footer band come from panel.css: a modal adds `panel` and `panel-footer`;
+ * its component sets, for a bare variant, --panel-stack-gap and --panel-padding.
  */
 
 /* Scrim paint. */
@@ -37,11 +39,6 @@
 .modal-content {
   position: fixed;
   z-index: var(--z-floating);
-  display: flex;
-  flex-direction: column;
-  gap: var(--modal-gap, var(--panel-gap));
-  --inset: var(--panel-inset);
-  padding: var(--modal-padding, var(--inset));
   background-color: var(--modal-background, var(--dialog));
   color: var(--foreground);
   box-shadow: var(--modal-shadow, 0 0 0 var(--border-width-thin) var(--border-surface));
@@ -54,7 +51,7 @@
   left: 50%;
   width: 100%;
   translate: -50% -50%;
-  border-radius: var(--radius-overlay-lg);
+  border-radius: var(--panel-radius);
   animation-duration: var(--motion-duration-fast);
 }
 
@@ -76,18 +73,10 @@
   }
 }
 
-/* Panel footer band. */
+/* Footer direction; the band itself is .panel-footer. */
 .modal-footer {
-  display: flex;
   flex-direction: var(--modal-footer-direction, column-reverse);
   gap: var(--space-xs);
-  margin-inline: calc(var(--inset) * -1);
-  margin-block-end: calc(var(--inset) * -1);
-  padding: var(--panel-inset);
-  border-top: var(--border-width-thin) solid var(--border-surface);
-  border-bottom-left-radius: var(--radius-overlay-lg);
-  border-bottom-right-radius: var(--radius-overlay-lg);
-  background-color: var(--muted);
 }
 
 @media (min-width: 40rem) {
