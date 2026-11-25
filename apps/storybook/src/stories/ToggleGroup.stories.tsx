@@ -180,7 +180,7 @@ function FontWeightSelector(args: React.ComponentProps<typeof ToggleGroup>): Rea
             }}
           >
             <span style={{ fontSize: '1.5rem', lineHeight: 1, fontWeight: item.weight }}>Aa</span>
-            <span style={{ fontSize: '0.75rem', color: 'var(--variant-fg-secondary)' }}>{item.label}</span>
+            <span style={{ fontSize: '0.75rem', color: 'var(--variant-fg-subtle)' }}>{item.label}</span>
           </Toggle>
         ))}
       </ToggleGroup>

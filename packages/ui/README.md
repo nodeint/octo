@@ -79,7 +79,7 @@ Read direction:
 
 `media.css` is the `media-frame` skin shared by the media parts of media, empty, item, attachment and alert dialog.
 A part sets `--media-size` (or `--media-width` and `--media-height`), `--media-radius`, `--media-background`,
-`--media-foreground` and `--media-icon-size` on its own root, and an image part adds `data-media-fit="image"`.
+`--media-fg` and `--media-icon-size` on its own root, and an image part adds `data-media-fit="image"`.
 
 `row.css` is the `row` skin: the strip of media, content and actions that item, attachment and alert share, and the
 title and description text that alert, empty, popover, section and card also add (`row-title`, `row-description`).
@@ -122,7 +122,7 @@ An exception applies only while a migration is in progress. A new exception need
 
 - Tokens live in three axes: `theme/` (color and elevation), `layout/` (size, space, radius, border widths, motion,
   z-index, opacity), and `typography.css`. An axis file reads only its own axis, except `typography.css`,
-  which reads the `--foreground-*` text colors from `theme/`.
+  which reads the `--fg-*` text colors from `theme/`.
 - `theme/swatches.css` and `theme/base.css` are raw color scales. The other `theme/` files build roles on them;
   components, recipes, `base.css`, and `utilities.css` read the roles, never a raw step.
 - `components.css` holds per-part tokens: switch, radio, checkbox, slider, avatar, scrollbar, tooltip, floating,

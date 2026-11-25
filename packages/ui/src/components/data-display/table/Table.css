@@ -57,7 +57,7 @@
   line-height: var(--role-label-leading);
   font-weight: var(--role-label-weight);
   white-space: nowrap;
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 .table-cell {
@@ -76,7 +76,7 @@
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);
   font-weight: var(--role-description-weight);
-  color: var(--variant-fg-secondary);
+  color: var(--variant-fg-subtle);
 }
 
 .data-table {

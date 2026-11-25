@@ -55,12 +55,12 @@
 
 .attachment[data-state='error'] .attachment-media {
   --media-background: var(--destructive-subtle);
-  --media-foreground: var(--destructive-subtle-foreground);
+  --media-fg: var(--destructive-subtle-fg);
 }
 
 .attachment[data-state='error'] {
-  --row-description-color: var(--destructive-subtle-foreground);
-  --row-meta-color: var(--destructive-subtle-foreground);
+  --row-description-color: var(--destructive-subtle-fg);
+  --row-meta-color: var(--destructive-subtle-fg);
 }
 
 .attachment[data-orientation='vertical'] .attachment-content {

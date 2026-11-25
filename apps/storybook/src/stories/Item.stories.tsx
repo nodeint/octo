@@ -272,7 +272,7 @@ export const WithImage: Story = {
           <ItemContent>
             <ItemTitle>
               {song.title} -{' '}
-              <span style={{ color: 'var(--variant-fg-secondary)' }}>{song.album}</span>
+              <span style={{ color: 'var(--variant-fg-subtle)' }}>{song.album}</span>
             </ItemTitle>
             <ItemDescription>{song.artist}</ItemDescription>
           </ItemContent>

@@ -5,7 +5,7 @@
  * and dark; the roles below pick a different step per mode. The steps alias one gray-family swatch, so the tint is
  * defined in swatches.css only. data-appearance-base rebinds the whole scale to another gray hue (appearance/base.css).
  *
- * Roles: a neutral surface has no foreground of its own: text on it reads the foreground-* ladder.
+ * Roles: a neutral surface has no fg of its own: text on it reads the fg-* ladder.
  * Only a solid emphasis fill keeps an on-fill pair: primary, primary-subtle, and the statuses.
  */
 :root {
@@ -24,27 +24,27 @@
   --base-900: var(--gray-900);
   --base-950: var(--gray-950);
   --base-strong: var(--gray-strong);
-  --base-strong-foreground: var(--gray-strong-foreground);
-  --base-strong-foreground-subtle: var(--gray-strong-foreground-subtle);
-  --base-strong-foreground-muted: var(--gray-strong-foreground-muted);
+  --base-strong-fg: var(--gray-strong-fg);
+  --base-strong-fg-subtle: var(--gray-strong-fg-subtle);
+  --base-strong-fg-muted: var(--gray-strong-fg-muted);
   --base-strong-hover: var(--gray-strong-hover);
   --base-strong-disabled: var(--gray-strong-disabled);
   --base-subtle: var(--gray-subtle);
-  --base-subtle-foreground: var(--gray-subtle-foreground);
-  --base-subtle-foreground-subtle: var(--gray-subtle-foreground-subtle);
-  --base-subtle-foreground-muted: var(--gray-subtle-foreground-muted);
+  --base-subtle-fg: var(--gray-subtle-fg);
+  --base-subtle-fg-subtle: var(--gray-subtle-fg-subtle);
+  --base-subtle-fg-muted: var(--gray-subtle-fg-muted);
   --base-subtle-pressed: var(--gray-subtle-pressed);
   --base-subtle-hover: var(--gray-subtle-hover);
   --base-subtle-disabled: var(--gray-subtle-disabled);
-  --base-plain-foreground: var(--gray-plain-foreground);
+  --base-plain-fg: var(--gray-plain-fg);
   --base-plain-border: var(--gray-plain-border);
   --base-plain-border-disabled: var(--gray-plain-border-disabled);
-  --base-plain-foreground-subtle: var(--gray-plain-foreground-subtle);
-  --base-plain-foreground-muted: var(--gray-plain-foreground-muted);
+  --base-plain-fg-subtle: var(--gray-plain-fg-subtle);
+  --base-plain-fg-muted: var(--gray-plain-fg-muted);
   --base-surface: var(--gray-surface);
-  --base-surface-foreground: var(--gray-surface-foreground);
-  --base-surface-foreground-subtle: var(--gray-surface-foreground-subtle);
-  --base-surface-foreground-muted: var(--gray-surface-foreground-muted);
+  --base-surface-fg: var(--gray-surface-fg);
+  --base-surface-fg-subtle: var(--gray-surface-fg-subtle);
+  --base-surface-fg-muted: var(--gray-surface-fg-muted);
   --base-surface-border: var(--gray-surface-border);
 
   --background: var(--base-50);
@@ -58,49 +58,47 @@
   --overlay: oklch(0 0 0 / 10%);
 
   --border: var(--base-300);
-  --border-surface: oklch(from var(--foreground) l c h / 25%);
+  --border-surface: oklch(from var(--fg) l c h / 25%);
 
   --ring: var(--primary-strong);
 
   /*
-  * Foreground: the text and glyph axis. Aliases only. Raw oklch stays in the scale files.
+  * fg: the text and glyph axis. Aliases only. Raw oklch stays in the scale files.
   * One ladder for every neutral surface. A surface role carries no text color of its own.
   * Each step reads at 4.5:1 on the surfaces it is documented for.
-  *   foreground   body text, titles, and a control that is hovered, selected, or pressed
-  *   foreground-muted     secondary text, descriptions, and a navigation row or quiet control at rest
-  *   foreground-subtle    placeholders, section labels, and metadata that the page can do without
-  *   foreground-disabled  a disabled control. Not content
-  * A solid emphasis fill (primary, a status) keeps its own on-fill pair: `*-foreground`.
+  *   fg   body text, titles, and a control that is hovered, selected, or pressed
+  *   fg-muted     secondary text, descriptions, and a navigation row or quiet control at rest
+  *   fg-subtle    placeholders, section labels, and metadata that the page can do without
+  * A solid emphasis fill (primary, a status) keeps its own on-fill pair: `*-fg`.
   */
-  --foreground: var(--base-900);
-  --foreground-subtle: var(--base-700);
-  --foreground-muted: var(--base-600);
-  --foreground-disabled: var(--base-500);
+  --fg: var(--base-900);
+  --fg-subtle: var(--base-700);
+  --fg-muted: var(--base-600);
 }
 
 .dark {
   --base-strong: var(--gray-strong);
-  --base-strong-foreground: var(--gray-strong-foreground);
-  --base-strong-foreground-subtle: var(--gray-strong-foreground-subtle);
-  --base-strong-foreground-muted: var(--gray-strong-foreground-muted);
+  --base-strong-fg: var(--gray-strong-fg);
+  --base-strong-fg-subtle: var(--gray-strong-fg-subtle);
+  --base-strong-fg-muted: var(--gray-strong-fg-muted);
   --base-strong-hover: var(--gray-strong-hover);
   --base-strong-disabled: var(--gray-strong-disabled);
   --base-subtle: var(--gray-subtle);
-  --base-subtle-foreground: var(--gray-subtle-foreground);
-  --base-subtle-foreground-subtle: var(--gray-subtle-foreground-subtle);
-  --base-subtle-foreground-muted: var(--gray-subtle-foreground-muted);
+  --base-subtle-fg: var(--gray-subtle-fg);
+  --base-subtle-fg-subtle: var(--gray-subtle-fg-subtle);
+  --base-subtle-fg-muted: var(--gray-subtle-fg-muted);
   --base-subtle-pressed: var(--gray-subtle-pressed);
   --base-subtle-hover: var(--gray-subtle-hover);
   --base-subtle-disabled: var(--gray-subtle-disabled);
-  --base-plain-foreground: var(--gray-plain-foreground);
+  --base-plain-fg: var(--gray-plain-fg);
   --base-plain-border: var(--gray-plain-border);
   --base-plain-border-disabled: var(--gray-plain-border-disabled);
-  --base-plain-foreground-subtle: var(--gray-plain-foreground-subtle);
-  --base-plain-foreground-muted: var(--gray-plain-foreground-muted);
+  --base-plain-fg-subtle: var(--gray-plain-fg-subtle);
+  --base-plain-fg-muted: var(--gray-plain-fg-muted);
   --base-surface: var(--gray-surface);
-  --base-surface-foreground: var(--gray-surface-foreground);
-  --base-surface-foreground-subtle: var(--gray-surface-foreground-subtle);
-  --base-surface-foreground-muted: var(--gray-surface-foreground-muted);
+  --base-surface-fg: var(--gray-surface-fg);
+  --base-surface-fg-subtle: var(--gray-surface-fg-subtle);
+  --base-surface-fg-muted: var(--gray-surface-fg-muted);
   --base-surface-border: var(--gray-surface-border);
 
   --overlay: oklch(0 0 0 / 30%);
@@ -117,8 +115,7 @@
 
   --border: var(--base-500);
 
-  --foreground: var(--base-100);
-  --foreground-subtle: var(--base-300);
-  --foreground-muted: var(--base-400);
-  --foreground-disabled: var(--base-500);
+  --fg: var(--base-100);
+  --fg-subtle: var(--base-300);
+  --fg-muted: var(--base-400);
 }

@@ -46,7 +46,7 @@
   background-color: var(--muted);
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);
-  color: var(--variant-fg-secondary);
+  color: var(--variant-fg-subtle);
 }
 
 .avatar[data-size='sm'] .avatar-fallback {
@@ -64,7 +64,7 @@
   justify-content: center;
   border-radius: var(--avatar-badge-radius);
   background-color: var(--primary-strong);
-  color: var(--primary-strong-foreground);
+  color: var(--primary-strong-fg);
   box-shadow: 0 0 0 var(--border-width-thick) var(--background);
   user-select: none;
 }
@@ -114,7 +114,7 @@
   background-color: var(--muted);
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);
-  color: var(--variant-fg-secondary);
+  color: var(--variant-fg-subtle);
   box-shadow: 0 0 0 var(--border-width-thick) var(--background);
 }
 

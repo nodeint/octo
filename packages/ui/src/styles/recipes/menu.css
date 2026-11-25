@@ -41,21 +41,21 @@
 
 .menu-row:is(:hover, :focus) {
   background-color: var(--accent);
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 .menu-item:not([data-variant='destructive']):focus > svg {
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 .menu-sub-trigger:is([data-popup-open], [data-open]) {
   background-color: var(--accent);
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 :is(.menu-item, .menu-checkable)[data-disabled]:not([data-disabled='false']) {
   pointer-events: none;
-  color: var(--foreground-disabled);
+  color: var(--fg-muted);
 }
 
 /* destructive */
@@ -65,7 +65,7 @@
 
 .menu-item[data-variant='destructive']:focus {
   background-color: var(--destructive-subtle);
-  color: var(--destructive-subtle-foreground);
+  color: var(--destructive-subtle-fg);
 }
 
 /* Glyph and shortcut follow the row colour, including the focused state. */
@@ -140,11 +140,11 @@
   font-size: var(--role-caption-size);
   line-height: var(--role-caption-leading);
   font-weight: var(--role-caption-weight);
-  color: var(--variant-fg-secondary);
+  color: var(--variant-fg-subtle);
 }
 
 :focus > .menu-shortcut {
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 /* A glyph pushed to the end of a menu row. */

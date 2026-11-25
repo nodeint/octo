@@ -7,7 +7,7 @@
  * control and radius scales, as data-action-size does for an action. Tokens inherit, so a parent (item, attachment)
  * that carries data-media-size hands its step to the media inside it, and a media never names its parent.
  * A component overrides only what differs on its own root: --media-width, --media-height, --media-radius,
- * --media-icon-size, --media-background, --media-foreground. Without a step the frame is as big as its content.
+ * --media-icon-size, --media-background, --media-fg. Without a step the frame is as big as its content.
  * Spacing to neighbors and any grid placement stay with the component.
  */
 [data-media-size='xs'] {
@@ -49,7 +49,7 @@
   height: var(--media-height, var(--media-size, auto));
   border-radius: var(--media-radius, var(--radius-surface-md));
   background-color: var(--media-background, var(--muted));
-  color: var(--media-foreground, var(--foreground));
+  color: var(--media-fg, var(--fg));
 }
 
 /* Glyph size inside the frame. --icon-size is what Spinner and Icon read. A size-* class on the svg opts out. */

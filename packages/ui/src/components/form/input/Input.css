@@ -18,5 +18,5 @@
   font-size: var(--role-label-size);
   line-height: var(--role-label-leading);
   font-weight: var(--role-label-weight);
-  color: var(--foreground);
+  color: var(--fg);
 }

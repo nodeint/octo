@@ -94,8 +94,8 @@
   --popover: var(--base-900);
 
   /* Switch */
-  --switch-thumb-checked-background: var(--primary-strong-foreground);
-  --switch-thumb-unchecked-background: var(--foreground);
+  --switch-thumb-checked-background: var(--primary-strong-fg);
+  --switch-thumb-unchecked-background: var(--fg);
 
   /* Radio */
   --radio-background: var(--muted);

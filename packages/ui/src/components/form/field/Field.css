@@ -109,7 +109,7 @@
 
 /* disabled: a host attribute, not group-data on children */
 .field[data-disabled='true'] :is([data-slot='field-label'], .field-title) {
-  color: var(--foreground-disabled);
+  color: var(--fg-muted);
 }
 
 .field-content {
@@ -126,7 +126,7 @@
 }
 
 .field-label:has([data-checked]) {
-  border-color: var(--primary-subtle-foreground);
+  border-color: var(--primary-subtle-fg);
   background-color: var(--primary-subtle);
 }
 
@@ -156,7 +156,7 @@
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);
   font-weight: var(--role-description-weight);
-  color: var(--variant-fg-secondary);
+  color: var(--variant-fg-subtle);
 }
 
 [data-variant='legend'] + .field-description,
@@ -200,7 +200,7 @@
   margin-inline: auto;
   padding-inline: var(--space-sm);
   background-color: var(--background);
-  color: var(--foreground-muted);
+  color: var(--fg-muted);
 }
 
 /* The rule drawn behind the separator text. */

@@ -39,7 +39,7 @@
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);
-  color: var(--foreground-muted);
+  color: var(--fg-muted);
   transition-property: color;
   transition-duration: var(--motion-duration-fast);
   transition-timing-function: var(--default-transition-timing-function);
@@ -51,7 +51,7 @@
 
 :where(a, button):hover .trace-line,
 .trace-collapsible-trigger[data-panel-open] > .trace-line {
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 .trace-line[data-status='error'],
@@ -60,7 +60,7 @@
 }
 
 .trace-line[data-emphasis='quiet']:not([data-status='error']) > [data-slot='trace-icon'] {
-  color: var(--foreground-subtle);
+  color: var(--fg-subtle);
 }
 
 .trace-line[data-emphasis='strong']:not([data-status='error']) > [data-slot='trace-icon'] {
@@ -114,7 +114,7 @@
   font-size: var(--role-caption-size);
   line-height: var(--role-caption-leading);
   font-weight: var(--role-caption-weight);
-  color: var(--foreground-subtle);
+  color: var(--fg-subtle);
   font-variant-numeric: tabular-nums;
 }
 
@@ -132,7 +132,7 @@
   min-width: 0;
   border-radius: var(--radius-xs);
   text-align: start;
-  color: var(--foreground-muted);
+  color: var(--fg-muted);
   cursor: pointer;
   outline: none;
   transition-property: color;
@@ -148,7 +148,7 @@
 
 .trace-collapsible-trigger:hover,
 .trace-collapsible-trigger[data-panel-open] {
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 .trace-collapsible-trigger:has([data-status='error']) {
@@ -178,7 +178,7 @@
   overflow-wrap: anywhere;
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
-  color: var(--foreground-muted);
+  color: var(--fg-muted);
 }
 
 @media (prefers-reduced-motion: reduce) {

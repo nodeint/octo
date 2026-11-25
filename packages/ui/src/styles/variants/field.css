@@ -11,8 +11,8 @@
   --variant-bg-disabled: var(--disabled);
 
   --variant-fg: currentcolor;
-  --variant-fg-secondary: var(--foreground-muted);
-  --variant-fg-muted: var(--foreground-subtle);
+  --variant-fg-subtle: var(--fg-muted);
+  --variant-fg-muted: var(--fg-subtle);
   --variant-fg-hover: currentcolor;
   --variant-fg-focus: currentcolor;
 

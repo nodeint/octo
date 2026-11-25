@@ -321,7 +321,7 @@ export const ICON_MAP: Record<IconName, LucideIcon> = {
 
 /**
  * Closed named color swatches — must match `styles/theme/swatches.css`
- * (4 slots per hue: solid · solid-foreground · subtle · subtle-foreground).
+ * (4 slots per hue: solid · solid-fg · subtle · subtle-fg).
  *
  * Grow explicitly: add hue in swatches.css + here in the same PR.
  * Consumers store {@link ColorName} ids only — no raw hex in product data.

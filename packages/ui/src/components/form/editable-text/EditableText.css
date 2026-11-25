@@ -16,7 +16,7 @@
   border-width: 0 0 2px;
   border-style: solid;
   border-color: transparent;
-  color: var(--foreground);
+  color: var(--fg);
   outline: none;
 }
 

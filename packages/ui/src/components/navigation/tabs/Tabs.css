@@ -18,7 +18,7 @@
   width: fit-content;
   padding: var(--space-xs);
   border-radius: var(--radius-surface-md);
-  color: var(--foreground-muted);
+  color: var(--fg-muted);
 }
 
 .tabs-list[data-variant='default'] {
@@ -56,7 +56,7 @@
   line-height: var(--role-label-leading);
   font-weight: var(--role-label-weight);
   white-space: nowrap;
-  color: var(--foreground-muted);
+  color: var(--fg-muted);
   outline: none;
   transition-property: color, background-color, border-color, box-shadow, opacity;
   transition-duration: var(--default-transition-duration);
@@ -64,7 +64,7 @@
 }
 
 .tabs-trigger:hover {
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 .tabs-trigger[data-active] {
@@ -80,12 +80,12 @@
 .tabs-trigger:disabled,
 .tabs-trigger[aria-disabled='true'] {
   pointer-events: none;
-  color: var(--foreground-disabled);
+  color: var(--fg-muted);
 }
 
 .tabs-trigger[data-active] {
   background-color: var(--tab-active-background);
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 .tabs-trigger[data-active]:focus-visible {
@@ -106,7 +106,7 @@
 .tabs-trigger::after {
   content: '';
   position: absolute;
-  background-color: var(--foreground);
+  background-color: var(--fg);
   opacity: 0;
   transition-property: opacity;
   transition-duration: var(--default-transition-duration);

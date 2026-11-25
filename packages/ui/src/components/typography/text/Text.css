@@ -80,14 +80,14 @@
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);
   font-weight: var(--role-description-weight);
-  color: var(--variant-fg-secondary);
+  color: var(--variant-fg-subtle);
 }
 
 .text[data-variant='caption'] {
   font-size: var(--role-caption-size);
   line-height: var(--role-caption-leading);
   font-weight: var(--role-caption-weight);
-  color: var(--variant-fg-secondary);
+  color: var(--variant-fg-subtle);
 }
 
 .text[data-variant='code'] {

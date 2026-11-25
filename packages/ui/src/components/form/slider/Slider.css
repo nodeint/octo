@@ -10,7 +10,7 @@
 
 .slider:has(input:disabled) {
   pointer-events: none;
-  color: var(--foreground-disabled);
+  color: var(--fg-muted);
   opacity: var(--opacity-dim);
 }
 

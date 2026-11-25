@@ -77,7 +77,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   background-color: var(--popover);
-  color: var(--foreground);
+  color: var(--fg);
   box-shadow: 0 0 0 var(--border-width-thin) var(--border-surface);
   outline: none;
 }
@@ -91,7 +91,7 @@
   font-size: var(--role-caption-size);
   line-height: var(--role-caption-leading);
   font-weight: var(--role-caption-weight);
-  color: var(--variant-fg-secondary);
+  color: var(--variant-fg-subtle);
 }
 
 .select-item {
@@ -111,12 +111,12 @@
 
 .select-item:is(:hover, :focus) {
   background-color: var(--accent);
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 .select-item[data-disabled]:not([data-disabled='false']) {
   pointer-events: none;
-  color: var(--foreground-disabled);
+  color: var(--fg-muted);
 }
 
 .select-item svg {

@@ -21,7 +21,7 @@
   --row-description-size: var(--role-description-size);
   --row-description-leading: var(--role-description-leading);
   --row-description-weight: var(--role-description-weight);
-  --row-description-type-color: var(--variant-fg-secondary);
+  --row-description-type-color: var(--variant-fg-subtle);
   --row-description-lines: 3;
 }
 
@@ -33,7 +33,7 @@
   --row-description-size: var(--role-description-size);
   --row-description-leading: var(--role-description-leading);
   --row-description-weight: var(--role-description-weight);
-  --row-description-type-color: var(--variant-fg-secondary);
+  --row-description-type-color: var(--variant-fg-subtle);
   --row-description-lines: 2;
 }
 
@@ -45,7 +45,7 @@
   --row-description-size: var(--role-caption-size);
   --row-description-leading: var(--role-caption-leading);
   --row-description-weight: var(--role-caption-weight);
-  --row-description-type-color: var(--variant-fg-secondary);
+  --row-description-type-color: var(--variant-fg-subtle);
   --row-description-lines: 1;
 }
 
@@ -107,14 +107,14 @@
   background-color: var(--variant-bg-hover, var(--accent));
 }
 
-/* A selected row reads the active slots of its paint; everything on the fill reads the foreground. */
+/* A selected row reads the active slots of its paint; everything on the fill reads the fg. */
 .row[aria-selected='true'] {
   background-color: var(--variant-bg-active, var(--accent));
-  color: var(--variant-fg-active, var(--foreground));
+  color: var(--variant-fg-active, var(--fg));
 }
 
 .row[aria-selected='true'] :is(.row-description, .row-meta) {
-  color: var(--variant-fg-active, var(--foreground));
+  color: var(--variant-fg-active, var(--fg));
 }
 
 .row:focus-visible,
@@ -198,7 +198,7 @@
   font-size: var(--row-description-size, var(--role-description-size));
   line-height: var(--row-description-leading, var(--role-description-leading));
   font-weight: var(--row-description-weight, var(--role-description-weight));
-  color: var(--row-description-color, var(--row-description-type-color, var(--foreground-muted)));
+  color: var(--row-description-color, var(--row-description-type-color, var(--fg-muted)));
 }
 
 .row-description > a {
@@ -219,7 +219,7 @@
   font-size: var(--role-caption-size);
   line-height: var(--role-caption-leading);
   font-weight: var(--role-caption-weight);
-  color: var(--row-meta-color, var(--variant-fg-secondary));
+  color: var(--row-meta-color, var(--variant-fg-subtle));
 }
 
 .row-actions {

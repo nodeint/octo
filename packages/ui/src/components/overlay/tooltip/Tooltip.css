@@ -6,7 +6,7 @@
   min-width: 0;
   max-width: var(--overlay-sm);
   padding: var(--space-xs) var(--space-md);
-  background-color: var(--foreground);
+  background-color: var(--fg);
   box-shadow: none;
   font-size: var(--role-body-sm-size);
   line-height: var(--role-body-sm-leading);
@@ -32,8 +32,8 @@
   translate: 0 calc(-50% - var(--tooltip-arrow-inset));
   rotate: 45deg;
   border-radius: var(--tooltip-arrow-radius);
-  background-color: var(--foreground);
-  fill: var(--foreground);
+  background-color: var(--fg);
+  fill: var(--fg);
 }
 
 .tooltip-arrow[data-side='bottom'] {

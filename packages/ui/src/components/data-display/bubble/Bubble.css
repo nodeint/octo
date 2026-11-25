@@ -59,27 +59,27 @@
 
 .bubble[data-variant='default'] > .bubble-content {
   background-color: var(--primary-strong);
-  color: var(--primary-strong-foreground);
+  color: var(--primary-strong-fg);
 }
 
 .bubble[data-variant='secondary'] > .bubble-content {
   background-color: var(--secondary);
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 .bubble[data-variant='muted'] > .bubble-content {
   background-color: var(--muted);
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 .bubble[data-variant='tinted'] > .bubble-content {
   background-color: var(--primary-subtle);
-  color: var(--primary-subtle-foreground);
+  color: var(--primary-subtle-fg);
 }
 
 .bubble[data-variant='outline'] > .bubble-content {
   background-color: var(--card);
-  color: var(--foreground);
+  color: var(--fg);
   box-shadow: 0 0 0 var(--border-width-thin) var(--border);
 }
 
@@ -92,7 +92,7 @@
 
 .bubble[data-variant='destructive'] > .bubble-content {
   background-color: var(--destructive-subtle);
-  color: var(--destructive-subtle-foreground);
+  color: var(--destructive-subtle-fg);
 }
 
 .bubble-group {

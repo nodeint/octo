@@ -7,7 +7,7 @@
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);
   font-weight: var(--role-description-weight);
-  color: var(--variant-fg-secondary);
+  color: var(--variant-fg-subtle);
 }
 
 .breadcrumb-item {
@@ -23,11 +23,11 @@
 }
 
 .breadcrumb-link:hover {
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 .breadcrumb-page {
-  color: var(--foreground);
+  color: var(--fg);
 }
 
 .breadcrumb-separator > svg {

@@ -36,7 +36,7 @@
   border: var(--border-width-thin) solid var(--group-border);
   border-radius: var(--group-radius);
   background-color: var(--group-bg);
-  color: var(--foreground);
+  color: var(--fg);
 
   /* A vertical rail grows with its items and is block-shaped. */
   &[data-orientation='vertical'] {
@@ -53,7 +53,7 @@
 
   &[data-disabled] {
     pointer-events: none;
-    color: var(--foreground-disabled);
+    color: var(--fg-muted);
   }
 
   /*
@@ -94,11 +94,11 @@
   align-items: center;
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);
-  color: var(--variant-fg-secondary);
+  color: var(--variant-fg-subtle);
   text-underline-offset: 4px;
 
   &:hover {
-    color: var(--foreground);
+    color: var(--fg);
     text-decoration-line: underline;
   }
 }
