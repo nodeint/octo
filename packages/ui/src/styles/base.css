@@ -11,8 +11,8 @@
 
   --variant-ring: var(--state-focus-border);
   --variant-fg: var(--base-plain-fg);
-  --variant-fg-subtle: var(--base-border-subtle);
-  --variant-fg-muted: var(--base-border-muted);
+  --variant-fg-subtle: var(--base-plain-fg-subtle);
+  --variant-fg-muted: var(--base-plain-fg-muted);
 }
 
 *,

@@ -1,9 +1,10 @@
 /*
  * Base axis: data-appearance-base = a gray-family swatch id | omit (gray).
- * Rebinds the 11 base steps to that hue, so every surface, border, and text role retints with it.
+ * Rebinds the 13 base steps to that hue, so every surface, border, and text role retints with it.
  */
 :root[data-appearance-base='slate'],
 :root[data-appearance-base='slate'] .dark {
+  --base-0: var(--slate-0);
   --base-50: var(--slate-50);
   --base-100: var(--slate-100);
   --base-200: var(--slate-200);
@@ -15,6 +16,7 @@
   --base-800: var(--slate-800);
   --base-900: var(--slate-900);
   --base-950: var(--slate-950);
+  --base-1000: var(--slate-1000);
   --base-strong-bg: var(--slate-strong-bg);
   --base-strong-fg: var(--slate-strong-fg);
   --base-strong-fg-subtle: var(--slate-strong-fg-subtle);
@@ -49,6 +51,7 @@
 
 :root[data-appearance-base='gray'],
 :root[data-appearance-base='gray'] .dark {
+  --base-0: var(--gray-0);
   --base-50: var(--gray-50);
   --base-100: var(--gray-100);
   --base-200: var(--gray-200);
@@ -60,6 +63,7 @@
   --base-800: var(--gray-800);
   --base-900: var(--gray-900);
   --base-950: var(--gray-950);
+  --base-1000: var(--gray-1000);
   --base-strong-bg: var(--gray-strong-bg);
   --base-strong-fg: var(--gray-strong-fg);
   --base-strong-fg-subtle: var(--gray-strong-fg-subtle);
@@ -94,6 +98,7 @@
 
 :root[data-appearance-base='neutral'],
 :root[data-appearance-base='neutral'] .dark {
+  --base-0: var(--neutral-0);
   --base-50: var(--neutral-50);
   --base-100: var(--neutral-100);
   --base-200: var(--neutral-200);
@@ -105,6 +110,7 @@
   --base-800: var(--neutral-800);
   --base-900: var(--neutral-900);
   --base-950: var(--neutral-950);
+  --base-1000: var(--neutral-1000);
   --base-strong-bg: var(--neutral-strong-bg);
   --base-strong-fg: var(--neutral-strong-fg);
   --base-strong-fg-subtle: var(--neutral-strong-fg-subtle);
@@ -139,6 +145,7 @@
 
 :root[data-appearance-base='zinc'],
 :root[data-appearance-base='zinc'] .dark {
+  --base-0: var(--zinc-0);
   --base-50: var(--zinc-50);
   --base-100: var(--zinc-100);
   --base-200: var(--zinc-200);
@@ -150,6 +157,7 @@
   --base-800: var(--zinc-800);
   --base-900: var(--zinc-900);
   --base-950: var(--zinc-950);
+  --base-1000: var(--zinc-1000);
   --base-strong-bg: var(--zinc-strong-bg);
   --base-strong-fg: var(--zinc-strong-fg);
   --base-strong-fg-subtle: var(--zinc-strong-fg-subtle);
@@ -184,6 +192,7 @@
 
 :root[data-appearance-base='stone'],
 :root[data-appearance-base='stone'] .dark {
+  --base-0: var(--stone-0);
   --base-50: var(--stone-50);
   --base-100: var(--stone-100);
   --base-200: var(--stone-200);
@@ -195,6 +204,7 @@
   --base-800: var(--stone-800);
   --base-900: var(--stone-900);
   --base-950: var(--stone-950);
+  --base-1000: var(--stone-1000);
   --base-strong-bg: var(--stone-strong-bg);
   --base-strong-fg: var(--stone-strong-fg);
   --base-strong-fg-subtle: var(--stone-strong-fg-subtle);
@@ -229,6 +239,7 @@
 
 :root[data-appearance-base='mauve'],
 :root[data-appearance-base='mauve'] .dark {
+  --base-0: var(--mauve-0);
   --base-50: var(--mauve-50);
   --base-100: var(--mauve-100);
   --base-200: var(--mauve-200);
@@ -240,6 +251,7 @@
   --base-800: var(--mauve-800);
   --base-900: var(--mauve-900);
   --base-950: var(--mauve-950);
+  --base-1000: var(--mauve-1000);
   --base-strong-bg: var(--mauve-strong-bg);
   --base-strong-fg: var(--mauve-strong-fg);
   --base-strong-fg-subtle: var(--mauve-strong-fg-subtle);
@@ -274,6 +286,7 @@
 
 :root[data-appearance-base='olive'],
 :root[data-appearance-base='olive'] .dark {
+  --base-0: var(--olive-0);
   --base-50: var(--olive-50);
   --base-100: var(--olive-100);
   --base-200: var(--olive-200);
@@ -285,6 +298,7 @@
   --base-800: var(--olive-800);
   --base-900: var(--olive-900);
   --base-950: var(--olive-950);
+  --base-1000: var(--olive-1000);
   --base-strong-bg: var(--olive-strong-bg);
   --base-strong-fg: var(--olive-strong-fg);
   --base-strong-fg-subtle: var(--olive-strong-fg-subtle);
@@ -319,6 +333,7 @@
 
 :root[data-appearance-base='mist'],
 :root[data-appearance-base='mist'] .dark {
+  --base-0: var(--mist-0);
   --base-50: var(--mist-50);
   --base-100: var(--mist-100);
   --base-200: var(--mist-200);
@@ -330,6 +345,7 @@
   --base-800: var(--mist-800);
   --base-900: var(--mist-900);
   --base-950: var(--mist-950);
+  --base-1000: var(--mist-1000);
   --base-strong-bg: var(--mist-strong-bg);
   --base-strong-fg: var(--mist-strong-fg);
   --base-strong-fg-subtle: var(--mist-strong-fg-subtle);
@@ -364,6 +380,7 @@
 
 :root[data-appearance-base='taupe'],
 :root[data-appearance-base='taupe'] .dark {
+  --base-0: var(--taupe-0);
   --base-50: var(--taupe-50);
   --base-100: var(--taupe-100);
   --base-200: var(--taupe-200);
@@ -375,6 +392,7 @@
   --base-800: var(--taupe-800);
   --base-900: var(--taupe-900);
   --base-950: var(--taupe-950);
+  --base-1000: var(--taupe-1000);
   --base-strong-bg: var(--taupe-strong-bg);
   --base-strong-fg: var(--taupe-strong-fg);
   --base-strong-fg-subtle: var(--taupe-strong-fg-subtle);

@@ -72,7 +72,7 @@
   --variant-bg-hover: var(--base-surface-bg-hover);
   --variant-bg-active: var(--base-surface-bg-active);
   --variant-bg-disabled: var(--base-surface-bg-disabled);
-  --variant-fg: var(--base-plain-fg);
+  --variant-fg: var(--base-surface-fg);
   --variant-fg-subtle: var(--base-surface-fg-subtle);
   --variant-fg-muted: var(--base-surface-fg-muted);
   --variant-border: var(--base-border);

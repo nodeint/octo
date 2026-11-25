@@ -19,9 +19,9 @@
  */
 
 :root {
-  --card: var(--base-light);
-  --dialog: var(--base-light);
-  --popover: var(--base-light);
+  --card: var(--base-0);
+  --dialog: var(--base-0);
+  --popover: var(--base-0);
 
   /* Switch: track and thumb, per switch size */
   --switch-track-height-md: 1.25rem;

@@ -6,13 +6,19 @@
 :root {
   --primary-strong-bg: var(--teal-strong-bg);
   --primary-strong-bg-hover: var(--teal-strong-bg-hover);
+  --primary-strong-bg-disabled: var(--teal-strong-bg-disabled);
   --primary-strong-fg: var(--teal-strong-fg);
   --primary-strong-fg-subtle: var(--teal-strong-fg-subtle);
   --primary-strong-fg-muted: var(--teal-strong-fg-muted);
+
   --primary-subtle-bg: var(--teal-subtle-bg);
+  --primary-subtle-bg-hover: var(--teal-subtle-bg-hover);
+  --primary-subtle-bg-active: var(--teal-subtle-bg-active);
+  --primary-subtle-bg-disabled: var(--teal-subtle-bg-disabled);
   --primary-subtle-fg: var(--teal-subtle-fg);
   --primary-subtle-fg-subtle: var(--teal-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--teal-subtle-fg-muted);
+
   --primary-plain-fg: var(--teal-plain-fg);
   --primary-plain-fg-subtle: var(--teal-plain-fg-subtle);
   --primary-plain-fg-muted: var(--teal-plain-fg-muted);
@@ -20,10 +26,16 @@
   --primary-plain-bg-hover: var(--teal-plain-bg-hover);
   --primary-plain-bg-active: var(--teal-plain-bg-active);
   --primary-plain-bg-disabled: var(--teal-plain-bg-disabled);
+
   --primary-surface-bg: var(--teal-surface-bg);
   --primary-surface-bg-hover: var(--teal-surface-bg-hover);
   --primary-surface-bg-active: var(--teal-surface-bg-active);
   --primary-surface-bg-disabled: var(--teal-surface-bg-disabled);
+  --primary-surface-fg: var(--teal-surface-fg);
+  --primary-surface-fg-subtle: var(--teal-surface-fg-subtle);
+  --primary-surface-fg-muted: var(--teal-surface-fg-muted);
+
+  --primary-border: oklch(from var(--primary-strong-bg));
   --primary-border-subtle: oklch(from var(--primary-strong-bg) l c h / 25%);
   --primary-border-muted: oklch(from var(--primary-strong-bg) l c h / 15%);
 }

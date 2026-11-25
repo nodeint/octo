@@ -1,10 +1,12 @@
 /**
- * Raw Tailwind color ladders: --<hue>-50 … --<hue>-950, lightest to darkest. They do not change with the theme.
+ * Raw Tailwind color ladders: --<hue>-0 … --<hue>-1000, lightest to darkest. Steps 50 to 950 are Tailwind's; 0 and 1000 are
+ * this package's own near-white and near-black, tinted with the hue of 50 and 950. They do not change with the theme.
  * The slots that alias these steps live in swatches.css. Source steps: tailwindcss@4.3.5 theme.css.
  */
 
 :root {
   /* red */
+  --red-0: oklch(1 0.004 17.38);
   --red-50: oklch(0.971 0.013 17.38);
   --red-100: oklch(0.936 0.032 17.717);
   --red-200: oklch(0.885 0.062 18.334);
@@ -16,8 +18,10 @@
   --red-800: oklch(0.444 0.177 26.899);
   --red-900: oklch(0.396 0.141 25.723);
   --red-950: oklch(0.258 0.092 26.042);
+  --red-1000: oklch(0.1 0.046 26.042);
 
   /* orange */
+  --orange-0: oklch(1 0.004 73.684);
   --orange-50: oklch(0.98 0.016 73.684);
   --orange-100: oklch(0.954 0.038 75.164);
   --orange-200: oklch(0.901 0.076 70.697);
@@ -29,8 +33,10 @@
   --orange-800: oklch(0.47 0.157 37.304);
   --orange-900: oklch(0.408 0.123 38.172);
   --orange-950: oklch(0.266 0.079 36.259);
+  --orange-1000: oklch(0.1 0.04 36.259);
 
   /* amber */
+  --amber-0: oklch(1 0.004 95.277);
   --amber-50: oklch(0.987 0.022 95.277);
   --amber-100: oklch(0.962 0.059 95.617);
   --amber-200: oklch(0.924 0.12 95.746);
@@ -42,8 +48,10 @@
   --amber-800: oklch(0.473 0.137 46.201);
   --amber-900: oklch(0.414 0.112 45.904);
   --amber-950: oklch(0.279 0.077 45.635);
+  --amber-1000: oklch(0.1 0.038 45.635);
 
   /* yellow */
+  --yellow-0: oklch(1 0.004 102.212);
   --yellow-50: oklch(0.987 0.026 102.212);
   --yellow-100: oklch(0.973 0.071 103.193);
   --yellow-200: oklch(0.945 0.129 101.54);
@@ -55,8 +63,10 @@
   --yellow-800: oklch(0.476 0.114 61.907);
   --yellow-900: oklch(0.421 0.095 57.708);
   --yellow-950: oklch(0.286 0.066 53.813);
+  --yellow-1000: oklch(0.1 0.033 53.813);
 
   /* lime */
+  --lime-0: oklch(1 0.004 120.757);
   --lime-50: oklch(0.986 0.031 120.757);
   --lime-100: oklch(0.967 0.067 122.328);
   --lime-200: oklch(0.938 0.127 124.321);
@@ -68,8 +78,10 @@
   --lime-800: oklch(0.453 0.124 130.933);
   --lime-900: oklch(0.405 0.101 131.063);
   --lime-950: oklch(0.274 0.072 132.109);
+  --lime-1000: oklch(0.1 0.036 132.109);
 
   /* green */
+  --green-0: oklch(1 0.004 155.826);
   --green-50: oklch(0.982 0.018 155.826);
   --green-100: oklch(0.962 0.044 156.743);
   --green-200: oklch(0.925 0.084 155.995);
@@ -81,8 +93,10 @@
   --green-800: oklch(0.448 0.119 151.328);
   --green-900: oklch(0.393 0.095 152.535);
   --green-950: oklch(0.266 0.065 152.934);
+  --green-1000: oklch(0.1 0.033 152.934);
 
   /* emerald */
+  --emerald-0: oklch(1 0.004 166.113);
   --emerald-50: oklch(0.979 0.021 166.113);
   --emerald-100: oklch(0.95 0.052 163.051);
   --emerald-200: oklch(0.905 0.093 164.15);
@@ -94,8 +108,10 @@
   --emerald-800: oklch(0.432 0.095 166.913);
   --emerald-900: oklch(0.378 0.077 168.94);
   --emerald-950: oklch(0.262 0.051 172.552);
+  --emerald-1000: oklch(0.1 0.025 172.552);
 
   /* teal */
+  --teal-0: oklch(1 0.004 180.72);
   --teal-50: oklch(0.984 0.014 180.72);
   --teal-100: oklch(0.953 0.051 180.801);
   --teal-200: oklch(0.91 0.096 180.426);
@@ -107,8 +123,10 @@
   --teal-800: oklch(0.437 0.078 188.216);
   --teal-900: oklch(0.386 0.063 188.416);
   --teal-950: oklch(0.277 0.046 192.524);
+  --teal-1000: oklch(0.1 0.023 192.524);
 
   /* cyan */
+  --cyan-0: oklch(1 0.004 200.873);
   --cyan-50: oklch(0.984 0.019 200.873);
   --cyan-100: oklch(0.956 0.045 203.388);
   --cyan-200: oklch(0.917 0.08 205.041);
@@ -120,8 +138,10 @@
   --cyan-800: oklch(0.45 0.085 224.283);
   --cyan-900: oklch(0.398 0.07 227.392);
   --cyan-950: oklch(0.302 0.056 229.695);
+  --cyan-1000: oklch(0.1 0.028 229.695);
 
   /* sky */
+  --sky-0: oklch(1 0.004 236.62);
   --sky-50: oklch(0.977 0.013 236.62);
   --sky-100: oklch(0.951 0.026 236.824);
   --sky-200: oklch(0.901 0.058 230.902);
@@ -133,8 +153,10 @@
   --sky-800: oklch(0.443 0.11 240.79);
   --sky-900: oklch(0.391 0.09 240.876);
   --sky-950: oklch(0.293 0.066 243.157);
+  --sky-1000: oklch(0.1 0.033 243.157);
 
   /* blue */
+  --blue-0: oklch(1 0.004 254.604);
   --blue-50: oklch(0.97 0.014 254.604);
   --blue-100: oklch(0.932 0.032 255.585);
   --blue-200: oklch(0.882 0.059 254.128);
@@ -146,8 +168,10 @@
   --blue-800: oklch(0.424 0.199 265.638);
   --blue-900: oklch(0.379 0.146 265.522);
   --blue-950: oklch(0.282 0.091 267.935);
+  --blue-1000: oklch(0.1 0.045 267.935);
 
   /* indigo */
+  --indigo-0: oklch(1 0.004 272.314);
   --indigo-50: oklch(0.962 0.018 272.314);
   --indigo-100: oklch(0.93 0.034 272.788);
   --indigo-200: oklch(0.87 0.065 274.039);
@@ -159,8 +183,10 @@
   --indigo-800: oklch(0.398 0.195 277.366);
   --indigo-900: oklch(0.359 0.144 278.697);
   --indigo-950: oklch(0.257 0.09 281.288);
+  --indigo-1000: oklch(0.1 0.045 281.288);
 
   /* violet */
+  --violet-0: oklch(1 0.004 293.756);
   --violet-50: oklch(0.969 0.016 293.756);
   --violet-100: oklch(0.943 0.029 294.588);
   --violet-200: oklch(0.894 0.057 293.283);
@@ -172,8 +198,10 @@
   --violet-800: oklch(0.432 0.232 292.759);
   --violet-900: oklch(0.38 0.189 293.745);
   --violet-950: oklch(0.283 0.141 291.089);
+  --violet-1000: oklch(0.1 0.07 291.089);
 
   /* purple */
+  --purple-0: oklch(1 0.004 308.299);
   --purple-50: oklch(0.977 0.014 308.299);
   --purple-100: oklch(0.946 0.033 307.174);
   --purple-200: oklch(0.902 0.063 306.703);
@@ -185,8 +213,10 @@
   --purple-800: oklch(0.438 0.218 303.724);
   --purple-900: oklch(0.381 0.176 304.987);
   --purple-950: oklch(0.291 0.149 302.717);
+  --purple-1000: oklch(0.1 0.074 302.717);
 
   /* fuchsia */
+  --fuchsia-0: oklch(1 0.004 320.058);
   --fuchsia-50: oklch(0.977 0.017 320.058);
   --fuchsia-100: oklch(0.952 0.037 318.852);
   --fuchsia-200: oklch(0.903 0.076 319.62);
@@ -198,8 +228,10 @@
   --fuchsia-800: oklch(0.452 0.211 324.591);
   --fuchsia-900: oklch(0.401 0.17 325.612);
   --fuchsia-950: oklch(0.293 0.136 325.661);
+  --fuchsia-1000: oklch(0.1 0.068 325.661);
 
   /* pink */
+  --pink-0: oklch(1 0.004 343.198);
   --pink-50: oklch(0.971 0.014 343.198);
   --pink-100: oklch(0.948 0.028 342.258);
   --pink-200: oklch(0.899 0.061 343.231);
@@ -211,8 +243,10 @@
   --pink-800: oklch(0.459 0.187 3.815);
   --pink-900: oklch(0.408 0.153 2.432);
   --pink-950: oklch(0.284 0.109 3.907);
+  --pink-1000: oklch(0.1 0.054 3.907);
 
   /* rose */
+  --rose-0: oklch(1 0.004 12.422);
   --rose-50: oklch(0.969 0.015 12.422);
   --rose-100: oklch(0.941 0.03 12.58);
   --rose-200: oklch(0.892 0.058 10.001);
@@ -224,8 +258,10 @@
   --rose-800: oklch(0.455 0.188 13.697);
   --rose-900: oklch(0.41 0.159 10.272);
   --rose-950: oklch(0.271 0.105 12.094);
+  --rose-1000: oklch(0.1 0.052 12.094);
 
   /* slate */
+  --slate-0: oklch(1 0.004 247.858);
   --slate-50: oklch(0.984 0.003 247.858);
   --slate-100: oklch(0.968 0.007 247.896);
   --slate-200: oklch(0.929 0.013 255.508);
@@ -237,8 +273,10 @@
   --slate-800: oklch(0.279 0.041 260.031);
   --slate-900: oklch(0.208 0.042 265.755);
   --slate-950: oklch(0.129 0.042 264.695);
+  --slate-1000: oklch(0.1 0.021 264.695);
 
   /* gray */
+  --gray-0: oklch(1 0.004 247.839);
   --gray-50: oklch(0.985 0.002 247.839);
   --gray-100: oklch(0.967 0.003 264.542);
   --gray-200: oklch(0.928 0.006 264.531);
@@ -250,8 +288,10 @@
   --gray-800: oklch(0.278 0.033 256.848);
   --gray-900: oklch(0.21 0.034 264.665);
   --gray-950: oklch(0.13 0.028 261.692);
+  --gray-1000: oklch(0.1 0.014 261.692);
 
   /* neutral */
+  --neutral-0: oklch(1 0.004 0);
   --neutral-50: oklch(0.985 0 0);
   --neutral-100: oklch(0.97 0 0);
   --neutral-200: oklch(0.922 0 0);
@@ -263,8 +303,10 @@
   --neutral-800: oklch(0.269 0 0);
   --neutral-900: oklch(0.205 0 0);
   --neutral-950: oklch(0.145 0 0);
+  --neutral-1000: oklch(0.1 0 0);
 
   /* zinc */
+  --zinc-0: oklch(1 0.004 0);
   --zinc-50: oklch(0.985 0 0);
   --zinc-100: oklch(0.967 0.001 286.375);
   --zinc-200: oklch(0.92 0.004 286.32);
@@ -276,8 +318,10 @@
   --zinc-800: oklch(0.274 0.006 286.033);
   --zinc-900: oklch(0.21 0.006 285.885);
   --zinc-950: oklch(0.141 0.005 285.823);
+  --zinc-1000: oklch(0.1 0.003 285.823);
 
   /* stone */
+  --stone-0: oklch(1 0.004 106.423);
   --stone-50: oklch(0.985 0.001 106.423);
   --stone-100: oklch(0.97 0.001 106.424);
   --stone-200: oklch(0.923 0.003 48.717);
@@ -289,8 +333,10 @@
   --stone-800: oklch(0.268 0.007 34.298);
   --stone-900: oklch(0.216 0.006 56.043);
   --stone-950: oklch(0.147 0.004 49.25);
+  --stone-1000: oklch(0.1 0.002 49.25);
 
   /* mauve */
+  --mauve-0: oklch(1 0.004 0);
   --mauve-50: oklch(0.985 0 0);
   --mauve-100: oklch(0.96 0.003 325.6);
   --mauve-200: oklch(0.922 0.005 325.62);
@@ -302,8 +348,10 @@
   --mauve-800: oklch(0.263 0.024 320.12);
   --mauve-900: oklch(0.212 0.019 322.12);
   --mauve-950: oklch(0.145 0.008 326);
+  --mauve-1000: oklch(0.1 0.004 326);
 
   /* olive */
+  --olive-0: oklch(1 0.004 106.5);
   --olive-50: oklch(0.988 0.003 106.5);
   --olive-100: oklch(0.966 0.005 106.5);
   --olive-200: oklch(0.93 0.007 106.5);
@@ -315,8 +363,10 @@
   --olive-800: oklch(0.286 0.016 107.4);
   --olive-900: oklch(0.228 0.013 107.4);
   --olive-950: oklch(0.153 0.006 107.1);
+  --olive-1000: oklch(0.1 0.003 107.1);
 
   /* mist */
+  --mist-0: oklch(1 0.004 197.1);
   --mist-50: oklch(0.987 0.002 197.1);
   --mist-100: oklch(0.963 0.002 197.1);
   --mist-200: oklch(0.925 0.005 214.3);
@@ -328,8 +378,10 @@
   --mist-800: oklch(0.275 0.011 216.9);
   --mist-900: oklch(0.218 0.008 223.9);
   --mist-950: oklch(0.148 0.004 228.8);
+  --mist-1000: oklch(0.1 0.002 228.8);
 
   /* taupe */
+  --taupe-0: oklch(1 0.004 67.8);
   --taupe-50: oklch(0.986 0.002 67.8);
   --taupe-100: oklch(0.96 0.002 17.2);
   --taupe-200: oklch(0.922 0.005 34.3);
@@ -341,4 +393,5 @@
   --taupe-800: oklch(0.268 0.011 36.5);
   --taupe-900: oklch(0.214 0.009 43.1);
   --taupe-950: oklch(0.147 0.004 49.3);
+  --taupe-1000: oklch(0.1 0.002 49.3);
 }

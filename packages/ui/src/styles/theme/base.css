@@ -1,7 +1,7 @@
 /*
  * Base scale and the surface, border, and text roles built on it. Aliases only; raw oklch stays in swatches.css.
  *
- * Scale: --base-50 (lightest) to --base-950 (darkest), the Tailwind ladder. A step keeps its lightness in light
+ * Scale: --base-0 (lightest) to --base-1000 (darkest): the Tailwind ladder plus a hue-tinted near-white and near-black. A step keeps its lightness in light
  * and dark; the roles below pick a different step per mode. The steps alias one gray-family swatch, so the tint is
  * defined in swatches.css only. data-appearance-base rebinds the whole scale to another gray hue (appearance/base.css).
  *
@@ -9,9 +9,7 @@
  * Only a solid emphasis fill keeps an on-fill pair: primary, primary-subtle, and the statuses.
  */
 :root {
-  --base-light: #fff;
-  --base-dark: #000;
-
+  --base-0: var(--gray-0);
   --base-50: var(--gray-50);
   --base-100: var(--gray-100);
   --base-200: var(--gray-200);
@@ -23,6 +21,7 @@
   --base-800: var(--gray-800);
   --base-900: var(--gray-900);
   --base-950: var(--gray-950);
+  --base-1000: var(--gray-1000);
   --base-strong-bg: var(--gray-strong-bg);
   --base-strong-fg: var(--gray-strong-fg);
   --base-strong-fg-subtle: var(--gray-strong-fg-subtle);
