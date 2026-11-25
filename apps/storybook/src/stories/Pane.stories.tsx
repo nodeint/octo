@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button, Inset, Pane, PaneContent, PaneFooter, PaneHeader, ScrollArea, Text } from '@workspace/ui';
+import { Box, Button, Pane, PaneContent, PaneFooter, PaneHeader, ScrollArea, Text } from '@workspace/ui';
 
 import { storyWidthDecorator } from '../story-width';
 
@@ -7,7 +7,7 @@ import { storyWidthDecorator } from '../story-width';
 function Page({ children }: { children: React.ReactNode }): React.JSX.Element {
   return (
     <ScrollArea style={{ flex: 1, minHeight: 0 }}>
-      <Inset>{children}</Inset>
+      <Box p="md">{children}</Box>
     </ScrollArea>
   );
 }

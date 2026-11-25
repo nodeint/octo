@@ -16,7 +16,7 @@
 
 /**
  * Space roles, built on the raw steps above.
- * Outside @workspace/ui, spacing goes through the layout roles below (Stack, Inline, Inset and
+ * Outside @workspace/ui, spacing goes through the layout roles below (Stack, Inline, Box `p` and
  * the --gap-* and --inset-* roles), never through a raw step.
  *   overlay-pad  padding of a floating panel
  *   gap    xxs · xs · sm · md · lg · xl · 2xl · 3xl (space between children; Box `gap`)

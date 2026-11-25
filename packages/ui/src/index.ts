@@ -32,7 +32,6 @@ export * from './components/layout/collapsible-toolbar/CollapsibleToolbar';
 export * from './components/layout/flex/Flex';
 export * from './components/layout/grid/Grid';
 export * from './components/layout/inline/Inline';
-export * from './components/layout/inset/Inset';
 export * from './components/layout/pane/Pane';
 export * from './components/layout/scroll-area/ScrollArea';
 export * from './components/layout/section/Section';

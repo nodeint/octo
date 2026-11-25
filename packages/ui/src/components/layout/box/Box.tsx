@@ -4,6 +4,11 @@ type BoxBorder = 'thin' | 'thick';
 type BoxShadow = 'none' | 'sm' | 'md' | 'lg';
 type BoxGap = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
 
+type BoxPadding = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+/** A side or axis takes a step, or `0` to clear the padding that `p` or an axis would give it. */
+type BoxPaddingSide = BoxPadding | '0';
+
 /** Which sides cancel the padding of the surrounding container (`--inset`). */
 type BoxBleed = 'x' | 'y' | 'all';
 
@@ -24,6 +29,20 @@ type BoxProps = React.ComponentProps<'div'> & {
   shadow?: BoxShadow;
   /** The space between children. Takes effect on a flex or grid box, such as Stack, Inline and Grid. */
   gap?: BoxGap;
+  /** The padding step on every side. Also sets `--inset` for descendants, so a Box `bleed` inside cancels it. */
+  p?: BoxPadding;
+  /** The inline axis, both start and end. Wins over `p`. */
+  px?: BoxPaddingSide;
+  /** The block axis, both top and bottom. Wins over `p`. */
+  py?: BoxPaddingSide;
+  /** The block start side. Wins over `py` and `p`. */
+  pt?: BoxPaddingSide;
+  /** The block end side. Wins over `py` and `p`. */
+  pb?: BoxPaddingSide;
+  /** The inline start side. Wins over `px` and `p`. */
+  ps?: BoxPaddingSide;
+  /** The inline end side. Wins over `px` and `p`. */
+  pe?: BoxPaddingSide;
 };
 
 function Box({
@@ -33,6 +52,13 @@ function Box({
   border,
   shadow,
   gap,
+  p,
+  px,
+  py,
+  pt,
+  pb,
+  ps,
+  pe,
   ...props
 }: BoxProps): React.JSX.Element {
   return (
@@ -44,10 +70,27 @@ function Box({
       data-box-border={border}
       data-box-shadow={shadow}
       data-box-gap={gap}
+      data-box-p={p}
+      data-box-px={px}
+      data-box-py={py}
+      data-box-pt={pt}
+      data-box-pb={pb}
+      data-box-ps={ps}
+      data-box-pe={pe}
       {...props}
     />
   );
 }
 
 export { Box };
-export type { BoxBleed, BoxBorder, BoxGap, BoxProps, BoxRadius, BoxShadow, BoxSurface };
+export type {
+  BoxBleed,
+  BoxBorder,
+  BoxGap,
+  BoxPadding,
+  BoxPaddingSide,
+  BoxProps,
+  BoxRadius,
+  BoxShadow,
+  BoxSurface,
+};

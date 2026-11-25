@@ -4,7 +4,6 @@
 @import "./stack/Stack.css";
 @import "./inline/Inline.css";
 @import "./grid/Grid.css";
-@import "./inset/Inset.css";
 @import "./pane/Pane.css";
 @import "./separator/Separator.css";
 @import "./toolbar/Toolbar.css";

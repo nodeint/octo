@@ -120,3 +120,187 @@
 [data-box-gap='3xl'] {
   gap: var(--gap-3xl);
 }
+
+/* padding: `p` sets every side and the --inset that a descendant Box bleed cancels */
+[data-box-p='xs'] {
+  --inset: var(--inset-xs);
+  padding: var(--inset);
+}
+
+[data-box-p='sm'] {
+  --inset: var(--inset-sm);
+  padding: var(--inset);
+}
+
+[data-box-p='md'] {
+  --inset: var(--inset-md);
+  padding: var(--inset);
+}
+
+[data-box-p='lg'] {
+  --inset: var(--inset-lg);
+  padding: var(--inset);
+}
+
+[data-box-p='xl'] {
+  --inset: var(--inset-xl);
+  padding: var(--inset);
+}
+
+/*
+ * An axis or side on its own step pads sides unevenly, which one --inset cannot describe.
+ * Reset it to 0 so a Box bleed inside does nothing instead of cancelling the wrong amount.
+ */
+[data-box-px],
+[data-box-py],
+[data-box-pt],
+[data-box-pb],
+[data-box-ps],
+[data-box-pe] {
+  --inset: 0px;
+}
+
+/* An axis or side on its own step. Later than `p`, so these win. */
+[data-box-px='0'] {
+  padding-inline: 0;
+}
+
+[data-box-px='xs'] {
+  padding-inline: var(--inset-xs);
+}
+
+[data-box-px='sm'] {
+  padding-inline: var(--inset-sm);
+}
+
+[data-box-px='md'] {
+  padding-inline: var(--inset-md);
+}
+
+[data-box-px='lg'] {
+  padding-inline: var(--inset-lg);
+}
+
+[data-box-px='xl'] {
+  padding-inline: var(--inset-xl);
+}
+
+[data-box-py='0'] {
+  padding-block: 0;
+}
+
+[data-box-py='xs'] {
+  padding-block: var(--inset-xs);
+}
+
+[data-box-py='sm'] {
+  padding-block: var(--inset-sm);
+}
+
+[data-box-py='md'] {
+  padding-block: var(--inset-md);
+}
+
+[data-box-py='lg'] {
+  padding-block: var(--inset-lg);
+}
+
+[data-box-py='xl'] {
+  padding-block: var(--inset-xl);
+}
+
+[data-box-pt='0'] {
+  padding-block-start: 0;
+}
+
+[data-box-pt='xs'] {
+  padding-block-start: var(--inset-xs);
+}
+
+[data-box-pt='sm'] {
+  padding-block-start: var(--inset-sm);
+}
+
+[data-box-pt='md'] {
+  padding-block-start: var(--inset-md);
+}
+
+[data-box-pt='lg'] {
+  padding-block-start: var(--inset-lg);
+}
+
+[data-box-pt='xl'] {
+  padding-block-start: var(--inset-xl);
+}
+
+[data-box-pb='0'] {
+  padding-block-end: 0;
+}
+
+[data-box-pb='xs'] {
+  padding-block-end: var(--inset-xs);
+}
+
+[data-box-pb='sm'] {
+  padding-block-end: var(--inset-sm);
+}
+
+[data-box-pb='md'] {
+  padding-block-end: var(--inset-md);
+}
+
+[data-box-pb='lg'] {
+  padding-block-end: var(--inset-lg);
+}
+
+[data-box-pb='xl'] {
+  padding-block-end: var(--inset-xl);
+}
+
+[data-box-ps='0'] {
+  padding-inline-start: 0;
+}
+
+[data-box-ps='xs'] {
+  padding-inline-start: var(--inset-xs);
+}
+
+[data-box-ps='sm'] {
+  padding-inline-start: var(--inset-sm);
+}
+
+[data-box-ps='md'] {
+  padding-inline-start: var(--inset-md);
+}
+
+[data-box-ps='lg'] {
+  padding-inline-start: var(--inset-lg);
+}
+
+[data-box-ps='xl'] {
+  padding-inline-start: var(--inset-xl);
+}
+
+[data-box-pe='0'] {
+  padding-inline-end: 0;
+}
+
+[data-box-pe='xs'] {
+  padding-inline-end: var(--inset-xs);
+}
+
+[data-box-pe='sm'] {
+  padding-inline-end: var(--inset-sm);
+}
+
+[data-box-pe='md'] {
+  padding-inline-end: var(--inset-md);
+}
+
+[data-box-pe='lg'] {
+  padding-inline-end: var(--inset-lg);
+}
+
+[data-box-pe='xl'] {
+  padding-inline-end: var(--inset-xl);
+}

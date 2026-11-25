@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Box, Inset, Stack, Text } from '@workspace/ui';
+import { Box, Stack, Text } from '@workspace/ui';
 
 import { storyWidthDecorator } from '../story-width';
 
@@ -102,12 +102,12 @@ export const Bleed: Story = {
   ),
 };
 
-export const WithInset: Story = {
+export const WithPadding: Story = {
   render: () => (
     <Box surface="card" border="thin" radius="md">
-      <Inset size="lg">
-        <Text>Padding comes from Inset, not Box.</Text>
-      </Inset>
+      <Box p="lg">
+        <Text>Padding comes from the p prop.</Text>
+      </Box>
     </Box>
   ),
 };
