@@ -1,0 +1,202 @@
+/*
+ * Row: the horizontal strip of media, content and actions that item and attachment share, and the
+ * title and description pair that alert, empty, popover, section and card header repeat. A component adds the
+ * classes beside its own and picks a size; no selector here names a component or a data-slot.
+ *   row              the strip: wrapping flex row, border, radius, hover wash, focus ring
+ *   row-content      the text column; shrinks so a long title truncates instead of pushing the actions out
+ *   row-title        the title (label role), a block; wrap plain text in row-title-text so it truncates
+ *   row-description  the description (description role), clamped to --row-description-lines (2 by default)
+ *   row-meta         one line of caption role under the description
+ *   row-actions      the actions, a centered flex row
+ *   row-trigger      the primary action; its ::after covers the row
+ *   row-trigger-cover  beside row-trigger: the trigger itself is out of flow and covers the row (an empty overlay trigger)
+ *   row-hover-child    beside row: a direct-child a or button washes the row on hover (nested actions do not)
+ *   row-focus-within   the ring shows when any child has focus, not only the trigger
+ *
+ * Size set: data-row-size picks --row-px, --row-py, --row-gap and --row-content-gap from the control and space scales.
+ *   xs  --control-px-xs  --space-xs  --space-sm  0
+ *   sm  --control-px-sm  --space-sm  --space-sm  --space-xs
+ *   md  --control-px-md  --space-sm  --space-sm  --space-xs
+ * The padding takes the border width off the inline step, so the text edge sits on --control-px-*.
+ *
+ * Input tokens a component may set on its own root (every one has a fallback):
+ *   --row-px, --row-py, --row-gap, --row-content-gap   replace the size set
+ *   --row-border-width, --row-border-style, --row-border-color   the frame (a bare row sets the width to 0)
+ *   --row-background, --row-shadow                     the resting fill and shadow; hover paints --accent over the fill
+ *   --row-actions-gap                                  gap between actions
+ *   --row-align                                        align-items (center by default)
+ *   --row-font-size, --row-font-leading                the row text step (body role by default)
+ *   --row-description-size, --row-description-leading, --row-description-weight, --row-description-align   the description text
+ *   --row-focus-border, --row-focus-shadow             the focus ring (the --state-focus-* pair by default)
+ *   --row-title-display, --row-title-align            `flex` and `center` for a title with marks beside its text
+ *   --row-title-family, --row-title-size, --row-title-leading, --row-title-weight   the title role (label by default)
+ *   --row-description-lines, --row-description-color   clamp (2 lines by default) and text color of the description
+ *   --row-description-display                          `block` opts out of the clamp, for a description with inline links
+ *   --row-meta-color                                   text color of the meta line
+ */
+[data-row-size='xs'] {
+  --row-px: var(--control-px-xs);
+  --row-py: var(--space-xs);
+  --row-gap: var(--space-sm);
+  --row-content-gap: 0;
+}
+
+[data-row-size='sm'] {
+  --row-px: var(--control-px-sm);
+  --row-py: var(--space-sm);
+  --row-gap: var(--space-sm);
+  --row-content-gap: var(--space-xs);
+}
+
+[data-row-size='md'] {
+  --row-px: var(--control-px-md);
+  --row-py: var(--space-sm);
+  --row-gap: var(--space-sm);
+  --row-content-gap: var(--space-xs);
+}
+
+/* text-align start: a row rendered as a button must not center its text */
+.row {
+  --row-border-width: var(--border-width-thin);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: var(--row-align, center);
+  gap: var(--row-gap);
+  padding: var(--row-py) calc(var(--row-px) - var(--row-border-width));
+  border: var(--row-border-width) var(--row-border-style, solid) var(--row-border-color, transparent);
+  border-radius: var(--radius-surface-md);
+  background-color: var(--row-background, transparent);
+  box-shadow: var(--row-shadow, none);
+  text-align: start;
+  font-size: var(--row-font-size, var(--role-body-size));
+  line-height: var(--row-font-leading, var(--role-body-leading));
+  font-weight: var(--role-body-weight);
+  outline: none;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: var(--motion-duration-fast);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+/* A row with a trigger: the trigger's ::after covers the row, so a click anywhere opens it.
+   The row paints the hover and the trigger's focus; interactive actions sit above the cover. */
+.row:has(.row-trigger) {
+  position: relative;
+}
+
+.row:is(a, button):hover,
+.row:has(.row-trigger):hover,
+.row-hover-child:has(> a, > button):hover {
+  background-color: var(--accent);
+}
+
+.row:focus-visible,
+.row:has(.row-trigger:focus-visible),
+.row-focus-within:focus-within {
+  border-color: var(--row-focus-border, var(--state-focus-border));
+  box-shadow: var(--row-focus-shadow, var(--state-focus-shadow));
+  outline: var(--focus-width) solid transparent;
+}
+
+.row:has(.row-trigger) .row-actions :is(a, button, input, select, textarea, [tabindex]) {
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+.row-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--row-gap);
+  max-width: 100%;
+  min-width: 0;
+  text-align: start;
+  outline: none;
+}
+
+.row-trigger-cover {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-raised);
+}
+
+.row-trigger::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-raised);
+  border-radius: var(--radius-surface-md);
+}
+
+/* min-width 0: let a long title shrink and truncate instead of pushing the actions out */
+.row-content {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  gap: var(--row-content-gap, var(--space-xs));
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Plain title text goes in .row-title-text, which truncates; marks beside it are the component's layout. */
+.row-title {
+  display: var(--row-title-display, block);
+  align-items: var(--row-title-align, normal);
+  gap: var(--row-gap, var(--space-sm));
+  min-width: 0;
+  font-family: var(--row-title-family, inherit);
+  font-size: var(--row-title-size, var(--role-label-size));
+  line-height: var(--row-title-leading, var(--role-label-leading));
+  font-weight: var(--row-title-weight, var(--role-label-weight));
+  text-underline-offset: 4px;
+}
+
+.row-title-text {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row-description {
+  display: var(--row-description-display, -webkit-box);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--row-description-lines, 2);
+  overflow: hidden;
+  text-align: var(--row-description-align, start);
+  font-size: var(--row-description-size, var(--role-description-size));
+  line-height: var(--row-description-leading, var(--role-description-leading));
+  font-weight: var(--row-description-weight, var(--role-description-weight));
+  color: var(--row-description-color, var(--role-description-color));
+}
+
+.row[data-row-size='xs'] .row-description {
+  font-size: var(--row-description-size, var(--role-body-sm-size));
+  line-height: var(--row-description-leading, var(--role-body-sm-leading));
+}
+
+.row-description > a {
+  text-decoration-line: underline;
+  text-underline-offset: 4px;
+}
+
+.row-description > a:hover {
+  color: var(--primary-strong);
+}
+
+.row-meta {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-align: start;
+  font-size: var(--role-caption-size);
+  line-height: var(--role-caption-leading);
+  font-weight: var(--role-caption-weight);
+  color: var(--row-meta-color, var(--role-caption-color));
+}
+
+.row-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--row-actions-gap, var(--space-sm));
+}

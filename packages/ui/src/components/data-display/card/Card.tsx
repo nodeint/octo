@@ -39,7 +39,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<'div'>): React.
     <div
       data-slot="card-title"
       className={cn(
-        'card-title',
+        'row-title card-title',
         className
       )}
       {...props}
@@ -51,7 +51,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<'div'>): 
   return (
     <div
       data-slot="card-description"
-      className={cn('card-description', className)}
+      className={cn('row-description card-description', className)}
       {...props}
     />
   );

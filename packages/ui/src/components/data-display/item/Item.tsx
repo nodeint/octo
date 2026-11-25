@@ -88,7 +88,7 @@ function Item({
     props: mergeProps<'div'>(
       {
         role,
-        className: cn('item', className),
+        className: cn('row item', className),
       },
       props
     ),
@@ -100,6 +100,7 @@ function Item({
       size,
       bare,
       'media-size': ITEM_MEDIA_SIZE[size],
+      'row-size': size,
     },
     });
 }
@@ -130,7 +131,7 @@ function ItemContent({ className, ...props }: React.ComponentProps<'div'>): Reac
     <div
       data-slot="item-content"
       className={cn(
-        'item-content',
+        'row-content item-content',
         className
       )}
       {...props}
@@ -141,7 +142,7 @@ function ItemContent({ className, ...props }: React.ComponentProps<'div'>): Reac
 /** Wrap plain text so it can truncate beside the title's marks; an element child keeps its own layout. */
 function wrapTitleText(child: React.ReactNode): React.ReactNode {
   if (typeof child === 'string' || typeof child === 'number') {
-    return <span className="item-title-text">{child}</span>;
+    return <span className="row-title-text">{child}</span>;
   }
   return child;
 }
@@ -150,7 +151,7 @@ function ItemTitle({ className, children, ...props }: React.ComponentProps<'div'
   return (
     <div
       data-slot="item-title"
-      className={cn('item-title', className)}
+      className={cn('row-title item-title', className)}
       {...props}
     >
       {React.Children.map(children, wrapTitleText)}
@@ -171,7 +172,7 @@ function ItemTrigger({ className, render, children, ...props }: ItemTriggerProps
     props: mergeProps<'button'>(
       {
         type: render === undefined ? 'button' : undefined,
-        className: cn('item-trigger', className),
+        className: cn('row-trigger', className),
         children: React.Children.map(children, wrapTitleText),
       },
       props
@@ -186,7 +187,7 @@ function ItemMeta({ className, ...props }: React.ComponentProps<'p'>): React.JSX
   return (
     <p
       data-slot="item-meta"
-      className={cn('item-meta', className)}
+      className={cn('row-meta', className)}
       {...props}
     />
   );
@@ -197,7 +198,7 @@ function ItemDescription({ className, ...props }: React.ComponentProps<'p'>): Re
     <p
       data-slot="item-description"
       className={cn(
-        'item-description',
+        'row-description',
         className
       )}
       {...props}
@@ -209,7 +210,7 @@ function ItemActions({ className, ...props }: React.ComponentProps<'div'>): Reac
   return (
     <div
       data-slot="item-actions"
-      className={cn('item-actions', className)}
+      className={cn('row-actions item-actions', className)}
       {...props}
     />
   );

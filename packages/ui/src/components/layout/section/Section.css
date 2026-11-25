@@ -12,43 +12,34 @@
 }
 
 /* Title block: a grid that adds a column for an action and a row for a description. */
-.section-header,
-.card-header {
+.section-header {
   display: grid;
   grid-auto-rows: min-content;
   align-items: start;
   gap: var(--space-xs);
 }
 
-.section-header:has([data-slot$='-action']),
-.card-header:has([data-slot$='-action']) {
+.section-header:has([data-slot$='-action']) {
   grid-template-columns: 1fr auto;
 }
 
-.section-header:has([data-slot$='-description']),
-.card-header:has([data-slot$='-description']) {
+.section-header:has([data-slot$='-description']) {
   grid-template-rows: auto auto;
 }
 
-.section-title,
-.card-title {
-  font-family: var(--role-title-sm-family);
-  font-size: var(--role-title-sm-size);
-  line-height: var(--role-title-sm-leading);
-  font-weight: var(--role-title-sm-weight);
+.section-title {
+  --row-title-family: var(--role-title-sm-family);
+  --row-title-size: var(--role-title-sm-size);
+  --row-title-leading: var(--role-title-sm-leading);
+  --row-title-weight: var(--role-title-sm-weight);
 }
 
-.section-description,
-.card-description {
-  font-size: var(--role-description-size);
-  line-height: var(--role-description-leading);
-  font-weight: var(--role-description-weight);
-  color: var(--role-description-color);
+.section-description {
+  --row-description-display: block;
 }
 
 /* The action pinned to the end of a panel header. */
-.section-action,
-.card-action {
+.section-action {
   grid-column-start: 2;
   grid-row: 1 / span 2;
   display: flex;

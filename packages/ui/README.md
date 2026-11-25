@@ -31,7 +31,7 @@ src/
 
 A recipe is a stylesheet in `src/styles/recipes/` that gives a kind of element its skin. It binds token roles to
 properties and states for every element that opts in by adding the recipe's class
-(`action`, `chip`, `field-control`, `group`, `media-frame`, `menu-row`, `panel`, `state-ring-group`).
+(`action`, `chip`, `field-control`, `group`, `media-frame`, `menu-row`, `panel`, `row`, `state-ring-group`).
 Recipes live in the `recipes` cascade layer, which sits below `components`: a component rule beats a recipe rule
 whatever the specificity, so a component overrides a recipe without raising its selector.
 
@@ -79,6 +79,12 @@ Read direction:
 `media.css` is the `media-frame` skin shared by the media parts of media, empty, item, attachment and alert dialog.
 A part sets `--media-size` (or `--media-width` and `--media-height`), `--media-radius`, `--media-background`,
 `--media-foreground` and `--media-icon-size` on its own root, and an image part adds `data-media-fit="image"`.
+
+`row.css` is the `row` skin: the media, content and actions strip that item and attachment share, and the
+title and description pair that alert, empty, popover, section and card also add (`row-title`, `row-description`).
+`data-row-size` (`xs`, `sm`, `md`) declares `--row-px`, `--row-py`, `--row-gap` from `--control-px-*` and `--space-*`.
+The description clamps to 2 lines; a component sets `--row-description-lines` or `--row-description-display`.
+A component sets the input tokens listed in the file header on its own root and never overrides a `row` property.
 
 `overlay.css` holds only the `overlay-*` keyframes shared by modal and anchored overlays; it has no selectors.
 `panel.css` is the `panel` shell (flex column, inset, gap) and the `panel-footer` band that card, dialog, alert dialog and

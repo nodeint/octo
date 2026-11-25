@@ -74,7 +74,7 @@ function PopoverTitle({ className, ...props }: PopoverPrimitive.Title.Props): Re
   return (
     <PopoverPrimitive.Title
       data-slot="popover-title"
-      className={cn('popover-title', className)}
+      className={cn('row-title popover-title', className)}
       {...props}
     />
   );
@@ -87,7 +87,7 @@ function PopoverDescription({
   return (
     <PopoverPrimitive.Description
       data-slot="popover-description"
-      className={cn('popover-description', className)}
+      className={cn('row-description popover-description', className)}
       {...props}
     />
   );

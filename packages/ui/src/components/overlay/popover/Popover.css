@@ -28,12 +28,7 @@
   line-height: var(--role-body-leading);
 }
 
-.popover-title {
-  font-size: var(--role-label-size);
-  line-height: var(--role-label-leading);
-  font-weight: var(--role-label-weight);
-}
-
 .popover-description {
-  color: var(--foreground-muted);
+  --row-description-color: var(--foreground-muted);
+  --row-description-display: block;
 }

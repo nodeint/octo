@@ -24,7 +24,7 @@ function SectionTitle({ className, ...props }: React.ComponentProps<'h2'>): Reac
   return (
     <h2
       data-slot="section-title"
-      className={cn('section-title', className)}
+      className={cn('row-title section-title', className)}
       {...props}
     />
   );
@@ -34,7 +34,7 @@ function SectionDescription({ className, ...props }: React.ComponentProps<'p'>):
   return (
     <p
       data-slot="section-description"
-      className={cn('section-description', className)}
+      className={cn('row-description section-description', className)}
       {...props}
     />
   );

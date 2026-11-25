@@ -55,19 +55,19 @@ function Alert({
   });
 }
 
-function createAlertPart(slot: string): (props: useRender.ComponentProps<'div'>) => React.JSX.Element {
+function createAlertPart(slot: string, recipe?: string): (props: useRender.ComponentProps<'div'>) => React.JSX.Element {
   return function AlertPart({ className, render, ...props }) {
     return useRender({
       defaultTagName: 'div',
-      props: mergeProps<'div'>({ className: cn(slot) }, { className }, props),
+      props: mergeProps<'div'>({ className: cn(recipe, slot) }, { className }, props),
       render,
       state: { slot },
     });
   };
 }
 
-const AlertTitle = createAlertPart('alert-title');
-const AlertDescription = createAlertPart('alert-description');
+const AlertTitle = createAlertPart('alert-title', 'row-title');
+const AlertDescription = createAlertPart('alert-description', 'row-description');
 const AlertAction = createAlertPart('alert-action');
 
 export { Alert, AlertAction, AlertDescription, AlertTitle };

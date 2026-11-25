@@ -32,8 +32,9 @@ function Attachment({
     defaultTagName: 'div',
     props: mergeProps<'div'>(
       {
-        className: cn('attachment', className),
+        className: cn('row row-focus-within row-hover-child attachment', className),
         'data-media-size': ATTACHMENT_MEDIA_SIZE[size],
+        'data-row-size': size,
       } as React.ComponentProps<'div'>,
       props
     ),
@@ -75,21 +76,22 @@ function AttachmentMedia({
 function createPart(
   tag: 'div' | 'span',
   slot: string,
+  recipe: string,
 ): (props: useRender.ComponentProps<'div'>) => React.JSX.Element {
   return function AttachmentPart({ className, render, ...props }) {
     return useRender({
       defaultTagName: tag,
-      props: mergeProps<'div'>({ className: cn(slot, className) }, props),
+      props: mergeProps<'div'>({ className: cn(recipe, slot, className) }, props),
       render,
       state: { slot },
     });
   };
 }
 
-const AttachmentContent = createPart('div', 'attachment-content');
-const AttachmentTitle = createPart('span', 'attachment-title');
-const AttachmentDescription = createPart('span', 'attachment-description');
-const AttachmentActions = createPart('div', 'attachment-actions');
+const AttachmentContent = createPart('div', 'attachment-content', 'row-content');
+const AttachmentTitle = createPart('span', 'attachment-title', 'row-title row-title-text');
+const AttachmentDescription = createPart('span', 'attachment-description', 'row-description');
+const AttachmentActions = createPart('div', 'attachment-actions', 'row-actions');
 
 function AttachmentAction({
   className,
@@ -130,7 +132,7 @@ function AttachmentTrigger({
     props: mergeProps<'button'>(
       {
         type: resolveTriggerType(render, type),
-        className: cn('attachment-trigger', className),
+        className: cn('row-trigger row-trigger-cover attachment-trigger', className),
       },
       props
     ),
@@ -141,7 +143,7 @@ function AttachmentTrigger({
   });
 }
 
-const AttachmentGroup = createPart('div', 'attachment-group');
+const AttachmentGroup = createPart('div', 'attachment-group', '');
 
 export {
   Attachment,

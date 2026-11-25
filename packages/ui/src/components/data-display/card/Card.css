@@ -1,6 +1,6 @@
 /*
  * DOM contract: a bleed region is a direct first/last-child img or card-media.
- * Header, title, description and action share their rules with Section (section.css).
+ * Title and description come from recipes/row.css; the header grid and action are this file's.
  */
 .card {
   overflow: hidden;
@@ -37,9 +37,44 @@
   border-bottom-right-radius: var(--panel-radius);
 }
 
+/* Title block: a grid that adds a column for an action and a row for a description. */
 .card-header {
+  display: grid;
+  grid-auto-rows: min-content;
+  align-items: start;
+  gap: var(--space-xs);
   container-type: inline-size;
   container-name: card-header;
+}
+
+.card-header:has([data-slot$='-action']) {
+  grid-template-columns: 1fr auto;
+}
+
+.card-header:has([data-slot$='-description']) {
+  grid-template-rows: auto auto;
+}
+
+.card-title {
+  --row-title-family: var(--role-title-sm-family);
+  --row-title-size: var(--role-title-sm-size);
+  --row-title-leading: var(--role-title-sm-leading);
+  --row-title-weight: var(--role-title-sm-weight);
+}
+
+.card-description {
+  --row-description-display: block;
+}
+
+/* The action pinned to the end of a panel header. */
+.card-action {
+  grid-column-start: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  align-self: start;
+  justify-self: end;
 }
 
 /* A bordered header: the consumer adds the `border-b` class, and the header bleeds to the card edges. */
@@ -51,10 +86,10 @@
 }
 
 .card[data-size='sm'] .card-title {
-  font-family: inherit;
-  font-size: var(--role-body-size);
-  line-height: var(--role-body-leading);
-  font-weight: var(--role-body-weight);
+  --row-title-family: inherit;
+  --row-title-size: var(--role-body-size);
+  --row-title-leading: var(--role-body-leading);
+  --row-title-weight: var(--role-body-weight);
 }
 
 .card-media {

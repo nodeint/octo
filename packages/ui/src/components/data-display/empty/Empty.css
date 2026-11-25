@@ -41,26 +41,15 @@
 }
 
 .empty-title {
-  font-family: var(--role-title-sm-family);
-  font-size: var(--role-title-sm-size);
-  line-height: var(--role-title-sm-leading);
-  font-weight: var(--role-title-sm-weight);
+  --row-title-family: var(--role-title-sm-family);
+  --row-title-size: var(--role-title-sm-size);
+  --row-title-leading: var(--role-title-sm-leading);
+  --row-title-weight: var(--role-title-sm-weight);
 }
 
 .empty-description {
-  font-size: var(--role-description-size);
-  line-height: var(--role-description-leading);
-  font-weight: var(--role-description-weight);
-  color: var(--role-description-color);
-}
-
-.empty-description > a {
-  text-decoration-line: underline;
-  text-underline-offset: 4px;
-}
-
-.empty-description > a:hover {
-  color: var(--primary-strong);
+  --row-description-display: block;
+  --row-description-align: center;
 }
 
 .empty-content {

@@ -45,17 +45,11 @@
 }
 
 .alert [data-slot='alert-description'] {
-  color: var(--variant-fg-secondary);
+  --row-description-color: var(--variant-fg-secondary);
 }
 
 .alert:has(> svg) .alert-title {
   grid-column-start: 2;
-}
-
-.alert-title {
-  font-size: var(--role-label-size);
-  line-height: var(--role-label-leading);
-  font-weight: var(--role-label-weight);
 }
 
 .alert-title a,
@@ -70,10 +64,7 @@
 }
 
 .alert-description {
-  font-size: var(--role-description-size);
-  line-height: var(--role-description-leading);
-  font-weight: var(--role-description-weight);
-  color: var(--role-description-color);
+  --row-description-display: block;
   text-wrap: balance;
 }
 

@@ -53,7 +53,7 @@ function EmptyTitle({ className, ...props }: React.ComponentProps<'div'>): React
   return (
     <div
       data-slot="empty-title"
-      className={cn('empty-title', className)}
+      className={cn('row-title empty-title', className)}
       {...props}
     />
   );
@@ -63,7 +63,7 @@ function EmptyDescription({ className, ...props }: React.ComponentProps<'p'>): R
   return (
     <div
       data-slot="empty-description"
-      className={cn('empty-description', className)}
+      className={cn('row-description empty-description', className)}
       {...props}
     />
   );
