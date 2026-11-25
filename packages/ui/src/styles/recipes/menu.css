@@ -79,9 +79,9 @@
   flex-shrink: 0;
 }
 
-.menu-row svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+.menu-row svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
 }
 
 /* A truncating label shrinks inside the row and pushes a trailing glyph to the end. */

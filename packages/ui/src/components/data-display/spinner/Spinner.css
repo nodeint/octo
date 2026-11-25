@@ -1,7 +1,7 @@
 .spinner {
   /* --icon-size is set by a recipe that sizes the glyphs inside it, such as an action. */
-  width: var(--icon-size, var(--control-icon-md));
-  height: var(--icon-size, var(--control-icon-md));
+  width: var(--icon-size, var(--icon-md));
+  height: var(--icon-size, var(--icon-md));
   animation: spinner-spin 1s linear infinite;
 }
 

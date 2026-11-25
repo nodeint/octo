@@ -15,7 +15,7 @@ export type IconProps = React.ComponentProps<'svg'> & {
    * Host icon id strings accepted; unknown ids throw in development.
    */
   name?: string | null;
-  /** Control icon size token (`--control-icon-*`). Omit to size via `className`. */
+  /** Control icon size token (`--icon-*`). Omit to size via `className`. */
   size?: IconSize;
 };
 

@@ -46,6 +46,6 @@
 }
 
 .checkbox-indicator > svg {
-  width: var(--control-icon-xs);
-  height: var(--control-icon-xs);
+  width: var(--icon-xs);
+  height: var(--icon-xs);
 }

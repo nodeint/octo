@@ -36,12 +36,12 @@
   --group-action-height: var(--control-height-xs);
   --group-action-px: var(--control-px-xs);
   --group-action-gap: var(--control-gap-xs);
-  --group-action-icon: var(--control-icon-xs);
+  --group-action-icon: var(--icon-xs);
   --group-action-radius: var(--radius-action-xs);
   --group-item-height: var(--control-height-xs);
   --group-item-px: var(--control-px-xs);
   --group-item-gap: var(--control-gap-xs);
-  --group-item-icon: var(--control-icon-xs);
+  --group-item-icon: var(--icon-xs);
   --group-item-radius: var(--radius-action-xs);
 }
 
@@ -56,12 +56,12 @@
   --group-action-height: var(--control-height-sm);
   --group-action-px: var(--control-px-sm);
   --group-action-gap: var(--control-gap-sm);
-  --group-action-icon: var(--control-icon-sm);
+  --group-action-icon: var(--icon-sm);
   --group-action-radius: var(--radius-action-sm);
   --group-item-height: var(--control-height-xs);
   --group-item-px: var(--control-px-xs);
   --group-item-gap: var(--control-gap-xs);
-  --group-item-icon: var(--control-icon-xs);
+  --group-item-icon: var(--icon-xs);
   --group-item-radius: var(--radius-action-xs);
 }
 
@@ -76,12 +76,12 @@
   --group-action-height: var(--control-height-md);
   --group-action-px: var(--control-px-md);
   --group-action-gap: var(--control-gap-md);
-  --group-action-icon: var(--control-icon-md);
+  --group-action-icon: var(--icon-md);
   --group-action-radius: var(--radius-action-md);
   --group-item-height: var(--control-height-sm);
   --group-item-px: var(--control-px-sm);
   --group-item-gap: var(--control-gap-sm);
-  --group-item-icon: var(--control-icon-sm);
+  --group-item-icon: var(--icon-sm);
   --group-item-radius: var(--radius-action-sm);
 }
 
@@ -97,13 +97,13 @@
   --group-action-height: var(--control-height-lg);
   --group-action-px: var(--control-px-lg);
   --group-action-gap: var(--control-gap-lg);
-  --group-action-icon: var(--control-icon-md);
+  --group-action-icon: var(--icon-md);
   --group-action-radius: var(--radius-action-lg);
   
   --group-item-height: var(--control-height-md);
   --group-item-px: var(--control-px-md);
   --group-item-gap: var(--control-gap-md);
-  --group-item-icon: var(--control-icon-md);
+  --group-item-icon: var(--icon-md);
   --group-item-radius: var(--radius-action-md);
 }
 

@@ -4,8 +4,8 @@
  */
 
 :root {
-  --control-icon-xs: 0.75rem; /* primer: --base-size-12 */
-  --control-icon-sm: 0.875rem; /* 14, between the Primer steps 12 and 16 */
-  --control-icon-md: 1rem; /* primer: --base-size-16 */
-  --control-icon-lg: 1.25rem; /* primer: --base-size-20 */
+  --icon-xs: 0.75rem;
+  --icon-sm: 0.875rem;
+  --icon-md: 1rem;
+  --icon-lg: 1.25rem;
 }

@@ -52,9 +52,9 @@
   flex-shrink: 0;
 }
 
-.select-trigger svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+.select-trigger svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
 }
 
 .select-trigger[data-width='full'] {
@@ -120,9 +120,9 @@
   color: var(--foreground-disabled);
 }
 
-.select-item svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+.select-item svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
   pointer-events: none;
   flex-shrink: 0;
 }
@@ -148,8 +148,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--control-icon-lg);
-  height: var(--control-icon-lg);
+  width: var(--icon-lg);
+  height: var(--icon-lg);
 }
 
 .select-separator {
@@ -170,9 +170,9 @@
   cursor: default;
 }
 
-.select-scroll-button svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+.select-scroll-button svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
 }
 
 .select-scroll-up-button {

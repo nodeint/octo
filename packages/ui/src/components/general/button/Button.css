@@ -34,9 +34,9 @@
 }
 
 /* An icon-only square keeps the md glyph from sm up; only xs steps down. */
-.button[data-shape='icon'][data-action-size='sm'] svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+.button[data-shape='icon'][data-action-size='sm'] svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
 }
 
 .button[data-shape='default'][data-action-size='xs'] {

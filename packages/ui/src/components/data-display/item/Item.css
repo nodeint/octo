@@ -159,7 +159,7 @@ button.item:hover {
 /* The item's media step sizes an image only; an icon or text part stays as big as its content. */
 .item-media:not([data-variant='image']) {
   --media-size: auto;
-  --media-icon-size: var(--control-icon-md);
+  --media-icon-size: var(--icon-md);
 }
 
 /* With a description the row is two lines: pin an icon to the middle of the title line,
@@ -169,7 +169,7 @@ button.item:hover {
 }
 
 .item:has([data-slot='item-description']) .item-media:is([data-variant='default'], [data-variant='icon']) {
-  margin-block-start: calc((var(--role-label-size) * var(--role-label-leading) - var(--control-icon-md)) / 2);
+  margin-block-start: calc((var(--role-label-size) * var(--role-label-leading) - var(--icon-md)) / 2);
 }
 
 /* min-width 0: let a long title shrink and truncate instead of pushing the actions out */

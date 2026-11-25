@@ -31,8 +31,8 @@
 }
 
 .breadcrumb-separator > svg {
-  width: var(--control-icon-xs);
-  height: var(--control-icon-xs);
+  width: var(--icon-xs);
+  height: var(--icon-xs);
 }
 
 /* Own-scale micro, not a control height. */
@@ -45,6 +45,6 @@
 }
 
 .breadcrumb-ellipsis > svg {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+  width: var(--icon-md);
+  height: var(--icon-md);
 }

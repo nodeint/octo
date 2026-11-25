@@ -122,8 +122,8 @@
   font-weight: var(--role-label-weight);
 }
 
-.button-group-text svg:not([class*='size-']) {
-  --icon-size: var(--control-icon-md);
+.button-group-text svg {
+  --icon-size: var(--icon-md);
   width: var(--icon-size);
   height: var(--icon-size);
   pointer-events: none;

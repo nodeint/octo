@@ -80,13 +80,13 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+  width: var(--icon-md);
+  height: var(--icon-md);
 }
 
-.trace-icon svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+.trace-icon svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
   pointer-events: none;
   flex-shrink: 0;
 }

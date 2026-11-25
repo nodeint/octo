@@ -31,7 +31,7 @@
   color: currentColor;
 }
 
-.alert svg:not([class*='size-']) {
+.alert svg {
   width: var(--control-icon-md);
   height: var(--control-icon-md);
   pointer-events: none;

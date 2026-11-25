@@ -1,6 +1,6 @@
 /* The trigger sizes its glyph; inside an input the group's icon button is an action and takes the action recipe's size. */
-.combobox-trigger svg:not([class*='size-']) {
-  --icon-size: var(--control-icon-md);
+.combobox-trigger svg {
+  --icon-size: var(--icon-md);
   width: var(--icon-size);
   height: var(--icon-size);
   pointer-events: none;
@@ -115,9 +115,9 @@
   color: var(--foreground-disabled);
 }
 
-.combobox-item svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+.combobox-item svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
   pointer-events: none;
   flex-shrink: 0;
 }
@@ -129,8 +129,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--control-icon-lg);
-  height: var(--control-icon-lg);
+  width: var(--icon-lg);
+  height: var(--icon-lg);
 }
 
 .combobox-label {

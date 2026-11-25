@@ -119,8 +119,8 @@
 }
 
 .avatar-group-count > svg {
-  width: var(--control-icon-lg);
-  height: var(--control-icon-lg);
+  width: var(--icon-lg);
+  height: var(--icon-lg);
 }
 
 .avatar-group:has([data-size='sm']) .avatar-group-count {
@@ -129,8 +129,8 @@
 }
 
 .avatar-group:has([data-size='sm']) .avatar-group-count > svg {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+  width: var(--icon-md);
+  height: var(--icon-md);
 }
 
 .avatar-group:has([data-size='lg']) .avatar-group-count {

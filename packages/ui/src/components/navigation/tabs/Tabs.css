@@ -97,9 +97,9 @@
   flex-shrink: 0;
 }
 
-.tabs-trigger svg:not([class*='size-']) {
-  width: var(--control-icon-md);
-  height: var(--control-icon-md);
+.tabs-trigger svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
 }
 
 /* line indicator: the base pseudo-element */
