@@ -48,7 +48,7 @@
   --inset-xl: var(--space-xl);
   
   --inset: 0px; /* the padding the nearest container gives its children; a container re-declares it, Box bleed reads it */
-  --panel-inset: var(--inset-md); /* padding of a panel: dialog, sheet, card, pane header and footer */
+  --panel-inset: var(--inset-md); /* padding of a panel: dialog, sheet, card, pane */
   --panel-inset-compact: var(--inset-sm); /* the same for a compact panel (card size=sm) */
   --panel-gap: var(--gap-md); /* between the header, body, and footer of a panel */
 }

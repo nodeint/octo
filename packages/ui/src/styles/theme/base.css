@@ -35,7 +35,7 @@
   --overlay: oklch(0 0 0 / 10%);
 
   --border: var(--base-300);
-  --border-surface: oklch(from var(--foreground) l c h / 10%);
+  --border-surface: oklch(from var(--foreground) l c h / 25%);
 
   --ring: var(--primary-strong);
 

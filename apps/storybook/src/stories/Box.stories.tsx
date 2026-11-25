@@ -13,7 +13,7 @@ const meta = {
     border: { control: 'inline-radio', options: [undefined, 'thin', 'thick'] },
     shadow: { control: 'inline-radio', options: [undefined, 'none', 'sm', 'md', 'lg'] },
     gap: { control: 'select', options: [undefined, 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl'] },
-    bleed: { control: 'inline-radio', options: [undefined, 'x', 'y', 'all'] },
+    bleed: { control: 'inline-radio', options: [undefined, 'x', 'y', 'all', 'top', 'bottom', 'start', 'end'] },
   },
   parameters: { storyWidth: 'md' },
   decorators: [storyWidthDecorator],
@@ -77,6 +77,27 @@ export const Gap: Story = {
           <Text>{n}</Text>
         </Box>
       ))}
+    </Box>
+  ),
+};
+
+export const BleedKeepingInset: Story = {
+  args: { bleed: 'x', px: 'inset', surface: 'muted' },
+  parameters: {
+    docs: { description: { story: '`px="inset"` pads with the container `--inset`, so a bleeding box keeps its content aligned.' } },
+  },
+  render: (args) => (
+    <Box
+      border="thin"
+      radius="md"
+      style={{ padding: '1rem', ['--inset' as string]: '1rem' }}
+    >
+      <Stack>
+        <Text>Content inside the padded container.</Text>
+        <Box {...args}>
+          <Text variant="label">Bleeds to the edge, text stays aligned</Text>
+        </Box>
+      </Stack>
     </Box>
   ),
 };

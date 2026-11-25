@@ -6,11 +6,18 @@ type BoxGap = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
 
 type BoxPadding = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-/** A side or axis takes a step, or `0` to clear the padding that `p` or an axis would give it. */
-type BoxPaddingSide = BoxPadding | '0';
+/**
+ * A side or axis takes a step, `0` to clear the padding that `p` or an axis would give it,
+ * or `inset` to pad with the surrounding container's `--inset`.
+ */
+type BoxPaddingSide = BoxPadding | '0' | 'inset';
 
-/** Which sides cancel the padding of the surrounding container (`--inset`). */
-type BoxBleed = 'x' | 'y' | 'all';
+/**
+ * Which sides cancel the padding of the surrounding container (`--inset`).
+ * `x`, `y` and `all` take both sides of an axis or every side; `top`, `bottom`, `start` and `end` take one side
+ * (block start, block end, inline start, inline end).
+ */
+type BoxBleed = 'x' | 'y' | 'all' | 'top' | 'bottom' | 'start' | 'end';
 
 type BoxProps = React.ComponentProps<'div'> & {
   /**
@@ -29,8 +36,12 @@ type BoxProps = React.ComponentProps<'div'> & {
   shadow?: BoxShadow;
   /** The space between children. Takes effect on a flex or grid box, such as Stack, Inline and Grid. */
   gap?: BoxGap;
-  /** The padding step on every side. Also sets `--inset` for descendants, so a Box `bleed` inside cancels it. */
-  p?: BoxPadding;
+  /**
+   * The padding step on every side. Also sets `--inset` for descendants, so a Box `bleed` inside cancels it.
+   * `inset` pads with the `--inset` of the surrounding container (0 when none declares one) and leaves it unchanged,
+   * so a box that bleeds to the container edge can keep its content aligned: `<Box bleed="x" px="inset">`.
+   */
+  p?: BoxPadding | 'inset';
   /** The inline axis, both start and end. Wins over `p`. */
   px?: BoxPaddingSide;
   /** The block axis, both top and bottom. Wins over `p`. */

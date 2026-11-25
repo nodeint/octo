@@ -1,16 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Box, Button, Pane, PaneContent, PaneFooter, PaneHeader, ScrollArea, Text } from '@workspace/ui';
+import { Button, Pane, PaneBody, PaneFooter, PaneHeader, PaneSeparator, Separator, Text } from '@workspace/ui';
 
 import { storyWidthDecorator } from '../story-width';
-
-/** The pane gives its content no padding and no scroll: the page inside owns both. */
-function Page({ children }: { children: React.ReactNode }): React.JSX.Element {
-  return (
-    <ScrollArea style={{ flex: 1, minHeight: 0 }}>
-      <Box p="md">{children}</Box>
-    </ScrollArea>
-  );
-}
 
 const meta = {
   title: 'Layout/Pane',
@@ -28,37 +19,47 @@ export const Demo: Story = {
   render: (args) => (
     <Pane {...args} style={{ height: '16rem' }}>
       <PaneHeader><Text variant="title-sm">Details</Text></PaneHeader>
-      <PaneContent>
-        <Page><Text>Pane content fills the space between the header and the footer.</Text></Page>
-      </PaneContent>
+      <PaneBody><Text>The body takes the space between the header and the footer.</Text></PaneBody>
       <PaneFooter><Button size="sm">Save</Button></PaneFooter>
     </Pane>
   ),
 };
 
-export const ScrollingContent: Story = {
-  parameters: { docs: { description: { story: 'Long content scrolls inside a `ScrollArea` while the header and footer stay put.' } } },
+export const ScrollingBody: Story = {
+  parameters: { docs: { description: { story: 'Long content scrolls inside the body while the header and footer stay put.' } } },
   render: () => (
     <Pane style={{ height: '16rem' }}>
-      <PaneHeader><Text variant="title-sm">Activity</Text></PaneHeader>
-      <PaneContent>
-        <Page>
-          {Array.from({ length: 20 }, (_, i) => (
-            <Text as="p" key={i}>Entry {i + 1}</Text>
-          ))}
-        </Page>
-      </PaneContent>
-      <PaneFooter><Button size="sm" variant="outline">Close</Button></PaneFooter>
+      <PaneBody>
+        {Array.from({ length: 20 }, (_, i) => (
+          <Text as="p" key={i}>Entry {i + 1}</Text>
+        ))}
+      </PaneBody>
     </Pane>
   ),
 };
 
-export const ContentOnly: Story = {
+export const Painted: Story = {
+  parameters: { docs: { description: { story: '`tone` with `emphasis` replace the glass sidebar surface.' } } },
   render: () => (
-    <Pane>
-      <PaneContent>
-        <Page><Text>A pane without a header or footer.</Text></Page>
-      </PaneContent>
+    <Pane tone="info" emphasis="soft" style={{ height: '8rem' }}>
+      <Text>A pane painted with the info tone, soft emphasis.</Text>
+    </Pane>
+  ),
+};
+
+export const WithSeparators: Story = {
+  parameters: { docs: { description: { story: 'A `PaneSeparator` bleeds to the edges; the body pads the side next to it.' } } },
+  render: () => (
+    <Pane style={{ height: '16rem' }}>
+      <PaneHeader><Text variant="title-sm">Activity</Text></PaneHeader>
+      <PaneSeparator />
+      <PaneBody>
+        {Array.from({ length: 20 }, (_, i) => (
+          <Text as="p" key={i}>Entry {i + 1}</Text>
+        ))}
+      </PaneBody>
+      <PaneSeparator />
+      <PaneFooter><Button size="sm" variant="outline">Close</Button></PaneFooter>
     </Pane>
   ),
 };
