@@ -4,7 +4,7 @@
   --variant-ring: var(--neutral-strong);
   --variant-bg: var(--neutral-strong);
   --variant-fg: var(--neutral-strong-foreground);
-  --variant-fg-secondary: var(--neutral-strong-foreground-secondary);
+  --variant-fg-secondary: var(--neutral-strong-foreground-subtle);
   --variant-fg-muted: var(--neutral-strong-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--neutral-strong-hover);
@@ -28,11 +28,11 @@
   --variant-bg-pressed: var(--neutral-subtle-pressed);
   --variant-bg-disabled: var(--neutral-subtle-disabled);
   --variant-fg: var(--neutral-subtle-foreground);
-  --variant-fg-secondary: var(--neutral-subtle-foreground-secondary);
+  --variant-fg-secondary: var(--neutral-subtle-foreground-subtle);
   --variant-fg-muted: var(--neutral-subtle-foreground-muted);
   --variant-fg-hover: var(--neutral-subtle-foreground);
   --variant-fg-active: var(--neutral-subtle-foreground);
-  --variant-fg-pressed: var(--neutral-plain-foreground-disabled);
+  --variant-fg-pressed: var(--neutral-subtle-foreground);
   --variant-border: transparent;
   --variant-border-hover: transparent;
   --variant-border-active: transparent;
@@ -44,7 +44,7 @@
   --variant-ring: var(--neutral-strong);
   --variant-bg: transparent;
   --variant-fg: var(--neutral-plain-foreground);
-  --variant-fg-secondary: var(--neutral-plain-foreground-secondary);
+  --variant-fg-secondary: var(--neutral-plain-foreground-subtle);
   --variant-fg-muted: var(--neutral-plain-foreground-muted);
   --variant-border: var(--neutral-plain-border);
   --variant-bg-hover: var(--neutral-subtle-hover);
@@ -64,7 +64,7 @@
   --variant-ring: var(--neutral-strong);
   --variant-bg: transparent;
   --variant-fg: var(--neutral-plain-foreground-muted);
-  --variant-fg-secondary: var(--neutral-plain-foreground-secondary);
+  --variant-fg-secondary: var(--neutral-plain-foreground-subtle);
   --variant-fg-muted: var(--neutral-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--neutral-subtle-hover);
@@ -84,7 +84,7 @@
   --variant-ring: var(--neutral-strong);
   --variant-bg: transparent;
   --variant-fg: var(--neutral-plain-foreground);
-  --variant-fg-secondary: var(--neutral-plain-foreground-secondary);
+  --variant-fg-secondary: var(--neutral-plain-foreground-subtle);
   --variant-fg-muted: var(--neutral-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
@@ -104,7 +104,7 @@
   --variant-ring: var(--neutral-strong);
   --variant-bg: var(--neutral-surface);
   --variant-fg: var(--neutral-plain-foreground);
-  --variant-fg-secondary: var(--neutral-surface-foreground-secondary);
+  --variant-fg-secondary: var(--neutral-surface-foreground-subtle);
   --variant-fg-muted: var(--neutral-surface-foreground-muted);
   --variant-border: var(--neutral-surface-border);
 }

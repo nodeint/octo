@@ -4,7 +4,7 @@
   --variant-ring: var(--fuchsia-strong);
   --variant-bg: var(--fuchsia-strong);
   --variant-fg: var(--fuchsia-strong-foreground);
-  --variant-fg-secondary: var(--fuchsia-strong-foreground-secondary);
+  --variant-fg-secondary: var(--fuchsia-strong-foreground-subtle);
   --variant-fg-muted: var(--fuchsia-strong-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--fuchsia-strong-hover);
@@ -28,11 +28,11 @@
   --variant-bg-pressed: var(--fuchsia-subtle-pressed);
   --variant-bg-disabled: var(--fuchsia-subtle-disabled);
   --variant-fg: var(--fuchsia-subtle-foreground);
-  --variant-fg-secondary: var(--fuchsia-subtle-foreground-secondary);
+  --variant-fg-secondary: var(--fuchsia-subtle-foreground-subtle);
   --variant-fg-muted: var(--fuchsia-subtle-foreground-muted);
   --variant-fg-hover: var(--fuchsia-subtle-foreground);
   --variant-fg-active: var(--fuchsia-subtle-foreground);
-  --variant-fg-pressed: var(--fuchsia-plain-foreground-disabled);
+  --variant-fg-pressed: var(--fuchsia-subtle-foreground);
   --variant-border: transparent;
   --variant-border-hover: transparent;
   --variant-border-active: transparent;
@@ -44,7 +44,7 @@
   --variant-ring: var(--fuchsia-strong);
   --variant-bg: transparent;
   --variant-fg: var(--fuchsia-plain-foreground);
-  --variant-fg-secondary: var(--fuchsia-plain-foreground-secondary);
+  --variant-fg-secondary: var(--fuchsia-plain-foreground-subtle);
   --variant-fg-muted: var(--fuchsia-plain-foreground-muted);
   --variant-border: var(--fuchsia-plain-border);
   --variant-bg-hover: var(--fuchsia-subtle-hover);
@@ -64,7 +64,7 @@
   --variant-ring: var(--fuchsia-strong);
   --variant-bg: transparent;
   --variant-fg: var(--fuchsia-plain-foreground-muted);
-  --variant-fg-secondary: var(--fuchsia-plain-foreground-secondary);
+  --variant-fg-secondary: var(--fuchsia-plain-foreground-subtle);
   --variant-fg-muted: var(--fuchsia-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--fuchsia-subtle-hover);
@@ -84,7 +84,7 @@
   --variant-ring: var(--fuchsia-strong);
   --variant-bg: transparent;
   --variant-fg: var(--fuchsia-plain-foreground);
-  --variant-fg-secondary: var(--fuchsia-plain-foreground-secondary);
+  --variant-fg-secondary: var(--fuchsia-plain-foreground-subtle);
   --variant-fg-muted: var(--fuchsia-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
@@ -104,7 +104,7 @@
   --variant-ring: var(--fuchsia-strong);
   --variant-bg: var(--fuchsia-surface);
   --variant-fg: var(--fuchsia-plain-foreground);
-  --variant-fg-secondary: var(--fuchsia-surface-foreground-secondary);
+  --variant-fg-secondary: var(--fuchsia-surface-foreground-subtle);
   --variant-fg-muted: var(--fuchsia-surface-foreground-muted);
   --variant-border: var(--fuchsia-surface-border);
 }

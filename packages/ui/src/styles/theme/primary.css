@@ -7,12 +7,12 @@
   --primary-strong: var(--teal-strong);
   --primary-strong-hover: var(--teal-strong-hover);
   --primary-strong-foreground: var(--teal-strong-foreground);
-  --primary-strong-foreground-secondary: var(--teal-strong-foreground-secondary);
+  --primary-strong-foreground-subtle: var(--teal-strong-foreground-subtle);
   --primary-strong-foreground-muted: var(--teal-strong-foreground-muted);
   --primary-subtle: var(--teal-subtle);
   --primary-subtle-foreground: var(--teal-subtle-foreground);
-  --primary-subtle-foreground-secondary: var(--teal-subtle-foreground-secondary);
+  --primary-subtle-foreground-subtle: var(--teal-subtle-foreground-subtle);
   --primary-subtle-foreground-muted: var(--teal-subtle-foreground-muted);
-  --primary-plain-foreground-secondary: color-mix(in oklch, var(--primary-strong) 80%, transparent);
+  --primary-plain-foreground-subtle: color-mix(in oklch, var(--primary-strong) 80%, transparent);
   --primary-plain-foreground-muted: color-mix(in oklch, var(--primary-strong) 60%, transparent);
 }

@@ -4,7 +4,7 @@
   --variant-ring: var(--mist-strong);
   --variant-bg: var(--mist-strong);
   --variant-fg: var(--mist-strong-foreground);
-  --variant-fg-secondary: var(--mist-strong-foreground-secondary);
+  --variant-fg-secondary: var(--mist-strong-foreground-subtle);
   --variant-fg-muted: var(--mist-strong-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--mist-strong-hover);
@@ -28,11 +28,11 @@
   --variant-bg-pressed: var(--mist-subtle-pressed);
   --variant-bg-disabled: var(--mist-subtle-disabled);
   --variant-fg: var(--mist-subtle-foreground);
-  --variant-fg-secondary: var(--mist-subtle-foreground-secondary);
+  --variant-fg-secondary: var(--mist-subtle-foreground-subtle);
   --variant-fg-muted: var(--mist-subtle-foreground-muted);
   --variant-fg-hover: var(--mist-subtle-foreground);
   --variant-fg-active: var(--mist-subtle-foreground);
-  --variant-fg-pressed: var(--mist-plain-foreground-disabled);
+  --variant-fg-pressed: var(--mist-subtle-foreground);
   --variant-border: transparent;
   --variant-border-hover: transparent;
   --variant-border-active: transparent;
@@ -44,7 +44,7 @@
   --variant-ring: var(--mist-strong);
   --variant-bg: transparent;
   --variant-fg: var(--mist-plain-foreground);
-  --variant-fg-secondary: var(--mist-plain-foreground-secondary);
+  --variant-fg-secondary: var(--mist-plain-foreground-subtle);
   --variant-fg-muted: var(--mist-plain-foreground-muted);
   --variant-border: var(--mist-plain-border);
   --variant-bg-hover: var(--mist-subtle-hover);
@@ -64,7 +64,7 @@
   --variant-ring: var(--mist-strong);
   --variant-bg: transparent;
   --variant-fg: var(--mist-plain-foreground-muted);
-  --variant-fg-secondary: var(--mist-plain-foreground-secondary);
+  --variant-fg-secondary: var(--mist-plain-foreground-subtle);
   --variant-fg-muted: var(--mist-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--mist-subtle-hover);
@@ -84,7 +84,7 @@
   --variant-ring: var(--mist-strong);
   --variant-bg: transparent;
   --variant-fg: var(--mist-plain-foreground);
-  --variant-fg-secondary: var(--mist-plain-foreground-secondary);
+  --variant-fg-secondary: var(--mist-plain-foreground-subtle);
   --variant-fg-muted: var(--mist-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
@@ -104,7 +104,7 @@
   --variant-ring: var(--mist-strong);
   --variant-bg: var(--mist-surface);
   --variant-fg: var(--mist-plain-foreground);
-  --variant-fg-secondary: var(--mist-surface-foreground-secondary);
+  --variant-fg-secondary: var(--mist-surface-foreground-subtle);
   --variant-fg-muted: var(--mist-surface-foreground-muted);
   --variant-border: var(--mist-surface-border);
 }

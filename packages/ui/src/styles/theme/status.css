@@ -12,13 +12,13 @@
 :root {
   --destructive-strong: oklch(0.5 0.2 27);
   --destructive-strong-foreground: oklch(0.985 0 0);
-  --destructive-strong-foreground-secondary: color-mix(in oklch, var(--destructive-strong-foreground) 80%, var(--destructive-strong));
+  --destructive-strong-foreground-subtle: color-mix(in oklch, var(--destructive-strong-foreground) 80%, var(--destructive-strong));
   --destructive-strong-foreground-muted: color-mix(in oklch, var(--destructive-strong-foreground) 60%, var(--destructive-strong));
   --destructive-strong-hover: oklch(from var(--destructive-strong) clamp(0, calc(l - 0.06), 1) c h);
   --destructive-strong-disabled: color-mix(in oklab, var(--destructive-strong) 35%, var(--background));
   --destructive-subtle: oklch(0.955 0.03 27);
   --destructive-subtle-foreground: var(--destructive-strong);
-  --destructive-subtle-foreground-secondary: color-mix(in oklch, var(--destructive-subtle-foreground) 80%, var(--destructive-subtle));
+  --destructive-subtle-foreground-subtle: color-mix(in oklch, var(--destructive-subtle-foreground) 80%, var(--destructive-subtle));
   --destructive-subtle-foreground-muted: color-mix(in oklch, var(--destructive-subtle-foreground) 60%, var(--destructive-subtle));
   --destructive-subtle-pressed: oklch(from var(--destructive-subtle) clamp(0, calc(l - 0.06), 1) c h);
   --destructive-subtle-hover: oklch(from var(--destructive-subtle) clamp(0, calc(l - 0.03), 1) c h);
@@ -26,24 +26,23 @@
   --destructive-plain-foreground: var(--destructive-strong);
   --destructive-plain-border: oklch(from var(--destructive-strong) l c h / 40%);
   --destructive-plain-border-disabled: var(--disabled-border);
-  --destructive-plain-foreground-disabled: var(--foreground-disabled);
-  --destructive-plain-foreground-secondary: color-mix(in oklch, var(--destructive-plain-foreground) 80%, transparent);
+  --destructive-plain-foreground-subtle: color-mix(in oklch, var(--destructive-plain-foreground) 80%, transparent);
   --destructive-plain-foreground-muted: color-mix(in oklch, var(--destructive-plain-foreground) 60%, transparent);
   --destructive-surface: oklch(0.985 0.012 27);
   --destructive-surface-foreground: color-mix(in oklch, var(--destructive-strong) 80%, var(--destructive-subtle));
-  --destructive-surface-foreground-secondary: color-mix(in oklch, var(--destructive-strong) 65%, var(--destructive-subtle));
+  --destructive-surface-foreground-subtle: color-mix(in oklch, var(--destructive-strong) 65%, var(--destructive-subtle));
   --destructive-surface-foreground-muted: color-mix(in oklch, var(--destructive-strong) 50%, var(--destructive-subtle));
   --destructive-surface-border: oklch(from var(--destructive-strong) l c h / 40%);
 
   --success-strong: oklch(0.45 0.14 145);
   --success-strong-foreground: oklch(0.985 0 0);
-  --success-strong-foreground-secondary: color-mix(in oklch, var(--success-strong-foreground) 80%, var(--success-strong));
+  --success-strong-foreground-subtle: color-mix(in oklch, var(--success-strong-foreground) 80%, var(--success-strong));
   --success-strong-foreground-muted: color-mix(in oklch, var(--success-strong-foreground) 60%, var(--success-strong));
   --success-strong-hover: oklch(from var(--success-strong) clamp(0, calc(l - 0.06), 1) c h);
   --success-strong-disabled: color-mix(in oklab, var(--success-strong) 35%, var(--background));
   --success-subtle: oklch(0.95 0.04 145);
   --success-subtle-foreground: var(--success-strong);
-  --success-subtle-foreground-secondary: color-mix(in oklch, var(--success-subtle-foreground) 80%, var(--success-subtle));
+  --success-subtle-foreground-subtle: color-mix(in oklch, var(--success-subtle-foreground) 80%, var(--success-subtle));
   --success-subtle-foreground-muted: color-mix(in oklch, var(--success-subtle-foreground) 60%, var(--success-subtle));
   --success-subtle-pressed: oklch(from var(--success-subtle) clamp(0, calc(l - 0.06), 1) c h);
   --success-subtle-hover: oklch(from var(--success-subtle) clamp(0, calc(l - 0.03), 1) c h);
@@ -51,24 +50,23 @@
   --success-plain-foreground: var(--success-strong);
   --success-plain-border: oklch(from var(--success-strong) l c h / 40%);
   --success-plain-border-disabled: var(--disabled-border);
-  --success-plain-foreground-disabled: var(--foreground-disabled);
-  --success-plain-foreground-secondary: color-mix(in oklch, var(--success-plain-foreground) 80%, transparent);
+  --success-plain-foreground-subtle: color-mix(in oklch, var(--success-plain-foreground) 80%, transparent);
   --success-plain-foreground-muted: color-mix(in oklch, var(--success-plain-foreground) 60%, transparent);
   --success-surface: oklch(0.985 0.012 145);
   --success-surface-foreground: color-mix(in oklch, var(--success-strong) 80%, var(--success-subtle));
-  --success-surface-foreground-secondary: color-mix(in oklch, var(--success-strong) 65%, var(--success-subtle));
+  --success-surface-foreground-subtle: color-mix(in oklch, var(--success-strong) 65%, var(--success-subtle));
   --success-surface-foreground-muted: color-mix(in oklch, var(--success-strong) 50%, var(--success-subtle));
   --success-surface-border: oklch(from var(--success-strong) l c h / 40%);
 
   --warning-strong: oklch(0.45 0.13 75);
   --warning-strong-foreground: oklch(0.985 0 0);
-  --warning-strong-foreground-secondary: color-mix(in oklch, var(--warning-strong-foreground) 80%, var(--warning-strong));
+  --warning-strong-foreground-subtle: color-mix(in oklch, var(--warning-strong-foreground) 80%, var(--warning-strong));
   --warning-strong-foreground-muted: color-mix(in oklch, var(--warning-strong-foreground) 60%, var(--warning-strong));
   --warning-strong-hover: oklch(from var(--warning-strong) clamp(0, calc(l - 0.06), 1) c h);
   --warning-strong-disabled: color-mix(in oklab, var(--warning-strong) 35%, var(--background));
   --warning-subtle: oklch(0.95 0.04 75);
   --warning-subtle-foreground: var(--warning-strong);
-  --warning-subtle-foreground-secondary: color-mix(in oklch, var(--warning-subtle-foreground) 80%, var(--warning-subtle));
+  --warning-subtle-foreground-subtle: color-mix(in oklch, var(--warning-subtle-foreground) 80%, var(--warning-subtle));
   --warning-subtle-foreground-muted: color-mix(in oklch, var(--warning-subtle-foreground) 60%, var(--warning-subtle));
   --warning-subtle-pressed: oklch(from var(--warning-subtle) clamp(0, calc(l - 0.06), 1) c h);
   --warning-subtle-hover: oklch(from var(--warning-subtle) clamp(0, calc(l - 0.03), 1) c h);
@@ -76,24 +74,23 @@
   --warning-plain-foreground: var(--warning-strong);
   --warning-plain-border: oklch(from var(--warning-strong) l c h / 40%);
   --warning-plain-border-disabled: var(--disabled-border);
-  --warning-plain-foreground-disabled: var(--foreground-disabled);
-  --warning-plain-foreground-secondary: color-mix(in oklch, var(--warning-plain-foreground) 80%, transparent);
+  --warning-plain-foreground-subtle: color-mix(in oklch, var(--warning-plain-foreground) 80%, transparent);
   --warning-plain-foreground-muted: color-mix(in oklch, var(--warning-plain-foreground) 60%, transparent);
   --warning-surface: oklch(0.985 0.014 75);
   --warning-surface-foreground: color-mix(in oklch, var(--warning-strong) 80%, var(--warning-subtle));
-  --warning-surface-foreground-secondary: color-mix(in oklch, var(--warning-strong) 65%, var(--warning-subtle));
+  --warning-surface-foreground-subtle: color-mix(in oklch, var(--warning-strong) 65%, var(--warning-subtle));
   --warning-surface-foreground-muted: color-mix(in oklch, var(--warning-strong) 50%, var(--warning-subtle));
   --warning-surface-border: oklch(from var(--warning-strong) l c h / 40%);
 
   --info-strong: oklch(0.45 0.12 230);
   --info-strong-foreground: oklch(0.985 0 0);
-  --info-strong-foreground-secondary: color-mix(in oklch, var(--info-strong-foreground) 80%, var(--info-strong));
+  --info-strong-foreground-subtle: color-mix(in oklch, var(--info-strong-foreground) 80%, var(--info-strong));
   --info-strong-foreground-muted: color-mix(in oklch, var(--info-strong-foreground) 60%, var(--info-strong));
   --info-strong-hover: oklch(from var(--info-strong) clamp(0, calc(l - 0.06), 1) c h);
   --info-strong-disabled: color-mix(in oklab, var(--info-strong) 35%, var(--background));
   --info-subtle: oklch(0.95 0.03 230);
   --info-subtle-foreground: var(--info-strong);
-  --info-subtle-foreground-secondary: color-mix(in oklch, var(--info-subtle-foreground) 80%, var(--info-subtle));
+  --info-subtle-foreground-subtle: color-mix(in oklch, var(--info-subtle-foreground) 80%, var(--info-subtle));
   --info-subtle-foreground-muted: color-mix(in oklch, var(--info-subtle-foreground) 60%, var(--info-subtle));
   --info-subtle-pressed: oklch(from var(--info-subtle) clamp(0, calc(l - 0.06), 1) c h);
   --info-subtle-hover: oklch(from var(--info-subtle) clamp(0, calc(l - 0.03), 1) c h);
@@ -101,12 +98,11 @@
   --info-plain-foreground: var(--info-strong);
   --info-plain-border: oklch(from var(--info-strong) l c h / 40%);
   --info-plain-border-disabled: var(--disabled-border);
-  --info-plain-foreground-disabled: var(--foreground-disabled);
-  --info-plain-foreground-secondary: color-mix(in oklch, var(--info-plain-foreground) 80%, transparent);
+  --info-plain-foreground-subtle: color-mix(in oklch, var(--info-plain-foreground) 80%, transparent);
   --info-plain-foreground-muted: color-mix(in oklch, var(--info-plain-foreground) 60%, transparent);
   --info-surface: oklch(0.985 0.01 230);
   --info-surface-foreground: color-mix(in oklch, var(--info-strong) 80%, var(--info-subtle));
-  --info-surface-foreground-secondary: color-mix(in oklch, var(--info-strong) 65%, var(--info-subtle));
+  --info-surface-foreground-subtle: color-mix(in oklch, var(--info-strong) 65%, var(--info-subtle));
   --info-surface-foreground-muted: color-mix(in oklch, var(--info-strong) 50%, var(--info-subtle));
   --info-surface-border: oklch(from var(--info-strong) l c h / 40%);
 }
@@ -114,7 +110,7 @@
 .dark {
   --destructive-strong: oklch(0.75 0.16 27);
   --destructive-strong-foreground: oklch(0.2 0.04 27);
-  --destructive-strong-foreground-secondary: color-mix(in oklch, var(--destructive-strong-foreground) 80%, var(--destructive-strong));
+  --destructive-strong-foreground-subtle: color-mix(in oklch, var(--destructive-strong-foreground) 80%, var(--destructive-strong));
   --destructive-strong-foreground-muted: color-mix(in oklch, var(--destructive-strong-foreground) 60%, var(--destructive-strong));
   --destructive-strong-hover: oklch(from var(--destructive-strong) clamp(0, calc(l + 0.05), 1) c h);
   --destructive-strong-disabled: color-mix(in oklab, var(--destructive-strong) 35%, var(--background));
@@ -124,18 +120,17 @@
   --destructive-subtle-disabled: color-mix(in oklab, var(--destructive-subtle) 50%, transparent);
   --destructive-plain-foreground: var(--destructive-strong);
   --destructive-plain-border-disabled: var(--disabled-border);
-  --destructive-plain-foreground-disabled: var(--foreground-disabled);
-  --destructive-plain-foreground-secondary: color-mix(in oklch, var(--destructive-plain-foreground) 80%, transparent);
+  --destructive-plain-foreground-subtle: color-mix(in oklch, var(--destructive-plain-foreground) 80%, transparent);
   --destructive-plain-foreground-muted: color-mix(in oklch, var(--destructive-plain-foreground) 60%, transparent);
   --destructive-surface: oklch(0.24 0.02 27);
   --destructive-surface-foreground: color-mix(in oklch, var(--destructive-strong) 80%, var(--destructive-subtle));
-  --destructive-surface-foreground-secondary: color-mix(in oklch, var(--destructive-strong) 65%, var(--destructive-subtle));
+  --destructive-surface-foreground-subtle: color-mix(in oklch, var(--destructive-strong) 65%, var(--destructive-subtle));
   --destructive-surface-foreground-muted: color-mix(in oklch, var(--destructive-strong) 50%, var(--destructive-subtle));
   --destructive-surface-border: oklch(from var(--destructive-strong) l c h / 40%);
 
   --success-strong: oklch(0.78 0.13 145);
   --success-strong-foreground: oklch(0.2 0.04 145);
-  --success-strong-foreground-secondary: color-mix(in oklch, var(--success-strong-foreground) 80%, var(--success-strong));
+  --success-strong-foreground-subtle: color-mix(in oklch, var(--success-strong-foreground) 80%, var(--success-strong));
   --success-strong-foreground-muted: color-mix(in oklch, var(--success-strong-foreground) 60%, var(--success-strong));
   --success-strong-hover: oklch(from var(--success-strong) clamp(0, calc(l + 0.05), 1) c h);
   --success-strong-disabled: color-mix(in oklab, var(--success-strong) 35%, var(--background));
@@ -145,18 +140,17 @@
   --success-subtle-disabled: color-mix(in oklab, var(--success-subtle) 50%, transparent);
   --success-plain-foreground: var(--success-strong);
   --success-plain-border-disabled: var(--disabled-border);
-  --success-plain-foreground-disabled: var(--foreground-disabled);
-  --success-plain-foreground-secondary: color-mix(in oklch, var(--success-plain-foreground) 80%, transparent);
+  --success-plain-foreground-subtle: color-mix(in oklch, var(--success-plain-foreground) 80%, transparent);
   --success-plain-foreground-muted: color-mix(in oklch, var(--success-plain-foreground) 60%, transparent);
   --success-surface: oklch(0.24 0.02 145);
   --success-surface-foreground: color-mix(in oklch, var(--success-strong) 80%, var(--success-subtle));
-  --success-surface-foreground-secondary: color-mix(in oklch, var(--success-strong) 65%, var(--success-subtle));
+  --success-surface-foreground-subtle: color-mix(in oklch, var(--success-strong) 65%, var(--success-subtle));
   --success-surface-foreground-muted: color-mix(in oklch, var(--success-strong) 50%, var(--success-subtle));
   --success-surface-border: oklch(from var(--success-strong) l c h / 40%);
 
   --warning-strong: oklch(0.84 0.12 85);
   --warning-strong-foreground: oklch(0.2 0.04 85);
-  --warning-strong-foreground-secondary: color-mix(in oklch, var(--warning-strong-foreground) 80%, var(--warning-strong));
+  --warning-strong-foreground-subtle: color-mix(in oklch, var(--warning-strong-foreground) 80%, var(--warning-strong));
   --warning-strong-foreground-muted: color-mix(in oklch, var(--warning-strong-foreground) 60%, var(--warning-strong));
   --warning-strong-hover: oklch(from var(--warning-strong) clamp(0, calc(l + 0.05), 1) c h);
   --warning-strong-disabled: color-mix(in oklab, var(--warning-strong) 35%, var(--background));
@@ -166,18 +160,17 @@
   --warning-subtle-disabled: color-mix(in oklab, var(--warning-subtle) 50%, transparent);
   --warning-plain-foreground: var(--warning-strong);
   --warning-plain-border-disabled: var(--disabled-border);
-  --warning-plain-foreground-disabled: var(--foreground-disabled);
-  --warning-plain-foreground-secondary: color-mix(in oklch, var(--warning-plain-foreground) 80%, transparent);
+  --warning-plain-foreground-subtle: color-mix(in oklch, var(--warning-plain-foreground) 80%, transparent);
   --warning-plain-foreground-muted: color-mix(in oklch, var(--warning-plain-foreground) 60%, transparent);
   --warning-surface: oklch(0.25 0.02 85);
   --warning-surface-foreground: color-mix(in oklch, var(--warning-strong) 80%, var(--warning-subtle));
-  --warning-surface-foreground-secondary: color-mix(in oklch, var(--warning-strong) 65%, var(--warning-subtle));
+  --warning-surface-foreground-subtle: color-mix(in oklch, var(--warning-strong) 65%, var(--warning-subtle));
   --warning-surface-foreground-muted: color-mix(in oklch, var(--warning-strong) 50%, var(--warning-subtle));
   --warning-surface-border: oklch(from var(--warning-strong) l c h / 40%);
 
   --info-strong: oklch(0.78 0.11 230);
   --info-strong-foreground: oklch(0.2 0.04 230);
-  --info-strong-foreground-secondary: color-mix(in oklch, var(--info-strong-foreground) 80%, var(--info-strong));
+  --info-strong-foreground-subtle: color-mix(in oklch, var(--info-strong-foreground) 80%, var(--info-strong));
   --info-strong-foreground-muted: color-mix(in oklch, var(--info-strong-foreground) 60%, var(--info-strong));
   --info-strong-hover: oklch(from var(--info-strong) clamp(0, calc(l + 0.05), 1) c h);
   --info-strong-disabled: color-mix(in oklab, var(--info-strong) 35%, var(--background));
@@ -187,12 +180,11 @@
   --info-subtle-disabled: color-mix(in oklab, var(--info-subtle) 50%, transparent);
   --info-plain-foreground: var(--info-strong);
   --info-plain-border-disabled: var(--disabled-border);
-  --info-plain-foreground-disabled: var(--foreground-disabled);
-  --info-plain-foreground-secondary: color-mix(in oklch, var(--info-plain-foreground) 80%, transparent);
+  --info-plain-foreground-subtle: color-mix(in oklch, var(--info-plain-foreground) 80%, transparent);
   --info-plain-foreground-muted: color-mix(in oklch, var(--info-plain-foreground) 60%, transparent);
   --info-surface: oklch(0.24 0.02 230);
   --info-surface-foreground: color-mix(in oklch, var(--info-strong) 80%, var(--info-subtle));
-  --info-surface-foreground-secondary: color-mix(in oklch, var(--info-strong) 65%, var(--info-subtle));
+  --info-surface-foreground-subtle: color-mix(in oklch, var(--info-strong) 65%, var(--info-subtle));
   --info-surface-foreground-muted: color-mix(in oklch, var(--info-strong) 50%, var(--info-subtle));
   --info-surface-border: oklch(from var(--info-strong) l c h / 40%);
 }

@@ -4,7 +4,7 @@
   --variant-ring: var(--warning-strong);
   --variant-bg: var(--warning-strong);
   --variant-fg: var(--warning-strong-foreground);
-  --variant-fg-secondary: var(--warning-strong-foreground-secondary);
+  --variant-fg-secondary: var(--warning-strong-foreground-subtle);
   --variant-fg-muted: var(--warning-strong-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--warning-strong-hover);
@@ -28,11 +28,11 @@
   --variant-bg-pressed: var(--warning-subtle-pressed);
   --variant-bg-disabled: var(--warning-subtle-disabled);
   --variant-fg: var(--warning-subtle-foreground);
-  --variant-fg-secondary: var(--warning-subtle-foreground-secondary);
+  --variant-fg-secondary: var(--warning-subtle-foreground-subtle);
   --variant-fg-muted: var(--warning-subtle-foreground-muted);
   --variant-fg-hover: var(--warning-subtle-foreground);
   --variant-fg-active: var(--warning-subtle-foreground);
-  --variant-fg-pressed: var(--warning-plain-foreground-disabled);
+  --variant-fg-pressed: var(--warning-subtle-foreground);
   --variant-border: transparent;
   --variant-border-hover: transparent;
   --variant-border-active: transparent;
@@ -44,7 +44,7 @@
   --variant-ring: var(--warning-strong);
   --variant-bg: transparent;
   --variant-fg: var(--warning-plain-foreground);
-  --variant-fg-secondary: var(--warning-plain-foreground-secondary);
+  --variant-fg-secondary: var(--warning-plain-foreground-subtle);
   --variant-fg-muted: var(--warning-plain-foreground-muted);
   --variant-border: var(--warning-plain-border);
   --variant-bg-hover: var(--warning-subtle-hover);
@@ -64,7 +64,7 @@
   --variant-ring: var(--warning-strong);
   --variant-bg: transparent;
   --variant-fg: var(--warning-plain-foreground-muted);
-  --variant-fg-secondary: var(--warning-plain-foreground-secondary);
+  --variant-fg-secondary: var(--warning-plain-foreground-subtle);
   --variant-fg-muted: var(--warning-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--warning-subtle-hover);
@@ -84,7 +84,7 @@
   --variant-ring: var(--warning-strong);
   --variant-bg: transparent;
   --variant-fg: var(--warning-plain-foreground);
-  --variant-fg-secondary: var(--warning-plain-foreground-secondary);
+  --variant-fg-secondary: var(--warning-plain-foreground-subtle);
   --variant-fg-muted: var(--warning-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
@@ -104,7 +104,7 @@
   --variant-ring: var(--warning-strong);
   --variant-bg: var(--warning-surface);
   --variant-fg: var(--warning-plain-foreground);
-  --variant-fg-secondary: var(--warning-surface-foreground-secondary);
+  --variant-fg-secondary: var(--warning-surface-foreground-subtle);
   --variant-fg-muted: var(--warning-surface-foreground-muted);
   --variant-border: var(--warning-surface-border);
 }
