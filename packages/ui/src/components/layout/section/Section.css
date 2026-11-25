@@ -27,17 +27,6 @@
   grid-template-rows: auto auto;
 }
 
-.section-title {
-  --row-title-family: var(--role-title-sm-family);
-  --row-title-size: var(--role-title-sm-size);
-  --row-title-leading: var(--role-title-sm-leading);
-  --row-title-weight: var(--role-title-sm-weight);
-}
-
-.section-description {
-  --row-description-display: block;
-}
-
 /* The action pinned to the end of a panel header. */
 .section-action {
   grid-column-start: 2;

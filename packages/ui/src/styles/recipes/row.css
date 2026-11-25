@@ -13,6 +13,15 @@
  *   row-hover-child    beside row: a direct-child a or button washes the row on hover (nested actions do not)
  *   row-focus-within   the ring shows when any child has focus, not only the trigger
  *
+ * Type set: data-row-type sits on the element that wraps the title and description and sets both text roles for
+ * everything inside it; a nested element with its own type resets it. Without the attribute a row reads as `content`.
+ *   content  title label, description description role, 2 lines (one step smaller inside an xs row)
+ *   header   title title-sm (heading font), description description role, not clamped (inline links wrap normally)
+ *   compact  title label, description caption role, 1 line
+ * A type declares --row-title-* and --row-description-size, -leading, -weight, -lines, and the private
+ * --row-description-type-color. A component never re-declares those; it sets --row-description-color on its own
+ * root for a state color (selected, error), which wins over the type color.
+ *
  * Size set: data-row-size picks --row-px, --row-py, --row-gap and --row-content-gap from the control and space scales.
  *   xs  --control-px-xs  --space-xs  --space-sm  0
  *   sm  --control-px-sm  --space-sm  --space-sm  --space-xs
@@ -26,14 +35,53 @@
  *   --row-actions-gap                                  gap between actions
  *   --row-align                                        align-items (center by default)
  *   --row-font-size, --row-font-leading                the row text step (body role by default)
- *   --row-description-size, --row-description-leading, --row-description-weight, --row-description-align   the description text
  *   --row-focus-border, --row-focus-shadow             the focus ring (the --state-focus-* pair by default)
  *   --row-title-display, --row-title-align            `flex` and `center` for a title with marks beside its text
- *   --row-title-family, --row-title-size, --row-title-leading, --row-title-weight   the title role (label by default)
- *   --row-description-lines, --row-description-color   clamp (2 lines by default) and text color of the description
- *   --row-description-display                          `block` opts out of the clamp, for a description with inline links
+ *   --row-description-color                            state color of the description, over the type color
  *   --row-meta-color                                   text color of the meta line
  */
+[data-row-type='content'] {
+  --row-title-family: inherit;
+  --row-title-size: var(--role-label-size);
+  --row-title-leading: var(--role-label-leading);
+  --row-title-weight: var(--role-label-weight);
+  --row-description-size: var(--role-description-size);
+  --row-description-leading: var(--role-description-leading);
+  --row-description-weight: var(--role-description-weight);
+  --row-description-type-color: var(--role-description-color);
+  --row-description-lines: 2;
+}
+
+[data-row-type='header'] {
+  --row-title-family: var(--role-title-sm-family);
+  --row-title-size: var(--role-title-sm-size);
+  --row-title-leading: var(--role-title-sm-leading);
+  --row-title-weight: var(--role-title-sm-weight);
+  --row-description-size: var(--role-description-size);
+  --row-description-leading: var(--role-description-leading);
+  --row-description-weight: var(--role-description-weight);
+  --row-description-type-color: var(--role-description-color);
+  --row-description-lines: none;
+}
+
+[data-row-type='compact'] {
+  --row-title-family: inherit;
+  --row-title-size: var(--role-label-size);
+  --row-title-leading: var(--role-label-leading);
+  --row-title-weight: var(--role-label-weight);
+  --row-description-size: var(--role-caption-size);
+  --row-description-leading: var(--role-caption-leading);
+  --row-description-weight: var(--role-caption-weight);
+  --row-description-type-color: var(--role-caption-color);
+  --row-description-lines: 1;
+}
+
+/* The smallest row reads its content description a step down. */
+[data-row-size='xs'] [data-row-type='content'] {
+  --row-description-size: var(--role-body-sm-size);
+  --row-description-leading: var(--role-body-sm-leading);
+}
+
 [data-row-size='xs'] {
   --row-px: var(--control-px-xs);
   --row-py: var(--space-xs);
@@ -158,20 +206,15 @@
 }
 
 .row-description {
-  display: var(--row-description-display, -webkit-box);
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: var(--row-description-lines, 2);
   overflow: hidden;
-  text-align: var(--row-description-align, start);
+  text-align: inherit;
   font-size: var(--row-description-size, var(--role-description-size));
   line-height: var(--row-description-leading, var(--role-description-leading));
   font-weight: var(--row-description-weight, var(--role-description-weight));
-  color: var(--row-description-color, var(--role-description-color));
-}
-
-.row[data-row-size='xs'] .row-description {
-  font-size: var(--row-description-size, var(--role-body-sm-size));
-  line-height: var(--row-description-leading, var(--role-body-sm-leading));
+  color: var(--row-description-color, var(--row-description-type-color, var(--role-description-color)));
 }
 
 .row-description > a {

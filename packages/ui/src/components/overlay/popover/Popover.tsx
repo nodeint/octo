@@ -64,6 +64,7 @@ function PopoverHeader({ className, ...props }: React.ComponentProps<'div'>): Re
   return (
     <div
       data-slot="popover-header"
+      data-row-type="content"
       className={cn('popover-header', className)}
       {...props}
     />

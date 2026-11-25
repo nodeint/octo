@@ -28,7 +28,3 @@
   line-height: var(--role-body-leading);
 }
 
-.popover-description {
-  --row-description-color: var(--foreground-muted);
-  --row-description-display: block;
-}

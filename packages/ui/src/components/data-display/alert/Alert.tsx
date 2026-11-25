@@ -42,13 +42,15 @@ function Alert({
     props: mergeProps<'div'>(
       {
         role: ALERT_ROLE[variant],
-        className: cn('alert', className),
+        className: cn('row alert', className),
       },
       props
     ),
     render,
     state: {
       slot: 'alert',
+      'row-type': 'content',
+      'row-size': 'md',
       variant,
       paint: paintName({ tone: tone ?? ALERT_TONE[variant], emphasis: 'surface' }),
     },

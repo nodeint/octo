@@ -40,18 +40,6 @@
   --media-background: var(--muted);
 }
 
-.empty-title {
-  --row-title-family: var(--role-title-sm-family);
-  --row-title-size: var(--role-title-sm-size);
-  --row-title-leading: var(--role-title-sm-leading);
-  --row-title-weight: var(--role-title-sm-weight);
-}
-
-.empty-description {
-  --row-description-display: block;
-  --row-description-align: center;
-}
-
 .empty-content {
   display: flex;
   flex-direction: column;

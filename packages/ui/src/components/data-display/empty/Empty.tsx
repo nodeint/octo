@@ -25,6 +25,7 @@ function EmptyHeader({ className, ...props }: React.ComponentProps<'div'>): Reac
   return (
     <div
       data-slot="empty-header"
+      data-row-type="header"
       className={cn('empty-header', className)}
       {...props}
     />

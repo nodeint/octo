@@ -1,19 +1,17 @@
 /*
+ * The frame (border, radius, padding, text step) comes from recipes/row.css. The alert lays its parts out as a
+ * grid instead of the row's flex strip, so the icon can span the title and the description.
  * DOM contract: the leading icon is a direct-child svg (grid columns and row span).
  * Action chrome is data-slot=alert-action (reserved end padding).
  */
 .alert {
+  --row-gap: var(--gap-sm);
+  --row-align: normal;
+  --row-border-color: var(--variant-border);
+  --row-background: var(--variant-bg);
   position: relative;
   display: grid;
-  gap: var(--gap-sm);
   width: 100%;
-  padding: var(--space-sm) var(--space-md);
-  border: var(--border-width-thin) solid;
-  border-radius: var(--radius-surface-md);
-  text-align: start;
-  font-size: var(--role-body-size);
-  line-height: var(--role-body-leading);
-  font-weight: var(--role-body-weight);
 }
 
 .alert:has([data-slot='alert-action']) {
@@ -39,13 +37,7 @@
 }
 
 .alert {
-  border-color: var(--variant-border);
-  background-color: var(--variant-bg);
   color: var(--variant-fg);
-}
-
-.alert [data-slot='alert-description'] {
-  --row-description-color: var(--variant-fg-secondary);
 }
 
 .alert:has(> svg) .alert-title {
@@ -64,7 +56,6 @@
 }
 
 .alert-description {
-  --row-description-display: block;
   text-wrap: balance;
 }
 

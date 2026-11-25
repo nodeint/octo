@@ -6,11 +6,6 @@
   --row-border-color: var(--border);
   --row-background: var(--card);
   --row-align: center;
-  --row-description-lines: 1;
-  --row-description-size: var(--role-caption-size);
-  --row-description-leading: var(--role-caption-leading);
-  --row-description-weight: var(--role-caption-weight);
-  --row-description-color: var(--role-caption-color);
   position: relative;
   flex-shrink: 0;
   width: fit-content;

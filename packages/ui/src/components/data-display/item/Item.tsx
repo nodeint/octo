@@ -130,6 +130,7 @@ function ItemContent({ className, ...props }: React.ComponentProps<'div'>): Reac
   return (
     <div
       data-slot="item-content"
+      data-row-type="content"
       className={cn(
         'row-content item-content',
         className

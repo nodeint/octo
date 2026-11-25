@@ -83,7 +83,7 @@ function createPart(
       defaultTagName: tag,
       props: mergeProps<'div'>({ className: cn(recipe, slot, className) }, props),
       render,
-      state: { slot },
+      state: { slot, 'row-type': recipe === 'row-content' ? 'compact' : undefined },
     });
   };
 }

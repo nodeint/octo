@@ -28,6 +28,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<'div'>): React
   return (
     <div
       data-slot="card-header"
+      data-row-type="header"
       className={cn('card-header', className)}
       {...props}
     />

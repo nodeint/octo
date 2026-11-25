@@ -14,6 +14,7 @@ function SectionHeader({ className, ...props }: React.ComponentProps<'div'>): Re
   return (
     <div
       data-slot="section-header"
+      data-row-type="header"
       className={cn('section-header', className)}
       {...props}
     />
