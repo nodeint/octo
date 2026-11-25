@@ -17,7 +17,8 @@ pnpm --filter storybook build  # static output in storybook-static/
 ## Screenshot tests
 
 Each story is rendered in headless Chromium by `@storybook/addon-vitest` and compared with a reference image in
-`src/stories/__screenshots__/<story file>/<light|dark>/`. The comparison lives in the `afterEach` hook of `.storybook/preview.tsx` and runs only under Vitest.
+`src/stories/__screenshots__/<story file>/<light|dark>/`. The comparison lives in the `afterEach` hook of
+`.storybook/preview.tsx` and runs only under Vitest.
 
 ```bash
 pnpm --filter storybook test         # fail when a story differs from its reference

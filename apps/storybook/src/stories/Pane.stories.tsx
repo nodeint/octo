@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button, Pane, PaneBody, PaneFooter, PaneHeader, PaneSeparator, Separator, Text } from '@workspace/ui';
+import { Button, Pane, PaneBody, PaneFooter, PaneHeader, PaneSeparator, Text } from '@workspace/ui';
 
 import { storyWidthDecorator } from '../story-width';
 

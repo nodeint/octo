@@ -24,6 +24,32 @@
       "project": [
         "src/**/*.ts"
       ]
+    },
+    "apps/web": {
+      "entry": [
+        "src/routes/*.tsx"
+      ],
+      "project": [
+        "src/**/*.{ts,tsx}"
+      ],
+      "ignoreUnresolved": [
+        "\\./\\+types/.*"
+      ]
+    },
+    "packages/example": {
+      "entry": [
+        "src/constants.ts",
+        "src/types.ts",
+        "src/utils/index.ts"
+      ]
+    },
+    "packages/ui": {
+      "project": [
+        "src/**/*.{ts,tsx}"
+      ],
+      "ignoreDependencies": [
+        "@fontsource-variable/inter"
+      ]
     }
   }
 }

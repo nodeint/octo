@@ -5,7 +5,7 @@
  *
  * Slots per hue: solid · solid-foreground · subtle · subtle-foreground, and the derived hover · border · surface ·
  * surface-foreground, foreground · subtle-hover · subtle-pressed (the subtle fill one and two ladder steps on), strong-disabled · subtle-disabled ·
- * disabled-border · disabled-foreground, muted-foreground. variants/tone.css aliases the slots; theme/base.css aliases the gray ladder.
+ * disabled-border · disabled-foreground, muted-foreground. variants/*.css aliases the slots; theme/base.css aliases the gray ladder.
  *   light: solid=600, foreground=white (or 950 on yellow, lime, amber), subtle=100, subtle-foreground=800
  *   dark:  solid=400, foreground=950, subtle=900, subtle-foreground=200
  * The gray family (slate, gray, neutral, zinc, stone, mauve, olive, mist, taupe) takes subtle=200 (light) and 800 (dark),

@@ -22,6 +22,7 @@
     "lint": "node scripts/lint/run-eslint.mjs --max-warnings 0",
     "lint:fix": "node scripts/lint/run-eslint.mjs --max-warnings 0 --fix",
     "lint:css": "stylelint \"packages/ui/src/**/*.css\"",
+    "lint:paint": "node scripts/ui/check-paint-slots.mjs",
     "lint:md": "node scripts/lint/lint-md.mjs",
     "lint:md:fix": "node scripts/lint/lint-md.mjs --fix",
     "lint:md:links": "node scripts/lint/lint-md-links.mjs",

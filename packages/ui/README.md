@@ -13,7 +13,7 @@ src/
     base.css         base layer: page defaults only
     theme/           theme layer: color, elevation and focus/invalid state tokens (state.css); the only axis with `.dark` values
     typography.css   theme layer: type steps and text roles
-    variants/        theme layer: tone.css and emphasis.css: the sets that build --variant-*
+    variants/        theme layer: one file per color, each block a data-paint variant that declares --variant-*
     layout/          layout layer: control sizes, space, radius, border widths, containers, motion, z-index, opacity
     recipes/         recipes layer, below components: class skins shared by several components
     components.css   components layer: per-part tokens, such as switch, tab, and sidebar parts
@@ -45,7 +45,7 @@ A stylesheet is a recipe when all of these hold:
    `theme/swatches.css` or `theme/base.css`. It declares no theme values: no `:root` or `.dark` block.
    A private hook it declares takes its value from a token.
    The exception is the sets a recipe owns: `[data-action-size]` in `action.css`, `[data-field-size]` in
-   `field-control.css`, and `[data-group-size]` and `[data-emphasis]` in `group.css` declare component tokens
+   `field-control.css`, and `[data-group-size]` in `group.css` declare component tokens
    (`--action-*`, `--field-*`, `--group-*`) from the control and radius scales (`--control-*`, `--radius-*`).
    `octo/token-tier` skips custom properties declared in a recipe.
    `group.css` opts in by the `group` class, but it only hands `--group-*` tokens to the actions and fields inside a group.
@@ -109,21 +109,29 @@ An exception applies only while a migration is in progress. A new exception need
   components, recipes, `base.css`, and `utilities.css` read the roles, never a raw step.
 - `components.css` holds per-part tokens: switch, radio, checkbox, slider, avatar, scrollbar, tooltip, floating,
   tab, and sidebar. It may read any axis.
-- The tone and emphasis sets live in `styles/variants/`, in the theme layer after the tokens.
+- The paint variants live in `styles/variants/`, in the theme layer after the tokens.
   The action, field and group size sets and the group variant sets live with their recipe
   (`recipes/action.css`, `recipes/field-control.css`, `recipes/group.css`).
-  A group's `variant` maps to a tone and emphasis pair (`lib/group-paint.ts`); the root carries `data-tone` and
-  `data-emphasis`, and `group.css` only aliases the resulting `--variant-*` slots to `--group-*`, so it declares no color.
+  A group's `variant` maps to a paint name (`lib/group-paint.ts`); the root carries `data-paint`, and `group.css`
+  only aliases the resulting `--variant-*` slots to `--group-*`, so it declares no color.
   A group overrides only the tokens that differ, on its own root, with a comment that gives the reason.
-- Paint has two axes in `styles/variants/`: `data-tone` (`base`, `primary`, `destructive`, `success`,
-  `warning`, `info`, `field`, and 21 swatch hues aliased from `theme/swatches.css`) declares `--tone-*` roles and the focus ring, and `data-emphasis` (`solid`, `soft`,
-  `outline`, `ghost`, `muted`, `link`, `surface`, `field`) maps the roles to the `--variant-*` slots.
-  `Alert` is not an action: it sets `data-tone` from its `variant` and `data-emphasis="surface"`, a static callout
-  painted from `--tone-surface`, `--tone-plain-border`, and `--tone-surface-foreground` (`--variant-fg-secondary`).
-  Text fields (`field-control`) set `data-tone="field"` and `data-emphasis="field"` and paint from `--variant-*`;
+- Paint is one attribute, `data-paint`, whose value names a variant: `{tone}-{emphasis}` (`base-outline`,
+  `blue-surface`), or `field` alone. Tones are `base`, `primary`, `destructive`, `success`, `warning`, `info`, and
+  the 21 swatch hues from `theme/swatches.css`. Emphasis is `solid`, `soft`, `outline`, `muted`, `plain` and
+  `surface` for every tone except `primary` (no `surface`), plus `ghost` for `base` and `link` for `primary`.
+  `lib/paint.ts` (`paintName`) joins the pair; `lib/action-paint.ts`, `surface-paint.ts` and `group-paint.ts`
+  resolve it from the public props.
+  Each tone has one file in `styles/variants/` (`blue.css`, `base.css`, ...). Each block there matches one
+  name exactly (`[data-paint='blue-outline']`) and declares every `--variant-*` slot itself from the color tokens;
+  there is no shared role layer. `paint.css` holds the slots every variant shares: focus, invalid, disabled text,
+  placeholder. A selector outside `variants/` that depends on a variant lists it by exact name
+  (`Button.css`: `destructive-soft`, `primary-link`); update that list when a variant is added.
+  `pnpm lint:paint` fails when blocks of one emphasis declare different slot sets.
+  To add a color, copy a tone file, rename the blocks, and import it in `styles/index.css`.
+  `Alert` is not an action: it sets `data-paint` to `{variant}-surface`, a static callout.
+  Text fields (`field-control`) set `data-paint="field"` and paint from `--variant-*`;
   `--field-*` now holds only size slots. `--group-field-*` still overrides paint inside a group.
-  One shared `[data-tone]` block declares the state slots (ring, focus, invalid, disabled text, halos).
-  Only those blocks read `--tone-*`; recipes and components read `--variant-*` and never name a tone.
+  Recipes and components read `--variant-*` and never name a tone.
   `Button` and its forwarders keep `variant` as a preset for one approved pair; a caller passes `variant`,
   or `tone` with `emphasis`, never both. Only the six mapped pairs are exposed (`lib/action-paint.ts`).
   `Toggle` and `ToolbarToggle` take `variant` or `emphasis` alone (`ghost` or `outline`); their tone is fixed to `base`.

@@ -4,13 +4,13 @@ import { Combobox as ComboboxPrimitive } from '@base-ui/react';
 import * as React from 'react';
 
 import { cn } from '../../../lib/utils';
-import { Button } from '../../general/button/Button';
 import { Input } from '../../form/input/Input';
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
 } from '../../form/input-group/InputGroup';
+import { Button } from '../../general/button/Button';
 import { Icon } from '../../typography/icon/Icon';
 
 const Combobox = ComboboxPrimitive.Root;

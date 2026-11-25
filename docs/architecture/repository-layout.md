@@ -5,7 +5,7 @@ read_when: Looking for where something lives
 
 # Repository layout
 
-Where each part of the repository lives. Setup steps are in the [README](../../README.md#set-up).
+Where each part of the repository lives. Setup steps are in the [README](../../README.md#set-up-migent).
 
 | Path | Purpose |
 | --- | --- |

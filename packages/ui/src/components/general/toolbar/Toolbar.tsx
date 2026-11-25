@@ -4,13 +4,13 @@ import { type ButtonPaint, resolveButtonPaint, resolveTogglePaint, type TogglePa
 import { resolveGroupPaint } from '../../../lib/group-paint';
 import { paintName } from '../../../lib/paint';
 import { cn } from '../../../lib/utils';
+import { type ToggleSize } from '../../form/toggle/Toggle';
 import {
   type ButtonShape,
   type ButtonSize,
   type ButtonVariant,
 } from '../button/Button';
 import { type ButtonGroupSize, type ButtonGroupVariant } from '../button-group/ButtonGroup';
-import { type ToggleSize } from '../../form/toggle/Toggle';
 
 type ToolbarOrientation = 'horizontal' | 'vertical'
 

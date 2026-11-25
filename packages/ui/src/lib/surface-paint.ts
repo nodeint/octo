@@ -76,7 +76,6 @@ function resolveSurfacePaint(
 
 export { resolveSurfacePaint };
 export type {
-  ResolvedSurfacePaint,
   SurfaceAxes,
   SurfaceEmphasis,
   SurfacePaint,

@@ -33,7 +33,7 @@ const TOKEN_FILES = [
 
 /** Files whose `[data-paint]` blocks build the paint, in cascade order. */
 const PAINT_FILES = ['variants/paint.css', ...readdirSync(join(STYLES, 'variants'))
-  .filter((file) => !['paint.css', 'tone.css', 'emphasis.css'].includes(file))
+  .filter((file) => file !== 'paint.css')
   .toSorted()
   .map((file) => `variants/${file}`)];
 

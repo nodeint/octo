@@ -40,6 +40,7 @@ jobs:
       - run: pnpm lint:md
       - run: pnpm lint:md:links
       - run: pnpm lint:docs
+      - run: pnpm lint:paint
       - run: pnpm test:layout
 
   test:
