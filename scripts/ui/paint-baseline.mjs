@@ -32,7 +32,7 @@ const TOKEN_FILES = [
 ];
 
 /** Files whose `[data-tone]` and `[data-emphasis]` blocks build the paint, in cascade order. */
-const PAINT_FILES = ['variants/tone.css', 'variants/emphasis.css'];
+const PAINT_FILES = ['variants/tone.css', 'variants/emphasis.css', 'variants/paint.css', 'variants/field.css'];
 
 /** Emphasis values a surface (Badge, Media, Pane) takes with every surface tone. */
 const SURFACE_EMPHASES = ['solid', 'soft', 'plain', 'muted', 'outline'];
@@ -46,8 +46,7 @@ const FIXED_PAIRS = [
   ['base', 'ghost'],
   ['base', 'muted'],
   ['destructive', 'soft'],
-  ['field', 'field'],
-];
+  ];
 
 /** Declarations of a rule, in source order, as `[prop, value]` pairs. */
 function declarationsOf(rule) {
@@ -88,11 +87,14 @@ function loadTokens() {
 
 /** True when a selector made of one attribute test matches the element. */
 function matchesAttribute(selector, element) {
-  const match = /^\[(data-tone|data-emphasis)(?:='([^']+)')?\]$/.exec(selector);
+  const match = /^\[(data-tone|data-emphasis|data-paint)(?:='([^']+)')?\]$/.exec(selector);
   if (!match) {
     throw new Error(`Unsupported selector in a paint file: ${selector}`);
   }
-  const actual = element[match[1] === 'data-tone' ? 'tone' : 'emphasis'];
+  const actual = element[{ 'data-tone': 'tone', 'data-emphasis': 'emphasis', 'data-paint': 'paint' }[match[1]]];
+  if (actual === undefined) {
+    return false;
+  }
   return match[2] === undefined || match[2] === actual;
 }
 
@@ -177,6 +179,8 @@ function surfaceTones() {
 
 function pairs() {
   const all = new Map(FIXED_PAIRS.map(([tone, emphasis]) => [`${tone}/${emphasis}`, { tone, emphasis }]));
+  // The field paint is one data-paint value; its snapshot key stays field/field.
+  all.set('field/field', { paint: 'field' });
   for (const tone of surfaceTones()) {
     // Only Alert paints the surface emphasis, and primary declares no surface roles.
     const emphases = tone === 'primary' ? SURFACE_EMPHASES : [...SURFACE_EMPHASES, 'surface'];

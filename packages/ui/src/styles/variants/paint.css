@@ -1,0 +1,16 @@
+/*
+ * Paint axis: data-paint picks one variant, a block that declares its own --variant-* slots from the color tokens.
+ * The value is `{tone}-{emphasis}` (`base-outline`), or `field` alone. Each color has its own file in this folder.
+ * This file holds what every variant shares: focus, invalid, disabled text and placeholder. A variant declares
+ * only --variant-ring, which the halo and the focus border follow.
+ * TEMPORARY: tone.css and emphasis.css still paint the other variants with data-tone and data-emphasis; P4 removes them.
+ */
+[data-paint] {
+  --variant-border-focus: var(--variant-ring);
+  --variant-border-invalid: var(--state-invalid-border);
+  --variant-fg-disabled: var(--foreground-disabled);
+  --variant-fg-placeholder: var(--placeholder);
+  --variant-shadow-focus: 0 0 0 var(--focus-width)
+    color-mix(in oklab, var(--variant-ring) var(--state-halo-strength), transparent);
+  --variant-shadow-invalid: var(--state-invalid-shadow);
+}

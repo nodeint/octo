@@ -1,6 +1,6 @@
 /*
  * Behavior shared by the text fields (input, textarea, select trigger, combobox trigger and chips). Each component adds
- * `field-control` beside its own class and sets data-tone="field" with data-emphasis="field", so no selector here
+ * `field-control` beside its own class and sets data-paint="field", so no selector here
  * names a specific field. Size, padding and radius stay in the component files. The class is not `field`: that one is
  * the Field wrapper (Field.css).
  *

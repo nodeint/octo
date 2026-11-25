@@ -1,10 +1,10 @@
 /*
- * Tone axis: data-tone picks which colors: base, primary, destructive, success, warning, info, field,
+ * Tone axis: data-tone picks which colors: base, primary, destructive, success, warning, info,
  * and 21 swatch hues (orange, yellow, lime, emerald, cyan, blue, indigo, violet, purple, fuchsia, pink, rose, slate, gray,
  * neutral, zinc, stone, mauve, olive, mist, taupe).
  * Declares the --tone-* roles and the state slots shared by every action (focus ring, invalid, disabled text).
  * Only the blocks in variants/ read --tone-*; a component never names a color or a tone.
- * The field tone is the one exception to "same values in light and dark": it declares its own fill and has a `.dark` block.
+ * TEMPORARY: the field paint moved to data-paint (variants/field.css). P4 removes this file.
  */
 
 /* State slots shared by every action: focus, invalid, disabled text. Resolves on each element against its own tone. */
@@ -549,25 +549,6 @@
   --tone-surface-foreground: var(--destructive-surface-foreground);
   --tone-surface-border: var(--destructive-surface-border);
   --tone-ring: var(--destructive-strong);
-}
-
-/*
- * Text fields. Only the roles the field emphasis and the focus ring read are declared; --tone-strong-focus is
- * specific to this tone. Not exposed to actions.
- */
-[data-tone='field'] {
-  --tone-strong: var(--card);
-  --tone-strong-hover: var(--card);
-  --tone-strong-disabled: var(--disabled);
-  --tone-strong-focus: var(--card);
-  --tone-plain-border: var(--border);
-  --tone-plain-border-disabled: var(--disabled-border);
-  --tone-ring: var(--ring);
-
-  .dark & {
-    --tone-strong-hover: var(--secondary);
-    --tone-strong-focus: var(--secondary);
-  }
 }
 
 [data-tone='success'] {

@@ -1,0 +1,24 @@
+/*
+ * A text field (input, textarea, select and combobox trigger): the card surface and border at rest, its hover and
+ * focus fill for the select and combobox triggers. The one variant with its own `.dark` fill.
+ */
+[data-paint='field'] {
+  --variant-ring: var(--ring);
+
+  --variant-bg: var(--card);
+  --variant-bg-hover: var(--card);
+  --variant-bg-focus: var(--card);
+  --variant-bg-disabled: var(--disabled);
+
+  --variant-fg: currentcolor;
+  --variant-fg-hover: currentcolor;
+  --variant-fg-focus: currentcolor;
+
+  --variant-border: var(--border);
+  --variant-border-disabled: var(--disabled-border);
+
+  .dark & {
+    --variant-bg-hover: var(--secondary);
+    --variant-bg-focus: var(--secondary);
+  }
+}

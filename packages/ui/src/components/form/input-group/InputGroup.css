@@ -97,17 +97,17 @@
   /* field: paints like a standalone Input or Select (styles/recipes/field-control.css), so a group sits level with them. */
   &[data-group-variant='field'] {
     --input-group-divider: var(--border);
-    --input-group-bg: var(--tone-strong);
+    --input-group-bg: var(--variant-bg);
     --input-group-border: var(--border);
     --input-group-bg-disabled: var(--disabled);
     --input-group-border-disabled: var(--disabled-border);
     --group-field-fg: currentcolor;
     --group-field-fg-hover: currentcolor;
     --group-field-border-hover: var(--border);
-    --group-field-bg-active: var(--tone-strong-hover);
+    --group-field-bg-active: var(--variant-bg-hover);
     --group-field-fg-active: currentcolor;
     --group-field-border-active: var(--border);
-    --group-field-bg-pressed: var(--tone-strong);
+    --group-field-bg-pressed: var(--variant-bg);
     --group-field-fg-pressed: currentcolor;
     --group-field-border-pressed: var(--border);
 

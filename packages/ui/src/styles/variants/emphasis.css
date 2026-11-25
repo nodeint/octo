@@ -1,10 +1,10 @@
 /*
  * Emphasis axis: data-emphasis builds the --variant-* slots a component reads from the --tone-* roles (variants/tone.css).
- *   data-emphasis  how the tone is painted: solid, soft, outline, ghost, muted, link, plain, surface, field. Maps roles to the identity slots.
+ *   data-emphasis  how the tone is painted: solid, soft, outline, ghost, muted, link, plain, surface. Maps roles to the identity slots.
  * A component never names a color or a tone; it paints from --variant-*. Only the blocks in variants/
  * read --tone-*. Exposed action pairs: primary solid, primary link, base soft, outline, ghost, destructive soft.
  * The surface emphasis paints a static callout (alert): base, destructive, success, warning, info.
- * The field emphasis paints a text field (input, textarea, select and combobox trigger) with the field tone only.
+ * TEMPORARY: the field paint moved to data-paint (variants/field.css). P4 removes this file.
  *   bg / fg / border          at rest
  *   *-hover, *-active         pointer states; an emphasis with no distinct state repeats its rest value
  *   *-pressed                 open or on (aria-expanded, aria-pressed)
@@ -121,19 +121,4 @@
   --variant-fg: var(--tone-plain-foreground);
   --variant-fg-secondary: var(--tone-surface-foreground);
   --variant-border: var(--tone-surface-border);
-}
-
-/* A text field: the tone's surface and border at rest, its hover fill for the select and combobox triggers. Field tone only. */
-[data-emphasis='field'] {
-  --variant-bg: var(--tone-strong);
-  --variant-bg-hover: var(--tone-strong-hover);
-  --variant-bg-focus: var(--tone-strong-focus);
-  --variant-bg-disabled: var(--tone-strong-disabled);
-
-  --variant-fg: currentcolor;
-  --variant-fg-hover: currentcolor;
-  --variant-fg-focus: currentcolor;
-
-  --variant-border: var(--tone-plain-border);
-  --variant-border-disabled: var(--tone-plain-border-disabled);
 }
