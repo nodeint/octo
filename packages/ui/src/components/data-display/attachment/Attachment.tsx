@@ -44,6 +44,8 @@ function Attachment({
       state,
       size,
       orientation,
+      paint: 'base-surface',
+      'row-invalid': state === 'error',
     },
   });
 }

@@ -1,44 +1,17 @@
 /*
- * Row: the horizontal strip of media, content and actions that item and attachment share, and the
- * title and description pair that alert, empty, popover, section and card header repeat. A component adds the
- * classes beside its own and picks a size; no selector here names a component or a data-slot.
- *   row              the strip: wrapping flex row, border, radius, hover wash, focus ring
- *   row-content      the text column; shrinks so a long title truncates instead of pushing the actions out
- *   row-title        the title (label role), a block; wrap plain text in row-title-text so it truncates
- *   row-description  the description (description role), clamped to --row-description-lines (2 by default)
- *   row-meta         one line of caption role under the description
- *   row-actions      the actions, a centered flex row
- *   row-trigger      the primary action; its ::after covers the row
- *   row-trigger-cover  beside row-trigger: the trigger itself is out of flow and covers the row (an empty overlay trigger)
- *   row-hover-child    beside row: a direct-child a or button washes the row on hover (nested actions do not)
- *   row-focus-within   the ring shows when any child has focus, not only the trigger
+ * Row: the strip of media, content and actions (item, attachment, alert) and the title and description text
+ * (alert, empty, popover, section, card). A component adds the classes and sets the input tokens on its own root.
+ *   row            the strip: border, radius, hover wash, focus ring
+ *   row-content    the text column
+ *   row-title      the title; plain text goes in row-title-text so it truncates
+ *   row-description, row-meta, row-actions, row-trigger, row-trigger-cover, row-hover-child, row-focus-within
  *
- * Type set: data-row-type sits on the element that wraps the title and description and sets both text roles for
- * everything inside it; a nested element with its own type resets it. Without the attribute a row reads as `content`.
- *   content  title label, description description role, 2 lines (one step smaller inside an xs row)
- *   header   title title-sm (heading font), description description role, not clamped (inline links wrap normally)
- *   compact  title label, description caption role, 1 line
- * A type declares --row-title-* and --row-description-size, -leading, -weight, -lines, and the private
- * --row-description-type-color. A component never re-declares those; it sets --row-description-color on its own
- * root for a state color (selected, error), which wins over the type color.
- *
- * Size set: data-row-size picks --row-px, --row-py, --row-gap and --row-content-gap from the control and space scales.
- *   xs  --control-px-xs  --space-xs  --space-sm  0
- *   sm  --control-px-sm  --space-sm  --space-sm  --space-xs
- *   md  --control-px-md  --space-sm  --space-sm  --space-xs
- * The padding takes the border width off the inline step, so the text edge sits on --control-px-*.
- *
- * Input tokens a component may set on its own root (every one has a fallback):
- *   --row-px, --row-py, --row-gap, --row-content-gap   replace the size set
- *   --row-border-width, --row-border-style, --row-border-color   the frame (a bare row sets the width to 0)
- *   --row-background, --row-shadow                     the resting fill and shadow; hover paints --accent over the fill
- *   --row-actions-gap                                  gap between actions
- *   --row-align                                        align-items (center by default)
- *   --row-font-size, --row-font-leading                the row text step (body role by default)
- *   --row-focus-border, --row-focus-shadow             the focus ring (the --state-focus-* pair by default)
- *   --row-title-display, --row-title-align            `flex` and `center` for a title with marks beside its text
- *   --row-description-color                            state color of the description, over the type color
- *   --row-meta-color                                   text color of the meta line
+ * data-row-type on the element wrapping title and description picks their text roles: content, header, compact.
+ * data-row-size picks the padding and gaps: xs, sm, md.
+ * A component never re-declares what a type sets.
+ * Color comes from the data-paint on the row (--variant-*); data-row-invalid paints the invalid pair.
+ * Input tokens: --row-px, --row-py, --row-gap, --row-content-gap, --row-align, --row-border-width,
+ * --row-border-style, --row-title-display, --row-title-align, --row-description-color, --row-meta-color.
  */
 [data-row-type='content'] {
   --row-title-family: inherit;
@@ -48,8 +21,8 @@
   --row-description-size: var(--role-description-size);
   --row-description-leading: var(--role-description-leading);
   --row-description-weight: var(--role-description-weight);
-  --row-description-type-color: var(--role-description-color);
-  --row-description-lines: 2;
+  --row-description-type-color: var(--variant-fg-secondary, var(--role-description-color));
+  --row-description-lines: 3;
 }
 
 [data-row-type='header'] {
@@ -61,7 +34,7 @@
   --row-description-leading: var(--role-description-leading);
   --row-description-weight: var(--role-description-weight);
   --row-description-type-color: var(--role-description-color);
-  --row-description-lines: none;
+  --row-description-lines: 2;
 }
 
 [data-row-type='compact'] {
@@ -76,7 +49,6 @@
   --row-description-lines: 1;
 }
 
-/* The smallest row reads its content description a step down. */
 [data-row-size='xs'] [data-row-type='content'] {
   --row-description-size: var(--role-body-sm-size);
   --row-description-leading: var(--role-body-sm-leading);
@@ -103,7 +75,6 @@
   --row-content-gap: var(--space-xs);
 }
 
-/* text-align start: a row rendered as a button must not center its text */
 .row {
   --row-border-width: var(--border-width-thin);
   display: flex;
@@ -111,10 +82,10 @@
   align-items: var(--row-align, center);
   gap: var(--row-gap);
   padding: var(--row-py) calc(var(--row-px) - var(--row-border-width));
-  border: var(--row-border-width) var(--row-border-style, solid) var(--row-border-color, transparent);
+  border: var(--row-border-width) var(--row-border-style, solid) var(--variant-border, transparent);
   border-radius: var(--radius-surface-md);
-  background-color: var(--row-background, transparent);
-  box-shadow: var(--row-shadow, none);
+  background-color: var(--variant-bg, transparent);
+  color: var(--variant-fg, inherit);
   text-align: start;
   font-size: var(--row-font-size, var(--role-body-size));
   line-height: var(--row-font-leading, var(--role-body-leading));
@@ -125,8 +96,7 @@
   transition-timing-function: var(--default-transition-timing-function);
 }
 
-/* A row with a trigger: the trigger's ::after covers the row, so a click anywhere opens it.
-   The row paints the hover and the trigger's focus; interactive actions sit above the cover. */
+/* The trigger's ::after covers the row; actions sit above the cover. */
 .row:has(.row-trigger) {
   position: relative;
 }
@@ -134,15 +104,31 @@
 .row:is(a, button):hover,
 .row:has(.row-trigger):hover,
 .row-hover-child:has(> a, > button):hover {
-  background-color: var(--accent);
+  background-color: var(--variant-bg-hover, var(--accent));
+}
+
+/* A selected row reads the active slots of its paint; everything on the fill reads the foreground. */
+.row[aria-selected='true'] {
+  background-color: var(--variant-bg-active, var(--accent));
+  color: var(--variant-fg-active, var(--foreground));
+}
+
+.row[aria-selected='true'] :is(.row-description, .row-meta) {
+  color: var(--variant-fg-active, var(--foreground));
 }
 
 .row:focus-visible,
 .row:has(.row-trigger:focus-visible),
 .row-focus-within:focus-within {
-  border-color: var(--row-focus-border, var(--state-focus-border));
-  box-shadow: var(--row-focus-shadow, var(--state-focus-shadow));
+  border-color: var(--variant-border-focus, var(--state-focus-border));
+  box-shadow: var(--variant-shadow-focus, var(--state-focus-shadow));
   outline: var(--focus-width) solid transparent;
+}
+
+/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
+.row[data-row-invalid] {
+  border-color: var(--variant-border-invalid, var(--state-invalid-border));
+  box-shadow: var(--variant-shadow-invalid, var(--state-invalid-shadow));
 }
 
 .row:has(.row-trigger) .row-actions :is(a, button, input, select, textarea, [tabindex]) {
@@ -174,7 +160,6 @@
   border-radius: var(--radius-surface-md);
 }
 
-/* min-width 0: let a long title shrink and truncate instead of pushing the actions out */
 .row-content {
   display: flex;
   flex: 1 1 0%;
@@ -184,7 +169,6 @@
   min-width: 0;
 }
 
-/* Plain title text goes in .row-title-text, which truncates; marks beside it are the component's layout. */
 .row-title {
   display: var(--row-title-display, block);
   align-items: var(--row-title-align, normal);
@@ -208,7 +192,7 @@
 .row-description {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--row-description-lines, 2);
+  -webkit-line-clamp: var(--row-description-lines, none);
   overflow: hidden;
   text-align: inherit;
   font-size: var(--row-description-size, var(--role-description-size));

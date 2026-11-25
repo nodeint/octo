@@ -45,7 +45,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
   render: () => (
-    <Item variant="muted">
+    <Item variant="secondary">
       <ItemMedia>
         <Spinner />
       </ItemMedia>
@@ -147,7 +147,7 @@ export const Rtl: Story = {
   name: 'RTL',
   render: () => (
     <div dir="rtl">
-      <Item variant="muted">
+      <Item variant="secondary">
         <ItemMedia>
           <Spinner />
         </ItemMedia>

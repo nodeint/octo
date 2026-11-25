@@ -3,23 +3,12 @@
  * DOM contract: media, content and spinner are data-slot.
  */
 .attachment {
-  --row-border-color: var(--border);
-  --row-background: var(--card);
   --row-align: center;
   position: relative;
   flex-shrink: 0;
   width: fit-content;
   max-width: 100%;
   min-width: 0;
-  color: var(--foreground);
-}
-
-/* Invalid paint wins while focused, so the focus ring takes the invalid pair: one ring. */
-.attachment[data-state='error'] {
-  --row-border-color: var(--state-invalid-border);
-  --row-shadow: var(--state-invalid-shadow);
-  --row-focus-border: var(--state-invalid-border);
-  --row-focus-shadow: var(--state-invalid-shadow);
 }
 
 .attachment[data-state='idle'] {

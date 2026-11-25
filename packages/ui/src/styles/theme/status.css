@@ -25,7 +25,7 @@
   --destructive-plain-foreground-disabled: var(--foreground-disabled);
   --destructive-plain-foreground-muted: var(--foreground-muted);
   --destructive-surface: oklch(0.985 0.012 27);
-  --destructive-surface-foreground: color-mix(in oklch, var(--destructive-strong) 90%, var(--foreground-muted));
+  --destructive-surface-foreground: color-mix(in oklch, var(--destructive-strong) 80%, var(--destructive-subtle));
   --destructive-surface-border: oklch(from var(--destructive-strong) l c h / 40%);
 
   --success-strong: oklch(0.45 0.14 145);
@@ -43,7 +43,7 @@
   --success-plain-foreground-disabled: var(--foreground-disabled);
   --success-plain-foreground-muted: var(--foreground-muted);
   --success-surface: oklch(0.985 0.012 145);
-  --success-surface-foreground: color-mix(in oklch, var(--success-strong) 90%, var(--foreground-muted));
+  --success-surface-foreground: color-mix(in oklch, var(--success-strong) 80%, var(--success-subtle));
   --success-surface-border: oklch(from var(--success-strong) l c h / 40%);
 
   --warning-strong: oklch(0.45 0.13 75);
@@ -61,7 +61,7 @@
   --warning-plain-foreground-disabled: var(--foreground-disabled);
   --warning-plain-foreground-muted: var(--foreground-muted);
   --warning-surface: oklch(0.985 0.014 75);
-  --warning-surface-foreground: color-mix(in oklch, var(--warning-strong) 90%, var(--foreground-muted));
+  --warning-surface-foreground: color-mix(in oklch, var(--warning-strong) 80%, var(--warning-subtle));
   --warning-surface-border: oklch(from var(--warning-strong) l c h / 40%);
 
   --info-strong: oklch(0.45 0.12 230);
@@ -79,7 +79,7 @@
   --info-plain-foreground-disabled: var(--foreground-disabled);
   --info-plain-foreground-muted: var(--foreground-muted);
   --info-surface: oklch(0.985 0.01 230);
-  --info-surface-foreground: color-mix(in oklch, var(--info-strong) 90%, var(--foreground-muted));
+  --info-surface-foreground: color-mix(in oklch, var(--info-strong) 80%, var(--info-subtle));
   --info-surface-border: oklch(from var(--info-strong) l c h / 40%);
 }
 
@@ -97,7 +97,7 @@
   --destructive-plain-foreground-disabled: var(--foreground-disabled);
   --destructive-plain-foreground-muted: var(--foreground-muted);
   --destructive-surface: oklch(0.24 0.02 27);
-  --destructive-surface-foreground: color-mix(in oklch, var(--destructive-strong) 90%, var(--foreground-muted));
+  --destructive-surface-foreground: color-mix(in oklch, var(--destructive-strong) 80%, var(--destructive-subtle));
   --destructive-surface-border: oklch(from var(--destructive-strong) l c h / 40%);
 
   --success-strong: oklch(0.78 0.13 145);
@@ -113,7 +113,7 @@
   --success-plain-foreground-disabled: var(--foreground-disabled);
   --success-plain-foreground-muted: var(--foreground-muted);
   --success-surface: oklch(0.24 0.02 145);
-  --success-surface-foreground: color-mix(in oklch, var(--success-strong) 90%, var(--foreground-muted));
+  --success-surface-foreground: color-mix(in oklch, var(--success-strong) 80%, var(--success-subtle));
   --success-surface-border: oklch(from var(--success-strong) l c h / 40%);
 
   --warning-strong: oklch(0.84 0.12 85);
@@ -129,7 +129,7 @@
   --warning-plain-foreground-disabled: var(--foreground-disabled);
   --warning-plain-foreground-muted: var(--foreground-muted);
   --warning-surface: oklch(0.25 0.02 85);
-  --warning-surface-foreground: color-mix(in oklch, var(--warning-strong) 90%, var(--foreground-muted));
+  --warning-surface-foreground: color-mix(in oklch, var(--warning-strong) 80%, var(--warning-subtle));
   --warning-surface-border: oklch(from var(--warning-strong) l c h / 40%);
 
   --info-strong: oklch(0.78 0.11 230);
@@ -145,6 +145,6 @@
   --info-plain-foreground-disabled: var(--foreground-disabled);
   --info-plain-foreground-muted: var(--foreground-muted);
   --info-surface: oklch(0.24 0.02 230);
-  --info-surface-foreground: color-mix(in oklch, var(--info-strong) 90%, var(--foreground-muted));
+  --info-surface-foreground: color-mix(in oklch, var(--info-strong) 80%, var(--info-subtle));
   --info-surface-border: oklch(from var(--info-strong) l c h / 40%);
 }

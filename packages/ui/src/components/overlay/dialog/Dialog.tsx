@@ -67,6 +67,7 @@ function DialogContent({
       <DialogOverlay />
       <DialogPrimitive.Popup
         data-slot="dialog-content"
+        data-row-type="header"
         data-size={size}
         data-fill={fill ? '' : undefined}
         data-variant={variant}
@@ -168,7 +169,7 @@ function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props): Reac
   return (
     <DialogPrimitive.Title
       data-slot="dialog-title"
-      className={cn('modal-title', className)}
+      className={cn('row-title', className)}
       {...props}
     />
   );
@@ -181,7 +182,7 @@ function DialogDescription({
   return (
     <DialogPrimitive.Description
       data-slot="dialog-description"
-      className={cn('modal-description', className)}
+      className={cn('row-description', className)}
       {...props}
     />
   );

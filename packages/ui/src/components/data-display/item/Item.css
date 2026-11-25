@@ -44,22 +44,6 @@
   width: 100%;
 }
 
-.item[data-variant='outline'] {
-  --row-border-color: var(--border);
-}
-
-.item[data-variant='muted'] {
-  --row-background: var(--muted);
-}
-
-/* accent is a state fill: everything on it reads foreground, the description too */
-.item[aria-selected='true'] {
-  --row-background: var(--accent);
-  --row-description-color: var(--foreground);
-  --row-meta-color: var(--foreground);
-  color: var(--foreground);
-}
-
 /* The container around the row already pads and frames it: no padding, no border. */
 .item[data-bare] {
   --row-px: 0;

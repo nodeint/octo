@@ -48,6 +48,7 @@ A stylesheet is a recipe when all of these hold:
    `field-control.css`, and `[data-group-size]` in `group.css` declare component tokens
    (`--action-*`, `--field-*`, `--group-*`) from the control and radius scales (`--control-*`, `--radius-*`).
    `[data-panel-size]` in `panel.css` declares `--panel-inset` and `--panel-gap` from the `--inset-*` and `--gap-*` roles.
+   `[data-row-size]` and `[data-row-type]` in `row.css` declare `--row-*` tokens from the control, space and role scales.
    `octo/token-tier` skips custom properties declared in a recipe.
    `group.css` opts in by the `group` class, but it only hands `--group-*` tokens to the actions and fields inside a group.
 4. Owns its own parts only. It may lay out the parts it owns (`.menu-content` stacks `.menu-row`s).
@@ -80,11 +81,14 @@ Read direction:
 A part sets `--media-size` (or `--media-width` and `--media-height`), `--media-radius`, `--media-background`,
 `--media-foreground` and `--media-icon-size` on its own root, and an image part adds `data-media-fit="image"`.
 
-`row.css` is the `row` skin: the media, content and actions strip that item and attachment share, and the
-title and description pair that alert, empty, popover, section and card also add (`row-title`, `row-description`).
-`data-row-size` (`xs`, `sm`, `md`) declares `--row-px`, `--row-py`, `--row-gap` from `--control-px-*` and `--space-*`.
-The description clamps to 2 lines; a component sets `--row-description-lines` or `--row-description-display`.
-A component sets the input tokens listed in the file header on its own root and never overrides a `row` property.
+`row.css` is the `row` skin: the strip of media, content and actions that item, attachment and alert share, and the
+title and description text that alert, empty, popover, section and card also add (`row-title`, `row-description`).
+`data-row-type` on the element that wraps the title and description picks their text roles
+(`content`, `header`, `compact`), and `data-row-size` (`xs`, `sm`, `md`) picks the padding and gaps.
+The row reads its color from `data-paint` (`--variant-*`), and `data-row-invalid` paints the invalid pair.
+Dialog, alert dialog and sheet set the type on their content; a small card sets `content` on its header.
+A component sets the input tokens listed in the file header on its own root, and a state color goes in
+`--row-description-color`. It never re-declares what a type sets and never overrides a `row` property.
 
 `overlay.css` holds only the `overlay-*` keyframes shared by modal and anchored overlays; it has no selectors.
 `panel.css` is the `panel` shell (flex column, inset, gap) and the `panel-footer` band that card, dialog, alert dialog and
@@ -93,7 +97,7 @@ sheet share. It owns the panel size: `data-panel-size` (`xs`, `sm`, `md`, `lg`; 
 a component reads `--panel-radius` for its own corners. A bare variant sets `--panel-stack-gap` and `--panel-padding`.
 `data-panel-size` is separate from `data-size`.
 
-`modal.css` is the modal skin (`modal-overlay`, `modal-content`, `modal-footer`, `modal-title`, `modal-description`,
+`modal.css` is the modal skin (`modal-overlay`, `modal-content`, `modal-footer`,
 `modal-close-button`) that dialog, alert dialog and sheet opt into by class, next to `panel` and `panel-footer`.
 It keeps only the scrim, position, animation, close button and footer direction. A component sets its input tokens
 (`--modal-background`, `--modal-shadow`, `--modal-footer-direction`) on its own root.

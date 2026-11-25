@@ -7,8 +7,6 @@
 .alert {
   --row-gap: var(--gap-sm);
   --row-align: normal;
-  --row-border-color: var(--variant-border);
-  --row-background: var(--variant-bg);
   position: relative;
   display: grid;
   width: 100%;
@@ -34,10 +32,6 @@
   height: var(--control-icon-md);
   pointer-events: none;
   flex-shrink: 0;
-}
-
-.alert {
-  color: var(--variant-fg);
 }
 
 .alert:has(> svg) .alert-title {

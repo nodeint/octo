@@ -50,6 +50,7 @@ function AlertDialogContent({
       <AlertDialogOverlay />
       <AlertDialogPrimitive.Popup
         data-slot="alert-dialog-content"
+        data-row-type="header"
         data-size={size}
         className={cn(
           'panel modal-content modal-centered alert-dialog-content',
@@ -118,7 +119,7 @@ function AlertDialogTitle({
     <AlertDialogPrimitive.Title
       data-slot="alert-dialog-title"
       className={cn(
-        'modal-title alert-dialog-title',
+        'row-title alert-dialog-title',
         className
       )}
       {...props}
@@ -133,7 +134,7 @@ function AlertDialogDescription({
   return (
     <AlertDialogPrimitive.Description
       data-slot="alert-dialog-description"
-      className={cn('modal-description alert-dialog-description', className)}
+      className={cn('row-description alert-dialog-description', className)}
       {...props}
     />
   );

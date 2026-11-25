@@ -55,7 +55,7 @@
   --red-plain-foreground-muted: var(--red-600);
   
   --red-surface: oklch(from var(--red-subtle) l c h / 50%);
-  --red-surface-foreground: var(--red-subtle-foreground);
+  --red-surface-foreground: color-mix(in oklch, var(--red-strong) 80%, var(--red-subtle));
   --red-surface-border: oklch(from var(--red-strong) l c h / 40%);
   
   /* orange */
@@ -85,7 +85,7 @@
   --orange-plain-foreground-disabled: var(--orange-500);
   --orange-plain-foreground-muted: var(--orange-600);
   --orange-surface: oklch(from var(--orange-subtle) l c h / 50%);
-  --orange-surface-foreground: var(--orange-subtle-foreground);
+  --orange-surface-foreground: color-mix(in oklch, var(--orange-strong) 80%, var(--orange-subtle));
   --orange-surface-border: oklch(from var(--orange-strong) l c h / 40%);
 
   /* amber */
@@ -115,7 +115,7 @@
   --amber-plain-foreground-disabled: var(--amber-500);
   --amber-plain-foreground-muted: var(--amber-600);
   --amber-surface: oklch(from var(--amber-subtle) l c h / 50%);
-  --amber-surface-foreground: var(--amber-subtle-foreground);
+  --amber-surface-foreground: color-mix(in oklch, var(--amber-strong) 80%, var(--amber-subtle));
   --amber-surface-border: oklch(from var(--amber-strong) l c h / 40%);
 
   /* yellow */
@@ -145,7 +145,7 @@
   --yellow-plain-foreground-disabled: var(--yellow-500);
   --yellow-plain-foreground-muted: var(--yellow-600);
   --yellow-surface: oklch(from var(--yellow-subtle) l c h / 50%);
-  --yellow-surface-foreground: var(--yellow-subtle-foreground);
+  --yellow-surface-foreground: color-mix(in oklch, var(--yellow-strong) 80%, var(--yellow-subtle));
   --yellow-surface-border: oklch(from var(--yellow-strong) l c h / 40%);
 
   /* lime */
@@ -175,7 +175,7 @@
   --lime-plain-foreground-disabled: var(--lime-500);
   --lime-plain-foreground-muted: var(--lime-600);
   --lime-surface: oklch(from var(--lime-subtle) l c h / 50%);
-  --lime-surface-foreground: var(--lime-subtle-foreground);
+  --lime-surface-foreground: color-mix(in oklch, var(--lime-strong) 80%, var(--lime-subtle));
   --lime-surface-border: oklch(from var(--lime-strong) l c h / 40%);
 
   /* green */
@@ -205,7 +205,7 @@
   --green-plain-foreground-disabled: var(--green-500);
   --green-plain-foreground-muted: var(--green-600);
   --green-surface: oklch(from var(--green-subtle) l c h / 50%);
-  --green-surface-foreground: var(--green-subtle-foreground);
+  --green-surface-foreground: color-mix(in oklch, var(--green-strong) 80%, var(--green-subtle));
   --green-surface-border: oklch(from var(--green-strong) l c h / 40%);
 
   /* emerald */
@@ -235,7 +235,7 @@
   --emerald-plain-foreground-disabled: var(--emerald-500);
   --emerald-plain-foreground-muted: var(--emerald-600);
   --emerald-surface: oklch(from var(--emerald-subtle) l c h / 50%);
-  --emerald-surface-foreground: var(--emerald-subtle-foreground);
+  --emerald-surface-foreground: color-mix(in oklch, var(--emerald-strong) 80%, var(--emerald-subtle));
   --emerald-surface-border: oklch(from var(--emerald-strong) l c h / 40%);
 
   /* teal */
@@ -265,7 +265,7 @@
   --teal-plain-foreground-disabled: var(--teal-500);
   --teal-plain-foreground-muted: var(--teal-600);
   --teal-surface: oklch(from var(--teal-subtle) l c h / 50%);
-  --teal-surface-foreground: var(--teal-subtle-foreground);
+  --teal-surface-foreground: color-mix(in oklch, var(--teal-strong) 80%, var(--teal-subtle));
   --teal-surface-border: oklch(from var(--teal-strong) l c h / 40%);
 
   /* cyan */
@@ -295,7 +295,7 @@
   --cyan-plain-foreground-disabled: var(--cyan-500);
   --cyan-plain-foreground-muted: var(--cyan-600);
   --cyan-surface: oklch(from var(--cyan-subtle) l c h / 50%);
-  --cyan-surface-foreground: var(--cyan-subtle-foreground);
+  --cyan-surface-foreground: color-mix(in oklch, var(--cyan-strong) 80%, var(--cyan-subtle));
   --cyan-surface-border: oklch(from var(--cyan-strong) l c h / 40%);
 
   /* sky */
@@ -325,7 +325,7 @@
   --sky-plain-foreground-disabled: var(--sky-500);
   --sky-plain-foreground-muted: var(--sky-600);
   --sky-surface: oklch(from var(--sky-subtle) l c h / 50%);
-  --sky-surface-foreground: var(--sky-subtle-foreground);
+  --sky-surface-foreground: color-mix(in oklch, var(--sky-strong) 80%, var(--sky-subtle));
   --sky-surface-border: oklch(from var(--sky-strong) l c h / 40%);
 
   /* blue */
@@ -355,7 +355,7 @@
   --blue-plain-foreground-disabled: var(--blue-500);
   --blue-plain-foreground-muted: var(--blue-600);
   --blue-surface: oklch(from var(--blue-subtle) l c h / 50%);
-  --blue-surface-foreground: var(--blue-subtle-foreground);
+  --blue-surface-foreground: color-mix(in oklch, var(--blue-strong) 80%, var(--blue-subtle));
   --blue-surface-border: oklch(from var(--blue-strong) l c h / 40%);
 
   /* indigo */
@@ -385,7 +385,7 @@
   --indigo-plain-foreground-disabled: var(--indigo-500);
   --indigo-plain-foreground-muted: var(--indigo-600);
   --indigo-surface: oklch(from var(--indigo-subtle) l c h / 50%);
-  --indigo-surface-foreground: var(--indigo-subtle-foreground);
+  --indigo-surface-foreground: color-mix(in oklch, var(--indigo-strong) 80%, var(--indigo-subtle));
   --indigo-surface-border: oklch(from var(--indigo-strong) l c h / 40%);
 
   /* violet */
@@ -415,7 +415,7 @@
   --violet-plain-foreground-disabled: var(--violet-500);
   --violet-plain-foreground-muted: var(--violet-600);
   --violet-surface: oklch(from var(--violet-subtle) l c h / 50%);
-  --violet-surface-foreground: var(--violet-subtle-foreground);
+  --violet-surface-foreground: color-mix(in oklch, var(--violet-strong) 80%, var(--violet-subtle));
   --violet-surface-border: oklch(from var(--violet-strong) l c h / 40%);
 
   /* purple */
@@ -445,7 +445,7 @@
   --purple-plain-foreground-disabled: var(--purple-500);
   --purple-plain-foreground-muted: var(--purple-600);
   --purple-surface: oklch(from var(--purple-subtle) l c h / 50%);
-  --purple-surface-foreground: var(--purple-subtle-foreground);
+  --purple-surface-foreground: color-mix(in oklch, var(--purple-strong) 80%, var(--purple-subtle));
   --purple-surface-border: oklch(from var(--purple-strong) l c h / 40%);
 
   /* fuchsia */
@@ -475,7 +475,7 @@
   --fuchsia-plain-foreground-disabled: var(--fuchsia-500);
   --fuchsia-plain-foreground-muted: var(--fuchsia-600);
   --fuchsia-surface: oklch(from var(--fuchsia-subtle) l c h / 50%);
-  --fuchsia-surface-foreground: var(--fuchsia-subtle-foreground);
+  --fuchsia-surface-foreground: color-mix(in oklch, var(--fuchsia-strong) 80%, var(--fuchsia-subtle));
   --fuchsia-surface-border: oklch(from var(--fuchsia-strong) l c h / 40%);
 
   /* pink */
@@ -505,7 +505,7 @@
   --pink-plain-foreground-disabled: var(--pink-500);
   --pink-plain-foreground-muted: var(--pink-600);
   --pink-surface: oklch(from var(--pink-subtle) l c h / 50%);
-  --pink-surface-foreground: var(--pink-subtle-foreground);
+  --pink-surface-foreground: color-mix(in oklch, var(--pink-strong) 80%, var(--pink-subtle));
   --pink-surface-border: oklch(from var(--pink-strong) l c h / 40%);
 
   /* rose */
@@ -535,7 +535,7 @@
   --rose-plain-foreground-disabled: var(--rose-500);
   --rose-plain-foreground-muted: var(--rose-600);
   --rose-surface: oklch(from var(--rose-subtle) l c h / 50%);
-  --rose-surface-foreground: var(--rose-subtle-foreground);
+  --rose-surface-foreground: color-mix(in oklch, var(--rose-strong) 80%, var(--rose-subtle));
   --rose-surface-border: oklch(from var(--rose-strong) l c h / 40%);
 
   /* slate */
@@ -565,7 +565,7 @@
   --slate-plain-foreground-disabled: var(--slate-500);
   --slate-plain-foreground-muted: var(--slate-600);
   --slate-surface: oklch(from var(--slate-subtle) l c h / 50%);
-  --slate-surface-foreground: var(--slate-subtle-foreground);
+  --slate-surface-foreground: color-mix(in oklch, var(--slate-strong) 80%, var(--slate-subtle));
   --slate-surface-border: oklch(from var(--slate-strong) l c h / 40%);
 
   /* gray */
@@ -595,7 +595,7 @@
   --gray-plain-foreground-disabled: var(--gray-500);
   --gray-plain-foreground-muted: var(--gray-600);
   --gray-surface: oklch(from var(--gray-subtle) l c h / 50%);
-  --gray-surface-foreground: var(--gray-subtle-foreground);
+  --gray-surface-foreground: color-mix(in oklch, var(--gray-strong) 80%, var(--gray-subtle));
   --gray-surface-border: oklch(from var(--gray-strong) l c h / 40%);
 
   /* neutral */
@@ -625,7 +625,7 @@
   --neutral-plain-foreground-disabled: var(--neutral-500);
   --neutral-plain-foreground-muted: var(--neutral-600);
   --neutral-surface: oklch(from var(--neutral-subtle) l c h / 50%);
-  --neutral-surface-foreground: var(--neutral-subtle-foreground);
+  --neutral-surface-foreground: color-mix(in oklch, var(--neutral-strong) 80%, var(--neutral-subtle));
   --neutral-surface-border: oklch(from var(--neutral-strong) l c h / 40%);
 
   /* zinc */
@@ -655,7 +655,7 @@
   --zinc-plain-foreground-disabled: var(--zinc-500);
   --zinc-plain-foreground-muted: var(--zinc-600);
   --zinc-surface: oklch(from var(--zinc-subtle) l c h / 50%);
-  --zinc-surface-foreground: var(--zinc-subtle-foreground);
+  --zinc-surface-foreground: color-mix(in oklch, var(--zinc-strong) 80%, var(--zinc-subtle));
   --zinc-surface-border: oklch(from var(--zinc-strong) l c h / 40%);
 
   /* stone */
@@ -685,7 +685,7 @@
   --stone-plain-foreground-disabled: var(--stone-500);
   --stone-plain-foreground-muted: var(--stone-600);
   --stone-surface: oklch(from var(--stone-subtle) l c h / 50%);
-  --stone-surface-foreground: var(--stone-subtle-foreground);
+  --stone-surface-foreground: color-mix(in oklch, var(--stone-strong) 80%, var(--stone-subtle));
   --stone-surface-border: oklch(from var(--stone-strong) l c h / 40%);
 
   /* mauve */
@@ -715,7 +715,7 @@
   --mauve-plain-foreground-disabled: var(--mauve-500);
   --mauve-plain-foreground-muted: var(--mauve-600);
   --mauve-surface: oklch(from var(--mauve-subtle) l c h / 50%);
-  --mauve-surface-foreground: var(--mauve-subtle-foreground);
+  --mauve-surface-foreground: color-mix(in oklch, var(--mauve-strong) 80%, var(--mauve-subtle));
   --mauve-surface-border: oklch(from var(--mauve-strong) l c h / 40%);
 
   /* olive */
@@ -745,7 +745,7 @@
   --olive-plain-foreground-disabled: var(--olive-500);
   --olive-plain-foreground-muted: var(--olive-600);
   --olive-surface: oklch(from var(--olive-subtle) l c h / 50%);
-  --olive-surface-foreground: var(--olive-subtle-foreground);
+  --olive-surface-foreground: color-mix(in oklch, var(--olive-strong) 80%, var(--olive-subtle));
   --olive-surface-border: oklch(from var(--olive-strong) l c h / 40%);
 
   /* mist */
@@ -775,7 +775,7 @@
   --mist-plain-foreground-disabled: var(--mist-500);
   --mist-plain-foreground-muted: var(--mist-600);
   --mist-surface: oklch(from var(--mist-subtle) l c h / 50%);
-  --mist-surface-foreground: var(--mist-subtle-foreground);
+  --mist-surface-foreground: color-mix(in oklch, var(--mist-strong) 80%, var(--mist-subtle));
   --mist-surface-border: oklch(from var(--mist-strong) l c h / 40%);
 
   /* taupe */
@@ -805,7 +805,7 @@
   --taupe-plain-foreground-disabled: var(--taupe-500);
   --taupe-plain-foreground-muted: var(--taupe-600);
   --taupe-surface: oklch(from var(--taupe-subtle) l c h / 50%);
-  --taupe-surface-foreground: var(--taupe-subtle-foreground);
+  --taupe-surface-foreground: color-mix(in oklch, var(--taupe-strong) 80%, var(--taupe-subtle));
   --taupe-surface-border: oklch(from var(--taupe-strong) l c h / 40%);
 }
 
@@ -826,7 +826,7 @@
   --red-plain-foreground-disabled: var(--red-500);
   --red-plain-foreground-muted: var(--red-400);
   --red-surface: oklch(from var(--red-subtle) l c h / 50%);
-  --red-surface-foreground: var(--red-subtle-foreground);
+  --red-surface-foreground: color-mix(in oklch, var(--red-strong) 80%, var(--red-subtle));
   --red-surface-border: oklch(from var(--red-strong) l c h / 40%);
 
   /* orange */
@@ -845,7 +845,7 @@
   --orange-plain-foreground-disabled: var(--orange-500);
   --orange-plain-foreground-muted: var(--orange-400);
   --orange-surface: oklch(from var(--orange-subtle) l c h / 50%);
-  --orange-surface-foreground: var(--orange-subtle-foreground);
+  --orange-surface-foreground: color-mix(in oklch, var(--orange-strong) 80%, var(--orange-subtle));
   --orange-surface-border: oklch(from var(--orange-strong) l c h / 40%);
 
   /* amber */
@@ -864,7 +864,7 @@
   --amber-plain-foreground-disabled: var(--amber-500);
   --amber-plain-foreground-muted: var(--amber-400);
   --amber-surface: oklch(from var(--amber-subtle) l c h / 50%);
-  --amber-surface-foreground: var(--amber-subtle-foreground);
+  --amber-surface-foreground: color-mix(in oklch, var(--amber-strong) 80%, var(--amber-subtle));
   --amber-surface-border: oklch(from var(--amber-strong) l c h / 40%);
 
   /* yellow */
@@ -883,7 +883,7 @@
   --yellow-plain-foreground-disabled: var(--yellow-500);
   --yellow-plain-foreground-muted: var(--yellow-400);
   --yellow-surface: oklch(from var(--yellow-subtle) l c h / 50%);
-  --yellow-surface-foreground: var(--yellow-subtle-foreground);
+  --yellow-surface-foreground: color-mix(in oklch, var(--yellow-strong) 80%, var(--yellow-subtle));
   --yellow-surface-border: oklch(from var(--yellow-strong) l c h / 40%);
 
   /* lime */
@@ -902,7 +902,7 @@
   --lime-plain-foreground-disabled: var(--lime-500);
   --lime-plain-foreground-muted: var(--lime-400);
   --lime-surface: oklch(from var(--lime-subtle) l c h / 50%);
-  --lime-surface-foreground: var(--lime-subtle-foreground);
+  --lime-surface-foreground: color-mix(in oklch, var(--lime-strong) 80%, var(--lime-subtle));
   --lime-surface-border: oklch(from var(--lime-strong) l c h / 40%);
 
   /* green */
@@ -921,7 +921,7 @@
   --green-plain-foreground-disabled: var(--green-500);
   --green-plain-foreground-muted: var(--green-400);
   --green-surface: oklch(from var(--green-subtle) l c h / 50%);
-  --green-surface-foreground: var(--green-subtle-foreground);
+  --green-surface-foreground: color-mix(in oklch, var(--green-strong) 80%, var(--green-subtle));
   --green-surface-border: oklch(from var(--green-strong) l c h / 40%);
 
   /* emerald */
@@ -940,7 +940,7 @@
   --emerald-plain-foreground-disabled: var(--emerald-500);
   --emerald-plain-foreground-muted: var(--emerald-400);
   --emerald-surface: oklch(from var(--emerald-subtle) l c h / 50%);
-  --emerald-surface-foreground: var(--emerald-subtle-foreground);
+  --emerald-surface-foreground: color-mix(in oklch, var(--emerald-strong) 80%, var(--emerald-subtle));
   --emerald-surface-border: oklch(from var(--emerald-strong) l c h / 40%);
 
   /* teal */
@@ -959,7 +959,7 @@
   --teal-plain-foreground-disabled: var(--teal-500);
   --teal-plain-foreground-muted: var(--teal-400);
   --teal-surface: oklch(from var(--teal-subtle) l c h / 50%);
-  --teal-surface-foreground: var(--teal-subtle-foreground);
+  --teal-surface-foreground: color-mix(in oklch, var(--teal-strong) 80%, var(--teal-subtle));
   --teal-surface-border: oklch(from var(--teal-strong) l c h / 40%);
 
   /* cyan */
@@ -978,7 +978,7 @@
   --cyan-plain-foreground-disabled: var(--cyan-500);
   --cyan-plain-foreground-muted: var(--cyan-400);
   --cyan-surface: oklch(from var(--cyan-subtle) l c h / 50%);
-  --cyan-surface-foreground: var(--cyan-subtle-foreground);
+  --cyan-surface-foreground: color-mix(in oklch, var(--cyan-strong) 80%, var(--cyan-subtle));
   --cyan-surface-border: oklch(from var(--cyan-strong) l c h / 40%);
 
   /* sky */
@@ -997,7 +997,7 @@
   --sky-plain-foreground-disabled: var(--sky-500);
   --sky-plain-foreground-muted: var(--sky-400);
   --sky-surface: oklch(from var(--sky-subtle) l c h / 50%);
-  --sky-surface-foreground: var(--sky-subtle-foreground);
+  --sky-surface-foreground: color-mix(in oklch, var(--sky-strong) 80%, var(--sky-subtle));
   --sky-surface-border: oklch(from var(--sky-strong) l c h / 40%);
 
   /* blue */
@@ -1016,7 +1016,7 @@
   --blue-plain-foreground-disabled: var(--blue-500);
   --blue-plain-foreground-muted: var(--blue-400);
   --blue-surface: oklch(from var(--blue-subtle) l c h / 50%);
-  --blue-surface-foreground: var(--blue-subtle-foreground);
+  --blue-surface-foreground: color-mix(in oklch, var(--blue-strong) 80%, var(--blue-subtle));
   --blue-surface-border: oklch(from var(--blue-strong) l c h / 40%);
 
   /* indigo */
@@ -1035,7 +1035,7 @@
   --indigo-plain-foreground-disabled: var(--indigo-500);
   --indigo-plain-foreground-muted: var(--indigo-400);
   --indigo-surface: oklch(from var(--indigo-subtle) l c h / 50%);
-  --indigo-surface-foreground: var(--indigo-subtle-foreground);
+  --indigo-surface-foreground: color-mix(in oklch, var(--indigo-strong) 80%, var(--indigo-subtle));
   --indigo-surface-border: oklch(from var(--indigo-strong) l c h / 40%);
 
   /* violet */
@@ -1054,7 +1054,7 @@
   --violet-plain-foreground-disabled: var(--violet-500);
   --violet-plain-foreground-muted: var(--violet-400);
   --violet-surface: oklch(from var(--violet-subtle) l c h / 50%);
-  --violet-surface-foreground: var(--violet-subtle-foreground);
+  --violet-surface-foreground: color-mix(in oklch, var(--violet-strong) 80%, var(--violet-subtle));
   --violet-surface-border: oklch(from var(--violet-strong) l c h / 40%);
 
   /* purple */
@@ -1073,7 +1073,7 @@
   --purple-plain-foreground-disabled: var(--purple-500);
   --purple-plain-foreground-muted: var(--purple-400);
   --purple-surface: oklch(from var(--purple-subtle) l c h / 50%);
-  --purple-surface-foreground: var(--purple-subtle-foreground);
+  --purple-surface-foreground: color-mix(in oklch, var(--purple-strong) 80%, var(--purple-subtle));
   --purple-surface-border: oklch(from var(--purple-strong) l c h / 40%);
 
   /* fuchsia */
@@ -1092,7 +1092,7 @@
   --fuchsia-plain-foreground-disabled: var(--fuchsia-500);
   --fuchsia-plain-foreground-muted: var(--fuchsia-400);
   --fuchsia-surface: oklch(from var(--fuchsia-subtle) l c h / 50%);
-  --fuchsia-surface-foreground: var(--fuchsia-subtle-foreground);
+  --fuchsia-surface-foreground: color-mix(in oklch, var(--fuchsia-strong) 80%, var(--fuchsia-subtle));
   --fuchsia-surface-border: oklch(from var(--fuchsia-strong) l c h / 40%);
 
   /* pink */
@@ -1111,7 +1111,7 @@
   --pink-plain-foreground-disabled: var(--pink-500);
   --pink-plain-foreground-muted: var(--pink-400);
   --pink-surface: oklch(from var(--pink-subtle) l c h / 50%);
-  --pink-surface-foreground: var(--pink-subtle-foreground);
+  --pink-surface-foreground: color-mix(in oklch, var(--pink-strong) 80%, var(--pink-subtle));
   --pink-surface-border: oklch(from var(--pink-strong) l c h / 40%);
 
   /* rose */
@@ -1130,7 +1130,7 @@
   --rose-plain-foreground-disabled: var(--rose-500);
   --rose-plain-foreground-muted: var(--rose-400);
   --rose-surface: oklch(from var(--rose-subtle) l c h / 50%);
-  --rose-surface-foreground: var(--rose-subtle-foreground);
+  --rose-surface-foreground: color-mix(in oklch, var(--rose-strong) 80%, var(--rose-subtle));
   --rose-surface-border: oklch(from var(--rose-strong) l c h / 40%);
 
   /* slate */
@@ -1149,7 +1149,7 @@
   --slate-plain-foreground-disabled: var(--slate-500);
   --slate-plain-foreground-muted: var(--slate-400);
   --slate-surface: oklch(from var(--slate-subtle) l c h / 50%);
-  --slate-surface-foreground: var(--slate-subtle-foreground);
+  --slate-surface-foreground: color-mix(in oklch, var(--slate-strong) 80%, var(--slate-subtle));
   --slate-surface-border: oklch(from var(--slate-strong) l c h / 40%);
 
   /* gray */
@@ -1168,7 +1168,7 @@
   --gray-plain-foreground-disabled: var(--gray-500);
   --gray-plain-foreground-muted: var(--gray-400);
   --gray-surface: oklch(from var(--gray-subtle) l c h / 50%);
-  --gray-surface-foreground: var(--gray-subtle-foreground);
+  --gray-surface-foreground: color-mix(in oklch, var(--gray-strong) 80%, var(--gray-subtle));
   --gray-surface-border: oklch(from var(--gray-strong) l c h / 40%);
 
   /* neutral */
@@ -1187,7 +1187,7 @@
   --neutral-plain-foreground-disabled: var(--neutral-500);
   --neutral-plain-foreground-muted: var(--neutral-400);
   --neutral-surface: oklch(from var(--neutral-subtle) l c h / 50%);
-  --neutral-surface-foreground: var(--neutral-subtle-foreground);
+  --neutral-surface-foreground: color-mix(in oklch, var(--neutral-strong) 80%, var(--neutral-subtle));
   --neutral-surface-border: oklch(from var(--neutral-strong) l c h / 40%);
 
   /* zinc */
@@ -1206,7 +1206,7 @@
   --zinc-plain-foreground-disabled: var(--zinc-500);
   --zinc-plain-foreground-muted: var(--zinc-400);
   --zinc-surface: oklch(from var(--zinc-subtle) l c h / 50%);
-  --zinc-surface-foreground: var(--zinc-subtle-foreground);
+  --zinc-surface-foreground: color-mix(in oklch, var(--zinc-strong) 80%, var(--zinc-subtle));
   --zinc-surface-border: oklch(from var(--zinc-strong) l c h / 40%);
 
   /* stone */
@@ -1225,7 +1225,7 @@
   --stone-plain-foreground-disabled: var(--stone-500);
   --stone-plain-foreground-muted: var(--stone-400);
   --stone-surface: oklch(from var(--stone-subtle) l c h / 50%);
-  --stone-surface-foreground: var(--stone-subtle-foreground);
+  --stone-surface-foreground: color-mix(in oklch, var(--stone-strong) 80%, var(--stone-subtle));
   --stone-surface-border: oklch(from var(--stone-strong) l c h / 40%);
 
   /* mauve */
@@ -1244,7 +1244,7 @@
   --mauve-plain-foreground-disabled: var(--mauve-500);
   --mauve-plain-foreground-muted: var(--mauve-400);
   --mauve-surface: oklch(from var(--mauve-subtle) l c h / 50%);
-  --mauve-surface-foreground: var(--mauve-subtle-foreground);
+  --mauve-surface-foreground: color-mix(in oklch, var(--mauve-strong) 80%, var(--mauve-subtle));
   --mauve-surface-border: oklch(from var(--mauve-strong) l c h / 40%);
 
   /* olive */
@@ -1263,7 +1263,7 @@
   --olive-plain-foreground-disabled: var(--olive-500);
   --olive-plain-foreground-muted: var(--olive-400);
   --olive-surface: oklch(from var(--olive-subtle) l c h / 50%);
-  --olive-surface-foreground: var(--olive-subtle-foreground);
+  --olive-surface-foreground: color-mix(in oklch, var(--olive-strong) 80%, var(--olive-subtle));
   --olive-surface-border: oklch(from var(--olive-strong) l c h / 40%);
 
   /* mist */
@@ -1282,7 +1282,7 @@
   --mist-plain-foreground-disabled: var(--mist-500);
   --mist-plain-foreground-muted: var(--mist-400);
   --mist-surface: oklch(from var(--mist-subtle) l c h / 50%);
-  --mist-surface-foreground: var(--mist-subtle-foreground);
+  --mist-surface-foreground: color-mix(in oklch, var(--mist-strong) 80%, var(--mist-subtle));
   --mist-surface-border: oklch(from var(--mist-strong) l c h / 40%);
 
   /* taupe */
@@ -1301,6 +1301,6 @@
   --taupe-plain-foreground-disabled: var(--taupe-500);
   --taupe-plain-foreground-muted: var(--taupe-400);
   --taupe-surface: oklch(from var(--taupe-subtle) l c h / 50%);
-  --taupe-surface-foreground: var(--taupe-subtle-foreground);
+  --taupe-surface-foreground: color-mix(in oklch, var(--taupe-strong) 80%, var(--taupe-subtle));
   --taupe-surface-border: oklch(from var(--taupe-strong) l c h / 40%);
 }

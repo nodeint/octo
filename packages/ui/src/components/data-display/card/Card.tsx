@@ -4,6 +4,8 @@ import { cn } from '../../../lib/utils';
 
 type CardSize = 'md' | 'sm'
 
+const CardSizeContext = React.createContext<CardSize>('md');
+
 type CardProps = React.ComponentProps<'div'> & {
   size?: CardSize
 }
@@ -14,21 +16,24 @@ function Card({
   ...props
 }: CardProps): React.JSX.Element {
   return (
-    <div
-      data-slot="card"
-      data-size={size}
-      data-panel-size={size}
-      className={cn('panel card', className)}
-      {...props}
-    />
+    <CardSizeContext.Provider value={size}>
+      <div
+        data-slot="card"
+        data-size={size}
+        data-panel-size={size}
+        className={cn('panel card', className)}
+        {...props}
+      />
+    </CardSizeContext.Provider>
   );
 }
 
 function CardHeader({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
+  const size = React.useContext(CardSizeContext);
   return (
     <div
       data-slot="card-header"
-      data-row-type="header"
+      data-row-type={size === 'sm' ? 'content' : 'header'}
       className={cn('card-header', className)}
       {...props}
     />

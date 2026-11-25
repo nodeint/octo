@@ -2,13 +2,21 @@ import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
 import * as React from 'react';
 
+import type { PaintName } from '../../../lib/paint';
 import { cn } from '../../../lib/utils';
 import { Separator } from '../../layout/separator/Separator';
 
-type ItemVariant = 'default' | 'outline' | 'muted'
+type ItemVariant = 'default' | 'outline' | 'secondary'
 type ItemSize = 'md' | 'sm' | 'xs'
 
 /** The media step an item hands to its media: the row size picks one step of the media scale. */
+/** The paint each variant picks. */
+const ITEM_PAINT = {
+  default: 'base-ghost',
+  outline: 'base-outline',
+  secondary: 'base-soft',
+} as const satisfies Record<ItemVariant, PaintName>;
+
 const ITEM_MEDIA_SIZE = { md: 'lg', sm: 'md', xs: 'xs' } as const satisfies Record<ItemSize, string>;
 type ItemMediaVariant = 'default' | 'icon' | 'image'
 
@@ -99,6 +107,7 @@ function Item({
       variant,
       size,
       bare,
+      paint: ITEM_PAINT[variant],
       'media-size': ITEM_MEDIA_SIZE[size],
       'row-size': size,
     },

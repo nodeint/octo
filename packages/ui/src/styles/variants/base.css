@@ -112,6 +112,6 @@
   --variant-ring: var(--state-focus-border);
   --variant-bg: var(--card);
   --variant-fg: var(--foreground);
-  --variant-fg-secondary: var(--foreground);
+  --variant-fg-secondary: var(--foreground-muted);
   --variant-border: var(--border);
 }

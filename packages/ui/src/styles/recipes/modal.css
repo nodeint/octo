@@ -1,5 +1,5 @@
 /*
- * Modal skin: scrim, panel surface, footer band, title, description and close button, shared by dialog,
+ * Modal skin: scrim, panel surface, footer band and close button, shared by dialog,
  * alert dialog and sheet. A component adds the classes it needs. Keyframes live in overlay.css.
  *
  * Input tokens a component may set on its own root:
@@ -84,29 +84,6 @@
     flex-direction: row;
     justify-content: flex-end;
   }
-}
-
-.modal-title {
-  font-family: var(--role-title-sm-family);
-  font-size: var(--role-title-sm-size);
-  line-height: var(--role-title-sm-leading);
-  font-weight: var(--role-title-sm-weight);
-}
-
-.modal-description {
-  font-size: var(--role-description-size);
-  line-height: var(--role-description-leading);
-  font-weight: var(--role-description-weight);
-  color: var(--role-description-color);
-}
-
-.modal-description > a {
-  text-decoration-line: underline;
-  text-underline-offset: 3px;
-}
-
-.modal-description > a:hover {
-  color: var(--foreground);
 }
 
 .modal-close-button {

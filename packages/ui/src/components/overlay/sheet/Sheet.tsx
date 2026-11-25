@@ -52,6 +52,7 @@ function SheetContent({
       <SheetOverlay />
       <SheetPrimitive.Popup
         data-slot="sheet-content"
+        data-row-type="header"
         data-side={side}
         data-variant={variant}
         className={cn('panel modal-content sheet-content', className)}
@@ -100,7 +101,7 @@ function SheetTitle({ className, ...props }: SheetPrimitive.Title.Props): React.
   return (
     <SheetPrimitive.Title
       data-slot="sheet-title"
-      className={cn('modal-title', className)}
+      className={cn('row-title', className)}
       {...props}
     />
   );
@@ -113,7 +114,7 @@ function SheetDescription({
   return (
     <SheetPrimitive.Description
       data-slot="sheet-description"
-      className={cn('modal-description', className)}
+      className={cn('row-description', className)}
       {...props}
     />
   );

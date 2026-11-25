@@ -143,13 +143,13 @@ export const Variant: Story = {
           <ItemDescription>Outlined style with a visible border.</ItemDescription>
         </ItemContent>
       </Item>
-      <Item variant="muted">
+      <Item variant="secondary">
         <ItemMedia variant="icon">
           <Icon name="inbox" />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Muted Variant</ItemTitle>
-          <ItemDescription>Muted background for secondary content.</ItemDescription>
+          <ItemTitle>Secondary Variant</ItemTitle>
+          <ItemDescription>Secondary background for secondary content.</ItemDescription>
         </ItemContent>
       </Item>
     </Stack>
