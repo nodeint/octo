@@ -14,6 +14,8 @@ import {
   Field,
   FieldGroup,
   FieldLabel,
+  Flex,
+  Grid,
   Icon,
   Input,
   Stack,
@@ -53,20 +55,16 @@ function OrderDemo({ dir, texts }: { dir?: 'rtl'; texts: Record<string, string> 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} dir={dir}>
       <Stack>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingInline: '1rem' }}>
+        <Flex align="center" justify="space-between" px="md">
           <Text as="h4" variant="title-sm">{texts.order}</Text>
           <CollapsibleTrigger render={<Button variant="ghost" shape="icon" size="sm" aria-label="Toggle details" />}>
             <Icon name="chevron-down" />
           </CollapsibleTrigger>
-        </div>
-        <Box
-          radius="sm"
-          border="thin"
-          style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }}
-        >
+        </Flex>
+        <Flex radius="sm" border="thin" justify="space-between" px="md" py="sm">
           <Text variant="description">{texts.status}</Text>
           <Text variant="label">{texts.shipped}</Text>
-        </Box>
+        </Flex>
         <CollapsibleContent>
           <Stack>
             <DetailRow title={texts.address} value="100 Market St, San Francisco" />
@@ -125,19 +123,17 @@ function Settings(): React.JSX.Element {
         <Stack>
           <Text variant="title-sm">Radius</Text>
           <Text variant="description">Set the corner radius of the element.</Text>
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+          <Flex align="flex-start" gap="sm">
             <FieldGroup style={{ flex: 1 }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>{fields('top')}</div>
+              <Grid columns={2}>{fields('top')}</Grid>
               <CollapsibleContent>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
-                  {fields('bottom')}
-                </div>
+                <Grid columns={2}>{fields('bottom')}</Grid>
               </CollapsibleContent>
             </FieldGroup>
             <CollapsibleTrigger render={<Button variant="outline" shape="icon" aria-label="Toggle more" />}>
               <Icon name={isOpen ? 'minus' : 'plus'} />
             </CollapsibleTrigger>
-          </div>
+          </Flex>
         </Stack>
       </Box>
     </Collapsible>
