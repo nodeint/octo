@@ -19,9 +19,9 @@
 }
 
 .radio-group-item[data-checked] {
-  --choice-control-border: var(--primary-strong);
-  --choice-control-border-disabled: var(--primary-strong);
-  --choice-control-border-invalid: var(--primary-strong);
+  --choice-control-border: var(--primary-strong-bg);
+  --choice-control-border-disabled: var(--primary-strong-bg);
+  --choice-control-border-invalid: var(--primary-strong-bg);
 }
 
 .radio-group-indicator {
@@ -29,5 +29,5 @@
   width: var(--radio-dot-size);
   height: var(--radio-dot-size);
   border-radius: var(--radio-indicator-radius);
-  background-color: var(--primary-strong);
+  background-color: var(--primary-strong-bg);
 }

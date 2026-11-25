@@ -36,7 +36,7 @@
   border: var(--border-width-thin) solid var(--group-border);
   border-radius: var(--group-radius);
   background-color: var(--group-bg);
-  color: var(--fg);
+  color: var(--variant-fg);
 
   /* A vertical rail grows with its items and is block-shaped. */
   &[data-orientation='vertical'] {
@@ -53,7 +53,7 @@
 
   &[data-disabled] {
     pointer-events: none;
-    color: var(--fg-muted);
+    color: var(--variant-fg-muted);
   }
 
   /*
@@ -70,11 +70,9 @@
     --group-action-border: transparent;
     --group-action-border-hover: transparent;
     --group-action-border-active: transparent;
-    --group-action-border-pressed: transparent;
     --group-action-border-disabled: transparent;
     --group-field-border-hover: transparent;
     --group-field-border-active: transparent;
-    --group-field-border-pressed: transparent;
   }
 }
 
@@ -98,7 +96,7 @@
   text-underline-offset: 4px;
 
   &:hover {
-    color: var(--fg);
+    color: var(--variant-fg);
     text-decoration-line: underline;
   }
 }

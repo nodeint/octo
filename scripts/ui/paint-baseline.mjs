@@ -22,6 +22,7 @@ const SNAPSHOT = join(dirname(fileURLToPath(import.meta.url)), 'paint-baseline.j
 
 /** Files whose `:root` and `.dark` blocks declare the tokens every paint reads, in cascade order. */
 const TOKEN_FILES = [
+  'theme/palette.css',
   'theme/swatches.css',
   'theme/base.css',
   'theme/primary.css',

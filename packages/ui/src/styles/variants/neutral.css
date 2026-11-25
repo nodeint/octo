@@ -1,110 +1,87 @@
 /* neutral: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
 
 [data-paint='neutral-solid'] {
-  --variant-ring: var(--neutral-strong);
-  --variant-bg: var(--neutral-strong);
+  --variant-ring: var(--neutral-strong-bg);
+  --variant-bg: var(--neutral-strong-bg);
+  --variant-bg-hover: var(--neutral-strong-bg-hover);
+  --variant-bg-active: var(--neutral-strong-bg);
+  --variant-bg-disabled: var(--neutral-strong-bg-disabled);
   --variant-fg: var(--neutral-strong-fg);
   --variant-fg-subtle: var(--neutral-strong-fg-subtle);
   --variant-fg-muted: var(--neutral-strong-fg-muted);
   --variant-border: transparent;
-  --variant-bg-hover: var(--neutral-strong-hover);
-  --variant-fg-hover: var(--neutral-strong-fg);
   --variant-border-hover: transparent;
-  --variant-bg-active: var(--neutral-strong-hover);
-  --variant-fg-active: var(--neutral-strong-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--neutral-strong);
-  --variant-fg-pressed: var(--neutral-strong-fg);
-  --variant-border-pressed: transparent;
-  --variant-bg-disabled: var(--neutral-strong-disabled);
   --variant-border-disabled: transparent;
 }
 
 [data-paint='neutral-soft'] {
-  --variant-ring: var(--neutral-strong);
-  --variant-bg: var(--neutral-subtle);
-  --variant-bg-hover: var(--neutral-subtle-hover);
-  --variant-bg-active: var(--neutral-subtle-hover);
-  --variant-bg-pressed: var(--neutral-subtle-pressed);
-  --variant-bg-disabled: var(--neutral-subtle-disabled);
+  --variant-ring: var(--neutral-strong-bg);
+  --variant-bg: var(--neutral-subtle-bg);
+  --variant-bg-hover: var(--neutral-subtle-bg-hover);
+  --variant-bg-active: var(--neutral-subtle-bg-active);
+  --variant-bg-disabled: var(--neutral-subtle-bg-disabled);
   --variant-fg: var(--neutral-subtle-fg);
   --variant-fg-subtle: var(--neutral-subtle-fg-subtle);
   --variant-fg-muted: var(--neutral-subtle-fg-muted);
-  --variant-fg-hover: var(--neutral-subtle-fg);
-  --variant-fg-active: var(--neutral-subtle-fg);
-  --variant-fg-pressed: var(--neutral-subtle-fg);
   --variant-border: transparent;
   --variant-border-hover: transparent;
-  --variant-border-active: transparent;
-  --variant-border-pressed: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='neutral-outline'] {
-  --variant-ring: var(--neutral-strong);
+  --variant-ring: var(--neutral-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--neutral-plain-fg);
-  --variant-fg-subtle: var(--neutral-plain-fg-subtle);
-  --variant-fg-muted: var(--neutral-plain-fg-muted);
-  --variant-border: var(--neutral-plain-border);
-  --variant-bg-hover: var(--neutral-subtle-hover);
-  --variant-fg-hover: var(--neutral-plain-fg);
-  --variant-border-hover: var(--neutral-plain-border);
-  --variant-bg-active: var(--neutral-subtle-hover);
-  --variant-fg-active: var(--neutral-plain-fg);
-  --variant-border-active: var(--neutral-plain-border);
-  --variant-bg-pressed: var(--neutral-subtle-pressed);
-  --variant-fg-pressed: var(--neutral-plain-fg);
-  --variant-border-pressed: var(--neutral-plain-border);
+  --variant-bg-hover: var(--neutral-subtle-bg-hover);
+  --variant-bg-active: var(--neutral-subtle-bg-active);
   --variant-bg-disabled: transparent;
-  --variant-border-disabled: var(--neutral-plain-border-disabled);
+  --variant-fg: var(--neutral-plain-fg);
+  --variant-fg-subtle: var(--neutral-border-subtle);
+  --variant-fg-muted: var(--neutral-border-muted);
+  --variant-border: var(--neutral-border);
+  --variant-border-hover: var(--neutral-border);
+  --variant-border-disabled: var(--neutral-border-muted);
 }
 
 [data-paint='neutral-muted'] {
-  --variant-ring: var(--neutral-strong);
+  --variant-ring: var(--neutral-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--neutral-plain-fg-muted);
-  --variant-fg-subtle: var(--neutral-plain-fg-subtle);
-  --variant-fg-muted: var(--neutral-plain-fg-muted);
-  --variant-border: transparent;
-  --variant-bg-hover: var(--neutral-subtle-hover);
-  --variant-fg-hover: var(--neutral-plain-fg);
-  --variant-border-hover: transparent;
-  --variant-bg-active: var(--neutral-subtle-hover);
-  --variant-fg-active: var(--neutral-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--neutral-subtle-pressed);
-  --variant-fg-pressed: var(--neutral-plain-fg);
-  --variant-border-pressed: transparent;
+  --variant-bg-hover: var(--neutral-subtle-bg-hover);
+  --variant-bg-active: var(--neutral-subtle-bg-active);
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--neutral-border-muted);
+  --variant-fg-subtle: var(--neutral-border-subtle);
+  --variant-fg-muted: var(--neutral-border-muted);
+  --variant-fg-hover: var(--neutral-plain-fg);
+  --variant-fg-active: var(--neutral-plain-fg);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='neutral-plain'] {
-  --variant-ring: var(--neutral-strong);
+  --variant-ring: var(--neutral-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--neutral-plain-fg);
-  --variant-fg-subtle: var(--neutral-plain-fg-subtle);
-  --variant-fg-muted: var(--neutral-plain-fg-muted);
-  --variant-border: transparent;
   --variant-bg-hover: transparent;
-  --variant-fg-hover: var(--neutral-plain-fg);
-  --variant-border-hover: transparent;
   --variant-bg-active: transparent;
-  --variant-fg-active: var(--neutral-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: transparent;
-  --variant-fg-pressed: var(--neutral-plain-fg);
-  --variant-border-pressed: transparent;
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--neutral-plain-fg);
+  --variant-fg-subtle: var(--neutral-border-subtle);
+  --variant-fg-muted: var(--neutral-border-muted);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='neutral-surface'] {
-  --variant-ring: var(--neutral-strong);
-  --variant-bg: var(--neutral-surface);
+  --variant-ring: var(--neutral-strong-bg);
+  --variant-bg: var(--neutral-surface-bg);
+  --variant-bg-hover: var(--neutral-surface-bg-hover);
+  --variant-bg-active: var(--neutral-surface-bg-active);
+  --variant-bg-disabled: var(--neutral-surface-bg-disabled);
   --variant-fg: var(--neutral-plain-fg);
   --variant-fg-subtle: var(--neutral-surface-fg-subtle);
   --variant-fg-muted: var(--neutral-surface-fg-muted);
-  --variant-border: var(--neutral-surface-border);
+  --variant-border: var(--neutral-border);
+  --variant-border-hover: var(--neutral-border-subtle);
+  --variant-border-disabled: var(--neutral-border-muted);
 }

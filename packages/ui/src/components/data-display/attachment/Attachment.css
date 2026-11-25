@@ -54,7 +54,7 @@
 }
 
 .attachment[data-state='error'] .attachment-media {
-  --media-background: var(--destructive-subtle);
+  --media-background: var(--destructive-subtle-bg);
   --media-fg: var(--destructive-subtle-fg);
 }
 

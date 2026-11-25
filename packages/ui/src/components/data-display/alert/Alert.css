@@ -46,7 +46,7 @@
 
 .alert-title a:hover,
 .alert-description a:hover {
-  color: var(--fg);
+  color: var(--variant-fg);
 }
 
 .alert-description {

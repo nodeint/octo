@@ -1,130 +1,81 @@
-/* base: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+/* base: every variant of this color. Each slot --variant-<slot> reads --base-<emphasis>-<slot>, the pair the swatch provides. */
 
 [data-paint='base-solid'] {
-  --variant-ring: var(--state-focus-border);
-  --variant-bg: var(--secondary);
-  --variant-fg: var(--fg);
-  --variant-fg-subtle: var(--fg-muted);
-  --variant-fg-muted: var(--fg-subtle);
+  --variant-bg: var(--base-strong-bg);
+  --variant-bg-hover: var(--base-strong-bg-hover);
+  --variant-bg-active: var(--base-strong-bg);
+  --variant-bg-disabled: var(--base-strong-bg-disabled);
+  --variant-fg: var(--base-strong-fg);
+  --variant-fg-subtle: var(--base-strong-fg-subtle);
+  --variant-fg-muted: var(--base-strong-fg-muted);
   --variant-border: transparent;
-  --variant-bg-hover: var(--accent);
-  --variant-fg-hover: var(--fg);
   --variant-border-hover: transparent;
-  --variant-bg-active: var(--accent);
-  --variant-fg-active: var(--fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--secondary);
-  --variant-fg-pressed: var(--fg);
-  --variant-border-pressed: transparent;
-  --variant-bg-disabled: var(--disabled);
   --variant-border-disabled: transparent;
 }
 
 [data-paint='base-soft'] {
-  --variant-ring: var(--state-focus-border);
-  --variant-bg: var(--secondary);
-  --variant-bg-hover: var(--accent);
-  --variant-bg-active: var(--accent);
-  --variant-bg-pressed: var(--muted);
-  --variant-bg-disabled: color-mix(in oklab, var(--secondary) 50%, transparent);
-  --variant-fg: var(--fg);
-  --variant-fg-subtle: var(--fg-muted);
-  --variant-fg-muted: var(--fg-subtle);
-  --variant-fg-hover: var(--fg);
-  --variant-fg-active: var(--fg);
-  --variant-fg-pressed: var(--fg-muted);
+  --variant-bg: var(--base-subtle-bg);
+  --variant-bg-hover: var(--base-subtle-bg-hover);
+  --variant-bg-active: var(--base-subtle-bg-active);
+  --variant-bg-disabled: var(--base-subtle-bg-disabled);
+  --variant-fg: var(--base-subtle-fg);
+  --variant-fg-subtle: var(--base-subtle-fg-subtle);
+  --variant-fg-muted: var(--base-subtle-fg-muted);
   --variant-border: transparent;
   --variant-border-hover: transparent;
-  --variant-border-active: transparent;
-  --variant-border-pressed: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='base-outline'] {
-  --variant-ring: var(--state-focus-border);
-  --variant-bg: transparent;
-  --variant-fg: var(--fg);
-  --variant-fg-subtle: var(--fg-muted);
-  --variant-fg-muted: var(--fg-subtle);
-  --variant-border: var(--border);
-  --variant-bg-hover: var(--accent);
-  --variant-fg-hover: var(--fg);
-  --variant-border-hover: var(--border);
-  --variant-bg-active: var(--accent);
-  --variant-fg-active: var(--fg);
-  --variant-border-active: var(--border);
-  --variant-bg-pressed: var(--muted);
-  --variant-fg-pressed: var(--fg);
-  --variant-border-pressed: var(--border);
-  --variant-bg-disabled: transparent;
-  --variant-border-disabled: var(--disabled-border);
-}
-
-[data-paint='base-ghost'] {
-  --variant-ring: var(--state-focus-border);
-  --variant-bg: transparent;
-  --variant-fg: var(--fg);
-  --variant-fg-subtle: var(--fg-muted);
-  --variant-fg-muted: var(--fg-subtle);
-  --variant-border: transparent;
-  --variant-bg-hover: var(--accent);
-  --variant-fg-hover: var(--fg);
-  --variant-border-hover: transparent;
-  --variant-bg-active: var(--accent);
-  --variant-fg-active: var(--fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--muted);
-  --variant-fg-pressed: var(--fg);
-  --variant-border-pressed: transparent;
-  --variant-bg-disabled: transparent;
-  --variant-border-disabled: transparent;
+  --variant-bg: var(--base-plain-bg);
+  --variant-bg-hover: var(--base-plain-bg-hover);
+  --variant-bg-active: var(--base-plain-bg-active);
+  --variant-bg-disabled: var(--base-plain-bg-disabled);
+  --variant-fg: var(--base-plain-fg);
+  --variant-fg-subtle: var(--base-plain-fg-subtle);
+  --variant-fg-muted: var(--base-plain-fg-muted);
+  --variant-border: var(--base-border);
+  --variant-border-hover: var(--base-border-subtle);
+  --variant-border-disabled: var(--base-border-muted);
 }
 
 [data-paint='base-muted'] {
-  --variant-ring: var(--state-focus-border);
-  --variant-bg: transparent;
-  --variant-fg: var(--fg-muted);
-  --variant-fg-subtle: var(--fg-muted);
-  --variant-fg-muted: var(--fg-subtle);
+  --variant-bg: var(--base-plain-bg);
+  --variant-bg-hover: var(--base-plain-bg-hover);
+  --variant-bg-active: var(--base-plain-bg-active);
+  --variant-bg-disabled: var(--base-plain-bg-disabled);
+  --variant-fg: var(--base-plain-fg-muted);
+  --variant-fg-subtle: var(--base-plain-fg-subtle);
+  --variant-fg-muted: var(--base-plain-fg-muted);
+  --variant-fg-hover: var(--base-plain-fg);
+  --variant-fg-active: var(--base-plain-fg);
   --variant-border: transparent;
-  --variant-bg-hover: var(--accent);
-  --variant-fg-hover: var(--fg);
   --variant-border-hover: transparent;
-  --variant-bg-active: var(--accent);
-  --variant-fg-active: var(--fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--muted);
-  --variant-fg-pressed: var(--fg);
-  --variant-border-pressed: transparent;
-  --variant-bg-disabled: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='base-plain'] {
-  --variant-ring: var(--state-focus-border);
-  --variant-bg: transparent;
-  --variant-fg: var(--fg);
-  --variant-fg-subtle: var(--fg-muted);
-  --variant-fg-muted: var(--fg-subtle);
+  --variant-bg: var(--base-plain-bg);
+  --variant-bg-hover: var(--base-plain-bg-hover);
+  --variant-bg-active: var(--base-plain-bg-active);
+  --variant-bg-disabled: var(--base-plain-bg-disabled);
+  --variant-fg: var(--base-plain-fg);
+  --variant-fg-subtle: var(--base-plain-fg-subtle);
+  --variant-fg-muted: var(--base-plain-fg-muted);
   --variant-border: transparent;
-  --variant-bg-hover: transparent;
-  --variant-fg-hover: var(--fg);
   --variant-border-hover: transparent;
-  --variant-bg-active: transparent;
-  --variant-fg-active: var(--fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: transparent;
-  --variant-fg-pressed: var(--fg);
-  --variant-border-pressed: transparent;
-  --variant-bg-disabled: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='base-surface'] {
-  --variant-ring: var(--state-focus-border);
-  --variant-bg: var(--card);
-  --variant-fg: var(--fg);
-  --variant-fg-subtle: var(--fg-muted);
-  --variant-fg-muted: var(--fg-subtle);
-  --variant-border: var(--border);
+  --variant-bg: var(--base-surface-bg);
+  --variant-bg-hover: var(--base-surface-bg-hover);
+  --variant-bg-active: var(--base-surface-bg-active);
+  --variant-bg-disabled: var(--base-surface-bg-disabled);
+  --variant-fg: var(--base-plain-fg);
+  --variant-fg-subtle: var(--base-surface-fg-subtle);
+  --variant-fg-muted: var(--base-surface-fg-muted);
+  --variant-border: var(--base-border);
+  --variant-border-hover: var(--base-border-subtle);
+  --variant-border-disabled: var(--base-border-muted);
 }

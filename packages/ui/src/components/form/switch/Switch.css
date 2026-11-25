@@ -10,7 +10,7 @@
 }
 
 .switch[data-checked] {
-  background-color: var(--primary-strong);
+  background-color: var(--primary-strong-bg);
 }
 
 .switch[data-unchecked] {

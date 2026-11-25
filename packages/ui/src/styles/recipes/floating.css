@@ -21,7 +21,7 @@
   min-width: var(--overlay-xxs);
   border-radius: var(--floating-radius, var(--floating-size-radius, var(--radius-overlay-sm)));
   background-color: var(--popover);
-  color: var(--fg);
+  color: var(--variant-fg);
   box-shadow: 0 0 0 var(--border-width-thin) var(--border-surface);
   outline: none;
   transform-origin: var(--transform-origin);

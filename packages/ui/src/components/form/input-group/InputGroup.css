@@ -45,12 +45,9 @@
   --group-action-bg-hover: initial;
   --group-action-fg-hover: initial;
   --group-action-border-hover: initial;
-  --group-action-bg-active: initial;
   --group-action-fg-active: initial;
   --group-action-border-active: initial;
-  --group-action-bg-pressed: initial;
-  --group-action-fg-pressed: initial;
-  --group-action-border-pressed: initial;
+  --group-action-bg-active: initial;
   --group-action-bg-disabled: initial;
   --group-action-border-disabled: initial;
 
@@ -104,12 +101,9 @@
     --group-field-fg: currentcolor;
     --group-field-fg-hover: currentcolor;
     --group-field-border-hover: var(--border);
-    --group-field-bg-active: var(--variant-bg-hover);
     --group-field-fg-active: currentcolor;
     --group-field-border-active: var(--border);
-    --group-field-bg-pressed: var(--variant-bg);
-    --group-field-fg-pressed: currentcolor;
-    --group-field-border-pressed: var(--border);
+    --group-field-bg-active: var(--variant-bg);
 
     /* Hover and focus fill, as a bare Input has them. The focus border and halo come from state-ring-group. Focus comes last and wins. */
     &:hover:not([data-disabled], :has(> .field-control:disabled)) {
@@ -139,7 +133,7 @@
   &:has(> .field-control:disabled) {
     border-color: var(--input-group-border-disabled);
     background-color: var(--input-group-bg-disabled);
-    color: var(--fg-muted);
+    color: var(--variant-fg-muted);
   }
 
   /*
@@ -166,7 +160,7 @@
   font-size: var(--role-label-size);
   line-height: var(--role-label-leading);
   font-weight: var(--role-label-weight);
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
   user-select: none;
 
   /* a direct-child button or kbd tucks toward the edge */

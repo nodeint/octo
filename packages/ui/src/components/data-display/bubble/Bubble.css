@@ -58,28 +58,28 @@
 }
 
 .bubble[data-variant='default'] > .bubble-content {
-  background-color: var(--primary-strong);
+  background-color: var(--primary-strong-bg);
   color: var(--primary-strong-fg);
 }
 
 .bubble[data-variant='secondary'] > .bubble-content {
   background-color: var(--secondary);
-  color: var(--fg);
+  color: var(--variant-fg);
 }
 
 .bubble[data-variant='muted'] > .bubble-content {
   background-color: var(--muted);
-  color: var(--fg);
+  color: var(--variant-fg);
 }
 
 .bubble[data-variant='tinted'] > .bubble-content {
-  background-color: var(--primary-subtle);
+  background-color: var(--primary-subtle-bg);
   color: var(--primary-subtle-fg);
 }
 
 .bubble[data-variant='outline'] > .bubble-content {
   background-color: var(--card);
-  color: var(--fg);
+  color: var(--variant-fg);
   box-shadow: 0 0 0 var(--border-width-thin) var(--border);
 }
 
@@ -91,7 +91,7 @@
 }
 
 .bubble[data-variant='destructive'] > .bubble-content {
-  background-color: var(--destructive-subtle);
+  background-color: var(--destructive-subtle-bg);
   color: var(--destructive-subtle-fg);
 }
 

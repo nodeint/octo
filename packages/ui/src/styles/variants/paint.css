@@ -5,9 +5,13 @@
  * only --variant-ring, which the halo and the focus border follow.
  */
 [data-paint] {
+  /* State slots a variant does not declare follow its rest value; a nested paint never inherits its ancestor's. */
+  --variant-fg-hover: var(--variant-fg);
+  --variant-fg-active: var(--variant-fg);
+  --variant-border-active: var(--variant-border);
   --variant-border-focus: var(--variant-ring);
   --variant-border-invalid: var(--state-invalid-border);
-  --variant-fg-disabled: var(--fg-muted);
+  --variant-fg-disabled: var(--variant-fg-muted);
   --variant-fg-placeholder: var(--placeholder);
   --variant-shadow-focus: 0 0 0 var(--focus-width)
     color-mix(in oklab, var(--variant-ring) var(--state-halo-strength), transparent);

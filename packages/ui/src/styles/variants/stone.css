@@ -1,110 +1,87 @@
 /* stone: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
 
 [data-paint='stone-solid'] {
-  --variant-ring: var(--stone-strong);
-  --variant-bg: var(--stone-strong);
+  --variant-ring: var(--stone-strong-bg);
+  --variant-bg: var(--stone-strong-bg);
+  --variant-bg-hover: var(--stone-strong-bg-hover);
+  --variant-bg-active: var(--stone-strong-bg);
+  --variant-bg-disabled: var(--stone-strong-bg-disabled);
   --variant-fg: var(--stone-strong-fg);
   --variant-fg-subtle: var(--stone-strong-fg-subtle);
   --variant-fg-muted: var(--stone-strong-fg-muted);
   --variant-border: transparent;
-  --variant-bg-hover: var(--stone-strong-hover);
-  --variant-fg-hover: var(--stone-strong-fg);
   --variant-border-hover: transparent;
-  --variant-bg-active: var(--stone-strong-hover);
-  --variant-fg-active: var(--stone-strong-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--stone-strong);
-  --variant-fg-pressed: var(--stone-strong-fg);
-  --variant-border-pressed: transparent;
-  --variant-bg-disabled: var(--stone-strong-disabled);
   --variant-border-disabled: transparent;
 }
 
 [data-paint='stone-soft'] {
-  --variant-ring: var(--stone-strong);
-  --variant-bg: var(--stone-subtle);
-  --variant-bg-hover: var(--stone-subtle-hover);
-  --variant-bg-active: var(--stone-subtle-hover);
-  --variant-bg-pressed: var(--stone-subtle-pressed);
-  --variant-bg-disabled: var(--stone-subtle-disabled);
+  --variant-ring: var(--stone-strong-bg);
+  --variant-bg: var(--stone-subtle-bg);
+  --variant-bg-hover: var(--stone-subtle-bg-hover);
+  --variant-bg-active: var(--stone-subtle-bg-active);
+  --variant-bg-disabled: var(--stone-subtle-bg-disabled);
   --variant-fg: var(--stone-subtle-fg);
   --variant-fg-subtle: var(--stone-subtle-fg-subtle);
   --variant-fg-muted: var(--stone-subtle-fg-muted);
-  --variant-fg-hover: var(--stone-subtle-fg);
-  --variant-fg-active: var(--stone-subtle-fg);
-  --variant-fg-pressed: var(--stone-subtle-fg);
   --variant-border: transparent;
   --variant-border-hover: transparent;
-  --variant-border-active: transparent;
-  --variant-border-pressed: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='stone-outline'] {
-  --variant-ring: var(--stone-strong);
+  --variant-ring: var(--stone-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--stone-plain-fg);
-  --variant-fg-subtle: var(--stone-plain-fg-subtle);
-  --variant-fg-muted: var(--stone-plain-fg-muted);
-  --variant-border: var(--stone-plain-border);
-  --variant-bg-hover: var(--stone-subtle-hover);
-  --variant-fg-hover: var(--stone-plain-fg);
-  --variant-border-hover: var(--stone-plain-border);
-  --variant-bg-active: var(--stone-subtle-hover);
-  --variant-fg-active: var(--stone-plain-fg);
-  --variant-border-active: var(--stone-plain-border);
-  --variant-bg-pressed: var(--stone-subtle-pressed);
-  --variant-fg-pressed: var(--stone-plain-fg);
-  --variant-border-pressed: var(--stone-plain-border);
+  --variant-bg-hover: var(--stone-subtle-bg-hover);
+  --variant-bg-active: var(--stone-subtle-bg-active);
   --variant-bg-disabled: transparent;
-  --variant-border-disabled: var(--stone-plain-border-disabled);
+  --variant-fg: var(--stone-plain-fg);
+  --variant-fg-subtle: var(--stone-border-subtle);
+  --variant-fg-muted: var(--stone-border-muted);
+  --variant-border: var(--stone-border);
+  --variant-border-hover: var(--stone-border);
+  --variant-border-disabled: var(--stone-border-muted);
 }
 
 [data-paint='stone-muted'] {
-  --variant-ring: var(--stone-strong);
+  --variant-ring: var(--stone-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--stone-plain-fg-muted);
-  --variant-fg-subtle: var(--stone-plain-fg-subtle);
-  --variant-fg-muted: var(--stone-plain-fg-muted);
-  --variant-border: transparent;
-  --variant-bg-hover: var(--stone-subtle-hover);
-  --variant-fg-hover: var(--stone-plain-fg);
-  --variant-border-hover: transparent;
-  --variant-bg-active: var(--stone-subtle-hover);
-  --variant-fg-active: var(--stone-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--stone-subtle-pressed);
-  --variant-fg-pressed: var(--stone-plain-fg);
-  --variant-border-pressed: transparent;
+  --variant-bg-hover: var(--stone-subtle-bg-hover);
+  --variant-bg-active: var(--stone-subtle-bg-active);
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--stone-border-muted);
+  --variant-fg-subtle: var(--stone-border-subtle);
+  --variant-fg-muted: var(--stone-border-muted);
+  --variant-fg-hover: var(--stone-plain-fg);
+  --variant-fg-active: var(--stone-plain-fg);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='stone-plain'] {
-  --variant-ring: var(--stone-strong);
+  --variant-ring: var(--stone-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--stone-plain-fg);
-  --variant-fg-subtle: var(--stone-plain-fg-subtle);
-  --variant-fg-muted: var(--stone-plain-fg-muted);
-  --variant-border: transparent;
   --variant-bg-hover: transparent;
-  --variant-fg-hover: var(--stone-plain-fg);
-  --variant-border-hover: transparent;
   --variant-bg-active: transparent;
-  --variant-fg-active: var(--stone-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: transparent;
-  --variant-fg-pressed: var(--stone-plain-fg);
-  --variant-border-pressed: transparent;
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--stone-plain-fg);
+  --variant-fg-subtle: var(--stone-border-subtle);
+  --variant-fg-muted: var(--stone-border-muted);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='stone-surface'] {
-  --variant-ring: var(--stone-strong);
-  --variant-bg: var(--stone-surface);
+  --variant-ring: var(--stone-strong-bg);
+  --variant-bg: var(--stone-surface-bg);
+  --variant-bg-hover: var(--stone-surface-bg-hover);
+  --variant-bg-active: var(--stone-surface-bg-active);
+  --variant-bg-disabled: var(--stone-surface-bg-disabled);
   --variant-fg: var(--stone-plain-fg);
   --variant-fg-subtle: var(--stone-surface-fg-subtle);
   --variant-fg-muted: var(--stone-surface-fg-muted);
-  --variant-border: var(--stone-surface-border);
+  --variant-border: var(--stone-border);
+  --variant-border-hover: var(--stone-border-subtle);
+  --variant-border-disabled: var(--stone-border-muted);
 }

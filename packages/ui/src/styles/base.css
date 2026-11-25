@@ -4,11 +4,15 @@
  * overrides these slots for its subtree, so a component never needs a data-paint of its own to resolve text color.
  */
 :root {
+  --overlay: oklch(0 0 0 / 10%);
+
+  --ring: var(--primary-strong-bg);
   --placeholder: color-mix(in oklab, currentColor 50%, transparent);
 
+  --variant-ring: var(--state-focus-border);
   --variant-fg: var(--base-plain-fg);
-  --variant-fg-subtle: var(--base-plain-fg-subtle);
-  --variant-fg-muted: var(--base-plain-fg-muted);
+  --variant-fg-subtle: var(--base-border-subtle);
+  --variant-fg-muted: var(--base-border-muted);
 }
 
 *,
@@ -24,7 +28,7 @@ html {
 
 body {
   background-color: var(--background);
-  color: var(--fg);
+  color: var(--variant-fg);
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);

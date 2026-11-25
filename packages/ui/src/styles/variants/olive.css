@@ -1,110 +1,87 @@
 /* olive: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
 
 [data-paint='olive-solid'] {
-  --variant-ring: var(--olive-strong);
-  --variant-bg: var(--olive-strong);
+  --variant-ring: var(--olive-strong-bg);
+  --variant-bg: var(--olive-strong-bg);
+  --variant-bg-hover: var(--olive-strong-bg-hover);
+  --variant-bg-active: var(--olive-strong-bg);
+  --variant-bg-disabled: var(--olive-strong-bg-disabled);
   --variant-fg: var(--olive-strong-fg);
   --variant-fg-subtle: var(--olive-strong-fg-subtle);
   --variant-fg-muted: var(--olive-strong-fg-muted);
   --variant-border: transparent;
-  --variant-bg-hover: var(--olive-strong-hover);
-  --variant-fg-hover: var(--olive-strong-fg);
   --variant-border-hover: transparent;
-  --variant-bg-active: var(--olive-strong-hover);
-  --variant-fg-active: var(--olive-strong-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--olive-strong);
-  --variant-fg-pressed: var(--olive-strong-fg);
-  --variant-border-pressed: transparent;
-  --variant-bg-disabled: var(--olive-strong-disabled);
   --variant-border-disabled: transparent;
 }
 
 [data-paint='olive-soft'] {
-  --variant-ring: var(--olive-strong);
-  --variant-bg: var(--olive-subtle);
-  --variant-bg-hover: var(--olive-subtle-hover);
-  --variant-bg-active: var(--olive-subtle-hover);
-  --variant-bg-pressed: var(--olive-subtle-pressed);
-  --variant-bg-disabled: var(--olive-subtle-disabled);
+  --variant-ring: var(--olive-strong-bg);
+  --variant-bg: var(--olive-subtle-bg);
+  --variant-bg-hover: var(--olive-subtle-bg-hover);
+  --variant-bg-active: var(--olive-subtle-bg-active);
+  --variant-bg-disabled: var(--olive-subtle-bg-disabled);
   --variant-fg: var(--olive-subtle-fg);
   --variant-fg-subtle: var(--olive-subtle-fg-subtle);
   --variant-fg-muted: var(--olive-subtle-fg-muted);
-  --variant-fg-hover: var(--olive-subtle-fg);
-  --variant-fg-active: var(--olive-subtle-fg);
-  --variant-fg-pressed: var(--olive-subtle-fg);
   --variant-border: transparent;
   --variant-border-hover: transparent;
-  --variant-border-active: transparent;
-  --variant-border-pressed: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='olive-outline'] {
-  --variant-ring: var(--olive-strong);
+  --variant-ring: var(--olive-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--olive-plain-fg);
-  --variant-fg-subtle: var(--olive-plain-fg-subtle);
-  --variant-fg-muted: var(--olive-plain-fg-muted);
-  --variant-border: var(--olive-plain-border);
-  --variant-bg-hover: var(--olive-subtle-hover);
-  --variant-fg-hover: var(--olive-plain-fg);
-  --variant-border-hover: var(--olive-plain-border);
-  --variant-bg-active: var(--olive-subtle-hover);
-  --variant-fg-active: var(--olive-plain-fg);
-  --variant-border-active: var(--olive-plain-border);
-  --variant-bg-pressed: var(--olive-subtle-pressed);
-  --variant-fg-pressed: var(--olive-plain-fg);
-  --variant-border-pressed: var(--olive-plain-border);
+  --variant-bg-hover: var(--olive-subtle-bg-hover);
+  --variant-bg-active: var(--olive-subtle-bg-active);
   --variant-bg-disabled: transparent;
-  --variant-border-disabled: var(--olive-plain-border-disabled);
+  --variant-fg: var(--olive-plain-fg);
+  --variant-fg-subtle: var(--olive-border-subtle);
+  --variant-fg-muted: var(--olive-border-muted);
+  --variant-border: var(--olive-border);
+  --variant-border-hover: var(--olive-border);
+  --variant-border-disabled: var(--olive-border-muted);
 }
 
 [data-paint='olive-muted'] {
-  --variant-ring: var(--olive-strong);
+  --variant-ring: var(--olive-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--olive-plain-fg-muted);
-  --variant-fg-subtle: var(--olive-plain-fg-subtle);
-  --variant-fg-muted: var(--olive-plain-fg-muted);
-  --variant-border: transparent;
-  --variant-bg-hover: var(--olive-subtle-hover);
-  --variant-fg-hover: var(--olive-plain-fg);
-  --variant-border-hover: transparent;
-  --variant-bg-active: var(--olive-subtle-hover);
-  --variant-fg-active: var(--olive-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--olive-subtle-pressed);
-  --variant-fg-pressed: var(--olive-plain-fg);
-  --variant-border-pressed: transparent;
+  --variant-bg-hover: var(--olive-subtle-bg-hover);
+  --variant-bg-active: var(--olive-subtle-bg-active);
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--olive-border-muted);
+  --variant-fg-subtle: var(--olive-border-subtle);
+  --variant-fg-muted: var(--olive-border-muted);
+  --variant-fg-hover: var(--olive-plain-fg);
+  --variant-fg-active: var(--olive-plain-fg);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='olive-plain'] {
-  --variant-ring: var(--olive-strong);
+  --variant-ring: var(--olive-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--olive-plain-fg);
-  --variant-fg-subtle: var(--olive-plain-fg-subtle);
-  --variant-fg-muted: var(--olive-plain-fg-muted);
-  --variant-border: transparent;
   --variant-bg-hover: transparent;
-  --variant-fg-hover: var(--olive-plain-fg);
-  --variant-border-hover: transparent;
   --variant-bg-active: transparent;
-  --variant-fg-active: var(--olive-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: transparent;
-  --variant-fg-pressed: var(--olive-plain-fg);
-  --variant-border-pressed: transparent;
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--olive-plain-fg);
+  --variant-fg-subtle: var(--olive-border-subtle);
+  --variant-fg-muted: var(--olive-border-muted);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='olive-surface'] {
-  --variant-ring: var(--olive-strong);
-  --variant-bg: var(--olive-surface);
+  --variant-ring: var(--olive-strong-bg);
+  --variant-bg: var(--olive-surface-bg);
+  --variant-bg-hover: var(--olive-surface-bg-hover);
+  --variant-bg-active: var(--olive-surface-bg-active);
+  --variant-bg-disabled: var(--olive-surface-bg-disabled);
   --variant-fg: var(--olive-plain-fg);
   --variant-fg-subtle: var(--olive-surface-fg-subtle);
   --variant-fg-muted: var(--olive-surface-fg-muted);
-  --variant-border: var(--olive-surface-border);
+  --variant-border: var(--olive-border);
+  --variant-border-hover: var(--olive-border-subtle);
+  --variant-border-disabled: var(--olive-border-muted);
 }

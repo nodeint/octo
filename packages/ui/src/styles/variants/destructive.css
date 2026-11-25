@@ -1,110 +1,87 @@
 /* destructive: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
 
 [data-paint='destructive-solid'] {
-  --variant-ring: var(--destructive-strong);
-  --variant-bg: var(--destructive-strong);
+  --variant-ring: var(--destructive-strong-bg);
+  --variant-bg: var(--destructive-strong-bg);
+  --variant-bg-hover: var(--destructive-strong-bg-hover);
+  --variant-bg-active: var(--destructive-strong-bg);
+  --variant-bg-disabled: var(--destructive-strong-bg-disabled);
   --variant-fg: var(--destructive-strong-fg);
   --variant-fg-subtle: var(--destructive-strong-fg-subtle);
   --variant-fg-muted: var(--destructive-strong-fg-muted);
   --variant-border: transparent;
-  --variant-bg-hover: var(--destructive-strong-hover);
-  --variant-fg-hover: var(--destructive-strong-fg);
   --variant-border-hover: transparent;
-  --variant-bg-active: var(--destructive-strong-hover);
-  --variant-fg-active: var(--destructive-strong-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--destructive-strong);
-  --variant-fg-pressed: var(--destructive-strong-fg);
-  --variant-border-pressed: transparent;
-  --variant-bg-disabled: var(--destructive-strong-disabled);
   --variant-border-disabled: transparent;
 }
 
 [data-paint='destructive-soft'] {
-  --variant-ring: var(--destructive-strong);
-  --variant-bg: var(--destructive-subtle);
-  --variant-bg-hover: var(--destructive-subtle-hover);
-  --variant-bg-active: var(--destructive-subtle-hover);
-  --variant-bg-pressed: var(--destructive-subtle-pressed);
-  --variant-bg-disabled: var(--destructive-subtle-disabled);
+  --variant-ring: var(--destructive-strong-bg);
+  --variant-bg: var(--destructive-subtle-bg);
+  --variant-bg-hover: var(--destructive-subtle-bg-hover);
+  --variant-bg-active: var(--destructive-subtle-bg-active);
+  --variant-bg-disabled: var(--destructive-subtle-bg-disabled);
   --variant-fg: var(--destructive-subtle-fg);
   --variant-fg-subtle: var(--destructive-subtle-fg-subtle);
   --variant-fg-muted: var(--destructive-subtle-fg-muted);
-  --variant-fg-hover: var(--destructive-subtle-fg);
-  --variant-fg-active: var(--destructive-subtle-fg);
-  --variant-fg-pressed: var(--destructive-subtle-fg);
   --variant-border: transparent;
   --variant-border-hover: transparent;
-  --variant-border-active: transparent;
-  --variant-border-pressed: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='destructive-outline'] {
-  --variant-ring: var(--destructive-strong);
+  --variant-ring: var(--destructive-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--destructive-plain-fg);
-  --variant-fg-subtle: var(--destructive-plain-fg-subtle);
-  --variant-fg-muted: var(--destructive-plain-fg-muted);
-  --variant-border: var(--destructive-plain-border);
-  --variant-bg-hover: var(--destructive-subtle-hover);
-  --variant-fg-hover: var(--destructive-plain-fg);
-  --variant-border-hover: var(--destructive-plain-border);
-  --variant-bg-active: var(--destructive-subtle-hover);
-  --variant-fg-active: var(--destructive-plain-fg);
-  --variant-border-active: var(--destructive-plain-border);
-  --variant-bg-pressed: var(--destructive-subtle-pressed);
-  --variant-fg-pressed: var(--destructive-plain-fg);
-  --variant-border-pressed: var(--destructive-plain-border);
+  --variant-bg-hover: var(--destructive-subtle-bg-hover);
+  --variant-bg-active: var(--destructive-subtle-bg-active);
   --variant-bg-disabled: transparent;
-  --variant-border-disabled: var(--destructive-plain-border-disabled);
+  --variant-fg: var(--destructive-plain-fg);
+  --variant-fg-subtle: var(--destructive-border-subtle);
+  --variant-fg-muted: var(--destructive-border-muted);
+  --variant-border: var(--destructive-border);
+  --variant-border-hover: var(--destructive-border);
+  --variant-border-disabled: var(--destructive-border-muted);
 }
 
 [data-paint='destructive-muted'] {
-  --variant-ring: var(--destructive-strong);
+  --variant-ring: var(--destructive-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--destructive-plain-fg-muted);
-  --variant-fg-subtle: var(--destructive-plain-fg-subtle);
-  --variant-fg-muted: var(--destructive-plain-fg-muted);
-  --variant-border: transparent;
-  --variant-bg-hover: var(--destructive-subtle-hover);
-  --variant-fg-hover: var(--destructive-plain-fg);
-  --variant-border-hover: transparent;
-  --variant-bg-active: var(--destructive-subtle-hover);
-  --variant-fg-active: var(--destructive-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--destructive-subtle-pressed);
-  --variant-fg-pressed: var(--destructive-plain-fg);
-  --variant-border-pressed: transparent;
+  --variant-bg-hover: var(--destructive-subtle-bg-hover);
+  --variant-bg-active: var(--destructive-subtle-bg-active);
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--destructive-border-muted);
+  --variant-fg-subtle: var(--destructive-border-subtle);
+  --variant-fg-muted: var(--destructive-border-muted);
+  --variant-fg-hover: var(--destructive-plain-fg);
+  --variant-fg-active: var(--destructive-plain-fg);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='destructive-plain'] {
-  --variant-ring: var(--destructive-strong);
+  --variant-ring: var(--destructive-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--destructive-plain-fg);
-  --variant-fg-subtle: var(--destructive-plain-fg-subtle);
-  --variant-fg-muted: var(--destructive-plain-fg-muted);
-  --variant-border: transparent;
   --variant-bg-hover: transparent;
-  --variant-fg-hover: var(--destructive-plain-fg);
-  --variant-border-hover: transparent;
   --variant-bg-active: transparent;
-  --variant-fg-active: var(--destructive-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: transparent;
-  --variant-fg-pressed: var(--destructive-plain-fg);
-  --variant-border-pressed: transparent;
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--destructive-plain-fg);
+  --variant-fg-subtle: var(--destructive-border-subtle);
+  --variant-fg-muted: var(--destructive-border-muted);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='destructive-surface'] {
-  --variant-ring: var(--destructive-strong);
-  --variant-bg: var(--destructive-surface);
+  --variant-ring: var(--destructive-strong-bg);
+  --variant-bg: var(--destructive-surface-bg);
+  --variant-bg-hover: var(--destructive-surface-bg-hover);
+  --variant-bg-active: var(--destructive-surface-bg-active);
+  --variant-bg-disabled: var(--destructive-surface-bg-disabled);
   --variant-fg: var(--destructive-plain-fg);
   --variant-fg-subtle: var(--destructive-surface-fg-subtle);
   --variant-fg-muted: var(--destructive-surface-fg-muted);
-  --variant-border: var(--destructive-surface-border);
+  --variant-border: var(--destructive-border);
+  --variant-border-hover: var(--destructive-border-subtle);
+  --variant-border-disabled: var(--destructive-border-muted);
 }

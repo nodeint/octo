@@ -1,110 +1,87 @@
 /* emerald: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
 
 [data-paint='emerald-solid'] {
-  --variant-ring: var(--emerald-strong);
-  --variant-bg: var(--emerald-strong);
+  --variant-ring: var(--emerald-strong-bg);
+  --variant-bg: var(--emerald-strong-bg);
+  --variant-bg-hover: var(--emerald-strong-bg-hover);
+  --variant-bg-active: var(--emerald-strong-bg);
+  --variant-bg-disabled: var(--emerald-strong-bg-disabled);
   --variant-fg: var(--emerald-strong-fg);
   --variant-fg-subtle: var(--emerald-strong-fg-subtle);
   --variant-fg-muted: var(--emerald-strong-fg-muted);
   --variant-border: transparent;
-  --variant-bg-hover: var(--emerald-strong-hover);
-  --variant-fg-hover: var(--emerald-strong-fg);
   --variant-border-hover: transparent;
-  --variant-bg-active: var(--emerald-strong-hover);
-  --variant-fg-active: var(--emerald-strong-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--emerald-strong);
-  --variant-fg-pressed: var(--emerald-strong-fg);
-  --variant-border-pressed: transparent;
-  --variant-bg-disabled: var(--emerald-strong-disabled);
   --variant-border-disabled: transparent;
 }
 
 [data-paint='emerald-soft'] {
-  --variant-ring: var(--emerald-strong);
-  --variant-bg: var(--emerald-subtle);
-  --variant-bg-hover: var(--emerald-subtle-hover);
-  --variant-bg-active: var(--emerald-subtle-hover);
-  --variant-bg-pressed: var(--emerald-subtle-pressed);
-  --variant-bg-disabled: var(--emerald-subtle-disabled);
+  --variant-ring: var(--emerald-strong-bg);
+  --variant-bg: var(--emerald-subtle-bg);
+  --variant-bg-hover: var(--emerald-subtle-bg-hover);
+  --variant-bg-active: var(--emerald-subtle-bg-active);
+  --variant-bg-disabled: var(--emerald-subtle-bg-disabled);
   --variant-fg: var(--emerald-subtle-fg);
   --variant-fg-subtle: var(--emerald-subtle-fg-subtle);
   --variant-fg-muted: var(--emerald-subtle-fg-muted);
-  --variant-fg-hover: var(--emerald-subtle-fg);
-  --variant-fg-active: var(--emerald-subtle-fg);
-  --variant-fg-pressed: var(--emerald-subtle-fg);
   --variant-border: transparent;
   --variant-border-hover: transparent;
-  --variant-border-active: transparent;
-  --variant-border-pressed: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='emerald-outline'] {
-  --variant-ring: var(--emerald-strong);
+  --variant-ring: var(--emerald-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--emerald-plain-fg);
-  --variant-fg-subtle: var(--emerald-plain-fg-subtle);
-  --variant-fg-muted: var(--emerald-plain-fg-muted);
-  --variant-border: var(--emerald-plain-border);
-  --variant-bg-hover: var(--emerald-subtle-hover);
-  --variant-fg-hover: var(--emerald-plain-fg);
-  --variant-border-hover: var(--emerald-plain-border);
-  --variant-bg-active: var(--emerald-subtle-hover);
-  --variant-fg-active: var(--emerald-plain-fg);
-  --variant-border-active: var(--emerald-plain-border);
-  --variant-bg-pressed: var(--emerald-subtle-pressed);
-  --variant-fg-pressed: var(--emerald-plain-fg);
-  --variant-border-pressed: var(--emerald-plain-border);
+  --variant-bg-hover: var(--emerald-subtle-bg-hover);
+  --variant-bg-active: var(--emerald-subtle-bg-active);
   --variant-bg-disabled: transparent;
-  --variant-border-disabled: var(--emerald-plain-border-disabled);
+  --variant-fg: var(--emerald-plain-fg);
+  --variant-fg-subtle: var(--emerald-border-subtle);
+  --variant-fg-muted: var(--emerald-border-muted);
+  --variant-border: var(--emerald-border);
+  --variant-border-hover: var(--emerald-border);
+  --variant-border-disabled: var(--emerald-border-muted);
 }
 
 [data-paint='emerald-muted'] {
-  --variant-ring: var(--emerald-strong);
+  --variant-ring: var(--emerald-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--emerald-plain-fg-muted);
-  --variant-fg-subtle: var(--emerald-plain-fg-subtle);
-  --variant-fg-muted: var(--emerald-plain-fg-muted);
-  --variant-border: transparent;
-  --variant-bg-hover: var(--emerald-subtle-hover);
-  --variant-fg-hover: var(--emerald-plain-fg);
-  --variant-border-hover: transparent;
-  --variant-bg-active: var(--emerald-subtle-hover);
-  --variant-fg-active: var(--emerald-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--emerald-subtle-pressed);
-  --variant-fg-pressed: var(--emerald-plain-fg);
-  --variant-border-pressed: transparent;
+  --variant-bg-hover: var(--emerald-subtle-bg-hover);
+  --variant-bg-active: var(--emerald-subtle-bg-active);
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--emerald-border-muted);
+  --variant-fg-subtle: var(--emerald-border-subtle);
+  --variant-fg-muted: var(--emerald-border-muted);
+  --variant-fg-hover: var(--emerald-plain-fg);
+  --variant-fg-active: var(--emerald-plain-fg);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='emerald-plain'] {
-  --variant-ring: var(--emerald-strong);
+  --variant-ring: var(--emerald-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--emerald-plain-fg);
-  --variant-fg-subtle: var(--emerald-plain-fg-subtle);
-  --variant-fg-muted: var(--emerald-plain-fg-muted);
-  --variant-border: transparent;
   --variant-bg-hover: transparent;
-  --variant-fg-hover: var(--emerald-plain-fg);
-  --variant-border-hover: transparent;
   --variant-bg-active: transparent;
-  --variant-fg-active: var(--emerald-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: transparent;
-  --variant-fg-pressed: var(--emerald-plain-fg);
-  --variant-border-pressed: transparent;
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--emerald-plain-fg);
+  --variant-fg-subtle: var(--emerald-border-subtle);
+  --variant-fg-muted: var(--emerald-border-muted);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='emerald-surface'] {
-  --variant-ring: var(--emerald-strong);
-  --variant-bg: var(--emerald-surface);
+  --variant-ring: var(--emerald-strong-bg);
+  --variant-bg: var(--emerald-surface-bg);
+  --variant-bg-hover: var(--emerald-surface-bg-hover);
+  --variant-bg-active: var(--emerald-surface-bg-active);
+  --variant-bg-disabled: var(--emerald-surface-bg-disabled);
   --variant-fg: var(--emerald-plain-fg);
   --variant-fg-subtle: var(--emerald-surface-fg-subtle);
   --variant-fg-muted: var(--emerald-surface-fg-muted);
-  --variant-border: var(--emerald-surface-border);
+  --variant-border: var(--emerald-border);
+  --variant-border-hover: var(--emerald-border-subtle);
+  --variant-border-disabled: var(--emerald-border-muted);
 }

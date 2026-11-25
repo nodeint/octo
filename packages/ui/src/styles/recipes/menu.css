@@ -41,30 +41,30 @@
 
 .menu-row:is(:hover, :focus) {
   background-color: var(--accent);
-  color: var(--fg);
+  color: var(--variant-fg);
 }
 
 .menu-item:not([data-variant='destructive']):focus > svg {
-  color: var(--fg);
+  color: var(--variant-fg);
 }
 
 .menu-sub-trigger:is([data-popup-open], [data-open]) {
   background-color: var(--accent);
-  color: var(--fg);
+  color: var(--variant-fg);
 }
 
 :is(.menu-item, .menu-checkable)[data-disabled]:not([data-disabled='false']) {
   pointer-events: none;
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
 }
 
 /* destructive */
 .menu-item[data-variant='destructive'] {
-  color: var(--destructive-strong);
+  color: var(--destructive-strong-bg);
 }
 
 .menu-item[data-variant='destructive']:focus {
-  background-color: var(--destructive-subtle);
+  background-color: var(--destructive-subtle-bg);
   color: var(--destructive-subtle-fg);
 }
 
@@ -144,7 +144,7 @@
 }
 
 :focus > .menu-shortcut {
-  color: var(--fg);
+  color: var(--variant-fg);
 }
 
 /* A glyph pushed to the end of a menu row. */

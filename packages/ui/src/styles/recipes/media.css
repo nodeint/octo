@@ -49,7 +49,7 @@
   height: var(--media-height, var(--media-size, auto));
   border-radius: var(--media-radius, var(--radius-surface-md));
   background-color: var(--media-background, var(--muted));
-  color: var(--media-fg, var(--fg));
+  color: var(--media-fg, var(--variant-fg));
 }
 
 /* Glyph size inside the frame. --icon-size is what Spinner and Icon read. A size-* class on the svg opts out. */

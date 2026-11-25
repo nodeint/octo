@@ -23,29 +23,36 @@
   --base-800: var(--gray-800);
   --base-900: var(--gray-900);
   --base-950: var(--gray-950);
-  --base-strong: var(--gray-strong);
+  --base-strong-bg: var(--gray-strong-bg);
   --base-strong-fg: var(--gray-strong-fg);
   --base-strong-fg-subtle: var(--gray-strong-fg-subtle);
   --base-strong-fg-muted: var(--gray-strong-fg-muted);
-  --base-strong-hover: var(--gray-strong-hover);
-  --base-strong-disabled: var(--gray-strong-disabled);
-  --base-subtle: var(--gray-subtle);
+  --base-strong-bg-hover: var(--gray-strong-bg-hover);
+  --base-strong-bg-disabled: var(--gray-strong-bg-disabled);
+  --base-subtle-bg: var(--gray-subtle-bg);
   --base-subtle-fg: var(--gray-subtle-fg);
   --base-subtle-fg-subtle: var(--gray-subtle-fg-subtle);
   --base-subtle-fg-muted: var(--gray-subtle-fg-muted);
-  --base-subtle-pressed: var(--gray-subtle-pressed);
-  --base-subtle-hover: var(--gray-subtle-hover);
-  --base-subtle-disabled: var(--gray-subtle-disabled);
+  --base-subtle-bg-active: var(--gray-subtle-bg-active);
+  --base-subtle-bg-hover: var(--gray-subtle-bg-hover);
+  --base-subtle-bg-disabled: var(--gray-subtle-bg-disabled);
   --base-plain-fg: var(--gray-plain-fg);
-  --base-plain-border: var(--gray-plain-border);
-  --base-plain-border-disabled: var(--gray-plain-border-disabled);
   --base-plain-fg-subtle: var(--gray-plain-fg-subtle);
   --base-plain-fg-muted: var(--gray-plain-fg-muted);
-  --base-surface: var(--gray-surface);
+  --base-plain-bg: var(--gray-plain-bg);
+  --base-plain-bg-hover: var(--gray-plain-bg-hover);
+  --base-plain-bg-active: var(--gray-plain-bg-active);
+  --base-plain-bg-disabled: var(--gray-plain-bg-disabled);
+  --base-surface-bg: var(--gray-surface-bg);
+  --base-surface-bg-hover: var(--gray-surface-bg-hover);
+  --base-surface-bg-active: var(--gray-surface-bg-active);
+  --base-surface-bg-disabled: var(--gray-surface-bg-disabled);
   --base-surface-fg: var(--gray-surface-fg);
   --base-surface-fg-subtle: var(--gray-surface-fg-subtle);
   --base-surface-fg-muted: var(--gray-surface-fg-muted);
-  --base-surface-border: var(--gray-surface-border);
+  --base-border: var(--gray-border);
+  --base-border-subtle: var(--gray-border-subtle);
+  --base-border-muted: var(--gray-border-muted);
 
   --background: var(--base-50);
   --secondary: var(--base-100);
@@ -58,50 +65,41 @@
   --overlay: oklch(0 0 0 / 10%);
 
   --border: var(--base-300);
-  --border-surface: oklch(from var(--fg) l c h / 25%);
+  --border-surface: oklch(from var(--variant-fg) l c h / 25%);
 
-  --ring: var(--primary-strong);
-
-  /*
-  * fg: the text and glyph axis. Aliases only. Raw oklch stays in the scale files.
-  * One ladder for every neutral surface. A surface role carries no text color of its own.
-  * Each step reads at 4.5:1 on the surfaces it is documented for.
-  *   fg   body text, titles, and a control that is hovered, selected, or pressed
-  *   fg-muted     secondary text, descriptions, and a navigation row or quiet control at rest
-  *   fg-subtle    placeholders, section labels, and metadata that the page can do without
-  * A solid emphasis fill (primary, a status) keeps its own on-fill pair: `*-fg`.
-  */
-  --fg: var(--base-900);
-  --fg-subtle: var(--base-700);
-  --fg-muted: var(--base-600);
 }
 
 .dark {
-  --base-strong: var(--gray-strong);
+  --base-strong-bg: var(--gray-strong-bg);
   --base-strong-fg: var(--gray-strong-fg);
   --base-strong-fg-subtle: var(--gray-strong-fg-subtle);
   --base-strong-fg-muted: var(--gray-strong-fg-muted);
-  --base-strong-hover: var(--gray-strong-hover);
-  --base-strong-disabled: var(--gray-strong-disabled);
-  --base-subtle: var(--gray-subtle);
+  --base-strong-bg-hover: var(--gray-strong-bg-hover);
+  --base-strong-bg-disabled: var(--gray-strong-bg-disabled);
+  --base-subtle-bg: var(--gray-subtle-bg);
   --base-subtle-fg: var(--gray-subtle-fg);
   --base-subtle-fg-subtle: var(--gray-subtle-fg-subtle);
   --base-subtle-fg-muted: var(--gray-subtle-fg-muted);
-  --base-subtle-pressed: var(--gray-subtle-pressed);
-  --base-subtle-hover: var(--gray-subtle-hover);
-  --base-subtle-disabled: var(--gray-subtle-disabled);
+  --base-subtle-bg-active: var(--gray-subtle-bg-active);
+  --base-subtle-bg-hover: var(--gray-subtle-bg-hover);
+  --base-subtle-bg-disabled: var(--gray-subtle-bg-disabled);
   --base-plain-fg: var(--gray-plain-fg);
-  --base-plain-border: var(--gray-plain-border);
-  --base-plain-border-disabled: var(--gray-plain-border-disabled);
   --base-plain-fg-subtle: var(--gray-plain-fg-subtle);
   --base-plain-fg-muted: var(--gray-plain-fg-muted);
-  --base-surface: var(--gray-surface);
+  --base-plain-bg: var(--gray-plain-bg);
+  --base-plain-bg-hover: var(--gray-plain-bg-hover);
+  --base-plain-bg-active: var(--gray-plain-bg-active);
+  --base-plain-bg-disabled: var(--gray-plain-bg-disabled);
+  --base-surface-bg: var(--gray-surface-bg);
+  --base-surface-bg-hover: var(--gray-surface-bg-hover);
+  --base-surface-bg-active: var(--gray-surface-bg-active);
+  --base-surface-bg-disabled: var(--gray-surface-bg-disabled);
   --base-surface-fg: var(--gray-surface-fg);
   --base-surface-fg-subtle: var(--gray-surface-fg-subtle);
   --base-surface-fg-muted: var(--gray-surface-fg-muted);
-  --base-surface-border: var(--gray-surface-border);
-
-  --overlay: oklch(0 0 0 / 30%);
+  --base-border: var(--gray-border);
+  --base-border-subtle: var(--gray-border-subtle);
+  --base-border-muted: var(--gray-border-muted);
 
   --background: var(--base-950);
 
@@ -114,8 +112,4 @@
   --disabled-border: var(--base-700);
 
   --border: var(--base-500);
-
-  --fg: var(--base-100);
-  --fg-subtle: var(--base-300);
-  --fg-muted: var(--base-400);
 }

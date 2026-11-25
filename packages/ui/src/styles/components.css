@@ -95,14 +95,14 @@
 
   /* Switch */
   --switch-thumb-checked-background: var(--primary-strong-fg);
-  --switch-thumb-unchecked-background: var(--fg);
+  --switch-thumb-unchecked-background: var(--variant-fg);
 
   /* Radio */
   --radio-background: var(--muted);
 
   /* Checkbox */
   --checkbox-background: var(--muted);
-  --checkbox-checked-disabled-background: var(--primary-strong);
+  --checkbox-checked-disabled-background: var(--primary-strong-bg);
 
   /* Avatar */
   --avatar-blend-mode: lighten;

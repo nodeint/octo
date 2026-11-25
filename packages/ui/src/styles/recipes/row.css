@@ -110,11 +110,11 @@
 /* A selected row reads the active slots of its paint; everything on the fill reads the fg. */
 .row[aria-selected='true'] {
   background-color: var(--variant-bg-active, var(--accent));
-  color: var(--variant-fg-active, var(--fg));
+  color: var(--variant-fg-active, var(--variant-fg));
 }
 
 .row[aria-selected='true'] :is(.row-description, .row-meta) {
-  color: var(--variant-fg-active, var(--fg));
+  color: var(--variant-fg-active, var(--variant-fg));
 }
 
 .row:focus-visible,
@@ -198,7 +198,7 @@
   font-size: var(--row-description-size, var(--role-description-size));
   line-height: var(--row-description-leading, var(--role-description-leading));
   font-weight: var(--row-description-weight, var(--role-description-weight));
-  color: var(--row-description-color, var(--row-description-type-color, var(--fg-muted)));
+  color: var(--row-description-color, var(--row-description-type-color, var(--variant-fg-muted)));
 }
 
 .row-description > a {
@@ -207,7 +207,7 @@
 }
 
 .row-description > a:hover {
-  color: var(--primary-strong);
+  color: var(--primary-strong-bg);
 }
 
 .row-meta {

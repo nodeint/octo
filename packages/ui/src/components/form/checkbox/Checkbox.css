@@ -19,13 +19,13 @@
 }
 
 .checkbox[aria-invalid='true'][aria-checked='true'] {
-  --choice-control-border-invalid: var(--primary-strong);
+  --choice-control-border-invalid: var(--primary-strong-bg);
 }
 
 .checkbox[data-checked] {
-  --choice-control-border: var(--primary-strong);
-  --choice-control-border-disabled: var(--primary-strong);
-  background-color: var(--primary-strong);
+  --choice-control-border: var(--primary-strong-bg);
+  --choice-control-border-disabled: var(--primary-strong-bg);
+  background-color: var(--primary-strong-bg);
   color: var(--primary-strong-fg);
 }
 

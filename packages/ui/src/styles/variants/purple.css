@@ -1,110 +1,87 @@
 /* purple: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
 
 [data-paint='purple-solid'] {
-  --variant-ring: var(--purple-strong);
-  --variant-bg: var(--purple-strong);
+  --variant-ring: var(--purple-strong-bg);
+  --variant-bg: var(--purple-strong-bg);
+  --variant-bg-hover: var(--purple-strong-bg-hover);
+  --variant-bg-active: var(--purple-strong-bg);
+  --variant-bg-disabled: var(--purple-strong-bg-disabled);
   --variant-fg: var(--purple-strong-fg);
   --variant-fg-subtle: var(--purple-strong-fg-subtle);
   --variant-fg-muted: var(--purple-strong-fg-muted);
   --variant-border: transparent;
-  --variant-bg-hover: var(--purple-strong-hover);
-  --variant-fg-hover: var(--purple-strong-fg);
   --variant-border-hover: transparent;
-  --variant-bg-active: var(--purple-strong-hover);
-  --variant-fg-active: var(--purple-strong-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--purple-strong);
-  --variant-fg-pressed: var(--purple-strong-fg);
-  --variant-border-pressed: transparent;
-  --variant-bg-disabled: var(--purple-strong-disabled);
   --variant-border-disabled: transparent;
 }
 
 [data-paint='purple-soft'] {
-  --variant-ring: var(--purple-strong);
-  --variant-bg: var(--purple-subtle);
-  --variant-bg-hover: var(--purple-subtle-hover);
-  --variant-bg-active: var(--purple-subtle-hover);
-  --variant-bg-pressed: var(--purple-subtle-pressed);
-  --variant-bg-disabled: var(--purple-subtle-disabled);
+  --variant-ring: var(--purple-strong-bg);
+  --variant-bg: var(--purple-subtle-bg);
+  --variant-bg-hover: var(--purple-subtle-bg-hover);
+  --variant-bg-active: var(--purple-subtle-bg-active);
+  --variant-bg-disabled: var(--purple-subtle-bg-disabled);
   --variant-fg: var(--purple-subtle-fg);
   --variant-fg-subtle: var(--purple-subtle-fg-subtle);
   --variant-fg-muted: var(--purple-subtle-fg-muted);
-  --variant-fg-hover: var(--purple-subtle-fg);
-  --variant-fg-active: var(--purple-subtle-fg);
-  --variant-fg-pressed: var(--purple-subtle-fg);
   --variant-border: transparent;
   --variant-border-hover: transparent;
-  --variant-border-active: transparent;
-  --variant-border-pressed: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='purple-outline'] {
-  --variant-ring: var(--purple-strong);
+  --variant-ring: var(--purple-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--purple-plain-fg);
-  --variant-fg-subtle: var(--purple-plain-fg-subtle);
-  --variant-fg-muted: var(--purple-plain-fg-muted);
-  --variant-border: var(--purple-plain-border);
-  --variant-bg-hover: var(--purple-subtle-hover);
-  --variant-fg-hover: var(--purple-plain-fg);
-  --variant-border-hover: var(--purple-plain-border);
-  --variant-bg-active: var(--purple-subtle-hover);
-  --variant-fg-active: var(--purple-plain-fg);
-  --variant-border-active: var(--purple-plain-border);
-  --variant-bg-pressed: var(--purple-subtle-pressed);
-  --variant-fg-pressed: var(--purple-plain-fg);
-  --variant-border-pressed: var(--purple-plain-border);
+  --variant-bg-hover: var(--purple-subtle-bg-hover);
+  --variant-bg-active: var(--purple-subtle-bg-active);
   --variant-bg-disabled: transparent;
-  --variant-border-disabled: var(--purple-plain-border-disabled);
+  --variant-fg: var(--purple-plain-fg);
+  --variant-fg-subtle: var(--purple-border-subtle);
+  --variant-fg-muted: var(--purple-border-muted);
+  --variant-border: var(--purple-border);
+  --variant-border-hover: var(--purple-border);
+  --variant-border-disabled: var(--purple-border-muted);
 }
 
 [data-paint='purple-muted'] {
-  --variant-ring: var(--purple-strong);
+  --variant-ring: var(--purple-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--purple-plain-fg-muted);
-  --variant-fg-subtle: var(--purple-plain-fg-subtle);
-  --variant-fg-muted: var(--purple-plain-fg-muted);
-  --variant-border: transparent;
-  --variant-bg-hover: var(--purple-subtle-hover);
-  --variant-fg-hover: var(--purple-plain-fg);
-  --variant-border-hover: transparent;
-  --variant-bg-active: var(--purple-subtle-hover);
-  --variant-fg-active: var(--purple-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--purple-subtle-pressed);
-  --variant-fg-pressed: var(--purple-plain-fg);
-  --variant-border-pressed: transparent;
+  --variant-bg-hover: var(--purple-subtle-bg-hover);
+  --variant-bg-active: var(--purple-subtle-bg-active);
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--purple-border-muted);
+  --variant-fg-subtle: var(--purple-border-subtle);
+  --variant-fg-muted: var(--purple-border-muted);
+  --variant-fg-hover: var(--purple-plain-fg);
+  --variant-fg-active: var(--purple-plain-fg);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='purple-plain'] {
-  --variant-ring: var(--purple-strong);
+  --variant-ring: var(--purple-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--purple-plain-fg);
-  --variant-fg-subtle: var(--purple-plain-fg-subtle);
-  --variant-fg-muted: var(--purple-plain-fg-muted);
-  --variant-border: transparent;
   --variant-bg-hover: transparent;
-  --variant-fg-hover: var(--purple-plain-fg);
-  --variant-border-hover: transparent;
   --variant-bg-active: transparent;
-  --variant-fg-active: var(--purple-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: transparent;
-  --variant-fg-pressed: var(--purple-plain-fg);
-  --variant-border-pressed: transparent;
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--purple-plain-fg);
+  --variant-fg-subtle: var(--purple-border-subtle);
+  --variant-fg-muted: var(--purple-border-muted);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='purple-surface'] {
-  --variant-ring: var(--purple-strong);
-  --variant-bg: var(--purple-surface);
+  --variant-ring: var(--purple-strong-bg);
+  --variant-bg: var(--purple-surface-bg);
+  --variant-bg-hover: var(--purple-surface-bg-hover);
+  --variant-bg-active: var(--purple-surface-bg-active);
+  --variant-bg-disabled: var(--purple-surface-bg-disabled);
   --variant-fg: var(--purple-plain-fg);
   --variant-fg-subtle: var(--purple-surface-fg-subtle);
   --variant-fg-muted: var(--purple-surface-fg-muted);
-  --variant-border: var(--purple-surface-border);
+  --variant-border: var(--purple-border);
+  --variant-border-hover: var(--purple-border-subtle);
+  --variant-border-disabled: var(--purple-border-muted);
 }

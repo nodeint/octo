@@ -63,7 +63,7 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--avatar-badge-radius);
-  background-color: var(--primary-strong);
+  background-color: var(--primary-strong-bg);
   color: var(--primary-strong-fg);
   box-shadow: 0 0 0 var(--border-width-thick) var(--background);
   user-select: none;

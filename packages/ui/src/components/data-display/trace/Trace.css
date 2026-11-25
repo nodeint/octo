@@ -39,7 +39,7 @@
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
   transition-property: color;
   transition-duration: var(--motion-duration-fast);
   transition-timing-function: var(--default-transition-timing-function);
@@ -51,20 +51,20 @@
 
 :where(a, button):hover .trace-line,
 .trace-collapsible-trigger[data-panel-open] > .trace-line {
-  color: var(--fg);
+  color: var(--variant-fg);
 }
 
 .trace-line[data-status='error'],
 :where(a, button):hover .trace-line[data-status='error'] {
-  color: var(--destructive-strong);
+  color: var(--destructive-strong-bg);
 }
 
 .trace-line[data-emphasis='quiet']:not([data-status='error']) > [data-slot='trace-icon'] {
-  color: var(--fg-subtle);
+  color: var(--variant-fg-subtle);
 }
 
 .trace-line[data-emphasis='strong']:not([data-status='error']) > [data-slot='trace-icon'] {
-  color: var(--warning-strong);
+  color: var(--warning-strong-bg);
 }
 
 .trace-line[data-emphasis='strong']:not([data-status='error']) > [data-slot='trace-title'] {
@@ -114,7 +114,7 @@
   font-size: var(--role-caption-size);
   line-height: var(--role-caption-leading);
   font-weight: var(--role-caption-weight);
-  color: var(--fg-subtle);
+  color: var(--variant-fg-subtle);
   font-variant-numeric: tabular-nums;
 }
 
@@ -132,7 +132,7 @@
   min-width: 0;
   border-radius: var(--radius-xs);
   text-align: start;
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
   cursor: pointer;
   outline: none;
   transition-property: color;
@@ -148,11 +148,11 @@
 
 .trace-collapsible-trigger:hover,
 .trace-collapsible-trigger[data-panel-open] {
-  color: var(--fg);
+  color: var(--variant-fg);
 }
 
 .trace-collapsible-trigger:has([data-status='error']) {
-  color: var(--destructive-strong);
+  color: var(--destructive-strong-bg);
 }
 
 .trace-collapsible-trigger > .trace-collapsible-chevron {
@@ -178,7 +178,7 @@
   overflow-wrap: anywhere;
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
 }
 
 @media (prefers-reduced-motion: reduce) {

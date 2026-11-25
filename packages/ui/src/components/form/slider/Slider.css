@@ -10,7 +10,7 @@
 
 .slider:has(input:disabled) {
   pointer-events: none;
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
   opacity: var(--opacity-dim);
 }
 
@@ -31,7 +31,7 @@
 
 .slider-indicator {
   border-radius: var(--slider-indicator-radius);
-  background-color: var(--primary-strong);
+  background-color: var(--primary-strong-bg);
 }
 
 .slider-thumb {
@@ -39,7 +39,7 @@
   height: var(--slider-thumb-size);
   border-width: var(--border-width-thin);
   border-style: solid;
-  border-color: var(--primary-strong);
+  border-color: var(--primary-strong-bg);
   outline: none;
   transition-property: color, background-color, border-color, box-shadow, transform, translate, opacity;
   transition-duration: var(--default-transition-duration);

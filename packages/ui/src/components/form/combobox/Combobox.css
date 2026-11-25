@@ -48,7 +48,7 @@
   min-width: var(--anchor-width);
   overflow: hidden;
   background-color: var(--popover);
-  color: var(--fg);
+  color: var(--variant-fg);
   box-shadow: 0 0 0 var(--border-width-thin) var(--border-surface);
   transform-origin: var(--transform-origin);
 }
@@ -102,16 +102,16 @@
 
 .combobox-item[data-highlighted] {
   background-color: var(--accent);
-  color: var(--fg);
+  color: var(--variant-fg);
 }
 
 .combobox-item[data-highlighted] > svg {
-  color: var(--fg);
+  color: var(--variant-fg);
 }
 
 .combobox-item[data-disabled]:not([data-disabled='false']) {
   pointer-events: none;
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
 }
 
 .combobox-item svg {
@@ -196,12 +196,12 @@
 }
 
 .combobox-chip {
-  --chip-fg: var(--fg);
+  --chip-fg: var(--variant-fg);
 }
 
 .combobox-chip:has(:disabled) {
   cursor: not-allowed;
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
 }
 
 .combobox-chip:has([data-slot='combobox-chip-remove']) {
@@ -241,5 +241,5 @@
 
 .combobox-icon-muted {
   pointer-events: none;
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
 }

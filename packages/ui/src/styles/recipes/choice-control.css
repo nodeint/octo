@@ -28,14 +28,14 @@
 
 .choice-control:disabled {
   pointer-events: none;
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
   border-color: var(--choice-control-border-disabled, var(--disabled-border));
 }
 
 .choice-control[data-disabled] {
   pointer-events: none;
   border-color: var(--choice-control-border-disabled, var(--disabled-border));
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
 }
 
 /* Hit area grows past the box without changing its size. */

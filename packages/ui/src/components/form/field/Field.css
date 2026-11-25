@@ -47,7 +47,7 @@
 }
 
 .field[data-invalid='true'] {
-  color: var(--destructive-strong);
+  color: var(--destructive-strong-bg);
 }
 
 .field[data-orientation='vertical'],
@@ -109,7 +109,7 @@
 
 /* disabled: a host attribute, not group-data on children */
 .field[data-disabled='true'] :is([data-slot='field-label'], .field-title) {
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
 }
 
 .field-content {
@@ -127,7 +127,7 @@
 
 .field-label:has([data-checked]) {
   border-color: var(--primary-subtle-fg);
-  background-color: var(--primary-subtle);
+  background-color: var(--primary-subtle-bg);
 }
 
 .field-label:has([data-slot='field']) {
@@ -174,7 +174,7 @@
 }
 
 .field-description > a:hover {
-  color: var(--primary-strong);
+  color: var(--primary-strong-bg);
 }
 
 .field[data-orientation='horizontal'] .field-description {
@@ -200,7 +200,7 @@
   margin-inline: auto;
   padding-inline: var(--space-sm);
   background-color: var(--background);
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
 }
 
 /* The rule drawn behind the separator text. */
@@ -213,7 +213,7 @@
 .field-error {
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
-  color: var(--destructive-strong);
+  color: var(--destructive-strong-bg);
 }
 
 .field-error-list {

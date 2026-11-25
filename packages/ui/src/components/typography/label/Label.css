@@ -16,5 +16,5 @@
 
 .field[data-disabled='true'] .label {
   cursor: not-allowed;
-  color: var(--fg-muted);
+  color: var(--variant-fg-muted);
 }

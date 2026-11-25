@@ -3,168 +3,168 @@
  * Rebinds primary, its hover, and sidebar-primary.
  */
 :root[data-appearance-primary='teal'] {
-  --primary-strong: var(--teal-strong);
-  --primary-strong-hover: var(--teal-strong-hover);
+  --primary-strong-bg: var(--teal-strong-bg);
+  --primary-strong-bg-hover: var(--teal-strong-bg-hover);
   --primary-strong-fg: var(--teal-strong-fg);
   --primary-strong-fg-subtle: var(--teal-strong-fg-subtle);
   --primary-strong-fg-muted: var(--teal-strong-fg-muted);
-  --sidebar-primary: var(--teal-strong);
+  --sidebar-primary: var(--teal-strong-bg);
   --sidebar-primary-fg: var(--teal-strong-fg);
-  --primary-subtle: var(--teal-subtle);
+  --primary-subtle-bg: var(--teal-subtle-bg);
   --primary-subtle-fg: var(--teal-subtle-fg);
   --primary-subtle-fg-subtle: var(--teal-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--teal-subtle-fg-muted);
 }
 
 :root[data-appearance-primary='blue'] {
-  --primary-strong: var(--blue-strong);
-  --primary-strong-hover: var(--blue-strong-hover);
+  --primary-strong-bg: var(--blue-strong-bg);
+  --primary-strong-bg-hover: var(--blue-strong-bg-hover);
   --primary-strong-fg: var(--blue-strong-fg);
   --primary-strong-fg-subtle: var(--blue-strong-fg-subtle);
   --primary-strong-fg-muted: var(--blue-strong-fg-muted);
-  --sidebar-primary: var(--blue-strong);
+  --sidebar-primary: var(--blue-strong-bg);
   --sidebar-primary-fg: var(--blue-strong-fg);
-  --primary-subtle: var(--blue-subtle);
+  --primary-subtle-bg: var(--blue-subtle-bg);
   --primary-subtle-fg: var(--blue-subtle-fg);
   --primary-subtle-fg-subtle: var(--blue-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--blue-subtle-fg-muted);
 }
 
 :root[data-appearance-primary='indigo'] {
-  --primary-strong: var(--indigo-strong);
-  --primary-strong-hover: var(--indigo-strong-hover);
+  --primary-strong-bg: var(--indigo-strong-bg);
+  --primary-strong-bg-hover: var(--indigo-strong-bg-hover);
   --primary-strong-fg: var(--indigo-strong-fg);
   --primary-strong-fg-subtle: var(--indigo-strong-fg-subtle);
   --primary-strong-fg-muted: var(--indigo-strong-fg-muted);
-  --sidebar-primary: var(--indigo-strong);
+  --sidebar-primary: var(--indigo-strong-bg);
   --sidebar-primary-fg: var(--indigo-strong-fg);
-  --primary-subtle: var(--indigo-subtle);
+  --primary-subtle-bg: var(--indigo-subtle-bg);
   --primary-subtle-fg: var(--indigo-subtle-fg);
   --primary-subtle-fg-subtle: var(--indigo-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--indigo-subtle-fg-muted);
 }
 
 :root[data-appearance-primary='violet'] {
-  --primary-strong: var(--violet-strong);
-  --primary-strong-hover: var(--violet-strong-hover);
+  --primary-strong-bg: var(--violet-strong-bg);
+  --primary-strong-bg-hover: var(--violet-strong-bg-hover);
   --primary-strong-fg: var(--violet-strong-fg);
   --primary-strong-fg-subtle: var(--violet-strong-fg-subtle);
   --primary-strong-fg-muted: var(--violet-strong-fg-muted);
-  --sidebar-primary: var(--violet-strong);
+  --sidebar-primary: var(--violet-strong-bg);
   --sidebar-primary-fg: var(--violet-strong-fg);
-  --primary-subtle: var(--violet-subtle);
+  --primary-subtle-bg: var(--violet-subtle-bg);
   --primary-subtle-fg: var(--violet-subtle-fg);
   --primary-subtle-fg-subtle: var(--violet-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--violet-subtle-fg-muted);
 }
 
 :root[data-appearance-primary='purple'] {
-  --primary-strong: var(--purple-strong);
-  --primary-strong-hover: var(--purple-strong-hover);
+  --primary-strong-bg: var(--purple-strong-bg);
+  --primary-strong-bg-hover: var(--purple-strong-bg-hover);
   --primary-strong-fg: var(--purple-strong-fg);
   --primary-strong-fg-subtle: var(--purple-strong-fg-subtle);
   --primary-strong-fg-muted: var(--purple-strong-fg-muted);
-  --sidebar-primary: var(--purple-strong);
+  --sidebar-primary: var(--purple-strong-bg);
   --sidebar-primary-fg: var(--purple-strong-fg);
-  --primary-subtle: var(--purple-subtle);
+  --primary-subtle-bg: var(--purple-subtle-bg);
   --primary-subtle-fg: var(--purple-subtle-fg);
   --primary-subtle-fg-subtle: var(--purple-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--purple-subtle-fg-muted);
 }
 
 :root[data-appearance-primary='rose'] {
-  --primary-strong: var(--rose-strong);
-  --primary-strong-hover: var(--rose-strong-hover);
+  --primary-strong-bg: var(--rose-strong-bg);
+  --primary-strong-bg-hover: var(--rose-strong-bg-hover);
   --primary-strong-fg: var(--rose-strong-fg);
   --primary-strong-fg-subtle: var(--rose-strong-fg-subtle);
   --primary-strong-fg-muted: var(--rose-strong-fg-muted);
-  --sidebar-primary: var(--rose-strong);
+  --sidebar-primary: var(--rose-strong-bg);
   --sidebar-primary-fg: var(--rose-strong-fg);
-  --primary-subtle: var(--rose-subtle);
+  --primary-subtle-bg: var(--rose-subtle-bg);
   --primary-subtle-fg: var(--rose-subtle-fg);
   --primary-subtle-fg-subtle: var(--rose-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--rose-subtle-fg-muted);
 }
 
 :root[data-appearance-primary='pink'] {
-  --primary-strong: var(--pink-strong);
-  --primary-strong-hover: var(--pink-strong-hover);
+  --primary-strong-bg: var(--pink-strong-bg);
+  --primary-strong-bg-hover: var(--pink-strong-bg-hover);
   --primary-strong-fg: var(--pink-strong-fg);
   --primary-strong-fg-subtle: var(--pink-strong-fg-subtle);
   --primary-strong-fg-muted: var(--pink-strong-fg-muted);
-  --sidebar-primary: var(--pink-strong);
+  --sidebar-primary: var(--pink-strong-bg);
   --sidebar-primary-fg: var(--pink-strong-fg);
-  --primary-subtle: var(--pink-subtle);
+  --primary-subtle-bg: var(--pink-subtle-bg);
   --primary-subtle-fg: var(--pink-subtle-fg);
   --primary-subtle-fg-subtle: var(--pink-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--pink-subtle-fg-muted);
 }
 
 :root[data-appearance-primary='orange'] {
-  --primary-strong: var(--orange-strong);
-  --primary-strong-hover: var(--orange-strong-hover);
+  --primary-strong-bg: var(--orange-strong-bg);
+  --primary-strong-bg-hover: var(--orange-strong-bg-hover);
   --primary-strong-fg: var(--orange-strong-fg);
   --primary-strong-fg-subtle: var(--orange-strong-fg-subtle);
   --primary-strong-fg-muted: var(--orange-strong-fg-muted);
-  --sidebar-primary: var(--orange-strong);
+  --sidebar-primary: var(--orange-strong-bg);
   --sidebar-primary-fg: var(--orange-strong-fg);
-  --primary-subtle: var(--orange-subtle);
+  --primary-subtle-bg: var(--orange-subtle-bg);
   --primary-subtle-fg: var(--orange-subtle-fg);
   --primary-subtle-fg-subtle: var(--orange-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--orange-subtle-fg-muted);
 }
 
 :root[data-appearance-primary='green'] {
-  --primary-strong: var(--green-strong);
-  --primary-strong-hover: var(--green-strong-hover);
+  --primary-strong-bg: var(--green-strong-bg);
+  --primary-strong-bg-hover: var(--green-strong-bg-hover);
   --primary-strong-fg: var(--green-strong-fg);
   --primary-strong-fg-subtle: var(--green-strong-fg-subtle);
   --primary-strong-fg-muted: var(--green-strong-fg-muted);
-  --sidebar-primary: var(--green-strong);
+  --sidebar-primary: var(--green-strong-bg);
   --sidebar-primary-fg: var(--green-strong-fg);
-  --primary-subtle: var(--green-subtle);
+  --primary-subtle-bg: var(--green-subtle-bg);
   --primary-subtle-fg: var(--green-subtle-fg);
   --primary-subtle-fg-subtle: var(--green-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--green-subtle-fg-muted);
 }
 
 :root[data-appearance-primary='emerald'] {
-  --primary-strong: var(--emerald-strong);
-  --primary-strong-hover: var(--emerald-strong-hover);
+  --primary-strong-bg: var(--emerald-strong-bg);
+  --primary-strong-bg-hover: var(--emerald-strong-bg-hover);
   --primary-strong-fg: var(--emerald-strong-fg);
   --primary-strong-fg-subtle: var(--emerald-strong-fg-subtle);
   --primary-strong-fg-muted: var(--emerald-strong-fg-muted);
-  --sidebar-primary: var(--emerald-strong);
+  --sidebar-primary: var(--emerald-strong-bg);
   --sidebar-primary-fg: var(--emerald-strong-fg);
-  --primary-subtle: var(--emerald-subtle);
+  --primary-subtle-bg: var(--emerald-subtle-bg);
   --primary-subtle-fg: var(--emerald-subtle-fg);
   --primary-subtle-fg-subtle: var(--emerald-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--emerald-subtle-fg-muted);
 }
 
 :root[data-appearance-primary='cyan'] {
-  --primary-strong: var(--cyan-strong);
-  --primary-strong-hover: var(--cyan-strong-hover);
+  --primary-strong-bg: var(--cyan-strong-bg);
+  --primary-strong-bg-hover: var(--cyan-strong-bg-hover);
   --primary-strong-fg: var(--cyan-strong-fg);
   --primary-strong-fg-subtle: var(--cyan-strong-fg-subtle);
   --primary-strong-fg-muted: var(--cyan-strong-fg-muted);
-  --sidebar-primary: var(--cyan-strong);
+  --sidebar-primary: var(--cyan-strong-bg);
   --sidebar-primary-fg: var(--cyan-strong-fg);
-  --primary-subtle: var(--cyan-subtle);
+  --primary-subtle-bg: var(--cyan-subtle-bg);
   --primary-subtle-fg: var(--cyan-subtle-fg);
   --primary-subtle-fg-subtle: var(--cyan-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--cyan-subtle-fg-muted);
 }
 
 :root[data-appearance-primary='sky'] {
-  --primary-strong: var(--sky-strong);
-  --primary-strong-hover: var(--sky-strong-hover);
+  --primary-strong-bg: var(--sky-strong-bg);
+  --primary-strong-bg-hover: var(--sky-strong-bg-hover);
   --primary-strong-fg: var(--sky-strong-fg);
   --primary-strong-fg-subtle: var(--sky-strong-fg-subtle);
   --primary-strong-fg-muted: var(--sky-strong-fg-muted);
-  --sidebar-primary: var(--sky-strong);
+  --sidebar-primary: var(--sky-strong-bg);
   --sidebar-primary-fg: var(--sky-strong-fg);
-  --primary-subtle: var(--sky-subtle);
+  --primary-subtle-bg: var(--sky-subtle-bg);
   --primary-subtle-fg: var(--sky-subtle-fg);
   --primary-subtle-fg-subtle: var(--sky-subtle-fg-subtle);
   --primary-subtle-fg-muted: var(--sky-subtle-fg-muted);

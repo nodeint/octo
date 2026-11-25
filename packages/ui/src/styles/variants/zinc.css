@@ -1,110 +1,87 @@
 /* zinc: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
 
 [data-paint='zinc-solid'] {
-  --variant-ring: var(--zinc-strong);
-  --variant-bg: var(--zinc-strong);
+  --variant-ring: var(--zinc-strong-bg);
+  --variant-bg: var(--zinc-strong-bg);
+  --variant-bg-hover: var(--zinc-strong-bg-hover);
+  --variant-bg-active: var(--zinc-strong-bg);
+  --variant-bg-disabled: var(--zinc-strong-bg-disabled);
   --variant-fg: var(--zinc-strong-fg);
   --variant-fg-subtle: var(--zinc-strong-fg-subtle);
   --variant-fg-muted: var(--zinc-strong-fg-muted);
   --variant-border: transparent;
-  --variant-bg-hover: var(--zinc-strong-hover);
-  --variant-fg-hover: var(--zinc-strong-fg);
   --variant-border-hover: transparent;
-  --variant-bg-active: var(--zinc-strong-hover);
-  --variant-fg-active: var(--zinc-strong-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--zinc-strong);
-  --variant-fg-pressed: var(--zinc-strong-fg);
-  --variant-border-pressed: transparent;
-  --variant-bg-disabled: var(--zinc-strong-disabled);
   --variant-border-disabled: transparent;
 }
 
 [data-paint='zinc-soft'] {
-  --variant-ring: var(--zinc-strong);
-  --variant-bg: var(--zinc-subtle);
-  --variant-bg-hover: var(--zinc-subtle-hover);
-  --variant-bg-active: var(--zinc-subtle-hover);
-  --variant-bg-pressed: var(--zinc-subtle-pressed);
-  --variant-bg-disabled: var(--zinc-subtle-disabled);
+  --variant-ring: var(--zinc-strong-bg);
+  --variant-bg: var(--zinc-subtle-bg);
+  --variant-bg-hover: var(--zinc-subtle-bg-hover);
+  --variant-bg-active: var(--zinc-subtle-bg-active);
+  --variant-bg-disabled: var(--zinc-subtle-bg-disabled);
   --variant-fg: var(--zinc-subtle-fg);
   --variant-fg-subtle: var(--zinc-subtle-fg-subtle);
   --variant-fg-muted: var(--zinc-subtle-fg-muted);
-  --variant-fg-hover: var(--zinc-subtle-fg);
-  --variant-fg-active: var(--zinc-subtle-fg);
-  --variant-fg-pressed: var(--zinc-subtle-fg);
   --variant-border: transparent;
   --variant-border-hover: transparent;
-  --variant-border-active: transparent;
-  --variant-border-pressed: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='zinc-outline'] {
-  --variant-ring: var(--zinc-strong);
+  --variant-ring: var(--zinc-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--zinc-plain-fg);
-  --variant-fg-subtle: var(--zinc-plain-fg-subtle);
-  --variant-fg-muted: var(--zinc-plain-fg-muted);
-  --variant-border: var(--zinc-plain-border);
-  --variant-bg-hover: var(--zinc-subtle-hover);
-  --variant-fg-hover: var(--zinc-plain-fg);
-  --variant-border-hover: var(--zinc-plain-border);
-  --variant-bg-active: var(--zinc-subtle-hover);
-  --variant-fg-active: var(--zinc-plain-fg);
-  --variant-border-active: var(--zinc-plain-border);
-  --variant-bg-pressed: var(--zinc-subtle-pressed);
-  --variant-fg-pressed: var(--zinc-plain-fg);
-  --variant-border-pressed: var(--zinc-plain-border);
+  --variant-bg-hover: var(--zinc-subtle-bg-hover);
+  --variant-bg-active: var(--zinc-subtle-bg-active);
   --variant-bg-disabled: transparent;
-  --variant-border-disabled: var(--zinc-plain-border-disabled);
+  --variant-fg: var(--zinc-plain-fg);
+  --variant-fg-subtle: var(--zinc-border-subtle);
+  --variant-fg-muted: var(--zinc-border-muted);
+  --variant-border: var(--zinc-border);
+  --variant-border-hover: var(--zinc-border);
+  --variant-border-disabled: var(--zinc-border-muted);
 }
 
 [data-paint='zinc-muted'] {
-  --variant-ring: var(--zinc-strong);
+  --variant-ring: var(--zinc-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--zinc-plain-fg-muted);
-  --variant-fg-subtle: var(--zinc-plain-fg-subtle);
-  --variant-fg-muted: var(--zinc-plain-fg-muted);
-  --variant-border: transparent;
-  --variant-bg-hover: var(--zinc-subtle-hover);
-  --variant-fg-hover: var(--zinc-plain-fg);
-  --variant-border-hover: transparent;
-  --variant-bg-active: var(--zinc-subtle-hover);
-  --variant-fg-active: var(--zinc-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: var(--zinc-subtle-pressed);
-  --variant-fg-pressed: var(--zinc-plain-fg);
-  --variant-border-pressed: transparent;
+  --variant-bg-hover: var(--zinc-subtle-bg-hover);
+  --variant-bg-active: var(--zinc-subtle-bg-active);
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--zinc-border-muted);
+  --variant-fg-subtle: var(--zinc-border-subtle);
+  --variant-fg-muted: var(--zinc-border-muted);
+  --variant-fg-hover: var(--zinc-plain-fg);
+  --variant-fg-active: var(--zinc-plain-fg);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='zinc-plain'] {
-  --variant-ring: var(--zinc-strong);
+  --variant-ring: var(--zinc-strong-bg);
   --variant-bg: transparent;
-  --variant-fg: var(--zinc-plain-fg);
-  --variant-fg-subtle: var(--zinc-plain-fg-subtle);
-  --variant-fg-muted: var(--zinc-plain-fg-muted);
-  --variant-border: transparent;
   --variant-bg-hover: transparent;
-  --variant-fg-hover: var(--zinc-plain-fg);
-  --variant-border-hover: transparent;
   --variant-bg-active: transparent;
-  --variant-fg-active: var(--zinc-plain-fg);
-  --variant-border-active: transparent;
-  --variant-bg-pressed: transparent;
-  --variant-fg-pressed: var(--zinc-plain-fg);
-  --variant-border-pressed: transparent;
   --variant-bg-disabled: transparent;
+  --variant-fg: var(--zinc-plain-fg);
+  --variant-fg-subtle: var(--zinc-border-subtle);
+  --variant-fg-muted: var(--zinc-border-muted);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
   --variant-border-disabled: transparent;
 }
 
 [data-paint='zinc-surface'] {
-  --variant-ring: var(--zinc-strong);
-  --variant-bg: var(--zinc-surface);
+  --variant-ring: var(--zinc-strong-bg);
+  --variant-bg: var(--zinc-surface-bg);
+  --variant-bg-hover: var(--zinc-surface-bg-hover);
+  --variant-bg-active: var(--zinc-surface-bg-active);
+  --variant-bg-disabled: var(--zinc-surface-bg-disabled);
   --variant-fg: var(--zinc-plain-fg);
   --variant-fg-subtle: var(--zinc-surface-fg-subtle);
   --variant-fg-muted: var(--zinc-surface-fg-muted);
-  --variant-border: var(--zinc-surface-border);
+  --variant-border: var(--zinc-border);
+  --variant-border-hover: var(--zinc-border-subtle);
+  --variant-border-disabled: var(--zinc-border-muted);
 }

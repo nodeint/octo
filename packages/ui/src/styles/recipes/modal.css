@@ -40,7 +40,7 @@
   position: fixed;
   z-index: var(--z-floating);
   background-color: var(--modal-background, var(--dialog));
-  color: var(--fg);
+  color: var(--variant-fg);
   box-shadow: var(--modal-shadow, 0 0 0 var(--border-width-thin) var(--border-surface));
   outline: none;
 }

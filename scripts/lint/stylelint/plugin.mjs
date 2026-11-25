@@ -2,7 +2,7 @@
  * Local Stylelint plugin for the `@workspace/ui` token axes.
  *
  * - `octo/token-tier`: a component, recipe, `base.css` or `utilities.css` must not read a raw color scale
- *   (`styles/theme/swatches.css` and the `--base-<n>` steps in `styles/theme/base.css`); it reads a theme role. A `theme/` file reads only
+ *   (`styles/theme/palette.css`, `styles/theme/swatches.css` and the `--base-<n>` steps in `styles/theme/base.css`); it reads a theme role. A `theme/` file reads only
  *   `theme/` tokens, and a `layout/` file reads only `layout/` tokens.
  * - `octo/no-theme-selector`: component, recipe, and `base.css` files must not select `.dark`.
  *   `utilities.css` may select it.
@@ -20,7 +20,7 @@ import stylelint from 'stylelint';
 const { createPlugin, utils } = stylelint;
 
 const AXES = ['theme', 'layout'];
-const RAW_FILES = ['swatches.css'];
+const RAW_FILES = ['palette.css', 'swatches.css'];
 /** A raw step declared outside a raw file: the base scale, which shares base.css with the roles built on it. */
 const RAW_TOKEN = /^--base-\d+$/;
 const TOKEN_DECLARATION = /(^|[\s;{])(--[\w-]+)\s*:/g;

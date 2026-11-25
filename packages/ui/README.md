@@ -42,7 +42,7 @@ A stylesheet is a recipe when all of these hold:
 2. Shared. At least two components add the recipe's classes. One component with variants is component CSS.
 3. Reads like component CSS. It reads theme roles, layout and component tokens, the documented `--group-*` and
    `--variant-*` hooks and its own private hooks (for example `--menu-gap`), and no raw color step from
-   `theme/swatches.css` or `theme/base.css`. It declares no theme values: no `:root` or `.dark` block.
+   `theme/palette.css`, `theme/swatches.css` or `theme/base.css`. It declares no theme values: no `:root` or `.dark` block.
    A private hook it declares takes its value from a token.
    The exception is the sets a recipe owns: `[data-action-size]` in `action.css`, `[data-field-size]` in
    `field-control.css`, and `[data-group-size]` in `group.css` declare component tokens
@@ -122,8 +122,8 @@ An exception applies only while a migration is in progress. A new exception need
 
 - Tokens live in three axes: `theme/` (color and elevation), `layout/` (size, space, radius, border widths, motion,
   z-index, opacity), and `typography.css`. An axis file reads only its own axis, except `typography.css`,
-  which reads the `--fg-*` text colors from `theme/`.
-- `theme/swatches.css` and `theme/base.css` are raw color scales. The other `theme/` files build roles on them;
+  which reads the `--variant-fg-*` text colors from `theme/`.
+- `theme/palette.css`, `theme/swatches.css` and `theme/base.css` are raw color scales. The other `theme/` files build roles on them;
   components, recipes, `base.css`, and `utilities.css` read the roles, never a raw step.
 - `components.css` holds per-part tokens: switch, radio, checkbox, slider, avatar, scrollbar, tooltip, floating,
   tab, and sidebar. It may read any axis.
