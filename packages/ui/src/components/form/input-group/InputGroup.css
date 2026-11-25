@@ -218,5 +218,5 @@
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);
   font-weight: var(--role-description-weight);
-  color: var(--role-description-color);
+  color: var(--variant-fg-secondary);
 }

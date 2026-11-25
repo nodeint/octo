@@ -4,7 +4,7 @@
  * change with the theme. The slots below it only alias a ladder step; no hue redefines a Tailwind value.
  *
  * Slots per hue: solid · solid-foreground · subtle · subtle-foreground, and the derived hover · border · surface ·
- * surface-foreground, foreground · subtle-hover · subtle-pressed (the subtle fill one and two ladder steps on), strong-disabled · subtle-disabled ·
+ * surface-foreground · surface-foreground-secondary · surface-foreground-muted (the strong hue mixed into subtle at 80%, 65%, 50%), foreground · subtle-hover · subtle-pressed (the subtle fill one and two ladder steps on), strong-disabled · subtle-disabled ·
  * disabled-border · disabled-foreground, muted-foreground. variants/*.css aliases the slots; theme/base.css aliases the gray ladder.
  *   light: solid=600, foreground=white (or 950 on yellow, lime, amber), subtle=100, subtle-foreground=800
  *   dark:  solid=400, foreground=950, subtle=900, subtle-foreground=200
@@ -39,11 +39,15 @@
   
   --red-strong: var(--red-600);
   --red-strong-foreground: oklch(0.985 0 0);
+  --red-strong-foreground-secondary: color-mix(in oklch, var(--red-strong-foreground) 80%, var(--red-strong));
+  --red-strong-foreground-muted: color-mix(in oklch, var(--red-strong-foreground) 60%, var(--red-strong));
   --red-strong-hover: oklch(from var(--red-strong) clamp(0, calc(l - 0.06), 1) c h);
   --red-strong-disabled: var(--red-300);
 
   --red-subtle: var(--red-100);
   --red-subtle-foreground: var(--red-800);
+  --red-subtle-foreground-secondary: color-mix(in oklch, var(--red-subtle-foreground) 80%, var(--red-subtle));
+  --red-subtle-foreground-muted: color-mix(in oklch, var(--red-subtle-foreground) 60%, var(--red-subtle));
   --red-subtle-pressed: var(--red-300);
   --red-subtle-hover: var(--red-200);
   --red-subtle-disabled: color-mix(in oklab, var(--red-subtle) 50%, transparent);
@@ -52,10 +56,13 @@
   --red-plain-border: oklch(from var(--red-strong) l c h / 40%);
   --red-plain-border-disabled: var(--red-400);
   --red-plain-foreground-disabled: var(--red-500);
-  --red-plain-foreground-muted: var(--red-600);
+  --red-plain-foreground-secondary: color-mix(in oklch, var(--red-plain-foreground) 80%, transparent);
+  --red-plain-foreground-muted: color-mix(in oklch, var(--red-plain-foreground) 60%, transparent);
   
   --red-surface: oklch(from var(--red-subtle) l c h / 50%);
   --red-surface-foreground: color-mix(in oklch, var(--red-strong) 80%, var(--red-subtle));
+  --red-surface-foreground-secondary: color-mix(in oklch, var(--red-strong) 65%, var(--red-subtle));
+  --red-surface-foreground-muted: color-mix(in oklch, var(--red-strong) 50%, var(--red-subtle));
   --red-surface-border: oklch(from var(--red-strong) l c h / 40%);
   
   /* orange */
@@ -72,10 +79,14 @@
   --orange-950: oklch(0.266 0.079 36.259);
   --orange-strong: var(--orange-600);
   --orange-strong-foreground: oklch(0.985 0 0);
+  --orange-strong-foreground-secondary: color-mix(in oklch, var(--orange-strong-foreground) 80%, var(--orange-strong));
+  --orange-strong-foreground-muted: color-mix(in oklch, var(--orange-strong-foreground) 60%, var(--orange-strong));
   --orange-strong-hover: oklch(from var(--orange-strong) clamp(0, calc(l - 0.06), 1) c h);
   --orange-strong-disabled: var(--orange-300);
   --orange-subtle: var(--orange-100);
   --orange-subtle-foreground: var(--orange-800);
+  --orange-subtle-foreground-secondary: color-mix(in oklch, var(--orange-subtle-foreground) 80%, var(--orange-subtle));
+  --orange-subtle-foreground-muted: color-mix(in oklch, var(--orange-subtle-foreground) 60%, var(--orange-subtle));
   --orange-subtle-pressed: var(--orange-300);
   --orange-subtle-hover: var(--orange-200);
   --orange-subtle-disabled: color-mix(in oklab, var(--orange-subtle) 50%, transparent);
@@ -83,9 +94,12 @@
   --orange-plain-border: oklch(from var(--orange-strong) l c h / 40%);
   --orange-plain-border-disabled: var(--orange-400);
   --orange-plain-foreground-disabled: var(--orange-500);
-  --orange-plain-foreground-muted: var(--orange-600);
+  --orange-plain-foreground-secondary: color-mix(in oklch, var(--orange-plain-foreground) 80%, transparent);
+  --orange-plain-foreground-muted: color-mix(in oklch, var(--orange-plain-foreground) 60%, transparent);
   --orange-surface: oklch(from var(--orange-subtle) l c h / 50%);
   --orange-surface-foreground: color-mix(in oklch, var(--orange-strong) 80%, var(--orange-subtle));
+  --orange-surface-foreground-secondary: color-mix(in oklch, var(--orange-strong) 65%, var(--orange-subtle));
+  --orange-surface-foreground-muted: color-mix(in oklch, var(--orange-strong) 50%, var(--orange-subtle));
   --orange-surface-border: oklch(from var(--orange-strong) l c h / 40%);
 
   /* amber */
@@ -102,10 +116,14 @@
   --amber-950: oklch(0.279 0.077 45.635);
   --amber-strong: var(--amber-600);
   --amber-strong-foreground: var(--amber-950);
+  --amber-strong-foreground-secondary: color-mix(in oklch, var(--amber-strong-foreground) 80%, var(--amber-strong));
+  --amber-strong-foreground-muted: color-mix(in oklch, var(--amber-strong-foreground) 60%, var(--amber-strong));
   --amber-strong-hover: oklch(from var(--amber-strong) clamp(0, calc(l - 0.06), 1) c h);
   --amber-strong-disabled: var(--amber-300);
   --amber-subtle: var(--amber-100);
   --amber-subtle-foreground: var(--amber-800);
+  --amber-subtle-foreground-secondary: color-mix(in oklch, var(--amber-subtle-foreground) 80%, var(--amber-subtle));
+  --amber-subtle-foreground-muted: color-mix(in oklch, var(--amber-subtle-foreground) 60%, var(--amber-subtle));
   --amber-subtle-pressed: var(--amber-300);
   --amber-subtle-hover: var(--amber-200);
   --amber-subtle-disabled: color-mix(in oklab, var(--amber-subtle) 50%, transparent);
@@ -113,9 +131,12 @@
   --amber-plain-border: oklch(from var(--amber-strong) l c h / 40%);
   --amber-plain-border-disabled: var(--amber-400);
   --amber-plain-foreground-disabled: var(--amber-500);
-  --amber-plain-foreground-muted: var(--amber-600);
+  --amber-plain-foreground-secondary: color-mix(in oklch, var(--amber-plain-foreground) 80%, transparent);
+  --amber-plain-foreground-muted: color-mix(in oklch, var(--amber-plain-foreground) 60%, transparent);
   --amber-surface: oklch(from var(--amber-subtle) l c h / 50%);
   --amber-surface-foreground: color-mix(in oklch, var(--amber-strong) 80%, var(--amber-subtle));
+  --amber-surface-foreground-secondary: color-mix(in oklch, var(--amber-strong) 65%, var(--amber-subtle));
+  --amber-surface-foreground-muted: color-mix(in oklch, var(--amber-strong) 50%, var(--amber-subtle));
   --amber-surface-border: oklch(from var(--amber-strong) l c h / 40%);
 
   /* yellow */
@@ -132,10 +153,14 @@
   --yellow-950: oklch(0.286 0.066 53.813);
   --yellow-strong: var(--yellow-600);
   --yellow-strong-foreground: var(--yellow-950);
+  --yellow-strong-foreground-secondary: color-mix(in oklch, var(--yellow-strong-foreground) 80%, var(--yellow-strong));
+  --yellow-strong-foreground-muted: color-mix(in oklch, var(--yellow-strong-foreground) 60%, var(--yellow-strong));
   --yellow-strong-hover: oklch(from var(--yellow-strong) clamp(0, calc(l - 0.06), 1) c h);
   --yellow-strong-disabled: var(--yellow-300);
   --yellow-subtle: var(--yellow-100);
   --yellow-subtle-foreground: var(--yellow-800);
+  --yellow-subtle-foreground-secondary: color-mix(in oklch, var(--yellow-subtle-foreground) 80%, var(--yellow-subtle));
+  --yellow-subtle-foreground-muted: color-mix(in oklch, var(--yellow-subtle-foreground) 60%, var(--yellow-subtle));
   --yellow-subtle-pressed: var(--yellow-300);
   --yellow-subtle-hover: var(--yellow-200);
   --yellow-subtle-disabled: color-mix(in oklab, var(--yellow-subtle) 50%, transparent);
@@ -143,9 +168,12 @@
   --yellow-plain-border: oklch(from var(--yellow-strong) l c h / 40%);
   --yellow-plain-border-disabled: var(--yellow-400);
   --yellow-plain-foreground-disabled: var(--yellow-500);
-  --yellow-plain-foreground-muted: var(--yellow-600);
+  --yellow-plain-foreground-secondary: color-mix(in oklch, var(--yellow-plain-foreground) 80%, transparent);
+  --yellow-plain-foreground-muted: color-mix(in oklch, var(--yellow-plain-foreground) 60%, transparent);
   --yellow-surface: oklch(from var(--yellow-subtle) l c h / 50%);
   --yellow-surface-foreground: color-mix(in oklch, var(--yellow-strong) 80%, var(--yellow-subtle));
+  --yellow-surface-foreground-secondary: color-mix(in oklch, var(--yellow-strong) 65%, var(--yellow-subtle));
+  --yellow-surface-foreground-muted: color-mix(in oklch, var(--yellow-strong) 50%, var(--yellow-subtle));
   --yellow-surface-border: oklch(from var(--yellow-strong) l c h / 40%);
 
   /* lime */
@@ -162,10 +190,14 @@
   --lime-950: oklch(0.274 0.072 132.109);
   --lime-strong: var(--lime-600);
   --lime-strong-foreground: var(--lime-950);
+  --lime-strong-foreground-secondary: color-mix(in oklch, var(--lime-strong-foreground) 80%, var(--lime-strong));
+  --lime-strong-foreground-muted: color-mix(in oklch, var(--lime-strong-foreground) 60%, var(--lime-strong));
   --lime-strong-hover: oklch(from var(--lime-strong) clamp(0, calc(l - 0.06), 1) c h);
   --lime-strong-disabled: var(--lime-300);
   --lime-subtle: var(--lime-100);
   --lime-subtle-foreground: var(--lime-800);
+  --lime-subtle-foreground-secondary: color-mix(in oklch, var(--lime-subtle-foreground) 80%, var(--lime-subtle));
+  --lime-subtle-foreground-muted: color-mix(in oklch, var(--lime-subtle-foreground) 60%, var(--lime-subtle));
   --lime-subtle-pressed: var(--lime-300);
   --lime-subtle-hover: var(--lime-200);
   --lime-subtle-disabled: color-mix(in oklab, var(--lime-subtle) 50%, transparent);
@@ -173,9 +205,12 @@
   --lime-plain-border: oklch(from var(--lime-strong) l c h / 40%);
   --lime-plain-border-disabled: var(--lime-400);
   --lime-plain-foreground-disabled: var(--lime-500);
-  --lime-plain-foreground-muted: var(--lime-600);
+  --lime-plain-foreground-secondary: color-mix(in oklch, var(--lime-plain-foreground) 80%, transparent);
+  --lime-plain-foreground-muted: color-mix(in oklch, var(--lime-plain-foreground) 60%, transparent);
   --lime-surface: oklch(from var(--lime-subtle) l c h / 50%);
   --lime-surface-foreground: color-mix(in oklch, var(--lime-strong) 80%, var(--lime-subtle));
+  --lime-surface-foreground-secondary: color-mix(in oklch, var(--lime-strong) 65%, var(--lime-subtle));
+  --lime-surface-foreground-muted: color-mix(in oklch, var(--lime-strong) 50%, var(--lime-subtle));
   --lime-surface-border: oklch(from var(--lime-strong) l c h / 40%);
 
   /* green */
@@ -192,10 +227,14 @@
   --green-950: oklch(0.266 0.065 152.934);
   --green-strong: var(--green-600);
   --green-strong-foreground: oklch(0.985 0 0);
+  --green-strong-foreground-secondary: color-mix(in oklch, var(--green-strong-foreground) 80%, var(--green-strong));
+  --green-strong-foreground-muted: color-mix(in oklch, var(--green-strong-foreground) 60%, var(--green-strong));
   --green-strong-hover: oklch(from var(--green-strong) clamp(0, calc(l - 0.06), 1) c h);
   --green-strong-disabled: var(--green-300);
   --green-subtle: var(--green-100);
   --green-subtle-foreground: var(--green-800);
+  --green-subtle-foreground-secondary: color-mix(in oklch, var(--green-subtle-foreground) 80%, var(--green-subtle));
+  --green-subtle-foreground-muted: color-mix(in oklch, var(--green-subtle-foreground) 60%, var(--green-subtle));
   --green-subtle-pressed: var(--green-300);
   --green-subtle-hover: var(--green-200);
   --green-subtle-disabled: color-mix(in oklab, var(--green-subtle) 50%, transparent);
@@ -203,9 +242,12 @@
   --green-plain-border: oklch(from var(--green-strong) l c h / 40%);
   --green-plain-border-disabled: var(--green-400);
   --green-plain-foreground-disabled: var(--green-500);
-  --green-plain-foreground-muted: var(--green-600);
+  --green-plain-foreground-secondary: color-mix(in oklch, var(--green-plain-foreground) 80%, transparent);
+  --green-plain-foreground-muted: color-mix(in oklch, var(--green-plain-foreground) 60%, transparent);
   --green-surface: oklch(from var(--green-subtle) l c h / 50%);
   --green-surface-foreground: color-mix(in oklch, var(--green-strong) 80%, var(--green-subtle));
+  --green-surface-foreground-secondary: color-mix(in oklch, var(--green-strong) 65%, var(--green-subtle));
+  --green-surface-foreground-muted: color-mix(in oklch, var(--green-strong) 50%, var(--green-subtle));
   --green-surface-border: oklch(from var(--green-strong) l c h / 40%);
 
   /* emerald */
@@ -222,10 +264,14 @@
   --emerald-950: oklch(0.262 0.051 172.552);
   --emerald-strong: var(--emerald-600);
   --emerald-strong-foreground: oklch(0.985 0 0);
+  --emerald-strong-foreground-secondary: color-mix(in oklch, var(--emerald-strong-foreground) 80%, var(--emerald-strong));
+  --emerald-strong-foreground-muted: color-mix(in oklch, var(--emerald-strong-foreground) 60%, var(--emerald-strong));
   --emerald-strong-hover: oklch(from var(--emerald-strong) clamp(0, calc(l - 0.06), 1) c h);
   --emerald-strong-disabled: var(--emerald-300);
   --emerald-subtle: var(--emerald-100);
   --emerald-subtle-foreground: var(--emerald-800);
+  --emerald-subtle-foreground-secondary: color-mix(in oklch, var(--emerald-subtle-foreground) 80%, var(--emerald-subtle));
+  --emerald-subtle-foreground-muted: color-mix(in oklch, var(--emerald-subtle-foreground) 60%, var(--emerald-subtle));
   --emerald-subtle-pressed: var(--emerald-300);
   --emerald-subtle-hover: var(--emerald-200);
   --emerald-subtle-disabled: color-mix(in oklab, var(--emerald-subtle) 50%, transparent);
@@ -233,9 +279,12 @@
   --emerald-plain-border: oklch(from var(--emerald-strong) l c h / 40%);
   --emerald-plain-border-disabled: var(--emerald-400);
   --emerald-plain-foreground-disabled: var(--emerald-500);
-  --emerald-plain-foreground-muted: var(--emerald-600);
+  --emerald-plain-foreground-secondary: color-mix(in oklch, var(--emerald-plain-foreground) 80%, transparent);
+  --emerald-plain-foreground-muted: color-mix(in oklch, var(--emerald-plain-foreground) 60%, transparent);
   --emerald-surface: oklch(from var(--emerald-subtle) l c h / 50%);
   --emerald-surface-foreground: color-mix(in oklch, var(--emerald-strong) 80%, var(--emerald-subtle));
+  --emerald-surface-foreground-secondary: color-mix(in oklch, var(--emerald-strong) 65%, var(--emerald-subtle));
+  --emerald-surface-foreground-muted: color-mix(in oklch, var(--emerald-strong) 50%, var(--emerald-subtle));
   --emerald-surface-border: oklch(from var(--emerald-strong) l c h / 40%);
 
   /* teal */
@@ -252,10 +301,14 @@
   --teal-950: oklch(0.277 0.046 192.524);
   --teal-strong: oklch(0.508 0.118 165.612);
   --teal-strong-foreground: oklch(0.979 0.021 166.113);
+  --teal-strong-foreground-secondary: color-mix(in oklch, var(--teal-strong-foreground) 80%, var(--teal-strong));
+  --teal-strong-foreground-muted: color-mix(in oklch, var(--teal-strong-foreground) 60%, var(--teal-strong));
   --teal-strong-hover: oklch(from var(--teal-strong) clamp(0, calc(l - 0.06), 1) c h);
   --teal-strong-disabled: var(--teal-300);
   --teal-subtle: oklch(0.93 0.045 166);
   --teal-subtle-foreground: oklch(0.42 0.1 166);
+  --teal-subtle-foreground-secondary: color-mix(in oklch, var(--teal-subtle-foreground) 80%, var(--teal-subtle));
+  --teal-subtle-foreground-muted: color-mix(in oklch, var(--teal-subtle-foreground) 60%, var(--teal-subtle));
   --teal-subtle-pressed: var(--teal-300);
   --teal-subtle-hover: var(--teal-200);
   --teal-subtle-disabled: color-mix(in oklab, var(--teal-subtle) 50%, transparent);
@@ -263,9 +316,12 @@
   --teal-plain-border: oklch(from var(--teal-strong) l c h / 40%);
   --teal-plain-border-disabled: var(--teal-400);
   --teal-plain-foreground-disabled: var(--teal-500);
-  --teal-plain-foreground-muted: var(--teal-600);
+  --teal-plain-foreground-secondary: color-mix(in oklch, var(--teal-plain-foreground) 80%, transparent);
+  --teal-plain-foreground-muted: color-mix(in oklch, var(--teal-plain-foreground) 60%, transparent);
   --teal-surface: oklch(from var(--teal-subtle) l c h / 50%);
   --teal-surface-foreground: color-mix(in oklch, var(--teal-strong) 80%, var(--teal-subtle));
+  --teal-surface-foreground-secondary: color-mix(in oklch, var(--teal-strong) 65%, var(--teal-subtle));
+  --teal-surface-foreground-muted: color-mix(in oklch, var(--teal-strong) 50%, var(--teal-subtle));
   --teal-surface-border: oklch(from var(--teal-strong) l c h / 40%);
 
   /* cyan */
@@ -282,10 +338,14 @@
   --cyan-950: oklch(0.302 0.056 229.695);
   --cyan-strong: var(--cyan-600);
   --cyan-strong-foreground: oklch(0.985 0 0);
+  --cyan-strong-foreground-secondary: color-mix(in oklch, var(--cyan-strong-foreground) 80%, var(--cyan-strong));
+  --cyan-strong-foreground-muted: color-mix(in oklch, var(--cyan-strong-foreground) 60%, var(--cyan-strong));
   --cyan-strong-hover: oklch(from var(--cyan-strong) clamp(0, calc(l - 0.06), 1) c h);
   --cyan-strong-disabled: var(--cyan-300);
   --cyan-subtle: var(--cyan-100);
   --cyan-subtle-foreground: var(--cyan-800);
+  --cyan-subtle-foreground-secondary: color-mix(in oklch, var(--cyan-subtle-foreground) 80%, var(--cyan-subtle));
+  --cyan-subtle-foreground-muted: color-mix(in oklch, var(--cyan-subtle-foreground) 60%, var(--cyan-subtle));
   --cyan-subtle-pressed: var(--cyan-300);
   --cyan-subtle-hover: var(--cyan-200);
   --cyan-subtle-disabled: color-mix(in oklab, var(--cyan-subtle) 50%, transparent);
@@ -293,9 +353,12 @@
   --cyan-plain-border: oklch(from var(--cyan-strong) l c h / 40%);
   --cyan-plain-border-disabled: var(--cyan-400);
   --cyan-plain-foreground-disabled: var(--cyan-500);
-  --cyan-plain-foreground-muted: var(--cyan-600);
+  --cyan-plain-foreground-secondary: color-mix(in oklch, var(--cyan-plain-foreground) 80%, transparent);
+  --cyan-plain-foreground-muted: color-mix(in oklch, var(--cyan-plain-foreground) 60%, transparent);
   --cyan-surface: oklch(from var(--cyan-subtle) l c h / 50%);
   --cyan-surface-foreground: color-mix(in oklch, var(--cyan-strong) 80%, var(--cyan-subtle));
+  --cyan-surface-foreground-secondary: color-mix(in oklch, var(--cyan-strong) 65%, var(--cyan-subtle));
+  --cyan-surface-foreground-muted: color-mix(in oklch, var(--cyan-strong) 50%, var(--cyan-subtle));
   --cyan-surface-border: oklch(from var(--cyan-strong) l c h / 40%);
 
   /* sky */
@@ -312,10 +375,14 @@
   --sky-950: oklch(0.293 0.066 243.157);
   --sky-strong: var(--sky-600);
   --sky-strong-foreground: oklch(0.985 0 0);
+  --sky-strong-foreground-secondary: color-mix(in oklch, var(--sky-strong-foreground) 80%, var(--sky-strong));
+  --sky-strong-foreground-muted: color-mix(in oklch, var(--sky-strong-foreground) 60%, var(--sky-strong));
   --sky-strong-hover: oklch(from var(--sky-strong) clamp(0, calc(l - 0.06), 1) c h);
   --sky-strong-disabled: var(--sky-300);
   --sky-subtle: var(--sky-100);
   --sky-subtle-foreground: var(--sky-800);
+  --sky-subtle-foreground-secondary: color-mix(in oklch, var(--sky-subtle-foreground) 80%, var(--sky-subtle));
+  --sky-subtle-foreground-muted: color-mix(in oklch, var(--sky-subtle-foreground) 60%, var(--sky-subtle));
   --sky-subtle-pressed: var(--sky-300);
   --sky-subtle-hover: var(--sky-200);
   --sky-subtle-disabled: color-mix(in oklab, var(--sky-subtle) 50%, transparent);
@@ -323,9 +390,12 @@
   --sky-plain-border: oklch(from var(--sky-strong) l c h / 40%);
   --sky-plain-border-disabled: var(--sky-400);
   --sky-plain-foreground-disabled: var(--sky-500);
-  --sky-plain-foreground-muted: var(--sky-600);
+  --sky-plain-foreground-secondary: color-mix(in oklch, var(--sky-plain-foreground) 80%, transparent);
+  --sky-plain-foreground-muted: color-mix(in oklch, var(--sky-plain-foreground) 60%, transparent);
   --sky-surface: oklch(from var(--sky-subtle) l c h / 50%);
   --sky-surface-foreground: color-mix(in oklch, var(--sky-strong) 80%, var(--sky-subtle));
+  --sky-surface-foreground-secondary: color-mix(in oklch, var(--sky-strong) 65%, var(--sky-subtle));
+  --sky-surface-foreground-muted: color-mix(in oklch, var(--sky-strong) 50%, var(--sky-subtle));
   --sky-surface-border: oklch(from var(--sky-strong) l c h / 40%);
 
   /* blue */
@@ -342,10 +412,14 @@
   --blue-950: oklch(0.282 0.091 267.935);
   --blue-strong: var(--blue-600);
   --blue-strong-foreground: oklch(0.985 0 0);
+  --blue-strong-foreground-secondary: color-mix(in oklch, var(--blue-strong-foreground) 80%, var(--blue-strong));
+  --blue-strong-foreground-muted: color-mix(in oklch, var(--blue-strong-foreground) 60%, var(--blue-strong));
   --blue-strong-hover: oklch(from var(--blue-strong) clamp(0, calc(l - 0.06), 1) c h);
   --blue-strong-disabled: var(--blue-300);
   --blue-subtle: var(--blue-100);
   --blue-subtle-foreground: var(--blue-800);
+  --blue-subtle-foreground-secondary: color-mix(in oklch, var(--blue-subtle-foreground) 80%, var(--blue-subtle));
+  --blue-subtle-foreground-muted: color-mix(in oklch, var(--blue-subtle-foreground) 60%, var(--blue-subtle));
   --blue-subtle-pressed: var(--blue-300);
   --blue-subtle-hover: var(--blue-200);
   --blue-subtle-disabled: color-mix(in oklab, var(--blue-subtle) 50%, transparent);
@@ -353,9 +427,12 @@
   --blue-plain-border: oklch(from var(--blue-strong) l c h / 40%);
   --blue-plain-border-disabled: var(--blue-400);
   --blue-plain-foreground-disabled: var(--blue-500);
-  --blue-plain-foreground-muted: var(--blue-600);
+  --blue-plain-foreground-secondary: color-mix(in oklch, var(--blue-plain-foreground) 80%, transparent);
+  --blue-plain-foreground-muted: color-mix(in oklch, var(--blue-plain-foreground) 60%, transparent);
   --blue-surface: oklch(from var(--blue-subtle) l c h / 50%);
   --blue-surface-foreground: color-mix(in oklch, var(--blue-strong) 80%, var(--blue-subtle));
+  --blue-surface-foreground-secondary: color-mix(in oklch, var(--blue-strong) 65%, var(--blue-subtle));
+  --blue-surface-foreground-muted: color-mix(in oklch, var(--blue-strong) 50%, var(--blue-subtle));
   --blue-surface-border: oklch(from var(--blue-strong) l c h / 40%);
 
   /* indigo */
@@ -372,10 +449,14 @@
   --indigo-950: oklch(0.257 0.09 281.288);
   --indigo-strong: var(--indigo-600);
   --indigo-strong-foreground: oklch(0.985 0 0);
+  --indigo-strong-foreground-secondary: color-mix(in oklch, var(--indigo-strong-foreground) 80%, var(--indigo-strong));
+  --indigo-strong-foreground-muted: color-mix(in oklch, var(--indigo-strong-foreground) 60%, var(--indigo-strong));
   --indigo-strong-hover: oklch(from var(--indigo-strong) clamp(0, calc(l - 0.06), 1) c h);
   --indigo-strong-disabled: var(--indigo-300);
   --indigo-subtle: var(--indigo-100);
   --indigo-subtle-foreground: var(--indigo-800);
+  --indigo-subtle-foreground-secondary: color-mix(in oklch, var(--indigo-subtle-foreground) 80%, var(--indigo-subtle));
+  --indigo-subtle-foreground-muted: color-mix(in oklch, var(--indigo-subtle-foreground) 60%, var(--indigo-subtle));
   --indigo-subtle-pressed: var(--indigo-300);
   --indigo-subtle-hover: var(--indigo-200);
   --indigo-subtle-disabled: color-mix(in oklab, var(--indigo-subtle) 50%, transparent);
@@ -383,9 +464,12 @@
   --indigo-plain-border: oklch(from var(--indigo-strong) l c h / 40%);
   --indigo-plain-border-disabled: var(--indigo-400);
   --indigo-plain-foreground-disabled: var(--indigo-500);
-  --indigo-plain-foreground-muted: var(--indigo-600);
+  --indigo-plain-foreground-secondary: color-mix(in oklch, var(--indigo-plain-foreground) 80%, transparent);
+  --indigo-plain-foreground-muted: color-mix(in oklch, var(--indigo-plain-foreground) 60%, transparent);
   --indigo-surface: oklch(from var(--indigo-subtle) l c h / 50%);
   --indigo-surface-foreground: color-mix(in oklch, var(--indigo-strong) 80%, var(--indigo-subtle));
+  --indigo-surface-foreground-secondary: color-mix(in oklch, var(--indigo-strong) 65%, var(--indigo-subtle));
+  --indigo-surface-foreground-muted: color-mix(in oklch, var(--indigo-strong) 50%, var(--indigo-subtle));
   --indigo-surface-border: oklch(from var(--indigo-strong) l c h / 40%);
 
   /* violet */
@@ -402,10 +486,14 @@
   --violet-950: oklch(0.283 0.141 291.089);
   --violet-strong: var(--violet-600);
   --violet-strong-foreground: oklch(0.985 0 0);
+  --violet-strong-foreground-secondary: color-mix(in oklch, var(--violet-strong-foreground) 80%, var(--violet-strong));
+  --violet-strong-foreground-muted: color-mix(in oklch, var(--violet-strong-foreground) 60%, var(--violet-strong));
   --violet-strong-hover: oklch(from var(--violet-strong) clamp(0, calc(l - 0.06), 1) c h);
   --violet-strong-disabled: var(--violet-300);
   --violet-subtle: var(--violet-100);
   --violet-subtle-foreground: var(--violet-800);
+  --violet-subtle-foreground-secondary: color-mix(in oklch, var(--violet-subtle-foreground) 80%, var(--violet-subtle));
+  --violet-subtle-foreground-muted: color-mix(in oklch, var(--violet-subtle-foreground) 60%, var(--violet-subtle));
   --violet-subtle-pressed: var(--violet-300);
   --violet-subtle-hover: var(--violet-200);
   --violet-subtle-disabled: color-mix(in oklab, var(--violet-subtle) 50%, transparent);
@@ -413,9 +501,12 @@
   --violet-plain-border: oklch(from var(--violet-strong) l c h / 40%);
   --violet-plain-border-disabled: var(--violet-400);
   --violet-plain-foreground-disabled: var(--violet-500);
-  --violet-plain-foreground-muted: var(--violet-600);
+  --violet-plain-foreground-secondary: color-mix(in oklch, var(--violet-plain-foreground) 80%, transparent);
+  --violet-plain-foreground-muted: color-mix(in oklch, var(--violet-plain-foreground) 60%, transparent);
   --violet-surface: oklch(from var(--violet-subtle) l c h / 50%);
   --violet-surface-foreground: color-mix(in oklch, var(--violet-strong) 80%, var(--violet-subtle));
+  --violet-surface-foreground-secondary: color-mix(in oklch, var(--violet-strong) 65%, var(--violet-subtle));
+  --violet-surface-foreground-muted: color-mix(in oklch, var(--violet-strong) 50%, var(--violet-subtle));
   --violet-surface-border: oklch(from var(--violet-strong) l c h / 40%);
 
   /* purple */
@@ -432,10 +523,14 @@
   --purple-950: oklch(0.291 0.149 302.717);
   --purple-strong: var(--purple-600);
   --purple-strong-foreground: oklch(0.985 0 0);
+  --purple-strong-foreground-secondary: color-mix(in oklch, var(--purple-strong-foreground) 80%, var(--purple-strong));
+  --purple-strong-foreground-muted: color-mix(in oklch, var(--purple-strong-foreground) 60%, var(--purple-strong));
   --purple-strong-hover: oklch(from var(--purple-strong) clamp(0, calc(l - 0.06), 1) c h);
   --purple-strong-disabled: var(--purple-300);
   --purple-subtle: var(--purple-100);
   --purple-subtle-foreground: var(--purple-800);
+  --purple-subtle-foreground-secondary: color-mix(in oklch, var(--purple-subtle-foreground) 80%, var(--purple-subtle));
+  --purple-subtle-foreground-muted: color-mix(in oklch, var(--purple-subtle-foreground) 60%, var(--purple-subtle));
   --purple-subtle-pressed: var(--purple-300);
   --purple-subtle-hover: var(--purple-200);
   --purple-subtle-disabled: color-mix(in oklab, var(--purple-subtle) 50%, transparent);
@@ -443,9 +538,12 @@
   --purple-plain-border: oklch(from var(--purple-strong) l c h / 40%);
   --purple-plain-border-disabled: var(--purple-400);
   --purple-plain-foreground-disabled: var(--purple-500);
-  --purple-plain-foreground-muted: var(--purple-600);
+  --purple-plain-foreground-secondary: color-mix(in oklch, var(--purple-plain-foreground) 80%, transparent);
+  --purple-plain-foreground-muted: color-mix(in oklch, var(--purple-plain-foreground) 60%, transparent);
   --purple-surface: oklch(from var(--purple-subtle) l c h / 50%);
   --purple-surface-foreground: color-mix(in oklch, var(--purple-strong) 80%, var(--purple-subtle));
+  --purple-surface-foreground-secondary: color-mix(in oklch, var(--purple-strong) 65%, var(--purple-subtle));
+  --purple-surface-foreground-muted: color-mix(in oklch, var(--purple-strong) 50%, var(--purple-subtle));
   --purple-surface-border: oklch(from var(--purple-strong) l c h / 40%);
 
   /* fuchsia */
@@ -462,10 +560,14 @@
   --fuchsia-950: oklch(0.293 0.136 325.661);
   --fuchsia-strong: var(--fuchsia-600);
   --fuchsia-strong-foreground: oklch(0.985 0 0);
+  --fuchsia-strong-foreground-secondary: color-mix(in oklch, var(--fuchsia-strong-foreground) 80%, var(--fuchsia-strong));
+  --fuchsia-strong-foreground-muted: color-mix(in oklch, var(--fuchsia-strong-foreground) 60%, var(--fuchsia-strong));
   --fuchsia-strong-hover: oklch(from var(--fuchsia-strong) clamp(0, calc(l - 0.06), 1) c h);
   --fuchsia-strong-disabled: var(--fuchsia-300);
   --fuchsia-subtle: var(--fuchsia-100);
   --fuchsia-subtle-foreground: var(--fuchsia-800);
+  --fuchsia-subtle-foreground-secondary: color-mix(in oklch, var(--fuchsia-subtle-foreground) 80%, var(--fuchsia-subtle));
+  --fuchsia-subtle-foreground-muted: color-mix(in oklch, var(--fuchsia-subtle-foreground) 60%, var(--fuchsia-subtle));
   --fuchsia-subtle-pressed: var(--fuchsia-300);
   --fuchsia-subtle-hover: var(--fuchsia-200);
   --fuchsia-subtle-disabled: color-mix(in oklab, var(--fuchsia-subtle) 50%, transparent);
@@ -473,9 +575,12 @@
   --fuchsia-plain-border: oklch(from var(--fuchsia-strong) l c h / 40%);
   --fuchsia-plain-border-disabled: var(--fuchsia-400);
   --fuchsia-plain-foreground-disabled: var(--fuchsia-500);
-  --fuchsia-plain-foreground-muted: var(--fuchsia-600);
+  --fuchsia-plain-foreground-secondary: color-mix(in oklch, var(--fuchsia-plain-foreground) 80%, transparent);
+  --fuchsia-plain-foreground-muted: color-mix(in oklch, var(--fuchsia-plain-foreground) 60%, transparent);
   --fuchsia-surface: oklch(from var(--fuchsia-subtle) l c h / 50%);
   --fuchsia-surface-foreground: color-mix(in oklch, var(--fuchsia-strong) 80%, var(--fuchsia-subtle));
+  --fuchsia-surface-foreground-secondary: color-mix(in oklch, var(--fuchsia-strong) 65%, var(--fuchsia-subtle));
+  --fuchsia-surface-foreground-muted: color-mix(in oklch, var(--fuchsia-strong) 50%, var(--fuchsia-subtle));
   --fuchsia-surface-border: oklch(from var(--fuchsia-strong) l c h / 40%);
 
   /* pink */
@@ -492,10 +597,14 @@
   --pink-950: oklch(0.284 0.109 3.907);
   --pink-strong: var(--pink-600);
   --pink-strong-foreground: oklch(0.985 0 0);
+  --pink-strong-foreground-secondary: color-mix(in oklch, var(--pink-strong-foreground) 80%, var(--pink-strong));
+  --pink-strong-foreground-muted: color-mix(in oklch, var(--pink-strong-foreground) 60%, var(--pink-strong));
   --pink-strong-hover: oklch(from var(--pink-strong) clamp(0, calc(l - 0.06), 1) c h);
   --pink-strong-disabled: var(--pink-300);
   --pink-subtle: var(--pink-100);
   --pink-subtle-foreground: var(--pink-800);
+  --pink-subtle-foreground-secondary: color-mix(in oklch, var(--pink-subtle-foreground) 80%, var(--pink-subtle));
+  --pink-subtle-foreground-muted: color-mix(in oklch, var(--pink-subtle-foreground) 60%, var(--pink-subtle));
   --pink-subtle-pressed: var(--pink-300);
   --pink-subtle-hover: var(--pink-200);
   --pink-subtle-disabled: color-mix(in oklab, var(--pink-subtle) 50%, transparent);
@@ -503,9 +612,12 @@
   --pink-plain-border: oklch(from var(--pink-strong) l c h / 40%);
   --pink-plain-border-disabled: var(--pink-400);
   --pink-plain-foreground-disabled: var(--pink-500);
-  --pink-plain-foreground-muted: var(--pink-600);
+  --pink-plain-foreground-secondary: color-mix(in oklch, var(--pink-plain-foreground) 80%, transparent);
+  --pink-plain-foreground-muted: color-mix(in oklch, var(--pink-plain-foreground) 60%, transparent);
   --pink-surface: oklch(from var(--pink-subtle) l c h / 50%);
   --pink-surface-foreground: color-mix(in oklch, var(--pink-strong) 80%, var(--pink-subtle));
+  --pink-surface-foreground-secondary: color-mix(in oklch, var(--pink-strong) 65%, var(--pink-subtle));
+  --pink-surface-foreground-muted: color-mix(in oklch, var(--pink-strong) 50%, var(--pink-subtle));
   --pink-surface-border: oklch(from var(--pink-strong) l c h / 40%);
 
   /* rose */
@@ -522,10 +634,14 @@
   --rose-950: oklch(0.271 0.105 12.094);
   --rose-strong: var(--rose-600);
   --rose-strong-foreground: oklch(0.985 0 0);
+  --rose-strong-foreground-secondary: color-mix(in oklch, var(--rose-strong-foreground) 80%, var(--rose-strong));
+  --rose-strong-foreground-muted: color-mix(in oklch, var(--rose-strong-foreground) 60%, var(--rose-strong));
   --rose-strong-hover: oklch(from var(--rose-strong) clamp(0, calc(l - 0.06), 1) c h);
   --rose-strong-disabled: var(--rose-300);
   --rose-subtle: var(--rose-100);
   --rose-subtle-foreground: var(--rose-800);
+  --rose-subtle-foreground-secondary: color-mix(in oklch, var(--rose-subtle-foreground) 80%, var(--rose-subtle));
+  --rose-subtle-foreground-muted: color-mix(in oklch, var(--rose-subtle-foreground) 60%, var(--rose-subtle));
   --rose-subtle-pressed: var(--rose-300);
   --rose-subtle-hover: var(--rose-200);
   --rose-subtle-disabled: color-mix(in oklab, var(--rose-subtle) 50%, transparent);
@@ -533,9 +649,12 @@
   --rose-plain-border: oklch(from var(--rose-strong) l c h / 40%);
   --rose-plain-border-disabled: var(--rose-400);
   --rose-plain-foreground-disabled: var(--rose-500);
-  --rose-plain-foreground-muted: var(--rose-600);
+  --rose-plain-foreground-secondary: color-mix(in oklch, var(--rose-plain-foreground) 80%, transparent);
+  --rose-plain-foreground-muted: color-mix(in oklch, var(--rose-plain-foreground) 60%, transparent);
   --rose-surface: oklch(from var(--rose-subtle) l c h / 50%);
   --rose-surface-foreground: color-mix(in oklch, var(--rose-strong) 80%, var(--rose-subtle));
+  --rose-surface-foreground-secondary: color-mix(in oklch, var(--rose-strong) 65%, var(--rose-subtle));
+  --rose-surface-foreground-muted: color-mix(in oklch, var(--rose-strong) 50%, var(--rose-subtle));
   --rose-surface-border: oklch(from var(--rose-strong) l c h / 40%);
 
   /* slate */
@@ -552,10 +671,14 @@
   --slate-950: oklch(0.129 0.042 264.695);
   --slate-strong: var(--slate-600);
   --slate-strong-foreground: oklch(0.985 0 0);
+  --slate-strong-foreground-secondary: color-mix(in oklch, var(--slate-strong-foreground) 80%, var(--slate-strong));
+  --slate-strong-foreground-muted: color-mix(in oklch, var(--slate-strong-foreground) 60%, var(--slate-strong));
   --slate-strong-hover: oklch(from var(--slate-strong) clamp(0, calc(l - 0.06), 1) c h);
   --slate-strong-disabled: var(--slate-300);
   --slate-subtle: var(--slate-200);
   --slate-subtle-foreground: var(--slate-800);
+  --slate-subtle-foreground-secondary: color-mix(in oklch, var(--slate-subtle-foreground) 80%, var(--slate-subtle));
+  --slate-subtle-foreground-muted: color-mix(in oklch, var(--slate-subtle-foreground) 60%, var(--slate-subtle));
   --slate-subtle-pressed: var(--slate-400);
   --slate-subtle-hover: var(--slate-300);
   --slate-subtle-disabled: color-mix(in oklab, var(--slate-subtle) 50%, transparent);
@@ -563,9 +686,12 @@
   --slate-plain-border: oklch(from var(--slate-strong) l c h / 40%);
   --slate-plain-border-disabled: var(--slate-400);
   --slate-plain-foreground-disabled: var(--slate-500);
-  --slate-plain-foreground-muted: var(--slate-600);
+  --slate-plain-foreground-secondary: color-mix(in oklch, var(--slate-plain-foreground) 80%, transparent);
+  --slate-plain-foreground-muted: color-mix(in oklch, var(--slate-plain-foreground) 60%, transparent);
   --slate-surface: oklch(from var(--slate-subtle) l c h / 50%);
   --slate-surface-foreground: color-mix(in oklch, var(--slate-strong) 80%, var(--slate-subtle));
+  --slate-surface-foreground-secondary: color-mix(in oklch, var(--slate-strong) 65%, var(--slate-subtle));
+  --slate-surface-foreground-muted: color-mix(in oklch, var(--slate-strong) 50%, var(--slate-subtle));
   --slate-surface-border: oklch(from var(--slate-strong) l c h / 40%);
 
   /* gray */
@@ -582,10 +708,14 @@
   --gray-950: oklch(0.13 0.028 261.692);
   --gray-strong: var(--gray-600);
   --gray-strong-foreground: oklch(0.985 0 0);
+  --gray-strong-foreground-secondary: color-mix(in oklch, var(--gray-strong-foreground) 80%, var(--gray-strong));
+  --gray-strong-foreground-muted: color-mix(in oklch, var(--gray-strong-foreground) 60%, var(--gray-strong));
   --gray-strong-hover: oklch(from var(--gray-strong) clamp(0, calc(l - 0.06), 1) c h);
   --gray-strong-disabled: var(--gray-300);
   --gray-subtle: var(--gray-200);
   --gray-subtle-foreground: var(--gray-800);
+  --gray-subtle-foreground-secondary: color-mix(in oklch, var(--gray-subtle-foreground) 80%, var(--gray-subtle));
+  --gray-subtle-foreground-muted: color-mix(in oklch, var(--gray-subtle-foreground) 60%, var(--gray-subtle));
   --gray-subtle-pressed: var(--gray-400);
   --gray-subtle-hover: var(--gray-300);
   --gray-subtle-disabled: color-mix(in oklab, var(--gray-subtle) 50%, transparent);
@@ -593,9 +723,12 @@
   --gray-plain-border: oklch(from var(--gray-strong) l c h / 40%);
   --gray-plain-border-disabled: var(--gray-400);
   --gray-plain-foreground-disabled: var(--gray-500);
-  --gray-plain-foreground-muted: var(--gray-600);
+  --gray-plain-foreground-secondary: color-mix(in oklch, var(--gray-plain-foreground) 80%, transparent);
+  --gray-plain-foreground-muted: color-mix(in oklch, var(--gray-plain-foreground) 60%, transparent);
   --gray-surface: oklch(from var(--gray-subtle) l c h / 50%);
   --gray-surface-foreground: color-mix(in oklch, var(--gray-strong) 80%, var(--gray-subtle));
+  --gray-surface-foreground-secondary: color-mix(in oklch, var(--gray-strong) 65%, var(--gray-subtle));
+  --gray-surface-foreground-muted: color-mix(in oklch, var(--gray-strong) 50%, var(--gray-subtle));
   --gray-surface-border: oklch(from var(--gray-strong) l c h / 40%);
 
   /* neutral */
@@ -612,10 +745,14 @@
   --neutral-950: oklch(0.145 0 0);
   --neutral-strong: var(--neutral-600);
   --neutral-strong-foreground: oklch(0.985 0 0);
+  --neutral-strong-foreground-secondary: color-mix(in oklch, var(--neutral-strong-foreground) 80%, var(--neutral-strong));
+  --neutral-strong-foreground-muted: color-mix(in oklch, var(--neutral-strong-foreground) 60%, var(--neutral-strong));
   --neutral-strong-hover: oklch(from var(--neutral-strong) clamp(0, calc(l - 0.06), 1) c h);
   --neutral-strong-disabled: var(--neutral-300);
   --neutral-subtle: var(--neutral-200);
   --neutral-subtle-foreground: var(--neutral-800);
+  --neutral-subtle-foreground-secondary: color-mix(in oklch, var(--neutral-subtle-foreground) 80%, var(--neutral-subtle));
+  --neutral-subtle-foreground-muted: color-mix(in oklch, var(--neutral-subtle-foreground) 60%, var(--neutral-subtle));
   --neutral-subtle-pressed: var(--neutral-400);
   --neutral-subtle-hover: var(--neutral-300);
   --neutral-subtle-disabled: color-mix(in oklab, var(--neutral-subtle) 50%, transparent);
@@ -623,9 +760,12 @@
   --neutral-plain-border: oklch(from var(--neutral-strong) l c h / 40%);
   --neutral-plain-border-disabled: var(--neutral-400);
   --neutral-plain-foreground-disabled: var(--neutral-500);
-  --neutral-plain-foreground-muted: var(--neutral-600);
+  --neutral-plain-foreground-secondary: color-mix(in oklch, var(--neutral-plain-foreground) 80%, transparent);
+  --neutral-plain-foreground-muted: color-mix(in oklch, var(--neutral-plain-foreground) 60%, transparent);
   --neutral-surface: oklch(from var(--neutral-subtle) l c h / 50%);
   --neutral-surface-foreground: color-mix(in oklch, var(--neutral-strong) 80%, var(--neutral-subtle));
+  --neutral-surface-foreground-secondary: color-mix(in oklch, var(--neutral-strong) 65%, var(--neutral-subtle));
+  --neutral-surface-foreground-muted: color-mix(in oklch, var(--neutral-strong) 50%, var(--neutral-subtle));
   --neutral-surface-border: oklch(from var(--neutral-strong) l c h / 40%);
 
   /* zinc */
@@ -642,10 +782,14 @@
   --zinc-950: oklch(0.141 0.005 285.823);
   --zinc-strong: var(--zinc-600);
   --zinc-strong-foreground: oklch(0.985 0 0);
+  --zinc-strong-foreground-secondary: color-mix(in oklch, var(--zinc-strong-foreground) 80%, var(--zinc-strong));
+  --zinc-strong-foreground-muted: color-mix(in oklch, var(--zinc-strong-foreground) 60%, var(--zinc-strong));
   --zinc-strong-hover: oklch(from var(--zinc-strong) clamp(0, calc(l - 0.06), 1) c h);
   --zinc-strong-disabled: var(--zinc-300);
   --zinc-subtle: var(--zinc-200);
   --zinc-subtle-foreground: var(--zinc-800);
+  --zinc-subtle-foreground-secondary: color-mix(in oklch, var(--zinc-subtle-foreground) 80%, var(--zinc-subtle));
+  --zinc-subtle-foreground-muted: color-mix(in oklch, var(--zinc-subtle-foreground) 60%, var(--zinc-subtle));
   --zinc-subtle-pressed: var(--zinc-400);
   --zinc-subtle-hover: var(--zinc-300);
   --zinc-subtle-disabled: color-mix(in oklab, var(--zinc-subtle) 50%, transparent);
@@ -653,9 +797,12 @@
   --zinc-plain-border: oklch(from var(--zinc-strong) l c h / 40%);
   --zinc-plain-border-disabled: var(--zinc-400);
   --zinc-plain-foreground-disabled: var(--zinc-500);
-  --zinc-plain-foreground-muted: var(--zinc-600);
+  --zinc-plain-foreground-secondary: color-mix(in oklch, var(--zinc-plain-foreground) 80%, transparent);
+  --zinc-plain-foreground-muted: color-mix(in oklch, var(--zinc-plain-foreground) 60%, transparent);
   --zinc-surface: oklch(from var(--zinc-subtle) l c h / 50%);
   --zinc-surface-foreground: color-mix(in oklch, var(--zinc-strong) 80%, var(--zinc-subtle));
+  --zinc-surface-foreground-secondary: color-mix(in oklch, var(--zinc-strong) 65%, var(--zinc-subtle));
+  --zinc-surface-foreground-muted: color-mix(in oklch, var(--zinc-strong) 50%, var(--zinc-subtle));
   --zinc-surface-border: oklch(from var(--zinc-strong) l c h / 40%);
 
   /* stone */
@@ -672,10 +819,14 @@
   --stone-950: oklch(0.147 0.004 49.25);
   --stone-strong: var(--stone-600);
   --stone-strong-foreground: oklch(0.985 0 0);
+  --stone-strong-foreground-secondary: color-mix(in oklch, var(--stone-strong-foreground) 80%, var(--stone-strong));
+  --stone-strong-foreground-muted: color-mix(in oklch, var(--stone-strong-foreground) 60%, var(--stone-strong));
   --stone-strong-hover: oklch(from var(--stone-strong) clamp(0, calc(l - 0.06), 1) c h);
   --stone-strong-disabled: var(--stone-300);
   --stone-subtle: var(--stone-200);
   --stone-subtle-foreground: var(--stone-800);
+  --stone-subtle-foreground-secondary: color-mix(in oklch, var(--stone-subtle-foreground) 80%, var(--stone-subtle));
+  --stone-subtle-foreground-muted: color-mix(in oklch, var(--stone-subtle-foreground) 60%, var(--stone-subtle));
   --stone-subtle-pressed: var(--stone-400);
   --stone-subtle-hover: var(--stone-300);
   --stone-subtle-disabled: color-mix(in oklab, var(--stone-subtle) 50%, transparent);
@@ -683,9 +834,12 @@
   --stone-plain-border: oklch(from var(--stone-strong) l c h / 40%);
   --stone-plain-border-disabled: var(--stone-400);
   --stone-plain-foreground-disabled: var(--stone-500);
-  --stone-plain-foreground-muted: var(--stone-600);
+  --stone-plain-foreground-secondary: color-mix(in oklch, var(--stone-plain-foreground) 80%, transparent);
+  --stone-plain-foreground-muted: color-mix(in oklch, var(--stone-plain-foreground) 60%, transparent);
   --stone-surface: oklch(from var(--stone-subtle) l c h / 50%);
   --stone-surface-foreground: color-mix(in oklch, var(--stone-strong) 80%, var(--stone-subtle));
+  --stone-surface-foreground-secondary: color-mix(in oklch, var(--stone-strong) 65%, var(--stone-subtle));
+  --stone-surface-foreground-muted: color-mix(in oklch, var(--stone-strong) 50%, var(--stone-subtle));
   --stone-surface-border: oklch(from var(--stone-strong) l c h / 40%);
 
   /* mauve */
@@ -702,10 +856,14 @@
   --mauve-950: oklch(0.145 0.008 326);
   --mauve-strong: var(--mauve-600);
   --mauve-strong-foreground: oklch(0.985 0 0);
+  --mauve-strong-foreground-secondary: color-mix(in oklch, var(--mauve-strong-foreground) 80%, var(--mauve-strong));
+  --mauve-strong-foreground-muted: color-mix(in oklch, var(--mauve-strong-foreground) 60%, var(--mauve-strong));
   --mauve-strong-hover: oklch(from var(--mauve-strong) clamp(0, calc(l - 0.06), 1) c h);
   --mauve-strong-disabled: var(--mauve-300);
   --mauve-subtle: var(--mauve-200);
   --mauve-subtle-foreground: var(--mauve-800);
+  --mauve-subtle-foreground-secondary: color-mix(in oklch, var(--mauve-subtle-foreground) 80%, var(--mauve-subtle));
+  --mauve-subtle-foreground-muted: color-mix(in oklch, var(--mauve-subtle-foreground) 60%, var(--mauve-subtle));
   --mauve-subtle-pressed: var(--mauve-400);
   --mauve-subtle-hover: var(--mauve-300);
   --mauve-subtle-disabled: color-mix(in oklab, var(--mauve-subtle) 50%, transparent);
@@ -713,9 +871,12 @@
   --mauve-plain-border: oklch(from var(--mauve-strong) l c h / 40%);
   --mauve-plain-border-disabled: var(--mauve-400);
   --mauve-plain-foreground-disabled: var(--mauve-500);
-  --mauve-plain-foreground-muted: var(--mauve-600);
+  --mauve-plain-foreground-secondary: color-mix(in oklch, var(--mauve-plain-foreground) 80%, transparent);
+  --mauve-plain-foreground-muted: color-mix(in oklch, var(--mauve-plain-foreground) 60%, transparent);
   --mauve-surface: oklch(from var(--mauve-subtle) l c h / 50%);
   --mauve-surface-foreground: color-mix(in oklch, var(--mauve-strong) 80%, var(--mauve-subtle));
+  --mauve-surface-foreground-secondary: color-mix(in oklch, var(--mauve-strong) 65%, var(--mauve-subtle));
+  --mauve-surface-foreground-muted: color-mix(in oklch, var(--mauve-strong) 50%, var(--mauve-subtle));
   --mauve-surface-border: oklch(from var(--mauve-strong) l c h / 40%);
 
   /* olive */
@@ -732,10 +893,14 @@
   --olive-950: oklch(0.153 0.006 107.1);
   --olive-strong: var(--olive-600);
   --olive-strong-foreground: oklch(0.985 0 0);
+  --olive-strong-foreground-secondary: color-mix(in oklch, var(--olive-strong-foreground) 80%, var(--olive-strong));
+  --olive-strong-foreground-muted: color-mix(in oklch, var(--olive-strong-foreground) 60%, var(--olive-strong));
   --olive-strong-hover: oklch(from var(--olive-strong) clamp(0, calc(l - 0.06), 1) c h);
   --olive-strong-disabled: var(--olive-300);
   --olive-subtle: var(--olive-200);
   --olive-subtle-foreground: var(--olive-800);
+  --olive-subtle-foreground-secondary: color-mix(in oklch, var(--olive-subtle-foreground) 80%, var(--olive-subtle));
+  --olive-subtle-foreground-muted: color-mix(in oklch, var(--olive-subtle-foreground) 60%, var(--olive-subtle));
   --olive-subtle-pressed: var(--olive-400);
   --olive-subtle-hover: var(--olive-300);
   --olive-subtle-disabled: color-mix(in oklab, var(--olive-subtle) 50%, transparent);
@@ -743,9 +908,12 @@
   --olive-plain-border: oklch(from var(--olive-strong) l c h / 40%);
   --olive-plain-border-disabled: var(--olive-400);
   --olive-plain-foreground-disabled: var(--olive-500);
-  --olive-plain-foreground-muted: var(--olive-600);
+  --olive-plain-foreground-secondary: color-mix(in oklch, var(--olive-plain-foreground) 80%, transparent);
+  --olive-plain-foreground-muted: color-mix(in oklch, var(--olive-plain-foreground) 60%, transparent);
   --olive-surface: oklch(from var(--olive-subtle) l c h / 50%);
   --olive-surface-foreground: color-mix(in oklch, var(--olive-strong) 80%, var(--olive-subtle));
+  --olive-surface-foreground-secondary: color-mix(in oklch, var(--olive-strong) 65%, var(--olive-subtle));
+  --olive-surface-foreground-muted: color-mix(in oklch, var(--olive-strong) 50%, var(--olive-subtle));
   --olive-surface-border: oklch(from var(--olive-strong) l c h / 40%);
 
   /* mist */
@@ -762,10 +930,14 @@
   --mist-950: oklch(0.148 0.004 228.8);
   --mist-strong: var(--mist-600);
   --mist-strong-foreground: oklch(0.985 0 0);
+  --mist-strong-foreground-secondary: color-mix(in oklch, var(--mist-strong-foreground) 80%, var(--mist-strong));
+  --mist-strong-foreground-muted: color-mix(in oklch, var(--mist-strong-foreground) 60%, var(--mist-strong));
   --mist-strong-hover: oklch(from var(--mist-strong) clamp(0, calc(l - 0.06), 1) c h);
   --mist-strong-disabled: var(--mist-300);
   --mist-subtle: var(--mist-200);
   --mist-subtle-foreground: var(--mist-800);
+  --mist-subtle-foreground-secondary: color-mix(in oklch, var(--mist-subtle-foreground) 80%, var(--mist-subtle));
+  --mist-subtle-foreground-muted: color-mix(in oklch, var(--mist-subtle-foreground) 60%, var(--mist-subtle));
   --mist-subtle-pressed: var(--mist-400);
   --mist-subtle-hover: var(--mist-300);
   --mist-subtle-disabled: color-mix(in oklab, var(--mist-subtle) 50%, transparent);
@@ -773,9 +945,12 @@
   --mist-plain-border: oklch(from var(--mist-strong) l c h / 40%);
   --mist-plain-border-disabled: var(--mist-400);
   --mist-plain-foreground-disabled: var(--mist-500);
-  --mist-plain-foreground-muted: var(--mist-600);
+  --mist-plain-foreground-secondary: color-mix(in oklch, var(--mist-plain-foreground) 80%, transparent);
+  --mist-plain-foreground-muted: color-mix(in oklch, var(--mist-plain-foreground) 60%, transparent);
   --mist-surface: oklch(from var(--mist-subtle) l c h / 50%);
   --mist-surface-foreground: color-mix(in oklch, var(--mist-strong) 80%, var(--mist-subtle));
+  --mist-surface-foreground-secondary: color-mix(in oklch, var(--mist-strong) 65%, var(--mist-subtle));
+  --mist-surface-foreground-muted: color-mix(in oklch, var(--mist-strong) 50%, var(--mist-subtle));
   --mist-surface-border: oklch(from var(--mist-strong) l c h / 40%);
 
   /* taupe */
@@ -792,10 +967,14 @@
   --taupe-950: oklch(0.147 0.004 49.3);
   --taupe-strong: var(--taupe-600);
   --taupe-strong-foreground: oklch(0.985 0 0);
+  --taupe-strong-foreground-secondary: color-mix(in oklch, var(--taupe-strong-foreground) 80%, var(--taupe-strong));
+  --taupe-strong-foreground-muted: color-mix(in oklch, var(--taupe-strong-foreground) 60%, var(--taupe-strong));
   --taupe-strong-hover: oklch(from var(--taupe-strong) clamp(0, calc(l - 0.06), 1) c h);
   --taupe-strong-disabled: var(--taupe-300);
   --taupe-subtle: var(--taupe-200);
   --taupe-subtle-foreground: var(--taupe-800);
+  --taupe-subtle-foreground-secondary: color-mix(in oklch, var(--taupe-subtle-foreground) 80%, var(--taupe-subtle));
+  --taupe-subtle-foreground-muted: color-mix(in oklch, var(--taupe-subtle-foreground) 60%, var(--taupe-subtle));
   --taupe-subtle-pressed: var(--taupe-400);
   --taupe-subtle-hover: var(--taupe-300);
   --taupe-subtle-disabled: color-mix(in oklab, var(--taupe-subtle) 50%, transparent);
@@ -803,9 +982,12 @@
   --taupe-plain-border: oklch(from var(--taupe-strong) l c h / 40%);
   --taupe-plain-border-disabled: var(--taupe-400);
   --taupe-plain-foreground-disabled: var(--taupe-500);
-  --taupe-plain-foreground-muted: var(--taupe-600);
+  --taupe-plain-foreground-secondary: color-mix(in oklch, var(--taupe-plain-foreground) 80%, transparent);
+  --taupe-plain-foreground-muted: color-mix(in oklch, var(--taupe-plain-foreground) 60%, transparent);
   --taupe-surface: oklch(from var(--taupe-subtle) l c h / 50%);
   --taupe-surface-foreground: color-mix(in oklch, var(--taupe-strong) 80%, var(--taupe-subtle));
+  --taupe-surface-foreground-secondary: color-mix(in oklch, var(--taupe-strong) 65%, var(--taupe-subtle));
+  --taupe-surface-foreground-muted: color-mix(in oklch, var(--taupe-strong) 50%, var(--taupe-subtle));
   --taupe-surface-border: oklch(from var(--taupe-strong) l c h / 40%);
 }
 
@@ -813,10 +995,14 @@
   /* red */
   --red-strong: var(--red-400);
   --red-strong-foreground: var(--red-950);
+  --red-strong-foreground-secondary: color-mix(in oklch, var(--red-strong-foreground) 80%, var(--red-strong));
+  --red-strong-foreground-muted: color-mix(in oklch, var(--red-strong-foreground) 60%, var(--red-strong));
   --red-strong-hover: oklch(from var(--red-strong) clamp(0, calc(l + 0.05), 1) c h);
   --red-strong-disabled: var(--red-800);
   --red-subtle: var(--red-900);
   --red-subtle-foreground: var(--red-200);
+  --red-subtle-foreground-secondary: color-mix(in oklch, var(--red-subtle-foreground) 80%, var(--red-subtle));
+  --red-subtle-foreground-muted: color-mix(in oklch, var(--red-subtle-foreground) 60%, var(--red-subtle));
   --red-subtle-pressed: var(--red-700);
   --red-subtle-hover: var(--red-800);
   --red-subtle-disabled: color-mix(in oklab, var(--red-subtle) 50%, transparent);
@@ -824,18 +1010,25 @@
   --red-plain-border: oklch(from var(--red-strong) l c h / 40%);
   --red-plain-border-disabled: var(--red-700);
   --red-plain-foreground-disabled: var(--red-500);
-  --red-plain-foreground-muted: var(--red-400);
+  --red-plain-foreground-secondary: color-mix(in oklch, var(--red-plain-foreground) 80%, transparent);
+  --red-plain-foreground-muted: color-mix(in oklch, var(--red-plain-foreground) 60%, transparent);
   --red-surface: oklch(from var(--red-subtle) l c h / 50%);
   --red-surface-foreground: color-mix(in oklch, var(--red-strong) 80%, var(--red-subtle));
+  --red-surface-foreground-secondary: color-mix(in oklch, var(--red-strong) 65%, var(--red-subtle));
+  --red-surface-foreground-muted: color-mix(in oklch, var(--red-strong) 50%, var(--red-subtle));
   --red-surface-border: oklch(from var(--red-strong) l c h / 40%);
 
   /* orange */
   --orange-strong: var(--orange-400);
   --orange-strong-foreground: var(--orange-950);
+  --orange-strong-foreground-secondary: color-mix(in oklch, var(--orange-strong-foreground) 80%, var(--orange-strong));
+  --orange-strong-foreground-muted: color-mix(in oklch, var(--orange-strong-foreground) 60%, var(--orange-strong));
   --orange-strong-hover: oklch(from var(--orange-strong) clamp(0, calc(l + 0.05), 1) c h);
   --orange-strong-disabled: var(--orange-800);
   --orange-subtle: var(--orange-900);
   --orange-subtle-foreground: var(--orange-200);
+  --orange-subtle-foreground-secondary: color-mix(in oklch, var(--orange-subtle-foreground) 80%, var(--orange-subtle));
+  --orange-subtle-foreground-muted: color-mix(in oklch, var(--orange-subtle-foreground) 60%, var(--orange-subtle));
   --orange-subtle-pressed: var(--orange-700);
   --orange-subtle-hover: var(--orange-800);
   --orange-subtle-disabled: color-mix(in oklab, var(--orange-subtle) 50%, transparent);
@@ -843,18 +1036,25 @@
   --orange-plain-border: oklch(from var(--orange-strong) l c h / 40%);
   --orange-plain-border-disabled: var(--orange-700);
   --orange-plain-foreground-disabled: var(--orange-500);
-  --orange-plain-foreground-muted: var(--orange-400);
+  --orange-plain-foreground-secondary: color-mix(in oklch, var(--orange-plain-foreground) 80%, transparent);
+  --orange-plain-foreground-muted: color-mix(in oklch, var(--orange-plain-foreground) 60%, transparent);
   --orange-surface: oklch(from var(--orange-subtle) l c h / 50%);
   --orange-surface-foreground: color-mix(in oklch, var(--orange-strong) 80%, var(--orange-subtle));
+  --orange-surface-foreground-secondary: color-mix(in oklch, var(--orange-strong) 65%, var(--orange-subtle));
+  --orange-surface-foreground-muted: color-mix(in oklch, var(--orange-strong) 50%, var(--orange-subtle));
   --orange-surface-border: oklch(from var(--orange-strong) l c h / 40%);
 
   /* amber */
   --amber-strong: var(--amber-400);
   --amber-strong-foreground: var(--amber-950);
+  --amber-strong-foreground-secondary: color-mix(in oklch, var(--amber-strong-foreground) 80%, var(--amber-strong));
+  --amber-strong-foreground-muted: color-mix(in oklch, var(--amber-strong-foreground) 60%, var(--amber-strong));
   --amber-strong-hover: oklch(from var(--amber-strong) clamp(0, calc(l + 0.05), 1) c h);
   --amber-strong-disabled: var(--amber-800);
   --amber-subtle: var(--amber-900);
   --amber-subtle-foreground: var(--amber-200);
+  --amber-subtle-foreground-secondary: color-mix(in oklch, var(--amber-subtle-foreground) 80%, var(--amber-subtle));
+  --amber-subtle-foreground-muted: color-mix(in oklch, var(--amber-subtle-foreground) 60%, var(--amber-subtle));
   --amber-subtle-pressed: var(--amber-700);
   --amber-subtle-hover: var(--amber-800);
   --amber-subtle-disabled: color-mix(in oklab, var(--amber-subtle) 50%, transparent);
@@ -862,18 +1062,25 @@
   --amber-plain-border: oklch(from var(--amber-strong) l c h / 40%);
   --amber-plain-border-disabled: var(--amber-700);
   --amber-plain-foreground-disabled: var(--amber-500);
-  --amber-plain-foreground-muted: var(--amber-400);
+  --amber-plain-foreground-secondary: color-mix(in oklch, var(--amber-plain-foreground) 80%, transparent);
+  --amber-plain-foreground-muted: color-mix(in oklch, var(--amber-plain-foreground) 60%, transparent);
   --amber-surface: oklch(from var(--amber-subtle) l c h / 50%);
   --amber-surface-foreground: color-mix(in oklch, var(--amber-strong) 80%, var(--amber-subtle));
+  --amber-surface-foreground-secondary: color-mix(in oklch, var(--amber-strong) 65%, var(--amber-subtle));
+  --amber-surface-foreground-muted: color-mix(in oklch, var(--amber-strong) 50%, var(--amber-subtle));
   --amber-surface-border: oklch(from var(--amber-strong) l c h / 40%);
 
   /* yellow */
   --yellow-strong: var(--yellow-400);
   --yellow-strong-foreground: var(--yellow-950);
+  --yellow-strong-foreground-secondary: color-mix(in oklch, var(--yellow-strong-foreground) 80%, var(--yellow-strong));
+  --yellow-strong-foreground-muted: color-mix(in oklch, var(--yellow-strong-foreground) 60%, var(--yellow-strong));
   --yellow-strong-hover: oklch(from var(--yellow-strong) clamp(0, calc(l + 0.05), 1) c h);
   --yellow-strong-disabled: var(--yellow-800);
   --yellow-subtle: var(--yellow-900);
   --yellow-subtle-foreground: var(--yellow-200);
+  --yellow-subtle-foreground-secondary: color-mix(in oklch, var(--yellow-subtle-foreground) 80%, var(--yellow-subtle));
+  --yellow-subtle-foreground-muted: color-mix(in oklch, var(--yellow-subtle-foreground) 60%, var(--yellow-subtle));
   --yellow-subtle-pressed: var(--yellow-700);
   --yellow-subtle-hover: var(--yellow-800);
   --yellow-subtle-disabled: color-mix(in oklab, var(--yellow-subtle) 50%, transparent);
@@ -881,18 +1088,25 @@
   --yellow-plain-border: oklch(from var(--yellow-strong) l c h / 40%);
   --yellow-plain-border-disabled: var(--yellow-700);
   --yellow-plain-foreground-disabled: var(--yellow-500);
-  --yellow-plain-foreground-muted: var(--yellow-400);
+  --yellow-plain-foreground-secondary: color-mix(in oklch, var(--yellow-plain-foreground) 80%, transparent);
+  --yellow-plain-foreground-muted: color-mix(in oklch, var(--yellow-plain-foreground) 60%, transparent);
   --yellow-surface: oklch(from var(--yellow-subtle) l c h / 50%);
   --yellow-surface-foreground: color-mix(in oklch, var(--yellow-strong) 80%, var(--yellow-subtle));
+  --yellow-surface-foreground-secondary: color-mix(in oklch, var(--yellow-strong) 65%, var(--yellow-subtle));
+  --yellow-surface-foreground-muted: color-mix(in oklch, var(--yellow-strong) 50%, var(--yellow-subtle));
   --yellow-surface-border: oklch(from var(--yellow-strong) l c h / 40%);
 
   /* lime */
   --lime-strong: var(--lime-400);
   --lime-strong-foreground: var(--lime-950);
+  --lime-strong-foreground-secondary: color-mix(in oklch, var(--lime-strong-foreground) 80%, var(--lime-strong));
+  --lime-strong-foreground-muted: color-mix(in oklch, var(--lime-strong-foreground) 60%, var(--lime-strong));
   --lime-strong-hover: oklch(from var(--lime-strong) clamp(0, calc(l + 0.05), 1) c h);
   --lime-strong-disabled: var(--lime-800);
   --lime-subtle: var(--lime-900);
   --lime-subtle-foreground: var(--lime-200);
+  --lime-subtle-foreground-secondary: color-mix(in oklch, var(--lime-subtle-foreground) 80%, var(--lime-subtle));
+  --lime-subtle-foreground-muted: color-mix(in oklch, var(--lime-subtle-foreground) 60%, var(--lime-subtle));
   --lime-subtle-pressed: var(--lime-700);
   --lime-subtle-hover: var(--lime-800);
   --lime-subtle-disabled: color-mix(in oklab, var(--lime-subtle) 50%, transparent);
@@ -900,18 +1114,25 @@
   --lime-plain-border: oklch(from var(--lime-strong) l c h / 40%);
   --lime-plain-border-disabled: var(--lime-700);
   --lime-plain-foreground-disabled: var(--lime-500);
-  --lime-plain-foreground-muted: var(--lime-400);
+  --lime-plain-foreground-secondary: color-mix(in oklch, var(--lime-plain-foreground) 80%, transparent);
+  --lime-plain-foreground-muted: color-mix(in oklch, var(--lime-plain-foreground) 60%, transparent);
   --lime-surface: oklch(from var(--lime-subtle) l c h / 50%);
   --lime-surface-foreground: color-mix(in oklch, var(--lime-strong) 80%, var(--lime-subtle));
+  --lime-surface-foreground-secondary: color-mix(in oklch, var(--lime-strong) 65%, var(--lime-subtle));
+  --lime-surface-foreground-muted: color-mix(in oklch, var(--lime-strong) 50%, var(--lime-subtle));
   --lime-surface-border: oklch(from var(--lime-strong) l c h / 40%);
 
   /* green */
   --green-strong: var(--green-400);
   --green-strong-foreground: var(--green-950);
+  --green-strong-foreground-secondary: color-mix(in oklch, var(--green-strong-foreground) 80%, var(--green-strong));
+  --green-strong-foreground-muted: color-mix(in oklch, var(--green-strong-foreground) 60%, var(--green-strong));
   --green-strong-hover: oklch(from var(--green-strong) clamp(0, calc(l + 0.05), 1) c h);
   --green-strong-disabled: var(--green-800);
   --green-subtle: var(--green-900);
   --green-subtle-foreground: var(--green-200);
+  --green-subtle-foreground-secondary: color-mix(in oklch, var(--green-subtle-foreground) 80%, var(--green-subtle));
+  --green-subtle-foreground-muted: color-mix(in oklch, var(--green-subtle-foreground) 60%, var(--green-subtle));
   --green-subtle-pressed: var(--green-700);
   --green-subtle-hover: var(--green-800);
   --green-subtle-disabled: color-mix(in oklab, var(--green-subtle) 50%, transparent);
@@ -919,18 +1140,25 @@
   --green-plain-border: oklch(from var(--green-strong) l c h / 40%);
   --green-plain-border-disabled: var(--green-700);
   --green-plain-foreground-disabled: var(--green-500);
-  --green-plain-foreground-muted: var(--green-400);
+  --green-plain-foreground-secondary: color-mix(in oklch, var(--green-plain-foreground) 80%, transparent);
+  --green-plain-foreground-muted: color-mix(in oklch, var(--green-plain-foreground) 60%, transparent);
   --green-surface: oklch(from var(--green-subtle) l c h / 50%);
   --green-surface-foreground: color-mix(in oklch, var(--green-strong) 80%, var(--green-subtle));
+  --green-surface-foreground-secondary: color-mix(in oklch, var(--green-strong) 65%, var(--green-subtle));
+  --green-surface-foreground-muted: color-mix(in oklch, var(--green-strong) 50%, var(--green-subtle));
   --green-surface-border: oklch(from var(--green-strong) l c h / 40%);
 
   /* emerald */
   --emerald-strong: var(--emerald-400);
   --emerald-strong-foreground: var(--emerald-950);
+  --emerald-strong-foreground-secondary: color-mix(in oklch, var(--emerald-strong-foreground) 80%, var(--emerald-strong));
+  --emerald-strong-foreground-muted: color-mix(in oklch, var(--emerald-strong-foreground) 60%, var(--emerald-strong));
   --emerald-strong-hover: oklch(from var(--emerald-strong) clamp(0, calc(l + 0.05), 1) c h);
   --emerald-strong-disabled: var(--emerald-800);
   --emerald-subtle: var(--emerald-900);
   --emerald-subtle-foreground: var(--emerald-200);
+  --emerald-subtle-foreground-secondary: color-mix(in oklch, var(--emerald-subtle-foreground) 80%, var(--emerald-subtle));
+  --emerald-subtle-foreground-muted: color-mix(in oklch, var(--emerald-subtle-foreground) 60%, var(--emerald-subtle));
   --emerald-subtle-pressed: var(--emerald-700);
   --emerald-subtle-hover: var(--emerald-800);
   --emerald-subtle-disabled: color-mix(in oklab, var(--emerald-subtle) 50%, transparent);
@@ -938,18 +1166,25 @@
   --emerald-plain-border: oklch(from var(--emerald-strong) l c h / 40%);
   --emerald-plain-border-disabled: var(--emerald-700);
   --emerald-plain-foreground-disabled: var(--emerald-500);
-  --emerald-plain-foreground-muted: var(--emerald-400);
+  --emerald-plain-foreground-secondary: color-mix(in oklch, var(--emerald-plain-foreground) 80%, transparent);
+  --emerald-plain-foreground-muted: color-mix(in oklch, var(--emerald-plain-foreground) 60%, transparent);
   --emerald-surface: oklch(from var(--emerald-subtle) l c h / 50%);
   --emerald-surface-foreground: color-mix(in oklch, var(--emerald-strong) 80%, var(--emerald-subtle));
+  --emerald-surface-foreground-secondary: color-mix(in oklch, var(--emerald-strong) 65%, var(--emerald-subtle));
+  --emerald-surface-foreground-muted: color-mix(in oklch, var(--emerald-strong) 50%, var(--emerald-subtle));
   --emerald-surface-border: oklch(from var(--emerald-strong) l c h / 40%);
 
   /* teal */
   --teal-strong: oklch(0.78 0.12 166.5);
   --teal-strong-foreground: oklch(0.2 0.03 166);
+  --teal-strong-foreground-secondary: color-mix(in oklch, var(--teal-strong-foreground) 80%, var(--teal-strong));
+  --teal-strong-foreground-muted: color-mix(in oklch, var(--teal-strong-foreground) 60%, var(--teal-strong));
   --teal-strong-hover: oklch(from var(--teal-strong) clamp(0, calc(l + 0.05), 1) c h);
   --teal-strong-disabled: var(--teal-800);
   --teal-subtle: oklch(0.33 0.045 166.5);
   --teal-subtle-foreground: oklch(0.88 0.06 166.5);
+  --teal-subtle-foreground-secondary: color-mix(in oklch, var(--teal-subtle-foreground) 80%, var(--teal-subtle));
+  --teal-subtle-foreground-muted: color-mix(in oklch, var(--teal-subtle-foreground) 60%, var(--teal-subtle));
   --teal-subtle-pressed: var(--teal-700);
   --teal-subtle-hover: var(--teal-800);
   --teal-subtle-disabled: color-mix(in oklab, var(--teal-subtle) 50%, transparent);
@@ -957,18 +1192,25 @@
   --teal-plain-border: oklch(from var(--teal-strong) l c h / 40%);
   --teal-plain-border-disabled: var(--teal-700);
   --teal-plain-foreground-disabled: var(--teal-500);
-  --teal-plain-foreground-muted: var(--teal-400);
+  --teal-plain-foreground-secondary: color-mix(in oklch, var(--teal-plain-foreground) 80%, transparent);
+  --teal-plain-foreground-muted: color-mix(in oklch, var(--teal-plain-foreground) 60%, transparent);
   --teal-surface: oklch(from var(--teal-subtle) l c h / 50%);
   --teal-surface-foreground: color-mix(in oklch, var(--teal-strong) 80%, var(--teal-subtle));
+  --teal-surface-foreground-secondary: color-mix(in oklch, var(--teal-strong) 65%, var(--teal-subtle));
+  --teal-surface-foreground-muted: color-mix(in oklch, var(--teal-strong) 50%, var(--teal-subtle));
   --teal-surface-border: oklch(from var(--teal-strong) l c h / 40%);
 
   /* cyan */
   --cyan-strong: var(--cyan-400);
   --cyan-strong-foreground: var(--cyan-950);
+  --cyan-strong-foreground-secondary: color-mix(in oklch, var(--cyan-strong-foreground) 80%, var(--cyan-strong));
+  --cyan-strong-foreground-muted: color-mix(in oklch, var(--cyan-strong-foreground) 60%, var(--cyan-strong));
   --cyan-strong-hover: oklch(from var(--cyan-strong) clamp(0, calc(l + 0.05), 1) c h);
   --cyan-strong-disabled: var(--cyan-800);
   --cyan-subtle: var(--cyan-900);
   --cyan-subtle-foreground: var(--cyan-200);
+  --cyan-subtle-foreground-secondary: color-mix(in oklch, var(--cyan-subtle-foreground) 80%, var(--cyan-subtle));
+  --cyan-subtle-foreground-muted: color-mix(in oklch, var(--cyan-subtle-foreground) 60%, var(--cyan-subtle));
   --cyan-subtle-pressed: var(--cyan-700);
   --cyan-subtle-hover: var(--cyan-800);
   --cyan-subtle-disabled: color-mix(in oklab, var(--cyan-subtle) 50%, transparent);
@@ -976,18 +1218,25 @@
   --cyan-plain-border: oklch(from var(--cyan-strong) l c h / 40%);
   --cyan-plain-border-disabled: var(--cyan-700);
   --cyan-plain-foreground-disabled: var(--cyan-500);
-  --cyan-plain-foreground-muted: var(--cyan-400);
+  --cyan-plain-foreground-secondary: color-mix(in oklch, var(--cyan-plain-foreground) 80%, transparent);
+  --cyan-plain-foreground-muted: color-mix(in oklch, var(--cyan-plain-foreground) 60%, transparent);
   --cyan-surface: oklch(from var(--cyan-subtle) l c h / 50%);
   --cyan-surface-foreground: color-mix(in oklch, var(--cyan-strong) 80%, var(--cyan-subtle));
+  --cyan-surface-foreground-secondary: color-mix(in oklch, var(--cyan-strong) 65%, var(--cyan-subtle));
+  --cyan-surface-foreground-muted: color-mix(in oklch, var(--cyan-strong) 50%, var(--cyan-subtle));
   --cyan-surface-border: oklch(from var(--cyan-strong) l c h / 40%);
 
   /* sky */
   --sky-strong: var(--sky-400);
   --sky-strong-foreground: var(--sky-950);
+  --sky-strong-foreground-secondary: color-mix(in oklch, var(--sky-strong-foreground) 80%, var(--sky-strong));
+  --sky-strong-foreground-muted: color-mix(in oklch, var(--sky-strong-foreground) 60%, var(--sky-strong));
   --sky-strong-hover: oklch(from var(--sky-strong) clamp(0, calc(l + 0.05), 1) c h);
   --sky-strong-disabled: var(--sky-800);
   --sky-subtle: var(--sky-900);
   --sky-subtle-foreground: var(--sky-200);
+  --sky-subtle-foreground-secondary: color-mix(in oklch, var(--sky-subtle-foreground) 80%, var(--sky-subtle));
+  --sky-subtle-foreground-muted: color-mix(in oklch, var(--sky-subtle-foreground) 60%, var(--sky-subtle));
   --sky-subtle-pressed: var(--sky-700);
   --sky-subtle-hover: var(--sky-800);
   --sky-subtle-disabled: color-mix(in oklab, var(--sky-subtle) 50%, transparent);
@@ -995,18 +1244,25 @@
   --sky-plain-border: oklch(from var(--sky-strong) l c h / 40%);
   --sky-plain-border-disabled: var(--sky-700);
   --sky-plain-foreground-disabled: var(--sky-500);
-  --sky-plain-foreground-muted: var(--sky-400);
+  --sky-plain-foreground-secondary: color-mix(in oklch, var(--sky-plain-foreground) 80%, transparent);
+  --sky-plain-foreground-muted: color-mix(in oklch, var(--sky-plain-foreground) 60%, transparent);
   --sky-surface: oklch(from var(--sky-subtle) l c h / 50%);
   --sky-surface-foreground: color-mix(in oklch, var(--sky-strong) 80%, var(--sky-subtle));
+  --sky-surface-foreground-secondary: color-mix(in oklch, var(--sky-strong) 65%, var(--sky-subtle));
+  --sky-surface-foreground-muted: color-mix(in oklch, var(--sky-strong) 50%, var(--sky-subtle));
   --sky-surface-border: oklch(from var(--sky-strong) l c h / 40%);
 
   /* blue */
   --blue-strong: var(--blue-400);
   --blue-strong-foreground: var(--blue-950);
+  --blue-strong-foreground-secondary: color-mix(in oklch, var(--blue-strong-foreground) 80%, var(--blue-strong));
+  --blue-strong-foreground-muted: color-mix(in oklch, var(--blue-strong-foreground) 60%, var(--blue-strong));
   --blue-strong-hover: oklch(from var(--blue-strong) clamp(0, calc(l + 0.05), 1) c h);
   --blue-strong-disabled: var(--blue-800);
   --blue-subtle: var(--blue-900);
   --blue-subtle-foreground: var(--blue-200);
+  --blue-subtle-foreground-secondary: color-mix(in oklch, var(--blue-subtle-foreground) 80%, var(--blue-subtle));
+  --blue-subtle-foreground-muted: color-mix(in oklch, var(--blue-subtle-foreground) 60%, var(--blue-subtle));
   --blue-subtle-pressed: var(--blue-700);
   --blue-subtle-hover: var(--blue-800);
   --blue-subtle-disabled: color-mix(in oklab, var(--blue-subtle) 50%, transparent);
@@ -1014,18 +1270,25 @@
   --blue-plain-border: oklch(from var(--blue-strong) l c h / 40%);
   --blue-plain-border-disabled: var(--blue-700);
   --blue-plain-foreground-disabled: var(--blue-500);
-  --blue-plain-foreground-muted: var(--blue-400);
+  --blue-plain-foreground-secondary: color-mix(in oklch, var(--blue-plain-foreground) 80%, transparent);
+  --blue-plain-foreground-muted: color-mix(in oklch, var(--blue-plain-foreground) 60%, transparent);
   --blue-surface: oklch(from var(--blue-subtle) l c h / 50%);
   --blue-surface-foreground: color-mix(in oklch, var(--blue-strong) 80%, var(--blue-subtle));
+  --blue-surface-foreground-secondary: color-mix(in oklch, var(--blue-strong) 65%, var(--blue-subtle));
+  --blue-surface-foreground-muted: color-mix(in oklch, var(--blue-strong) 50%, var(--blue-subtle));
   --blue-surface-border: oklch(from var(--blue-strong) l c h / 40%);
 
   /* indigo */
   --indigo-strong: var(--indigo-400);
   --indigo-strong-foreground: var(--indigo-950);
+  --indigo-strong-foreground-secondary: color-mix(in oklch, var(--indigo-strong-foreground) 80%, var(--indigo-strong));
+  --indigo-strong-foreground-muted: color-mix(in oklch, var(--indigo-strong-foreground) 60%, var(--indigo-strong));
   --indigo-strong-hover: oklch(from var(--indigo-strong) clamp(0, calc(l + 0.05), 1) c h);
   --indigo-strong-disabled: var(--indigo-800);
   --indigo-subtle: var(--indigo-900);
   --indigo-subtle-foreground: var(--indigo-200);
+  --indigo-subtle-foreground-secondary: color-mix(in oklch, var(--indigo-subtle-foreground) 80%, var(--indigo-subtle));
+  --indigo-subtle-foreground-muted: color-mix(in oklch, var(--indigo-subtle-foreground) 60%, var(--indigo-subtle));
   --indigo-subtle-pressed: var(--indigo-700);
   --indigo-subtle-hover: var(--indigo-800);
   --indigo-subtle-disabled: color-mix(in oklab, var(--indigo-subtle) 50%, transparent);
@@ -1033,18 +1296,25 @@
   --indigo-plain-border: oklch(from var(--indigo-strong) l c h / 40%);
   --indigo-plain-border-disabled: var(--indigo-700);
   --indigo-plain-foreground-disabled: var(--indigo-500);
-  --indigo-plain-foreground-muted: var(--indigo-400);
+  --indigo-plain-foreground-secondary: color-mix(in oklch, var(--indigo-plain-foreground) 80%, transparent);
+  --indigo-plain-foreground-muted: color-mix(in oklch, var(--indigo-plain-foreground) 60%, transparent);
   --indigo-surface: oklch(from var(--indigo-subtle) l c h / 50%);
   --indigo-surface-foreground: color-mix(in oklch, var(--indigo-strong) 80%, var(--indigo-subtle));
+  --indigo-surface-foreground-secondary: color-mix(in oklch, var(--indigo-strong) 65%, var(--indigo-subtle));
+  --indigo-surface-foreground-muted: color-mix(in oklch, var(--indigo-strong) 50%, var(--indigo-subtle));
   --indigo-surface-border: oklch(from var(--indigo-strong) l c h / 40%);
 
   /* violet */
   --violet-strong: var(--violet-400);
   --violet-strong-foreground: var(--violet-950);
+  --violet-strong-foreground-secondary: color-mix(in oklch, var(--violet-strong-foreground) 80%, var(--violet-strong));
+  --violet-strong-foreground-muted: color-mix(in oklch, var(--violet-strong-foreground) 60%, var(--violet-strong));
   --violet-strong-hover: oklch(from var(--violet-strong) clamp(0, calc(l + 0.05), 1) c h);
   --violet-strong-disabled: var(--violet-800);
   --violet-subtle: var(--violet-900);
   --violet-subtle-foreground: var(--violet-200);
+  --violet-subtle-foreground-secondary: color-mix(in oklch, var(--violet-subtle-foreground) 80%, var(--violet-subtle));
+  --violet-subtle-foreground-muted: color-mix(in oklch, var(--violet-subtle-foreground) 60%, var(--violet-subtle));
   --violet-subtle-pressed: var(--violet-700);
   --violet-subtle-hover: var(--violet-800);
   --violet-subtle-disabled: color-mix(in oklab, var(--violet-subtle) 50%, transparent);
@@ -1052,18 +1322,25 @@
   --violet-plain-border: oklch(from var(--violet-strong) l c h / 40%);
   --violet-plain-border-disabled: var(--violet-700);
   --violet-plain-foreground-disabled: var(--violet-500);
-  --violet-plain-foreground-muted: var(--violet-400);
+  --violet-plain-foreground-secondary: color-mix(in oklch, var(--violet-plain-foreground) 80%, transparent);
+  --violet-plain-foreground-muted: color-mix(in oklch, var(--violet-plain-foreground) 60%, transparent);
   --violet-surface: oklch(from var(--violet-subtle) l c h / 50%);
   --violet-surface-foreground: color-mix(in oklch, var(--violet-strong) 80%, var(--violet-subtle));
+  --violet-surface-foreground-secondary: color-mix(in oklch, var(--violet-strong) 65%, var(--violet-subtle));
+  --violet-surface-foreground-muted: color-mix(in oklch, var(--violet-strong) 50%, var(--violet-subtle));
   --violet-surface-border: oklch(from var(--violet-strong) l c h / 40%);
 
   /* purple */
   --purple-strong: var(--purple-400);
   --purple-strong-foreground: var(--purple-950);
+  --purple-strong-foreground-secondary: color-mix(in oklch, var(--purple-strong-foreground) 80%, var(--purple-strong));
+  --purple-strong-foreground-muted: color-mix(in oklch, var(--purple-strong-foreground) 60%, var(--purple-strong));
   --purple-strong-hover: oklch(from var(--purple-strong) clamp(0, calc(l + 0.05), 1) c h);
   --purple-strong-disabled: var(--purple-800);
   --purple-subtle: var(--purple-900);
   --purple-subtle-foreground: var(--purple-200);
+  --purple-subtle-foreground-secondary: color-mix(in oklch, var(--purple-subtle-foreground) 80%, var(--purple-subtle));
+  --purple-subtle-foreground-muted: color-mix(in oklch, var(--purple-subtle-foreground) 60%, var(--purple-subtle));
   --purple-subtle-pressed: var(--purple-700);
   --purple-subtle-hover: var(--purple-800);
   --purple-subtle-disabled: color-mix(in oklab, var(--purple-subtle) 50%, transparent);
@@ -1071,18 +1348,25 @@
   --purple-plain-border: oklch(from var(--purple-strong) l c h / 40%);
   --purple-plain-border-disabled: var(--purple-700);
   --purple-plain-foreground-disabled: var(--purple-500);
-  --purple-plain-foreground-muted: var(--purple-400);
+  --purple-plain-foreground-secondary: color-mix(in oklch, var(--purple-plain-foreground) 80%, transparent);
+  --purple-plain-foreground-muted: color-mix(in oklch, var(--purple-plain-foreground) 60%, transparent);
   --purple-surface: oklch(from var(--purple-subtle) l c h / 50%);
   --purple-surface-foreground: color-mix(in oklch, var(--purple-strong) 80%, var(--purple-subtle));
+  --purple-surface-foreground-secondary: color-mix(in oklch, var(--purple-strong) 65%, var(--purple-subtle));
+  --purple-surface-foreground-muted: color-mix(in oklch, var(--purple-strong) 50%, var(--purple-subtle));
   --purple-surface-border: oklch(from var(--purple-strong) l c h / 40%);
 
   /* fuchsia */
   --fuchsia-strong: var(--fuchsia-400);
   --fuchsia-strong-foreground: var(--fuchsia-950);
+  --fuchsia-strong-foreground-secondary: color-mix(in oklch, var(--fuchsia-strong-foreground) 80%, var(--fuchsia-strong));
+  --fuchsia-strong-foreground-muted: color-mix(in oklch, var(--fuchsia-strong-foreground) 60%, var(--fuchsia-strong));
   --fuchsia-strong-hover: oklch(from var(--fuchsia-strong) clamp(0, calc(l + 0.05), 1) c h);
   --fuchsia-strong-disabled: var(--fuchsia-800);
   --fuchsia-subtle: var(--fuchsia-900);
   --fuchsia-subtle-foreground: var(--fuchsia-200);
+  --fuchsia-subtle-foreground-secondary: color-mix(in oklch, var(--fuchsia-subtle-foreground) 80%, var(--fuchsia-subtle));
+  --fuchsia-subtle-foreground-muted: color-mix(in oklch, var(--fuchsia-subtle-foreground) 60%, var(--fuchsia-subtle));
   --fuchsia-subtle-pressed: var(--fuchsia-700);
   --fuchsia-subtle-hover: var(--fuchsia-800);
   --fuchsia-subtle-disabled: color-mix(in oklab, var(--fuchsia-subtle) 50%, transparent);
@@ -1090,18 +1374,25 @@
   --fuchsia-plain-border: oklch(from var(--fuchsia-strong) l c h / 40%);
   --fuchsia-plain-border-disabled: var(--fuchsia-700);
   --fuchsia-plain-foreground-disabled: var(--fuchsia-500);
-  --fuchsia-plain-foreground-muted: var(--fuchsia-400);
+  --fuchsia-plain-foreground-secondary: color-mix(in oklch, var(--fuchsia-plain-foreground) 80%, transparent);
+  --fuchsia-plain-foreground-muted: color-mix(in oklch, var(--fuchsia-plain-foreground) 60%, transparent);
   --fuchsia-surface: oklch(from var(--fuchsia-subtle) l c h / 50%);
   --fuchsia-surface-foreground: color-mix(in oklch, var(--fuchsia-strong) 80%, var(--fuchsia-subtle));
+  --fuchsia-surface-foreground-secondary: color-mix(in oklch, var(--fuchsia-strong) 65%, var(--fuchsia-subtle));
+  --fuchsia-surface-foreground-muted: color-mix(in oklch, var(--fuchsia-strong) 50%, var(--fuchsia-subtle));
   --fuchsia-surface-border: oklch(from var(--fuchsia-strong) l c h / 40%);
 
   /* pink */
   --pink-strong: var(--pink-400);
   --pink-strong-foreground: var(--pink-950);
+  --pink-strong-foreground-secondary: color-mix(in oklch, var(--pink-strong-foreground) 80%, var(--pink-strong));
+  --pink-strong-foreground-muted: color-mix(in oklch, var(--pink-strong-foreground) 60%, var(--pink-strong));
   --pink-strong-hover: oklch(from var(--pink-strong) clamp(0, calc(l + 0.05), 1) c h);
   --pink-strong-disabled: var(--pink-800);
   --pink-subtle: var(--pink-900);
   --pink-subtle-foreground: var(--pink-200);
+  --pink-subtle-foreground-secondary: color-mix(in oklch, var(--pink-subtle-foreground) 80%, var(--pink-subtle));
+  --pink-subtle-foreground-muted: color-mix(in oklch, var(--pink-subtle-foreground) 60%, var(--pink-subtle));
   --pink-subtle-pressed: var(--pink-700);
   --pink-subtle-hover: var(--pink-800);
   --pink-subtle-disabled: color-mix(in oklab, var(--pink-subtle) 50%, transparent);
@@ -1109,18 +1400,25 @@
   --pink-plain-border: oklch(from var(--pink-strong) l c h / 40%);
   --pink-plain-border-disabled: var(--pink-700);
   --pink-plain-foreground-disabled: var(--pink-500);
-  --pink-plain-foreground-muted: var(--pink-400);
+  --pink-plain-foreground-secondary: color-mix(in oklch, var(--pink-plain-foreground) 80%, transparent);
+  --pink-plain-foreground-muted: color-mix(in oklch, var(--pink-plain-foreground) 60%, transparent);
   --pink-surface: oklch(from var(--pink-subtle) l c h / 50%);
   --pink-surface-foreground: color-mix(in oklch, var(--pink-strong) 80%, var(--pink-subtle));
+  --pink-surface-foreground-secondary: color-mix(in oklch, var(--pink-strong) 65%, var(--pink-subtle));
+  --pink-surface-foreground-muted: color-mix(in oklch, var(--pink-strong) 50%, var(--pink-subtle));
   --pink-surface-border: oklch(from var(--pink-strong) l c h / 40%);
 
   /* rose */
   --rose-strong: var(--rose-400);
   --rose-strong-foreground: var(--rose-950);
+  --rose-strong-foreground-secondary: color-mix(in oklch, var(--rose-strong-foreground) 80%, var(--rose-strong));
+  --rose-strong-foreground-muted: color-mix(in oklch, var(--rose-strong-foreground) 60%, var(--rose-strong));
   --rose-strong-hover: oklch(from var(--rose-strong) clamp(0, calc(l + 0.05), 1) c h);
   --rose-strong-disabled: var(--rose-800);
   --rose-subtle: var(--rose-900);
   --rose-subtle-foreground: var(--rose-200);
+  --rose-subtle-foreground-secondary: color-mix(in oklch, var(--rose-subtle-foreground) 80%, var(--rose-subtle));
+  --rose-subtle-foreground-muted: color-mix(in oklch, var(--rose-subtle-foreground) 60%, var(--rose-subtle));
   --rose-subtle-pressed: var(--rose-700);
   --rose-subtle-hover: var(--rose-800);
   --rose-subtle-disabled: color-mix(in oklab, var(--rose-subtle) 50%, transparent);
@@ -1128,18 +1426,25 @@
   --rose-plain-border: oklch(from var(--rose-strong) l c h / 40%);
   --rose-plain-border-disabled: var(--rose-700);
   --rose-plain-foreground-disabled: var(--rose-500);
-  --rose-plain-foreground-muted: var(--rose-400);
+  --rose-plain-foreground-secondary: color-mix(in oklch, var(--rose-plain-foreground) 80%, transparent);
+  --rose-plain-foreground-muted: color-mix(in oklch, var(--rose-plain-foreground) 60%, transparent);
   --rose-surface: oklch(from var(--rose-subtle) l c h / 50%);
   --rose-surface-foreground: color-mix(in oklch, var(--rose-strong) 80%, var(--rose-subtle));
+  --rose-surface-foreground-secondary: color-mix(in oklch, var(--rose-strong) 65%, var(--rose-subtle));
+  --rose-surface-foreground-muted: color-mix(in oklch, var(--rose-strong) 50%, var(--rose-subtle));
   --rose-surface-border: oklch(from var(--rose-strong) l c h / 40%);
 
   /* slate */
   --slate-strong: var(--slate-400);
   --slate-strong-foreground: var(--slate-950);
+  --slate-strong-foreground-secondary: color-mix(in oklch, var(--slate-strong-foreground) 80%, var(--slate-strong));
+  --slate-strong-foreground-muted: color-mix(in oklch, var(--slate-strong-foreground) 60%, var(--slate-strong));
   --slate-strong-hover: oklch(from var(--slate-strong) clamp(0, calc(l + 0.05), 1) c h);
   --slate-strong-disabled: var(--slate-800);
   --slate-subtle: var(--slate-800);
   --slate-subtle-foreground: var(--slate-200);
+  --slate-subtle-foreground-secondary: color-mix(in oklch, var(--slate-subtle-foreground) 80%, var(--slate-subtle));
+  --slate-subtle-foreground-muted: color-mix(in oklch, var(--slate-subtle-foreground) 60%, var(--slate-subtle));
   --slate-subtle-pressed: var(--slate-600);
   --slate-subtle-hover: var(--slate-700);
   --slate-subtle-disabled: color-mix(in oklab, var(--slate-subtle) 50%, transparent);
@@ -1147,18 +1452,25 @@
   --slate-plain-border: oklch(from var(--slate-strong) l c h / 40%);
   --slate-plain-border-disabled: var(--slate-700);
   --slate-plain-foreground-disabled: var(--slate-500);
-  --slate-plain-foreground-muted: var(--slate-400);
+  --slate-plain-foreground-secondary: color-mix(in oklch, var(--slate-plain-foreground) 80%, transparent);
+  --slate-plain-foreground-muted: color-mix(in oklch, var(--slate-plain-foreground) 60%, transparent);
   --slate-surface: oklch(from var(--slate-subtle) l c h / 50%);
   --slate-surface-foreground: color-mix(in oklch, var(--slate-strong) 80%, var(--slate-subtle));
+  --slate-surface-foreground-secondary: color-mix(in oklch, var(--slate-strong) 65%, var(--slate-subtle));
+  --slate-surface-foreground-muted: color-mix(in oklch, var(--slate-strong) 50%, var(--slate-subtle));
   --slate-surface-border: oklch(from var(--slate-strong) l c h / 40%);
 
   /* gray */
   --gray-strong: var(--gray-400);
   --gray-strong-foreground: var(--gray-950);
+  --gray-strong-foreground-secondary: color-mix(in oklch, var(--gray-strong-foreground) 80%, var(--gray-strong));
+  --gray-strong-foreground-muted: color-mix(in oklch, var(--gray-strong-foreground) 60%, var(--gray-strong));
   --gray-strong-hover: oklch(from var(--gray-strong) clamp(0, calc(l + 0.05), 1) c h);
   --gray-strong-disabled: var(--gray-800);
   --gray-subtle: var(--gray-800);
   --gray-subtle-foreground: var(--gray-200);
+  --gray-subtle-foreground-secondary: color-mix(in oklch, var(--gray-subtle-foreground) 80%, var(--gray-subtle));
+  --gray-subtle-foreground-muted: color-mix(in oklch, var(--gray-subtle-foreground) 60%, var(--gray-subtle));
   --gray-subtle-pressed: var(--gray-600);
   --gray-subtle-hover: var(--gray-700);
   --gray-subtle-disabled: color-mix(in oklab, var(--gray-subtle) 50%, transparent);
@@ -1166,18 +1478,25 @@
   --gray-plain-border: oklch(from var(--gray-strong) l c h / 40%);
   --gray-plain-border-disabled: var(--gray-700);
   --gray-plain-foreground-disabled: var(--gray-500);
-  --gray-plain-foreground-muted: var(--gray-400);
+  --gray-plain-foreground-secondary: color-mix(in oklch, var(--gray-plain-foreground) 80%, transparent);
+  --gray-plain-foreground-muted: color-mix(in oklch, var(--gray-plain-foreground) 60%, transparent);
   --gray-surface: oklch(from var(--gray-subtle) l c h / 50%);
   --gray-surface-foreground: color-mix(in oklch, var(--gray-strong) 80%, var(--gray-subtle));
+  --gray-surface-foreground-secondary: color-mix(in oklch, var(--gray-strong) 65%, var(--gray-subtle));
+  --gray-surface-foreground-muted: color-mix(in oklch, var(--gray-strong) 50%, var(--gray-subtle));
   --gray-surface-border: oklch(from var(--gray-strong) l c h / 40%);
 
   /* neutral */
   --neutral-strong: var(--neutral-400);
   --neutral-strong-foreground: var(--neutral-950);
+  --neutral-strong-foreground-secondary: color-mix(in oklch, var(--neutral-strong-foreground) 80%, var(--neutral-strong));
+  --neutral-strong-foreground-muted: color-mix(in oklch, var(--neutral-strong-foreground) 60%, var(--neutral-strong));
   --neutral-strong-hover: oklch(from var(--neutral-strong) clamp(0, calc(l + 0.05), 1) c h);
   --neutral-strong-disabled: var(--neutral-800);
   --neutral-subtle: var(--neutral-800);
   --neutral-subtle-foreground: var(--neutral-200);
+  --neutral-subtle-foreground-secondary: color-mix(in oklch, var(--neutral-subtle-foreground) 80%, var(--neutral-subtle));
+  --neutral-subtle-foreground-muted: color-mix(in oklch, var(--neutral-subtle-foreground) 60%, var(--neutral-subtle));
   --neutral-subtle-pressed: var(--neutral-600);
   --neutral-subtle-hover: var(--neutral-700);
   --neutral-subtle-disabled: color-mix(in oklab, var(--neutral-subtle) 50%, transparent);
@@ -1185,18 +1504,25 @@
   --neutral-plain-border: oklch(from var(--neutral-strong) l c h / 40%);
   --neutral-plain-border-disabled: var(--neutral-700);
   --neutral-plain-foreground-disabled: var(--neutral-500);
-  --neutral-plain-foreground-muted: var(--neutral-400);
+  --neutral-plain-foreground-secondary: color-mix(in oklch, var(--neutral-plain-foreground) 80%, transparent);
+  --neutral-plain-foreground-muted: color-mix(in oklch, var(--neutral-plain-foreground) 60%, transparent);
   --neutral-surface: oklch(from var(--neutral-subtle) l c h / 50%);
   --neutral-surface-foreground: color-mix(in oklch, var(--neutral-strong) 80%, var(--neutral-subtle));
+  --neutral-surface-foreground-secondary: color-mix(in oklch, var(--neutral-strong) 65%, var(--neutral-subtle));
+  --neutral-surface-foreground-muted: color-mix(in oklch, var(--neutral-strong) 50%, var(--neutral-subtle));
   --neutral-surface-border: oklch(from var(--neutral-strong) l c h / 40%);
 
   /* zinc */
   --zinc-strong: var(--zinc-400);
   --zinc-strong-foreground: var(--zinc-950);
+  --zinc-strong-foreground-secondary: color-mix(in oklch, var(--zinc-strong-foreground) 80%, var(--zinc-strong));
+  --zinc-strong-foreground-muted: color-mix(in oklch, var(--zinc-strong-foreground) 60%, var(--zinc-strong));
   --zinc-strong-hover: oklch(from var(--zinc-strong) clamp(0, calc(l + 0.05), 1) c h);
   --zinc-strong-disabled: var(--zinc-800);
   --zinc-subtle: var(--zinc-800);
   --zinc-subtle-foreground: var(--zinc-200);
+  --zinc-subtle-foreground-secondary: color-mix(in oklch, var(--zinc-subtle-foreground) 80%, var(--zinc-subtle));
+  --zinc-subtle-foreground-muted: color-mix(in oklch, var(--zinc-subtle-foreground) 60%, var(--zinc-subtle));
   --zinc-subtle-pressed: var(--zinc-600);
   --zinc-subtle-hover: var(--zinc-700);
   --zinc-subtle-disabled: color-mix(in oklab, var(--zinc-subtle) 50%, transparent);
@@ -1204,18 +1530,25 @@
   --zinc-plain-border: oklch(from var(--zinc-strong) l c h / 40%);
   --zinc-plain-border-disabled: var(--zinc-700);
   --zinc-plain-foreground-disabled: var(--zinc-500);
-  --zinc-plain-foreground-muted: var(--zinc-400);
+  --zinc-plain-foreground-secondary: color-mix(in oklch, var(--zinc-plain-foreground) 80%, transparent);
+  --zinc-plain-foreground-muted: color-mix(in oklch, var(--zinc-plain-foreground) 60%, transparent);
   --zinc-surface: oklch(from var(--zinc-subtle) l c h / 50%);
   --zinc-surface-foreground: color-mix(in oklch, var(--zinc-strong) 80%, var(--zinc-subtle));
+  --zinc-surface-foreground-secondary: color-mix(in oklch, var(--zinc-strong) 65%, var(--zinc-subtle));
+  --zinc-surface-foreground-muted: color-mix(in oklch, var(--zinc-strong) 50%, var(--zinc-subtle));
   --zinc-surface-border: oklch(from var(--zinc-strong) l c h / 40%);
 
   /* stone */
   --stone-strong: var(--stone-400);
   --stone-strong-foreground: var(--stone-950);
+  --stone-strong-foreground-secondary: color-mix(in oklch, var(--stone-strong-foreground) 80%, var(--stone-strong));
+  --stone-strong-foreground-muted: color-mix(in oklch, var(--stone-strong-foreground) 60%, var(--stone-strong));
   --stone-strong-hover: oklch(from var(--stone-strong) clamp(0, calc(l + 0.05), 1) c h);
   --stone-strong-disabled: var(--stone-800);
   --stone-subtle: var(--stone-800);
   --stone-subtle-foreground: var(--stone-200);
+  --stone-subtle-foreground-secondary: color-mix(in oklch, var(--stone-subtle-foreground) 80%, var(--stone-subtle));
+  --stone-subtle-foreground-muted: color-mix(in oklch, var(--stone-subtle-foreground) 60%, var(--stone-subtle));
   --stone-subtle-pressed: var(--stone-600);
   --stone-subtle-hover: var(--stone-700);
   --stone-subtle-disabled: color-mix(in oklab, var(--stone-subtle) 50%, transparent);
@@ -1223,18 +1556,25 @@
   --stone-plain-border: oklch(from var(--stone-strong) l c h / 40%);
   --stone-plain-border-disabled: var(--stone-700);
   --stone-plain-foreground-disabled: var(--stone-500);
-  --stone-plain-foreground-muted: var(--stone-400);
+  --stone-plain-foreground-secondary: color-mix(in oklch, var(--stone-plain-foreground) 80%, transparent);
+  --stone-plain-foreground-muted: color-mix(in oklch, var(--stone-plain-foreground) 60%, transparent);
   --stone-surface: oklch(from var(--stone-subtle) l c h / 50%);
   --stone-surface-foreground: color-mix(in oklch, var(--stone-strong) 80%, var(--stone-subtle));
+  --stone-surface-foreground-secondary: color-mix(in oklch, var(--stone-strong) 65%, var(--stone-subtle));
+  --stone-surface-foreground-muted: color-mix(in oklch, var(--stone-strong) 50%, var(--stone-subtle));
   --stone-surface-border: oklch(from var(--stone-strong) l c h / 40%);
 
   /* mauve */
   --mauve-strong: var(--mauve-400);
   --mauve-strong-foreground: var(--mauve-950);
+  --mauve-strong-foreground-secondary: color-mix(in oklch, var(--mauve-strong-foreground) 80%, var(--mauve-strong));
+  --mauve-strong-foreground-muted: color-mix(in oklch, var(--mauve-strong-foreground) 60%, var(--mauve-strong));
   --mauve-strong-hover: oklch(from var(--mauve-strong) clamp(0, calc(l + 0.05), 1) c h);
   --mauve-strong-disabled: var(--mauve-800);
   --mauve-subtle: var(--mauve-800);
   --mauve-subtle-foreground: var(--mauve-200);
+  --mauve-subtle-foreground-secondary: color-mix(in oklch, var(--mauve-subtle-foreground) 80%, var(--mauve-subtle));
+  --mauve-subtle-foreground-muted: color-mix(in oklch, var(--mauve-subtle-foreground) 60%, var(--mauve-subtle));
   --mauve-subtle-pressed: var(--mauve-600);
   --mauve-subtle-hover: var(--mauve-700);
   --mauve-subtle-disabled: color-mix(in oklab, var(--mauve-subtle) 50%, transparent);
@@ -1242,18 +1582,25 @@
   --mauve-plain-border: oklch(from var(--mauve-strong) l c h / 40%);
   --mauve-plain-border-disabled: var(--mauve-700);
   --mauve-plain-foreground-disabled: var(--mauve-500);
-  --mauve-plain-foreground-muted: var(--mauve-400);
+  --mauve-plain-foreground-secondary: color-mix(in oklch, var(--mauve-plain-foreground) 80%, transparent);
+  --mauve-plain-foreground-muted: color-mix(in oklch, var(--mauve-plain-foreground) 60%, transparent);
   --mauve-surface: oklch(from var(--mauve-subtle) l c h / 50%);
   --mauve-surface-foreground: color-mix(in oklch, var(--mauve-strong) 80%, var(--mauve-subtle));
+  --mauve-surface-foreground-secondary: color-mix(in oklch, var(--mauve-strong) 65%, var(--mauve-subtle));
+  --mauve-surface-foreground-muted: color-mix(in oklch, var(--mauve-strong) 50%, var(--mauve-subtle));
   --mauve-surface-border: oklch(from var(--mauve-strong) l c h / 40%);
 
   /* olive */
   --olive-strong: var(--olive-400);
   --olive-strong-foreground: var(--olive-950);
+  --olive-strong-foreground-secondary: color-mix(in oklch, var(--olive-strong-foreground) 80%, var(--olive-strong));
+  --olive-strong-foreground-muted: color-mix(in oklch, var(--olive-strong-foreground) 60%, var(--olive-strong));
   --olive-strong-hover: oklch(from var(--olive-strong) clamp(0, calc(l + 0.05), 1) c h);
   --olive-strong-disabled: var(--olive-800);
   --olive-subtle: var(--olive-800);
   --olive-subtle-foreground: var(--olive-200);
+  --olive-subtle-foreground-secondary: color-mix(in oklch, var(--olive-subtle-foreground) 80%, var(--olive-subtle));
+  --olive-subtle-foreground-muted: color-mix(in oklch, var(--olive-subtle-foreground) 60%, var(--olive-subtle));
   --olive-subtle-pressed: var(--olive-600);
   --olive-subtle-hover: var(--olive-700);
   --olive-subtle-disabled: color-mix(in oklab, var(--olive-subtle) 50%, transparent);
@@ -1261,18 +1608,25 @@
   --olive-plain-border: oklch(from var(--olive-strong) l c h / 40%);
   --olive-plain-border-disabled: var(--olive-700);
   --olive-plain-foreground-disabled: var(--olive-500);
-  --olive-plain-foreground-muted: var(--olive-400);
+  --olive-plain-foreground-secondary: color-mix(in oklch, var(--olive-plain-foreground) 80%, transparent);
+  --olive-plain-foreground-muted: color-mix(in oklch, var(--olive-plain-foreground) 60%, transparent);
   --olive-surface: oklch(from var(--olive-subtle) l c h / 50%);
   --olive-surface-foreground: color-mix(in oklch, var(--olive-strong) 80%, var(--olive-subtle));
+  --olive-surface-foreground-secondary: color-mix(in oklch, var(--olive-strong) 65%, var(--olive-subtle));
+  --olive-surface-foreground-muted: color-mix(in oklch, var(--olive-strong) 50%, var(--olive-subtle));
   --olive-surface-border: oklch(from var(--olive-strong) l c h / 40%);
 
   /* mist */
   --mist-strong: var(--mist-400);
   --mist-strong-foreground: var(--mist-950);
+  --mist-strong-foreground-secondary: color-mix(in oklch, var(--mist-strong-foreground) 80%, var(--mist-strong));
+  --mist-strong-foreground-muted: color-mix(in oklch, var(--mist-strong-foreground) 60%, var(--mist-strong));
   --mist-strong-hover: oklch(from var(--mist-strong) clamp(0, calc(l + 0.05), 1) c h);
   --mist-strong-disabled: var(--mist-800);
   --mist-subtle: var(--mist-800);
   --mist-subtle-foreground: var(--mist-200);
+  --mist-subtle-foreground-secondary: color-mix(in oklch, var(--mist-subtle-foreground) 80%, var(--mist-subtle));
+  --mist-subtle-foreground-muted: color-mix(in oklch, var(--mist-subtle-foreground) 60%, var(--mist-subtle));
   --mist-subtle-pressed: var(--mist-600);
   --mist-subtle-hover: var(--mist-700);
   --mist-subtle-disabled: color-mix(in oklab, var(--mist-subtle) 50%, transparent);
@@ -1280,18 +1634,25 @@
   --mist-plain-border: oklch(from var(--mist-strong) l c h / 40%);
   --mist-plain-border-disabled: var(--mist-700);
   --mist-plain-foreground-disabled: var(--mist-500);
-  --mist-plain-foreground-muted: var(--mist-400);
+  --mist-plain-foreground-secondary: color-mix(in oklch, var(--mist-plain-foreground) 80%, transparent);
+  --mist-plain-foreground-muted: color-mix(in oklch, var(--mist-plain-foreground) 60%, transparent);
   --mist-surface: oklch(from var(--mist-subtle) l c h / 50%);
   --mist-surface-foreground: color-mix(in oklch, var(--mist-strong) 80%, var(--mist-subtle));
+  --mist-surface-foreground-secondary: color-mix(in oklch, var(--mist-strong) 65%, var(--mist-subtle));
+  --mist-surface-foreground-muted: color-mix(in oklch, var(--mist-strong) 50%, var(--mist-subtle));
   --mist-surface-border: oklch(from var(--mist-strong) l c h / 40%);
 
   /* taupe */
   --taupe-strong: var(--taupe-400);
   --taupe-strong-foreground: var(--taupe-950);
+  --taupe-strong-foreground-secondary: color-mix(in oklch, var(--taupe-strong-foreground) 80%, var(--taupe-strong));
+  --taupe-strong-foreground-muted: color-mix(in oklch, var(--taupe-strong-foreground) 60%, var(--taupe-strong));
   --taupe-strong-hover: oklch(from var(--taupe-strong) clamp(0, calc(l + 0.05), 1) c h);
   --taupe-strong-disabled: var(--taupe-800);
   --taupe-subtle: var(--taupe-800);
   --taupe-subtle-foreground: var(--taupe-200);
+  --taupe-subtle-foreground-secondary: color-mix(in oklch, var(--taupe-subtle-foreground) 80%, var(--taupe-subtle));
+  --taupe-subtle-foreground-muted: color-mix(in oklch, var(--taupe-subtle-foreground) 60%, var(--taupe-subtle));
   --taupe-subtle-pressed: var(--taupe-600);
   --taupe-subtle-hover: var(--taupe-700);
   --taupe-subtle-disabled: color-mix(in oklab, var(--taupe-subtle) 50%, transparent);
@@ -1299,8 +1660,11 @@
   --taupe-plain-border: oklch(from var(--taupe-strong) l c h / 40%);
   --taupe-plain-border-disabled: var(--taupe-700);
   --taupe-plain-foreground-disabled: var(--taupe-500);
-  --taupe-plain-foreground-muted: var(--taupe-400);
+  --taupe-plain-foreground-secondary: color-mix(in oklch, var(--taupe-plain-foreground) 80%, transparent);
+  --taupe-plain-foreground-muted: color-mix(in oklch, var(--taupe-plain-foreground) 60%, transparent);
   --taupe-surface: oklch(from var(--taupe-subtle) l c h / 50%);
   --taupe-surface-foreground: color-mix(in oklch, var(--taupe-strong) 80%, var(--taupe-subtle));
+  --taupe-surface-foreground-secondary: color-mix(in oklch, var(--taupe-strong) 65%, var(--taupe-subtle));
+  --taupe-surface-foreground-muted: color-mix(in oklch, var(--taupe-strong) 50%, var(--taupe-subtle));
   --taupe-surface-border: oklch(from var(--taupe-strong) l c h / 40%);
 }

@@ -2,7 +2,8 @@
  * Base axis: data-appearance-base = a gray-family swatch id | omit (gray).
  * Rebinds the 11 base steps to that hue, so every surface, border, and text role retints with it.
  */
-:root[data-appearance-base='slate'] {
+:root[data-appearance-base='slate'],
+:root[data-appearance-base='slate'] .dark {
   --base-50: var(--slate-50);
   --base-100: var(--slate-100);
   --base-200: var(--slate-200);
@@ -14,9 +15,34 @@
   --base-800: var(--slate-800);
   --base-900: var(--slate-900);
   --base-950: var(--slate-950);
+  --base-strong: var(--slate-strong);
+  --base-strong-foreground: var(--slate-strong-foreground);
+  --base-strong-foreground-secondary: var(--slate-strong-foreground-secondary);
+  --base-strong-foreground-muted: var(--slate-strong-foreground-muted);
+  --base-strong-hover: var(--slate-strong-hover);
+  --base-strong-disabled: var(--slate-strong-disabled);
+  --base-subtle: var(--slate-subtle);
+  --base-subtle-foreground: var(--slate-subtle-foreground);
+  --base-subtle-foreground-secondary: var(--slate-subtle-foreground-secondary);
+  --base-subtle-foreground-muted: var(--slate-subtle-foreground-muted);
+  --base-subtle-pressed: var(--slate-subtle-pressed);
+  --base-subtle-hover: var(--slate-subtle-hover);
+  --base-subtle-disabled: var(--slate-subtle-disabled);
+  --base-plain-foreground: var(--slate-plain-foreground);
+  --base-plain-border: var(--slate-plain-border);
+  --base-plain-border-disabled: var(--slate-plain-border-disabled);
+  --base-plain-foreground-disabled: var(--slate-plain-foreground-disabled);
+  --base-plain-foreground-secondary: var(--slate-plain-foreground-secondary);
+  --base-plain-foreground-muted: var(--slate-plain-foreground-muted);
+  --base-surface: var(--slate-surface);
+  --base-surface-foreground: var(--slate-surface-foreground);
+  --base-surface-foreground-secondary: var(--slate-surface-foreground-secondary);
+  --base-surface-foreground-muted: var(--slate-surface-foreground-muted);
+  --base-surface-border: var(--slate-surface-border);
 }
 
-:root[data-appearance-base='gray'] {
+:root[data-appearance-base='gray'],
+:root[data-appearance-base='gray'] .dark {
   --base-50: var(--gray-50);
   --base-100: var(--gray-100);
   --base-200: var(--gray-200);
@@ -28,9 +54,34 @@
   --base-800: var(--gray-800);
   --base-900: var(--gray-900);
   --base-950: var(--gray-950);
+  --base-strong: var(--gray-strong);
+  --base-strong-foreground: var(--gray-strong-foreground);
+  --base-strong-foreground-secondary: var(--gray-strong-foreground-secondary);
+  --base-strong-foreground-muted: var(--gray-strong-foreground-muted);
+  --base-strong-hover: var(--gray-strong-hover);
+  --base-strong-disabled: var(--gray-strong-disabled);
+  --base-subtle: var(--gray-subtle);
+  --base-subtle-foreground: var(--gray-subtle-foreground);
+  --base-subtle-foreground-secondary: var(--gray-subtle-foreground-secondary);
+  --base-subtle-foreground-muted: var(--gray-subtle-foreground-muted);
+  --base-subtle-pressed: var(--gray-subtle-pressed);
+  --base-subtle-hover: var(--gray-subtle-hover);
+  --base-subtle-disabled: var(--gray-subtle-disabled);
+  --base-plain-foreground: var(--gray-plain-foreground);
+  --base-plain-border: var(--gray-plain-border);
+  --base-plain-border-disabled: var(--gray-plain-border-disabled);
+  --base-plain-foreground-disabled: var(--gray-plain-foreground-disabled);
+  --base-plain-foreground-secondary: var(--gray-plain-foreground-secondary);
+  --base-plain-foreground-muted: var(--gray-plain-foreground-muted);
+  --base-surface: var(--gray-surface);
+  --base-surface-foreground: var(--gray-surface-foreground);
+  --base-surface-foreground-secondary: var(--gray-surface-foreground-secondary);
+  --base-surface-foreground-muted: var(--gray-surface-foreground-muted);
+  --base-surface-border: var(--gray-surface-border);
 }
 
-:root[data-appearance-base='neutral'] {
+:root[data-appearance-base='neutral'],
+:root[data-appearance-base='neutral'] .dark {
   --base-50: var(--neutral-50);
   --base-100: var(--neutral-100);
   --base-200: var(--neutral-200);
@@ -42,9 +93,34 @@
   --base-800: var(--neutral-800);
   --base-900: var(--neutral-900);
   --base-950: var(--neutral-950);
+  --base-strong: var(--neutral-strong);
+  --base-strong-foreground: var(--neutral-strong-foreground);
+  --base-strong-foreground-secondary: var(--neutral-strong-foreground-secondary);
+  --base-strong-foreground-muted: var(--neutral-strong-foreground-muted);
+  --base-strong-hover: var(--neutral-strong-hover);
+  --base-strong-disabled: var(--neutral-strong-disabled);
+  --base-subtle: var(--neutral-subtle);
+  --base-subtle-foreground: var(--neutral-subtle-foreground);
+  --base-subtle-foreground-secondary: var(--neutral-subtle-foreground-secondary);
+  --base-subtle-foreground-muted: var(--neutral-subtle-foreground-muted);
+  --base-subtle-pressed: var(--neutral-subtle-pressed);
+  --base-subtle-hover: var(--neutral-subtle-hover);
+  --base-subtle-disabled: var(--neutral-subtle-disabled);
+  --base-plain-foreground: var(--neutral-plain-foreground);
+  --base-plain-border: var(--neutral-plain-border);
+  --base-plain-border-disabled: var(--neutral-plain-border-disabled);
+  --base-plain-foreground-disabled: var(--neutral-plain-foreground-disabled);
+  --base-plain-foreground-secondary: var(--neutral-plain-foreground-secondary);
+  --base-plain-foreground-muted: var(--neutral-plain-foreground-muted);
+  --base-surface: var(--neutral-surface);
+  --base-surface-foreground: var(--neutral-surface-foreground);
+  --base-surface-foreground-secondary: var(--neutral-surface-foreground-secondary);
+  --base-surface-foreground-muted: var(--neutral-surface-foreground-muted);
+  --base-surface-border: var(--neutral-surface-border);
 }
 
-:root[data-appearance-base='zinc'] {
+:root[data-appearance-base='zinc'],
+:root[data-appearance-base='zinc'] .dark {
   --base-50: var(--zinc-50);
   --base-100: var(--zinc-100);
   --base-200: var(--zinc-200);
@@ -56,9 +132,34 @@
   --base-800: var(--zinc-800);
   --base-900: var(--zinc-900);
   --base-950: var(--zinc-950);
+  --base-strong: var(--zinc-strong);
+  --base-strong-foreground: var(--zinc-strong-foreground);
+  --base-strong-foreground-secondary: var(--zinc-strong-foreground-secondary);
+  --base-strong-foreground-muted: var(--zinc-strong-foreground-muted);
+  --base-strong-hover: var(--zinc-strong-hover);
+  --base-strong-disabled: var(--zinc-strong-disabled);
+  --base-subtle: var(--zinc-subtle);
+  --base-subtle-foreground: var(--zinc-subtle-foreground);
+  --base-subtle-foreground-secondary: var(--zinc-subtle-foreground-secondary);
+  --base-subtle-foreground-muted: var(--zinc-subtle-foreground-muted);
+  --base-subtle-pressed: var(--zinc-subtle-pressed);
+  --base-subtle-hover: var(--zinc-subtle-hover);
+  --base-subtle-disabled: var(--zinc-subtle-disabled);
+  --base-plain-foreground: var(--zinc-plain-foreground);
+  --base-plain-border: var(--zinc-plain-border);
+  --base-plain-border-disabled: var(--zinc-plain-border-disabled);
+  --base-plain-foreground-disabled: var(--zinc-plain-foreground-disabled);
+  --base-plain-foreground-secondary: var(--zinc-plain-foreground-secondary);
+  --base-plain-foreground-muted: var(--zinc-plain-foreground-muted);
+  --base-surface: var(--zinc-surface);
+  --base-surface-foreground: var(--zinc-surface-foreground);
+  --base-surface-foreground-secondary: var(--zinc-surface-foreground-secondary);
+  --base-surface-foreground-muted: var(--zinc-surface-foreground-muted);
+  --base-surface-border: var(--zinc-surface-border);
 }
 
-:root[data-appearance-base='stone'] {
+:root[data-appearance-base='stone'],
+:root[data-appearance-base='stone'] .dark {
   --base-50: var(--stone-50);
   --base-100: var(--stone-100);
   --base-200: var(--stone-200);
@@ -70,9 +171,34 @@
   --base-800: var(--stone-800);
   --base-900: var(--stone-900);
   --base-950: var(--stone-950);
+  --base-strong: var(--stone-strong);
+  --base-strong-foreground: var(--stone-strong-foreground);
+  --base-strong-foreground-secondary: var(--stone-strong-foreground-secondary);
+  --base-strong-foreground-muted: var(--stone-strong-foreground-muted);
+  --base-strong-hover: var(--stone-strong-hover);
+  --base-strong-disabled: var(--stone-strong-disabled);
+  --base-subtle: var(--stone-subtle);
+  --base-subtle-foreground: var(--stone-subtle-foreground);
+  --base-subtle-foreground-secondary: var(--stone-subtle-foreground-secondary);
+  --base-subtle-foreground-muted: var(--stone-subtle-foreground-muted);
+  --base-subtle-pressed: var(--stone-subtle-pressed);
+  --base-subtle-hover: var(--stone-subtle-hover);
+  --base-subtle-disabled: var(--stone-subtle-disabled);
+  --base-plain-foreground: var(--stone-plain-foreground);
+  --base-plain-border: var(--stone-plain-border);
+  --base-plain-border-disabled: var(--stone-plain-border-disabled);
+  --base-plain-foreground-disabled: var(--stone-plain-foreground-disabled);
+  --base-plain-foreground-secondary: var(--stone-plain-foreground-secondary);
+  --base-plain-foreground-muted: var(--stone-plain-foreground-muted);
+  --base-surface: var(--stone-surface);
+  --base-surface-foreground: var(--stone-surface-foreground);
+  --base-surface-foreground-secondary: var(--stone-surface-foreground-secondary);
+  --base-surface-foreground-muted: var(--stone-surface-foreground-muted);
+  --base-surface-border: var(--stone-surface-border);
 }
 
-:root[data-appearance-base='mauve'] {
+:root[data-appearance-base='mauve'],
+:root[data-appearance-base='mauve'] .dark {
   --base-50: var(--mauve-50);
   --base-100: var(--mauve-100);
   --base-200: var(--mauve-200);
@@ -84,9 +210,34 @@
   --base-800: var(--mauve-800);
   --base-900: var(--mauve-900);
   --base-950: var(--mauve-950);
+  --base-strong: var(--mauve-strong);
+  --base-strong-foreground: var(--mauve-strong-foreground);
+  --base-strong-foreground-secondary: var(--mauve-strong-foreground-secondary);
+  --base-strong-foreground-muted: var(--mauve-strong-foreground-muted);
+  --base-strong-hover: var(--mauve-strong-hover);
+  --base-strong-disabled: var(--mauve-strong-disabled);
+  --base-subtle: var(--mauve-subtle);
+  --base-subtle-foreground: var(--mauve-subtle-foreground);
+  --base-subtle-foreground-secondary: var(--mauve-subtle-foreground-secondary);
+  --base-subtle-foreground-muted: var(--mauve-subtle-foreground-muted);
+  --base-subtle-pressed: var(--mauve-subtle-pressed);
+  --base-subtle-hover: var(--mauve-subtle-hover);
+  --base-subtle-disabled: var(--mauve-subtle-disabled);
+  --base-plain-foreground: var(--mauve-plain-foreground);
+  --base-plain-border: var(--mauve-plain-border);
+  --base-plain-border-disabled: var(--mauve-plain-border-disabled);
+  --base-plain-foreground-disabled: var(--mauve-plain-foreground-disabled);
+  --base-plain-foreground-secondary: var(--mauve-plain-foreground-secondary);
+  --base-plain-foreground-muted: var(--mauve-plain-foreground-muted);
+  --base-surface: var(--mauve-surface);
+  --base-surface-foreground: var(--mauve-surface-foreground);
+  --base-surface-foreground-secondary: var(--mauve-surface-foreground-secondary);
+  --base-surface-foreground-muted: var(--mauve-surface-foreground-muted);
+  --base-surface-border: var(--mauve-surface-border);
 }
 
-:root[data-appearance-base='olive'] {
+:root[data-appearance-base='olive'],
+:root[data-appearance-base='olive'] .dark {
   --base-50: var(--olive-50);
   --base-100: var(--olive-100);
   --base-200: var(--olive-200);
@@ -98,9 +249,34 @@
   --base-800: var(--olive-800);
   --base-900: var(--olive-900);
   --base-950: var(--olive-950);
+  --base-strong: var(--olive-strong);
+  --base-strong-foreground: var(--olive-strong-foreground);
+  --base-strong-foreground-secondary: var(--olive-strong-foreground-secondary);
+  --base-strong-foreground-muted: var(--olive-strong-foreground-muted);
+  --base-strong-hover: var(--olive-strong-hover);
+  --base-strong-disabled: var(--olive-strong-disabled);
+  --base-subtle: var(--olive-subtle);
+  --base-subtle-foreground: var(--olive-subtle-foreground);
+  --base-subtle-foreground-secondary: var(--olive-subtle-foreground-secondary);
+  --base-subtle-foreground-muted: var(--olive-subtle-foreground-muted);
+  --base-subtle-pressed: var(--olive-subtle-pressed);
+  --base-subtle-hover: var(--olive-subtle-hover);
+  --base-subtle-disabled: var(--olive-subtle-disabled);
+  --base-plain-foreground: var(--olive-plain-foreground);
+  --base-plain-border: var(--olive-plain-border);
+  --base-plain-border-disabled: var(--olive-plain-border-disabled);
+  --base-plain-foreground-disabled: var(--olive-plain-foreground-disabled);
+  --base-plain-foreground-secondary: var(--olive-plain-foreground-secondary);
+  --base-plain-foreground-muted: var(--olive-plain-foreground-muted);
+  --base-surface: var(--olive-surface);
+  --base-surface-foreground: var(--olive-surface-foreground);
+  --base-surface-foreground-secondary: var(--olive-surface-foreground-secondary);
+  --base-surface-foreground-muted: var(--olive-surface-foreground-muted);
+  --base-surface-border: var(--olive-surface-border);
 }
 
-:root[data-appearance-base='mist'] {
+:root[data-appearance-base='mist'],
+:root[data-appearance-base='mist'] .dark {
   --base-50: var(--mist-50);
   --base-100: var(--mist-100);
   --base-200: var(--mist-200);
@@ -112,9 +288,34 @@
   --base-800: var(--mist-800);
   --base-900: var(--mist-900);
   --base-950: var(--mist-950);
+  --base-strong: var(--mist-strong);
+  --base-strong-foreground: var(--mist-strong-foreground);
+  --base-strong-foreground-secondary: var(--mist-strong-foreground-secondary);
+  --base-strong-foreground-muted: var(--mist-strong-foreground-muted);
+  --base-strong-hover: var(--mist-strong-hover);
+  --base-strong-disabled: var(--mist-strong-disabled);
+  --base-subtle: var(--mist-subtle);
+  --base-subtle-foreground: var(--mist-subtle-foreground);
+  --base-subtle-foreground-secondary: var(--mist-subtle-foreground-secondary);
+  --base-subtle-foreground-muted: var(--mist-subtle-foreground-muted);
+  --base-subtle-pressed: var(--mist-subtle-pressed);
+  --base-subtle-hover: var(--mist-subtle-hover);
+  --base-subtle-disabled: var(--mist-subtle-disabled);
+  --base-plain-foreground: var(--mist-plain-foreground);
+  --base-plain-border: var(--mist-plain-border);
+  --base-plain-border-disabled: var(--mist-plain-border-disabled);
+  --base-plain-foreground-disabled: var(--mist-plain-foreground-disabled);
+  --base-plain-foreground-secondary: var(--mist-plain-foreground-secondary);
+  --base-plain-foreground-muted: var(--mist-plain-foreground-muted);
+  --base-surface: var(--mist-surface);
+  --base-surface-foreground: var(--mist-surface-foreground);
+  --base-surface-foreground-secondary: var(--mist-surface-foreground-secondary);
+  --base-surface-foreground-muted: var(--mist-surface-foreground-muted);
+  --base-surface-border: var(--mist-surface-border);
 }
 
-:root[data-appearance-base='taupe'] {
+:root[data-appearance-base='taupe'],
+:root[data-appearance-base='taupe'] .dark {
   --base-50: var(--taupe-50);
   --base-100: var(--taupe-100);
   --base-200: var(--taupe-200);
@@ -126,4 +327,28 @@
   --base-800: var(--taupe-800);
   --base-900: var(--taupe-900);
   --base-950: var(--taupe-950);
+  --base-strong: var(--taupe-strong);
+  --base-strong-foreground: var(--taupe-strong-foreground);
+  --base-strong-foreground-secondary: var(--taupe-strong-foreground-secondary);
+  --base-strong-foreground-muted: var(--taupe-strong-foreground-muted);
+  --base-strong-hover: var(--taupe-strong-hover);
+  --base-strong-disabled: var(--taupe-strong-disabled);
+  --base-subtle: var(--taupe-subtle);
+  --base-subtle-foreground: var(--taupe-subtle-foreground);
+  --base-subtle-foreground-secondary: var(--taupe-subtle-foreground-secondary);
+  --base-subtle-foreground-muted: var(--taupe-subtle-foreground-muted);
+  --base-subtle-pressed: var(--taupe-subtle-pressed);
+  --base-subtle-hover: var(--taupe-subtle-hover);
+  --base-subtle-disabled: var(--taupe-subtle-disabled);
+  --base-plain-foreground: var(--taupe-plain-foreground);
+  --base-plain-border: var(--taupe-plain-border);
+  --base-plain-border-disabled: var(--taupe-plain-border-disabled);
+  --base-plain-foreground-disabled: var(--taupe-plain-foreground-disabled);
+  --base-plain-foreground-secondary: var(--taupe-plain-foreground-secondary);
+  --base-plain-foreground-muted: var(--taupe-plain-foreground-muted);
+  --base-surface: var(--taupe-surface);
+  --base-surface-foreground: var(--taupe-surface-foreground);
+  --base-surface-foreground-secondary: var(--taupe-surface-foreground-secondary);
+  --base-surface-foreground-muted: var(--taupe-surface-foreground-muted);
+  --base-surface-border: var(--taupe-surface-border);
 }

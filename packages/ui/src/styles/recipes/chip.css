@@ -17,7 +17,7 @@
   padding-inline: calc(var(--group-item-px, var(--chip-px, var(--chip-size-px, var(--space-sm)))) - var(--chip-border, 0px));
   border-radius: var(--group-item-radius, var(--chip-radius, var(--radius-xs)));
   background-color: var(--chip-bg, var(--muted));
-  color: var(--chip-fg, var(--role-label-sm-color));
+  color: var(--chip-fg, var(--variant-fg-muted));
   font-size: var(--role-label-sm-size);
   line-height: var(--role-label-sm-leading);
   font-weight: var(--role-label-sm-weight);

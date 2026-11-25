@@ -4,6 +4,8 @@
   --variant-ring: var(--warning-strong);
   --variant-bg: var(--warning-strong);
   --variant-fg: var(--warning-strong-foreground);
+  --variant-fg-secondary: var(--warning-strong-foreground-secondary);
+  --variant-fg-muted: var(--warning-strong-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--warning-strong-hover);
   --variant-fg-hover: var(--warning-strong-foreground);
@@ -26,6 +28,8 @@
   --variant-bg-pressed: var(--warning-subtle-pressed);
   --variant-bg-disabled: var(--warning-subtle-disabled);
   --variant-fg: var(--warning-subtle-foreground);
+  --variant-fg-secondary: var(--warning-subtle-foreground-secondary);
+  --variant-fg-muted: var(--warning-subtle-foreground-muted);
   --variant-fg-hover: var(--warning-subtle-foreground);
   --variant-fg-active: var(--warning-subtle-foreground);
   --variant-fg-pressed: var(--warning-plain-foreground-disabled);
@@ -40,6 +44,8 @@
   --variant-ring: var(--warning-strong);
   --variant-bg: transparent;
   --variant-fg: var(--warning-plain-foreground);
+  --variant-fg-secondary: var(--warning-plain-foreground-secondary);
+  --variant-fg-muted: var(--warning-plain-foreground-muted);
   --variant-border: var(--warning-plain-border);
   --variant-bg-hover: var(--warning-subtle-hover);
   --variant-fg-hover: var(--warning-plain-foreground);
@@ -58,6 +64,8 @@
   --variant-ring: var(--warning-strong);
   --variant-bg: transparent;
   --variant-fg: var(--warning-plain-foreground-muted);
+  --variant-fg-secondary: var(--warning-plain-foreground-secondary);
+  --variant-fg-muted: var(--warning-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--warning-subtle-hover);
   --variant-fg-hover: var(--warning-plain-foreground);
@@ -76,6 +84,8 @@
   --variant-ring: var(--warning-strong);
   --variant-bg: transparent;
   --variant-fg: var(--warning-plain-foreground);
+  --variant-fg-secondary: var(--warning-plain-foreground-secondary);
+  --variant-fg-muted: var(--warning-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
   --variant-fg-hover: var(--warning-plain-foreground);
@@ -94,6 +104,7 @@
   --variant-ring: var(--warning-strong);
   --variant-bg: var(--warning-surface);
   --variant-fg: var(--warning-plain-foreground);
-  --variant-fg-secondary: var(--warning-surface-foreground);
+  --variant-fg-secondary: var(--warning-surface-foreground-secondary);
+  --variant-fg-muted: var(--warning-surface-foreground-muted);
   --variant-border: var(--warning-surface-border);
 }

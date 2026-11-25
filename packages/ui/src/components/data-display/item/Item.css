@@ -20,7 +20,7 @@
   font-size: var(--role-label-sm-size);
   line-height: var(--role-label-sm-leading);
   font-weight: var(--role-label-sm-weight);
-  color: var(--role-label-sm-color);
+  color: var(--variant-fg-muted);
 }
 
 .item-group-label[data-size='md'] {

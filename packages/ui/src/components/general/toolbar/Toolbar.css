@@ -94,7 +94,7 @@
   align-items: center;
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);
-  color: var(--role-description-color);
+  color: var(--variant-fg-secondary);
   text-underline-offset: 4px;
 
   &:hover {

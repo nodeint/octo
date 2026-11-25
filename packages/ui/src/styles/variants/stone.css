@@ -4,6 +4,8 @@
   --variant-ring: var(--stone-strong);
   --variant-bg: var(--stone-strong);
   --variant-fg: var(--stone-strong-foreground);
+  --variant-fg-secondary: var(--stone-strong-foreground-secondary);
+  --variant-fg-muted: var(--stone-strong-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--stone-strong-hover);
   --variant-fg-hover: var(--stone-strong-foreground);
@@ -26,6 +28,8 @@
   --variant-bg-pressed: var(--stone-subtle-pressed);
   --variant-bg-disabled: var(--stone-subtle-disabled);
   --variant-fg: var(--stone-subtle-foreground);
+  --variant-fg-secondary: var(--stone-subtle-foreground-secondary);
+  --variant-fg-muted: var(--stone-subtle-foreground-muted);
   --variant-fg-hover: var(--stone-subtle-foreground);
   --variant-fg-active: var(--stone-subtle-foreground);
   --variant-fg-pressed: var(--stone-plain-foreground-disabled);
@@ -40,6 +44,8 @@
   --variant-ring: var(--stone-strong);
   --variant-bg: transparent;
   --variant-fg: var(--stone-plain-foreground);
+  --variant-fg-secondary: var(--stone-plain-foreground-secondary);
+  --variant-fg-muted: var(--stone-plain-foreground-muted);
   --variant-border: var(--stone-plain-border);
   --variant-bg-hover: var(--stone-subtle-hover);
   --variant-fg-hover: var(--stone-plain-foreground);
@@ -58,6 +64,8 @@
   --variant-ring: var(--stone-strong);
   --variant-bg: transparent;
   --variant-fg: var(--stone-plain-foreground-muted);
+  --variant-fg-secondary: var(--stone-plain-foreground-secondary);
+  --variant-fg-muted: var(--stone-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--stone-subtle-hover);
   --variant-fg-hover: var(--stone-plain-foreground);
@@ -76,6 +84,8 @@
   --variant-ring: var(--stone-strong);
   --variant-bg: transparent;
   --variant-fg: var(--stone-plain-foreground);
+  --variant-fg-secondary: var(--stone-plain-foreground-secondary);
+  --variant-fg-muted: var(--stone-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
   --variant-fg-hover: var(--stone-plain-foreground);
@@ -94,6 +104,7 @@
   --variant-ring: var(--stone-strong);
   --variant-bg: var(--stone-surface);
   --variant-fg: var(--stone-plain-foreground);
-  --variant-fg-secondary: var(--stone-surface-foreground);
+  --variant-fg-secondary: var(--stone-surface-foreground-secondary);
+  --variant-fg-muted: var(--stone-surface-foreground-muted);
   --variant-border: var(--stone-surface-border);
 }

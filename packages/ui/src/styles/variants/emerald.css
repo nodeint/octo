@@ -4,6 +4,8 @@
   --variant-ring: var(--emerald-strong);
   --variant-bg: var(--emerald-strong);
   --variant-fg: var(--emerald-strong-foreground);
+  --variant-fg-secondary: var(--emerald-strong-foreground-secondary);
+  --variant-fg-muted: var(--emerald-strong-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--emerald-strong-hover);
   --variant-fg-hover: var(--emerald-strong-foreground);
@@ -26,6 +28,8 @@
   --variant-bg-pressed: var(--emerald-subtle-pressed);
   --variant-bg-disabled: var(--emerald-subtle-disabled);
   --variant-fg: var(--emerald-subtle-foreground);
+  --variant-fg-secondary: var(--emerald-subtle-foreground-secondary);
+  --variant-fg-muted: var(--emerald-subtle-foreground-muted);
   --variant-fg-hover: var(--emerald-subtle-foreground);
   --variant-fg-active: var(--emerald-subtle-foreground);
   --variant-fg-pressed: var(--emerald-plain-foreground-disabled);
@@ -40,6 +44,8 @@
   --variant-ring: var(--emerald-strong);
   --variant-bg: transparent;
   --variant-fg: var(--emerald-plain-foreground);
+  --variant-fg-secondary: var(--emerald-plain-foreground-secondary);
+  --variant-fg-muted: var(--emerald-plain-foreground-muted);
   --variant-border: var(--emerald-plain-border);
   --variant-bg-hover: var(--emerald-subtle-hover);
   --variant-fg-hover: var(--emerald-plain-foreground);
@@ -58,6 +64,8 @@
   --variant-ring: var(--emerald-strong);
   --variant-bg: transparent;
   --variant-fg: var(--emerald-plain-foreground-muted);
+  --variant-fg-secondary: var(--emerald-plain-foreground-secondary);
+  --variant-fg-muted: var(--emerald-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--emerald-subtle-hover);
   --variant-fg-hover: var(--emerald-plain-foreground);
@@ -76,6 +84,8 @@
   --variant-ring: var(--emerald-strong);
   --variant-bg: transparent;
   --variant-fg: var(--emerald-plain-foreground);
+  --variant-fg-secondary: var(--emerald-plain-foreground-secondary);
+  --variant-fg-muted: var(--emerald-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
   --variant-fg-hover: var(--emerald-plain-foreground);
@@ -94,6 +104,7 @@
   --variant-ring: var(--emerald-strong);
   --variant-bg: var(--emerald-surface);
   --variant-fg: var(--emerald-plain-foreground);
-  --variant-fg-secondary: var(--emerald-surface-foreground);
+  --variant-fg-secondary: var(--emerald-surface-foreground-secondary);
+  --variant-fg-muted: var(--emerald-surface-foreground-muted);
   --variant-border: var(--emerald-surface-border);
 }

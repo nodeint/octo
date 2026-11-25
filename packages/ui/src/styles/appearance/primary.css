@@ -6,118 +6,166 @@
   --primary-strong: var(--teal-strong);
   --primary-strong-hover: var(--teal-strong-hover);
   --primary-strong-foreground: var(--teal-strong-foreground);
+  --primary-strong-foreground-secondary: var(--teal-strong-foreground-secondary);
+  --primary-strong-foreground-muted: var(--teal-strong-foreground-muted);
   --sidebar-primary: var(--teal-strong);
   --sidebar-primary-foreground: var(--teal-strong-foreground);
   --primary-subtle: var(--teal-subtle);
   --primary-subtle-foreground: var(--teal-subtle-foreground);
+  --primary-subtle-foreground-secondary: var(--teal-subtle-foreground-secondary);
+  --primary-subtle-foreground-muted: var(--teal-subtle-foreground-muted);
 }
 
 :root[data-appearance-primary='blue'] {
   --primary-strong: var(--blue-strong);
   --primary-strong-hover: var(--blue-strong-hover);
   --primary-strong-foreground: var(--blue-strong-foreground);
+  --primary-strong-foreground-secondary: var(--blue-strong-foreground-secondary);
+  --primary-strong-foreground-muted: var(--blue-strong-foreground-muted);
   --sidebar-primary: var(--blue-strong);
   --sidebar-primary-foreground: var(--blue-strong-foreground);
   --primary-subtle: var(--blue-subtle);
   --primary-subtle-foreground: var(--blue-subtle-foreground);
+  --primary-subtle-foreground-secondary: var(--blue-subtle-foreground-secondary);
+  --primary-subtle-foreground-muted: var(--blue-subtle-foreground-muted);
 }
 
 :root[data-appearance-primary='indigo'] {
   --primary-strong: var(--indigo-strong);
   --primary-strong-hover: var(--indigo-strong-hover);
   --primary-strong-foreground: var(--indigo-strong-foreground);
+  --primary-strong-foreground-secondary: var(--indigo-strong-foreground-secondary);
+  --primary-strong-foreground-muted: var(--indigo-strong-foreground-muted);
   --sidebar-primary: var(--indigo-strong);
   --sidebar-primary-foreground: var(--indigo-strong-foreground);
   --primary-subtle: var(--indigo-subtle);
   --primary-subtle-foreground: var(--indigo-subtle-foreground);
+  --primary-subtle-foreground-secondary: var(--indigo-subtle-foreground-secondary);
+  --primary-subtle-foreground-muted: var(--indigo-subtle-foreground-muted);
 }
 
 :root[data-appearance-primary='violet'] {
   --primary-strong: var(--violet-strong);
   --primary-strong-hover: var(--violet-strong-hover);
   --primary-strong-foreground: var(--violet-strong-foreground);
+  --primary-strong-foreground-secondary: var(--violet-strong-foreground-secondary);
+  --primary-strong-foreground-muted: var(--violet-strong-foreground-muted);
   --sidebar-primary: var(--violet-strong);
   --sidebar-primary-foreground: var(--violet-strong-foreground);
   --primary-subtle: var(--violet-subtle);
   --primary-subtle-foreground: var(--violet-subtle-foreground);
+  --primary-subtle-foreground-secondary: var(--violet-subtle-foreground-secondary);
+  --primary-subtle-foreground-muted: var(--violet-subtle-foreground-muted);
 }
 
 :root[data-appearance-primary='purple'] {
   --primary-strong: var(--purple-strong);
   --primary-strong-hover: var(--purple-strong-hover);
   --primary-strong-foreground: var(--purple-strong-foreground);
+  --primary-strong-foreground-secondary: var(--purple-strong-foreground-secondary);
+  --primary-strong-foreground-muted: var(--purple-strong-foreground-muted);
   --sidebar-primary: var(--purple-strong);
   --sidebar-primary-foreground: var(--purple-strong-foreground);
   --primary-subtle: var(--purple-subtle);
   --primary-subtle-foreground: var(--purple-subtle-foreground);
+  --primary-subtle-foreground-secondary: var(--purple-subtle-foreground-secondary);
+  --primary-subtle-foreground-muted: var(--purple-subtle-foreground-muted);
 }
 
 :root[data-appearance-primary='rose'] {
   --primary-strong: var(--rose-strong);
   --primary-strong-hover: var(--rose-strong-hover);
   --primary-strong-foreground: var(--rose-strong-foreground);
+  --primary-strong-foreground-secondary: var(--rose-strong-foreground-secondary);
+  --primary-strong-foreground-muted: var(--rose-strong-foreground-muted);
   --sidebar-primary: var(--rose-strong);
   --sidebar-primary-foreground: var(--rose-strong-foreground);
   --primary-subtle: var(--rose-subtle);
   --primary-subtle-foreground: var(--rose-subtle-foreground);
+  --primary-subtle-foreground-secondary: var(--rose-subtle-foreground-secondary);
+  --primary-subtle-foreground-muted: var(--rose-subtle-foreground-muted);
 }
 
 :root[data-appearance-primary='pink'] {
   --primary-strong: var(--pink-strong);
   --primary-strong-hover: var(--pink-strong-hover);
   --primary-strong-foreground: var(--pink-strong-foreground);
+  --primary-strong-foreground-secondary: var(--pink-strong-foreground-secondary);
+  --primary-strong-foreground-muted: var(--pink-strong-foreground-muted);
   --sidebar-primary: var(--pink-strong);
   --sidebar-primary-foreground: var(--pink-strong-foreground);
   --primary-subtle: var(--pink-subtle);
   --primary-subtle-foreground: var(--pink-subtle-foreground);
+  --primary-subtle-foreground-secondary: var(--pink-subtle-foreground-secondary);
+  --primary-subtle-foreground-muted: var(--pink-subtle-foreground-muted);
 }
 
 :root[data-appearance-primary='orange'] {
   --primary-strong: var(--orange-strong);
   --primary-strong-hover: var(--orange-strong-hover);
   --primary-strong-foreground: var(--orange-strong-foreground);
+  --primary-strong-foreground-secondary: var(--orange-strong-foreground-secondary);
+  --primary-strong-foreground-muted: var(--orange-strong-foreground-muted);
   --sidebar-primary: var(--orange-strong);
   --sidebar-primary-foreground: var(--orange-strong-foreground);
   --primary-subtle: var(--orange-subtle);
   --primary-subtle-foreground: var(--orange-subtle-foreground);
+  --primary-subtle-foreground-secondary: var(--orange-subtle-foreground-secondary);
+  --primary-subtle-foreground-muted: var(--orange-subtle-foreground-muted);
 }
 
 :root[data-appearance-primary='green'] {
   --primary-strong: var(--green-strong);
   --primary-strong-hover: var(--green-strong-hover);
   --primary-strong-foreground: var(--green-strong-foreground);
+  --primary-strong-foreground-secondary: var(--green-strong-foreground-secondary);
+  --primary-strong-foreground-muted: var(--green-strong-foreground-muted);
   --sidebar-primary: var(--green-strong);
   --sidebar-primary-foreground: var(--green-strong-foreground);
   --primary-subtle: var(--green-subtle);
   --primary-subtle-foreground: var(--green-subtle-foreground);
+  --primary-subtle-foreground-secondary: var(--green-subtle-foreground-secondary);
+  --primary-subtle-foreground-muted: var(--green-subtle-foreground-muted);
 }
 
 :root[data-appearance-primary='emerald'] {
   --primary-strong: var(--emerald-strong);
   --primary-strong-hover: var(--emerald-strong-hover);
   --primary-strong-foreground: var(--emerald-strong-foreground);
+  --primary-strong-foreground-secondary: var(--emerald-strong-foreground-secondary);
+  --primary-strong-foreground-muted: var(--emerald-strong-foreground-muted);
   --sidebar-primary: var(--emerald-strong);
   --sidebar-primary-foreground: var(--emerald-strong-foreground);
   --primary-subtle: var(--emerald-subtle);
   --primary-subtle-foreground: var(--emerald-subtle-foreground);
+  --primary-subtle-foreground-secondary: var(--emerald-subtle-foreground-secondary);
+  --primary-subtle-foreground-muted: var(--emerald-subtle-foreground-muted);
 }
 
 :root[data-appearance-primary='cyan'] {
   --primary-strong: var(--cyan-strong);
   --primary-strong-hover: var(--cyan-strong-hover);
   --primary-strong-foreground: var(--cyan-strong-foreground);
+  --primary-strong-foreground-secondary: var(--cyan-strong-foreground-secondary);
+  --primary-strong-foreground-muted: var(--cyan-strong-foreground-muted);
   --sidebar-primary: var(--cyan-strong);
   --sidebar-primary-foreground: var(--cyan-strong-foreground);
   --primary-subtle: var(--cyan-subtle);
   --primary-subtle-foreground: var(--cyan-subtle-foreground);
+  --primary-subtle-foreground-secondary: var(--cyan-subtle-foreground-secondary);
+  --primary-subtle-foreground-muted: var(--cyan-subtle-foreground-muted);
 }
 
 :root[data-appearance-primary='sky'] {
   --primary-strong: var(--sky-strong);
   --primary-strong-hover: var(--sky-strong-hover);
   --primary-strong-foreground: var(--sky-strong-foreground);
+  --primary-strong-foreground-secondary: var(--sky-strong-foreground-secondary);
+  --primary-strong-foreground-muted: var(--sky-strong-foreground-muted);
   --sidebar-primary: var(--sky-strong);
   --sidebar-primary-foreground: var(--sky-strong-foreground);
   --primary-subtle: var(--sky-subtle);
   --primary-subtle-foreground: var(--sky-subtle-foreground);
+  --primary-subtle-foreground-secondary: var(--sky-subtle-foreground-secondary);
+  --primary-subtle-foreground-muted: var(--sky-subtle-foreground-muted);
 }

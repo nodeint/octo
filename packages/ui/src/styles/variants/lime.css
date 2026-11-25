@@ -4,6 +4,8 @@
   --variant-ring: var(--lime-strong);
   --variant-bg: var(--lime-strong);
   --variant-fg: var(--lime-strong-foreground);
+  --variant-fg-secondary: var(--lime-strong-foreground-secondary);
+  --variant-fg-muted: var(--lime-strong-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--lime-strong-hover);
   --variant-fg-hover: var(--lime-strong-foreground);
@@ -26,6 +28,8 @@
   --variant-bg-pressed: var(--lime-subtle-pressed);
   --variant-bg-disabled: var(--lime-subtle-disabled);
   --variant-fg: var(--lime-subtle-foreground);
+  --variant-fg-secondary: var(--lime-subtle-foreground-secondary);
+  --variant-fg-muted: var(--lime-subtle-foreground-muted);
   --variant-fg-hover: var(--lime-subtle-foreground);
   --variant-fg-active: var(--lime-subtle-foreground);
   --variant-fg-pressed: var(--lime-plain-foreground-disabled);
@@ -40,6 +44,8 @@
   --variant-ring: var(--lime-strong);
   --variant-bg: transparent;
   --variant-fg: var(--lime-plain-foreground);
+  --variant-fg-secondary: var(--lime-plain-foreground-secondary);
+  --variant-fg-muted: var(--lime-plain-foreground-muted);
   --variant-border: var(--lime-plain-border);
   --variant-bg-hover: var(--lime-subtle-hover);
   --variant-fg-hover: var(--lime-plain-foreground);
@@ -58,6 +64,8 @@
   --variant-ring: var(--lime-strong);
   --variant-bg: transparent;
   --variant-fg: var(--lime-plain-foreground-muted);
+  --variant-fg-secondary: var(--lime-plain-foreground-secondary);
+  --variant-fg-muted: var(--lime-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--lime-subtle-hover);
   --variant-fg-hover: var(--lime-plain-foreground);
@@ -76,6 +84,8 @@
   --variant-ring: var(--lime-strong);
   --variant-bg: transparent;
   --variant-fg: var(--lime-plain-foreground);
+  --variant-fg-secondary: var(--lime-plain-foreground-secondary);
+  --variant-fg-muted: var(--lime-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
   --variant-fg-hover: var(--lime-plain-foreground);
@@ -94,6 +104,7 @@
   --variant-ring: var(--lime-strong);
   --variant-bg: var(--lime-surface);
   --variant-fg: var(--lime-plain-foreground);
-  --variant-fg-secondary: var(--lime-surface-foreground);
+  --variant-fg-secondary: var(--lime-surface-foreground-secondary);
+  --variant-fg-muted: var(--lime-surface-foreground-muted);
   --variant-border: var(--lime-surface-border);
 }

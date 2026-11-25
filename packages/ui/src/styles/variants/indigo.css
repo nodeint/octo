@@ -4,6 +4,8 @@
   --variant-ring: var(--indigo-strong);
   --variant-bg: var(--indigo-strong);
   --variant-fg: var(--indigo-strong-foreground);
+  --variant-fg-secondary: var(--indigo-strong-foreground-secondary);
+  --variant-fg-muted: var(--indigo-strong-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--indigo-strong-hover);
   --variant-fg-hover: var(--indigo-strong-foreground);
@@ -26,6 +28,8 @@
   --variant-bg-pressed: var(--indigo-subtle-pressed);
   --variant-bg-disabled: var(--indigo-subtle-disabled);
   --variant-fg: var(--indigo-subtle-foreground);
+  --variant-fg-secondary: var(--indigo-subtle-foreground-secondary);
+  --variant-fg-muted: var(--indigo-subtle-foreground-muted);
   --variant-fg-hover: var(--indigo-subtle-foreground);
   --variant-fg-active: var(--indigo-subtle-foreground);
   --variant-fg-pressed: var(--indigo-plain-foreground-disabled);
@@ -40,6 +44,8 @@
   --variant-ring: var(--indigo-strong);
   --variant-bg: transparent;
   --variant-fg: var(--indigo-plain-foreground);
+  --variant-fg-secondary: var(--indigo-plain-foreground-secondary);
+  --variant-fg-muted: var(--indigo-plain-foreground-muted);
   --variant-border: var(--indigo-plain-border);
   --variant-bg-hover: var(--indigo-subtle-hover);
   --variant-fg-hover: var(--indigo-plain-foreground);
@@ -58,6 +64,8 @@
   --variant-ring: var(--indigo-strong);
   --variant-bg: transparent;
   --variant-fg: var(--indigo-plain-foreground-muted);
+  --variant-fg-secondary: var(--indigo-plain-foreground-secondary);
+  --variant-fg-muted: var(--indigo-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--indigo-subtle-hover);
   --variant-fg-hover: var(--indigo-plain-foreground);
@@ -76,6 +84,8 @@
   --variant-ring: var(--indigo-strong);
   --variant-bg: transparent;
   --variant-fg: var(--indigo-plain-foreground);
+  --variant-fg-secondary: var(--indigo-plain-foreground-secondary);
+  --variant-fg-muted: var(--indigo-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
   --variant-fg-hover: var(--indigo-plain-foreground);
@@ -94,6 +104,7 @@
   --variant-ring: var(--indigo-strong);
   --variant-bg: var(--indigo-surface);
   --variant-fg: var(--indigo-plain-foreground);
-  --variant-fg-secondary: var(--indigo-surface-foreground);
+  --variant-fg-secondary: var(--indigo-surface-foreground-secondary);
+  --variant-fg-muted: var(--indigo-surface-foreground-muted);
   --variant-border: var(--indigo-surface-border);
 }

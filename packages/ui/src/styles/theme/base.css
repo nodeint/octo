@@ -21,8 +21,32 @@
   --base-600: var(--gray-600);
   --base-700: var(--gray-700);
   --base-800: var(--gray-800);
-  --base-dark: var(--gray-900);
+  --base-900: var(--gray-900);
   --base-950: var(--gray-950);
+  --base-strong: var(--gray-strong);
+  --base-strong-foreground: var(--gray-strong-foreground);
+  --base-strong-foreground-secondary: var(--gray-strong-foreground-secondary);
+  --base-strong-foreground-muted: var(--gray-strong-foreground-muted);
+  --base-strong-hover: var(--gray-strong-hover);
+  --base-strong-disabled: var(--gray-strong-disabled);
+  --base-subtle: var(--gray-subtle);
+  --base-subtle-foreground: var(--gray-subtle-foreground);
+  --base-subtle-foreground-secondary: var(--gray-subtle-foreground-secondary);
+  --base-subtle-foreground-muted: var(--gray-subtle-foreground-muted);
+  --base-subtle-pressed: var(--gray-subtle-pressed);
+  --base-subtle-hover: var(--gray-subtle-hover);
+  --base-subtle-disabled: var(--gray-subtle-disabled);
+  --base-plain-foreground: var(--gray-plain-foreground);
+  --base-plain-border: var(--gray-plain-border);
+  --base-plain-border-disabled: var(--gray-plain-border-disabled);
+  --base-plain-foreground-disabled: var(--gray-plain-foreground-disabled);
+  --base-plain-foreground-secondary: var(--gray-plain-foreground-secondary);
+  --base-plain-foreground-muted: var(--gray-plain-foreground-muted);
+  --base-surface: var(--gray-surface);
+  --base-surface-foreground: var(--gray-surface-foreground);
+  --base-surface-foreground-secondary: var(--gray-surface-foreground-secondary);
+  --base-surface-foreground-muted: var(--gray-surface-foreground-muted);
+  --base-surface-border: var(--gray-surface-border);
 
   --background: var(--base-50);
   --secondary: var(--base-100);
@@ -49,7 +73,7 @@
   *   foreground-disabled  a disabled control. Not content
   * A solid emphasis fill (primary, a status) keeps its own on-fill pair: `*-foreground`.
   */
-  --foreground: var(--base-dark);
+  --foreground: var(--base-900);
   --foreground-subtle: var(--base-700);
   --foreground-muted: var(--base-600);
   --foreground-disabled: var(--base-500);
@@ -58,6 +82,31 @@
 }
 
 .dark {
+  --base-strong: var(--gray-strong);
+  --base-strong-foreground: var(--gray-strong-foreground);
+  --base-strong-foreground-secondary: var(--gray-strong-foreground-secondary);
+  --base-strong-foreground-muted: var(--gray-strong-foreground-muted);
+  --base-strong-hover: var(--gray-strong-hover);
+  --base-strong-disabled: var(--gray-strong-disabled);
+  --base-subtle: var(--gray-subtle);
+  --base-subtle-foreground: var(--gray-subtle-foreground);
+  --base-subtle-foreground-secondary: var(--gray-subtle-foreground-secondary);
+  --base-subtle-foreground-muted: var(--gray-subtle-foreground-muted);
+  --base-subtle-pressed: var(--gray-subtle-pressed);
+  --base-subtle-hover: var(--gray-subtle-hover);
+  --base-subtle-disabled: var(--gray-subtle-disabled);
+  --base-plain-foreground: var(--gray-plain-foreground);
+  --base-plain-border: var(--gray-plain-border);
+  --base-plain-border-disabled: var(--gray-plain-border-disabled);
+  --base-plain-foreground-disabled: var(--gray-plain-foreground-disabled);
+  --base-plain-foreground-secondary: var(--gray-plain-foreground-secondary);
+  --base-plain-foreground-muted: var(--gray-plain-foreground-muted);
+  --base-surface: var(--gray-surface);
+  --base-surface-foreground: var(--gray-surface-foreground);
+  --base-surface-foreground-secondary: var(--gray-surface-foreground-secondary);
+  --base-surface-foreground-muted: var(--gray-surface-foreground-muted);
+  --base-surface-border: var(--gray-surface-border);
+
   --overlay: oklch(0 0 0 / 30%);
 
   --background: var(--base-950);
@@ -70,7 +119,6 @@
   --disabled: var(--base-800);
   --disabled-border: var(--base-700);
 
-  --border: var(--base-700);
   --border: var(--base-500);
 
   --foreground: var(--base-100);

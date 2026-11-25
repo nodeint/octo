@@ -4,6 +4,8 @@
   --variant-ring: var(--taupe-strong);
   --variant-bg: var(--taupe-strong);
   --variant-fg: var(--taupe-strong-foreground);
+  --variant-fg-secondary: var(--taupe-strong-foreground-secondary);
+  --variant-fg-muted: var(--taupe-strong-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--taupe-strong-hover);
   --variant-fg-hover: var(--taupe-strong-foreground);
@@ -26,6 +28,8 @@
   --variant-bg-pressed: var(--taupe-subtle-pressed);
   --variant-bg-disabled: var(--taupe-subtle-disabled);
   --variant-fg: var(--taupe-subtle-foreground);
+  --variant-fg-secondary: var(--taupe-subtle-foreground-secondary);
+  --variant-fg-muted: var(--taupe-subtle-foreground-muted);
   --variant-fg-hover: var(--taupe-subtle-foreground);
   --variant-fg-active: var(--taupe-subtle-foreground);
   --variant-fg-pressed: var(--taupe-plain-foreground-disabled);
@@ -40,6 +44,8 @@
   --variant-ring: var(--taupe-strong);
   --variant-bg: transparent;
   --variant-fg: var(--taupe-plain-foreground);
+  --variant-fg-secondary: var(--taupe-plain-foreground-secondary);
+  --variant-fg-muted: var(--taupe-plain-foreground-muted);
   --variant-border: var(--taupe-plain-border);
   --variant-bg-hover: var(--taupe-subtle-hover);
   --variant-fg-hover: var(--taupe-plain-foreground);
@@ -58,6 +64,8 @@
   --variant-ring: var(--taupe-strong);
   --variant-bg: transparent;
   --variant-fg: var(--taupe-plain-foreground-muted);
+  --variant-fg-secondary: var(--taupe-plain-foreground-secondary);
+  --variant-fg-muted: var(--taupe-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--taupe-subtle-hover);
   --variant-fg-hover: var(--taupe-plain-foreground);
@@ -76,6 +84,8 @@
   --variant-ring: var(--taupe-strong);
   --variant-bg: transparent;
   --variant-fg: var(--taupe-plain-foreground);
+  --variant-fg-secondary: var(--taupe-plain-foreground-secondary);
+  --variant-fg-muted: var(--taupe-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
   --variant-fg-hover: var(--taupe-plain-foreground);
@@ -94,6 +104,7 @@
   --variant-ring: var(--taupe-strong);
   --variant-bg: var(--taupe-surface);
   --variant-fg: var(--taupe-plain-foreground);
-  --variant-fg-secondary: var(--taupe-surface-foreground);
+  --variant-fg-secondary: var(--taupe-surface-foreground-secondary);
+  --variant-fg-muted: var(--taupe-surface-foreground-muted);
   --variant-border: var(--taupe-surface-border);
 }

@@ -4,6 +4,8 @@
   --variant-ring: var(--rose-strong);
   --variant-bg: var(--rose-strong);
   --variant-fg: var(--rose-strong-foreground);
+  --variant-fg-secondary: var(--rose-strong-foreground-secondary);
+  --variant-fg-muted: var(--rose-strong-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--rose-strong-hover);
   --variant-fg-hover: var(--rose-strong-foreground);
@@ -26,6 +28,8 @@
   --variant-bg-pressed: var(--rose-subtle-pressed);
   --variant-bg-disabled: var(--rose-subtle-disabled);
   --variant-fg: var(--rose-subtle-foreground);
+  --variant-fg-secondary: var(--rose-subtle-foreground-secondary);
+  --variant-fg-muted: var(--rose-subtle-foreground-muted);
   --variant-fg-hover: var(--rose-subtle-foreground);
   --variant-fg-active: var(--rose-subtle-foreground);
   --variant-fg-pressed: var(--rose-plain-foreground-disabled);
@@ -40,6 +44,8 @@
   --variant-ring: var(--rose-strong);
   --variant-bg: transparent;
   --variant-fg: var(--rose-plain-foreground);
+  --variant-fg-secondary: var(--rose-plain-foreground-secondary);
+  --variant-fg-muted: var(--rose-plain-foreground-muted);
   --variant-border: var(--rose-plain-border);
   --variant-bg-hover: var(--rose-subtle-hover);
   --variant-fg-hover: var(--rose-plain-foreground);
@@ -58,6 +64,8 @@
   --variant-ring: var(--rose-strong);
   --variant-bg: transparent;
   --variant-fg: var(--rose-plain-foreground-muted);
+  --variant-fg-secondary: var(--rose-plain-foreground-secondary);
+  --variant-fg-muted: var(--rose-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--rose-subtle-hover);
   --variant-fg-hover: var(--rose-plain-foreground);
@@ -76,6 +84,8 @@
   --variant-ring: var(--rose-strong);
   --variant-bg: transparent;
   --variant-fg: var(--rose-plain-foreground);
+  --variant-fg-secondary: var(--rose-plain-foreground-secondary);
+  --variant-fg-muted: var(--rose-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
   --variant-fg-hover: var(--rose-plain-foreground);
@@ -94,6 +104,7 @@
   --variant-ring: var(--rose-strong);
   --variant-bg: var(--rose-surface);
   --variant-fg: var(--rose-plain-foreground);
-  --variant-fg-secondary: var(--rose-surface-foreground);
+  --variant-fg-secondary: var(--rose-surface-foreground-secondary);
+  --variant-fg-muted: var(--rose-surface-foreground-muted);
   --variant-border: var(--rose-surface-border);
 }

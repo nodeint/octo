@@ -64,13 +64,13 @@
 }
 
 /**
- * Text roles: the only way text takes a size, weight, leading, family, and (for secondary roles) color.
+ * Text roles: the only way text takes a size, weight, leading, and family.
  * Text and the design-system components read them.
  * A theme overrides these --role-* variables to restyle every text of that role at once.
  *   titles    display · title-lg · title-md · title-sm · subtitle   (heading family)
- *   body      body-lg · body · body-sm · label                     (text color)
+ *   body      body-lg · body · body-sm · label                     (color from data-paint)
  *   action    action · action-sm                                    (text on a control: badge, toggle)
- *   secondary label-sm · description · caption                      (foreground-subtle for label-sm, foreground-muted for the others)
+ *   secondary label-sm · description · caption                      (size and weight only; color comes from data-paint)
  *   code      code                                                  (monospace)
  *   field     field                                                 (text typed into an input)
  */
@@ -108,15 +108,12 @@
   --role-label-sm-size: 0.75rem; /* primer: --base-text-size-xs */
   --role-label-sm-weight: 500;
   --role-label-sm-leading: 1.5;
-  --role-label-sm-color: var(--foreground-subtle);
   --role-description-size: 0.875rem; /* primer: --base-text-size-sm */
   --role-description-weight: 400;
   --role-description-leading: 1.5; /* primer: --text-body-lineHeight-medium */
-  --role-description-color: var(--foreground-muted);
   --role-caption-size: 0.75rem; /* primer: --text-caption-size */
   --role-caption-weight: 400; /* primer: --text-caption-weight */
   --role-caption-leading: 1.25; /* primer: --text-caption-lineHeight */
-  --role-caption-color: var(--foreground-muted);
   --role-body-sm-size: 0.75rem; /* primer: --base-text-size-xs */
   --role-body-sm-weight: 400;
   --role-body-sm-leading: 1.5;

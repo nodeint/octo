@@ -73,21 +73,21 @@
   font-size: var(--role-label-sm-size);
   line-height: var(--role-label-sm-leading);
   font-weight: var(--role-label-sm-weight);
-  color: var(--role-label-sm-color);
+  color: var(--variant-fg-muted);
 }
 
 .text[data-variant='description'] {
   font-size: var(--role-description-size);
   line-height: var(--role-description-leading);
   font-weight: var(--role-description-weight);
-  color: var(--role-description-color);
+  color: var(--variant-fg-secondary);
 }
 
 .text[data-variant='caption'] {
   font-size: var(--role-caption-size);
   line-height: var(--role-caption-leading);
   font-weight: var(--role-caption-weight);
-  color: var(--role-caption-color);
+  color: var(--variant-fg-secondary);
 }
 
 .text[data-variant='code'] {

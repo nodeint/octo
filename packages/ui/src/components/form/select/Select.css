@@ -91,7 +91,7 @@
   font-size: var(--role-caption-size);
   line-height: var(--role-caption-leading);
   font-weight: var(--role-caption-weight);
-  color: var(--role-caption-color);
+  color: var(--variant-fg-secondary);
 }
 
 .select-item {

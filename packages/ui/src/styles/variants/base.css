@@ -4,6 +4,8 @@
   --variant-ring: var(--state-focus-border);
   --variant-bg: var(--secondary);
   --variant-fg: var(--foreground);
+  --variant-fg-secondary: var(--foreground-muted);
+  --variant-fg-muted: var(--foreground-subtle);
   --variant-border: transparent;
   --variant-bg-hover: var(--accent);
   --variant-fg-hover: var(--foreground);
@@ -26,6 +28,8 @@
   --variant-bg-pressed: var(--muted);
   --variant-bg-disabled: color-mix(in oklab, var(--secondary) 50%, transparent);
   --variant-fg: var(--foreground);
+  --variant-fg-secondary: var(--foreground-muted);
+  --variant-fg-muted: var(--foreground-subtle);
   --variant-fg-hover: var(--foreground);
   --variant-fg-active: var(--foreground);
   --variant-fg-pressed: var(--foreground-disabled);
@@ -40,6 +44,8 @@
   --variant-ring: var(--state-focus-border);
   --variant-bg: transparent;
   --variant-fg: var(--foreground);
+  --variant-fg-secondary: var(--foreground-muted);
+  --variant-fg-muted: var(--foreground-subtle);
   --variant-border: var(--border);
   --variant-bg-hover: var(--accent);
   --variant-fg-hover: var(--foreground);
@@ -58,6 +64,8 @@
   --variant-ring: var(--state-focus-border);
   --variant-bg: transparent;
   --variant-fg: var(--foreground);
+  --variant-fg-secondary: var(--foreground-muted);
+  --variant-fg-muted: var(--foreground-subtle);
   --variant-border: transparent;
   --variant-bg-hover: var(--accent);
   --variant-fg-hover: var(--foreground);
@@ -76,6 +84,8 @@
   --variant-ring: var(--state-focus-border);
   --variant-bg: transparent;
   --variant-fg: var(--foreground-muted);
+  --variant-fg-secondary: var(--foreground-muted);
+  --variant-fg-muted: var(--foreground-subtle);
   --variant-border: transparent;
   --variant-bg-hover: var(--accent);
   --variant-fg-hover: var(--foreground);
@@ -94,6 +104,8 @@
   --variant-ring: var(--state-focus-border);
   --variant-bg: transparent;
   --variant-fg: var(--foreground);
+  --variant-fg-secondary: var(--foreground-muted);
+  --variant-fg-muted: var(--foreground-subtle);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
   --variant-fg-hover: var(--foreground);
@@ -113,5 +125,6 @@
   --variant-bg: var(--card);
   --variant-fg: var(--foreground);
   --variant-fg-secondary: var(--foreground-muted);
+  --variant-fg-muted: var(--foreground-subtle);
   --variant-border: var(--border);
 }

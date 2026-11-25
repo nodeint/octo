@@ -4,6 +4,8 @@
   --variant-ring: var(--zinc-strong);
   --variant-bg: var(--zinc-strong);
   --variant-fg: var(--zinc-strong-foreground);
+  --variant-fg-secondary: var(--zinc-strong-foreground-secondary);
+  --variant-fg-muted: var(--zinc-strong-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--zinc-strong-hover);
   --variant-fg-hover: var(--zinc-strong-foreground);
@@ -26,6 +28,8 @@
   --variant-bg-pressed: var(--zinc-subtle-pressed);
   --variant-bg-disabled: var(--zinc-subtle-disabled);
   --variant-fg: var(--zinc-subtle-foreground);
+  --variant-fg-secondary: var(--zinc-subtle-foreground-secondary);
+  --variant-fg-muted: var(--zinc-subtle-foreground-muted);
   --variant-fg-hover: var(--zinc-subtle-foreground);
   --variant-fg-active: var(--zinc-subtle-foreground);
   --variant-fg-pressed: var(--zinc-plain-foreground-disabled);
@@ -40,6 +44,8 @@
   --variant-ring: var(--zinc-strong);
   --variant-bg: transparent;
   --variant-fg: var(--zinc-plain-foreground);
+  --variant-fg-secondary: var(--zinc-plain-foreground-secondary);
+  --variant-fg-muted: var(--zinc-plain-foreground-muted);
   --variant-border: var(--zinc-plain-border);
   --variant-bg-hover: var(--zinc-subtle-hover);
   --variant-fg-hover: var(--zinc-plain-foreground);
@@ -58,6 +64,8 @@
   --variant-ring: var(--zinc-strong);
   --variant-bg: transparent;
   --variant-fg: var(--zinc-plain-foreground-muted);
+  --variant-fg-secondary: var(--zinc-plain-foreground-secondary);
+  --variant-fg-muted: var(--zinc-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: var(--zinc-subtle-hover);
   --variant-fg-hover: var(--zinc-plain-foreground);
@@ -76,6 +84,8 @@
   --variant-ring: var(--zinc-strong);
   --variant-bg: transparent;
   --variant-fg: var(--zinc-plain-foreground);
+  --variant-fg-secondary: var(--zinc-plain-foreground-secondary);
+  --variant-fg-muted: var(--zinc-plain-foreground-muted);
   --variant-border: transparent;
   --variant-bg-hover: transparent;
   --variant-fg-hover: var(--zinc-plain-foreground);
@@ -94,6 +104,7 @@
   --variant-ring: var(--zinc-strong);
   --variant-bg: var(--zinc-surface);
   --variant-fg: var(--zinc-plain-foreground);
-  --variant-fg-secondary: var(--zinc-surface-foreground);
+  --variant-fg-secondary: var(--zinc-surface-foreground-secondary);
+  --variant-fg-muted: var(--zinc-surface-foreground-muted);
   --variant-border: var(--zinc-surface-border);
 }

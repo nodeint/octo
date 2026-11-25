@@ -89,9 +89,9 @@
 }
 
 .dark {
-  --card: var(--base-dark);
-  --dialog: var(--base-dark);
-  --popover: var(--base-dark);
+  --card: var(--base-900);
+  --dialog: var(--base-900);
+  --popover: var(--base-900);
 
   /* Switch */
   --switch-thumb-checked-background: var(--primary-strong-foreground);

@@ -1,4 +1,14 @@
 /* Page defaults that read design tokens. The structural reset lives in reset.css. */
+/*
+ * Default paint: the base paint every element reads when no data-paint ancestor sets one. A data-paint block
+ * overrides these slots for its subtree, so a component never needs a data-paint of its own to resolve text color.
+ */
+:root {
+  --variant-fg: var(--foreground);
+  --variant-fg-secondary: var(--foreground-muted);
+  --variant-fg-muted: var(--foreground-subtle);
+}
+
 *,
 ::before,
 ::after {
