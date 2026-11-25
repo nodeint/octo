@@ -1,0 +1,99 @@
+/* yellow: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='yellow-solid'] {
+  --variant-ring: var(--yellow-strong);
+  --variant-bg: var(--yellow-strong);
+  --variant-fg: var(--yellow-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--yellow-strong-hover);
+  --variant-fg-hover: var(--yellow-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--yellow-strong-hover);
+  --variant-fg-active: var(--yellow-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--yellow-strong);
+  --variant-fg-pressed: var(--yellow-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--yellow-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='yellow-soft'] {
+  --variant-ring: var(--yellow-strong);
+  --variant-bg: var(--yellow-subtle);
+  --variant-bg-hover: var(--yellow-subtle-hover);
+  --variant-bg-active: var(--yellow-subtle-hover);
+  --variant-bg-pressed: var(--yellow-subtle-pressed);
+  --variant-bg-disabled: var(--yellow-subtle-disabled);
+  --variant-fg: var(--yellow-subtle-foreground);
+  --variant-fg-hover: var(--yellow-subtle-foreground);
+  --variant-fg-active: var(--yellow-subtle-foreground);
+  --variant-fg-pressed: var(--yellow-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='yellow-outline'] {
+  --variant-ring: var(--yellow-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--yellow-plain-foreground);
+  --variant-border: var(--yellow-plain-border);
+  --variant-bg-hover: var(--yellow-subtle-hover);
+  --variant-fg-hover: var(--yellow-plain-foreground);
+  --variant-border-hover: var(--yellow-plain-border);
+  --variant-bg-active: var(--yellow-subtle-hover);
+  --variant-fg-active: var(--yellow-plain-foreground);
+  --variant-border-active: var(--yellow-plain-border);
+  --variant-bg-pressed: var(--yellow-subtle-pressed);
+  --variant-fg-pressed: var(--yellow-plain-foreground);
+  --variant-border-pressed: var(--yellow-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--yellow-plain-border-disabled);
+}
+
+[data-paint='yellow-muted'] {
+  --variant-ring: var(--yellow-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--yellow-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--yellow-subtle-hover);
+  --variant-fg-hover: var(--yellow-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--yellow-subtle-hover);
+  --variant-fg-active: var(--yellow-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--yellow-subtle-pressed);
+  --variant-fg-pressed: var(--yellow-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='yellow-plain'] {
+  --variant-ring: var(--yellow-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--yellow-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--yellow-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--yellow-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--yellow-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='yellow-surface'] {
+  --variant-ring: var(--yellow-strong);
+  --variant-bg: var(--yellow-surface);
+  --variant-fg: var(--yellow-plain-foreground);
+  --variant-fg-secondary: var(--yellow-surface-foreground);
+  --variant-border: var(--yellow-surface-border);
+}

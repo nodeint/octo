@@ -2,6 +2,7 @@ import { Menu as MenuPrimitive } from '@base-ui/react/menu';
 import * as React from 'react';
 
 import { type ButtonPaint, resolveButtonPaint } from '../../../lib/action-paint';
+import { paintName } from '../../../lib/paint';
 import { cn } from '../../../lib/utils';
 import type { ButtonShape, ButtonSize } from '../../general/button/Button';
 import { Icon } from '../../typography/icon/Icon';
@@ -43,8 +44,7 @@ function DropdownMenuTrigger({
       data-slot="dropdown-menu-trigger"
       nativeButton={nativeButton}
       {...(nativeButton && {
-        'data-tone': paint.tone,
-        'data-emphasis': paint.emphasis,
+        'data-paint': paintName(paint),
         'data-action-size': size,
         'data-shape': shape,
       })}

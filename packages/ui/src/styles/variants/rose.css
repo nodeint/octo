@@ -1,0 +1,99 @@
+/* rose: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='rose-solid'] {
+  --variant-ring: var(--rose-strong);
+  --variant-bg: var(--rose-strong);
+  --variant-fg: var(--rose-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--rose-strong-hover);
+  --variant-fg-hover: var(--rose-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--rose-strong-hover);
+  --variant-fg-active: var(--rose-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--rose-strong);
+  --variant-fg-pressed: var(--rose-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--rose-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='rose-soft'] {
+  --variant-ring: var(--rose-strong);
+  --variant-bg: var(--rose-subtle);
+  --variant-bg-hover: var(--rose-subtle-hover);
+  --variant-bg-active: var(--rose-subtle-hover);
+  --variant-bg-pressed: var(--rose-subtle-pressed);
+  --variant-bg-disabled: var(--rose-subtle-disabled);
+  --variant-fg: var(--rose-subtle-foreground);
+  --variant-fg-hover: var(--rose-subtle-foreground);
+  --variant-fg-active: var(--rose-subtle-foreground);
+  --variant-fg-pressed: var(--rose-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='rose-outline'] {
+  --variant-ring: var(--rose-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--rose-plain-foreground);
+  --variant-border: var(--rose-plain-border);
+  --variant-bg-hover: var(--rose-subtle-hover);
+  --variant-fg-hover: var(--rose-plain-foreground);
+  --variant-border-hover: var(--rose-plain-border);
+  --variant-bg-active: var(--rose-subtle-hover);
+  --variant-fg-active: var(--rose-plain-foreground);
+  --variant-border-active: var(--rose-plain-border);
+  --variant-bg-pressed: var(--rose-subtle-pressed);
+  --variant-fg-pressed: var(--rose-plain-foreground);
+  --variant-border-pressed: var(--rose-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--rose-plain-border-disabled);
+}
+
+[data-paint='rose-muted'] {
+  --variant-ring: var(--rose-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--rose-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--rose-subtle-hover);
+  --variant-fg-hover: var(--rose-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--rose-subtle-hover);
+  --variant-fg-active: var(--rose-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--rose-subtle-pressed);
+  --variant-fg-pressed: var(--rose-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='rose-plain'] {
+  --variant-ring: var(--rose-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--rose-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--rose-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--rose-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--rose-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='rose-surface'] {
+  --variant-ring: var(--rose-strong);
+  --variant-bg: var(--rose-surface);
+  --variant-fg: var(--rose-plain-foreground);
+  --variant-fg-secondary: var(--rose-surface-foreground);
+  --variant-border: var(--rose-surface-border);
+}

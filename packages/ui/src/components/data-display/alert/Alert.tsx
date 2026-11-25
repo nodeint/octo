@@ -1,6 +1,7 @@
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
 
+import { paintName } from '../../../lib/paint';
 import type { SwatchTone } from '../../../lib/surface-paint';
 import { cn } from '../../../lib/utils';
 
@@ -49,8 +50,7 @@ function Alert({
     state: {
       slot: 'alert',
       variant,
-      tone: tone ?? ALERT_TONE[variant],
-      emphasis: 'surface',
+      paint: paintName({ tone: tone ?? ALERT_TONE[variant], emphasis: 'surface' }),
     },
   });
 }

@@ -2,14 +2,14 @@
  * Resolved paint baseline of packages/ui.
  *
  * Resolves every `--variant-*` slot that each paint combination ends up with, in light and dark, by replaying
- * the cascade of the CSS sources with postcss. A paint combination is a `data-tone` and `data-emphasis` pair
- * today; the same snapshot keys (`<tone>/<emphasis>`) stay valid after the pair becomes one `data-paint` value.
+ * the cascade of the CSS sources with postcss. A paint combination is one `data-paint` value
+ * declared by a block in styles/variants/; the snapshot key is `<tone>/<emphasis>`.
  *
  * Usage:
  *   node scripts/ui/paint-baseline.mjs           Compare the resolved values with the committed snapshot; exit 1 on a diff.
  *   node scripts/ui/paint-baseline.mjs --write   Rewrite the snapshot from the CSS sources.
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -31,22 +31,11 @@ const TOKEN_FILES = [
   'components.css',
 ];
 
-/** Files whose `[data-tone]` and `[data-emphasis]` blocks build the paint, in cascade order. */
-const PAINT_FILES = ['variants/tone.css', 'variants/emphasis.css', 'variants/paint.css', 'variants/field.css'];
-
-/** Emphasis values a surface (Badge, Media, Pane) takes with every surface tone. */
-const SURFACE_EMPHASES = ['solid', 'soft', 'plain', 'muted', 'outline'];
-
-/** Pairs an action, toggle, group, alert, or text field sets. Surface tones are added from tone.css. */
-const FIXED_PAIRS = [
-  ['primary', 'solid'],
-  ['primary', 'link'],
-  ['base', 'soft'],
-  ['base', 'outline'],
-  ['base', 'ghost'],
-  ['base', 'muted'],
-  ['destructive', 'soft'],
-  ];
+/** Files whose `[data-paint]` blocks build the paint, in cascade order. */
+const PAINT_FILES = ['variants/paint.css', ...readdirSync(join(STYLES, 'variants'))
+  .filter((file) => !['paint.css', 'tone.css', 'emphasis.css'].includes(file))
+  .toSorted()
+  .map((file) => `variants/${file}`)];
 
 /** Declarations of a rule, in source order, as `[prop, value]` pairs. */
 function declarationsOf(rule) {
@@ -87,11 +76,11 @@ function loadTokens() {
 
 /** True when a selector made of one attribute test matches the element. */
 function matchesAttribute(selector, element) {
-  const match = /^\[(data-tone|data-emphasis|data-paint)(?:='([^']+)')?\]$/.exec(selector);
+  const match = /^\[(data-paint)(?:='([^']+)')?\]$/.exec(selector);
   if (!match) {
     throw new Error(`Unsupported selector in a paint file: ${selector}`);
   }
-  const actual = element[{ 'data-tone': 'tone', 'data-emphasis': 'emphasis', 'data-paint': 'paint' }[match[1]]];
+  const actual = element.paint;
   if (actual === undefined) {
     return false;
   }
@@ -165,28 +154,26 @@ function resolveElement(tokens, element, dark) {
   return slots;
 }
 
-/** Tones that take every surface emphasis: every tone block in tone.css except field. */
-function surfaceTones() {
-  const tones = [];
-  postcss.parse(readFileSync(join(STYLES, 'variants/tone.css'), 'utf8')).each((node) => {
-    const match = node.type === 'rule' ? /^\[data-tone='([^']+)'\]$/.exec(node.selector) : null;
-    if (match && match[1] !== 'field') {
-      tones.push(match[1]);
-    }
-  });
-  return tones;
-}
-
+/**
+ * Every paint combination the sources declare: one per `[data-paint='name']` selector in the paint files, never
+ * read from the snapshot, so a combination missing from the snapshot (or a snapshot key with no source block)
+ * shows up as a diff. The snapshot key is `<tone>/<emphasis>`; `field` keeps its key `field/field`.
+ */
 function pairs() {
-  const all = new Map(FIXED_PAIRS.map(([tone, emphasis]) => [`${tone}/${emphasis}`, { tone, emphasis }]));
-  // The field paint is one data-paint value; its snapshot key stays field/field.
-  all.set('field/field', { paint: 'field' });
-  for (const tone of surfaceTones()) {
-    // Only Alert paints the surface emphasis, and primary declares no surface roles.
-    const emphases = tone === 'primary' ? SURFACE_EMPHASES : [...SURFACE_EMPHASES, 'surface'];
-    for (const emphasis of emphases) {
-      all.set(`${tone}/${emphasis}`, { tone, emphasis });
-    }
+  const all = new Map();
+  for (const file of PAINT_FILES) {
+    postcss.parse(readFileSync(join(STYLES, file), 'utf8')).each((node) => {
+      if (node.type !== 'rule') {
+        return;
+      }
+      for (const selector of selectorsOf(node)) {
+        const name = /^\[data-paint='([^']+)'\]$/.exec(selector)?.[1];
+        if (name !== undefined) {
+          const key = name === 'field' ? 'field/field' : name.replace('-', '/');
+          all.set(key, { paint: name });
+        }
+      }
+    });
   }
   return all;
 }

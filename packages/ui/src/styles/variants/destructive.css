@@ -1,0 +1,99 @@
+/* destructive: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='destructive-solid'] {
+  --variant-ring: var(--destructive-strong);
+  --variant-bg: var(--destructive-strong);
+  --variant-fg: var(--destructive-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--destructive-strong-hover);
+  --variant-fg-hover: var(--destructive-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--destructive-strong-hover);
+  --variant-fg-active: var(--destructive-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--destructive-strong);
+  --variant-fg-pressed: var(--destructive-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--destructive-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='destructive-soft'] {
+  --variant-ring: var(--destructive-strong);
+  --variant-bg: var(--destructive-subtle);
+  --variant-bg-hover: var(--destructive-subtle-hover);
+  --variant-bg-active: var(--destructive-subtle-hover);
+  --variant-bg-pressed: var(--destructive-subtle-pressed);
+  --variant-bg-disabled: var(--destructive-subtle-disabled);
+  --variant-fg: var(--destructive-subtle-foreground);
+  --variant-fg-hover: var(--destructive-subtle-foreground);
+  --variant-fg-active: var(--destructive-subtle-foreground);
+  --variant-fg-pressed: var(--destructive-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='destructive-outline'] {
+  --variant-ring: var(--destructive-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--destructive-plain-foreground);
+  --variant-border: var(--destructive-plain-border);
+  --variant-bg-hover: var(--destructive-subtle-hover);
+  --variant-fg-hover: var(--destructive-plain-foreground);
+  --variant-border-hover: var(--destructive-plain-border);
+  --variant-bg-active: var(--destructive-subtle-hover);
+  --variant-fg-active: var(--destructive-plain-foreground);
+  --variant-border-active: var(--destructive-plain-border);
+  --variant-bg-pressed: var(--destructive-subtle-pressed);
+  --variant-fg-pressed: var(--destructive-plain-foreground);
+  --variant-border-pressed: var(--destructive-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--destructive-plain-border-disabled);
+}
+
+[data-paint='destructive-muted'] {
+  --variant-ring: var(--destructive-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--destructive-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--destructive-subtle-hover);
+  --variant-fg-hover: var(--destructive-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--destructive-subtle-hover);
+  --variant-fg-active: var(--destructive-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--destructive-subtle-pressed);
+  --variant-fg-pressed: var(--destructive-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='destructive-plain'] {
+  --variant-ring: var(--destructive-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--destructive-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--destructive-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--destructive-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--destructive-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='destructive-surface'] {
+  --variant-ring: var(--destructive-strong);
+  --variant-bg: var(--destructive-surface);
+  --variant-fg: var(--destructive-plain-foreground);
+  --variant-fg-secondary: var(--destructive-surface-foreground);
+  --variant-border: var(--destructive-surface-border);
+}

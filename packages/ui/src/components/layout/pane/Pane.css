@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-.pane[data-tone][data-emphasis] {
+.pane[data-paint] {
   background-color: var(--variant-bg);
   color: var(--variant-fg);
   backdrop-filter: none;

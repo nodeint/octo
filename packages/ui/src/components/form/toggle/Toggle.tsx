@@ -3,6 +3,7 @@
 import { Toggle as TogglePrimitive } from '@base-ui/react/toggle';
 
 import { resolveTogglePaint, type TogglePaint, type ToggleVariant } from '../../../lib/action-paint';
+import { paintName } from '../../../lib/paint';
 import { cn } from '../../../lib/utils';
 
 type ToggleSize = 'xs' | 'sm' | 'md' | 'lg'
@@ -30,8 +31,7 @@ function Toggle({
     <TogglePrimitive
       {...props}
       data-slot="toggle"
-      data-tone={paint.tone}
-      data-emphasis={paint.emphasis}
+      data-paint={paintName(paint)}
       data-action-size={size}
       data-shape={shape}
       data-fill-icon={fillIcon ? '' : undefined}

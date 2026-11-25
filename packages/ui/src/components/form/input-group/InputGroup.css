@@ -67,7 +67,7 @@
   background-color: var(--input-group-bg);
   color: var(--group-field-fg);
   outline: none;
-  /* Color comes from data-group-variant (below). Focus and invalid halos come from the group's own data-tone. */
+  /* Color comes from data-group-variant (below). Focus and invalid halos come from the group's own data-paint. */
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);

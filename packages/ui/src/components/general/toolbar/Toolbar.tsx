@@ -2,6 +2,7 @@ import { Toolbar as ToolbarPrimitive } from '@base-ui/react/toolbar';
 
 import { type ButtonPaint, resolveButtonPaint, resolveTogglePaint, type TogglePaint } from '../../../lib/action-paint';
 import { resolveGroupPaint } from '../../../lib/group-paint';
+import { paintName } from '../../../lib/paint';
 import { cn } from '../../../lib/utils';
 import {
   type ButtonShape,
@@ -35,8 +36,7 @@ function Toolbar({
     <ToolbarPrimitive.Root
       data-slot="toolbar"
       data-group-variant={variant}
-      data-tone={paint.tone}
-      data-emphasis={paint.emphasis}
+      data-paint={paint}
       data-group-size={size}
       data-orientation={orientation}
       orientation={orientation}
@@ -82,8 +82,7 @@ function ToolbarButton({
   return (
     <ToolbarPrimitive.Button
       data-slot="toolbar-button"
-      data-tone={paint.tone}
-      data-emphasis={paint.emphasis}
+      data-paint={paintName(paint)}
       data-action-size={size}
       data-shape={shape}
       className={cn('action button toolbar-button', className)}
@@ -122,8 +121,7 @@ function ToolbarToggle({
     <ToolbarPrimitive.Button
       type="button"
       data-slot="toolbar-toggle"
-      data-tone={paint.tone}
-      data-emphasis={paint.emphasis}
+      data-paint={paintName(paint)}
       data-action-size={size}
       data-shape={shape}
       data-pressed={pressed ? 'true' : undefined}

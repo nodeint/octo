@@ -1,3 +1,4 @@
+import { paintName } from '../../../lib/paint';
 import { resolveSurfacePaint, type SurfacePaint, type SurfaceVariant } from '../../../lib/surface-paint';
 import { cn } from '../../../lib/utils';
 
@@ -23,8 +24,7 @@ function Media({
       data-slot="media"
       data-size={size}
       data-media-size={size}
-      data-tone={paint.tone}
-      data-emphasis={paint.emphasis}
+      data-paint={paintName(paint)}
       className={cn('media-frame media', className)}
       {...props}
     />

@@ -109,7 +109,7 @@
 
 
 /*
- * Group paint: the group root carries data-tone and data-emphasis, or data-paint (lib/group-paint.ts maps data-group-variant to
+ * Group paint: the group root carries data-paint (lib/group-paint.ts maps data-group-variant to
  * them), so styles/variants/ has already built --variant-* on it. This block only hands those slots to the
  * actions and fields inside as --group-*; it declares no color. A change to a tone or an emphasis reaches every
  * group with no edit here. A field (input, select trigger) reads --group-field-*; an action (button) reads
@@ -124,7 +124,6 @@
  * A group that differs overrides the tokens that differ on its own root, in its own file (the components
  * layer beats this one), with a comment that gives the reason. It never copies the set.
  */
-.group[data-emphasis],
 .group[data-paint] {
   --group-action-bg: var(--variant-bg);
   --group-action-fg: var(--variant-fg);

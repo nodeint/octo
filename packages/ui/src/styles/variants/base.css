@@ -1,0 +1,117 @@
+/* base: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='base-solid'] {
+  --variant-ring: var(--state-focus-border);
+  --variant-bg: var(--secondary);
+  --variant-fg: var(--foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--accent);
+  --variant-fg-hover: var(--foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--accent);
+  --variant-fg-active: var(--foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--secondary);
+  --variant-fg-pressed: var(--foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='base-soft'] {
+  --variant-ring: var(--state-focus-border);
+  --variant-bg: var(--secondary);
+  --variant-bg-hover: var(--accent);
+  --variant-bg-active: var(--accent);
+  --variant-bg-pressed: var(--muted);
+  --variant-bg-disabled: color-mix(in oklab, var(--secondary) 50%, transparent);
+  --variant-fg: var(--foreground);
+  --variant-fg-hover: var(--foreground);
+  --variant-fg-active: var(--foreground);
+  --variant-fg-pressed: var(--foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='base-outline'] {
+  --variant-ring: var(--state-focus-border);
+  --variant-bg: transparent;
+  --variant-fg: var(--foreground);
+  --variant-border: var(--border);
+  --variant-bg-hover: var(--accent);
+  --variant-fg-hover: var(--foreground);
+  --variant-border-hover: var(--border);
+  --variant-bg-active: var(--accent);
+  --variant-fg-active: var(--foreground);
+  --variant-border-active: var(--border);
+  --variant-bg-pressed: var(--muted);
+  --variant-fg-pressed: var(--foreground);
+  --variant-border-pressed: var(--border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--disabled-border);
+}
+
+[data-paint='base-ghost'] {
+  --variant-ring: var(--state-focus-border);
+  --variant-bg: transparent;
+  --variant-fg: var(--foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--accent);
+  --variant-fg-hover: var(--foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--accent);
+  --variant-fg-active: var(--foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--muted);
+  --variant-fg-pressed: var(--foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='base-muted'] {
+  --variant-ring: var(--state-focus-border);
+  --variant-bg: transparent;
+  --variant-fg: var(--foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--accent);
+  --variant-fg-hover: var(--foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--accent);
+  --variant-fg-active: var(--foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--muted);
+  --variant-fg-pressed: var(--foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='base-plain'] {
+  --variant-ring: var(--state-focus-border);
+  --variant-bg: transparent;
+  --variant-fg: var(--foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='base-surface'] {
+  --variant-ring: var(--state-focus-border);
+  --variant-bg: var(--card);
+  --variant-fg: var(--foreground);
+  --variant-fg-secondary: var(--foreground);
+  --variant-border: var(--border);
+}

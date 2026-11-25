@@ -1,0 +1,99 @@
+/* neutral: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='neutral-solid'] {
+  --variant-ring: var(--neutral-strong);
+  --variant-bg: var(--neutral-strong);
+  --variant-fg: var(--neutral-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--neutral-strong-hover);
+  --variant-fg-hover: var(--neutral-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--neutral-strong-hover);
+  --variant-fg-active: var(--neutral-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--neutral-strong);
+  --variant-fg-pressed: var(--neutral-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--neutral-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='neutral-soft'] {
+  --variant-ring: var(--neutral-strong);
+  --variant-bg: var(--neutral-subtle);
+  --variant-bg-hover: var(--neutral-subtle-hover);
+  --variant-bg-active: var(--neutral-subtle-hover);
+  --variant-bg-pressed: var(--neutral-subtle-pressed);
+  --variant-bg-disabled: var(--neutral-subtle-disabled);
+  --variant-fg: var(--neutral-subtle-foreground);
+  --variant-fg-hover: var(--neutral-subtle-foreground);
+  --variant-fg-active: var(--neutral-subtle-foreground);
+  --variant-fg-pressed: var(--neutral-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='neutral-outline'] {
+  --variant-ring: var(--neutral-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--neutral-plain-foreground);
+  --variant-border: var(--neutral-plain-border);
+  --variant-bg-hover: var(--neutral-subtle-hover);
+  --variant-fg-hover: var(--neutral-plain-foreground);
+  --variant-border-hover: var(--neutral-plain-border);
+  --variant-bg-active: var(--neutral-subtle-hover);
+  --variant-fg-active: var(--neutral-plain-foreground);
+  --variant-border-active: var(--neutral-plain-border);
+  --variant-bg-pressed: var(--neutral-subtle-pressed);
+  --variant-fg-pressed: var(--neutral-plain-foreground);
+  --variant-border-pressed: var(--neutral-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--neutral-plain-border-disabled);
+}
+
+[data-paint='neutral-muted'] {
+  --variant-ring: var(--neutral-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--neutral-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--neutral-subtle-hover);
+  --variant-fg-hover: var(--neutral-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--neutral-subtle-hover);
+  --variant-fg-active: var(--neutral-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--neutral-subtle-pressed);
+  --variant-fg-pressed: var(--neutral-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='neutral-plain'] {
+  --variant-ring: var(--neutral-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--neutral-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--neutral-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--neutral-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--neutral-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='neutral-surface'] {
+  --variant-ring: var(--neutral-strong);
+  --variant-bg: var(--neutral-surface);
+  --variant-fg: var(--neutral-plain-foreground);
+  --variant-fg-secondary: var(--neutral-surface-foreground);
+  --variant-border: var(--neutral-surface-border);
+}

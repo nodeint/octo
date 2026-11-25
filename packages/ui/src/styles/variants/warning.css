@@ -1,0 +1,99 @@
+/* warning: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='warning-solid'] {
+  --variant-ring: var(--warning-strong);
+  --variant-bg: var(--warning-strong);
+  --variant-fg: var(--warning-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--warning-strong-hover);
+  --variant-fg-hover: var(--warning-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--warning-strong-hover);
+  --variant-fg-active: var(--warning-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--warning-strong);
+  --variant-fg-pressed: var(--warning-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--warning-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='warning-soft'] {
+  --variant-ring: var(--warning-strong);
+  --variant-bg: var(--warning-subtle);
+  --variant-bg-hover: var(--warning-subtle-hover);
+  --variant-bg-active: var(--warning-subtle-hover);
+  --variant-bg-pressed: var(--warning-subtle-pressed);
+  --variant-bg-disabled: var(--warning-subtle-disabled);
+  --variant-fg: var(--warning-subtle-foreground);
+  --variant-fg-hover: var(--warning-subtle-foreground);
+  --variant-fg-active: var(--warning-subtle-foreground);
+  --variant-fg-pressed: var(--warning-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='warning-outline'] {
+  --variant-ring: var(--warning-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--warning-plain-foreground);
+  --variant-border: var(--warning-plain-border);
+  --variant-bg-hover: var(--warning-subtle-hover);
+  --variant-fg-hover: var(--warning-plain-foreground);
+  --variant-border-hover: var(--warning-plain-border);
+  --variant-bg-active: var(--warning-subtle-hover);
+  --variant-fg-active: var(--warning-plain-foreground);
+  --variant-border-active: var(--warning-plain-border);
+  --variant-bg-pressed: var(--warning-subtle-pressed);
+  --variant-fg-pressed: var(--warning-plain-foreground);
+  --variant-border-pressed: var(--warning-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--warning-plain-border-disabled);
+}
+
+[data-paint='warning-muted'] {
+  --variant-ring: var(--warning-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--warning-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--warning-subtle-hover);
+  --variant-fg-hover: var(--warning-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--warning-subtle-hover);
+  --variant-fg-active: var(--warning-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--warning-subtle-pressed);
+  --variant-fg-pressed: var(--warning-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='warning-plain'] {
+  --variant-ring: var(--warning-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--warning-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--warning-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--warning-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--warning-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='warning-surface'] {
+  --variant-ring: var(--warning-strong);
+  --variant-bg: var(--warning-surface);
+  --variant-fg: var(--warning-plain-foreground);
+  --variant-fg-secondary: var(--warning-surface-foreground);
+  --variant-border: var(--warning-surface-border);
+}

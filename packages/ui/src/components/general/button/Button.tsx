@@ -1,6 +1,7 @@
 import { Button as ButtonPrimitive } from '@base-ui/react/button';
 
 import { type ButtonPaint, type ButtonVariant, resolveButtonPaint } from '../../../lib/action-paint';
+import { paintName } from '../../../lib/paint';
 import { cn } from '../../../lib/utils';
 
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg'
@@ -26,8 +27,7 @@ function Button({
     <ButtonPrimitive
       {...props}
       data-slot="button"
-      data-tone={paint.tone}
-      data-emphasis={paint.emphasis}
+      data-paint={paintName(paint)}
       data-action-size={size}
       data-shape={shape}
       className={cn('action', 'button', className)}

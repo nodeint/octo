@@ -1,0 +1,99 @@
+/* success: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='success-solid'] {
+  --variant-ring: var(--success-strong);
+  --variant-bg: var(--success-strong);
+  --variant-fg: var(--success-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--success-strong-hover);
+  --variant-fg-hover: var(--success-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--success-strong-hover);
+  --variant-fg-active: var(--success-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--success-strong);
+  --variant-fg-pressed: var(--success-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--success-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='success-soft'] {
+  --variant-ring: var(--success-strong);
+  --variant-bg: var(--success-subtle);
+  --variant-bg-hover: var(--success-subtle-hover);
+  --variant-bg-active: var(--success-subtle-hover);
+  --variant-bg-pressed: var(--success-subtle-pressed);
+  --variant-bg-disabled: var(--success-subtle-disabled);
+  --variant-fg: var(--success-subtle-foreground);
+  --variant-fg-hover: var(--success-subtle-foreground);
+  --variant-fg-active: var(--success-subtle-foreground);
+  --variant-fg-pressed: var(--success-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='success-outline'] {
+  --variant-ring: var(--success-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--success-plain-foreground);
+  --variant-border: var(--success-plain-border);
+  --variant-bg-hover: var(--success-subtle-hover);
+  --variant-fg-hover: var(--success-plain-foreground);
+  --variant-border-hover: var(--success-plain-border);
+  --variant-bg-active: var(--success-subtle-hover);
+  --variant-fg-active: var(--success-plain-foreground);
+  --variant-border-active: var(--success-plain-border);
+  --variant-bg-pressed: var(--success-subtle-pressed);
+  --variant-fg-pressed: var(--success-plain-foreground);
+  --variant-border-pressed: var(--success-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--success-plain-border-disabled);
+}
+
+[data-paint='success-muted'] {
+  --variant-ring: var(--success-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--success-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--success-subtle-hover);
+  --variant-fg-hover: var(--success-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--success-subtle-hover);
+  --variant-fg-active: var(--success-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--success-subtle-pressed);
+  --variant-fg-pressed: var(--success-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='success-plain'] {
+  --variant-ring: var(--success-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--success-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--success-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--success-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--success-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='success-surface'] {
+  --variant-ring: var(--success-strong);
+  --variant-bg: var(--success-surface);
+  --variant-fg: var(--success-plain-foreground);
+  --variant-fg-secondary: var(--success-surface-foreground);
+  --variant-border: var(--success-surface-border);
+}

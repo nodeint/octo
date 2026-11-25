@@ -1,0 +1,99 @@
+/* mauve: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='mauve-solid'] {
+  --variant-ring: var(--mauve-strong);
+  --variant-bg: var(--mauve-strong);
+  --variant-fg: var(--mauve-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--mauve-strong-hover);
+  --variant-fg-hover: var(--mauve-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--mauve-strong-hover);
+  --variant-fg-active: var(--mauve-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--mauve-strong);
+  --variant-fg-pressed: var(--mauve-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--mauve-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='mauve-soft'] {
+  --variant-ring: var(--mauve-strong);
+  --variant-bg: var(--mauve-subtle);
+  --variant-bg-hover: var(--mauve-subtle-hover);
+  --variant-bg-active: var(--mauve-subtle-hover);
+  --variant-bg-pressed: var(--mauve-subtle-pressed);
+  --variant-bg-disabled: var(--mauve-subtle-disabled);
+  --variant-fg: var(--mauve-subtle-foreground);
+  --variant-fg-hover: var(--mauve-subtle-foreground);
+  --variant-fg-active: var(--mauve-subtle-foreground);
+  --variant-fg-pressed: var(--mauve-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='mauve-outline'] {
+  --variant-ring: var(--mauve-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--mauve-plain-foreground);
+  --variant-border: var(--mauve-plain-border);
+  --variant-bg-hover: var(--mauve-subtle-hover);
+  --variant-fg-hover: var(--mauve-plain-foreground);
+  --variant-border-hover: var(--mauve-plain-border);
+  --variant-bg-active: var(--mauve-subtle-hover);
+  --variant-fg-active: var(--mauve-plain-foreground);
+  --variant-border-active: var(--mauve-plain-border);
+  --variant-bg-pressed: var(--mauve-subtle-pressed);
+  --variant-fg-pressed: var(--mauve-plain-foreground);
+  --variant-border-pressed: var(--mauve-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--mauve-plain-border-disabled);
+}
+
+[data-paint='mauve-muted'] {
+  --variant-ring: var(--mauve-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--mauve-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--mauve-subtle-hover);
+  --variant-fg-hover: var(--mauve-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--mauve-subtle-hover);
+  --variant-fg-active: var(--mauve-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--mauve-subtle-pressed);
+  --variant-fg-pressed: var(--mauve-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='mauve-plain'] {
+  --variant-ring: var(--mauve-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--mauve-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--mauve-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--mauve-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--mauve-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='mauve-surface'] {
+  --variant-ring: var(--mauve-strong);
+  --variant-bg: var(--mauve-surface);
+  --variant-fg: var(--mauve-plain-foreground);
+  --variant-fg-secondary: var(--mauve-surface-foreground);
+  --variant-border: var(--mauve-surface-border);
+}

@@ -1,4 +1,4 @@
-/* A media tile is painted by the shared --variant-* colors, like a badge; the paint comes from data-tone and data-emphasis. */
+/* A media tile is painted by the shared --variant-* colors, like a badge; the paint comes from data-paint. */
 .media {
   --media-background: var(--variant-bg);
   --media-foreground: var(--variant-fg);

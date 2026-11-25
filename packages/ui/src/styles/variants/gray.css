@@ -1,0 +1,99 @@
+/* gray: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='gray-solid'] {
+  --variant-ring: var(--gray-strong);
+  --variant-bg: var(--gray-strong);
+  --variant-fg: var(--gray-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--gray-strong-hover);
+  --variant-fg-hover: var(--gray-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--gray-strong-hover);
+  --variant-fg-active: var(--gray-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--gray-strong);
+  --variant-fg-pressed: var(--gray-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--gray-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='gray-soft'] {
+  --variant-ring: var(--gray-strong);
+  --variant-bg: var(--gray-subtle);
+  --variant-bg-hover: var(--gray-subtle-hover);
+  --variant-bg-active: var(--gray-subtle-hover);
+  --variant-bg-pressed: var(--gray-subtle-pressed);
+  --variant-bg-disabled: var(--gray-subtle-disabled);
+  --variant-fg: var(--gray-subtle-foreground);
+  --variant-fg-hover: var(--gray-subtle-foreground);
+  --variant-fg-active: var(--gray-subtle-foreground);
+  --variant-fg-pressed: var(--gray-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='gray-outline'] {
+  --variant-ring: var(--gray-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--gray-plain-foreground);
+  --variant-border: var(--gray-plain-border);
+  --variant-bg-hover: var(--gray-subtle-hover);
+  --variant-fg-hover: var(--gray-plain-foreground);
+  --variant-border-hover: var(--gray-plain-border);
+  --variant-bg-active: var(--gray-subtle-hover);
+  --variant-fg-active: var(--gray-plain-foreground);
+  --variant-border-active: var(--gray-plain-border);
+  --variant-bg-pressed: var(--gray-subtle-pressed);
+  --variant-fg-pressed: var(--gray-plain-foreground);
+  --variant-border-pressed: var(--gray-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--gray-plain-border-disabled);
+}
+
+[data-paint='gray-muted'] {
+  --variant-ring: var(--gray-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--gray-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--gray-subtle-hover);
+  --variant-fg-hover: var(--gray-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--gray-subtle-hover);
+  --variant-fg-active: var(--gray-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--gray-subtle-pressed);
+  --variant-fg-pressed: var(--gray-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='gray-plain'] {
+  --variant-ring: var(--gray-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--gray-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--gray-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--gray-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--gray-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='gray-surface'] {
+  --variant-ring: var(--gray-strong);
+  --variant-bg: var(--gray-surface);
+  --variant-fg: var(--gray-plain-foreground);
+  --variant-fg-secondary: var(--gray-surface-foreground);
+  --variant-border: var(--gray-surface-border);
+}

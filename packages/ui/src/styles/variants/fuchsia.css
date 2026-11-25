@@ -1,0 +1,99 @@
+/* fuchsia: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='fuchsia-solid'] {
+  --variant-ring: var(--fuchsia-strong);
+  --variant-bg: var(--fuchsia-strong);
+  --variant-fg: var(--fuchsia-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--fuchsia-strong-hover);
+  --variant-fg-hover: var(--fuchsia-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--fuchsia-strong-hover);
+  --variant-fg-active: var(--fuchsia-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--fuchsia-strong);
+  --variant-fg-pressed: var(--fuchsia-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--fuchsia-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='fuchsia-soft'] {
+  --variant-ring: var(--fuchsia-strong);
+  --variant-bg: var(--fuchsia-subtle);
+  --variant-bg-hover: var(--fuchsia-subtle-hover);
+  --variant-bg-active: var(--fuchsia-subtle-hover);
+  --variant-bg-pressed: var(--fuchsia-subtle-pressed);
+  --variant-bg-disabled: var(--fuchsia-subtle-disabled);
+  --variant-fg: var(--fuchsia-subtle-foreground);
+  --variant-fg-hover: var(--fuchsia-subtle-foreground);
+  --variant-fg-active: var(--fuchsia-subtle-foreground);
+  --variant-fg-pressed: var(--fuchsia-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='fuchsia-outline'] {
+  --variant-ring: var(--fuchsia-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--fuchsia-plain-foreground);
+  --variant-border: var(--fuchsia-plain-border);
+  --variant-bg-hover: var(--fuchsia-subtle-hover);
+  --variant-fg-hover: var(--fuchsia-plain-foreground);
+  --variant-border-hover: var(--fuchsia-plain-border);
+  --variant-bg-active: var(--fuchsia-subtle-hover);
+  --variant-fg-active: var(--fuchsia-plain-foreground);
+  --variant-border-active: var(--fuchsia-plain-border);
+  --variant-bg-pressed: var(--fuchsia-subtle-pressed);
+  --variant-fg-pressed: var(--fuchsia-plain-foreground);
+  --variant-border-pressed: var(--fuchsia-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--fuchsia-plain-border-disabled);
+}
+
+[data-paint='fuchsia-muted'] {
+  --variant-ring: var(--fuchsia-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--fuchsia-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--fuchsia-subtle-hover);
+  --variant-fg-hover: var(--fuchsia-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--fuchsia-subtle-hover);
+  --variant-fg-active: var(--fuchsia-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--fuchsia-subtle-pressed);
+  --variant-fg-pressed: var(--fuchsia-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='fuchsia-plain'] {
+  --variant-ring: var(--fuchsia-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--fuchsia-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--fuchsia-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--fuchsia-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--fuchsia-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='fuchsia-surface'] {
+  --variant-ring: var(--fuchsia-strong);
+  --variant-bg: var(--fuchsia-surface);
+  --variant-fg: var(--fuchsia-plain-foreground);
+  --variant-fg-secondary: var(--fuchsia-surface-foreground);
+  --variant-border: var(--fuchsia-surface-border);
+}

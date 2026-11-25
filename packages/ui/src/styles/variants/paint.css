@@ -3,7 +3,7 @@
  * The value is `{tone}-{emphasis}` (`base-outline`), or `field` alone. Each color has its own file in this folder.
  * This file holds what every variant shares: focus, invalid, disabled text and placeholder. A variant declares
  * only --variant-ring, which the halo and the focus border follow.
- * TEMPORARY: tone.css and emphasis.css still paint the other variants with data-tone and data-emphasis; P4 removes them.
+ * TEMPORARY: tone.css and emphasis.css are no longer read by any component; P4 removes them.
  */
 [data-paint] {
   --variant-border-focus: var(--variant-ring);

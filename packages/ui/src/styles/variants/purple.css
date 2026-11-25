@@ -1,0 +1,99 @@
+/* purple: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='purple-solid'] {
+  --variant-ring: var(--purple-strong);
+  --variant-bg: var(--purple-strong);
+  --variant-fg: var(--purple-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--purple-strong-hover);
+  --variant-fg-hover: var(--purple-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--purple-strong-hover);
+  --variant-fg-active: var(--purple-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--purple-strong);
+  --variant-fg-pressed: var(--purple-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--purple-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='purple-soft'] {
+  --variant-ring: var(--purple-strong);
+  --variant-bg: var(--purple-subtle);
+  --variant-bg-hover: var(--purple-subtle-hover);
+  --variant-bg-active: var(--purple-subtle-hover);
+  --variant-bg-pressed: var(--purple-subtle-pressed);
+  --variant-bg-disabled: var(--purple-subtle-disabled);
+  --variant-fg: var(--purple-subtle-foreground);
+  --variant-fg-hover: var(--purple-subtle-foreground);
+  --variant-fg-active: var(--purple-subtle-foreground);
+  --variant-fg-pressed: var(--purple-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='purple-outline'] {
+  --variant-ring: var(--purple-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--purple-plain-foreground);
+  --variant-border: var(--purple-plain-border);
+  --variant-bg-hover: var(--purple-subtle-hover);
+  --variant-fg-hover: var(--purple-plain-foreground);
+  --variant-border-hover: var(--purple-plain-border);
+  --variant-bg-active: var(--purple-subtle-hover);
+  --variant-fg-active: var(--purple-plain-foreground);
+  --variant-border-active: var(--purple-plain-border);
+  --variant-bg-pressed: var(--purple-subtle-pressed);
+  --variant-fg-pressed: var(--purple-plain-foreground);
+  --variant-border-pressed: var(--purple-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--purple-plain-border-disabled);
+}
+
+[data-paint='purple-muted'] {
+  --variant-ring: var(--purple-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--purple-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--purple-subtle-hover);
+  --variant-fg-hover: var(--purple-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--purple-subtle-hover);
+  --variant-fg-active: var(--purple-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--purple-subtle-pressed);
+  --variant-fg-pressed: var(--purple-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='purple-plain'] {
+  --variant-ring: var(--purple-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--purple-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--purple-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--purple-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--purple-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='purple-surface'] {
+  --variant-ring: var(--purple-strong);
+  --variant-bg: var(--purple-surface);
+  --variant-fg: var(--purple-plain-foreground);
+  --variant-fg-secondary: var(--purple-surface-foreground);
+  --variant-border: var(--purple-surface-border);
+}

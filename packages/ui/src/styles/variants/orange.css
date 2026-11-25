@@ -1,0 +1,99 @@
+/* orange: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='orange-solid'] {
+  --variant-ring: var(--orange-strong);
+  --variant-bg: var(--orange-strong);
+  --variant-fg: var(--orange-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--orange-strong-hover);
+  --variant-fg-hover: var(--orange-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--orange-strong-hover);
+  --variant-fg-active: var(--orange-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--orange-strong);
+  --variant-fg-pressed: var(--orange-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--orange-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='orange-soft'] {
+  --variant-ring: var(--orange-strong);
+  --variant-bg: var(--orange-subtle);
+  --variant-bg-hover: var(--orange-subtle-hover);
+  --variant-bg-active: var(--orange-subtle-hover);
+  --variant-bg-pressed: var(--orange-subtle-pressed);
+  --variant-bg-disabled: var(--orange-subtle-disabled);
+  --variant-fg: var(--orange-subtle-foreground);
+  --variant-fg-hover: var(--orange-subtle-foreground);
+  --variant-fg-active: var(--orange-subtle-foreground);
+  --variant-fg-pressed: var(--orange-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='orange-outline'] {
+  --variant-ring: var(--orange-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--orange-plain-foreground);
+  --variant-border: var(--orange-plain-border);
+  --variant-bg-hover: var(--orange-subtle-hover);
+  --variant-fg-hover: var(--orange-plain-foreground);
+  --variant-border-hover: var(--orange-plain-border);
+  --variant-bg-active: var(--orange-subtle-hover);
+  --variant-fg-active: var(--orange-plain-foreground);
+  --variant-border-active: var(--orange-plain-border);
+  --variant-bg-pressed: var(--orange-subtle-pressed);
+  --variant-fg-pressed: var(--orange-plain-foreground);
+  --variant-border-pressed: var(--orange-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--orange-plain-border-disabled);
+}
+
+[data-paint='orange-muted'] {
+  --variant-ring: var(--orange-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--orange-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--orange-subtle-hover);
+  --variant-fg-hover: var(--orange-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--orange-subtle-hover);
+  --variant-fg-active: var(--orange-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--orange-subtle-pressed);
+  --variant-fg-pressed: var(--orange-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='orange-plain'] {
+  --variant-ring: var(--orange-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--orange-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--orange-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--orange-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--orange-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='orange-surface'] {
+  --variant-ring: var(--orange-strong);
+  --variant-bg: var(--orange-surface);
+  --variant-fg: var(--orange-plain-foreground);
+  --variant-fg-secondary: var(--orange-surface-foreground);
+  --variant-border: var(--orange-surface-border);
+}

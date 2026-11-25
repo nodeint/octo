@@ -1,0 +1,99 @@
+/* violet: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='violet-solid'] {
+  --variant-ring: var(--violet-strong);
+  --variant-bg: var(--violet-strong);
+  --variant-fg: var(--violet-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--violet-strong-hover);
+  --variant-fg-hover: var(--violet-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--violet-strong-hover);
+  --variant-fg-active: var(--violet-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--violet-strong);
+  --variant-fg-pressed: var(--violet-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--violet-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='violet-soft'] {
+  --variant-ring: var(--violet-strong);
+  --variant-bg: var(--violet-subtle);
+  --variant-bg-hover: var(--violet-subtle-hover);
+  --variant-bg-active: var(--violet-subtle-hover);
+  --variant-bg-pressed: var(--violet-subtle-pressed);
+  --variant-bg-disabled: var(--violet-subtle-disabled);
+  --variant-fg: var(--violet-subtle-foreground);
+  --variant-fg-hover: var(--violet-subtle-foreground);
+  --variant-fg-active: var(--violet-subtle-foreground);
+  --variant-fg-pressed: var(--violet-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='violet-outline'] {
+  --variant-ring: var(--violet-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--violet-plain-foreground);
+  --variant-border: var(--violet-plain-border);
+  --variant-bg-hover: var(--violet-subtle-hover);
+  --variant-fg-hover: var(--violet-plain-foreground);
+  --variant-border-hover: var(--violet-plain-border);
+  --variant-bg-active: var(--violet-subtle-hover);
+  --variant-fg-active: var(--violet-plain-foreground);
+  --variant-border-active: var(--violet-plain-border);
+  --variant-bg-pressed: var(--violet-subtle-pressed);
+  --variant-fg-pressed: var(--violet-plain-foreground);
+  --variant-border-pressed: var(--violet-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--violet-plain-border-disabled);
+}
+
+[data-paint='violet-muted'] {
+  --variant-ring: var(--violet-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--violet-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--violet-subtle-hover);
+  --variant-fg-hover: var(--violet-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--violet-subtle-hover);
+  --variant-fg-active: var(--violet-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--violet-subtle-pressed);
+  --variant-fg-pressed: var(--violet-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='violet-plain'] {
+  --variant-ring: var(--violet-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--violet-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--violet-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--violet-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--violet-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='violet-surface'] {
+  --variant-ring: var(--violet-strong);
+  --variant-bg: var(--violet-surface);
+  --variant-fg: var(--violet-plain-foreground);
+  --variant-fg-secondary: var(--violet-surface-foreground);
+  --variant-border: var(--violet-surface-border);
+}

@@ -1,0 +1,99 @@
+/* taupe: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='taupe-solid'] {
+  --variant-ring: var(--taupe-strong);
+  --variant-bg: var(--taupe-strong);
+  --variant-fg: var(--taupe-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--taupe-strong-hover);
+  --variant-fg-hover: var(--taupe-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--taupe-strong-hover);
+  --variant-fg-active: var(--taupe-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--taupe-strong);
+  --variant-fg-pressed: var(--taupe-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--taupe-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='taupe-soft'] {
+  --variant-ring: var(--taupe-strong);
+  --variant-bg: var(--taupe-subtle);
+  --variant-bg-hover: var(--taupe-subtle-hover);
+  --variant-bg-active: var(--taupe-subtle-hover);
+  --variant-bg-pressed: var(--taupe-subtle-pressed);
+  --variant-bg-disabled: var(--taupe-subtle-disabled);
+  --variant-fg: var(--taupe-subtle-foreground);
+  --variant-fg-hover: var(--taupe-subtle-foreground);
+  --variant-fg-active: var(--taupe-subtle-foreground);
+  --variant-fg-pressed: var(--taupe-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='taupe-outline'] {
+  --variant-ring: var(--taupe-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--taupe-plain-foreground);
+  --variant-border: var(--taupe-plain-border);
+  --variant-bg-hover: var(--taupe-subtle-hover);
+  --variant-fg-hover: var(--taupe-plain-foreground);
+  --variant-border-hover: var(--taupe-plain-border);
+  --variant-bg-active: var(--taupe-subtle-hover);
+  --variant-fg-active: var(--taupe-plain-foreground);
+  --variant-border-active: var(--taupe-plain-border);
+  --variant-bg-pressed: var(--taupe-subtle-pressed);
+  --variant-fg-pressed: var(--taupe-plain-foreground);
+  --variant-border-pressed: var(--taupe-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--taupe-plain-border-disabled);
+}
+
+[data-paint='taupe-muted'] {
+  --variant-ring: var(--taupe-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--taupe-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--taupe-subtle-hover);
+  --variant-fg-hover: var(--taupe-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--taupe-subtle-hover);
+  --variant-fg-active: var(--taupe-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--taupe-subtle-pressed);
+  --variant-fg-pressed: var(--taupe-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='taupe-plain'] {
+  --variant-ring: var(--taupe-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--taupe-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--taupe-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--taupe-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--taupe-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='taupe-surface'] {
+  --variant-ring: var(--taupe-strong);
+  --variant-bg: var(--taupe-surface);
+  --variant-fg: var(--taupe-plain-foreground);
+  --variant-fg-secondary: var(--taupe-surface-foreground);
+  --variant-border: var(--taupe-surface-border);
+}

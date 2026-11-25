@@ -35,8 +35,7 @@ function ButtonGroup({
       data-slot="button-group"
       data-orientation={orientation}
       data-group-variant={variant}
-      data-tone={paint.tone}
-      data-emphasis={paint.emphasis}
+      data-paint={paint}
       data-group-size={size}
       className={cn('group button-group', className)}
       {...props}

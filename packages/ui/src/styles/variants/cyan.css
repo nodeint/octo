@@ -1,0 +1,99 @@
+/* cyan: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='cyan-solid'] {
+  --variant-ring: var(--cyan-strong);
+  --variant-bg: var(--cyan-strong);
+  --variant-fg: var(--cyan-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--cyan-strong-hover);
+  --variant-fg-hover: var(--cyan-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--cyan-strong-hover);
+  --variant-fg-active: var(--cyan-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--cyan-strong);
+  --variant-fg-pressed: var(--cyan-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--cyan-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='cyan-soft'] {
+  --variant-ring: var(--cyan-strong);
+  --variant-bg: var(--cyan-subtle);
+  --variant-bg-hover: var(--cyan-subtle-hover);
+  --variant-bg-active: var(--cyan-subtle-hover);
+  --variant-bg-pressed: var(--cyan-subtle-pressed);
+  --variant-bg-disabled: var(--cyan-subtle-disabled);
+  --variant-fg: var(--cyan-subtle-foreground);
+  --variant-fg-hover: var(--cyan-subtle-foreground);
+  --variant-fg-active: var(--cyan-subtle-foreground);
+  --variant-fg-pressed: var(--cyan-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='cyan-outline'] {
+  --variant-ring: var(--cyan-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--cyan-plain-foreground);
+  --variant-border: var(--cyan-plain-border);
+  --variant-bg-hover: var(--cyan-subtle-hover);
+  --variant-fg-hover: var(--cyan-plain-foreground);
+  --variant-border-hover: var(--cyan-plain-border);
+  --variant-bg-active: var(--cyan-subtle-hover);
+  --variant-fg-active: var(--cyan-plain-foreground);
+  --variant-border-active: var(--cyan-plain-border);
+  --variant-bg-pressed: var(--cyan-subtle-pressed);
+  --variant-fg-pressed: var(--cyan-plain-foreground);
+  --variant-border-pressed: var(--cyan-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--cyan-plain-border-disabled);
+}
+
+[data-paint='cyan-muted'] {
+  --variant-ring: var(--cyan-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--cyan-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--cyan-subtle-hover);
+  --variant-fg-hover: var(--cyan-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--cyan-subtle-hover);
+  --variant-fg-active: var(--cyan-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--cyan-subtle-pressed);
+  --variant-fg-pressed: var(--cyan-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='cyan-plain'] {
+  --variant-ring: var(--cyan-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--cyan-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--cyan-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--cyan-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--cyan-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='cyan-surface'] {
+  --variant-ring: var(--cyan-strong);
+  --variant-bg: var(--cyan-surface);
+  --variant-fg: var(--cyan-plain-foreground);
+  --variant-fg-secondary: var(--cyan-surface-foreground);
+  --variant-border: var(--cyan-surface-border);
+}

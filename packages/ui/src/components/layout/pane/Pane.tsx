@@ -1,5 +1,6 @@
 import type * as React from 'react';
 
+import { paintName } from '../../../lib/paint';
 import type { SurfaceAxes } from '../../../lib/surface-paint';
 import { cn } from '../../../lib/utils';
 import { Box, type BoxProps } from '../box/Box';
@@ -23,8 +24,7 @@ function Pane({
       p={p}
       radius={radius}
       data-slot="pane"
-      data-tone={tone}
-      data-emphasis={emphasis}
+      data-paint={paintName({ tone, emphasis })}
       className={cn('pane', className)}
       {...props}
     />

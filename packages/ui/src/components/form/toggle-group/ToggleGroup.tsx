@@ -35,8 +35,7 @@ function ToggleGroup<Value extends string = string>({
     <ToggleGroupPrimitive
       data-slot="toggle-group"
       data-group-variant={variant}
-      data-tone={paint.tone}
-      data-emphasis={paint.emphasis}
+      data-paint={paint}
       data-group-size={size}
       data-orientation={orientation}
       data-wrap={wrap ? '' : undefined}

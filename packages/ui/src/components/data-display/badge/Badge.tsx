@@ -1,6 +1,7 @@
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
 
+import { paintName } from '../../../lib/paint';
 import { resolveSurfacePaint, type SurfacePaint, type SurfaceVariant } from '../../../lib/surface-paint';
 import { cn } from '../../../lib/utils';
 
@@ -33,12 +34,11 @@ function Badge({
       props
     ),
     render,
-    // Base UI maps state keys → data-* (data-slot, data-size, data-tone, data-emphasis)
+    // Base UI maps state keys → data-* (data-slot, data-size, data-paint)
     state: {
       slot: 'badge',
       size,
-      tone: paint.tone,
-      emphasis: paint.emphasis,
+      paint: paintName(paint),
     },
     });
 }

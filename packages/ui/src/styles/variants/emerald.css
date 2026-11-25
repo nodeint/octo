@@ -1,0 +1,99 @@
+/* emerald: every variant of this color. Each block declares its own --variant-* slots from the color tokens. */
+
+[data-paint='emerald-solid'] {
+  --variant-ring: var(--emerald-strong);
+  --variant-bg: var(--emerald-strong);
+  --variant-fg: var(--emerald-strong-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--emerald-strong-hover);
+  --variant-fg-hover: var(--emerald-strong-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--emerald-strong-hover);
+  --variant-fg-active: var(--emerald-strong-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--emerald-strong);
+  --variant-fg-pressed: var(--emerald-strong-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: var(--emerald-strong-disabled);
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='emerald-soft'] {
+  --variant-ring: var(--emerald-strong);
+  --variant-bg: var(--emerald-subtle);
+  --variant-bg-hover: var(--emerald-subtle-hover);
+  --variant-bg-active: var(--emerald-subtle-hover);
+  --variant-bg-pressed: var(--emerald-subtle-pressed);
+  --variant-bg-disabled: var(--emerald-subtle-disabled);
+  --variant-fg: var(--emerald-subtle-foreground);
+  --variant-fg-hover: var(--emerald-subtle-foreground);
+  --variant-fg-active: var(--emerald-subtle-foreground);
+  --variant-fg-pressed: var(--emerald-plain-foreground-disabled);
+  --variant-border: transparent;
+  --variant-border-hover: transparent;
+  --variant-border-active: transparent;
+  --variant-border-pressed: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='emerald-outline'] {
+  --variant-ring: var(--emerald-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--emerald-plain-foreground);
+  --variant-border: var(--emerald-plain-border);
+  --variant-bg-hover: var(--emerald-subtle-hover);
+  --variant-fg-hover: var(--emerald-plain-foreground);
+  --variant-border-hover: var(--emerald-plain-border);
+  --variant-bg-active: var(--emerald-subtle-hover);
+  --variant-fg-active: var(--emerald-plain-foreground);
+  --variant-border-active: var(--emerald-plain-border);
+  --variant-bg-pressed: var(--emerald-subtle-pressed);
+  --variant-fg-pressed: var(--emerald-plain-foreground);
+  --variant-border-pressed: var(--emerald-plain-border);
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: var(--emerald-plain-border-disabled);
+}
+
+[data-paint='emerald-muted'] {
+  --variant-ring: var(--emerald-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--emerald-plain-foreground-muted);
+  --variant-border: transparent;
+  --variant-bg-hover: var(--emerald-subtle-hover);
+  --variant-fg-hover: var(--emerald-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: var(--emerald-subtle-hover);
+  --variant-fg-active: var(--emerald-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: var(--emerald-subtle-pressed);
+  --variant-fg-pressed: var(--emerald-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='emerald-plain'] {
+  --variant-ring: var(--emerald-strong);
+  --variant-bg: transparent;
+  --variant-fg: var(--emerald-plain-foreground);
+  --variant-border: transparent;
+  --variant-bg-hover: transparent;
+  --variant-fg-hover: var(--emerald-plain-foreground);
+  --variant-border-hover: transparent;
+  --variant-bg-active: transparent;
+  --variant-fg-active: var(--emerald-plain-foreground);
+  --variant-border-active: transparent;
+  --variant-bg-pressed: transparent;
+  --variant-fg-pressed: var(--emerald-plain-foreground);
+  --variant-border-pressed: transparent;
+  --variant-bg-disabled: transparent;
+  --variant-border-disabled: transparent;
+}
+
+[data-paint='emerald-surface'] {
+  --variant-ring: var(--emerald-strong);
+  --variant-bg: var(--emerald-surface);
+  --variant-fg: var(--emerald-plain-foreground);
+  --variant-fg-secondary: var(--emerald-surface-foreground);
+  --variant-border: var(--emerald-surface-border);
+}
