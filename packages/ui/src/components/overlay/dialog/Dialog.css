@@ -45,9 +45,3 @@
   flex-direction: column;
   gap: var(--panel-gap);
 }
-
-/* stack keeps the column at every width; the extra class outranks .modal-centered .modal-footer (row from 40rem), so load order does not decide */
-.modal-centered .dialog-footer[data-layout='stack'] {
-  flex-direction: column;
-  justify-content: flex-start;
-}

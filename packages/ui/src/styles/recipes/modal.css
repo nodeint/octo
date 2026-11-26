@@ -1,14 +1,17 @@
 /*
  * Modal skin: scrim, panel surface, footer band and close button, shared by dialog,
- * alert dialog and sheet. A component adds the classes it needs. Keyframes live in overlay.css.
+ * alert dialog and drawer. A component adds the classes it needs. Keyframes live in overlay.css.
+ *
+ * Placement is a second class next to `modal-content`, which paints only: `modal-centered` for a panel in the middle
+ * of the screen, `modal-side` (with `modal-side-viewport` around it and `modal-side-overlay` on the scrim) for a panel
+ * on a screen edge. `modal-side` reads data-side (top, right, bottom, left).
  *
  * Width: a centered modal reads data-size (sm, md, lg, xl) from the --panel-w-* scale, from 40rem up. A component
  * passes data-size and never sets a width itself; a size it does not offer is simply never passed.
  *
  * Input tokens a component may set on its own root:
- *   --modal-background, --modal-shadow, --modal-footer-direction
- * Shell layout, inset, gap and the footer band come from panel.css: a modal adds `panel` and `panel-footer`;
- * its component sets, for a bare variant, --panel-stack-gap and --panel-padding.
+ *   --modal-background, --modal-shadow
+ * Shell layout, inset, gap and the footer band come from panel.css: a modal adds `panel` and `panel-footer`.
  */
 
 /* Scrim paint. */
@@ -21,27 +24,25 @@
   -webkit-backdrop-filter: var(--surface-overlay-filter);
 }
 
-/* Fade-only scrim motion for centered modals. A sheet fades by transition, so it does not add this class. */
-.modal-overlay-fade {
+/* Fade-only scrim motion for centered modals. A drawer fades by transition, so it does not add this class. */
+.modal-centered-overlay {
   isolation: isolate;
   animation-duration: var(--motion-duration-fast);
 }
 
-.modal-overlay-fade[data-open] {
+.modal-centered-overlay[data-open] {
   animation-name: overlay-fade-in;
   animation-timing-function: var(--ease-enter);
 }
 
-.modal-overlay-fade[data-closed] {
+.modal-centered-overlay[data-closed] {
   animation-name: overlay-fade-out;
   animation-timing-function: var(--ease-exit);
   animation-fill-mode: forwards;
 }
 
-/* Panel surface. */
+/* Panel surface. Placement comes from modal-centered or modal-side. */
 .modal-content {
-  position: fixed;
-  z-index: var(--z-floating);
   background-color: var(--modal-background, var(--dialog));
   color: var(--variant-fg);
   box-shadow: var(--modal-shadow, 0 0 0 var(--border-width-thin) var(--border-surface));
@@ -50,6 +51,8 @@
 
 /* Centered panels zoom and fade in place. */
 .modal-centered {
+  position: fixed;
+  z-index: var(--z-floating);
   top: 50%;
   left: 50%;
   width: calc(100% - var(--space-md) * 2);
@@ -88,23 +91,134 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .modal-overlay-fade,
+  .modal-centered-overlay,
   .modal-centered {
     animation-duration: 1ms;
   }
 }
 
-/* Footer direction; the band itself is .panel-footer. */
+/*
+ * Side panels slide in from an edge. Base UI's Drawer positions the popup inside a viewport and reports a swipe through
+ * --drawer-swipe-*; the scrim fades by transition, and a swipe in progress must not animate.
+ */
+.modal-side-overlay {
+  opacity: calc(1 - var(--drawer-swipe-progress, 0));
+  transition-property: opacity;
+  transition-duration: var(--motion-duration-normal);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.modal-side-overlay[data-starting-style],
+.modal-side-overlay[data-ending-style] {
+  opacity: 0;
+}
+
+.modal-side-overlay[data-swiping] {
+  transition-duration: 0ms;
+}
+
+/* Sits above the scrim (later in the portal) and lets presses outside the panel through to it. */
+.modal-side-viewport {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-floating);
+  display: flex;
+  pointer-events: none;
+}
+
+.modal-side-viewport[data-side='right'] {
+  justify-content: flex-end;
+}
+
+.modal-side-viewport[data-side='top'] {
+  align-items: flex-start;
+}
+
+.modal-side-viewport[data-side='bottom'] {
+  align-items: flex-end;
+}
+
+.modal-side {
+  --modal-side-offscreen-x: 0%;
+  --modal-side-offscreen-y: 0%;
+  pointer-events: auto;
+  background-clip: padding-box;
+  transform: translate(var(--drawer-swipe-movement-x, 0px), var(--drawer-swipe-movement-y, 0px));
+  transition-property: transform;
+  transition-duration: var(--motion-duration-slow);
+  transition-timing-function: var(--ease-standard);
+}
+
+.modal-side[data-starting-style],
+.modal-side[data-ending-style] {
+  transform: translate(var(--modal-side-offscreen-x), var(--modal-side-offscreen-y));
+}
+
+.modal-side[data-swiping] {
+  transition-duration: 0ms;
+}
+
+.modal-side[data-ending-style] {
+  transition-duration: calc(var(--drawer-swipe-strength, 1) * var(--motion-duration-slow));
+}
+
+.modal-side[data-side='top'],
+.modal-side[data-side='bottom'] {
+  width: 100%;
+  max-height: 100%;
+}
+
+.modal-side[data-side='top'] {
+  --modal-side-offscreen-y: -100%;
+  border-bottom: var(--border-width-thin) solid var(--border);
+}
+
+.modal-side[data-side='bottom'] {
+  --modal-side-offscreen-y: 100%;
+  border-top: var(--border-width-thin) solid var(--border);
+}
+
+.modal-side[data-side='left'],
+.modal-side[data-side='right'] {
+  height: 100%;
+  width: 75%;
+}
+
+.modal-side[data-side='left'] {
+  --modal-side-offscreen-x: -100%;
+  border-right: var(--border-width-thin) solid var(--border);
+}
+
+.modal-side[data-side='right'] {
+  --modal-side-offscreen-x: 100%;
+  border-left: var(--border-width-thin) solid var(--border);
+}
+
+@media (min-width: 40rem) {
+  .modal-side[data-side='left'],
+  .modal-side[data-side='right'] {
+    max-width: var(--panel-w-sm);
+  }
+}
+
+/*
+ * Footer: the band itself is .panel-footer. Actions stack with the primary last on a phone and sit right-aligned
+ * in a row from 40rem, for every modal. data-layout='stack' keeps the column at every width.
+ */
 .modal-footer {
-  flex-direction: var(--modal-footer-direction, column-reverse);
   gap: var(--space-xs);
 }
 
 @media (min-width: 40rem) {
-  .modal-centered .modal-footer {
+  .modal-footer {
     flex-direction: row;
     justify-content: flex-end;
   }
+}
+
+.modal-footer[data-layout='stack'] {
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .modal-close-button {

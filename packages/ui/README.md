@@ -86,21 +86,21 @@ title and description text that alert, empty, popover, section and card also add
 `data-row-type` on the element that wraps the title and description picks their text roles
 (`content`, `header`, `compact`), and `data-row-size` (`xs`, `sm`, `md`) picks the padding and gaps.
 The row reads its color from `data-paint` (`--variant-*`), and `data-row-invalid` paints the invalid pair.
-Dialog, alert dialog and sheet set the type on their content; a small card sets `content` on its header.
+Dialog, alert dialog and drawer set the type on their content; a small card sets `content` on its header.
 A component sets the input tokens listed in the file header on its own root, and a state color goes in
 `--row-description-color`. It never re-declares what a type sets and never overrides a `row` property.
 
 `overlay.css` holds only the `overlay-*` keyframes shared by modal and anchored overlays; it has no selectors.
 `panel.css` is the `panel` shell (flex column, inset, gap) and the `panel-footer` band that card, dialog, alert dialog and
-sheet share. It owns the panel size: `data-panel-size` (`xs`, `sm`, `md`, `lg`; `md` without the attribute) sets
+drawer share. It owns the panel size: `data-panel-size` (`xs`, `sm`, `md`, `lg`; `md` without the attribute) sets
 `--panel-inset`, `--panel-gap` and `--panel-radius` (from the `--radius-surface-*` scale), and no component declares them;
-a component reads `--panel-radius` for its own corners. A bare variant sets `--panel-stack-gap` and `--panel-padding`.
+a component reads `--panel-radius` for its own corners.
 `data-panel-size` is separate from `data-size`.
 
 `modal.css` is the modal skin (`modal-overlay`, `modal-content`, `modal-footer`,
-`modal-close-button`) that dialog, alert dialog and sheet opt into by class, next to `panel` and `panel-footer`.
+`modal-close-button`) that dialog, alert dialog and drawer opt into by class, next to `panel` and `panel-footer`.
 It keeps only the scrim, position, animation, close button and footer direction. A component sets its input tokens
-(`--modal-background`, `--modal-shadow`, `--modal-footer-direction`) on its own root.
+(`--modal-background`, `--modal-shadow`) on its own root.
 
 ### Recorded exceptions
 

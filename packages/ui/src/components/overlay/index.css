@@ -1,6 +1,6 @@
 @import "./dialog/Dialog.css";
 @import "./alert-dialog/AlertDialog.css";
-@import "./sheet/Sheet.css";
+@import "./drawer/Drawer.css";
 @import "./popover/Popover.css";
 @import "./tooltip/Tooltip.css";
 @import "./dropdown-menu/DropdownMenu.css";

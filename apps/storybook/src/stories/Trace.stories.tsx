@@ -7,13 +7,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
   Icon,
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
   Spinner,
   Stack,
   Trace,
@@ -261,12 +261,12 @@ export const DialogStory: Story = {
   ),
 };
 
-export const SheetStory: Story = {
-  name: 'Sheet',
+export const DrawerStory: Story = {
+  name: 'Drawer',
   render: () => (
     <Trace>
-      <Sheet>
-        <SheetTrigger>
+      <Drawer>
+        <DrawerTrigger>
           <TraceLine>
             <TraceIcon>
               <Icon name="folder" />
@@ -276,20 +276,20 @@ export const SheetStory: Story = {
               <Icon name="chevron-right" />
             </TraceIcon>
           </TraceLine>
-        </SheetTrigger>
-        <SheetContent>
-          <SheetHeader>
-            <SheetTitle>Explored 4 files</SheetTitle>
-            <SheetDescription>Files read while preparing the response.</SheetDescription>
-          </SheetHeader>
+        </DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Explored 4 files</DrawerTitle>
+            <DrawerDescription>Files read while preparing the response.</DrawerDescription>
+          </DrawerHeader>
           <ul style={{ fontFamily: 'monospace', fontSize: '0.75rem' }}>
             <li>apps/v4/lib/docs.ts</li>
             <li>apps/v4/lib/components.ts</li>
             <li>apps/v4/next.config.mjs</li>
             <li>apps/v4/package.json</li>
           </ul>
-        </SheetContent>
-      </Sheet>
+        </DrawerContent>
+      </Drawer>
     </Trace>
   ),
 };

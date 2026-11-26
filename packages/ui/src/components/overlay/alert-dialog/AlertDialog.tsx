@@ -32,7 +32,7 @@ function AlertDialogOverlay({
   return (
     <AlertDialogPrimitive.Backdrop
       data-slot="alert-dialog-overlay"
-      className={cn('modal-overlay modal-overlay-fade', className)}
+      className={cn('modal-overlay modal-centered-overlay', className)}
       {...props}
     />
   );

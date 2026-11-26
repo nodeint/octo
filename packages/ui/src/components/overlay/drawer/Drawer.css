@@ -1,0 +1,17 @@
+/* Placement, slide and swipe come from modal-side in recipes/modal.css; this file keeps the drawer's own type and parts. */
+.drawer-content {
+  --modal-shadow: var(--shadow-lg);
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+}
+
+.drawer-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.drawer-footer {
+  margin-block-start: auto;
+}

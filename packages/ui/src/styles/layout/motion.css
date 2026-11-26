@@ -6,8 +6,8 @@
 
 :root {
   --motion-duration-fast: 100ms; /* primer: --base-duration-100 menus, dialogs, item chrome */
-  --motion-duration-normal: 200ms; /* primer: --base-duration-200 sheet overlay, mid chrome */
-  --motion-duration-slow: 300ms; /* primer: --base-duration-300 sheet panel, sidebar width */
+  --motion-duration-normal: 200ms; /* primer: --base-duration-200 drawer overlay, mid chrome */
+  --motion-duration-slow: 300ms; /* primer: --base-duration-300 drawer panel, sidebar width */
 }
 
 :root {

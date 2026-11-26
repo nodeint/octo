@@ -46,7 +46,7 @@ export * from './components/overlay/dialog/Dialog';
 export * from './components/overlay/dropdown-menu/DropdownMenu';
 export type { OverlayWidth } from './components/overlay/overlay-width';
 export * from './components/overlay/popover/Popover';
-export * from './components/overlay/sheet/Sheet';
+export * from './components/overlay/drawer/Drawer';
 export * from './components/overlay/tooltip/Tooltip';
 export * from './components/typography/highlighted-text/HighlightedText';
 export * from './components/typography/icon/Icon';

@@ -1,9 +1,9 @@
 /*
- * Panel: the flex column with an inset and a gap that card, dialog, alert dialog and sheet share, plus the
+ * Panel: the flex column with an inset and a gap that card, dialog, alert dialog and drawer share, plus the
  * footer band that bleeds past the inset. A component adds the classes and picks a size.
  *
  * Input tokens a component may set on its own root:
- *   --panel-padding       replaces the shell padding (default: the inset), for a bare or re-padded panel
+ *   --panel-padding       replaces the shell padding (default: the inset), for a re-padded panel
  *   --panel-stack-gap     replaces the gap between parts (default: --panel-gap)
  *
  * Size set: data-panel-size picks --panel-inset, --panel-gap and --panel-radius (one scale for every panel). Without the attribute a panel is md.
@@ -44,7 +44,7 @@
   display: flex;
   flex-direction: column;
   --inset: var(--panel-inset);
-  /* Initialized on every panel: custom properties inherit, so a bare panel's override must not reach a nested panel. */
+  /* Initialized on every panel: custom properties inherit, so a panel override must not reach a nested panel. */
   --panel-stack-gap: var(--panel-gap);
   --panel-padding: var(--inset);
   gap: var(--panel-stack-gap);
