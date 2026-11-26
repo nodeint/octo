@@ -1,22 +1,3 @@
-/* width from the overlay scale */
-@media (min-width: 40rem) {
-  .dialog-content[data-size='sm'] {
-    max-width: var(--overlay-sm);
-  }
-
-  .dialog-content[data-size='md'] {
-    max-width: var(--overlay-md);
-  }
-
-  .dialog-content[data-size='lg'] {
-    max-width: var(--overlay-lg);
-  }
-
-  .dialog-content[data-size='xl'] {
-    max-width: var(--overlay-xl);
-  }
-}
-
 /* fixed height: the header and footer stay put, a ScrollArea child takes the rest */
 .dialog-content[data-fill] {
   height: 85vh;
@@ -32,13 +13,6 @@
 
 .dialog-content[data-fill] .dialog-footer {
   flex-shrink: 0;
-}
-
-/* no padding or gap: an app shell owns the whole panel */
-.dialog-content[data-variant='bare'] {
-  --panel-stack-gap: 0px;
-  overflow: hidden;
-  --inset: 0px;
 }
 
 .dialog-header {
@@ -72,13 +46,8 @@
   gap: var(--panel-gap);
 }
 
-@media (min-width: 40rem) {
-  .dialog-footer[data-layout='stack'] {
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-}
-
-.dialog-footer[data-layout='stack'] {
+/* stack keeps the column at every width; the extra class outranks .modal-centered .modal-footer (row from 40rem), so load order does not decide */
+.modal-centered .dialog-footer[data-layout='stack'] {
   flex-direction: column;
+  justify-content: flex-start;
 }

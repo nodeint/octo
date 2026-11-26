@@ -2,6 +2,9 @@
  * Modal skin: scrim, panel surface, footer band and close button, shared by dialog,
  * alert dialog and sheet. A component adds the classes it needs. Keyframes live in overlay.css.
  *
+ * Width: a centered modal reads data-size (sm, md, lg, xl) from the --panel-w-* scale, from 40rem up. A component
+ * passes data-size and never sets a width itself; a size it does not offer is simply never passed.
+ *
  * Input tokens a component may set on its own root:
  *   --modal-background, --modal-shadow, --modal-footer-direction
  * Shell layout, inset, gap and the footer band come from panel.css: a modal adds `panel` and `panel-footer`;
@@ -49,7 +52,7 @@
 .modal-centered {
   top: 50%;
   left: 50%;
-  width: 100%;
+  width: calc(100% - var(--space-md) * 2);
   translate: -50% -50%;
   border-radius: var(--panel-radius);
   animation-duration: var(--motion-duration-fast);
@@ -64,6 +67,24 @@
   animation-name: overlay-zoom-out;
   animation-timing-function: var(--ease-exit);
   animation-fill-mode: forwards;
+}
+
+@media (min-width: 40rem) {
+  .modal-centered[data-size='sm'] {
+    max-width: var(--panel-w-sm);
+  }
+
+  .modal-centered[data-size='md'] {
+    max-width: var(--panel-w-md);
+  }
+
+  .modal-centered[data-size='lg'] {
+    max-width: var(--panel-w-lg);
+  }
+
+  .modal-centered[data-size='xl'] {
+    max-width: var(--panel-w-xl);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

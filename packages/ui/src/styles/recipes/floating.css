@@ -23,7 +23,7 @@
   --floating-gap: var(--gap-sm);
 
   width: var(--floating-size-width, auto);
-  min-width: var(--overlay-xxs);
+  min-width: var(--panel-w-xxs);
   padding: var(--floating-inset);
   gap: var(--floating-gap);
   border-radius: var(--floating-radius, var(--floating-size-radius, var(--radius-surface-md)));
@@ -78,42 +78,42 @@
 
 /* Each step only sets the width, corner, padding and gap tokens the surface reads; no data-size keeps its own width and the sm step. */
 .floating-content[data-size='xxs'] {
-  --floating-size-width: var(--overlay-xxs);
+  --floating-size-width: var(--panel-w-xxs);
   --floating-size-radius: var(--radius-surface-sm);
   --floating-inset: var(--inset-xs);
   --floating-gap: var(--gap-xs);
 }
 
 .floating-content[data-size='xs'] {
-  --floating-size-width: var(--overlay-xs);
+  --floating-size-width: var(--panel-w-xs);
   --floating-size-radius: var(--radius-surface-sm);
   --floating-inset: var(--inset-xs);
   --floating-gap: var(--gap-xs);
 }
 
 .floating-content[data-size='sm'] {
-  --floating-size-width: var(--overlay-sm);
+  --floating-size-width: var(--panel-w-sm);
   --floating-size-radius: var(--radius-surface-md);
   --floating-inset: var(--inset-sm);
   --floating-gap: var(--gap-sm);
 }
 
 .floating-content[data-size='md'] {
-  --floating-size-width: var(--overlay-md);
+  --floating-size-width: var(--panel-w-md);
   --floating-size-radius: var(--radius-surface-lg);
   --floating-inset: var(--inset-md);
   --floating-gap: var(--gap-md);
 }
 
 .floating-content[data-size='lg'] {
-  --floating-size-width: var(--overlay-lg);
+  --floating-size-width: var(--panel-w-lg);
   --floating-size-radius: var(--radius-surface-lg);
   --floating-inset: var(--inset-lg);
   --floating-gap: var(--gap-lg);
 }
 
 .floating-content[data-size='xl'] {
-  --floating-size-width: var(--overlay-xl);
+  --floating-size-width: var(--panel-w-xl);
   --floating-size-radius: var(--radius-surface-lg);
   --floating-inset: var(--inset-lg);
   --floating-gap: var(--gap-lg);

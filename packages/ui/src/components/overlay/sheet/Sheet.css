@@ -79,7 +79,7 @@
 @media (min-width: 40rem) {
   .sheet-content[data-side='left'],
   .sheet-content[data-side='right'] {
-    max-width: var(--overlay-sm);
+    max-width: var(--panel-w-sm);
   }
 }
 

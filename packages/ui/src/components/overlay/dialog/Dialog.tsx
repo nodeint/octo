@@ -43,24 +43,19 @@ type DialogSize = 'sm' | 'md' | 'lg' | 'xl'
 
 type DialogFooterLayout = 'end' | 'stack'
 
-type DialogVariant = 'default' | 'bare'
-
 function DialogContent({
   className,
   children,
   showCloseButton = true,
   size = 'md',
   fill = false,
-  variant = 'default',
   ...props
 }: DialogPrimitive.Popup.Props & {
   showCloseButton?: boolean
-  /** Panel width from the overlay scale. */
+  /** Panel width from the panel scale. */
   size?: DialogSize
   /** Fixed viewport height; the body scrolls inside instead of the dialog growing. */
   fill?: boolean
-  /** `bare` drops the padding and gap so an app shell (sidebar page, palette) can own the whole panel. */
-  variant?: DialogVariant
 }): React.JSX.Element {
   return (
     <DialogPortal>
@@ -70,7 +65,6 @@ function DialogContent({
         data-row-type="header"
         data-size={size}
         data-fill={fill ? '' : undefined}
-        data-variant={variant}
         className={cn('panel modal-content modal-centered dialog-content', className)}
         {...props}
       >
@@ -201,4 +195,4 @@ export {
   DialogTitle,
   DialogTrigger,
 };
-export type { DialogFooterLayout, DialogSize, DialogVariant };
+export type { DialogFooterLayout, DialogSize };

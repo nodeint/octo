@@ -1,17 +1,3 @@
-.alert-dialog-content[data-size='md'] {
-  max-width: var(--overlay-sm);
-}
-
-.alert-dialog-content[data-size='sm'] {
-  max-width: var(--overlay-sm);
-}
-
-@media (min-width: 40rem) {
-  .alert-dialog-content[data-size='md'] {
-    max-width: var(--overlay-md);
-  }
-}
-
 .alert-dialog-header {
   display: grid;
   grid-template-rows: auto 1fr;
