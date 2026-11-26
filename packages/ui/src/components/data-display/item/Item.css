@@ -4,22 +4,7 @@
   line-height: var(--role-label-sm-leading);
   font-weight: var(--role-label-sm-weight);
   color: var(--variant-fg-muted);
-}
-
-.item-group-label[data-size='md'] {
-  padding-inline: var(--control-px-md);
-}
-
-.item-group-label[data-size='sm'] {
-  padding-inline: var(--control-px-sm);
-}
-
-.item-group-label[data-size='xs'] {
-  padding-inline: var(--control-px-xs);
-}
-
-.item-separator {
-  margin-block: var(--space-sm);
+  padding-inline: var(--row-group-px);
 }
 
 /* The row skin (layout, hover, focus ring, trigger cover) comes from recipes/row.css. */
@@ -79,11 +64,10 @@
   opacity: 1;
 }
 
-.item-header,
 .item-footer {
   display: flex;
   flex-basis: 100%;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-sm);
+  gap: var(--row-gap);
 }

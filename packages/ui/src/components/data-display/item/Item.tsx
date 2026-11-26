@@ -19,16 +19,25 @@ const ITEM_PAINT = {
 
 const ITEM_MEDIA_SIZE = { md: 'lg', sm: 'md', xs: 'xs' } as const satisfies Record<ItemSize, string>;
 
-/** True inside an `ItemGroup`, so a plain row there is a `listitem` of the group's `list`. */
-const ItemGroupContext = React.createContext(false);
+/**
+ * The size of the enclosing `ItemGroup`, or null outside one.
+ * Inside a group a plain row is a `listitem` of the group's `list`, and the group's size replaces the row's own.
+ */
+const ItemGroupContext = React.createContext<ItemSize | null>(null);
 
-function ItemGroup({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
+/** `size` sizes every row in the group; a row's own `size` is ignored there. */
+function ItemGroup({
+  className,
+  size = 'md',
+  ...props
+}: React.ComponentProps<'div'> & { size?: ItemSize }): React.JSX.Element {
   return (
-    <ItemGroupContext.Provider value>
+    <ItemGroupContext.Provider value={size}>
       <div
         role="list"
         data-slot="item-group"
         data-orientation="vertical"
+        data-row-group-size={size}
         className={cn('row-group item-group', className)}
         {...props}
       />
@@ -83,12 +92,14 @@ type ItemProps = useRender.ComponentProps<'div'> & {
 function Item({
   className,
   variant = 'default',
-  size = 'md',
+  size: ownSize = 'md',
   bare = false,
   render,
   ...props
 }: ItemProps): React.JSX.Element {
-  const isInGroup = React.useContext(ItemGroupContext);
+  const groupSize = React.useContext(ItemGroupContext);
+  const isInGroup = groupSize !== null;
+  const size = groupSize ?? ownSize;
   // A rendered element (a button, a link) keeps its own role.
   const role = isInGroup && render === undefined ? 'listitem' : undefined;
   return useRender({

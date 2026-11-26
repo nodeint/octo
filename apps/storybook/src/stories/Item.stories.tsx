@@ -16,8 +16,12 @@ import {
   ItemActions,
   ItemContent,
   ItemDescription,
+  ItemFooter,
   ItemGroup,
+  ItemGroupLabel,
   ItemHeader,
+  ItemMeta,
+  ItemSeparator,
   ItemTitle,
   ItemTrigger,
   Media,
@@ -288,25 +292,34 @@ export const WithImage: Story = {
 export const Group: Story = {
   render: () => (
     <ItemGroup>
-      {PEOPLE.map((person) => (
-        <Item key={person.username} variant="outline">
-          <Media>
-            <Avatar>
-              <AvatarImage src={AVATARS[person.username]} alt={person.username} />
-              <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
-            </Avatar>
-          </Media>
-          <ItemContent>
-            <ItemTitle>{person.username}</ItemTitle>
-            <ItemDescription>{person.email}</ItemDescription>
-          </ItemContent>
-          <ItemActions>
-            <Button variant="muted" size="sm" shape="icon" aria-label={`Invite ${person.username}`}>
-              <Icon name="plus" />
-            </Button>
-          </ItemActions>
-        </Item>
-      ))}
+      <ItemGroupLabel>
+        People
+      </ItemGroupLabel>
+      {PEOPLE.map((person, index) => {
+        const isLast = index === PEOPLE.length - 1;
+        return (
+          <React.Fragment key={person.username}>
+            <Item>
+              <Media>
+                <Avatar>
+                  <AvatarImage src={AVATARS[person.username]} alt={person.username} />
+                  <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
+                </Avatar>
+              </Media>
+              <ItemContent>
+                <ItemTitle>{person.username}</ItemTitle>
+                <ItemDescription>{person.email}</ItemDescription>
+              </ItemContent>
+              <ItemActions>
+                <Button variant="muted" size="sm" shape="icon" aria-label={`Invite ${person.username}`}>
+                  <Icon name="plus" />
+                </Button>
+              </ItemActions>
+            </Item>
+            {!isLast && <ItemSeparator />}
+          </React.Fragment>
+        );
+      })}
     </ItemGroup>
   ),
 };
@@ -333,6 +346,32 @@ export const Header: Story = {
         </Item>
       ))}
     </ItemGroup>
+  ),
+};
+
+/** `ItemFooter` is a full-width row under the content, such as a status and the time it changed. */
+export const Footer: Story = {
+  render: () => (
+    <Stack gap="lg">
+      {PEOPLE.map((person) => (
+        <Item key={person.username} variant="outline">
+          <Media>
+            <Avatar>
+              <AvatarImage src={AVATARS[person.username]} alt="" />
+              <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
+            </Avatar>
+          </Media>
+          <ItemContent>
+            <ItemTitle>{person.username}</ItemTitle>
+            <ItemDescription>{person.email}</ItemDescription>
+          </ItemContent>
+          <ItemFooter>
+            <ItemMeta>Invited 2 days ago</ItemMeta>
+            <Button variant="outline" size="sm">Resend</Button>
+          </ItemFooter>
+        </Item>
+      ))}
+    </Stack>
   ),
 };
 

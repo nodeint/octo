@@ -9,6 +9,7 @@
  *
  * data-row-type on the element wrapping title and description picks their text roles: content, header, compact.
  * data-row-size picks the padding, gaps and radius: xs, sm, md, lg.
+ * data-row-group-size on a row-group does the same for every direct row and overrides their own data-row-size.
  * A component never re-declares what a type sets.
  * Color comes from the data-paint on the row (--variant-*); data-row-invalid paints the invalid pair.
  * Input tokens: --row-px, --row-py, --row-gap, --row-lead-gap (the gap after a leading icon in a grid row), --row-content-gap, --row-align, --row-border-width,
@@ -138,6 +139,60 @@
 }
 
 .row-group:has(.row[data-row-size='xs']) {
+  gap: var(--space-xs);
+}
+
+/* A group sets the --row-group-* tokens; the rows it holds read them instead of their own size. */
+[data-row-group-size='xs'] {
+  --row-group-radius: var(--radius-surface-xs);
+  --row-group-px: var(--space-sm);
+  --row-group-py: var(--space-xs);
+  --row-group-gap: var(--space-sm);
+  --row-group-content-gap: 0;
+  --row-group-actions-gap: var(--space-xxs);
+}
+
+[data-row-group-size='sm'] {
+  --row-group-radius: var(--radius-surface-sm);
+  --row-group-px: var(--space-md);
+  --row-group-py: var(--space-sm);
+  --row-group-gap: var(--space-sm);
+  --row-group-content-gap: 0;
+  --row-group-actions-gap: var(--space-xxs);
+}
+
+[data-row-group-size='md'] {
+  --row-group-radius: var(--radius-surface-md);
+  --row-group-px: var(--space-md);
+  --row-group-py: var(--space-sm);
+  --row-group-gap: var(--space-sm);
+  --row-group-content-gap: 0;
+  --row-group-actions-gap: var(--space-xxs);
+}
+
+[data-row-group-size='lg'] {
+  --row-group-radius: var(--radius-surface-lg);
+  --row-group-px: var(--space-lg);
+  --row-group-py: var(--space-md);
+  --row-group-gap: var(--space-md);
+  --row-group-content-gap: 0;
+  --row-group-actions-gap: var(--space-xs);
+}
+
+[data-row-group-size] > .row {
+  --row-radius: var(--row-group-radius);
+  --row-px: var(--row-group-px);
+  --row-py: var(--row-group-py);
+  --row-gap: var(--row-group-gap);
+  --row-content-gap: var(--row-group-content-gap);
+  --row-actions-gap: var(--row-group-actions-gap);
+}
+
+.row-group[data-row-group-size='sm'] {
+  gap: var(--space-sm);
+}
+
+.row-group[data-row-group-size='xs'] {
   gap: var(--space-xs);
 }
 
