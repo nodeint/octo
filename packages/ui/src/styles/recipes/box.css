@@ -3,173 +3,173 @@
  * so Stack, Inline and Grid share these rules. Nothing here sets display or layout; `gap` only applies when the element is already flex or grid.
  */
 /* cancel the padding of the container around the box; the container declares it as --inset (0 when none does) */
-.box[data-box-bleed='x'],
-.box[data-box-bleed='all'] {
+[data-box-bleed='x'],
+[data-box-bleed='all'] {
   margin-inline: calc(var(--inset) * -1);
 }
 
-.box[data-box-bleed='y'],
-.box[data-box-bleed='all'] {
+[data-box-bleed='y'],
+[data-box-bleed='all'] {
   margin-block: calc(var(--inset) * -1);
 }
 
-.box[data-box-bleed='top'] {
+[data-box-bleed='top'] {
   margin-block-start: calc(var(--inset) * -1);
 }
 
-.box[data-box-bleed='bottom'] {
+[data-box-bleed='bottom'] {
   margin-block-end: calc(var(--inset) * -1);
 }
 
-.box[data-box-bleed='start'] {
+[data-box-bleed='start'] {
   margin-inline-start: calc(var(--inset) * -1);
 }
 
-.box[data-box-bleed='end'] {
+[data-box-bleed='end'] {
   margin-inline-end: calc(var(--inset) * -1);
 }
 
-.box[data-box-radius='xs'] {
+[data-box-radius='xs'] {
   border-radius: var(--radius-surface-xs);
 }
 
-.box[data-box-radius='sm'] {
+[data-box-radius='sm'] {
   border-radius: var(--radius-surface-sm);
 }
 
-.box[data-box-radius='md'] {
+[data-box-radius='md'] {
   border-radius: var(--radius-surface-md);
 }
 
-.box[data-box-radius='lg'] {
+[data-box-radius='lg'] {
   border-radius: var(--radius-surface-lg);
 }
 
 /* painted by tone and emphasis: the colors come from the --variant-* set that data-paint picks in styles/variants/ */
-.box[data-box-paint] {
+[data-box-paint] {
   background-color: var(--variant-bg);
   color: var(--variant-fg);
   box-shadow: var(--box-elevation, 0 0 #0000), 0 0 0 var(--border-width-thin) var(--variant-border, transparent);
 }
 
-.box[data-box-surface='background'] {
+[data-box-surface='background'] {
   --surface: var(--background);
   background-color: var(--surface);
 }
 
-.box[data-box-surface='card'] {
+[data-box-surface='card'] {
   --surface: var(--card);
   background-color: var(--surface);
 }
 
-.box[data-box-surface='muted'] {
+[data-box-surface='muted'] {
   --surface: var(--muted);
   background-color: var(--surface);
 }
 
-.box[data-box-surface='popover'] {
+[data-box-surface='popover'] {
   --surface: var(--popover);
   background-color: var(--surface);
 }
 
-.box[data-box-surface='sidebar'] {
+[data-box-surface='sidebar'] {
   --surface: var(--sidebar);
   background-color: var(--surface);
 }
 
-.box[data-box-surface='accent'] {
+[data-box-surface='accent'] {
   --surface: var(--accent);
   background-color: var(--surface);
 }
 
 /* border and shadow share box-shadow, so each sets a layer and one rule joins them */
-.box[data-box-border='thin'] {
+[data-box-border='thin'] {
   --box-ring: 0 0 0 var(--border-width-thin) var(--border-surface);
 }
 
-.box[data-box-border='thick'] {
+[data-box-border='thick'] {
   --box-ring: 0 0 0 var(--border-width-thick) var(--border-surface);
 }
 
-.box[data-box-shadow='none'] {
+[data-box-shadow='none'] {
   --box-elevation: 0 0 #0000;
 }
 
-.box[data-box-shadow='sm'] {
+[data-box-shadow='sm'] {
   --box-elevation: var(--shadow-sm);
 }
 
-.box[data-box-shadow='md'] {
+[data-box-shadow='md'] {
   --box-elevation: var(--shadow-md);
 }
 
-.box[data-box-shadow='lg'] {
+[data-box-shadow='lg'] {
   --box-elevation: var(--shadow-lg);
 }
 
-.box[data-box-border],
-.box[data-box-shadow] {
+[data-box-border],
+[data-box-shadow] {
   box-shadow: var(--box-elevation, 0 0 #0000), var(--box-ring, 0 0 #0000);
 }
 
-.box[data-box-gap='xxs'] {
+[data-box-gap='xxs'] {
   gap: var(--gap-xxs);
 }
 
-.box[data-box-gap='xs'] {
+[data-box-gap='xs'] {
   gap: var(--gap-xs);
 }
 
-.box[data-box-gap='sm'] {
+[data-box-gap='sm'] {
   gap: var(--gap-sm);
 }
 
-.box[data-box-gap='md'] {
+[data-box-gap='md'] {
   gap: var(--gap-md);
 }
 
-.box[data-box-gap='lg'] {
+[data-box-gap='lg'] {
   gap: var(--gap-lg);
 }
 
-.box[data-box-gap='xl'] {
+[data-box-gap='xl'] {
   gap: var(--gap-xl);
 }
 
-.box[data-box-gap='2xl'] {
+[data-box-gap='2xl'] {
   gap: var(--gap-2xl);
 }
 
-.box[data-box-gap='3xl'] {
+[data-box-gap='3xl'] {
   gap: var(--gap-3xl);
 }
 
 /* padding: `p` sets every side and the --inset that a descendant Box bleed cancels. `inset` pads with the inherited --inset and leaves it unchanged. */
-.box[data-box-p='inset'] {
+[data-box-p='inset'] {
   padding: var(--inset);
 }
 
-.box[data-box-p='xs'] {
+[data-box-p='xs'] {
   --inset: var(--inset-xs);
   padding: var(--inset);
 }
 
-.box[data-box-p='sm'] {
+[data-box-p='sm'] {
   --inset: var(--inset-sm);
   padding: var(--inset);
 }
 
-.box[data-box-p='md'] {
+[data-box-p='md'] {
   --inset: var(--inset-md);
   padding: var(--inset);
 }
 
-.box[data-box-p='lg'] {
+[data-box-p='lg'] {
   --inset: var(--inset-lg);
   padding: var(--inset);
 }
 
-.box[data-box-p='xl'] {
+[data-box-p='xl'] {
   --inset: var(--inset-xl);
   padding: var(--inset);
 }
@@ -179,180 +179,180 @@
  * Reset it to 0 so a Box bleed inside does nothing instead of cancelling the wrong amount.
  * `inset` is exempt: it pads with the inherited --inset, so the element keeps it for its own padding and bleed.
  */
-.box[data-box-px]:not([data-box-px='inset']),
-.box[data-box-py]:not([data-box-py='inset']),
-.box[data-box-pt]:not([data-box-pt='inset']),
-.box[data-box-pb]:not([data-box-pb='inset']),
-.box[data-box-ps]:not([data-box-ps='inset']),
-.box[data-box-pe]:not([data-box-pe='inset']) {
+[data-box-px]:not([data-box-px='inset']),
+[data-box-py]:not([data-box-py='inset']),
+[data-box-pt]:not([data-box-pt='inset']),
+[data-box-pb]:not([data-box-pb='inset']),
+[data-box-ps]:not([data-box-ps='inset']),
+[data-box-pe]:not([data-box-pe='inset']) {
   --inset: 0px;
 }
 
 /* An axis or side on its own step. Later than `p`, so these win. */
-.box[data-box-px='0'] {
+[data-box-px='0'] {
   padding-inline: 0;
 }
 
-.box[data-box-px='inset'] {
+[data-box-px='inset'] {
   padding-inline: var(--inset);
 }
 
-.box[data-box-px='xs'] {
+[data-box-px='xs'] {
   padding-inline: var(--inset-xs);
 }
 
-.box[data-box-px='sm'] {
+[data-box-px='sm'] {
   padding-inline: var(--inset-sm);
 }
 
-.box[data-box-px='md'] {
+[data-box-px='md'] {
   padding-inline: var(--inset-md);
 }
 
-.box[data-box-px='lg'] {
+[data-box-px='lg'] {
   padding-inline: var(--inset-lg);
 }
 
-.box[data-box-px='xl'] {
+[data-box-px='xl'] {
   padding-inline: var(--inset-xl);
 }
 
-.box[data-box-py='0'] {
+[data-box-py='0'] {
   padding-block: 0;
 }
 
-.box[data-box-py='inset'] {
+[data-box-py='inset'] {
   padding-block: var(--inset);
 }
 
-.box[data-box-py='xs'] {
+[data-box-py='xs'] {
   padding-block: var(--inset-xs);
 }
 
-.box[data-box-py='sm'] {
+[data-box-py='sm'] {
   padding-block: var(--inset-sm);
 }
 
-.box[data-box-py='md'] {
+[data-box-py='md'] {
   padding-block: var(--inset-md);
 }
 
-.box[data-box-py='lg'] {
+[data-box-py='lg'] {
   padding-block: var(--inset-lg);
 }
 
-.box[data-box-py='xl'] {
+[data-box-py='xl'] {
   padding-block: var(--inset-xl);
 }
 
-.box[data-box-pt='0'] {
+[data-box-pt='0'] {
   padding-block-start: 0;
 }
 
-.box[data-box-pt='inset'] {
+[data-box-pt='inset'] {
   padding-block-start: var(--inset);
 }
 
-.box[data-box-pt='xs'] {
+[data-box-pt='xs'] {
   padding-block-start: var(--inset-xs);
 }
 
-.box[data-box-pt='sm'] {
+[data-box-pt='sm'] {
   padding-block-start: var(--inset-sm);
 }
 
-.box[data-box-pt='md'] {
+[data-box-pt='md'] {
   padding-block-start: var(--inset-md);
 }
 
-.box[data-box-pt='lg'] {
+[data-box-pt='lg'] {
   padding-block-start: var(--inset-lg);
 }
 
-.box[data-box-pt='xl'] {
+[data-box-pt='xl'] {
   padding-block-start: var(--inset-xl);
 }
 
-.box[data-box-pb='0'] {
+[data-box-pb='0'] {
   padding-block-end: 0;
 }
 
-.box[data-box-pb='inset'] {
+[data-box-pb='inset'] {
   padding-block-end: var(--inset);
 }
 
-.box[data-box-pb='xs'] {
+[data-box-pb='xs'] {
   padding-block-end: var(--inset-xs);
 }
 
-.box[data-box-pb='sm'] {
+[data-box-pb='sm'] {
   padding-block-end: var(--inset-sm);
 }
 
-.box[data-box-pb='md'] {
+[data-box-pb='md'] {
   padding-block-end: var(--inset-md);
 }
 
-.box[data-box-pb='lg'] {
+[data-box-pb='lg'] {
   padding-block-end: var(--inset-lg);
 }
 
-.box[data-box-pb='xl'] {
+[data-box-pb='xl'] {
   padding-block-end: var(--inset-xl);
 }
 
-.box[data-box-ps='0'] {
+[data-box-ps='0'] {
   padding-inline-start: 0;
 }
 
-.box[data-box-ps='inset'] {
+[data-box-ps='inset'] {
   padding-inline-start: var(--inset);
 }
 
-.box[data-box-ps='xs'] {
+[data-box-ps='xs'] {
   padding-inline-start: var(--inset-xs);
 }
 
-.box[data-box-ps='sm'] {
+[data-box-ps='sm'] {
   padding-inline-start: var(--inset-sm);
 }
 
-.box[data-box-ps='md'] {
+[data-box-ps='md'] {
   padding-inline-start: var(--inset-md);
 }
 
-.box[data-box-ps='lg'] {
+[data-box-ps='lg'] {
   padding-inline-start: var(--inset-lg);
 }
 
-.box[data-box-ps='xl'] {
+[data-box-ps='xl'] {
   padding-inline-start: var(--inset-xl);
 }
 
-.box[data-box-pe='0'] {
+[data-box-pe='0'] {
   padding-inline-end: 0;
 }
 
-.box[data-box-pe='inset'] {
+[data-box-pe='inset'] {
   padding-inline-end: var(--inset);
 }
 
-.box[data-box-pe='xs'] {
+[data-box-pe='xs'] {
   padding-inline-end: var(--inset-xs);
 }
 
-.box[data-box-pe='sm'] {
+[data-box-pe='sm'] {
   padding-inline-end: var(--inset-sm);
 }
 
-.box[data-box-pe='md'] {
+[data-box-pe='md'] {
   padding-inline-end: var(--inset-md);
 }
 
-.box[data-box-pe='lg'] {
+[data-box-pe='lg'] {
   padding-inline-end: var(--inset-lg);
 }
 
-.box[data-box-pe='xl'] {
+[data-box-pe='xl'] {
   padding-inline-end: var(--inset-xl);
 }

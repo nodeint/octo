@@ -68,9 +68,10 @@ function createAlertPart(slot: string, recipe?: string): (props: useRender.Compo
   };
 }
 
+const AlertContent = createAlertPart('alert-content', 'row-content');
 const AlertTitle = createAlertPart('alert-title', 'row-title');
 const AlertDescription = createAlertPart('alert-description', 'row-description');
-const AlertAction = createAlertPart('alert-action');
+const AlertAction = createAlertPart('alert-action', 'row-actions');
 
-export { Alert, AlertAction, AlertDescription, AlertTitle };
+export { Alert, AlertAction, AlertContent, AlertDescription, AlertTitle };
 export type { AlertProps, AlertVariant };

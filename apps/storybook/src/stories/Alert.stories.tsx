@@ -3,6 +3,7 @@ import type { AlertVariant } from '@workspace/ui';
 import {
   Alert,
   AlertAction,
+  AlertContent,
   AlertDescription,
   AlertTitle,
   Button,
@@ -47,17 +48,21 @@ export const Demo: Story = {
     <Stack gap="lg">
       <Alert {...args}>
         <Icon name="circle-check" />
-        <AlertTitle>Payment successful</AlertTitle>
-        <AlertDescription>
-          Your payment of $29.99 has been processed. A receipt has been sent to your email address.
-        </AlertDescription>
+        <AlertContent>
+          <AlertTitle>Payment successful</AlertTitle>
+          <AlertDescription>
+            Your payment of $29.99 has been processed. A receipt has been sent to your email address.
+          </AlertDescription>
+        </AlertContent>
       </Alert>
       <Alert {...args}>
         <Icon name="info" />
-        <AlertTitle>New feature available</AlertTitle>
-        <AlertDescription>
-          We&apos;ve added dark mode support. You can enable it in your account settings.
-        </AlertDescription>
+        <AlertContent>
+          <AlertTitle>New feature available</AlertTitle>
+          <AlertDescription>
+            We&apos;ve added dark mode support. You can enable it in your account settings.
+          </AlertDescription>
+        </AlertContent>
       </Alert>
     </Stack>
   ),
@@ -67,10 +72,12 @@ export const Basic: Story = {
   render: (args) => (
     <Alert {...args}>
       <Icon name="circle-check" />
-      <AlertTitle>Account updated successfully</AlertTitle>
-      <AlertDescription>
-        Your profile information has been saved. Changes will be reflected immediately.
-      </AlertDescription>
+      <AlertContent>
+        <AlertTitle>Account updated successfully</AlertTitle>
+        <AlertDescription>
+          Your profile information has been saved. Changes will be reflected immediately.
+        </AlertDescription>
+      </AlertContent>
     </Alert>
   ),
 };
@@ -79,10 +86,12 @@ export const Destructive: Story = {
   render: (args) => (
     <Alert {...args} variant="destructive">
       <Icon name="octagon-x" />
-      <AlertTitle>Payment failed</AlertTitle>
-      <AlertDescription>
-        Your payment could not be processed. Please check your payment method and try again.
-      </AlertDescription>
+      <AlertContent>
+        <AlertTitle>Payment failed</AlertTitle>
+        <AlertDescription>
+          Your payment could not be processed. Please check your payment method and try again.
+        </AlertDescription>
+      </AlertContent>
     </Alert>
   ),
 };
@@ -92,28 +101,38 @@ export const Variants: Story = {
     <Stack gap="lg">
       <Alert {...args} variant="default">
         <Icon name="info" />
-        <AlertTitle>Default</AlertTitle>
-        <AlertDescription>A neutral callout for general information.</AlertDescription>
+        <AlertContent>
+          <AlertTitle>Default</AlertTitle>
+          <AlertDescription>A neutral callout for general information.</AlertDescription>
+        </AlertContent>
       </Alert>
       <Alert {...args} variant="info">
         <Icon name="info" />
-        <AlertTitle>Info</AlertTitle>
-        <AlertDescription>A new version is available.</AlertDescription>
+        <AlertContent>
+          <AlertTitle>Info</AlertTitle>
+          <AlertDescription>A new version is available.</AlertDescription>
+        </AlertContent>
       </Alert>
       <Alert {...args} variant="success">
         <Icon name="circle-check" />
-        <AlertTitle>Success</AlertTitle>
-        <AlertDescription>Your changes have been saved.</AlertDescription>
+        <AlertContent>
+          <AlertTitle>Success</AlertTitle>
+          <AlertDescription>Your changes have been saved.</AlertDescription>
+        </AlertContent>
       </Alert>
       <Alert {...args} variant="warning">
         <Icon name="triangle-alert" />
-        <AlertTitle>Warning</AlertTitle>
-        <AlertDescription>Your storage is almost full.</AlertDescription>
+        <AlertContent>
+          <AlertTitle>Warning</AlertTitle>
+          <AlertDescription>Your storage is almost full.</AlertDescription>
+        </AlertContent>
       </Alert>
       <Alert {...args} variant="destructive">
         <Icon name="octagon-x" />
-        <AlertTitle>Destructive</AlertTitle>
-        <AlertDescription>Something went wrong. Please try again.</AlertDescription>
+        <AlertContent>
+          <AlertTitle>Destructive</AlertTitle>
+          <AlertDescription>Something went wrong. Please try again.</AlertDescription>
+        </AlertContent>
       </Alert>
     </Stack>
   ),
@@ -122,8 +141,10 @@ export const Variants: Story = {
 export const Action: Story = {
   render: (args) => (
     <Alert {...args}>
-      <AlertTitle>Dark mode is now available</AlertTitle>
-      <AlertDescription>Enable it under your profile settings to get started.</AlertDescription>
+      <AlertContent>
+        <AlertTitle>Dark mode is now available</AlertTitle>
+        <AlertDescription>Enable it under your profile settings to get started.</AlertDescription>
+      </AlertContent>
       <AlertAction>
         <Button size="xs">Enable</Button>
       </AlertAction>
@@ -136,11 +157,13 @@ export const CustomColors: Story = {
   render: (args) => (
     <Alert {...args} tone="purple">
       <Icon name="triangle-alert" />
-      <AlertTitle>Your subscription will expire in 3 days.</AlertTitle>
-      <AlertDescription>
-        Renew now to avoid service interruption or upgrade to a paid plan to continue using the
-        service.
-      </AlertDescription>
+      <AlertContent>
+        <AlertTitle>Your subscription will expire in 3 days.</AlertTitle>
+        <AlertDescription>
+          Renew now to avoid service interruption or upgrade to a paid plan to continue using the
+          service.
+        </AlertDescription>
+      </AlertContent>
     </Alert>
   ),
 };
@@ -151,17 +174,21 @@ export const Rtl: Story = {
     <Stack dir="rtl" gap="lg">
       <Alert {...args}>
         <Icon name="circle-check" />
-        <AlertTitle>تم الدفع بنجاح</AlertTitle>
-        <AlertDescription>
-          تمت معالجة دفعتك البالغة 29.99 دولارًا. تم إرسال إيصال إلى عنوان بريدك الإلكتروني.
-        </AlertDescription>
+        <AlertContent>
+          <AlertTitle>تم الدفع بنجاح</AlertTitle>
+          <AlertDescription>
+            تمت معالجة دفعتك البالغة 29.99 دولارًا. تم إرسال إيصال إلى عنوان بريدك الإلكتروني.
+          </AlertDescription>
+        </AlertContent>
       </Alert>
       <Alert {...args}>
         <Icon name="info" />
-        <AlertTitle>ميزة جديدة متاحة</AlertTitle>
-        <AlertDescription>
-          لقد أضفنا دعم الوضع الداكن. يمكنك تفعيله في إعدادات حسابك.
-        </AlertDescription>
+        <AlertContent>
+          <AlertTitle>ميزة جديدة متاحة</AlertTitle>
+          <AlertDescription>
+            لقد أضفنا دعم الوضع الداكن. يمكنك تفعيله في إعدادات حسابك.
+          </AlertDescription>
+        </AlertContent>
       </Alert>
     </Stack>
   ),

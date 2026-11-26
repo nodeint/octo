@@ -1,27 +1,16 @@
 /*
- * The frame (border, radius, padding, text step) comes from recipes/row.css. The alert lays its parts out as a
- * grid instead of the row's flex strip, so the icon can span the title and the description.
- * DOM contract: the leading icon is a direct-child svg (grid columns and row span).
- * Action chrome is data-slot=alert-action (reserved end padding).
+ * The frame (border, radius, padding, text step) and the flex strip come from recipes/row.css.
+ * DOM contract: an optional leading icon (a direct-child svg), then alert-content holding the title and
+ * description, then an optional alert-action (row-actions) at the end.
  */
 .alert {
   --row-align: normal;
-  position: relative;
-  display: grid;
+  flex-wrap: nowrap;
+  column-gap: var(--row-lead-gap);
   width: 100%;
 }
 
-.alert:has([data-slot='alert-action']) {
-  padding-inline-end: calc(var(--space-3xl) + var(--space-xl));
-}
-
-.alert:has(> svg) {
-  grid-template-columns: auto 1fr;
-  column-gap: var(--row-lead-gap);
-}
-
 .alert > svg {
-  grid-row: span 2;
   translate: 0 0.125rem;
   color: currentColor;
 }
@@ -31,10 +20,6 @@
   height: var(--control-icon-md);
   pointer-events: none;
   flex-shrink: 0;
-}
-
-.alert:has(> svg) .alert-title {
-  grid-column-start: 2;
 }
 
 .alert-title a,
@@ -58,12 +43,7 @@
   }
 }
 
-.alert-description p:not(:last-child) {
-  margin-block-end: var(--space-lg);
-}
-
 .alert-action {
-  position: absolute;
-  top: var(--space-sm);
-  right: var(--space-sm);
+  align-self: flex-start;
+  flex-shrink: 0;
 }
