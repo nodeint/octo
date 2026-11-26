@@ -10,6 +10,7 @@
  *   tooltip    the padding and the arrow
  *   floating   how far a floating panel slides in from its anchor
  *   tab        the underline that marks the selected tab, and the active trigger's paint
+ *   attachment the width of a vertical attachment
  *   checkbox, radio, switch thumb, avatar blend: paint that differs between light and dark
  * Where a part is the same size as a step of the control icon, space, or border scale, it reads that step.
  * The rest keep their own value: no step matches, or reading one would tie the part to the wrong scale.
@@ -89,6 +90,10 @@
   --tab-active-focus-border-color: var(--state-focus-border);
   --tab-line-active-border-color: transparent;
   --tab-line-active-focus-border-color: var(--state-focus-border);
+
+  /* Attachment: vertical width */
+  --attachment-vertical-width: var(--box-size-xs); /* 96 */
+  --attachment-vertical-content-width: var(--box-size-sm); /* 112, when it has content */
 }
 
 .dark {

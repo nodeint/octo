@@ -24,17 +24,17 @@
 }
 
 /**
- * Container boxes: size-container-xs, min-h-container-sm, max-w-container-md, … for fixed boxes
+ * Box sizes: --box-size-xs, --box-size-sm, --box-size-md for fixed boxes, on any axis
  * (xs 96 · sm 112 · md 128). Anything under 96 is a control size: use a control size.
  * Primer has no container size token, so these read its base-size scale.
  * Chrome rows and layout regions are content-driven; use a container step only for a fixed box.
- * Raw values live in --size-container-*: --container-* is left free for a utility framework.
+ * Raw values live in --box-size-*: --container-* is left free for a utility framework.
  */
 
 :root {
-  --size-container-xs: 6rem; /* primer: --base-size-96 */
-  --size-container-sm: 7rem; /* primer: --base-size-112 */
-  --size-container-md: 8rem; /* primer: --base-size-128 */
+  --box-size-xs: 6rem; /* primer: --base-size-96 */
+  --box-size-sm: 7rem; /* primer: --base-size-112 */
+  --box-size-md: 8rem; /* primer: --base-size-128 */
 }
 
 /**
