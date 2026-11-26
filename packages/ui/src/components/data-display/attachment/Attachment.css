@@ -51,21 +51,16 @@
 
 .attachment[data-orientation='vertical'] .attachment-actions {
   position: absolute;
-  top: var(--space-md);
-  right: var(--space-md);
+  top: var(--row-py);
+  right: var(--row-px);
 }
 
 .attachment-media {
-  position: relative;
   aspect-ratio: 1;
 }
 
 .attachment-media[data-variant='image'] {
   opacity: var(--opacity-dim);
-}
-
-.attachment-media[data-variant='image'] > img {
-  aspect-ratio: 1;
 }
 
 .attachment[data-state='done'] .attachment-media[data-variant='image'],
@@ -85,29 +80,7 @@
   animation: var(--shimmer-animation);
 }
 
+/* Layout and control stacking above the trigger cover come from recipes/row.css (row-actions). */
 .attachment-actions {
-  position: relative;
-  z-index: var(--z-chrome);
   flex-shrink: 0;
-}
-
-.attachment-group {
-  display: flex;
-  min-width: 0;
-  gap: var(--space-md);
-  padding-block: var(--space-xs);
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--space-xs);
-  scrollbar-width: none;
-}
-
-.attachment-group::-webkit-scrollbar {
-  display: none;
-}
-
-.attachment-group [data-slot='attachment'] {
-  flex: none;
-  scroll-snap-align: start;
 }

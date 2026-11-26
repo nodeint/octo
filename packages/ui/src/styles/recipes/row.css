@@ -2,7 +2,7 @@
  * Row: the strip of media, content and actions (item, attachment, alert) and the title and description text
  * (alert, empty, popover, section, card). A component adds the classes and sets the input tokens on its own root.
  *   row            the strip: border, radius, hover wash, focus ring
- *   row-group      a column of rows; the gap follows the size of the rows it holds (md without one)
+ *   row-group      a scrolling column (data-orientation='vertical') or strip (data-orientation='horizontal') of rows, always set, same snap and hidden scrollbar on both; the gap follows the size of the rows it holds (md without one)
  *   row-content    the text column
  *   row-title      the title; plain text goes in row-title-text so it truncates
  *   row-description, row-meta, row-actions, row-trigger, row-trigger-cover, row-hover-child, row-focus-within
@@ -98,12 +98,24 @@
   transition-timing-function: var(--default-transition-timing-function);
 }
 
-/* A column of rows. Size lives on the rows, so the group reads the smallest size it holds. */
+/* Rows in a scrolling column or strip; both orientations scroll, snap and hide the scrollbar alike. Size lives on the rows, so the group reads the smallest size it holds. */
 .row-group {
   display: flex;
-  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
   gap: var(--space-md);
-  width: 100%;
+  padding: var(--space-xs);
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+.row-group::-webkit-scrollbar {
+  display: none;
+}
+
+.row-group > .row {
+  flex: none;
+  scroll-snap-align: start;
 }
 
 .row-group:has(.row[data-row-size='sm']) {
@@ -112,6 +124,22 @@
 
 .row-group:has(.row[data-row-size='xs']) {
   gap: var(--space-xs);
+}
+
+.row-group[data-orientation='vertical'] {
+  flex-direction: column;
+  width: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-padding-block: var(--space-xs);
+}
+
+.row-group[data-orientation='horizontal'] {
+  flex-direction: row;
+  width: auto;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--space-xs);
 }
 
 /* The trigger's ::after covers the row; actions sit above the cover. */

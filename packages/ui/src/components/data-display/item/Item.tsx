@@ -29,6 +29,7 @@ function ItemGroup({ className, ...props }: React.ComponentProps<'div'>): React.
       <div
         role="list"
         data-slot="item-group"
+        data-orientation="vertical"
         className={cn('row-group item-group', className)}
         {...props}
       />

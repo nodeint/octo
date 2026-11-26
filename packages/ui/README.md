@@ -85,7 +85,7 @@ A part sets `--media-size` (or `--media-width` and `--media-height`), `--media-r
 title and description text that alert, empty, popover, section and card also add (`row-title`, `row-description`).
 `data-row-type` on the element that wraps the title and description picks their text roles
 (`content`, `header`, `compact`), and `data-row-size` (`xs`, `sm`, `md`) picks the padding and gaps.
-`row-group` is a column of rows whose gap follows the size of the rows it holds (item group); `--row-lead-gap` is the gap after a leading
+`row-group` holds rows in a column (`data-orientation="vertical"`, item group) or a scrolling strip (`data-orientation="horizontal"`, attachment group); set the orientation always, and the gap follows the size of the rows it holds; `--row-lead-gap` is the gap after a leading
 icon in a grid row (alert).
 The row reads its color from `data-paint` (`--variant-*`), and `data-row-invalid` paints the invalid pair.
 Dialog, alert dialog and drawer set the type on their content; a small card sets `content` on its header.

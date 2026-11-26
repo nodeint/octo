@@ -145,7 +145,18 @@ function AttachmentTrigger({
   });
 }
 
-const AttachmentGroup = createPart('div', 'attachment-group', '');
+function AttachmentGroup({
+  className,
+  render,
+  ...props
+}: useRender.ComponentProps<'div'>): React.JSX.Element {
+  return useRender({
+    defaultTagName: 'div',
+    props: mergeProps<'div'>({ className: cn('row-group attachment-group', className) }, props),
+    render,
+    state: { slot: 'attachment-group', orientation: 'horizontal' },
+  });
+}
 
 export {
   Attachment,
