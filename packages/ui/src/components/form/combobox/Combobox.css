@@ -1,39 +1,3 @@
-/* The trigger sizes its glyph; inside an input the group's icon button is an action and takes the action recipe's size. */
-.combobox-trigger svg {
-  --icon-size: var(--icon-md);
-  width: var(--icon-size);
-  height: var(--icon-size);
-  pointer-events: none;
-  flex-shrink: 0;
-}
-
-/*
- * The trigger is a bordered text field. Paint, font, focus, invalid and disabled come from the field-control recipe
- * (styles/recipes/field-control.css), as for select-trigger.
- */
-.combobox-trigger {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: fit-content;
-  max-width: 100%;
-  min-width: 0;
-  height: var(--field-height);
-  padding-inline: calc(var(--field-px) - var(--border-width-thin));
-  gap: var(--field-gap);
-  border-radius: var(--field-radius);
-  white-space: nowrap;
-  user-select: none;
-}
-
-.combobox-trigger[data-placeholder] {
-  color: var(--variant-fg-placeholder);
-}
-
-.combobox-trigger:hover {
-  background-color: var(--group-field-bg-hover, var(--variant-bg-hover));
-  color: var(--group-field-fg-hover, var(--variant-fg-hover));
-}
 
 .combobox-content {
   position: relative;
@@ -61,8 +25,6 @@
 }
 
 .combobox-list {
-  --menu-max-height: min(calc(18rem - 2.25rem), calc(var(--available-height) - 2.25rem));
-  scroll-padding-block: var(--space-xs);
   overscroll-behavior: contain;
 }
 

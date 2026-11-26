@@ -49,28 +49,27 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-function Output({ children }: { children: string }) {
-  return <pre style={{ margin: 0, fontSize: '0.75rem', whiteSpace: 'pre-wrap' }}>{children}</pre>;
-}
-
-function Step({ icon, title, children }: { icon: string; title: string; children?: React.ReactNode }) {
-  return (
-    <TraceLine>
-      <TraceIcon>
-        <Icon name={icon} />
-      </TraceIcon>
-      <TraceTitle>{title}</TraceTitle>
-      {children}
-    </TraceLine>
-  );
-}
-
 export const Demo: Story = {
   render: () => (
     <Trace>
-      <Step icon="search" title="Searched for minimumReleaseAge" />
-      <Step icon="file-text" title="Read pnpm-workspace.yaml" />
-      <Step icon="terminal" title="Ran pnpm install" />
+      <TraceLine>
+        <TraceIcon>
+          <Icon name="search" />
+        </TraceIcon>
+        <TraceTitle>Searched for minimumReleaseAge</TraceTitle>
+      </TraceLine>
+      <TraceLine>
+        <TraceIcon>
+          <Icon name="file-text" />
+        </TraceIcon>
+        <TraceTitle>Read pnpm-workspace.yaml</TraceTitle>
+      </TraceLine>
+      <TraceLine>
+        <TraceIcon>
+          <Icon name="terminal" />
+        </TraceIcon>
+        <TraceTitle>Ran pnpm install</TraceTitle>
+      </TraceLine>
     </Trace>
   ),
 };
@@ -79,7 +78,12 @@ export const Line: Story = {
   name: 'Trace Line',
   render: () => (
     <Trace>
-      <Step icon="workflow" title="Created branch fix/frozen-lockfile" />
+      <TraceLine>
+        <TraceIcon>
+          <Icon name="workflow" />
+        </TraceIcon>
+        <TraceTitle>Created branch fix/frozen-lockfile</TraceTitle>
+      </TraceLine>
     </Trace>
   ),
 };
@@ -87,7 +91,12 @@ export const Line: Story = {
 export const Status: Story = {
   render: () => (
     <Trace>
-      <Step icon="circle-check" title="Ran pnpm install" />
+      <TraceLine>
+        <TraceIcon>
+          <Icon name="circle-check" />
+        </TraceIcon>
+        <TraceTitle>Ran pnpm install</TraceTitle>
+      </TraceLine>
       <TraceLine status="error">
         <TraceIcon>
           <Icon name="triangle-alert" />
@@ -113,69 +122,106 @@ export const Status: Story = {
 export const Description: Story = {
   render: () => (
     <Trace>
-      <Step icon="pencil" title="Edited components/settings/notification-preferences-form.tsx">
+      <TraceLine>
+        <TraceIcon>
+          <Icon name="pencil" />
+        </TraceIcon>
+        <TraceTitle>
+          Edited components/settings/notification-preferences-form.tsx
+        </TraceTitle>
         <TraceDescription>+48 −12</TraceDescription>
-      </Step>
-      <Step icon="terminal" title="Ran pnpm test">
+      </TraceLine>
+      <TraceLine>
+        <TraceIcon>
+          <Icon name="terminal" />
+        </TraceIcon>
+        <TraceTitle>Ran pnpm test</TraceTitle>
         <TraceDescription>14s</TraceDescription>
-      </Step>
-      <Step icon="search" title="Searched for useChat">
+      </TraceLine>
+      <TraceLine>
+        <TraceIcon>
+          <Icon name="search" />
+        </TraceIcon>
+        <TraceTitle>Searched for useChat</TraceTitle>
         <TraceDescription>8 results</TraceDescription>
-      </Step>
+      </TraceLine>
     </Trace>
   ),
 };
 
-type RowProps = {
-  title: string;
-  output: string;
-  isDefaultOpen?: boolean;
-  isOpen?: boolean;
-  onOpenChange?: React.ComponentProps<typeof TraceCollapsible>['onOpenChange'];
-};
-
-function CollapsibleRow({ title, output, isDefaultOpen, isOpen, onOpenChange }: RowProps) {
-  const state = isOpen !== undefined && onOpenChange ? { open: isOpen, onOpenChange } : { defaultOpen: isDefaultOpen };
-
-  return (
-    <TraceCollapsible {...state}>
+export const Collapsible: Story = {
+  render: () => (
+    <TraceCollapsible>
       <TraceCollapsibleTrigger>
-        <Step icon="terminal" title={title} />
+        <TraceLine>
+          <TraceIcon>
+            <Icon name="terminal" />
+          </TraceIcon>
+          <TraceTitle>Ran node --version</TraceTitle>
+        </TraceLine>
       </TraceCollapsibleTrigger>
       <TraceCollapsibleContent>
-        <Output>{output}</Output>
+        <pre style={{ margin: 0, fontSize: '0.75rem', whiteSpace: 'pre-wrap' }}>
+          {'$ node --version\nv24.18.0'}
+        </pre>
       </TraceCollapsibleContent>
     </TraceCollapsible>
-  );
-}
-
-export const Collapsible: Story = {
-  render: () => <CollapsibleRow title="Ran node --version" output={'$ node --version\nv24.18.0'} />,
+  ),
 };
-
-function OpenState() {
-  const [open, setOpen] = React.useState(false);
-
-  return (
-    <Stack gap="md" style={{ alignItems: 'flex-start' }}>
-      <CollapsibleRow isDefaultOpen title="Ran node --version" output={'$ node --version\nv24.18.0'} />
-      <CollapsibleRow isOpen={open} onOpenChange={setOpen} title="Ran pnpm --version" output={'$ pnpm --version\n10.33.4'} />
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={() => {
-          setOpen(!open);
-        }}
-      >
-        {open ? 'Hide' : 'Show'} the pnpm output
-      </Button>
-    </Stack>
-  );
-}
 
 export const OpenStateStory: Story = {
   name: 'Open State',
-  render: () => <OpenState />,
+  render: function Render() {
+    const [open, setOpen] = React.useState(false);
+
+    return (
+      <Stack gap="md" align="start">
+        <TraceCollapsible defaultOpen>
+          <TraceCollapsibleTrigger>
+            <TraceLine>
+              <TraceIcon>
+                <Icon name="terminal" />
+              </TraceIcon>
+              <TraceTitle>Ran node --version</TraceTitle>
+            </TraceLine>
+          </TraceCollapsibleTrigger>
+          <TraceCollapsibleContent>
+            <pre
+              style={{ margin: 0, fontSize: '0.75rem', whiteSpace: 'pre-wrap' }}
+            >
+              {'$ node --version\nv24.18.0'}
+            </pre>
+          </TraceCollapsibleContent>
+        </TraceCollapsible>
+        <TraceCollapsible open={open} onOpenChange={setOpen}>
+          <TraceCollapsibleTrigger>
+            <TraceLine>
+              <TraceIcon>
+                <Icon name="terminal" />
+              </TraceIcon>
+              <TraceTitle>Ran pnpm --version</TraceTitle>
+            </TraceLine>
+          </TraceCollapsibleTrigger>
+          <TraceCollapsibleContent>
+            <pre
+              style={{ margin: 0, fontSize: '0.75rem', whiteSpace: 'pre-wrap' }}
+            >
+              {'$ pnpm --version\n10.33.4'}
+            </pre>
+          </TraceCollapsibleContent>
+        </TraceCollapsible>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => {
+            setOpen(!open);
+          }}
+        >
+          {open ? 'Hide' : 'Show'} the pnpm output
+        </Button>
+      </Stack>
+    );
+  },
 };
 
 export const Link: Story = {
@@ -192,7 +238,11 @@ export const Link: Story = {
           </TraceIcon>
         </TraceLine>
       </a>
-      <a href="https://docs.astro.build/en/install-and-setup/" target="_blank" rel="noreferrer">
+      <a
+        href="https://docs.astro.build/en/install-and-setup/"
+        target="_blank"
+        rel="noreferrer"
+      >
         <TraceLine>
           <TraceIcon>
             <Icon name="globe" />
@@ -210,55 +260,73 @@ export const Link: Story = {
   ),
 };
 
-const RESULTS = [
-  { title: 'Caching build outputs', url: 'https://nextjs.org/docs/app/guides/caching' },
-  { title: 'Image optimization reference', url: 'https://nextjs.org/docs/app/api-reference/components/image' },
-  { title: 'Deploy hooks and cache keys', url: 'https://vercel.com/docs/deploy-hooks' },
-] as const;
-
 export const DialogStory: Story = {
   name: 'Dialog',
-  render: () => (
-    <Trace>
-      <Dialog>
-        <DialogTrigger>
-          <TraceLine>
-            <TraceIcon>
-              <Icon name="globe" />
-            </TraceIcon>
-            <TraceTitle>Searched the web for cache keys</TraceTitle>
-            <TraceIcon>
-              <Icon name="chevron-right" />
-            </TraceIcon>
-          </TraceLine>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Searched the web for cache keys</DialogTitle>
-            <DialogDescription>Three results were used in the response.</DialogDescription>
-          </DialogHeader>
-          <Trace>
-            {RESULTS.map((result) => (
-              <a key={result.url} href={result.url} target="_blank" rel="noreferrer">
-                <TraceLine>
-                  <TraceIcon>
-                    <Icon name="globe" />
-                  </TraceIcon>
-                  <TraceTitle>
-                    {result.title}
-                    <span className="sr-only"> (opens in a new tab)</span>
-                  </TraceTitle>
-                  <TraceIcon>
-                    <Icon name="external-link" />
-                  </TraceIcon>
-                </TraceLine>
-              </a>
-            ))}
-          </Trace>
-        </DialogContent>
-      </Dialog>
-    </Trace>
-  ),
+  render: () => {
+    const results = [
+      {
+        title: 'Caching build outputs',
+        url: 'https://nextjs.org/docs/app/guides/caching',
+      },
+      {
+        title: 'Image optimization reference',
+        url: 'https://nextjs.org/docs/app/api-reference/components/image',
+      },
+      {
+        title: 'Deploy hooks and cache keys',
+        url: 'https://vercel.com/docs/deploy-hooks',
+      },
+    ] as const;
+
+    return (
+      <Trace>
+        <Dialog>
+          <DialogTrigger>
+            <TraceLine>
+              <TraceIcon>
+                <Icon name="globe" />
+              </TraceIcon>
+              <TraceTitle>Searched the web for cache keys</TraceTitle>
+              <TraceIcon>
+                <Icon name="chevron-right" />
+              </TraceIcon>
+            </TraceLine>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Searched the web for cache keys</DialogTitle>
+              <DialogDescription>
+                Three results were used in the response.
+              </DialogDescription>
+            </DialogHeader>
+            <Trace>
+              {results.map((result) => (
+                <a
+                  key={result.url}
+                  href={result.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <TraceLine>
+                    <TraceIcon>
+                      <Icon name="globe" />
+                    </TraceIcon>
+                    <TraceTitle>
+                      {result.title}
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </TraceTitle>
+                    <TraceIcon>
+                      <Icon name="external-link" />
+                    </TraceIcon>
+                  </TraceLine>
+                </a>
+              ))}
+            </Trace>
+          </DialogContent>
+        </Dialog>
+      </Trace>
+    );
+  },
 };
 
 export const DrawerStory: Story = {
@@ -280,7 +348,9 @@ export const DrawerStory: Story = {
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>Explored 4 files</DrawerTitle>
-            <DrawerDescription>Files read while preparing the response.</DrawerDescription>
+            <DrawerDescription>
+              Files read while preparing the response.
+            </DrawerDescription>
           </DrawerHeader>
           <ul style={{ fontFamily: 'monospace', fontSize: '0.75rem' }}>
             <li>apps/v4/lib/docs.ts</li>
@@ -297,9 +367,24 @@ export const DrawerStory: Story = {
 export const Group: Story = {
   render: () => (
     <Trace>
-      <Step icon="search" title="Searched for minimumReleaseAge" />
-      <Step icon="file-text" title="Read pnpm-workspace.yaml" />
-      <Step icon="terminal" title="Ran pnpm install" />
+      <TraceLine>
+        <TraceIcon>
+          <Icon name="search" />
+        </TraceIcon>
+        <TraceTitle>Searched for minimumReleaseAge</TraceTitle>
+      </TraceLine>
+      <TraceLine>
+        <TraceIcon>
+          <Icon name="file-text" />
+        </TraceIcon>
+        <TraceTitle>Read pnpm-workspace.yaml</TraceTitle>
+      </TraceLine>
+      <TraceLine>
+        <TraceIcon>
+          <Icon name="terminal" />
+        </TraceIcon>
+        <TraceTitle>Ran pnpm install</TraceTitle>
+      </TraceLine>
     </Trace>
   ),
 };

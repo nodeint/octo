@@ -4,8 +4,8 @@
   min-width: 0;
   min-height: var(--textarea-min-height);
   resize: var(--group-field-resize, both);
-  padding-block: var(--group-field-padding-block-start, var(--space-sm))
-    var(--group-field-padding-block-end, var(--space-sm));
+  padding-block: var(--group-field-padding-block-start, var(--inset-sm))
+    var(--group-field-padding-block-end, var(--inset-sm));
   padding-inline: var(--group-field-padding-inline-start, var(--group-field-px, var(--field-px)))
     var(--group-field-padding-inline-end, var(--group-field-px, var(--field-px)));
   border-radius: var(--group-field-radius, var(--radius-field-block));

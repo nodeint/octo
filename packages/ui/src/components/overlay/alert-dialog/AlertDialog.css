@@ -11,10 +11,6 @@
   column-gap: var(--panel-gap);
 }
 
-.alert-dialog-header > .media {
-  margin-block-end: var(--space-sm);
-}
-
 .alert-dialog-description {
   text-wrap: balance;
 }

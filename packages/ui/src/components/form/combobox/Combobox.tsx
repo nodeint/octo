@@ -10,8 +10,10 @@ import {
   InputGroupAddon,
   InputGroupButton,
 } from '../../form/input-group/InputGroup';
-import { Button } from '../../general/button/Button';
+import { Button, type ButtonProps } from '../../general/button/Button';
 import { Icon } from '../../typography/icon/Icon';
+import { paintName } from '../../../lib/paint';
+import { resolveButtonPaint } from '../../../lib/action-paint';
 
 const Combobox = ComboboxPrimitive.Root;
 
@@ -29,15 +31,23 @@ function ComboboxValue({ ...props }: ComboboxPrimitive.Value.Props): React.JSX.E
 
 function ComboboxTrigger({
   className,
+  variant = 'outline',
+  tone,
+  emphasis,
+  size = 'md',
+  shape = 'default',
   children,
   ...props
-}: ComboboxPrimitive.Trigger.Props): React.JSX.Element {
+}: ComboboxPrimitive.Trigger.Props & ButtonProps): React.JSX.Element {
+  const paint = resolveButtonPaint({ variant, tone, emphasis }, 'default');
+
   return (
     <ComboboxPrimitive.Trigger
       data-slot="combobox-trigger"
-      data-field-size="md"
-      data-paint="field"
-      className={cn('field-control', 'combobox-trigger', className)}
+      data-paint={paintName(paint)}
+      data-action-size={size}
+      data-shape={shape}
+      className={cn('action', 'button', className)}
       {...props}
     >
       {children}

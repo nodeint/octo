@@ -261,7 +261,7 @@ export const AutoHighlight: Story = {
 export const Popup: Story = {
   render: () => (
     <Combobox items={COUNTRIES} defaultValue={COUNTRIES[0]}>
-      <ComboboxTrigger style={{ width: '100%' }}>
+      <ComboboxTrigger>
         <ComboboxValue />
       </ComboboxTrigger>
       <ComboboxContent>

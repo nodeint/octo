@@ -113,8 +113,8 @@
 .button-group-text {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  padding-inline: var(--space-md);
+  gap: var(--group-action-gap);
+  padding-inline: var(--group-action-px);
   border: var(--border-width-thin) solid var(--group-action-border, var(--border));
   border-radius: var(--group-action-radius, var(--radius-action-md));
   font-size: var(--role-label-size);
