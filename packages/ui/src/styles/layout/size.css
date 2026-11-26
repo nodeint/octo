@@ -1,27 +1,7 @@
 /**
- * Size roles: input minimums, touch target, container boxes, content width, and floating panels.
+ * Size roles: container boxes, content width, and floating panels.
  * Control steps live in ./control.css.
  */
-
-:root {
-  --input-min-height: 4rem; /* primer: --base-size-64 */
-  --input-min-width: 4rem; /* primer: --base-size-64 */
-}
-
-/**
- * Touch target: --target-min is 44px for a coarse pointer and 16px for a fine one.
- * Read by the control utilities, not exposed as a class.
- */
-
-:root {
-  --target-min: 1rem; /* primer: --control-minTarget-fine */
-}
-
-@media (pointer: coarse) {
-  :root {
-    --target-min: 2.75rem; /* primer: --control-minTarget-coarse */
-  }
-}
 
 /**
  * Box sizes: --box-size-xs, --box-size-sm, --box-size-md for fixed boxes, on any axis

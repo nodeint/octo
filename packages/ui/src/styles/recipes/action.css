@@ -32,7 +32,7 @@
 }
 
 /*
- * Touch target: --target-min is 44px for a coarse pointer and 16px for a fine one. The pseudo-element
+ * Touch target: --control-target-min is 44px for a coarse pointer and 16px for a fine one. The pseudo-element
  * grows the hit area without changing the control's size. :where() keeps the position easy to override.
  */
 :where(.action) {
@@ -45,7 +45,7 @@
   inset-inline: 0;
   top: 50%;
   height: 100%;
-  min-height: var(--target-min);
+  min-height: var(--control-target-min);
   transform: translateY(-50%);
 }
 

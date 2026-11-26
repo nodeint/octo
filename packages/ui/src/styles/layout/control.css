@@ -5,6 +5,12 @@
  */
 
 :root {
+  /**
+   * Touch target: --control-target-min is 44px for a coarse pointer and 16px for a fine one.
+   * Read by the control utilities, not exposed as a class.
+   */
+  --control-target-min: 1rem;
+
   --control-height-xs: 1.25rem;
   --control-height-sm: 1.625rem; 
   --control-height-md: 2.25rem;
@@ -22,4 +28,10 @@
   --control-gap-md: 0.5rem;
   --control-gap-lg: 0.5rem;
   --control-gap-xl: 0.5rem;
+}
+
+@media (pointer: coarse) {
+  :root {
+    --control-target-min: 2.75rem; /* primer: --control-minTarget-coarse */
+  }
 }

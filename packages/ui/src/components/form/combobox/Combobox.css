@@ -141,7 +141,7 @@
 /* A bare native input: the chips row paints the field, so this draws no fill or border of its own. */
 .combobox-chips-input {
   flex: 1 1 0%;
-  min-width: var(--input-min-width);
+  min-width: var(--textarea-min-width);
   border: 0;
   background-color: transparent;
   color: inherit;
