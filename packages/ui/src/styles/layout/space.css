@@ -34,11 +34,10 @@
   --gap-2xl: var(--space-2xl);
   --gap-3xl: var(--space-3xl);
   
+  --inset: 0px; /* the padding the nearest container gives its children; a container re-declares it, Box bleed reads it */
   --inset-xs: var(--space-xs);
   --inset-sm: var(--space-sm);
   --inset-md: var(--space-md);
   --inset-lg: var(--space-lg);
   --inset-xl: var(--space-xl);
-  
-  --inset: 0px; /* the padding the nearest container gives its children; a container re-declares it, Box bleed reads it */
 }
