@@ -111,7 +111,7 @@
  *   gap             space between a glyph and its label
  *   icon            glyph beside a label
  *   radius          corner of an action (--radius-action-*)
- * The steps and their raw values live in layout/control.css and layout/radius.css.
+ * The steps and their raw values live in layout/index.css.
  */
 [data-action-size='xs'] {
   --action-height: var(--control-height-xs);

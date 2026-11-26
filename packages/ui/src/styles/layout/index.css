@@ -1,13 +1,151 @@
 /*
- * Layout axis: control sizes, space, radius, border widths, containers, motion, z-index, and opacity.
- * A theme can override these variables. Values are plain; Primer is only a reference.
+ * Layout axis: size, space, radius, border, motion, z-index, and opacity tokens.
+ * A theme can override these variables. Values are plain.
  */
-@import "./control.css";
-@import "./icon.css";
-@import "./size.css";
-@import "./radius.css";
-@import "./space.css";
-@import "./border.css";
-@import "./motion.css";
-@import "./z-index.css";
-@import "./opacity.css";
+
+:root {
+  /*
+   * Control size: one step (xs … xl) owns height, inline padding, and gap.
+   * --control-target-min is the touch target: 44px for a coarse pointer, 16px for a fine one.
+   */
+  --control-target-min: 1rem;
+
+  --control-height-xs: 1.25rem;
+  --control-height-sm: 1.625rem;
+  --control-height-md: 2.25rem;
+  --control-height-lg: 3rem;
+  --control-height-xl: 4rem;
+
+  --control-px-xs: 0.5rem;
+  --control-px-sm: 0.75rem;
+  --control-px-md: 0.75rem;
+  --control-px-lg: 0.75rem;
+  --control-px-xl: 0.75rem;
+
+  --control-gap-xs: 0.25rem;
+  --control-gap-sm: 0.25rem;
+  --control-gap-md: 0.5rem;
+  --control-gap-lg: 0.5rem;
+  --control-gap-xl: 0.5rem;
+
+  @media (pointer: coarse) {
+    --control-target-min: 2.75rem;
+  }
+
+  /* Icon size: the icon inside a control, beside its text. */
+  --icon-xs: 0.75rem;
+  --icon-sm: 0.875rem;
+  --icon-md: 1rem;
+  --icon-lg: 1.25rem;
+
+  /* Box size: fixed boxes on any axis. Smaller than xs is a control size. */
+  --box-size-xs: 6rem;
+  --box-size-sm: 7rem;
+  --box-size-md: 8rem;
+
+  /* Content width: the widest a Section's content runs. A theme sets it to widen or narrow every section. */
+  --content-width: 30rem;
+
+  /* Panel size: width and max height of floating panels and width-capped blocks. */
+  --panel-w-xxs: 12rem;
+  --panel-w-xs: 16rem;
+  --panel-w-sm: 20rem;
+  --panel-w-md: 30rem;
+  --panel-w-lg: 48rem;
+  --panel-w-xl: 60rem;
+  --panel-h-sm: 16rem;
+  --panel-h-md: 20rem;
+  --panel-h-lg: 27rem;
+  --panel-h-xl: 37.5rem;
+
+  /*
+   * Radius: the scale is plain steps. Components read a set, never the scale.
+   * surface: cards, panes, menus, dialogs. field: inputs. action: buttons.
+   * pill: half the control height. block: multi-line field or stack of actions.
+   */
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-round: 9999px;
+
+  --radius-pill-xs: calc(var(--control-height-xs) / 2);
+  --radius-pill-sm: calc(var(--control-height-sm) / 2);
+  --radius-pill-md: calc(var(--control-height-md) / 2);
+  --radius-pill-lg: calc(var(--control-height-lg) / 2);
+
+  --radius-surface-xs: var(--radius-xs);
+  --radius-surface-sm: var(--radius-sm);
+  --radius-surface-md: var(--radius-md);
+  --radius-surface-lg: var(--radius-lg);
+
+  --radius-field-xs: var(--radius-xs);
+  --radius-field-sm: var(--radius-sm);
+  --radius-field-md: var(--radius-md);
+  --radius-field-lg: var(--radius-lg);
+  --radius-field-block: var(--radius-lg);
+
+  --radius-action-xs: var(--radius-xs);
+  --radius-action-sm: var(--radius-sm);
+  --radius-action-md: var(--radius-md);
+  --radius-action-lg: var(--radius-lg);
+  --radius-action-block: var(--radius-lg);
+
+  /* Space: raw steps. Read only by the gap and inset roles below. */
+  --space-xxs: 0.125rem;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.75rem;
+  --space-lg: 1rem;
+  --space-xl: 1.5rem;
+  --space-2xl: 2rem;
+  --space-3xl: 3rem;
+
+  /* Gap: space between children. Outside @workspace/ui, spacing goes through gap and inset, never a raw step. */
+  --gap-xxs: var(--space-xxs);
+  --gap-xs: var(--space-xs);
+  --gap-sm: var(--space-sm);
+  --gap-md: var(--space-md);
+  --gap-lg: var(--space-lg);
+  --gap-xl: var(--space-xl);
+  --gap-2xl: var(--space-2xl);
+  --gap-3xl: var(--space-3xl);
+
+  /* Inset: padding of one box. --inset is what the nearest container gives its children; Box bleed reads it. */
+  --inset: 0px;
+  --inset-xs: var(--space-xs);
+  --inset-sm: var(--space-sm);
+  --inset-md: var(--space-md);
+  --inset-lg: var(--space-lg);
+  --inset-xl: var(--space-xl);
+
+  /* Border width. */
+  --border-width-thin: 0.0625rem;
+  --border-width-thick: 0.125rem;
+
+  /* Motion: durations and easings. Prefer these over raw duration-* and ease-*. */
+  --motion-duration-fast: 100ms;
+  --motion-duration-normal: 200ms;
+  --motion-duration-slow: 300ms;
+
+  --ease-standard: cubic-bezier(0.6, 0, 0.2, 1);
+  --ease-enter: cubic-bezier(0.3, 0.8, 0.6, 1);
+  --ease-exit: cubic-bezier(0.7, 0.1, 0.75, 0.9);
+
+  /* Default motion for a plain `transition`: the hover motion. */
+  --default-transition-duration: 100ms;
+  --default-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  /*
+   * Z-index: local levels stack content in one surface; --z-floating is shared by every portaled layer
+   * (a menu in a dialog must stay above it, so DOM order decides between layers).
+   */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-chrome: 20;
+  --z-floating: 500;
+  --z-top: 10000;
+
+  /* Opacity: fades content that is switched off or quiet. A fade that carries no meaning uses the muted color. */
+  --opacity-dim: 0.5;
+}

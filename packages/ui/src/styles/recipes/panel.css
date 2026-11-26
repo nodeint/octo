@@ -12,7 +12,7 @@
  *   sm  --inset-sm  --gap-md  --radius-surface-sm
  *   md  --inset-md  --gap-md  --radius-surface-md
  *   lg  --inset-lg  --gap-lg  --radius-surface-lg
- * The steps live in layout/space.css and layout/radius.css. A component never declares --panel-inset, --panel-gap
+ * The steps live in layout/index.css. A component never declares --panel-inset, --panel-gap
  * or --panel-radius; it reads --panel-radius for its own corners.
  */
 .panel {

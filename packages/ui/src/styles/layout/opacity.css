@@ -1,8 +1,0 @@
-/**
- * Opacity: one value. --opacity-dim fades content that is switched off or quiet, such as a disabled field's label
- * or a remove button until hover. A fade that must not carry meaning uses the muted color instead.
- */
-
-:root {
-  --opacity-dim: 0.5;
-}
