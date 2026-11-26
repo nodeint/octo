@@ -1,23 +1,18 @@
 .popover-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  padding: var(--overlay-pad-sm);
   overflow: hidden;
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);
 }
 
-.popover-content[data-inset='none'] {
-  max-height: var(--available-height);
-  gap: 0;
-  padding: 0;
-}
+/* Two classes so it beats the data-size step whatever the stylesheet order. */
+.floating-content.popover-content[data-inset='none'] {
+  --floating-inset: 0px;
+  --floating-gap: 0px;
 
-.popover-content[data-width='anchor'] {
-  width: var(--anchor-width);
-  min-width: 0;
+  max-height: var(--available-height);
 }
 
 .popover-header {

@@ -50,7 +50,7 @@
  * Floating panels.
  *   width      --overlay-xxs … xl         (192 · 256 · 320 · 480 · 768 · 960)
  *   max height --overlay-h-sm … xl    (256 · 320 · 432 · 600, cap at 50vh where used)
- * The panel padding is --overlay-pad-* (./space.css) and its corner is --radius-overlay-sm (./radius.css).
+ * The panel padding is --overlay-inset-* (./space.css) and its corner is --radius-overlay-sm (./radius.css).
  */
 
 :root {

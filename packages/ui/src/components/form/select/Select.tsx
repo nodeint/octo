@@ -15,7 +15,7 @@ function SelectGroup({ className, ...props }: SelectPrimitive.Group.Props): Reac
   return (
     <SelectPrimitive.Group
       data-slot="select-group"
-      className={cn('select-group', className)}
+      className={cn('menu-group select-group', className)}
       {...props}
     />
   );
@@ -64,7 +64,7 @@ function SelectContent({
   children,
   side = 'bottom',
   sideOffset = 4,
-  align = 'center',
+  align = 'start',
   alignOffset = 0,
   alignItemWithTrigger = true,
   ...props
@@ -81,16 +81,17 @@ function SelectContent({
         align={align}
         alignOffset={alignOffset}
         alignItemWithTrigger={alignItemWithTrigger}
-        className="select-positioner"
+        className="floating-positioner"
       >
         <SelectPrimitive.Popup
           data-slot="select-content"
+          data-width="anchor"
           data-align-trigger={alignItemWithTrigger}
-          className={cn('floating-radius select-content', className)}
+          className={cn('floating-content select-content', className)}
           {...props}
         >
           <SelectScrollUpButton />
-          <SelectPrimitive.List>{children}</SelectPrimitive.List>
+          <SelectPrimitive.List className="menu-content menu-group">{children}</SelectPrimitive.List>
           <SelectScrollDownButton />
         </SelectPrimitive.Popup>
       </SelectPrimitive.Positioner>
@@ -105,7 +106,7 @@ function SelectLabel({
   return (
     <SelectPrimitive.GroupLabel
       data-slot="select-label"
-      className={cn('select-label', className)}
+      className={cn('menu-label', className)}
       {...props}
     />
   );
@@ -119,16 +120,16 @@ function SelectItem({
   return (
     <SelectPrimitive.Item
       data-slot="select-item"
-      className={cn('select-item', className)}
+      className={cn('menu-row menu-checkable select-item', className)}
       {...props}
     >
       <SelectPrimitive.ItemText className="select-item-text">
         {children}
       </SelectPrimitive.ItemText>
       <SelectPrimitive.ItemIndicator
-        render={<span className="select-item-indicator" />}
+        render={<span className="menu-indicator" />}
       >
-        <Icon name="check" className="select-icon" />
+        <Icon name="check" />
       </SelectPrimitive.ItemIndicator>
     </SelectPrimitive.Item>
   );
@@ -141,7 +142,7 @@ function SelectSeparator({
   return (
     <SelectPrimitive.Separator
       data-slot="select-separator"
-      className={cn('select-separator', className)}
+      className={cn('menu-separator', className)}
       {...props}
     />
   );

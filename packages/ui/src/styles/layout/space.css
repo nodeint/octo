@@ -18,7 +18,6 @@
  * Space roles, built on the raw steps above.
  * Outside @workspace/ui, spacing goes through the layout roles below (Stack, Inline, Box `p` and
  * the --gap-* and --inset-* roles), never through a raw step.
- *   overlay-pad  padding of a floating panel
  *   gap    xxs · xs · sm · md · lg · xl · 2xl · 3xl (space between children; Box `gap`)
  *   inset  xs · sm · md · lg · xl (padding of one box)
  *   panel  --panel-inset and --panel-gap are declared by the size set in recipes/panel.css, not here.
@@ -26,11 +25,6 @@
  */
 
 :root {
-  --overlay-pad-xs: 0.25rem; /* primer: --overlay-paddingBlock-condensed */
-  --overlay-pad-sm: 0.5rem; /* primer: --overlay-padding-condensed */
-  --overlay-pad-md: 0.75rem; /* primer: --overlay-paddingBlock-normal */
-  --overlay-pad-lg: 1rem; /* primer: --overlay-padding-normal */
-
   --gap-xxs: var(--space-xxs);
   --gap-xs: var(--space-xs);
   --gap-sm: var(--space-sm);

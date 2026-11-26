@@ -29,9 +29,9 @@
   --radius-surface-md: var(--radius-md);
   --radius-surface-lg: var(--radius-lg);
 
-  --radius-overlay-xs: var(--radius-xs);
-  --radius-overlay-sm: var(--radius-sm);
-  --radius-overlay-md: var(--radius-md);
+  --radius-overlay-xs: var(--radius-sm);
+  --radius-overlay-sm: var(--radius-md);
+  --radius-overlay-md: var(--radius-lg);
   --radius-overlay-lg: var(--radius-lg);
 
   --radius-panel-xs: var(--radius-xs);

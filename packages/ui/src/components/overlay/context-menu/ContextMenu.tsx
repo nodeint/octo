@@ -41,6 +41,7 @@ function ContextMenuContent({
   anchor,
   positionMethod,
   size,
+  children,
   ...props
 }: ContextMenuPrimitive.Popup.Props &
   Pick<
@@ -64,9 +65,11 @@ function ContextMenuContent({
         <ContextMenuPrimitive.Popup
           data-slot="context-menu-content"
           data-size={size}
-          className={cn('menu-content floating-content context-menu-content', className)}
+          className={cn('floating-content context-menu-content', className)}
           {...props}
-        />
+        >
+          <div className="menu-content">{children}</div>
+        </ContextMenuPrimitive.Popup>
       </ContextMenuPrimitive.Positioner>
     </ContextMenuPrimitive.Portal>
   );

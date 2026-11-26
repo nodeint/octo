@@ -7,7 +7,7 @@
  *   avatar     the status badge, per avatar size
  *   scrollbar  the thickness, edge inset, and thumb radius of a scrollbar
  *   slider     the thickness of the track and the thumb size
- *   tooltip    the arrow
+ *   tooltip    the padding and the arrow
  *   floating   how far a floating panel slides in from its anchor
  *   tab        the underline that marks the selected tab, and the active trigger's paint
  *   checkbox, radio, switch thumb, avatar blend: paint that differs between light and dark
@@ -69,7 +69,10 @@
   --scrollbar-thumb-radius: var(--radius-round);
   --scrollbar-thumb: var(--border);
 
-  /* Tooltip: the arrow */
+  /* Tooltip: its own padding (not a floating step) and the arrow */
+  --tooltip-pad-y: var(--inset-xs);
+  --tooltip-pad-x: var(--inset-sm);
+  --tooltip-gap: var(--gap-xs);
   --tooltip-arrow-size: 0.625rem;
   --tooltip-arrow-inset: var(--space-xxs); /* 2 */
   --tooltip-arrow-radius: 0.1875rem;

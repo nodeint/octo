@@ -166,7 +166,7 @@ function ComboboxChipsInput({
 function ComboboxContent({
   className,
   side = 'bottom',
-  sideOffset = 6,
+  sideOffset = 4,
   align = 'start',
   alignOffset = 0,
   anchor,
@@ -184,13 +184,14 @@ function ComboboxContent({
         align={align}
         alignOffset={alignOffset}
         anchor={anchor}
-        className="combobox-positioner"
+        className="floating-positioner"
       >
         <ComboboxPrimitive.Popup
           data-slot="combobox-content"
+          data-width="anchor"
           data-chips={!!anchor}
           className={cn(
-            'floating-radius combobox-content',
+            'floating-content combobox-content',
             className
           )}
           {...props}
@@ -204,7 +205,7 @@ function ComboboxList({ className, ...props }: ComboboxPrimitive.List.Props): Re
   return (
     <ComboboxPrimitive.List
       data-slot="combobox-list"
-      className={cn('combobox-list', className)}
+      className={cn('menu-content combobox-list', className)}
       {...props}
     />
   );
@@ -218,14 +219,14 @@ function ComboboxItem({
   return (
     <ComboboxPrimitive.Item
       data-slot="combobox-item"
-      className={cn('combobox-item', className)}
+      className={cn('menu-row menu-checkable combobox-item', className)}
       {...props}
     >
       {children}
       <ComboboxPrimitive.ItemIndicator
-        render={<span className="combobox-item-indicator" />}
+        render={<span className="menu-indicator" />}
       >
-        <Icon name="check" className="combobox-icon" />
+        <Icon name="check" />
       </ComboboxPrimitive.ItemIndicator>
     </ComboboxPrimitive.Item>
   );
@@ -235,7 +236,7 @@ function ComboboxGroup({ className, ...props }: ComboboxPrimitive.Group.Props): 
   return (
     <ComboboxPrimitive.Group
       data-slot="combobox-group"
-      className={cn(className)}
+      className={cn('menu-group', className)}
       {...props}
     />
   );
@@ -248,7 +249,7 @@ function ComboboxLabel({
   return (
     <ComboboxPrimitive.GroupLabel
       data-slot="combobox-label"
-      className={cn('combobox-label', className)}
+      className={cn('menu-label', className)}
       {...props}
     />
   );
@@ -280,7 +281,7 @@ function ComboboxSeparator({
   return (
     <ComboboxPrimitive.Separator
       data-slot="combobox-separator"
-      className={cn('combobox-separator', className)}
+      className={cn('menu-separator', className)}
       {...props}
     />
   );

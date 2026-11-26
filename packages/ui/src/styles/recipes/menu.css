@@ -1,5 +1,5 @@
 /*
- * Menu rows and container layout, shared by dropdown-menu and context-menu and free of any floating behavior,
+ * Menu rows and container layout, shared by dropdown-menu, context-menu, select and combobox and free of any floating behavior,
  * so an inline menu can reuse them. A floating menu adds the floating.css classes beside these.
  *   menu-row        every interactive row (item, sub-trigger, checkbox and radio item)
  *   menu-item       plain item          menu-sub-trigger  submenu trigger
@@ -16,14 +16,13 @@
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);
-  cursor: pointer;
+  cursor: default;
   outline: none;
   user-select: none;
 }
 
 .menu-checkable {
   padding-right: var(--space-2xl);
-  cursor: default;
 }
 
 /* Rows with an `inset` flag line up under rows that carry an indicator or icon. */
@@ -39,7 +38,7 @@
   color: var(--variant-fg-muted);
 }
 
-.menu-row:is(:hover, :focus) {
+.menu-row:is(:hover, :focus, [data-highlighted]) {
   background-color: var(--accent);
   color: var(--variant-fg);
 }
@@ -99,20 +98,24 @@
   justify-content: center;
 }
 
-/* Container layout shared by every menu: the gap spaces rows, the pad insets them and sets how far a separator bleeds. */
+/* Row container inside a floating-content popup: the gap spaces rows. The popup owns the padding (--floating-inset), so the height cap leaves room for it. */
 .menu-content {
+  --menu-gap: var(--gap-xs);
+
   display: flex;
   flex-direction: column;
-  --menu-gap: var(--space-xs);
-  --menu-pad: var(--overlay-pad-xs);
   gap: var(--menu-gap);
-  padding: var(--menu-pad);
-  max-height: var(--available-height);
+  max-height: calc(var(--menu-max-height, var(--available-height)) - var(--floating-inset) * 2);
   overflow-x: hidden;
   overflow-y: auto;
+  scrollbar-width: none;
 }
 
-/* Submenu panel: no scroll container of its own. Must stay after .menu-content. */
+.menu-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Submenu popup: the scroll container is its menu-content child. */
 .menu-sub-content {
   overflow: hidden;
 }
@@ -126,7 +129,7 @@
 .menu-separator {
   flex-shrink: 0;
   height: 1px;
-  margin-inline: calc(var(--menu-pad, var(--space-xs)) * -1);
+  margin-inline: calc(var(--floating-inset) * -1);
   background-color: var(--border);
 }
 

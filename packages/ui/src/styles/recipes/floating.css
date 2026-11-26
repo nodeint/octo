@@ -1,11 +1,13 @@
 /*
- * Anchored panels: popover, tooltip, dropdown menu and context menu. A component adds the classes it needs
+ * Anchored panels: popover, tooltip, dropdown menu, context menu, select and combobox. A component adds the classes it needs
  * beside its own.
  *   floating-positioner  the Base UI positioner: stacking and focus ring
- *   floating-content     the popup: stacking, fill, edge, minimum width, corner, and the slide-in and zoom-out motion from the
- *                        side it opens toward. `data-size` sets width and corner (xxs/xs → xs, sm → sm, md → md, lg/xl → lg)
- *   floating-radius      only the corner (`--floating-radius`, default --radius-overlay-sm), for a popup with its own fill and motion
- * A component never declares `border-radius`; `--floating-radius` overrides the corner.
+ *   floating-content     the popup: stacking, fill, edge, minimum width, corner, padding, gap, and the slide-in and zoom-out
+ *                        motion from the side it opens toward. `data-size` sets width, corner, padding and gap
+ *                        (xxs/xs → xs, sm → sm, md → md, lg/xl → lg); none keeps its own width and the sm step
+ *   data-width='anchor'  sets the width to the trigger width (`--anchor-width`); the minimum width still applies
+ * A component never declares `border-radius`, `padding` or `gap` on the popup; `--floating-radius`, `--floating-inset` and
+ * `--floating-gap` override them. A menu puts its rows in a `menu-content` child, which reads `--floating-inset` to bleed separators.
  * Motion reads `data-open` / `data-closed` (Base UI) and slides by `--floating-slide-distance`.
  * The `overlay-*` keyframes live in overlay.css.
  */
@@ -17,8 +19,13 @@
 
 .floating-content {
   z-index: var(--z-floating);
+  --floating-inset: var(--inset-sm);
+  --floating-gap: var(--gap-sm);
+
   width: var(--floating-size-width, auto);
   min-width: var(--overlay-xxs);
+  padding: var(--floating-inset);
+  gap: var(--floating-gap);
   border-radius: var(--floating-radius, var(--floating-size-radius, var(--radius-overlay-sm)));
   background-color: var(--popover);
   color: var(--variant-fg);
@@ -64,37 +71,50 @@
   }
 }
 
-.floating-radius {
-  border-radius: var(--floating-radius, var(--radius-overlay-sm));
+/* `data-width='anchor'` matches the trigger width; the minimum width stays so a narrow trigger cannot break the content layout. */
+.floating-content[data-width='anchor'] {
+  width: var(--anchor-width);
 }
 
-/* Each step only sets the width and corner tokens the surface reads; no data-size keeps its own width and the sm corner. */
+/* Each step only sets the width, corner, padding and gap tokens the surface reads; no data-size keeps its own width and the sm step. */
 .floating-content[data-size='xxs'] {
   --floating-size-width: var(--overlay-xxs);
   --floating-size-radius: var(--radius-overlay-xs);
+  --floating-inset: var(--inset-xs);
+  --floating-gap: var(--gap-xs);
 }
 
 .floating-content[data-size='xs'] {
   --floating-size-width: var(--overlay-xs);
   --floating-size-radius: var(--radius-overlay-xs);
+  --floating-inset: var(--inset-xs);
+  --floating-gap: var(--gap-xs);
 }
 
 .floating-content[data-size='sm'] {
   --floating-size-width: var(--overlay-sm);
   --floating-size-radius: var(--radius-overlay-sm);
+  --floating-inset: var(--inset-sm);
+  --floating-gap: var(--gap-sm);
 }
 
 .floating-content[data-size='md'] {
   --floating-size-width: var(--overlay-md);
   --floating-size-radius: var(--radius-overlay-md);
+  --floating-inset: var(--inset-md);
+  --floating-gap: var(--gap-md);
 }
 
 .floating-content[data-size='lg'] {
   --floating-size-width: var(--overlay-lg);
   --floating-size-radius: var(--radius-overlay-lg);
+  --floating-inset: var(--inset-lg);
+  --floating-gap: var(--gap-lg);
 }
 
 .floating-content[data-size='xl'] {
   --floating-size-width: var(--overlay-xl);
   --floating-size-radius: var(--radius-overlay-lg);
+  --floating-inset: var(--inset-lg);
+  --floating-gap: var(--gap-lg);
 }

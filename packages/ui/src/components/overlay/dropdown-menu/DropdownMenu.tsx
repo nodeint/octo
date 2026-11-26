@@ -62,6 +62,7 @@ function DropdownMenuContent({
   collisionAvoidance,
   className,
   size,
+  children,
   ...props
 }: MenuPrimitive.Popup.Props &
   Pick<
@@ -84,9 +85,12 @@ function DropdownMenuContent({
         <MenuPrimitive.Popup
           data-slot="dropdown-menu-content"
           data-size={size}
-          className={cn('menu-content floating-content dropdown-menu-content', className)}
+          data-width="anchor"
+          className={cn('floating-content dropdown-menu-content', className)}
           {...props}
-        />
+        >
+          <div className="menu-content">{children}</div>
+        </MenuPrimitive.Popup>
       </MenuPrimitive.Positioner>
     </MenuPrimitive.Portal>
   );

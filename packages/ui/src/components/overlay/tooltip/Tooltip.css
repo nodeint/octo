@@ -1,11 +1,13 @@
-.tooltip-content {
+/* Two classes so the tooltip's own padding beats the floating step whatever the stylesheet order. */
+.floating-content.tooltip-content {
+  --floating-pad: var(--tooltip-pad-y) var(--tooltip-pad-x);
+  --floating-gap: var(--tooltip-gap);
+
   display: inline-flex;
   align-items: center;
-  gap: var(--space-xs);
   width: fit-content;
   min-width: 0;
   max-width: var(--overlay-sm);
-  padding: var(--space-xs) var(--space-md);
   background-color: var(--variant-fg);
   box-shadow: none;
   font-size: var(--role-body-sm-size);
