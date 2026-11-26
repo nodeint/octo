@@ -27,7 +27,6 @@
 
 .empty-media {
   --media-background: transparent;
-  margin-block-end: var(--space-sm);
 }
 
 .empty-media[data-variant='icon'] {

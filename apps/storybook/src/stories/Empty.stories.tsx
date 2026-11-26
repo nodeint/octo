@@ -17,6 +17,7 @@ import {
   InputGroup,
   InputGroupAddon,
   Kbd,
+  Stack,
 } from '@workspace/ui';
 
 /*
@@ -55,10 +56,10 @@ type Story = StoryObj<typeof meta>;
 export const Demo: Story = {
   render: (args) => (
     <Empty {...args}>
+      <EmptyMedia variant="icon">
+        <Icon name="folder" />
+      </EmptyMedia>
       <EmptyHeader>
-        <EmptyMedia variant="icon">
-          <Icon name="folder" />
-        </EmptyMedia>
         <EmptyTitle>No Projects Yet</EmptyTitle>
         <EmptyDescription>
           You haven&apos;t created any projects yet. Get started by creating your first project.
@@ -81,10 +82,10 @@ export const Outline: Story = {
   render: () => (
     <div style={{ border: '1px dashed var(--border, currentColor)', borderRadius: '0.75rem' }}>
       <Empty variant="plain">
+        <EmptyMedia variant="icon">
+          <Icon name="cloud" />
+        </EmptyMedia>
         <EmptyHeader>
-          <EmptyMedia variant="icon">
-            <Icon name="cloud" />
-          </EmptyMedia>
           <EmptyTitle>Cloud Storage Empty</EmptyTitle>
           <EmptyDescription>Upload files to your cloud storage to access them anywhere.</EmptyDescription>
         </EmptyHeader>
@@ -98,37 +99,17 @@ export const Outline: Story = {
   ),
 };
 
-export const Background: Story = {
-  render: () => (
-    <Empty style={{ backgroundColor: 'var(--muted)' }}>
-      <EmptyHeader>
-        <EmptyMedia variant="icon">
-          <Icon name="inbox" />
-        </EmptyMedia>
-        <EmptyTitle>No Notifications</EmptyTitle>
-        <EmptyDescription>You&apos;re all caught up. New notifications will appear here.</EmptyDescription>
-      </EmptyHeader>
-      <EmptyContent>
-        <Button variant="outline">
-          <Icon name="refresh-cw" />
-          Refresh
-        </Button>
-      </EmptyContent>
-    </Empty>
-  ),
-};
-
 export const AvatarMedia: Story = {
   name: 'Avatar',
   render: () => (
     <Empty>
+      <EmptyMedia variant="default">
+        <Avatar size="lg">
+          <AvatarImage src={portrait('L', '#6366f1')} alt="" />
+          <AvatarFallback>LR</AvatarFallback>
+        </Avatar>
+      </EmptyMedia>
       <EmptyHeader>
-        <EmptyMedia variant="default">
-          <Avatar size="lg">
-            <AvatarImage src={portrait('L', '#6366f1')} alt="" />
-            <AvatarFallback>LR</AvatarFallback>
-          </Avatar>
-        </EmptyMedia>
         <EmptyTitle>User Offline</EmptyTitle>
         <EmptyDescription>
           This user is currently offline. You can leave a message to notify them or try again later.
@@ -145,23 +126,23 @@ export const AvatarGroupMedia: Story = {
   name: 'Avatar Group',
   render: () => (
     <Empty>
+      <EmptyMedia>
+        <AvatarGroup>
+          <Avatar size="lg">
+            <AvatarImage src={portrait('S', '#6366f1')} alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar size="lg">
+            <AvatarImage src={portrait('M', '#f97316')} alt="@maxleiter" />
+            <AvatarFallback>LR</AvatarFallback>
+          </Avatar>
+          <Avatar size="lg">
+            <AvatarImage src={portrait('E', '#10b981')} alt="@evilrabbit" />
+            <AvatarFallback>ER</AvatarFallback>
+          </Avatar>
+        </AvatarGroup>
+      </EmptyMedia>
       <EmptyHeader>
-        <EmptyMedia>
-          <AvatarGroup>
-            <Avatar size="lg">
-              <AvatarImage src={portrait('S', '#6366f1')} alt="@shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <Avatar size="lg">
-              <AvatarImage src={portrait('M', '#f97316')} alt="@maxleiter" />
-              <AvatarFallback>LR</AvatarFallback>
-            </Avatar>
-            <Avatar size="lg">
-              <AvatarImage src={portrait('E', '#10b981')} alt="@evilrabbit" />
-              <AvatarFallback>ER</AvatarFallback>
-            </Avatar>
-          </AvatarGroup>
-        </EmptyMedia>
         <EmptyTitle>No Team Members</EmptyTitle>
         <EmptyDescription>Invite your team to collaborate on this project.</EmptyDescription>
       </EmptyHeader>
@@ -203,6 +184,32 @@ export const WithInputGroup: Story = {
   ),
 };
 
+export const MediaVariants: Story = {
+  name: 'Media Variants',
+  render: () => (
+    <Stack>
+      <Empty>
+        <EmptyHeader>
+          <EmptyMedia variant="default">
+            <Icon name="inbox" />
+          </EmptyMedia>
+          <EmptyTitle>Default media</EmptyTitle>
+          <EmptyDescription>`default` leaves the media bare.</EmptyDescription>
+        </EmptyHeader>
+      </Empty>
+      <Empty>
+        <EmptyHeader>
+          <EmptyMedia variant="icon">
+            <Icon name="inbox" />
+          </EmptyMedia>
+          <EmptyTitle>Icon media</EmptyTitle>
+          <EmptyDescription>`icon` frames the glyph in a tile.</EmptyDescription>
+        </EmptyHeader>
+      </Empty>
+    </Stack>
+  ),
+};
+
 export const Rtl: Story = {
   name: 'RTL',
   render: () => (
@@ -220,28 +227,6 @@ export const Rtl: Story = {
           <Button variant="outline">استيراد مشروع</Button>
         </div>
       </EmptyContent>
-    </Empty>
-  ),
-};
-
-export const MediaVariants: Story = {
-  name: 'Media Variants',
-  render: () => (
-    <Empty>
-      <EmptyHeader>
-        <EmptyMedia variant="default">
-          <Icon name="inbox" />
-        </EmptyMedia>
-        <EmptyTitle>Default media</EmptyTitle>
-        <EmptyDescription>`default` leaves the media bare.</EmptyDescription>
-      </EmptyHeader>
-      <EmptyHeader>
-        <EmptyMedia variant="icon">
-          <Icon name="inbox" />
-        </EmptyMedia>
-        <EmptyTitle>Icon media</EmptyTitle>
-        <EmptyDescription>`icon` frames the glyph in a tile.</EmptyDescription>
-      </EmptyHeader>
     </Empty>
   ),
 };

@@ -45,10 +45,6 @@
   --row-meta-color: var(--destructive-subtle-fg);
 }
 
-.attachment[data-orientation='vertical'] .attachment-content {
-  padding-inline: var(--space-xs);
-}
-
 .attachment[data-orientation='vertical'] .attachment-actions {
   position: absolute;
   top: var(--row-py);

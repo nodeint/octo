@@ -14,7 +14,7 @@ function Empty({
   return (
     <div
       data-slot="empty"
-      data-stack-size={variant === 'plain' ? 'sm' : 'lg'}
+      data-stack-size="lg"
       data-variant={variant}
       className={cn('stack empty', className)}
       {...props}

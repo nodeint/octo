@@ -124,10 +124,10 @@ export const InEmpty: Story = {
   parameters: { storyWidth: 'lg' },
   render: () => (
     <Empty>
+      <EmptyMedia variant="icon">
+        <Spinner />
+      </EmptyMedia>
       <EmptyHeader>
-        <EmptyMedia variant="icon">
-          <Spinner />
-        </EmptyMedia>
         <EmptyTitle>Processing your request</EmptyTitle>
         <EmptyDescription>
           Please wait while we process your request. Do not refresh the page.
