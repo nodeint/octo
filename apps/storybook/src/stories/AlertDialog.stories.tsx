@@ -7,11 +7,11 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
   Button,
   Icon,
+  Media,
   Stack,
 } from '@workspace/ui';
 
@@ -71,15 +71,15 @@ export const Small: Story = {
   ),
 };
 
-export const Media: Story = {
+export const WithMedia: Story = {
   render: (args) => (
     <AlertDialog {...args}>
       <AlertDialogTrigger render={<Button variant="outline">Share Project</Button>} />
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogMedia>
+          <Media size="lg">
             <Icon name="upload" />
-          </AlertDialogMedia>
+          </Media>
           <AlertDialogTitle>Share this project?</AlertDialogTitle>
           <AlertDialogDescription>
             Anyone with the link will be able to view and edit this project.
@@ -101,9 +101,9 @@ export const SmallWithMedia: Story = {
       <AlertDialogTrigger render={<Button variant="outline">Show Dialog</Button>} />
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
-          <AlertDialogMedia>
+          <Media size="lg">
             <Icon name="info" />
-          </AlertDialogMedia>
+          </Media>
           <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
           <AlertDialogDescription>
             Do you want to allow the USB accessory to connect to this device?
@@ -124,9 +124,9 @@ export const Destructive: Story = {
       <AlertDialogTrigger render={<Button variant="destructive">Delete Chat</Button>} />
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
-          <AlertDialogMedia>
+          <Media size="lg">
             <Icon name="trash" />
-          </AlertDialogMedia>
+          </Media>
           <AlertDialogTitle>Delete chat?</AlertDialogTitle>
           <AlertDialogDescription>
             This will permanently delete this chat conversation. View <a href="#">Settings</a> to
@@ -165,9 +165,9 @@ export const Rtl: Story = {
         <AlertDialogTrigger render={<Button variant="outline">إظهار الحوار (صغير)</Button>} />
         <AlertDialogContent size="sm" dir="rtl">
           <AlertDialogHeader>
-            <AlertDialogMedia>
+            <Media size="lg">
               <Icon name="info" />
-            </AlertDialogMedia>
+            </Media>
             <AlertDialogTitle>السماح للملحق بالاتصال؟</AlertDialogTitle>
             <AlertDialogDescription>
               هل تريد السماح لملحق USB بالاتصال بهذا الجهاز؟

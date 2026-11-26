@@ -1,7 +1,0 @@
-/* A media tile is painted by the shared --variant-* colors, like a badge; the paint comes from data-paint. */
-.media {
-  --media-background: var(--variant-bg);
-  --media-fg: var(--variant-fg);
-  border: var(--border-width-thin) solid var(--variant-border, transparent);
-  aspect-ratio: 1;
-}

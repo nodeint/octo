@@ -94,23 +94,6 @@ function AlertDialogFooter({
   );
 }
 
-function AlertDialogMedia({
-  className,
-  ...props
-}: React.ComponentProps<'div'>): React.JSX.Element {
-  return (
-    <div
-      data-slot="alert-dialog-media"
-      data-media-size="lg"
-      className={cn(
-        'media-frame alert-dialog-media',
-        className
-      )}
-      {...props}
-    />
-  );
-}
-
 function AlertDialogTitle({
   className,
   ...props
@@ -182,7 +165,6 @@ export {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogMedia,
   AlertDialogOverlay,
   AlertDialogPortal,
   AlertDialogTitle,

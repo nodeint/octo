@@ -7,7 +7,6 @@ import {
   AttachmentContent,
   AttachmentDescription,
   AttachmentGroup,
-  AttachmentMedia,
   AttachmentTitle,
   AttachmentTrigger,
   Button,
@@ -18,6 +17,7 @@ import {
   DialogTitle,
   DialogTrigger,
   Icon,
+  Media,
   Spinner,
   Stack,
 } from '@workspace/ui';
@@ -74,9 +74,9 @@ export const Demo: Story = {
       <AttachmentGroup>
         {IMAGES.map((image) => (
           <Attachment key={image.name} orientation="vertical">
-            <AttachmentMedia variant="image">
+            <Media kind="image" size="fill" ratio="4:3">
               <img src={image.src} alt={image.alt} />
-            </AttachmentMedia>
+            </Media>
             <AttachmentContent>
               <AttachmentTitle>{image.name}</AttachmentTitle>
               <AttachmentDescription>{image.meta}</AttachmentDescription>
@@ -85,9 +85,9 @@ export const Demo: Story = {
         ))}
       </AttachmentGroup>
       <Attachment state="uploading">
-        <AttachmentMedia>
+        <Media>
           <Spinner />
-        </AttachmentMedia>
+        </Media>
         <AttachmentContent>
           <AttachmentTitle>sales-dashboard.pdf</AttachmentTitle>
           <AttachmentDescription>Uploading · 64%</AttachmentDescription>
@@ -99,9 +99,9 @@ export const Demo: Story = {
         </AttachmentActions>
       </Attachment>
       <Attachment>
-        <AttachmentMedia>
+        <Media>
           <Icon name="code-2" />
-        </AttachmentMedia>
+        </Media>
         <AttachmentContent>
           <AttachmentTitle>message-renderer.tsx</AttachmentTitle>
           <AttachmentDescription>TypeScript · 12 KB</AttachmentDescription>
@@ -121,15 +121,15 @@ export const Image: Story = {
     <AttachmentGroup>
       {IMAGES.map((image) => (
         <Attachment key={image.name} orientation="vertical">
-          <AttachmentMedia variant="image">
+          <Media kind="image" size="fill">
             <img src={image.src} alt={image.alt} />
-          </AttachmentMedia>
+          </Media>
           <AttachmentContent>
             <AttachmentTitle>{image.name}</AttachmentTitle>
             <AttachmentDescription>{image.meta}</AttachmentDescription>
           </AttachmentContent>
           <AttachmentActions>
-            <AttachmentAction variant="ghost"  aria-label={`Remove ${image.name}`}>
+            <AttachmentAction variant="ghost" aria-label={`Remove ${image.name}`}>
               <Icon name="x" />
             </AttachmentAction>
           </AttachmentActions>
@@ -144,9 +144,9 @@ export const States: Story = {
   render: () => (
     <Stack gap="sm">
       <Attachment state="idle">
-        <AttachmentMedia>
+        <Media>
           <Icon name="history" />
-        </AttachmentMedia>
+        </Media>
         <AttachmentContent>
           <AttachmentTitle>selected-file.pdf</AttachmentTitle>
           <AttachmentDescription>Ready to upload</AttachmentDescription>
@@ -158,9 +158,9 @@ export const States: Story = {
         </AttachmentActions>
       </Attachment>
       <Attachment state="uploading">
-        <AttachmentMedia>
+        <Media>
           <Spinner />
-        </AttachmentMedia>
+        </Media>
         <AttachmentContent>
           <AttachmentTitle>design-system.zip</AttachmentTitle>
           <AttachmentDescription>Uploading · 64%</AttachmentDescription>
@@ -172,9 +172,9 @@ export const States: Story = {
         </AttachmentActions>
       </Attachment>
       <Attachment state="processing">
-        <AttachmentMedia>
+        <Media>
           <Icon name="file-text" />
-        </AttachmentMedia>
+        </Media>
         <AttachmentContent>
           <AttachmentTitle>market-research.pdf</AttachmentTitle>
           <AttachmentDescription>Processing document</AttachmentDescription>
@@ -186,9 +186,9 @@ export const States: Story = {
         </AttachmentActions>
       </Attachment>
       <Attachment state="error">
-        <AttachmentMedia>
+        <Media>
           <Icon name="triangle-alert" />
-        </AttachmentMedia>
+        </Media>
         <AttachmentContent>
           <AttachmentTitle>financial-model.xlsx</AttachmentTitle>
           <AttachmentDescription>Upload failed. Try again.</AttachmentDescription>
@@ -203,9 +203,9 @@ export const States: Story = {
         </AttachmentActions>
       </Attachment>
       <Attachment state="done">
-        <AttachmentMedia>
+        <Media>
           <Icon name="check" />
-        </AttachmentMedia>
+        </Media>
         <AttachmentContent>
           <AttachmentTitle>uploaded-report.pdf</AttachmentTitle>
           <AttachmentDescription>Uploaded · 1.8 MB</AttachmentDescription>
@@ -223,30 +223,40 @@ export const States: Story = {
 export const Sizes: Story = {
   render: () => (
     <Stack gap="md">
-      <Attachment size="md">
-        <AttachmentMedia>
+      <Attachment size="lg">
+        <Media size="lg">
           <Icon name="file-text" />
-        </AttachmentMedia>
+        </Media>
+        <AttachmentContent>
+          <AttachmentTitle>Default attachment</AttachmentTitle>
+          <AttachmentDescription>PDF · 2.4 MB</AttachmentDescription>
+        </AttachmentContent>
+      </Attachment>
+      <Attachment size="md">
+        <Media>
+          <Icon name="file-text" />
+        </Media>
         <AttachmentContent>
           <AttachmentTitle>Default attachment</AttachmentTitle>
           <AttachmentDescription>PDF · 2.4 MB</AttachmentDescription>
         </AttachmentContent>
       </Attachment>
       <Attachment size="sm">
-        <AttachmentMedia>
+        <Media size="sm">
           <Icon name="file-text" />
-        </AttachmentMedia>
+        </Media>
         <AttachmentContent>
           <AttachmentTitle>Small attachment</AttachmentTitle>
           <AttachmentDescription>PDF · 2.4 MB</AttachmentDescription>
         </AttachmentContent>
       </Attachment>
       <Attachment size="xs">
-        <AttachmentMedia>
+        <Media size="sm">
           <Icon name="file-text" />
-        </AttachmentMedia>
+        </Media>
         <AttachmentContent>
           <AttachmentTitle>Extra small attachment</AttachmentTitle>
+          <AttachmentDescription>PDF · 2.4 MB</AttachmentDescription>
         </AttachmentContent>
       </Attachment>
     </Stack>
@@ -266,13 +276,13 @@ export const Group: Story = {
       {GROUP_ITEMS.map((item) => (
         <Attachment key={item.name} style={{ width: '16rem' }}>
           {'src' in item ? (
-            <AttachmentMedia variant="image">
+            <Media kind="image">
               <img src={item.src} alt={item.name} />
-            </AttachmentMedia>
+            </Media>
           ) : (
-            <AttachmentMedia>
+            <Media>
               <Icon name={item.icon} />
-            </AttachmentMedia>
+            </Media>
           )}
           <AttachmentContent>
             <AttachmentTitle>{item.name}</AttachmentTitle>
@@ -293,9 +303,9 @@ export const Trigger: Story = {
   render: () => (
     <Dialog>
       <Attachment>
-        <AttachmentMedia>
+        <Media>
           <Icon name="search" />
-        </AttachmentMedia>
+        </Media>
         <AttachmentContent>
           <AttachmentTitle>research-summary.pdf</AttachmentTitle>
           <AttachmentDescription>Open preview dialog</AttachmentDescription>
@@ -327,9 +337,9 @@ export const Playground: Story = {
   args: { state: 'done', size: 'md', orientation: 'horizontal' },
   render: (args) => (
     <Attachment {...args}>
-      <AttachmentMedia>
+      <Media>
         <Icon name="file-text" />
-      </AttachmentMedia>
+      </Media>
       <AttachmentContent>
         <AttachmentTitle>quarterly-report.pdf</AttachmentTitle>
         <AttachmentDescription>PDF · 2.4 MB</AttachmentDescription>

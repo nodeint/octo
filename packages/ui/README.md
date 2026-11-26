@@ -31,7 +31,7 @@ src/
 
 A recipe is a stylesheet in `src/styles/recipes/` that gives a kind of element its skin. It binds token roles to
 properties and states for every element that opts in by adding the recipe's class
-(`action`, `box`, `chip`, `field-control`, `group`, `media-frame`, `menu-row`, `panel`, `row`, `stack`, `state-ring-group`).
+(`action`, `box`, `chip`, `field-control`, `group`, `media`, `menu-row`, `panel`, `row`, `stack`, `state-ring-group`).
 Recipes live in the `recipes` cascade layer, which sits below `components`: a component rule beats a recipe rule
 whatever the specificity, so a component overrides a recipe without raising its selector.
 
@@ -77,7 +77,7 @@ Read direction:
   `--action-radius` and `--icon-size` for `action.css`. A component that sizes a glyph reads `--icon-size`
   with its own step as the fallback.
 
-`media.css` is the `media-frame` skin shared by the media parts of media, empty, item, attachment and alert dialog.
+`media.css` is the `media` skin shared by the media parts of media, empty, item, attachment and alert dialog.
 A part sets `--media-size` (or `--media-width` and `--media-height`), `--media-radius`, `--media-background`,
 `--media-fg` and `--media-icon-size` on its own root, and an image part adds `data-media-fit="image"`.
 

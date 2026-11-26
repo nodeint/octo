@@ -18,9 +18,9 @@ import {
   ItemDescription,
   ItemGroup,
   ItemHeader,
-  ItemMedia,
   ItemTitle,
   ItemTrigger,
+  Media,
   Stack,
 } from '@workspace/ui';
 import * as React from 'react';
@@ -108,9 +108,9 @@ export const Demo: Story = {
         </ItemActions>
       </Item>
       <Item variant="outline" size="sm" render={<a href="#item-demo" />}>
-        <ItemMedia>
+        <Media variant="plain">
           <Icon name="circle-check" />
-        </ItemMedia>
+        </Media>
         <ItemContent>
           <ItemTitle>Your profile has been verified.</ItemTitle>
         </ItemContent>
@@ -126,27 +126,27 @@ export const Variant: Story = {
   render: () => (
     <Stack gap="lg">
       <Item>
-        <ItemMedia variant="icon">
+        <Media variant="plain">
           <Icon name="inbox" />
-        </ItemMedia>
+        </Media>
         <ItemContent>
           <ItemTitle>Default Variant</ItemTitle>
           <ItemDescription>Transparent background with no border.</ItemDescription>
         </ItemContent>
       </Item>
       <Item variant="outline">
-        <ItemMedia variant="icon">
+        <Media variant="plain">
           <Icon name="inbox" />
-        </ItemMedia>
+        </Media>
         <ItemContent>
           <ItemTitle>Outline Variant</ItemTitle>
           <ItemDescription>Outlined style with a visible border.</ItemDescription>
         </ItemContent>
       </Item>
       <Item variant="secondary">
-        <ItemMedia variant="icon">
+        <Media variant="plain">
           <Icon name="inbox" />
-        </ItemMedia>
+        </Media>
         <ItemContent>
           <ItemTitle>Secondary Variant</ItemTitle>
           <ItemDescription>Secondary background for secondary content.</ItemDescription>
@@ -160,27 +160,27 @@ export const Size: Story = {
   render: () => (
     <Stack gap="lg">
       <Item variant="outline">
-        <ItemMedia variant="icon">
+        <Media variant="plain">
           <Icon name="inbox" />
-        </ItemMedia>
+        </Media>
         <ItemContent>
           <ItemTitle>Default Size</ItemTitle>
           <ItemDescription>The standard size for most use cases.</ItemDescription>
         </ItemContent>
       </Item>
       <Item variant="outline" size="sm">
-        <ItemMedia variant="icon">
+        <Media variant="plain">
           <Icon name="inbox" />
-        </ItemMedia>
+        </Media>
         <ItemContent>
           <ItemTitle>Small Size</ItemTitle>
           <ItemDescription>A compact size for dense layouts.</ItemDescription>
         </ItemContent>
       </Item>
       <Item variant="outline" size="xs">
-        <ItemMedia variant="icon">
+        <Media variant="plain">
           <Icon name="inbox" />
-        </ItemMedia>
+        </Media>
         <ItemContent>
           <ItemTitle>Extra Small Size</ItemTitle>
           <ItemDescription>The most compact size available.</ItemDescription>
@@ -193,9 +193,9 @@ export const Size: Story = {
 export const WithIcon: Story = {
   render: () => (
     <Item variant="outline">
-      <ItemMedia variant="icon">
+      <Media variant="plain">
         <Icon name="shield-check" />
-      </ItemMedia>
+      </Media>
       <ItemContent>
         <ItemTitle>Security Alert</ItemTitle>
         <ItemDescription>New login detected from unknown device.</ItemDescription>
@@ -211,12 +211,12 @@ export const WithAvatar: Story = {
   render: () => (
     <Stack gap="lg">
       <Item variant="outline">
-        <ItemMedia>
+        <Media>
           <Avatar size="lg">
             <AvatarImage src={evilrabbitAvatar} alt="Evil Rabbit" />
             <AvatarFallback>ER</AvatarFallback>
           </Avatar>
-        </ItemMedia>
+        </Media>
         <ItemContent>
           <ItemTitle>Evil Rabbit</ItemTitle>
           <ItemDescription>Last seen 5 months ago</ItemDescription>
@@ -228,7 +228,7 @@ export const WithAvatar: Story = {
         </ItemActions>
       </Item>
       <Item variant="outline">
-        <ItemMedia>
+        <Media>
           <AvatarGroup>
             <Avatar>
               <AvatarImage src={shadcnAvatar} alt="@shadcn" />
@@ -243,7 +243,7 @@ export const WithAvatar: Story = {
               <AvatarFallback>ER</AvatarFallback>
             </Avatar>
           </AvatarGroup>
-        </ItemMedia>
+        </Media>
         <ItemContent>
           <ItemTitle>No Team Members</ItemTitle>
           <ItemDescription>Invite your team to collaborate on this project.</ItemDescription>
@@ -261,14 +261,14 @@ export const WithImage: Story = {
     <ItemGroup>
       {MUSIC.map((song) => (
         <Item key={song.title} variant="outline" render={<a href="#item-song" />} role="listitem">
-          <ItemMedia variant="image">
+          <Media kind="image">
             <img
               src={SONG_COVERS[song.title]}
               alt={song.title}
               width={32}
               height={32}
             />
-          </ItemMedia>
+          </Media>
           <ItemContent>
             <ItemTitle>
               {song.title} -{' '}
@@ -290,12 +290,12 @@ export const Group: Story = {
     <ItemGroup>
       {PEOPLE.map((person) => (
         <Item key={person.username} variant="outline">
-          <ItemMedia>
+          <Media>
             <Avatar>
               <AvatarImage src={AVATARS[person.username]} alt={person.username} />
               <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
             </Avatar>
-          </ItemMedia>
+          </Media>
           <ItemContent>
             <ItemTitle>{person.username}</ItemTitle>
             <ItemDescription>{person.email}</ItemDescription>
@@ -373,12 +373,12 @@ export const WithTrigger: Story = {
         <ItemGroup>
           {PEOPLE.map((person) => (
             <Item key={person.username} variant="outline">
-              <ItemMedia>
+              <Media>
                 <Avatar>
                   <AvatarImage src={AVATARS[person.username]} alt="" />
                   <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
                 </Avatar>
-              </ItemMedia>
+              </Media>
               <ItemContent>
                 <ItemTitle>
                   <ItemTrigger onClick={() => setLastAction(`Opened ${person.username}`)}>
@@ -428,12 +428,12 @@ export const DropdownItemLayout: Story = {
             {PEOPLE.map((person) => (
               <DropdownMenuItem key={person.username}>
                 <Item size="xs" bare>
-                  <ItemMedia>
+                  <Media>
                     <Avatar size="sm">
                       <AvatarImage src={AVATARS[person.username]} alt="" />
                       <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
                     </Avatar>
-                  </ItemMedia>
+                  </Media>
                   <ItemContent>
                     <ItemTitle>{person.username}</ItemTitle>
                     <ItemDescription>{person.email}</ItemDescription>

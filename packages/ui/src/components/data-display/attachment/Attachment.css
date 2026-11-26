@@ -30,12 +30,12 @@
 }
 
 /* media size and state are driven by the root */
-.attachment[data-orientation='vertical'] .attachment-media {
+.attachment[data-orientation='vertical'] .attachment .media {
   --media-width: 100%;
   --media-icon-size: var(--control-height-xs);
 }
 
-.attachment[data-state='error'] .attachment-media {
+.attachment[data-state='error'] .attachment .media {
   --media-background: var(--destructive-subtle-bg);
   --media-fg: var(--destructive-subtle-fg);
 }
@@ -51,16 +51,12 @@
   right: var(--row-px);
 }
 
-.attachment-media {
-  aspect-ratio: 1;
-}
-
-.attachment-media[data-variant='image'] {
+.attachment .media[data-media-kind='image'] {
   opacity: var(--opacity-dim);
 }
 
-.attachment[data-state='done'] .attachment-media[data-variant='image'],
-.attachment[data-state='idle'] .attachment-media[data-variant='image'] {
+.attachment[data-state='done'] .attachment .media[data-media-kind='image'],
+.attachment[data-state='idle'] .attachment .media[data-media-kind='image'] {
   opacity: 1;
 }
 

@@ -25,14 +25,6 @@
   max-width: var(--panel-w-sm);
 }
 
-.empty-media {
-  --media-background: transparent;
-}
-
-.empty-media[data-variant='icon'] {
-  --media-background: var(--muted);
-}
-
 .empty-content {
   align-items: center;
   width: 100%;

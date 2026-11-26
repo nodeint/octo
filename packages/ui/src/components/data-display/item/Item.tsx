@@ -18,7 +18,6 @@ const ITEM_PAINT = {
 } as const satisfies Record<ItemVariant, PaintName>;
 
 const ITEM_MEDIA_SIZE = { md: 'lg', sm: 'md', xs: 'xs' } as const satisfies Record<ItemSize, string>;
-type ItemMediaVariant = 'default' | 'icon' | 'image'
 
 /** True inside an `ItemGroup`, so a plain row there is a `listitem` of the group's `list`. */
 const ItemGroupContext = React.createContext(false);
@@ -113,27 +112,6 @@ function Item({
       'row-size': size,
     },
     });
-}
-
-function ItemMedia({
-  className,
-  variant = 'default',
-  ...props
-}: React.ComponentProps<'div'> & {
-  variant?: ItemMediaVariant
-}): React.JSX.Element {
-  return (
-    <div
-      data-slot="item-media"
-      data-variant={variant}
-      data-media-fit={variant === 'image' ? 'image' : undefined}
-      className={cn(
-        'media-frame item-media',
-        className
-      )}
-      {...props}
-    />
-  );
 }
 
 function ItemContent({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
@@ -256,10 +234,9 @@ export {
   ItemGroup,
   ItemGroupLabel,
   ItemHeader,
-  ItemMedia,
   ItemMeta,
   ItemSeparator,
   ItemTitle,
   ItemTrigger,
 };
-export type { ItemMediaVariant,ItemProps, ItemSize, ItemTriggerProps, ItemVariant };
+export type { ItemProps, ItemSize, ItemTriggerProps, ItemVariant };

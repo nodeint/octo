@@ -55,7 +55,7 @@
 }
 
 [data-paint='base-plain'] {
-  --variant-bg: var(--base-plain-bg);
+  --variant-bg: transparent;
   --variant-bg-hover: var(--base-plain-bg-hover);
   --variant-bg-active: var(--base-plain-bg-active);
   --variant-bg-disabled: var(--base-plain-bg-disabled);

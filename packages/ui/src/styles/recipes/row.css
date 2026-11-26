@@ -8,11 +8,11 @@
  *   row-description, row-meta, row-actions, row-trigger, row-trigger-cover, row-hover-child, row-focus-within
  *
  * data-row-type on the element wrapping title and description picks their text roles: content, header, compact.
- * data-row-size picks the padding and gaps: xs, sm, md.
+ * data-row-size picks the padding, gaps and radius: xs, sm, md, lg.
  * A component never re-declares what a type sets.
  * Color comes from the data-paint on the row (--variant-*); data-row-invalid paints the invalid pair.
  * Input tokens: --row-px, --row-py, --row-gap, --row-lead-gap (the gap after a leading icon in a grid row), --row-content-gap, --row-align, --row-border-width,
- * --row-border-style, --row-title-display, --row-title-align, --row-description-color, --row-meta-color.
+ * --row-radius, --row-border-style, --row-title-display, --row-title-align, --row-description-color, --row-meta-color.
  */
 [data-row-type='content'] {
   --row-title-family: inherit;
@@ -56,24 +56,39 @@
 }
 
 [data-row-size='xs'] {
-  --row-px: var(--control-px-xs);
+  --row-radius: var(--radius-surface-xs);
+  --row-px: var(--space-sm);
   --row-py: var(--space-xs);
   --row-gap: var(--space-sm);
   --row-content-gap: 0;
+  --row-actions-gap: var(--space-xxs);
 }
 
 [data-row-size='sm'] {
-  --row-px: var(--control-px-sm);
+  --row-radius: var(--radius-surface-sm);
+  --row-px: var(--space-md);
   --row-py: var(--space-sm);
   --row-gap: var(--space-sm);
-  --row-content-gap: var(--space-xs);
+  --row-content-gap: 0;
+  --row-actions-gap: var(--space-xxs);
 }
 
 [data-row-size='md'] {
-  --row-px: var(--control-px-md);
+  --row-radius: var(--radius-surface-md);
+  --row-px: var(--space-md);
   --row-py: var(--space-sm);
   --row-gap: var(--space-sm);
-  --row-content-gap: var(--space-xs);
+  --row-content-gap: 0;
+  --row-actions-gap: var(--space-xxs);
+}
+
+[data-row-size='lg'] {
+  --row-radius: var(--radius-surface-lg);
+  --row-px: var(--space-lg);
+  --row-py: var(--space-md);
+  --row-gap: var(--space-md);
+  --row-content-gap: 0;
+  --row-actions-gap: var(--space-xs);
 }
 
 .row {
@@ -85,7 +100,7 @@
   gap: var(--row-gap);
   padding: var(--row-py) calc(var(--row-px) - var(--row-border-width));
   border: var(--row-border-width) var(--row-border-style, solid) var(--variant-border, transparent);
-  border-radius: var(--radius-surface-md);
+  border-radius: var(--row-radius, var(--radius-surface-md));
   background-color: var(--variant-bg, transparent);
   color: var(--variant-fg, inherit);
   text-align: start;
@@ -203,14 +218,14 @@
   position: absolute;
   inset: 0;
   z-index: var(--z-raised);
-  border-radius: var(--radius-surface-md);
+  border-radius: var(--row-radius, var(--radius-surface-md));
 }
 
 .row-content {
   display: flex;
   flex: 1 1 0%;
   flex-direction: column;
-  gap: var(--row-content-gap, var(--space-xs));
+  gap: var(--row-content-gap);
   max-width: 100%;
   min-width: 0;
 }
@@ -271,5 +286,5 @@
 .row-actions {
   display: flex;
   align-items: center;
-  gap: var(--row-actions-gap, var(--space-sm));
+  gap: var(--row-actions-gap);
 }

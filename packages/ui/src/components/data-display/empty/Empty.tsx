@@ -1,7 +1,6 @@
 import { cn } from '../../../lib/utils';
 
 type EmptyVariant = 'default' | 'plain'
-type EmptyMediaVariant = 'default' | 'icon'
 
 function Empty({
   className,
@@ -29,24 +28,6 @@ function EmptyHeader({ className, ...props }: React.ComponentProps<'div'>): Reac
       data-stack-size="xs"
       data-row-type="header"
       className={cn('stack empty-header', className)}
-      {...props}
-    />
-  );
-}
-
-function EmptyMedia({
-  className,
-  variant = 'default',
-  ...props
-}: React.ComponentProps<'div'> & {
-  variant?: EmptyMediaVariant
-}): React.JSX.Element {
-  return (
-    <div
-      data-slot="empty-icon"
-      data-variant={variant}
-      data-media-size={variant === 'icon' ? 'md' : undefined}
-      className={cn('media-frame empty-media', className)}
       {...props}
     />
   );
@@ -88,7 +69,6 @@ export {
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
-  EmptyMedia,
   EmptyTitle,
 };
-export type { EmptyMediaVariant, EmptyVariant };
+export type { EmptyVariant };

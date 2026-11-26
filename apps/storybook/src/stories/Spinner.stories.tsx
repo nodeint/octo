@@ -6,7 +6,6 @@ import {
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
-  EmptyMedia,
   EmptyTitle,
   Icon,
   Inline,
@@ -15,8 +14,8 @@ import {
   InputGroupAddon,
   Item,
   ItemContent,
-  ItemMedia,
   ItemTitle,
+  Media,
   Spinner,
   Stack,
 } from '@workspace/ui';
@@ -46,9 +45,9 @@ type Story = StoryObj<typeof meta>;
 export const Demo: Story = {
   render: () => (
     <Item variant="secondary">
-      <ItemMedia>
+      <Media>
         <Spinner />
-      </ItemMedia>
+      </Media>
       <ItemContent>
         <ItemTitle>Processing payment...</ItemTitle>
       </ItemContent>
@@ -124,9 +123,9 @@ export const InEmpty: Story = {
   parameters: { storyWidth: 'lg' },
   render: () => (
     <Empty>
-      <EmptyMedia variant="icon">
+      <Media size="md">
         <Spinner />
-      </EmptyMedia>
+      </Media>
       <EmptyHeader>
         <EmptyTitle>Processing your request</EmptyTitle>
         <EmptyDescription>
@@ -148,9 +147,9 @@ export const Rtl: Story = {
   render: () => (
     <div dir="rtl">
       <Item variant="secondary">
-        <ItemMedia>
+        <Media>
           <Spinner />
-        </ItemMedia>
+        </Media>
         <ItemContent>
           <ItemTitle>جاري معالجة الدفع...</ItemTitle>
         </ItemContent>

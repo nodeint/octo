@@ -7,12 +7,9 @@ import { cn } from '../../../lib/utils';
 import { Button } from '../../general/button/Button';
 
 type AttachmentState = 'idle' | 'uploading' | 'processing' | 'error' | 'done'
-type AttachmentSize = 'md' | 'sm' | 'xs'
+type AttachmentSize = 'lg' | 'md' | 'sm' | 'xs'
 
-/** The media step an attachment hands to its media: the size picks one step of the media scale. */
-const ATTACHMENT_MEDIA_SIZE = { md: 'lg', sm: 'sm', xs: 'xs' } as const satisfies Record<AttachmentSize, string>;
 type AttachmentOrientation = 'horizontal' | 'vertical'
-type AttachmentMediaVariant = 'icon' | 'image'
 
 type AttachmentProps = useRender.ComponentProps<'div'> & {
   state?: AttachmentState
@@ -33,7 +30,7 @@ function Attachment({
     props: mergeProps<'div'>(
       {
         className: cn('row row-focus-within row-hover-child attachment', className),
-        'data-media-size': ATTACHMENT_MEDIA_SIZE[size],
+        'data-media-size': size,
         'data-row-size': size,
       } as React.ComponentProps<'div'>,
       props
@@ -46,31 +43,6 @@ function Attachment({
       orientation,
       paint: 'base-surface',
       'row-invalid': state === 'error',
-    },
-  });
-}
-
-function AttachmentMedia({
-  className,
-  variant = 'icon',
-  render,
-  ...props
-}: useRender.ComponentProps<'div'> & {
-  variant?: AttachmentMediaVariant
-}): React.JSX.Element {
-  return useRender({
-    defaultTagName: 'div',
-    props: mergeProps<'div'>(
-      {
-        className: cn('media-frame attachment-media', className),
-        'data-media-fit': variant === 'image' ? 'image' : undefined,
-      } as React.ComponentProps<'div'>,
-      props
-    ),
-    render,
-    state: {
-      slot: 'attachment-media',
-      variant,
     },
   });
 }
@@ -165,12 +137,10 @@ export {
   AttachmentContent,
   AttachmentDescription,
   AttachmentGroup,
-  AttachmentMedia,
   AttachmentTitle,
   AttachmentTrigger,
 };
 export type {
-  AttachmentMediaVariant,
   AttachmentOrientation,
   AttachmentProps,
   AttachmentSize,

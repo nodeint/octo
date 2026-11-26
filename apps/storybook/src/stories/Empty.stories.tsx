@@ -10,13 +10,13 @@ import {
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
-  EmptyMedia,
   EmptyTitle,
   Icon,
   Input,
   InputGroup,
   InputGroupAddon,
   Kbd,
+  Media,
   Stack,
 } from '@workspace/ui';
 
@@ -56,9 +56,9 @@ type Story = StoryObj<typeof meta>;
 export const Demo: Story = {
   render: (args) => (
     <Empty {...args}>
-      <EmptyMedia variant="icon">
+      <Media size="md">
         <Icon name="folder" />
-      </EmptyMedia>
+      </Media>
       <EmptyHeader>
         <EmptyTitle>No Projects Yet</EmptyTitle>
         <EmptyDescription>
@@ -82,9 +82,9 @@ export const Outline: Story = {
   render: () => (
     <div style={{ border: '1px dashed var(--border, currentColor)', borderRadius: '0.75rem' }}>
       <Empty variant="plain">
-        <EmptyMedia variant="icon">
+        <Media size="md">
           <Icon name="cloud" />
-        </EmptyMedia>
+        </Media>
         <EmptyHeader>
           <EmptyTitle>Cloud Storage Empty</EmptyTitle>
           <EmptyDescription>Upload files to your cloud storage to access them anywhere.</EmptyDescription>
@@ -103,12 +103,12 @@ export const AvatarMedia: Story = {
   name: 'Avatar',
   render: () => (
     <Empty>
-      <EmptyMedia variant="default">
+      <Media>
         <Avatar size="lg">
           <AvatarImage src={portrait('L', '#6366f1')} alt="" />
           <AvatarFallback>LR</AvatarFallback>
         </Avatar>
-      </EmptyMedia>
+      </Media>
       <EmptyHeader>
         <EmptyTitle>User Offline</EmptyTitle>
         <EmptyDescription>
@@ -126,7 +126,7 @@ export const AvatarGroupMedia: Story = {
   name: 'Avatar Group',
   render: () => (
     <Empty>
-      <EmptyMedia>
+      <Media>
         <AvatarGroup>
           <Avatar size="lg">
             <AvatarImage src={portrait('S', '#6366f1')} alt="@shadcn" />
@@ -141,7 +141,7 @@ export const AvatarGroupMedia: Story = {
             <AvatarFallback>ER</AvatarFallback>
           </Avatar>
         </AvatarGroup>
-      </EmptyMedia>
+      </Media>
       <EmptyHeader>
         <EmptyTitle>No Team Members</EmptyTitle>
         <EmptyDescription>Invite your team to collaborate on this project.</EmptyDescription>
@@ -190,18 +190,18 @@ export const MediaVariants: Story = {
     <Stack>
       <Empty>
         <EmptyHeader>
-          <EmptyMedia variant="default">
+          <Media>
             <Icon name="inbox" />
-          </EmptyMedia>
+          </Media>
           <EmptyTitle>Default media</EmptyTitle>
           <EmptyDescription>`default` leaves the media bare.</EmptyDescription>
         </EmptyHeader>
       </Empty>
       <Empty>
         <EmptyHeader>
-          <EmptyMedia variant="icon">
+          <Media size="md">
             <Icon name="inbox" />
-          </EmptyMedia>
+          </Media>
           <EmptyTitle>Icon media</EmptyTitle>
           <EmptyDescription>`icon` frames the glyph in a tile.</EmptyDescription>
         </EmptyHeader>
@@ -215,9 +215,9 @@ export const Rtl: Story = {
   render: () => (
     <Empty dir="rtl">
       <EmptyHeader>
-        <EmptyMedia variant="icon">
+        <Media size="md">
           <Icon name="folder" />
-        </EmptyMedia>
+        </Media>
         <EmptyTitle>لا توجد مشاريع بعد</EmptyTitle>
         <EmptyDescription>لم تقم بإنشاء أي مشاريع بعد. ابدأ بإنشاء مشروعك الأول.</EmptyDescription>
       </EmptyHeader>
