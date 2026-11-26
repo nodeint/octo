@@ -31,7 +31,7 @@ src/
 
 A recipe is a stylesheet in `src/styles/recipes/` that gives a kind of element its skin. It binds token roles to
 properties and states for every element that opts in by adding the recipe's class
-(`action`, `chip`, `field-control`, `group`, `media-frame`, `menu-row`, `panel`, `row`, `stack`, `state-ring-group`).
+(`action`, `box`, `chip`, `field-control`, `group`, `media-frame`, `menu-row`, `panel`, `row`, `stack`, `state-ring-group`).
 Recipes live in the `recipes` cascade layer, which sits below `components`: a component rule beats a recipe rule
 whatever the specificity, so a component overrides a recipe without raising its selector.
 

@@ -1,5 +1,6 @@
 import { paintName } from '../../../lib/paint';
 import type { SurfaceAxes } from '../../../lib/surface-paint';
+import { cn } from '../../../lib/utils';
 
 type BoxRadius = 'xs' | 'sm' | 'md' | 'lg';
 type BoxSurface = 'background' | 'card' | 'muted' | 'popover' | 'sidebar' | 'accent';
@@ -78,12 +79,14 @@ function Box({
   pb,
   ps,
   pe,
+  className,
   ...props
 }: BoxProps): React.JSX.Element {
   const paint = tone === undefined ? undefined : paintName({ tone, emphasis });
   return (
     <div
       data-slot="box"
+      className={cn('box', className)}
       data-paint={paint}
       data-box-paint={paint === undefined ? undefined : ''}
       data-box-bleed={bleed}

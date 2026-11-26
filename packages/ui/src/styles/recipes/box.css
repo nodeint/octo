@@ -1,175 +1,175 @@
 /*
- * Token-only decoration. Attribute selectors stand alone, so Stack, Inline and Grid
- * share these rules. Nothing here sets display or layout; `gap` only applies when the element is already flex or grid.
+ * Box: token-only decoration. A component adds the `box` class and the data-box-* attributes (the Box component does both),
+ * so Stack, Inline and Grid share these rules. Nothing here sets display or layout; `gap` only applies when the element is already flex or grid.
  */
 /* cancel the padding of the container around the box; the container declares it as --inset (0 when none does) */
-[data-box-bleed='x'],
-[data-box-bleed='all'] {
+.box[data-box-bleed='x'],
+.box[data-box-bleed='all'] {
   margin-inline: calc(var(--inset) * -1);
 }
 
-[data-box-bleed='y'],
-[data-box-bleed='all'] {
+.box[data-box-bleed='y'],
+.box[data-box-bleed='all'] {
   margin-block: calc(var(--inset) * -1);
 }
 
-[data-box-bleed='top'] {
+.box[data-box-bleed='top'] {
   margin-block-start: calc(var(--inset) * -1);
 }
 
-[data-box-bleed='bottom'] {
+.box[data-box-bleed='bottom'] {
   margin-block-end: calc(var(--inset) * -1);
 }
 
-[data-box-bleed='start'] {
+.box[data-box-bleed='start'] {
   margin-inline-start: calc(var(--inset) * -1);
 }
 
-[data-box-bleed='end'] {
+.box[data-box-bleed='end'] {
   margin-inline-end: calc(var(--inset) * -1);
 }
 
-[data-box-radius='xs'] {
+.box[data-box-radius='xs'] {
   border-radius: var(--radius-surface-xs);
 }
 
-[data-box-radius='sm'] {
+.box[data-box-radius='sm'] {
   border-radius: var(--radius-surface-sm);
 }
 
-[data-box-radius='md'] {
+.box[data-box-radius='md'] {
   border-radius: var(--radius-surface-md);
 }
 
-[data-box-radius='lg'] {
+.box[data-box-radius='lg'] {
   border-radius: var(--radius-surface-lg);
 }
 
 /* painted by tone and emphasis: the colors come from the --variant-* set that data-paint picks in styles/variants/ */
-[data-box-paint] {
+.box[data-box-paint] {
   background-color: var(--variant-bg);
   color: var(--variant-fg);
   box-shadow: var(--box-elevation, 0 0 #0000), 0 0 0 var(--border-width-thin) var(--variant-border, transparent);
 }
 
-[data-box-surface='background'] {
+.box[data-box-surface='background'] {
   --surface: var(--background);
   background-color: var(--surface);
 }
 
-[data-box-surface='card'] {
+.box[data-box-surface='card'] {
   --surface: var(--card);
   background-color: var(--surface);
 }
 
-[data-box-surface='muted'] {
+.box[data-box-surface='muted'] {
   --surface: var(--muted);
   background-color: var(--surface);
 }
 
-[data-box-surface='popover'] {
+.box[data-box-surface='popover'] {
   --surface: var(--popover);
   background-color: var(--surface);
 }
 
-[data-box-surface='sidebar'] {
+.box[data-box-surface='sidebar'] {
   --surface: var(--sidebar);
   background-color: var(--surface);
 }
 
-[data-box-surface='accent'] {
+.box[data-box-surface='accent'] {
   --surface: var(--accent);
   background-color: var(--surface);
 }
 
 /* border and shadow share box-shadow, so each sets a layer and one rule joins them */
-[data-box-border='thin'] {
+.box[data-box-border='thin'] {
   --box-ring: 0 0 0 var(--border-width-thin) var(--border-surface);
 }
 
-[data-box-border='thick'] {
+.box[data-box-border='thick'] {
   --box-ring: 0 0 0 var(--border-width-thick) var(--border-surface);
 }
 
-[data-box-shadow='none'] {
+.box[data-box-shadow='none'] {
   --box-elevation: 0 0 #0000;
 }
 
-[data-box-shadow='sm'] {
+.box[data-box-shadow='sm'] {
   --box-elevation: var(--shadow-sm);
 }
 
-[data-box-shadow='md'] {
+.box[data-box-shadow='md'] {
   --box-elevation: var(--shadow-md);
 }
 
-[data-box-shadow='lg'] {
+.box[data-box-shadow='lg'] {
   --box-elevation: var(--shadow-lg);
 }
 
-[data-box-border],
-[data-box-shadow] {
+.box[data-box-border],
+.box[data-box-shadow] {
   box-shadow: var(--box-elevation, 0 0 #0000), var(--box-ring, 0 0 #0000);
 }
 
-[data-box-gap='xxs'] {
+.box[data-box-gap='xxs'] {
   gap: var(--gap-xxs);
 }
 
-[data-box-gap='xs'] {
+.box[data-box-gap='xs'] {
   gap: var(--gap-xs);
 }
 
-[data-box-gap='sm'] {
+.box[data-box-gap='sm'] {
   gap: var(--gap-sm);
 }
 
-[data-box-gap='md'] {
+.box[data-box-gap='md'] {
   gap: var(--gap-md);
 }
 
-[data-box-gap='lg'] {
+.box[data-box-gap='lg'] {
   gap: var(--gap-lg);
 }
 
-[data-box-gap='xl'] {
+.box[data-box-gap='xl'] {
   gap: var(--gap-xl);
 }
 
-[data-box-gap='2xl'] {
+.box[data-box-gap='2xl'] {
   gap: var(--gap-2xl);
 }
 
-[data-box-gap='3xl'] {
+.box[data-box-gap='3xl'] {
   gap: var(--gap-3xl);
 }
 
 /* padding: `p` sets every side and the --inset that a descendant Box bleed cancels. `inset` pads with the inherited --inset and leaves it unchanged. */
-[data-box-p='inset'] {
+.box[data-box-p='inset'] {
   padding: var(--inset);
 }
 
-[data-box-p='xs'] {
+.box[data-box-p='xs'] {
   --inset: var(--inset-xs);
   padding: var(--inset);
 }
 
-[data-box-p='sm'] {
+.box[data-box-p='sm'] {
   --inset: var(--inset-sm);
   padding: var(--inset);
 }
 
-[data-box-p='md'] {
+.box[data-box-p='md'] {
   --inset: var(--inset-md);
   padding: var(--inset);
 }
 
-[data-box-p='lg'] {
+.box[data-box-p='lg'] {
   --inset: var(--inset-lg);
   padding: var(--inset);
 }
 
-[data-box-p='xl'] {
+.box[data-box-p='xl'] {
   --inset: var(--inset-xl);
   padding: var(--inset);
 }
@@ -179,180 +179,180 @@
  * Reset it to 0 so a Box bleed inside does nothing instead of cancelling the wrong amount.
  * `inset` is exempt: it pads with the inherited --inset, so the element keeps it for its own padding and bleed.
  */
-[data-box-px]:not([data-box-px='inset']),
-[data-box-py]:not([data-box-py='inset']),
-[data-box-pt]:not([data-box-pt='inset']),
-[data-box-pb]:not([data-box-pb='inset']),
-[data-box-ps]:not([data-box-ps='inset']),
-[data-box-pe]:not([data-box-pe='inset']) {
+.box[data-box-px]:not([data-box-px='inset']),
+.box[data-box-py]:not([data-box-py='inset']),
+.box[data-box-pt]:not([data-box-pt='inset']),
+.box[data-box-pb]:not([data-box-pb='inset']),
+.box[data-box-ps]:not([data-box-ps='inset']),
+.box[data-box-pe]:not([data-box-pe='inset']) {
   --inset: 0px;
 }
 
 /* An axis or side on its own step. Later than `p`, so these win. */
-[data-box-px='0'] {
+.box[data-box-px='0'] {
   padding-inline: 0;
 }
 
-[data-box-px='inset'] {
+.box[data-box-px='inset'] {
   padding-inline: var(--inset);
 }
 
-[data-box-px='xs'] {
+.box[data-box-px='xs'] {
   padding-inline: var(--inset-xs);
 }
 
-[data-box-px='sm'] {
+.box[data-box-px='sm'] {
   padding-inline: var(--inset-sm);
 }
 
-[data-box-px='md'] {
+.box[data-box-px='md'] {
   padding-inline: var(--inset-md);
 }
 
-[data-box-px='lg'] {
+.box[data-box-px='lg'] {
   padding-inline: var(--inset-lg);
 }
 
-[data-box-px='xl'] {
+.box[data-box-px='xl'] {
   padding-inline: var(--inset-xl);
 }
 
-[data-box-py='0'] {
+.box[data-box-py='0'] {
   padding-block: 0;
 }
 
-[data-box-py='inset'] {
+.box[data-box-py='inset'] {
   padding-block: var(--inset);
 }
 
-[data-box-py='xs'] {
+.box[data-box-py='xs'] {
   padding-block: var(--inset-xs);
 }
 
-[data-box-py='sm'] {
+.box[data-box-py='sm'] {
   padding-block: var(--inset-sm);
 }
 
-[data-box-py='md'] {
+.box[data-box-py='md'] {
   padding-block: var(--inset-md);
 }
 
-[data-box-py='lg'] {
+.box[data-box-py='lg'] {
   padding-block: var(--inset-lg);
 }
 
-[data-box-py='xl'] {
+.box[data-box-py='xl'] {
   padding-block: var(--inset-xl);
 }
 
-[data-box-pt='0'] {
+.box[data-box-pt='0'] {
   padding-block-start: 0;
 }
 
-[data-box-pt='inset'] {
+.box[data-box-pt='inset'] {
   padding-block-start: var(--inset);
 }
 
-[data-box-pt='xs'] {
+.box[data-box-pt='xs'] {
   padding-block-start: var(--inset-xs);
 }
 
-[data-box-pt='sm'] {
+.box[data-box-pt='sm'] {
   padding-block-start: var(--inset-sm);
 }
 
-[data-box-pt='md'] {
+.box[data-box-pt='md'] {
   padding-block-start: var(--inset-md);
 }
 
-[data-box-pt='lg'] {
+.box[data-box-pt='lg'] {
   padding-block-start: var(--inset-lg);
 }
 
-[data-box-pt='xl'] {
+.box[data-box-pt='xl'] {
   padding-block-start: var(--inset-xl);
 }
 
-[data-box-pb='0'] {
+.box[data-box-pb='0'] {
   padding-block-end: 0;
 }
 
-[data-box-pb='inset'] {
+.box[data-box-pb='inset'] {
   padding-block-end: var(--inset);
 }
 
-[data-box-pb='xs'] {
+.box[data-box-pb='xs'] {
   padding-block-end: var(--inset-xs);
 }
 
-[data-box-pb='sm'] {
+.box[data-box-pb='sm'] {
   padding-block-end: var(--inset-sm);
 }
 
-[data-box-pb='md'] {
+.box[data-box-pb='md'] {
   padding-block-end: var(--inset-md);
 }
 
-[data-box-pb='lg'] {
+.box[data-box-pb='lg'] {
   padding-block-end: var(--inset-lg);
 }
 
-[data-box-pb='xl'] {
+.box[data-box-pb='xl'] {
   padding-block-end: var(--inset-xl);
 }
 
-[data-box-ps='0'] {
+.box[data-box-ps='0'] {
   padding-inline-start: 0;
 }
 
-[data-box-ps='inset'] {
+.box[data-box-ps='inset'] {
   padding-inline-start: var(--inset);
 }
 
-[data-box-ps='xs'] {
+.box[data-box-ps='xs'] {
   padding-inline-start: var(--inset-xs);
 }
 
-[data-box-ps='sm'] {
+.box[data-box-ps='sm'] {
   padding-inline-start: var(--inset-sm);
 }
 
-[data-box-ps='md'] {
+.box[data-box-ps='md'] {
   padding-inline-start: var(--inset-md);
 }
 
-[data-box-ps='lg'] {
+.box[data-box-ps='lg'] {
   padding-inline-start: var(--inset-lg);
 }
 
-[data-box-ps='xl'] {
+.box[data-box-ps='xl'] {
   padding-inline-start: var(--inset-xl);
 }
 
-[data-box-pe='0'] {
+.box[data-box-pe='0'] {
   padding-inline-end: 0;
 }
 
-[data-box-pe='inset'] {
+.box[data-box-pe='inset'] {
   padding-inline-end: var(--inset);
 }
 
-[data-box-pe='xs'] {
+.box[data-box-pe='xs'] {
   padding-inline-end: var(--inset-xs);
 }
 
-[data-box-pe='sm'] {
+.box[data-box-pe='sm'] {
   padding-inline-end: var(--inset-sm);
 }
 
-[data-box-pe='md'] {
+.box[data-box-pe='md'] {
   padding-inline-end: var(--inset-md);
 }
 
-[data-box-pe='lg'] {
+.box[data-box-pe='lg'] {
   padding-inline-end: var(--inset-lg);
 }
 
-[data-box-pe='xl'] {
+.box[data-box-pe='xl'] {
   padding-inline-end: var(--inset-xl);
 }
