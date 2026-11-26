@@ -62,3 +62,11 @@
   border-bottom-right-radius: var(--panel-radius);
   background-color: var(--muted);
 }
+
+/* Header band: a header with the `border-b` class bleeds to the top and sides and pads itself. */
+.panel-header.border-b {
+  margin-inline: calc(var(--inset) * -1);
+  margin-block-start: calc(var(--inset) * -1);
+  padding: var(--panel-inset);
+  border-bottom: var(--border-width-thin) solid var(--border-surface);
+}

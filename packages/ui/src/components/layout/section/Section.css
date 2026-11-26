@@ -8,29 +8,12 @@
   max-width: var(--content-width);
 }
 
-/* Title block: a grid that adds a column for an action and a row for a description. */
 .section-header {
-  display: grid;
-  grid-auto-rows: min-content;
-  align-items: start;
-  gap: var(--space-xs);
-}
-
-.section-header:has([data-slot$='-action']) {
-  grid-template-columns: 1fr auto;
-}
-
-.section-header:has([data-slot$='-description']) {
-  grid-template-rows: auto auto;
-}
-
-/* The action pinned to the end of a panel header. */
-.section-action {
-  grid-column-start: 2;
-  grid-row: 1 / span 2;
   display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  align-self: start;
-  justify-self: end;
+  align-items: flex-start;
+  gap: var(--row-gap, var(--space-sm));
+}
+
+.section-header-action {
+  flex-shrink: 0;
 }

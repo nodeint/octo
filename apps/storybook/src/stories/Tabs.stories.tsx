@@ -4,6 +4,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
+  CardHeaderContent,
   CardTitle,
   Icon,
   Tabs,
@@ -78,8 +79,10 @@ export const Demo: Story = {
         <TabsContent key={section.value} value={section.value}>
           <Card>
             <CardHeader>
-              <CardTitle>{section.title}</CardTitle>
-              <CardDescription>{section.description}</CardDescription>
+              <CardHeaderContent>
+                <CardTitle>{section.title}</CardTitle>
+                <CardDescription>{section.description}</CardDescription>
+              </CardHeaderContent>
             </CardHeader>
             <CardContent>{section.content}</CardContent>
           </Card>
@@ -156,8 +159,10 @@ export const Rtl: Story = {
         <TabsContent value="overview">
           <Card>
             <CardHeader>
-              <CardTitle>نظرة عامة</CardTitle>
-              <CardDescription>عرض المقاييس الرئيسية ونشاط المشروع الأخير.</CardDescription>
+              <CardHeaderContent>
+                <CardTitle>نظرة عامة</CardTitle>
+                <CardDescription>عرض المقاييس الرئيسية ونشاط المشروع الأخير.</CardDescription>
+              </CardHeaderContent>
             </CardHeader>
             <CardContent>لديك 12 مشروعًا نشطًا و3 مهام معلقة.</CardContent>
           </Card>
@@ -165,8 +170,10 @@ export const Rtl: Story = {
         <TabsContent value="analytics">
           <Card>
             <CardHeader>
-              <CardTitle>التحليلات</CardTitle>
-              <CardDescription>تتبع الأداء ومقاييس تفاعل المستخدمين.</CardDescription>
+              <CardHeaderContent>
+                <CardTitle>التحليلات</CardTitle>
+                <CardDescription>تتبع الأداء ومقاييس تفاعل المستخدمين.</CardDescription>
+              </CardHeaderContent>
             </CardHeader>
             <CardContent>ارتفعت مشاهدات الصفحة بنسبة 25٪ مقارنة بالشهر الماضي.</CardContent>
           </Card>
@@ -174,8 +181,10 @@ export const Rtl: Story = {
         <TabsContent value="reports">
           <Card>
             <CardHeader>
-              <CardTitle>التقارير</CardTitle>
-              <CardDescription>أنشئ تقاريرك التفصيلية وقم بتنزيلها.</CardDescription>
+              <CardHeaderContent>
+                <CardTitle>التقارير</CardTitle>
+                <CardDescription>أنشئ تقاريرك التفصيلية وقم بتنزيلها.</CardDescription>
+              </CardHeaderContent>
             </CardHeader>
             <CardContent>لديك 5 تقارير جاهزة للتصدير.</CardContent>
           </Card>

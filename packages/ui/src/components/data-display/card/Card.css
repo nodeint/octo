@@ -1,102 +1,73 @@
 /*
- * DOM contract: a bleed region is a direct first/last-child img or card-media.
- * Title and description come from recipes/row.css; the header grid and action are this file's.
+ * The shell, header band, media bleed and footer band come from recipes/panel.css; the title and description
+ * from recipes/row.css. This file keeps the card's type, surface and parts.
  */
 .card {
   overflow: hidden;
-  border-radius: var(--panel-radius);
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);
-  --surface: var(--card);
-  background-color: var(--surface);
+  border-radius: var(--panel-radius);
   color: var(--variant-fg);
-  box-shadow: 0 0 0 var(--border-width-thin) var(--border-surface);
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
 }
 
-/* bleed: direct first/last-child img or card-media */
-.card > img,
-.card > [data-slot='card-media'] {
-  margin-inline: calc(var(--inset) * -1);
-}
-
-.card > img:first-child,
-.card > [data-slot='card-media']:first-child {
-  margin-block-start: calc(var(--inset) * -1);
-  border-top-left-radius: var(--panel-radius);
-  border-top-right-radius: var(--panel-radius);
-}
-
-.card > img:last-child,
-.card > [data-slot='card-media']:last-child {
-  margin-block-end: calc(var(--inset) * -1);
-  border-bottom-left-radius: var(--panel-radius);
-  border-bottom-right-radius: var(--panel-radius);
-}
-
-/* Title block: a grid that adds a column for an action and a row for a description. */
 .card-header {
-  display: grid;
-  grid-auto-rows: min-content;
-  align-items: start;
-  gap: var(--space-xs);
+  display: flex;
+  align-items: flex-start;
   container-type: inline-size;
   container-name: card-header;
-}
-
-.card-header:has([data-slot$='-action']) {
-  grid-template-columns: 1fr auto;
-}
-
-.card-header:has([data-slot$='-description']) {
-  grid-template-rows: auto auto;
-}
-
-/* The action pinned to the end of a panel header. */
-.card-action {
-  grid-column-start: 2;
-  grid-row: 1 / span 2;
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  align-self: start;
-  justify-self: end;
-}
-
-/* A bordered header: the consumer adds the `border-b` class, and the header bleeds to the card edges. */
-.card-header.border-b {
-  margin-inline: calc(var(--inset) * -1);
-  margin-block-start: calc(var(--inset) * -1);
-  padding: var(--panel-inset);
-  border-bottom: var(--border-width-thin) solid var(--border-surface);
 }
 
 .card-media {
   position: relative;
 }
 
-.card-media > .card-action {
+.card-header-action {
+  flex-shrink: 0;
+}
+
+.card-media > .card-media-action {
   position: absolute;
-  top: var(--inset-sm);
-  inset-inline-end: var(--inset-sm);
+  top: var(--panel-inset);
+  inset-inline-end: var(--panel-inset);
 }
 
 /* hover reveal that keeps a pressed child (a set favorite) visible */
-.card-action[data-reveal='hover-keep-pressed'] > :not([aria-pressed='true']) {
+.card-media-action[data-reveal='hover-keep-pressed'] > :not([aria-pressed='true']) {
   pointer-events: none;
   opacity: 0;
 }
 
-.card:hover .card-action[data-reveal='hover-keep-pressed'] > *,
-.card:focus-within .card-action[data-reveal='hover-keep-pressed'] > * {
+.card:hover .card-media-action[data-reveal='hover-keep-pressed'] > *,
+.card:focus-within .card-media-action[data-reveal='hover-keep-pressed'] > * {
   pointer-events: auto;
   opacity: 1;
 }
 
-/* the footer band comes from recipes/panel.css (.panel-footer) */
 .card-footer {
   align-items: center;
+}
+
+
+/* Media bleed: a direct first or last child img or .card-media reaches the panel edge and takes its corners. */
+.card > img,
+.card > .card-media {
+  margin-inline: calc(var(--inset) * -1);
+}
+
+.card > img:first-child,
+.card > .card-media:first-child {
+  margin-block-start: calc(var(--inset) * -1);
+  border-top-left-radius: var(--panel-radius);
+  border-top-right-radius: var(--panel-radius);
+}
+
+.card > img:last-child,
+.card > .card-media:last-child {
+  margin-block-end: calc(var(--inset) * -1);
+  border-bottom-left-radius: var(--panel-radius);
+  border-bottom-right-radius: var(--panel-radius);
 }

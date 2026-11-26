@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { cn } from '../../../lib/utils';
 
 function Section({ className, ...props }: React.ComponentProps<'section'>): React.JSX.Element {
@@ -14,8 +16,28 @@ function SectionHeader({ className, ...props }: React.ComponentProps<'div'>): Re
   return (
     <div
       data-slot="section-header"
-      data-row-type="header"
       className={cn('section-header', className)}
+      {...props}
+    />
+  );
+}
+
+function SectionHeaderContent({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
+  return (
+    <div
+      data-slot="section-header-content"
+      data-row-type="header"
+      className={cn('row-content section-header-content', className)}
+      {...props}
+    />
+  );
+}
+
+function SectionHeaderAction({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
+  return (
+    <div
+      data-slot="section-header-action"
+      className={cn('row-actions section-header-action', className)}
       {...props}
     />
   );
@@ -41,16 +63,6 @@ function SectionDescription({ className, ...props }: React.ComponentProps<'p'>):
   );
 }
 
-function SectionAction({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
-  return (
-    <div
-      data-slot="section-action"
-      className={cn('section-action', className)}
-      {...props}
-    />
-  );
-}
-
 type SectionContentWidth = 'content' | 'full';
 
 type SectionContentProps = React.ComponentProps<'div'> & {
@@ -71,10 +83,11 @@ function SectionContent({ className, width = 'content', ...props }: SectionConte
 
 export {
   Section,
-  SectionAction,
   SectionContent,
   SectionDescription,
   SectionHeader,
+  SectionHeaderAction,
+  SectionHeaderContent,
   SectionTitle,
 };
 

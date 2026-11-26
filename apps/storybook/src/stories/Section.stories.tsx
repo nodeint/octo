@@ -6,10 +6,11 @@ import {
   FieldLabel,
   Input,
   Section,
-  SectionAction,
   SectionContent,
   SectionDescription,
   SectionHeader,
+  SectionHeaderAction,
+  SectionHeaderContent,
   SectionTitle,
   Text,
 } from '@workspace/ui';
@@ -34,8 +35,10 @@ export const Demo: Story = {
   render: (args) => (
     <Section {...args}>
       <SectionHeader>
-        <SectionTitle>Profile</SectionTitle>
-        <SectionDescription>Update how others see you.</SectionDescription>
+        <SectionHeaderContent>
+          <SectionTitle>Profile</SectionTitle>
+          <SectionDescription>Update how others see you.</SectionDescription>
+        </SectionHeaderContent>
       </SectionHeader>
       <SectionContent>
         <Field>
@@ -51,9 +54,11 @@ export const WithAction: Story = {
   render: () => (
     <Section>
       <SectionHeader>
-        <SectionTitle>Members</SectionTitle>
-        <SectionDescription>People with access to this project.</SectionDescription>
-        <SectionAction><Button size="sm">Invite</Button></SectionAction>
+        <SectionHeaderContent>
+          <SectionTitle>Members</SectionTitle>
+          <SectionDescription>People with access to this project.</SectionDescription>
+        </SectionHeaderContent>
+        <SectionHeaderAction><Button size="sm">Invite</Button></SectionHeaderAction>
       </SectionHeader>
       <SectionContent>
         <Text>3 members</Text>
@@ -70,7 +75,7 @@ export const Width: WidthStory = {
   },
   render: ({ width, ...args }) => (
     <Section {...args}>
-      <SectionHeader><SectionTitle>Width</SectionTitle></SectionHeader>
+      <SectionHeader><SectionHeaderContent><SectionTitle>Width</SectionTitle></SectionHeaderContent></SectionHeader>
       <SectionContent width={width}>
         <Input aria-label="Input in section content" defaultValue={width} />
       </SectionContent>
@@ -87,7 +92,9 @@ export const ContentWidth: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       {(['content', 'full'] as const).map((width) => (
         <Section key={width}>
-          <SectionHeader><SectionTitle>width="{width}"</SectionTitle></SectionHeader>
+          <SectionHeader>
+            <SectionHeaderContent><SectionTitle>width="{width}"</SectionTitle></SectionHeaderContent>
+          </SectionHeader>
           <SectionContent width={width}>
             <Input aria-label={`Input in ${width} width`} defaultValue={width} />
           </SectionContent>

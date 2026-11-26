@@ -22,6 +22,8 @@ function Card({
         data-size={size}
         data-panel-size={size}
         className={cn('panel card', className)}
+        data-box-surface="card"
+        data-box-border="thin"
         {...props}
       />
     </CardSizeContext.Provider>
@@ -29,12 +31,32 @@ function Card({
 }
 
 function CardHeader({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
-  const size = React.useContext(CardSizeContext);
   return (
     <div
       data-slot="card-header"
+      className={cn('panel-header card-header', className)}
+      {...props}
+    />
+  );
+}
+
+function CardHeaderContent({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
+  const size = React.useContext(CardSizeContext);
+  return (
+    <div
+      data-slot="card-header-content"
       data-row-type={size === 'sm' ? 'content' : 'header'}
-      className={cn('card-header', className)}
+      className={cn('row-content card-header-content', className)}
+      {...props}
+    />
+  );
+}
+
+function CardHeaderAction({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
+  return (
+    <div
+      data-slot="card-header-action"
+      className={cn('row-actions card-header-action', className)}
       {...props}
     />
   );
@@ -73,11 +95,11 @@ function CardMedia({ className, ...props }: React.ComponentProps<'div'>): React.
   );
 }
 
-function CardAction({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
+function CardMediaAction({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
   return (
     <div
-      data-slot="card-action"
-      className={cn('card-action', className)}
+      data-slot="card-media-action"
+      className={cn('card-media-action', className)}
       {...props}
     />
   );
@@ -105,12 +127,14 @@ function CardFooter({ className, ...props }: React.ComponentProps<'div'>): React
 
 export {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
+  CardHeaderAction,
+  CardHeaderContent,
   CardMedia,
+  CardMediaAction,
   CardTitle,
 };
 export type { CardProps, CardSize };

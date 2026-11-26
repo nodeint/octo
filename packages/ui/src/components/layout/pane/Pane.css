@@ -9,11 +9,6 @@
   flex-shrink: 0;
 }
 
-/* ScrollArea is width: 100%, which a negative margin would only shift; auto lets the flex column stretch it to the edges */
-.pane > .scroll-area[data-box-bleed] {
-  width: auto;
-}
-
 /* header and footer pad with the inset on every side and bleed to the pane's top and bottom edge, so their content keeps its place and the extra padding becomes the gap to the body */
 .pane-header {
   margin-block-start: calc(var(--inset) * -1);
@@ -21,11 +16,6 @@
 
 .pane-footer {
   margin-block-end: calc(var(--inset) * -1);
-}
-
-/* the separator is width: 100%, which a negative margin would only shift */
-.pane > .separator[data-box-bleed] {
-  width: auto;
 }
 
 /* a body next to a separator pads that side, so its content does not touch the rule */

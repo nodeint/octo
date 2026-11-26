@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { SkeletonSize } from '@workspace/ui';
-import { Card, CardContent, CardHeader, Inline, Skeleton, Stack } from '@workspace/ui';
+import { Card, CardContent, CardHeader, CardHeaderContent, Inline, Skeleton, Stack } from '@workspace/ui';
 
 import { storyWidthDecorator } from '../story-width';
 
@@ -65,8 +65,10 @@ export const CardStory: Story = {
   render: () => (
     <Card>
       <CardHeader>
-        <Skeleton style={{ height: '1rem', width: '66%' }} />
-        <Skeleton style={{ height: '1rem', width: '50%' }} />
+        <CardHeaderContent>
+          <Skeleton style={{ height: '1rem', width: '66%' }} />
+          <Skeleton style={{ height: '1rem', width: '50%' }} />
+        </CardHeaderContent>
       </CardHeader>
       <CardContent>
         <Skeleton style={{ aspectRatio: '16 / 9', width: '100%' }} />

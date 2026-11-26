@@ -13,6 +13,10 @@
   margin-block: calc(var(--inset) * -1);
 }
 
+[data-box-bleed='x'] {
+  width: auto;
+}
+
 [data-box-bleed='top'] {
   margin-block-start: calc(var(--inset) * -1);
 }

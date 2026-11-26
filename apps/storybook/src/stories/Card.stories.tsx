@@ -3,12 +3,14 @@ import {
   Badge,
   Button,
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
+  CardHeaderAction,
+  CardHeaderContent,
   CardMedia,
+  CardMediaAction,
   CardTitle,
   Field,
   FieldGroup,
@@ -41,11 +43,13 @@ export const Demo: Story = {
   render: (args) => (
     <Card {...args}>
       <CardHeader>
-        <CardTitle>Login to your account</CardTitle>
-        <CardDescription>Enter your email below to login to your account</CardDescription>
-        <CardAction>
+        <CardHeaderContent>
+          <CardTitle>Login to your account</CardTitle>
+          <CardDescription>Enter your email below to login to your account</CardDescription>
+        </CardHeaderContent>
+        <CardHeaderAction>
           <Button variant="link">Sign Up</Button>
-        </CardAction>
+        </CardHeaderAction>
       </CardHeader>
       <CardContent>
         <form>
@@ -79,13 +83,15 @@ export const Basic: Story = {
   render: (args) => (
     <Card {...args}>
       <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card Description</CardDescription>
-        <CardAction>
+        <CardHeaderContent>
+          <CardTitle>Card Title</CardTitle>
+          <CardDescription>Card Description</CardDescription>
+        </CardHeaderContent>
+        <CardHeaderAction>
           <Button variant="outline" size="sm">
             Action
           </Button>
-        </CardAction>
+        </CardHeaderAction>
       </CardHeader>
       <CardContent>
         <p>Card Content</p>
@@ -103,8 +109,10 @@ export const Small: Story = {
   render: (args) => (
     <Card {...args}>
       <CardHeader>
-        <CardTitle>Scheduled reports</CardTitle>
-        <CardDescription>Weekly snapshots. No more manual exports.</CardDescription>
+        <CardHeaderContent>
+          <CardTitle>Scheduled reports</CardTitle>
+          <CardDescription>Weekly snapshots. No more manual exports.</CardDescription>
+        </CardHeaderContent>
       </CardHeader>
       <CardContent>
         <Stack gap="sm">
@@ -138,11 +146,13 @@ export const HeaderOnly: Story = {
   render: (args) => (
     <Card {...args}>
       <CardHeader>
-        <CardTitle>Notifications</CardTitle>
-        <CardDescription>Choose what you want to be notified about.</CardDescription>
-        <CardAction>
+        <CardHeaderContent>
+          <CardTitle>Notifications</CardTitle>
+          <CardDescription>Choose what you want to be notified about.</CardDescription>
+        </CardHeaderContent>
+        <CardHeaderAction>
           <Badge>New</Badge>
-        </CardAction>
+        </CardHeaderAction>
       </CardHeader>
     </Card>
   ),
@@ -162,8 +172,10 @@ export const WithFooterActions: Story = {
   render: (args) => (
     <Card {...args}>
       <CardHeader>
-        <CardTitle>Delete project</CardTitle>
-        <CardDescription>This action cannot be undone.</CardDescription>
+        <CardHeaderContent>
+          <CardTitle>Delete project</CardTitle>
+          <CardDescription>This action cannot be undone.</CardDescription>
+        </CardHeaderContent>
       </CardHeader>
       <CardContent>
         <p>All deployments and settings for this project will be permanently removed.</p>
@@ -188,8 +200,10 @@ export const WithMedia: Story = {
         <div style={{ aspectRatio: '16 / 9', background: COVER }} />
       </CardMedia>
       <CardHeader>
-        <CardTitle>Beautiful landscape</CardTitle>
-        <CardDescription>A stunning view that captures the essence of natural beauty.</CardDescription>
+        <CardHeaderContent>
+          <CardTitle>Beautiful landscape</CardTitle>
+          <CardDescription>A stunning view that captures the essence of natural beauty.</CardDescription>
+        </CardHeaderContent>
       </CardHeader>
       <CardFooter>
         <Button>View details</Button>
@@ -203,13 +217,15 @@ export const MediaWithAction: Story = {
     <Card {...args}>
       <CardMedia>
         <div style={{ aspectRatio: '16 / 9', background: COVER }} />
-        <CardAction>
+        <CardMediaAction>
           <Badge>Featured</Badge>
-        </CardAction>
+        </CardMediaAction>
       </CardMedia>
       <CardHeader>
-        <CardTitle>Design systems meetup</CardTitle>
-        <CardDescription>A practical talk on scaling UI foundations.</CardDescription>
+        <CardHeaderContent>
+          <CardTitle>Design systems meetup</CardTitle>
+          <CardDescription>A practical talk on scaling UI foundations.</CardDescription>
+        </CardHeaderContent>
       </CardHeader>
     </Card>
   ),
@@ -220,15 +236,17 @@ export const MediaFavoriteOnHover: Story = {
     <Card {...args}>
       <CardMedia>
         <div style={{ aspectRatio: '16 / 9', background: COVER }} />
-        <CardAction data-reveal="hover-keep-pressed">
+        <CardMediaAction data-reveal="hover-keep-pressed">
           <Toggle variant="ghost" shape="icon" fillIcon aria-label="Favorite">
             <Icon name="heart" />
           </Toggle>
-        </CardAction>
+        </CardMediaAction>
       </CardMedia>
       <CardHeader>
-        <CardTitle>Hover to reveal</CardTitle>
-        <CardDescription>The favorite toggle shows on hover and stays visible once pressed.</CardDescription>
+        <CardHeaderContent>
+          <CardTitle>Hover to reveal</CardTitle>
+          <CardDescription>The favorite toggle shows on hover and stays visible once pressed.</CardDescription>
+        </CardHeaderContent>
       </CardHeader>
     </Card>
   ),
@@ -238,8 +256,10 @@ export const MediaBottom: Story = {
   render: (args) => (
     <Card {...args}>
       <CardHeader>
-        <CardTitle>Media at the end</CardTitle>
-        <CardDescription>A last-child media region bleeds to the bottom edge.</CardDescription>
+        <CardHeaderContent>
+          <CardTitle>Media at the end</CardTitle>
+          <CardDescription>A last-child media region bleeds to the bottom edge.</CardDescription>
+        </CardHeaderContent>
       </CardHeader>
       <CardMedia>
         <div style={{ aspectRatio: '16 / 9', background: COVER }} />
