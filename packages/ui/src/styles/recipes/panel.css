@@ -8,35 +8,35 @@
  *
  * Size set: data-panel-size picks --panel-inset, --panel-gap and --panel-radius (one scale for every panel). Without the attribute a panel is md.
  * data-panel-size is separate from data-size, which components use for their own scales (dialog width, card density).
- *   xs  --inset-xs  --gap-sm  --radius-panel-xs
- *   sm  --inset-sm  --gap-md  --radius-panel-sm
- *   md  --inset-md  --gap-md  --radius-panel-md
- *   lg  --inset-lg  --gap-lg  --radius-panel-lg
+ *   xs  --inset-xs  --gap-sm  --radius-surface-xs
+ *   sm  --inset-sm  --gap-md  --radius-surface-sm
+ *   md  --inset-md  --gap-md  --radius-surface-md
+ *   lg  --inset-lg  --gap-lg  --radius-surface-lg
  * The steps live in layout/space.css and layout/radius.css. A component never declares --panel-inset, --panel-gap
  * or --panel-radius; it reads --panel-radius for its own corners.
  */
 .panel {
   --panel-inset: var(--inset-md);
   --panel-gap: var(--gap-md);
-  --panel-radius: var(--radius-panel-md);
+  --panel-radius: var(--radius-surface-md);
 }
 
 .panel[data-panel-size='xs'] {
   --panel-inset: var(--inset-xs);
   --panel-gap: var(--gap-sm);
-  --panel-radius: var(--radius-panel-xs);
+  --panel-radius: var(--radius-surface-xs);
 }
 
 .panel[data-panel-size='sm'] {
   --panel-inset: var(--inset-sm);
   --panel-gap: var(--gap-md);
-  --panel-radius: var(--radius-panel-sm);
+  --panel-radius: var(--radius-surface-sm);
 }
 
 .panel[data-panel-size='lg'] {
   --panel-inset: var(--inset-lg);
   --panel-gap: var(--gap-lg);
-  --panel-radius: var(--radius-panel-lg);
+  --panel-radius: var(--radius-surface-lg);
 }
 
 /* Shell: parts stack with the gap, and --inset tells bleed regions how far to reach. */

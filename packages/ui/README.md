@@ -93,7 +93,7 @@ A component sets the input tokens listed in the file header on its own root, and
 `overlay.css` holds only the `overlay-*` keyframes shared by modal and anchored overlays; it has no selectors.
 `panel.css` is the `panel` shell (flex column, inset, gap) and the `panel-footer` band that card, dialog, alert dialog and
 sheet share. It owns the panel size: `data-panel-size` (`xs`, `sm`, `md`, `lg`; `md` without the attribute) sets
-`--panel-inset`, `--panel-gap` and `--panel-radius` (from the `--radius-panel-*` scale), and no component declares them;
+`--panel-inset`, `--panel-gap` and `--panel-radius` (from the `--radius-surface-*` scale), and no component declares them;
 a component reads `--panel-radius` for its own corners. A bare variant sets `--panel-stack-gap` and `--panel-padding`.
 `data-panel-size` is separate from `data-size`.
 

@@ -26,7 +26,7 @@
   min-width: var(--overlay-xxs);
   padding: var(--floating-inset);
   gap: var(--floating-gap);
-  border-radius: var(--floating-radius, var(--floating-size-radius, var(--radius-overlay-sm)));
+  border-radius: var(--floating-radius, var(--floating-size-radius, var(--radius-surface-md)));
   background-color: var(--popover);
   color: var(--variant-fg);
   box-shadow: 0 0 0 var(--border-width-thin) var(--border-surface);
@@ -79,42 +79,42 @@
 /* Each step only sets the width, corner, padding and gap tokens the surface reads; no data-size keeps its own width and the sm step. */
 .floating-content[data-size='xxs'] {
   --floating-size-width: var(--overlay-xxs);
-  --floating-size-radius: var(--radius-overlay-xs);
+  --floating-size-radius: var(--radius-surface-sm);
   --floating-inset: var(--inset-xs);
   --floating-gap: var(--gap-xs);
 }
 
 .floating-content[data-size='xs'] {
   --floating-size-width: var(--overlay-xs);
-  --floating-size-radius: var(--radius-overlay-xs);
+  --floating-size-radius: var(--radius-surface-sm);
   --floating-inset: var(--inset-xs);
   --floating-gap: var(--gap-xs);
 }
 
 .floating-content[data-size='sm'] {
   --floating-size-width: var(--overlay-sm);
-  --floating-size-radius: var(--radius-overlay-sm);
+  --floating-size-radius: var(--radius-surface-md);
   --floating-inset: var(--inset-sm);
   --floating-gap: var(--gap-sm);
 }
 
 .floating-content[data-size='md'] {
   --floating-size-width: var(--overlay-md);
-  --floating-size-radius: var(--radius-overlay-md);
+  --floating-size-radius: var(--radius-surface-lg);
   --floating-inset: var(--inset-md);
   --floating-gap: var(--gap-md);
 }
 
 .floating-content[data-size='lg'] {
   --floating-size-width: var(--overlay-lg);
-  --floating-size-radius: var(--radius-overlay-lg);
+  --floating-size-radius: var(--radius-surface-lg);
   --floating-inset: var(--inset-lg);
   --floating-gap: var(--gap-lg);
 }
 
 .floating-content[data-size='xl'] {
   --floating-size-width: var(--overlay-xl);
-  --floating-size-radius: var(--radius-overlay-lg);
+  --floating-size-radius: var(--radius-surface-lg);
   --floating-inset: var(--inset-lg);
   --floating-gap: var(--gap-lg);
 }
