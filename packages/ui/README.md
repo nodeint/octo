@@ -31,7 +31,7 @@ src/
 
 A recipe is a stylesheet in `src/styles/recipes/` that gives a kind of element its skin. It binds token roles to
 properties and states for every element that opts in by adding the recipe's class
-(`action`, `chip`, `field-control`, `group`, `media-frame`, `menu-row`, `panel`, `row`, `state-ring-group`).
+(`action`, `chip`, `field-control`, `group`, `media-frame`, `menu-row`, `panel`, `row`, `stack`, `state-ring-group`).
 Recipes live in the `recipes` cascade layer, which sits below `components`: a component rule beats a recipe rule
 whatever the specificity, so a component overrides a recipe without raising its selector.
 
@@ -85,10 +85,17 @@ A part sets `--media-size` (or `--media-width` and `--media-height`), `--media-r
 title and description text that alert, empty, popover, section and card also add (`row-title`, `row-description`).
 `data-row-type` on the element that wraps the title and description picks their text roles
 (`content`, `header`, `compact`), and `data-row-size` (`xs`, `sm`, `md`) picks the padding and gaps.
+`row-group` is a column of rows whose gap follows the size of the rows it holds (item group); `--row-lead-gap` is the gap after a leading
+icon in a grid row (alert).
 The row reads its color from `data-paint` (`--variant-*`), and `data-row-invalid` paints the invalid pair.
 Dialog, alert dialog and drawer set the type on their content; a small card sets `content` on its header.
 A component sets the input tokens listed in the file header on its own root, and a state color goes in
 `--row-description-color`. It never re-declares what a type sets and never overrides a `row` property.
+
+`stack.css` is the `stack` flex container: `data-stack-size` (`xs`, `sm`, `md`, `lg`; `md` without the attribute) sets the gap and
+`data-stack-direction` (`column`, `row`) the axis and `data-stack-align` the cross axis. A size also declares `--stack-inset` and
+`--stack-radius`, which a padded or rounded box reads on its own root. A component never declares `display`, `flex-direction`
+or `gap` on a stack. The `Stack` component adds the class itself.
 
 `overlay.css` holds only the `overlay-*` keyframes shared by modal and anchored overlays; it has no selectors.
 `panel.css` is the `panel` shell (flex column, inset, gap) and the `panel-footer` band that card, dialog, alert dialog and

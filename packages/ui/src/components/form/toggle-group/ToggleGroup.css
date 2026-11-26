@@ -23,7 +23,6 @@
   --group-action-width: 100%;
   --group-action-min-width: 0;
   --group-action-row-height: auto;
-  --group-action-padding-block: var(--inset-xs);
   --group-action-justify: flex-start;
   --group-action-text-align: start;
   width: 100%;

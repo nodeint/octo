@@ -14,8 +14,9 @@ function Empty({
   return (
     <div
       data-slot="empty"
+      data-stack-size={variant === 'plain' ? 'sm' : 'lg'}
       data-variant={variant}
-      className={cn('empty', className)}
+      className={cn('stack empty', className)}
       {...props}
     />
   );
@@ -25,8 +26,9 @@ function EmptyHeader({ className, ...props }: React.ComponentProps<'div'>): Reac
   return (
     <div
       data-slot="empty-header"
+      data-stack-size="xs"
       data-row-type="header"
-      className={cn('empty-header', className)}
+      className={cn('stack empty-header', className)}
       {...props}
     />
   );
@@ -74,7 +76,8 @@ function EmptyContent({ className, ...props }: React.ComponentProps<'div'>): Rea
   return (
     <div
       data-slot="empty-content"
-      className={cn('empty-content', className)}
+      data-stack-size="sm"
+      className={cn('stack empty-content', className)}
       {...props}
     />
   );

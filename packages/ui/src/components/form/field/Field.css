@@ -6,12 +6,6 @@
  * - field-group is a container (field-group) so the responsive orientation reads its width.
  * Direct-child .sr-only and [role=checkbox|radio]: depth is the control and label contract.
  */
-.field-set {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-md);
-}
-
 .field-legend {
   margin-block-end: var(--space-xs);
   font-size: var(--role-label-size);
@@ -34,9 +28,6 @@
 .field-group {
   container-type: inline-size;
   container-name: field-group;
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-md);
   width: 100%;
 }
 

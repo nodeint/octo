@@ -14,7 +14,6 @@
   width: var(--group-action-width, auto);
   min-width: var(--group-action-min-width, auto);
   height: var(--group-action-row-height, var(--group-action-height, var(--action-height)));
-  padding-block: var(--group-action-padding-block, 0);
   padding-inline: calc(var(--group-action-px, var(--action-px)) - var(--border-width-thin));
   gap: var(--group-action-gap, var(--action-gap));
   justify-content: var(--group-action-justify, center);

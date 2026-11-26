@@ -13,7 +13,7 @@ function FieldSet({ className, ...props }: React.ComponentProps<'fieldset'>): Re
   return (
     <fieldset
       data-slot="field-set"
-      className={cn('field-set', className)}
+      className={cn('stack field-set', className)}
       {...props}
     />
   );
@@ -38,7 +38,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<'div'>): React
   return (
     <div
       data-slot="field-group"
-      className={cn('field-group', className)}
+      className={cn('stack field-group', className)}
       {...props}
     />
   );

@@ -63,7 +63,7 @@ function SectionContent({ className, width = 'content', ...props }: SectionConte
     <div
       data-slot="section-content"
       data-width={width}
-      className={cn('section-content', className)}
+      className={cn('stack section-content', className)}
       {...props}
     />
   );

@@ -4,9 +4,6 @@
  */
 .bubble {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-xs);
   width: fit-content;
   max-width: 80%;
   min-width: 0;
@@ -22,10 +19,7 @@
 }
 
 .bubble-content {
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
-  gap: var(--gap-xs);
   width: fit-content;
   max-width: 100%;
   min-width: 0;
@@ -96,8 +90,5 @@
 }
 
 .bubble-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-xs);
   min-width: 0;
 }

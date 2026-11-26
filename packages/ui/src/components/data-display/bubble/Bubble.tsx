@@ -29,9 +29,10 @@ function Bubble({
   return (
     <div
       data-slot="bubble"
+      data-stack-size="xs"
       data-variant={variant}
       data-align={align}
-      className={cn('bubble', className)}
+      className={cn('stack bubble', className)}
       {...props}
     />
   );
@@ -46,13 +47,14 @@ function BubbleContent({
     defaultTagName: 'div',
     props: mergeProps<'div'>(
       {
-        className: cn('bubble-content', className),
+        className: cn('stack bubble-content', className),
       },
       props
     ),
     render,
     state: {
       slot: 'bubble-content',
+      'stack-size': 'xs',
     },
   });
 }
@@ -62,7 +64,8 @@ function BubbleGroup({ className, ...props }: React.ComponentProps<'div'>): Reac
   return (
     <div
       data-slot="bubble-group"
-      className={cn('bubble-group', className)}
+      data-stack-size="xs"
+      className={cn('stack bubble-group', className)}
       {...props}
     />
   );

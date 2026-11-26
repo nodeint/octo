@@ -1,8 +1,5 @@
 .section,
 .section-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-md);
   width: 100%;
   min-width: 0;
 }

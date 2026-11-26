@@ -14,7 +14,7 @@ function Stack({ className, gap = 'sm', align, ...props }: StackProps): React.JS
       data-slot="stack"
       data-stack-align={align}
       gap={gap}
-      className={cn('layout-stack', className)}
+      className={cn('stack', className)}
       {...props}
     />
   );

@@ -1,33 +1,27 @@
 .empty {
-  display: flex;
   flex: 1 1 0%;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--gap-md);
   width: 100%;
   min-width: 0;
-  padding: var(--inset-xl);
+  padding: var(--stack-inset);
   text-align: center;
   text-wrap: balance;
   border: var(--border-width-thin) dashed var(--border);
-  border-radius: var(--radius-surface-md);
+  border-radius: var(--stack-radius);
 }
 
 /* A line inside a frame that already has a border. */
 .empty[data-variant='plain'] {
   flex: none;
   min-height: 0;
-  padding: var(--inset-sm);
+  padding: var(--stack-inset);
   border-width: 0;
   border-radius: 0;
 }
 
 .empty-header {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--space-xs);
   max-width: var(--panel-w-sm);
 }
 
@@ -41,10 +35,7 @@
 }
 
 .empty-content {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
   width: 100%;
   max-width: var(--panel-w-sm);
   min-width: 0;

@@ -2,6 +2,7 @@
  * Row: the strip of media, content and actions (item, attachment, alert) and the title and description text
  * (alert, empty, popover, section, card). A component adds the classes and sets the input tokens on its own root.
  *   row            the strip: border, radius, hover wash, focus ring
+ *   row-group      a column of rows; the gap follows the size of the rows it holds (md without one)
  *   row-content    the text column
  *   row-title      the title; plain text goes in row-title-text so it truncates
  *   row-description, row-meta, row-actions, row-trigger, row-trigger-cover, row-hover-child, row-focus-within
@@ -10,7 +11,7 @@
  * data-row-size picks the padding and gaps: xs, sm, md.
  * A component never re-declares what a type sets.
  * Color comes from the data-paint on the row (--variant-*); data-row-invalid paints the invalid pair.
- * Input tokens: --row-px, --row-py, --row-gap, --row-content-gap, --row-align, --row-border-width,
+ * Input tokens: --row-px, --row-py, --row-gap, --row-lead-gap (the gap after a leading icon in a grid row), --row-content-gap, --row-align, --row-border-width,
  * --row-border-style, --row-title-display, --row-title-align, --row-description-color, --row-meta-color.
  */
 [data-row-type='content'] {
@@ -77,6 +78,7 @@
 
 .row {
   --row-border-width: var(--border-width-thin);
+  --row-lead-gap: var(--space-md);
   display: flex;
   flex-wrap: wrap;
   align-items: var(--row-align, center);
@@ -94,6 +96,22 @@
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--motion-duration-fast);
   transition-timing-function: var(--default-transition-timing-function);
+}
+
+/* A column of rows. Size lives on the rows, so the group reads the smallest size it holds. */
+.row-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.row-group:has(.row[data-row-size='sm']) {
+  gap: var(--space-sm);
+}
+
+.row-group:has(.row[data-row-size='xs']) {
+  gap: var(--space-xs);
 }
 
 /* The trigger's ::after covers the row; actions sit above the cover. */

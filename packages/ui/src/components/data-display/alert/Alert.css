@@ -5,7 +5,6 @@
  * Action chrome is data-slot=alert-action (reserved end padding).
  */
 .alert {
-  --row-gap: var(--gap-sm);
   --row-align: normal;
   position: relative;
   display: grid;
@@ -18,7 +17,7 @@
 
 .alert:has(> svg) {
   grid-template-columns: auto 1fr;
-  column-gap: var(--gap-md);
+  column-gap: var(--row-lead-gap);
 }
 
 .alert > svg {

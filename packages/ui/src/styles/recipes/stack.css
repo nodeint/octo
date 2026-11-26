@@ -1,0 +1,52 @@
+/*
+ * Stack: a flex container that spaces its children. A component adds the class and picks a size, a direction
+ * and an alignment.
+ *   data-stack-size       xs · sm · md · lg (md without the attribute) → --stack-gap, --stack-inset, --stack-radius
+ *   data-stack-direction  column (default) · row
+ *   data-stack-align      start · center · end → the cross axis (stretch without the attribute)
+ * The stack applies only the gap. A box that is padded or rounded reads --stack-inset and --stack-radius
+ * on its own root, and sets --inset to --stack-inset so a bleeding child reaches its edge.
+ * A component never declares display, flex-direction or gap on a stack.
+ */
+.stack {
+  --stack-gap: var(--gap-md);
+  --stack-inset: var(--inset-md);
+  --stack-radius: var(--radius-surface-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap);
+}
+
+.stack[data-stack-size='xs'] {
+  --stack-gap: var(--gap-xs);
+  --stack-inset: var(--inset-xs);
+  --stack-radius: var(--radius-surface-xs);
+}
+
+.stack[data-stack-size='sm'] {
+  --stack-gap: var(--gap-sm);
+  --stack-inset: var(--inset-sm);
+  --stack-radius: var(--radius-surface-sm);
+}
+
+.stack[data-stack-size='lg'] {
+  --stack-gap: var(--gap-lg);
+  --stack-inset: var(--inset-lg);
+  --stack-radius: var(--radius-surface-lg);
+}
+
+.stack[data-stack-direction='row'] {
+  flex-direction: row;
+}
+
+.stack[data-stack-align='start'] {
+  align-items: flex-start;
+}
+
+.stack[data-stack-align='center'] {
+  align-items: center;
+}
+
+.stack[data-stack-align='end'] {
+  align-items: flex-end;
+}

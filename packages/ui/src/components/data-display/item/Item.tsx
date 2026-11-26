@@ -29,7 +29,7 @@ function ItemGroup({ className, ...props }: React.ComponentProps<'div'>): React.
       <div
         role="list"
         data-slot="item-group"
-        className={cn('item-group', className)}
+        className={cn('row-group item-group', className)}
         {...props}
       />
     </ItemGroupContext.Provider>

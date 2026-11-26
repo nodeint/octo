@@ -113,9 +113,11 @@ function EditableText({
     <div
       {...props}
       data-slot="editable-text"
+      data-stack-size="sm"
+      data-stack-direction="row"
       data-variant={variant}
       data-edit-trigger={editTrigger}
-      className={cn('editable-text', className)}
+      className={cn('stack editable-text', className)}
     >
       {isEditing ? (
         <Input
