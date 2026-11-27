@@ -1,0 +1,10 @@
+[data-link] {
+    transition-property: color;
+    transition-duration: var(--default-transition-duration);
+    transition-timing-function: var(--default-transition-timing-function);
+}
+
+[data-link='underline'] {
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+}

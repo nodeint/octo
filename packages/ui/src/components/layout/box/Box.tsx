@@ -1,3 +1,6 @@
+import { mergeProps } from '@base-ui/react/merge-props';
+import { useRender } from '@base-ui/react/use-render';
+
 import { paintName } from '../../../lib/paint';
 import type { SurfaceAxes } from '../../../lib/surface-paint';
 import { cn } from '../../../lib/utils';
@@ -26,7 +29,7 @@ type BoxBleed = 'x' | 'y' | 'all' | 'top' | 'bottom' | 'start' | 'end';
 /** Without `tone` and `emphasis` the box is not painted; with both it takes the paint of that pair. */
 type BoxPaint = SurfaceAxes | { tone?: never, emphasis?: never }
 
-type BoxProps = React.ComponentProps<'div'> & BoxPaint & {
+type BoxProps = useRender.ComponentProps<'div'> & BoxPaint & {
   /**
    * Extends the box to the edges of the container that pads it, by a negative margin of `--inset`.
    * The container declares `--inset` with the same value as its padding; without one the bleed is 0.
@@ -80,31 +83,38 @@ function Box({
   ps,
   pe,
   className,
+  render,
   ...props
 }: BoxProps): React.JSX.Element {
   const paint = tone === undefined ? undefined : paintName({ tone, emphasis });
-  return (
-    <div
-      data-slot="box"
-      className={cn('box', className)}
-      data-paint={paint}
-      data-box-paint={paint === undefined ? undefined : ''}
-      data-box-bleed={bleed}
-      data-box-radius={radius}
-      data-box-surface={surface}
-      data-box-border={border}
-      data-box-shadow={shadow}
-      data-box-gap={gap}
-      data-box-p={p}
-      data-box-px={px}
-      data-box-py={py}
-      data-box-pt={pt}
-      data-box-pb={pb}
-      data-box-ps={ps}
-      data-box-pe={pe}
-      {...props}
-    />
-  );
+  return useRender({
+    defaultTagName: 'div',
+    props: mergeProps<'div'>(
+      {
+        className: cn('box', className),
+      } as React.ComponentProps<'div'>,
+      props
+    ),
+    state: {
+      'slot': 'box',
+      'paint': paint,
+      'box-paint': paint === undefined ? undefined : '',
+      'box-bleed': bleed,
+      'box-radius': radius,
+      'box-surface': surface,
+      'box-border': border,
+      'box-shadow': shadow,
+      'box-gap': gap,
+      'box-p': p,
+      'box-px': px,
+      'box-py': py,
+      'box-pt': pt,
+      'box-pb': pb,
+      'box-ps': ps,
+      'box-pe': pe,
+    },
+    render,
+  });
 }
 
 export { Box };

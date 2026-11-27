@@ -4,7 +4,7 @@
  * The CSS sets live in styles/variants/.
  */
 type ActionTone = 'base' | 'primary' | 'destructive'
-type ActionEmphasis = 'solid' | 'soft' | 'outline' | 'ghost' | 'link' | 'muted'
+type ActionEmphasis = 'solid' | 'soft' | 'outline' | 'ghost' | 'ghost-subtle' | 'link' | 'muted'
 
 type ButtonVariant =
   | 'default'
@@ -20,7 +20,7 @@ type ToggleEmphasis = ToggleVariant
 /** The only exposed tone and emphasis pairs. */
 type ButtonAxes =
   | { tone: 'primary', emphasis: 'solid' | 'link' }
-  | { tone: 'base', emphasis: 'soft' | 'outline' | 'ghost' | 'muted' }
+  | { tone: 'base', emphasis: 'soft' | 'outline' | 'ghost' | 'ghost-subtle' | 'muted' }
   | { tone: 'destructive', emphasis: 'soft' }
 
 type ButtonPaint =
@@ -47,7 +47,7 @@ const BUTTON_PRESETS: Record<ButtonVariant, ButtonAxes> = {
   secondary: { tone: 'base', emphasis: 'soft' },
   outline: { tone: 'base', emphasis: 'outline' },
   ghost: { tone: 'base', emphasis: 'ghost' },
-  muted: { tone: 'base', emphasis: 'muted' },
+  muted: { tone: 'base', emphasis: 'ghost-subtle' },
   destructive: { tone: 'destructive', emphasis: 'soft' },
   link: { tone: 'primary', emphasis: 'link' },
 };

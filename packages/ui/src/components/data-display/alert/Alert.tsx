@@ -52,7 +52,7 @@ function Alert({
       'row-type': 'content',
       'row-size': 'md',
       variant,
-      paint: paintName({ tone: tone ?? ALERT_TONE[variant], emphasis: 'surface' }),
+      'paint-static': paintName({ tone: tone ?? ALERT_TONE[variant], emphasis: 'surface' }),
     },
   });
 }

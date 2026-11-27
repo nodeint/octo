@@ -491,7 +491,7 @@ export const Variants: Story = {
       {(['outline', 'secondary', 'ghost'] as const).map((variant) => (
         <ButtonGroup key={variant} variant={variant}>
           <Select defaultValue="$">
-            <SelectTrigger aria-label="Currency">
+            <SelectTrigger aria-label="Currency" >
               <SelectValue />
             </SelectTrigger>
             <SelectContent>

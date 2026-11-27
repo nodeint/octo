@@ -3,6 +3,7 @@ import { useRender } from '@base-ui/react/use-render';
 import * as React from 'react';
 
 import { cn } from '../../../lib/utils';
+import { Inline, type InlineProps } from '../../layout/inline/Inline';
 import { Icon } from '../../typography/icon/Icon';
 
 function Breadcrumb({ className, ...props }: React.ComponentProps<'nav'>): React.JSX.Element {
@@ -16,21 +17,23 @@ function Breadcrumb({ className, ...props }: React.ComponentProps<'nav'>): React
   );
 }
 
-function BreadcrumbList({ className, ...props }: React.ComponentProps<'ol'>): React.JSX.Element {
+function BreadcrumbList(props: InlineProps): React.JSX.Element {
   return (
-    <ol
+    <Inline
+      render={<ol />}
       data-slot="breadcrumb-list"
-      className={cn('breadcrumb-list', className)}
+      gap="xs"
       {...props}
     />
   );
 }
 
-function BreadcrumbItem({ className, ...props }: React.ComponentProps<'li'>): React.JSX.Element {
+function BreadcrumbItem(props: InlineProps): React.JSX.Element {
   return (
-    <li
+    <Inline
+      render={<li />}
       data-slot="breadcrumb-item"
-      className={cn('breadcrumb-item', className)}
+      gap="xs"
       {...props}
     />
   );
@@ -45,15 +48,17 @@ function BreadcrumbLink({
     defaultTagName: 'a',
     props: mergeProps<'a'>(
       {
-        className: cn('breadcrumb-link', className),
+        className: cn(className),
       },
       props
     ),
     render,
     state: {
       slot: 'breadcrumb-link',
+      paint: 'base-text-subtle',
+      link: true
     },
-    });
+  });
 }
 
 function BreadcrumbPage({ className, ...props }: React.ComponentProps<'span'>): React.JSX.Element {
@@ -63,7 +68,6 @@ function BreadcrumbPage({ className, ...props }: React.ComponentProps<'span'>): 
       role="link"
       aria-disabled="true"
       aria-current="page"
-      className={cn('breadcrumb-page', className)}
       {...props}
     />
   );
@@ -71,15 +75,14 @@ function BreadcrumbPage({ className, ...props }: React.ComponentProps<'span'>): 
 
 function BreadcrumbSeparator({
   children,
-  className,
   ...props
 }: React.ComponentProps<'li'>): React.JSX.Element {
   return (
     <li
       data-slot="breadcrumb-separator"
+      data-paint-static="base-ghost-subtle"
       role="presentation"
       aria-hidden="true"
-      className={cn('breadcrumb-separator', className)}
       {...props}
     >
       {children ?? <Icon name="chevron-right" />}
@@ -88,7 +91,6 @@ function BreadcrumbSeparator({
 }
 
 function BreadcrumbEllipsis({
-  className,
   ...props
 }: React.ComponentProps<'span'>): React.JSX.Element {
   return (
@@ -96,7 +98,7 @@ function BreadcrumbEllipsis({
       data-slot="breadcrumb-ellipsis"
       role="presentation"
       aria-hidden="true"
-      className={cn('breadcrumb-ellipsis', className)}
+      data-icon-size="md"
       {...props}
     >
       <Icon name="more-horizontal" />

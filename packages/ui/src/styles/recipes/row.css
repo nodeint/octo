@@ -317,15 +317,6 @@
   color: var(--row-description-color, var(--row-description-type-color, var(--variant-fg-muted)));
 }
 
-.row-description > a {
-  text-decoration-line: underline;
-  text-underline-offset: 4px;
-}
-
-.row-description > a:hover {
-  color: var(--primary-strong-bg);
-}
-
 .row-meta {
   display: -webkit-box;
   -webkit-box-orient: vertical;

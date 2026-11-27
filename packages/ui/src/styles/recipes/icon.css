@@ -1,0 +1,23 @@
+svg[data-icon-size] {
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+[data-icon-size] {
+    svg {
+        width: var(--icon-size);
+        height: var(--icon-size);
+    }
+}
+
+[data-icon-size='sm'] {
+    --icon-size: var(--icon-sm);
+}
+
+[data-icon-size='md'] {
+    --icon-size: var(--icon-md);
+}
+
+[data-icon-size='lg'] {
+    --icon-size: var(--icon-lg);
+}

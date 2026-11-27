@@ -38,3 +38,20 @@ button:not(:disabled),
 [role='button']:not(:disabled) {
   cursor: pointer;
 }
+
+[data-paint] {
+  color: var(--variant-fg);
+  background-color: var(--variant-bg);
+  border-color: var(--variant-border);
+
+  &:hover {
+    color: var(--variant-fg-hover);
+    background-color: var(--variant-bg-hover);
+  }
+}
+
+[data-paint-static] {
+  color: var(--variant-fg);
+  background-color: var(--variant-bg);
+  border-color: var(--variant-border)
+}

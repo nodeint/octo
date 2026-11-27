@@ -255,7 +255,7 @@
   --teal-strong-bg: oklch(0.508 0.118 165.612);
   --teal-strong-fg: var(--teal-50);
   --teal-strong-fg-subtle: var(--teal-100);
-  --teal-strong-fg-muted: var(--teal-300);
+  --teal-strong-fg-muted: var(--teal-200);
   --teal-strong-bg-hover: oklch(from var(--teal-strong-bg) clamp(0, calc(l - 0.06), 1) c h);
   --teal-strong-bg-disabled: var(--teal-300);
   --teal-subtle-bg: oklch(0.93 0.045 166);
@@ -1087,11 +1087,11 @@
 
   /* teal */
   --teal-strong-bg: oklch(0.78 0.12 166.5);
-  --teal-strong-fg: var(--teal-1000);
-  --teal-strong-fg-subtle: var(--teal-950);
-  --teal-strong-fg-muted: var(--teal-800);
   --teal-strong-bg-hover: oklch(from var(--teal-strong-bg) clamp(0, calc(l + 0.05), 1) c h);
-  --teal-strong-bg-disabled: var(--teal-800);
+  --teal-strong-bg-disabled: var(--teal-600);
+  --teal-strong-fg: var(--teal-1000);
+  --teal-strong-fg-subtle: var(--teal-900);
+  --teal-strong-fg-muted: var(--teal-800);
   --teal-subtle-bg: oklch(0.33 0.045 166.5);
   --teal-subtle-fg: var(--teal-300);
   --teal-subtle-fg-subtle: var(--teal-400);
@@ -1302,7 +1302,7 @@
   --purple-surface-bg-hover: oklch(from var(--purple-subtle-bg-hover) l c h / 50%);
   --purple-surface-bg-active: oklch(from var(--purple-subtle-bg-active) l c h / 50%);
   --purple-surface-bg-disabled: oklch(from var(--purple-subtle-bg) l c h / 25%);
-  --purple-surface-fg: var(--purple-400);
+  --purple-surface-fg: var(--purple-300);
   --purple-surface-fg-subtle: var(--purple-400);
   --purple-surface-fg-muted: var(--purple-500);
   --purple-border: oklch(from var(--purple-strong-bg) l c h / 40%);

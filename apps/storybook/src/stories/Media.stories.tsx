@@ -14,7 +14,7 @@ const VARIANTS = [
   'warning',
   'info',
   'plain',
-  'muted'
+  'subtle'
 ] as const;
 
 

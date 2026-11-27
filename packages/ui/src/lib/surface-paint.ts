@@ -26,7 +26,7 @@ type SwatchTone =
   | 'mist'
   | 'taupe'
 type SurfaceTone = 'base' | 'primary' | 'destructive' | 'success' | 'warning' | 'info' | SwatchTone
-type SurfaceEmphasis = 'solid' | 'soft' | 'plain' | 'muted' | 'outline'
+type SurfaceEmphasis = 'solid' | 'soft' | 'plain' | 'plain-subtle' | 'outline'
 
 type SurfaceVariant =
   | 'default'
@@ -34,7 +34,7 @@ type SurfaceVariant =
   | 'destructive'
   | 'outline'
   | 'plain'
-  | 'muted'
+  | 'subtle'
   | 'success'
   | 'warning'
   | 'info'
@@ -57,7 +57,7 @@ const SURFACE_PRESETS: Record<SurfaceVariant, SurfaceAxes> = {
   destructive: { tone: 'destructive', emphasis: 'soft' },
   outline: { tone: 'base', emphasis: 'outline' },
   plain: { tone: 'base', emphasis: 'plain' },
-  muted: { tone: 'base', emphasis: 'muted' },
+  subtle: { tone: 'base', emphasis: 'plain-subtle' },
   success: { tone: 'success', emphasis: 'soft' },
   warning: { tone: 'warning', emphasis: 'soft' },
   info: { tone: 'info', emphasis: 'soft' },

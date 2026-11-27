@@ -9,9 +9,11 @@
   --variant-fg: var(--success-strong-fg);
   --variant-fg-subtle: var(--success-strong-fg-subtle);
   --variant-fg-muted: var(--success-strong-fg-muted);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
+}
+
+[data-paint-static='success-solid'] {
+  --variant-bg: var(--success-strong-bg);
+  --variant-fg: var(--success-strong-fg);
 }
 
 [data-paint='success-soft'] {
@@ -23,65 +25,75 @@
   --variant-fg: var(--success-subtle-fg);
   --variant-fg-subtle: var(--success-subtle-fg-subtle);
   --variant-fg-muted: var(--success-subtle-fg-muted);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
+}
+
+[data-paint-static='success-soft'] {
+  --variant-bg: var(--success-subtle-bg);
+  --variant-fg: var(--success-subtle-fg);
 }
 
 [data-paint='success-outline'] {
   --variant-ring: var(--success-strong-bg);
-  --variant-bg: transparent;
-  --variant-bg-hover: var(--success-subtle-bg-hover);
-  --variant-bg-active: var(--success-subtle-bg-active);
-  --variant-bg-disabled: transparent;
+  --variant-bg: var(--success-plain-bg);
+  --variant-bg-hover: var(--success-plain-bg-hover);
+  --variant-bg-active: var(--success-plain-bg-active);
+  --variant-bg-disabled: var(--success-plain-bg-disabled);
   --variant-fg: var(--success-plain-fg);
-  --variant-fg-subtle: var(--success-border-subtle);
-  --variant-fg-muted: var(--success-border-muted);
-  --variant-border: var(--success-border);
-  --variant-border-hover: var(--success-border);
-  --variant-border-disabled: var(--success-border-muted);
-}
-
-[data-paint='success-muted'] {
-  --variant-ring: var(--success-strong-bg);
-  --variant-bg: transparent;
-  --variant-bg-hover: var(--success-subtle-bg-hover);
-  --variant-bg-active: var(--success-subtle-bg-active);
-  --variant-bg-disabled: transparent;
-  --variant-fg: var(--success-border-muted);
-  --variant-fg-subtle: var(--success-border-subtle);
-  --variant-fg-muted: var(--success-border-muted);
-  --variant-fg-hover: var(--success-plain-fg);
-  --variant-fg-active: var(--success-plain-fg);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
-}
-
-[data-paint='success-plain'] {
-  --variant-ring: var(--success-strong-bg);
-  --variant-bg: transparent;
-  --variant-bg-hover: transparent;
-  --variant-bg-active: transparent;
-  --variant-bg-disabled: transparent;
-  --variant-fg: var(--success-plain-fg);
-  --variant-fg-subtle: var(--success-border-subtle);
-  --variant-fg-muted: var(--success-border-muted);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
-}
-
-[data-paint='success-surface'] {
-  --variant-ring: var(--success-strong-bg);
-  --variant-bg: var(--success-surface-bg);
-  --variant-bg-hover: var(--success-surface-bg-hover);
-  --variant-bg-active: var(--success-surface-bg-active);
-  --variant-bg-disabled: var(--success-surface-bg-disabled);
-  --variant-fg: var(--success-plain-fg);
-  --variant-fg-subtle: var(--success-surface-fg-subtle);
-  --variant-fg-muted: var(--success-surface-fg-muted);
+  --variant-fg-subtle: var(--success-plain-fg-subtle);
+  --variant-fg-muted: var(--success-plain-fg-muted);
   --variant-border: var(--success-border);
   --variant-border-hover: var(--success-border-subtle);
   --variant-border-disabled: var(--success-border-muted);
+}
+
+[data-paint-static='success-outline'] {
+  --variant-bg: var(--success-plain-bg);
+  --variant-fg: var(--success-plain-fg);
+  --variant-border: var(--success-border);
+}
+
+/* ghost: plain with a background on hover and active. */
+[data-paint='success-ghost'] {
+  --variant-ring: var(--success-strong-bg);
+  --variant-bg-hover: var(--success-plain-bg-hover);
+  --variant-bg-active: var(--success-plain-bg-active);
+  --variant-bg-disabled: var(--success-plain-bg-disabled);
+  --variant-fg: var(--success-plain-fg);
+  --variant-fg-hover: var(--success-plain-fg-subtle);
+  --variant-fg-disabled: var(--success-plain-fg-muted);
+}
+
+[data-paint-static='success-ghost'] {
+  --variant-fg: var(--success-plain-fg);
+}
+
+/* ghost-subtle: ghost with subtle text at rest; hover and active read as ghost. */
+[data-paint='success-ghost-subtle'] {
+  --variant-ring: var(--success-strong-bg);
+  --variant-bg-hover: var(--success-plain-bg-hover);
+  --variant-bg-active: var(--success-plain-bg-active);
+  --variant-bg-disabled: var(--success-plain-bg-disabled);
+  --variant-fg: var(--success-plain-fg-subtle);
+  --variant-fg-subtle: var(--success-plain-fg-subtle);
+  --variant-fg-muted: var(--success-plain-fg-muted);
+  --variant-fg-hover: var(--success-plain-fg);
+  --variant-fg-active: var(--success-plain-fg);
+}
+
+[data-paint-static='success-ghost-subtle'] {
+  --variant-fg: var(--success-plain-fg-subtle);
+}
+
+[data-paint='success-text-subtle'] {
+  --variant-ring: var(--success-strong-bg);
+  --variant-fg: var(--success-plain-fg-subtle);
+  --variant-fg-hover: var(--success-plain-fg);
+  --variant-fg-disabled: var(--success-plain-fg-muted);
+}
+
+[data-paint-static='success-surface'] {
+  --variant-bg: var(--success-surface-bg);
+  --variant-fg: var(--success-surface-fg);
+  --variant-fg-subtle: var(--success-surface-fg-subtle);
+  --variant-border: var(--success-border);
 }

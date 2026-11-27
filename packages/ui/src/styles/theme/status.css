@@ -34,8 +34,8 @@
   --destructive-surface-bg-hover: oklch(from var(--destructive-subtle-bg-hover) l c h / 50%);
   --destructive-surface-bg-active: oklch(from var(--destructive-subtle-bg-active) l c h / 50%);
   --destructive-surface-bg-disabled: oklch(from var(--destructive-subtle-bg) l c h / 25%);
-  --destructive-surface-fg: color-mix(in oklch, var(--destructive-strong-bg) 80%, var(--destructive-subtle-bg));
-  --destructive-surface-fg-subtle: color-mix(in oklch, var(--destructive-strong-bg) 65%, var(--destructive-subtle-bg));
+  --destructive-surface-fg: var(--destructive-strong-bg);
+  --destructive-surface-fg-subtle: color-mix(in oklch, var(--destructive-strong-bg) 60%, var(--destructive-subtle-bg));
   --destructive-surface-fg-muted: color-mix(in oklch, var(--destructive-strong-bg) 50%, var(--destructive-subtle-bg));
   --destructive-border: oklch(from var(--destructive-strong-bg) l c h / 40%);
   --destructive-border-subtle: oklch(from var(--destructive-strong-bg) l c h / 25%);
@@ -65,8 +65,8 @@
   --success-surface-bg-hover: oklch(from var(--success-subtle-bg-hover) l c h / 50%);
   --success-surface-bg-active: oklch(from var(--success-subtle-bg-active) l c h / 50%);
   --success-surface-bg-disabled: oklch(from var(--success-subtle-bg) l c h / 25%);
-  --success-surface-fg: color-mix(in oklch, var(--success-strong-bg) 80%, var(--success-subtle-bg));
-  --success-surface-fg-subtle: color-mix(in oklch, var(--success-strong-bg) 65%, var(--success-subtle-bg));
+  --success-surface-fg: var(--success-strong-bg);
+  --success-surface-fg-subtle: color-mix(in oklch, var(--success-strong-bg) 60%, var(--success-subtle-bg));
   --success-surface-fg-muted: color-mix(in oklch, var(--success-strong-bg) 50%, var(--success-subtle-bg));
   --success-border: oklch(from var(--success-strong-bg) l c h / 40%);
   --success-border-subtle: oklch(from var(--success-strong-bg) l c h / 25%);
@@ -96,8 +96,8 @@
   --warning-surface-bg-hover: oklch(from var(--warning-subtle-bg-hover) l c h / 50%);
   --warning-surface-bg-active: oklch(from var(--warning-subtle-bg-active) l c h / 50%);
   --warning-surface-bg-disabled: oklch(from var(--warning-subtle-bg) l c h / 25%);
-  --warning-surface-fg: color-mix(in oklch, var(--warning-strong-bg) 80%, var(--warning-subtle-bg));
-  --warning-surface-fg-subtle: color-mix(in oklch, var(--warning-strong-bg) 65%, var(--warning-subtle-bg));
+  --warning-surface-fg: var(--warning-strong-bg);
+  --warning-surface-fg-subtle: color-mix(in oklch, var(--warning-strong-bg) 60%, var(--warning-subtle-bg));
   --warning-surface-fg-muted: color-mix(in oklch, var(--warning-strong-bg) 50%, var(--warning-subtle-bg));
   --warning-border: oklch(from var(--warning-strong-bg) l c h / 40%);
   --warning-border-subtle: oklch(from var(--warning-strong-bg) l c h / 25%);
@@ -127,8 +127,8 @@
   --info-surface-bg-hover: oklch(from var(--info-subtle-bg-hover) l c h / 50%);
   --info-surface-bg-active: oklch(from var(--info-subtle-bg-active) l c h / 50%);
   --info-surface-bg-disabled: oklch(from var(--info-subtle-bg) l c h / 25%);
-  --info-surface-fg: color-mix(in oklch, var(--info-strong-bg) 80%, var(--info-subtle-bg));
-  --info-surface-fg-subtle: color-mix(in oklch, var(--info-strong-bg) 65%, var(--info-subtle-bg));
+  --info-surface-fg: var(--info-strong-bg);
+  --info-surface-fg-subtle: color-mix(in oklch, var(--info-strong-bg) 60%, var(--info-subtle-bg));
   --info-surface-fg-muted: color-mix(in oklch, var(--info-strong-bg) 50%, var(--info-subtle-bg));
   --info-border: oklch(from var(--info-strong-bg) l c h / 40%);
   --info-border-subtle: oklch(from var(--info-strong-bg) l c h / 25%);
@@ -157,8 +157,8 @@
   --destructive-surface-bg-hover: oklch(from var(--destructive-subtle-bg-hover) l c h / 50%);
   --destructive-surface-bg-active: oklch(from var(--destructive-subtle-bg-active) l c h / 50%);
   --destructive-surface-bg-disabled: oklch(from var(--destructive-subtle-bg) l c h / 25%);
-  --destructive-surface-fg: color-mix(in oklch, var(--destructive-strong-bg) 80%, var(--destructive-subtle-bg));
-  --destructive-surface-fg-subtle: color-mix(in oklch, var(--destructive-strong-bg) 65%, var(--destructive-subtle-bg));
+  --destructive-surface-fg: var(--destructive-strong-bg);
+  --destructive-surface-fg-subtle: color-mix(in oklch, var(--destructive-strong-bg) 60%, var(--destructive-subtle-bg));
   --destructive-surface-fg-muted: color-mix(in oklch, var(--destructive-strong-bg) 50%, var(--destructive-subtle-bg));
   --destructive-border: oklch(from var(--destructive-strong-bg) l c h / 40%);
   --destructive-border-subtle: oklch(from var(--destructive-strong-bg) l c h / 25%);
@@ -185,8 +185,8 @@
   --success-surface-bg-hover: oklch(from var(--success-subtle-bg-hover) l c h / 50%);
   --success-surface-bg-active: oklch(from var(--success-subtle-bg-active) l c h / 50%);
   --success-surface-bg-disabled: oklch(from var(--success-subtle-bg) l c h / 25%);
-  --success-surface-fg: color-mix(in oklch, var(--success-strong-bg) 80%, var(--success-subtle-bg));
-  --success-surface-fg-subtle: color-mix(in oklch, var(--success-strong-bg) 65%, var(--success-subtle-bg));
+  --success-surface-fg: var(--success-strong-bg);
+  --success-surface-fg-subtle: color-mix(in oklch, var(--success-strong-bg) 60%, var(--success-subtle-bg));
   --success-surface-fg-muted: color-mix(in oklch, var(--success-strong-bg) 50%, var(--success-subtle-bg));
   --success-border: oklch(from var(--success-strong-bg) l c h / 40%);
   --success-border-subtle: oklch(from var(--success-strong-bg) l c h / 25%);
@@ -213,8 +213,8 @@
   --warning-surface-bg-hover: oklch(from var(--warning-subtle-bg-hover) l c h / 50%);
   --warning-surface-bg-active: oklch(from var(--warning-subtle-bg-active) l c h / 50%);
   --warning-surface-bg-disabled: oklch(from var(--warning-subtle-bg) l c h / 25%);
-  --warning-surface-fg: color-mix(in oklch, var(--warning-strong-bg) 80%, var(--warning-subtle-bg));
-  --warning-surface-fg-subtle: color-mix(in oklch, var(--warning-strong-bg) 65%, var(--warning-subtle-bg));
+  --warning-surface-fg: var(--warning-strong-bg);
+  --warning-surface-fg-subtle: color-mix(in oklch, var(--warning-strong-bg) 60%, var(--warning-subtle-bg));
   --warning-surface-fg-muted: color-mix(in oklch, var(--warning-strong-bg) 50%, var(--warning-subtle-bg));
   --warning-border: oklch(from var(--warning-strong-bg) l c h / 40%);
   --warning-border-subtle: oklch(from var(--warning-strong-bg) l c h / 25%);
@@ -241,8 +241,8 @@
   --info-surface-bg-hover: oklch(from var(--info-subtle-bg-hover) l c h / 50%);
   --info-surface-bg-active: oklch(from var(--info-subtle-bg-active) l c h / 50%);
   --info-surface-bg-disabled: oklch(from var(--info-subtle-bg) l c h / 25%);
-  --info-surface-fg: color-mix(in oklch, var(--info-strong-bg) 80%, var(--info-subtle-bg));
-  --info-surface-fg-subtle: color-mix(in oklch, var(--info-strong-bg) 65%, var(--info-subtle-bg));
+  --info-surface-fg: var(--info-strong-bg);
+  --info-surface-fg-subtle: color-mix(in oklch, var(--info-strong-bg) 60%, var(--info-subtle-bg));
   --info-surface-fg-muted: color-mix(in oklch, var(--info-strong-bg) 50%, var(--info-subtle-bg));
   --info-border: oklch(from var(--info-strong-bg) l c h / 40%);
   --info-border-subtle: oklch(from var(--info-strong-bg) l c h / 25%);

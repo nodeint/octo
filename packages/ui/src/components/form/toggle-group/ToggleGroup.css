@@ -9,6 +9,7 @@
   align-items: center;
   gap: var(--group-gap);
   width: fit-content;
+  background: transparent;
   border-radius: var(--group-action-radius, var(--radius-action-md));
 }
 

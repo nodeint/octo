@@ -70,15 +70,15 @@ export const InButton: Story = {
   name: 'Button',
   render: () => (
     <Stack gap="md">
-      <Button disabled size="sm">
+      <Button disabled>
         <Spinner />
         Loading...
       </Button>
-      <Button variant="outline" disabled size="sm">
+      <Button variant="outline" disabled>
         <Spinner />
         Please wait
       </Button>
-      <Button variant="secondary" disabled size="sm">
+      <Button variant="secondary" disabled>
         <Spinner />
         Processing
       </Button>
@@ -133,7 +133,7 @@ export const InEmpty: Story = {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button variant="outline" size="sm">
+        <Button variant="outline">
           <Icon name="x" />
           Cancel
         </Button>

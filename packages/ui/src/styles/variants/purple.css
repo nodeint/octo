@@ -9,9 +9,11 @@
   --variant-fg: var(--purple-strong-fg);
   --variant-fg-subtle: var(--purple-strong-fg-subtle);
   --variant-fg-muted: var(--purple-strong-fg-muted);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
+}
+
+[data-paint-static='purple-solid'] {
+  --variant-bg: var(--purple-strong-bg);
+  --variant-fg: var(--purple-strong-fg);
 }
 
 [data-paint='purple-soft'] {
@@ -23,65 +25,75 @@
   --variant-fg: var(--purple-subtle-fg);
   --variant-fg-subtle: var(--purple-subtle-fg-subtle);
   --variant-fg-muted: var(--purple-subtle-fg-muted);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
+}
+
+[data-paint-static='purple-soft'] {
+  --variant-bg: var(--purple-subtle-bg);
+  --variant-fg: var(--purple-subtle-fg);
 }
 
 [data-paint='purple-outline'] {
   --variant-ring: var(--purple-strong-bg);
-  --variant-bg: transparent;
-  --variant-bg-hover: var(--purple-subtle-bg-hover);
-  --variant-bg-active: var(--purple-subtle-bg-active);
-  --variant-bg-disabled: transparent;
+  --variant-bg: var(--purple-plain-bg);
+  --variant-bg-hover: var(--purple-plain-bg-hover);
+  --variant-bg-active: var(--purple-plain-bg-active);
+  --variant-bg-disabled: var(--purple-plain-bg-disabled);
   --variant-fg: var(--purple-plain-fg);
-  --variant-fg-subtle: var(--purple-border-subtle);
-  --variant-fg-muted: var(--purple-border-muted);
-  --variant-border: var(--purple-border);
-  --variant-border-hover: var(--purple-border);
-  --variant-border-disabled: var(--purple-border-muted);
-}
-
-[data-paint='purple-muted'] {
-  --variant-ring: var(--purple-strong-bg);
-  --variant-bg: transparent;
-  --variant-bg-hover: var(--purple-subtle-bg-hover);
-  --variant-bg-active: var(--purple-subtle-bg-active);
-  --variant-bg-disabled: transparent;
-  --variant-fg: var(--purple-border-muted);
-  --variant-fg-subtle: var(--purple-border-subtle);
-  --variant-fg-muted: var(--purple-border-muted);
-  --variant-fg-hover: var(--purple-plain-fg);
-  --variant-fg-active: var(--purple-plain-fg);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
-}
-
-[data-paint='purple-plain'] {
-  --variant-ring: var(--purple-strong-bg);
-  --variant-bg: transparent;
-  --variant-bg-hover: transparent;
-  --variant-bg-active: transparent;
-  --variant-bg-disabled: transparent;
-  --variant-fg: var(--purple-plain-fg);
-  --variant-fg-subtle: var(--purple-border-subtle);
-  --variant-fg-muted: var(--purple-border-muted);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
-}
-
-[data-paint='purple-surface'] {
-  --variant-ring: var(--purple-strong-bg);
-  --variant-bg: var(--purple-surface-bg);
-  --variant-bg-hover: var(--purple-surface-bg-hover);
-  --variant-bg-active: var(--purple-surface-bg-active);
-  --variant-bg-disabled: var(--purple-surface-bg-disabled);
-  --variant-fg: var(--purple-plain-fg);
-  --variant-fg-subtle: var(--purple-surface-fg-subtle);
-  --variant-fg-muted: var(--purple-surface-fg-muted);
+  --variant-fg-subtle: var(--purple-plain-fg-subtle);
+  --variant-fg-muted: var(--purple-plain-fg-muted);
   --variant-border: var(--purple-border);
   --variant-border-hover: var(--purple-border-subtle);
   --variant-border-disabled: var(--purple-border-muted);
+}
+
+[data-paint-static='purple-outline'] {
+  --variant-bg: var(--purple-plain-bg);
+  --variant-fg: var(--purple-plain-fg);
+  --variant-border: var(--purple-border);
+}
+
+/* ghost: plain with a background on hover and active. */
+[data-paint='purple-ghost'] {
+  --variant-ring: var(--purple-strong-bg);
+  --variant-bg-hover: var(--purple-plain-bg-hover);
+  --variant-bg-active: var(--purple-plain-bg-active);
+  --variant-bg-disabled: var(--purple-plain-bg-disabled);
+  --variant-fg: var(--purple-plain-fg);
+  --variant-fg-hover: var(--purple-plain-fg-subtle);
+  --variant-fg-disabled: var(--purple-plain-fg-muted);
+}
+
+[data-paint-static='purple-ghost'] {
+  --variant-fg: var(--purple-plain-fg);
+}
+
+/* ghost-subtle: ghost with subtle text at rest; hover and active read as ghost. */
+[data-paint='purple-ghost-subtle'] {
+  --variant-ring: var(--purple-strong-bg);
+  --variant-bg-hover: var(--purple-plain-bg-hover);
+  --variant-bg-active: var(--purple-plain-bg-active);
+  --variant-bg-disabled: var(--purple-plain-bg-disabled);
+  --variant-fg: var(--purple-plain-fg-subtle);
+  --variant-fg-subtle: var(--purple-plain-fg-subtle);
+  --variant-fg-muted: var(--purple-plain-fg-muted);
+  --variant-fg-hover: var(--purple-plain-fg);
+  --variant-fg-active: var(--purple-plain-fg);
+}
+
+[data-paint-static='purple-ghost-subtle'] {
+  --variant-fg: var(--purple-plain-fg-subtle);
+}
+
+[data-paint='purple-text-subtle'] {
+  --variant-ring: var(--purple-strong-bg);
+  --variant-fg: var(--purple-plain-fg-subtle);
+  --variant-fg-hover: var(--purple-plain-fg);
+  --variant-fg-disabled: var(--purple-plain-fg-muted);
+}
+
+[data-paint-static='purple-surface'] {
+  --variant-bg: var(--purple-surface-bg);
+  --variant-fg: var(--purple-surface-fg);
+  --variant-fg-subtle: var(--purple-surface-fg-subtle);
+  --variant-border: var(--purple-border);
 }

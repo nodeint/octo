@@ -9,9 +9,11 @@
   --variant-fg: var(--destructive-strong-fg);
   --variant-fg-subtle: var(--destructive-strong-fg-subtle);
   --variant-fg-muted: var(--destructive-strong-fg-muted);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
+}
+
+[data-paint-static='destructive-solid'] {
+  --variant-bg: var(--destructive-strong-bg);
+  --variant-fg: var(--destructive-strong-fg);
 }
 
 [data-paint='destructive-soft'] {
@@ -23,65 +25,75 @@
   --variant-fg: var(--destructive-subtle-fg);
   --variant-fg-subtle: var(--destructive-subtle-fg-subtle);
   --variant-fg-muted: var(--destructive-subtle-fg-muted);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
+}
+
+[data-paint-static='destructive-soft'] {
+  --variant-bg: var(--destructive-subtle-bg);
+  --variant-fg: var(--destructive-subtle-fg);
 }
 
 [data-paint='destructive-outline'] {
   --variant-ring: var(--destructive-strong-bg);
-  --variant-bg: transparent;
-  --variant-bg-hover: var(--destructive-subtle-bg-hover);
-  --variant-bg-active: var(--destructive-subtle-bg-active);
-  --variant-bg-disabled: transparent;
+  --variant-bg: var(--destructive-plain-bg);
+  --variant-bg-hover: var(--destructive-plain-bg-hover);
+  --variant-bg-active: var(--destructive-plain-bg-active);
+  --variant-bg-disabled: var(--destructive-plain-bg-disabled);
   --variant-fg: var(--destructive-plain-fg);
-  --variant-fg-subtle: var(--destructive-border-subtle);
-  --variant-fg-muted: var(--destructive-border-muted);
-  --variant-border: var(--destructive-border);
-  --variant-border-hover: var(--destructive-border);
-  --variant-border-disabled: var(--destructive-border-muted);
-}
-
-[data-paint='destructive-muted'] {
-  --variant-ring: var(--destructive-strong-bg);
-  --variant-bg: transparent;
-  --variant-bg-hover: var(--destructive-subtle-bg-hover);
-  --variant-bg-active: var(--destructive-subtle-bg-active);
-  --variant-bg-disabled: transparent;
-  --variant-fg: var(--destructive-border-muted);
-  --variant-fg-subtle: var(--destructive-border-subtle);
-  --variant-fg-muted: var(--destructive-border-muted);
-  --variant-fg-hover: var(--destructive-plain-fg);
-  --variant-fg-active: var(--destructive-plain-fg);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
-}
-
-[data-paint='destructive-plain'] {
-  --variant-ring: var(--destructive-strong-bg);
-  --variant-bg: transparent;
-  --variant-bg-hover: transparent;
-  --variant-bg-active: transparent;
-  --variant-bg-disabled: transparent;
-  --variant-fg: var(--destructive-plain-fg);
-  --variant-fg-subtle: var(--destructive-border-subtle);
-  --variant-fg-muted: var(--destructive-border-muted);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
-}
-
-[data-paint='destructive-surface'] {
-  --variant-ring: var(--destructive-strong-bg);
-  --variant-bg: var(--destructive-surface-bg);
-  --variant-bg-hover: var(--destructive-surface-bg-hover);
-  --variant-bg-active: var(--destructive-surface-bg-active);
-  --variant-bg-disabled: var(--destructive-surface-bg-disabled);
-  --variant-fg: var(--destructive-plain-fg);
-  --variant-fg-subtle: var(--destructive-surface-fg-subtle);
-  --variant-fg-muted: var(--destructive-surface-fg-muted);
+  --variant-fg-subtle: var(--destructive-plain-fg-subtle);
+  --variant-fg-muted: var(--destructive-plain-fg-muted);
   --variant-border: var(--destructive-border);
   --variant-border-hover: var(--destructive-border-subtle);
   --variant-border-disabled: var(--destructive-border-muted);
+}
+
+[data-paint-static='destructive-outline'] {
+  --variant-bg: var(--destructive-plain-bg);
+  --variant-fg: var(--destructive-plain-fg);
+  --variant-border: var(--destructive-border);
+}
+
+/* ghost: plain with a background on hover and active. */
+[data-paint='destructive-ghost'] {
+  --variant-ring: var(--destructive-strong-bg);
+  --variant-bg-hover: var(--destructive-plain-bg-hover);
+  --variant-bg-active: var(--destructive-plain-bg-active);
+  --variant-bg-disabled: var(--destructive-plain-bg-disabled);
+  --variant-fg: var(--destructive-plain-fg);
+  --variant-fg-hover: var(--destructive-plain-fg-subtle);
+  --variant-fg-disabled: var(--destructive-plain-fg-muted);
+}
+
+[data-paint-static='destructive-ghost'] {
+  --variant-fg: var(--destructive-plain-fg);
+}
+
+/* ghost-subtle: ghost with subtle text at rest; hover and active read as ghost. */
+[data-paint='destructive-ghost-subtle'] {
+  --variant-ring: var(--destructive-strong-bg);
+  --variant-bg-hover: var(--destructive-plain-bg-hover);
+  --variant-bg-active: var(--destructive-plain-bg-active);
+  --variant-bg-disabled: var(--destructive-plain-bg-disabled);
+  --variant-fg: var(--destructive-plain-fg-subtle);
+  --variant-fg-subtle: var(--destructive-plain-fg-subtle);
+  --variant-fg-muted: var(--destructive-plain-fg-muted);
+  --variant-fg-hover: var(--destructive-plain-fg);
+  --variant-fg-active: var(--destructive-plain-fg);
+}
+
+[data-paint-static='destructive-ghost-subtle'] {
+  --variant-fg: var(--destructive-plain-fg-subtle);
+}
+
+[data-paint='destructive-text-subtle'] {
+  --variant-ring: var(--destructive-strong-bg);
+  --variant-fg: var(--destructive-plain-fg-subtle);
+  --variant-fg-hover: var(--destructive-plain-fg);
+  --variant-fg-disabled: var(--destructive-plain-fg-muted);
+}
+
+[data-paint-static='destructive-surface'] {
+  --variant-bg: var(--destructive-surface-bg);
+  --variant-fg: var(--destructive-surface-fg);
+  --variant-fg-subtle: var(--destructive-surface-fg-subtle);
+  --variant-border: var(--destructive-border);
 }

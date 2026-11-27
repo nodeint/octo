@@ -9,9 +9,11 @@
   --variant-fg: var(--indigo-strong-fg);
   --variant-fg-subtle: var(--indigo-strong-fg-subtle);
   --variant-fg-muted: var(--indigo-strong-fg-muted);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
+}
+
+[data-paint-static='indigo-solid'] {
+  --variant-bg: var(--indigo-strong-bg);
+  --variant-fg: var(--indigo-strong-fg);
 }
 
 [data-paint='indigo-soft'] {
@@ -23,65 +25,75 @@
   --variant-fg: var(--indigo-subtle-fg);
   --variant-fg-subtle: var(--indigo-subtle-fg-subtle);
   --variant-fg-muted: var(--indigo-subtle-fg-muted);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
+}
+
+[data-paint-static='indigo-soft'] {
+  --variant-bg: var(--indigo-subtle-bg);
+  --variant-fg: var(--indigo-subtle-fg);
 }
 
 [data-paint='indigo-outline'] {
   --variant-ring: var(--indigo-strong-bg);
-  --variant-bg: transparent;
-  --variant-bg-hover: var(--indigo-subtle-bg-hover);
-  --variant-bg-active: var(--indigo-subtle-bg-active);
-  --variant-bg-disabled: transparent;
+  --variant-bg: var(--indigo-plain-bg);
+  --variant-bg-hover: var(--indigo-plain-bg-hover);
+  --variant-bg-active: var(--indigo-plain-bg-active);
+  --variant-bg-disabled: var(--indigo-plain-bg-disabled);
   --variant-fg: var(--indigo-plain-fg);
-  --variant-fg-subtle: var(--indigo-border-subtle);
-  --variant-fg-muted: var(--indigo-border-muted);
-  --variant-border: var(--indigo-border);
-  --variant-border-hover: var(--indigo-border);
-  --variant-border-disabled: var(--indigo-border-muted);
-}
-
-[data-paint='indigo-muted'] {
-  --variant-ring: var(--indigo-strong-bg);
-  --variant-bg: transparent;
-  --variant-bg-hover: var(--indigo-subtle-bg-hover);
-  --variant-bg-active: var(--indigo-subtle-bg-active);
-  --variant-bg-disabled: transparent;
-  --variant-fg: var(--indigo-border-muted);
-  --variant-fg-subtle: var(--indigo-border-subtle);
-  --variant-fg-muted: var(--indigo-border-muted);
-  --variant-fg-hover: var(--indigo-plain-fg);
-  --variant-fg-active: var(--indigo-plain-fg);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
-}
-
-[data-paint='indigo-plain'] {
-  --variant-ring: var(--indigo-strong-bg);
-  --variant-bg: transparent;
-  --variant-bg-hover: transparent;
-  --variant-bg-active: transparent;
-  --variant-bg-disabled: transparent;
-  --variant-fg: var(--indigo-plain-fg);
-  --variant-fg-subtle: var(--indigo-border-subtle);
-  --variant-fg-muted: var(--indigo-border-muted);
-  --variant-border: transparent;
-  --variant-border-hover: transparent;
-  --variant-border-disabled: transparent;
-}
-
-[data-paint='indigo-surface'] {
-  --variant-ring: var(--indigo-strong-bg);
-  --variant-bg: var(--indigo-surface-bg);
-  --variant-bg-hover: var(--indigo-surface-bg-hover);
-  --variant-bg-active: var(--indigo-surface-bg-active);
-  --variant-bg-disabled: var(--indigo-surface-bg-disabled);
-  --variant-fg: var(--indigo-plain-fg);
-  --variant-fg-subtle: var(--indigo-surface-fg-subtle);
-  --variant-fg-muted: var(--indigo-surface-fg-muted);
+  --variant-fg-subtle: var(--indigo-plain-fg-subtle);
+  --variant-fg-muted: var(--indigo-plain-fg-muted);
   --variant-border: var(--indigo-border);
   --variant-border-hover: var(--indigo-border-subtle);
   --variant-border-disabled: var(--indigo-border-muted);
+}
+
+[data-paint-static='indigo-outline'] {
+  --variant-bg: var(--indigo-plain-bg);
+  --variant-fg: var(--indigo-plain-fg);
+  --variant-border: var(--indigo-border);
+}
+
+/* ghost: plain with a background on hover and active. */
+[data-paint='indigo-ghost'] {
+  --variant-ring: var(--indigo-strong-bg);
+  --variant-bg-hover: var(--indigo-plain-bg-hover);
+  --variant-bg-active: var(--indigo-plain-bg-active);
+  --variant-bg-disabled: var(--indigo-plain-bg-disabled);
+  --variant-fg: var(--indigo-plain-fg);
+  --variant-fg-hover: var(--indigo-plain-fg-subtle);
+  --variant-fg-disabled: var(--indigo-plain-fg-muted);
+}
+
+[data-paint-static='indigo-ghost'] {
+  --variant-fg: var(--indigo-plain-fg);
+}
+
+/* ghost-subtle: ghost with subtle text at rest; hover and active read as ghost. */
+[data-paint='indigo-ghost-subtle'] {
+  --variant-ring: var(--indigo-strong-bg);
+  --variant-bg-hover: var(--indigo-plain-bg-hover);
+  --variant-bg-active: var(--indigo-plain-bg-active);
+  --variant-bg-disabled: var(--indigo-plain-bg-disabled);
+  --variant-fg: var(--indigo-plain-fg-subtle);
+  --variant-fg-subtle: var(--indigo-plain-fg-subtle);
+  --variant-fg-muted: var(--indigo-plain-fg-muted);
+  --variant-fg-hover: var(--indigo-plain-fg);
+  --variant-fg-active: var(--indigo-plain-fg);
+}
+
+[data-paint-static='indigo-ghost-subtle'] {
+  --variant-fg: var(--indigo-plain-fg-subtle);
+}
+
+[data-paint='indigo-text-subtle'] {
+  --variant-ring: var(--indigo-strong-bg);
+  --variant-fg: var(--indigo-plain-fg-subtle);
+  --variant-fg-hover: var(--indigo-plain-fg);
+  --variant-fg-disabled: var(--indigo-plain-fg-muted);
+}
+
+[data-paint-static='indigo-surface'] {
+  --variant-bg: var(--indigo-surface-bg);
+  --variant-fg: var(--indigo-surface-fg);
+  --variant-fg-subtle: var(--indigo-surface-fg-subtle);
+  --variant-border: var(--indigo-border);
 }

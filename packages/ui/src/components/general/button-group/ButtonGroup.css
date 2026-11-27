@@ -9,6 +9,7 @@
   display: flex;
   align-items: stretch;
   width: fit-content;
+  background: transparent;
 }
 
 .button-group > *:is(:focus-visible, [aria-invalid='true']) {
