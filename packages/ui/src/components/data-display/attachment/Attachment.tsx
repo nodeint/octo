@@ -1,8 +1,8 @@
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
+import { withDefaultVariant } from '@workspace/ds';
 import * as React from 'react';
 
-import { withDefaultVariant } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
 import { Button } from '../../general/button/Button';
 

@@ -1,8 +1,7 @@
 import { Toolbar as ToolbarPrimitive } from '@base-ui/react/toolbar';
+import { type ButtonPaint, paintName, resolveButtonPaint, resolveTogglePaint, type TogglePaint } from '@workspace/ds';
 
-import { type ButtonPaint, resolveButtonPaint, resolveTogglePaint, type TogglePaint } from '../../../lib/action-paint';
 import { resolveGroupPaint } from '../../../lib/group-paint';
-import { paintName } from '../../../lib/paint';
 import { cn } from '../../../lib/utils';
 import { type ToggleSize } from '../../form/toggle/Toggle';
 import {

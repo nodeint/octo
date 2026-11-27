@@ -46,7 +46,9 @@
     "packages/ui": {
       "project": [
         "src/**/*.{ts,tsx}"
-      ],
+      ]
+    },
+    "packages/ds": {
       "ignoreDependencies": [
         "@fontsource-variable/inter"
       ]

@@ -1,0 +1,30 @@
+{
+  "name": "storybook-ds",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev -p 6007",
+    "build": "storybook build",
+    "typecheck": "tsc",
+    "test": "vitest run",
+    "test:update": "vitest run --update"
+  },
+  "dependencies": {
+    "@workspace/ds": "workspace:*",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "11.0.0-rc.1",
+    "@storybook/addon-vitest": "11.0.0-rc.1",
+    "@storybook/react-vite": "11.0.0-rc.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitest/browser-playwright": "^5.1.1",
+    "playwright": "^1.65.1",
+    "storybook": "11.0.0-rc.1",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.8",
+    "vitest": "catalog:"
+  }
+}

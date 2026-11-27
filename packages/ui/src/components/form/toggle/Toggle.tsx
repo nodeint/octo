@@ -1,9 +1,8 @@
 'use client';
 
 import { Toggle as TogglePrimitive } from '@base-ui/react/toggle';
+import { paintName, resolveTogglePaint, type TogglePaint, type ToggleVariant } from '@workspace/ds';
 
-import { resolveTogglePaint, type TogglePaint, type ToggleVariant } from '../../../lib/action-paint';
-import { paintName } from '../../../lib/paint';
 import { cn } from '../../../lib/utils';
 
 type ToggleSize = 'xs' | 'sm' | 'md' | 'lg'
@@ -41,5 +40,5 @@ function Toggle({
 }
 
 export { Toggle };
-export type { ToggleEmphasis } from '../../../lib/action-paint';
+export type { ToggleEmphasis } from '@workspace/ds';
 export type { ToggleProps, ToggleShape, ToggleSize, ToggleVariant };

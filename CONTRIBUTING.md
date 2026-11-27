@@ -17,6 +17,8 @@ Paths are `packages/<name>`; names are `@workspace/<name>`.
 | Name | Owns |
 | --- | --- |
 | example | Placeholder package; replace it |
+| ds | Design system: tokens, recipes, base styles; independent of `ui` |
+| ui | Components; consume `@workspace/ds` styles |
 | e2e | Private end-to-end tests at `e2e/`; never released, has no version |
 
 - Read each affected package's `README.md`; import cross-package code by package name.

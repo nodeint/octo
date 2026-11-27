@@ -3,7 +3,7 @@
  * The group root carries `data-paint`, and styles/recipes/group.css hands the resulting
  * --variant-* slots to the actions and fields inside as --group-*. The CSS sets live in styles/variants/.
  */
-import { FIELD_PAINT, type PaintName } from './paint';
+import { FIELD_PAINT, type PaintName } from '@workspace/ds';
 
 type GroupVariant = 'outline' | 'secondary' | 'ghost'
 type GroupFieldVariant = GroupVariant | 'field'

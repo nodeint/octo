@@ -1,6 +1,3 @@
-@import "./section/Section.css";
-@import "./flex/Flex.css";
-@import "./grid/Grid.css";
 @import "./pane/Pane.css";
 @import "./separator/Separator.css";
 @import "./collapsible/Collapsible.css";

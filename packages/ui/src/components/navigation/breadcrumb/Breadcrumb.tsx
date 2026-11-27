@@ -1,9 +1,9 @@
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
+import { Stack, type StackProps } from '@workspace/ds';
 import * as React from 'react';
 
 import { cn } from '../../../lib/utils';
-import { Stack, type StackProps } from '../../layout/stack/Stack';
 import { Icon } from '../../typography/icon/Icon';
 
 function Breadcrumb({ className, ...props }: React.ComponentProps<'nav'>): React.JSX.Element {

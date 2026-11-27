@@ -15,7 +15,7 @@ import { join } from 'node:path';
 
 import { REPO_ROOT } from '../lib/repo.mjs';
 
-const THEME = join(REPO_ROOT, 'packages/ui/src/styles/theme');
+const THEME = join(REPO_ROOT, 'packages/ds/src/styles/theme');
 const FILES = ['palette', 'swatches', 'base', 'primary'];
 const MIN = { fg: 4.5, 'fg-subtle': 4.5, 'fg-muted': 3 };
 const EMPHASES = ['strong', 'subtle', 'plain', 'surface'];

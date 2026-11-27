@@ -1,8 +1,7 @@
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
+import { paintName, resolveSurfacePaint, type SurfacePaint, type SurfaceVariant } from '@workspace/ds';
 
-import { paintName } from '../../../lib/paint';
-import { resolveSurfacePaint, type SurfacePaint, type SurfaceVariant } from '../../../lib/surface-paint';
 import { cn } from '../../../lib/utils';
 
 type BadgeVariant = SurfaceVariant
@@ -24,7 +23,7 @@ function Badge({
   render,
   ...props
 }: BadgeProps): React.JSX.Element {
-  const paint = resolveSurfacePaint({ variant, tone, emphasis }, 'default');
+  const paint = resolveSurfacePaint({ variant, tone, emphasis }, 'primary');
   return useRender({
     defaultTagName: 'span',
     props: mergeProps<'span'>(

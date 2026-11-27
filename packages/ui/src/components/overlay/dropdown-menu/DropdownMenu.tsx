@@ -1,8 +1,7 @@
 import { Menu as MenuPrimitive } from '@base-ui/react/menu';
+import { type ButtonPaint, paintName, resolveButtonPaint } from '@workspace/ds';
 import * as React from 'react';
 
-import { type ButtonPaint, resolveButtonPaint } from '../../../lib/action-paint';
-import { paintName } from '../../../lib/paint';
 import { cn } from '../../../lib/utils';
 import type { ButtonShape, ButtonSize } from '../../general/button/Button';
 import { Icon } from '../../typography/icon/Icon';

@@ -3,7 +3,7 @@ import type { BadgeSize, BadgeVariant } from '@workspace/ui';
 import { Badge, Icon, Spinner,Stack } from '@workspace/ui';
 
 const VARIANTS = [
-  'default',
+  'primary',
   'secondary',
   'destructive',
   'outline',

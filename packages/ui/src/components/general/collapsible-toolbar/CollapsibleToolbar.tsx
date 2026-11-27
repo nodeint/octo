@@ -1,7 +1,7 @@
+import type { OmitFromUnion } from '@workspace/ds';
 import { createContext, useContext, useRef } from 'react';
 
 import { useCollapsibleToolbar } from '../../../hooks/use-collapsible-toolbar';
-import type { OmitFromUnion } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
 import { Collapsible, CollapsibleContent } from '../../layout/collapsible/Collapsible';
 import { Icon } from '../../typography/icon/Icon';

@@ -1,6 +1,7 @@
 'use client';
 
 import { Combobox as ComboboxPrimitive } from '@base-ui/react';
+import { paintName, resolveButtonPaint } from '@workspace/ds';
 import * as React from 'react';
 
 import { cn } from '../../../lib/utils';
@@ -12,8 +13,6 @@ import {
 } from '../../form/input-group/InputGroup';
 import { Button, type ButtonProps } from '../../general/button/Button';
 import { Icon } from '../../typography/icon/Icon';
-import { paintName } from '../../../lib/paint';
-import { resolveButtonPaint } from '../../../lib/action-paint';
 
 const Combobox = ComboboxPrimitive.Root;
 

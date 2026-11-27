@@ -7,12 +7,12 @@
  * - `octo/no-theme-selector`: component, recipe, and `base.css` files must not select `.dark`.
  *   `utilities.css` may select it.
  *
- * A token's axis is the folder of the file that declares it (`styles/theme`, `styles/layout`).
+ * A token's axis is the folder of the file that declares it (`styles/theme`, `styles/layout`) in `packages/ds`; component CSS in `packages/ui` has no sibling `styles/`, so it reads the `packages/ds` one.
  * A custom property declared in `styles/recipes/` is a component token: it may read any token.
  * The other declarations of a recipe are consumer reads.
  * `typography.css`, `components.css`, `variants.css` and `appearance/` are not checked.
  */
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path, { join } from 'node:path';
 
 import stylelint from 'stylelint';
@@ -102,6 +102,12 @@ export function classifyFile(file, pathApi = path) {
   }
 }
 
+/** `packages/ui` has no `styles/` of its own: its components read the design system's, in `packages/ds`. */
+function resolveStylesDir(stylesDir) {
+  if (existsSync(stylesDir)) return stylesDir;
+  return join(stylesDir, '..', '..', '..', 'ds', 'src', 'styles');
+}
+
 const tokenTierName = 'octo/token-tier';
 const tokenTierMessages = utils.ruleMessages(tokenTierName, {
   raw: (token) => `Component reads raw color token "${token}"; read a theme role`,
@@ -113,7 +119,7 @@ const tokenTierRule = (enabled) => (root, result) => {
   const file = root.source?.input.file;
   const info = file && classifyFile(file);
   if (!info) return;
-  const index = buildTokenIndex(info.stylesDir);
+  const index = buildTokenIndex(resolveStylesDir(info.stylesDir));
 
   root.walkDecls((decl) => {
     for (const match of decl.value.matchAll(VAR_READ)) {

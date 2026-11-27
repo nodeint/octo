@@ -1,8 +1,8 @@
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
+import type { PaintName } from '@workspace/ds';
 import * as React from 'react';
 
-import type { PaintName } from '../../../lib/paint';
 import { cn } from '../../../lib/utils';
 import { Separator } from '../../layout/separator/Separator';
 

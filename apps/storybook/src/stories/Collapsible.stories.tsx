@@ -51,17 +51,17 @@ export const Demo: Story = {
             <Icon name="chevron-down" />
           </CollapsibleTrigger>
         </Flex>
-        <Flex radius="sm" border="thin" justify="space-between" px="md" py="sm">
+        <Flex radius="sm" bordered justify="space-between" px="md" py="sm">
           <Text variant="description">Status</Text>
           <Text variant="label">Shipped</Text>
         </Flex>
         <CollapsibleContent>
           <Stack>
-            <Box radius="sm" border="thin" px="md" py="sm">
+            <Box radius="sm" bordered px="md" py="sm">
               <Text as="p" variant="label">Shipping address</Text>
               <Text as="p" variant="description">100 Market St, San Francisco</Text>
             </Box>
-            <Box radius="sm" border="thin" px="md" py="sm">
+            <Box radius="sm" bordered px="md" py="sm">
               <Text as="p" variant="label">Items</Text>
               <Text as="p" variant="description">2x Studio Headphones</Text>
             </Box>
@@ -100,7 +100,7 @@ function Settings(): React.JSX.Element {
     ));
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-      <Box radius="md" border="thin" style={{ padding: '1rem' }}>
+      <Box radius="md" bordered style={{ padding: '1rem' }}>
         <Stack>
           <Text variant="title-sm">Radius</Text>
           <Text variant="description">Set the corner radius of the element.</Text>
@@ -187,17 +187,17 @@ export const Rtl: Story = {
             <Icon name="chevron-down" />
           </CollapsibleTrigger>
         </Flex>
-        <Flex radius="sm" border="thin" justify="space-between" px="md" py="sm">
+        <Flex radius="sm" bordered justify="space-between" px="md" py="sm">
           <Text variant="description">الحالة</Text>
           <Text variant="label">تم الشحن</Text>
         </Flex>
         <CollapsibleContent>
           <Stack>
-            <Box radius="sm" border="thin" px="md" py="sm">
+            <Box radius="sm" bordered px="md" py="sm">
               <Text as="p" variant="label">عنوان الشحن</Text>
               <Text as="p" variant="description">100 Market St, San Francisco</Text>
             </Box>
-            <Box radius="sm" border="thin" px="md" py="sm">
+            <Box radius="sm" bordered px="md" py="sm">
               <Text as="p" variant="label">العناصر</Text>
               <Text as="p" variant="description">2x سماعات الاستوديو</Text>
             </Box>

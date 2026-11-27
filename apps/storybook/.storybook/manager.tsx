@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IconButton, TooltipLinkList, WithTooltip } from 'storybook/internal/components';
+import { Button, PopoverProvider } from 'storybook/internal/components';
 import { addons, types, useGlobals } from 'storybook/manager-api';
 
 import { APPEARANCE_AXES, type AppearanceAxis, INITIAL_APPEARANCE } from './appearance';
@@ -22,36 +22,54 @@ function AppearanceMenu(): React.JSX.Element {
   /** Globals arrive after the preview loads; until then show the initial value. */
   const currentValue = (axis: AppearanceAxis): string => String(globals[axis.key] ?? INITIAL_APPEARANCE[axis.key]);
 
-  const links = openAxis === null
+  const rows = openAxis === null
     ? APPEARANCE_AXES.map((axis) => ({
         id: axis.key,
         title: axis.label,
         right: currentValue(axis),
+        active: false,
         onClick: (): void => setOpenAxis(axis),
       }))
     : [
-        { id: 'back', title: `‹ ${openAxis.label}`, onClick: (): void => setOpenAxis(null) },
+        { id: 'back', title: `‹ ${openAxis.label}`, right: '', active: false, onClick: (): void => setOpenAxis(null) },
         ...openAxis.options.map((option) => ({
           id: option,
           title: option,
+          right: '',
           active: currentValue(openAxis) === option,
           onClick: (): void => updateGlobals({ [openAxis.key]: option }),
         })),
       ];
 
   return (
-    <WithTooltip
+    <PopoverProvider
+      ariaLabel="Appearance"
       placement="bottom-start"
-      closeOnOutsideClick
-      onVisibleChange={(isVisible) => {
+      padding={4}
+      onVisibleChange={(isVisible: boolean) => {
         if (!isVisible) setOpenAxis(null);
       }}
-      tooltip={<TooltipLinkList links={links} />}
+      popover={(
+        <div style={{ display: 'flex', flexDirection: 'column', minWidth: 160 }}>
+          {rows.map((row) => (
+            <Button
+              key={row.id}
+              ariaLabel={false}
+              variant={row.active ? 'solid' : 'ghost'}
+              onClick={row.onClick}
+              style={{ justifyContent: 'space-between', gap: 16 }}
+            >
+              <span>{row.title}</span>
+              <span>{row.right}</span>
+            </Button>
+          ))}
+        </div>
+      )}
     >
-      <IconButton title="Appearance" aria-label="Appearance">
+      <Button variant="ghost" padding="small" ariaLabel="Appearance">
         <AppearanceIcon />
-      </IconButton>
-    </WithTooltip>
+      </Button>
+    </PopoverProvider>
   );
 }
 

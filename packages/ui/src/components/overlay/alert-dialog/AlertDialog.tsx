@@ -1,9 +1,9 @@
 'use client';
 
 import { AlertDialog as AlertDialogPrimitive } from '@base-ui/react/alert-dialog';
+import { type ButtonPaint, toButtonPaint } from '@workspace/ds';
 import * as React from 'react';
 
-import { type ButtonPaint, toButtonPaint } from '../../../lib/action-paint';
 import { cn } from '../../../lib/utils';
 import { Button } from '../../general/button/Button';
 

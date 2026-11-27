@@ -20,10 +20,10 @@ test('derives the axis of a token file on a Windows path', () => {
 });
 
 test('derives the axis of a nested token file on a POSIX path', () => {
-  expect(classifyFile('/repo/packages/ui/src/styles/layout/a.css', path.posix)).toEqual({
+  expect(classifyFile('/repo/packages/ds/src/styles/layout/a.css', path.posix)).toEqual({
     kind: 'token',
     axis: 'layout',
-    stylesDir: '/repo/packages/ui/src/styles',
+    stylesDir: '/repo/packages/ds/src/styles',
   });
 });
 
@@ -43,10 +43,10 @@ test('classifies utilities.css as a consumer that may select .dark', () => {
 });
 
 test('classifies files under styles/recipes as consumers', () => {
-  expect(classifyFile('/r/packages/ui/src/styles/recipes/action.css', path.posix)).toEqual({
+  expect(classifyFile('/r/packages/ds/src/styles/recipes/action.css', path.posix)).toEqual({
     kind: 'consumer',
     recipe: true,
-    stylesDir: '/r/packages/ui/src/styles',
+    stylesDir: '/r/packages/ds/src/styles',
   });
 });
 

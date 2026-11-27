@@ -1,6 +1,6 @@
+import { type OmitFromUnion, withDefaultVariant } from '@workspace/ds';
 import * as React from 'react';
 
-import { type OmitFromUnion, withDefaultVariant } from '../../../lib/action-paint';
 import { type GroupFieldVariant, resolveGroupPaint } from '../../../lib/group-paint';
 import { cn } from '../../../lib/utils';
 import { Button } from '../../general/button/Button';

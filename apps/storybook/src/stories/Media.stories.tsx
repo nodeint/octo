@@ -6,7 +6,7 @@ type MediaTone = NonNullable<React.ComponentProps<typeof Media>['tone']>;
 const SIZES = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 const RATIOS = ['1:1', '4:3', '3:4', '16:9', '9:16'] as const;
 const VARIANTS = [
-  'default',
+  'primary',
   'secondary',
   'destructive',
   'outline',

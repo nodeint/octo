@@ -1,5 +1,5 @@
-import { paintName } from '../../../lib/paint';
-import { resolveSurfacePaint, type SurfacePaint, type SurfaceVariant } from '../../../lib/surface-paint';
+import { paintName, resolveSurfacePaint, type SurfacePaint, type SurfaceVariant } from '@workspace/ds';
+
 import { cn } from '../../../lib/utils';
 
 type MediaSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'fill';

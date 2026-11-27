@@ -45,7 +45,7 @@ function TagList({ title }: { title: string }): React.JSX.Element {
 
 export const Demo: Story = {
   render: (args) => (
-    <Box radius="md" border="thin" style={{ height: '18rem' }}>
+    <Box radius="md" bordered style={{ height: '18rem' }}>
       <ScrollArea {...args} style={{ height: '100%' }}>
         <TagList title="Tags" />
       </ScrollArea>
@@ -57,7 +57,7 @@ export const Horizontal: Story = {
   args: { orientation: 'horizontal' },
   parameters: { storyWidth: 'lg' },
   render: (args) => (
-    <Box radius="md" border="thin">
+    <Box radius="md" bordered>
       <ScrollArea {...args}>
         <div style={{ display: 'flex', width: 'max-content', gap: '1rem', padding: '1rem' }}>
           {['Ornella Binni', 'Tom Byrom', 'Vladimir Malyavko', 'Jane Doe', 'John Roe'].map((artist, index) => (
@@ -80,7 +80,7 @@ export const Horizontal: Story = {
 
 export const Rtl: Story = {
   render: () => (
-    <Box radius="md" border="thin" style={{ height: '18rem' }}>
+    <Box radius="md" bordered style={{ height: '18rem' }}>
       <ScrollArea dir="rtl" style={{ height: '100%' }}>
         <TagList title="العلامات" />
       </ScrollArea>

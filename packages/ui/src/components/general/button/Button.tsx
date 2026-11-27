@@ -1,7 +1,6 @@
 import { Button as ButtonPrimitive } from '@base-ui/react/button';
+import { type ButtonPaint, type ButtonVariant, paintName, resolveButtonPaint } from '@workspace/ds';
 
-import { type ButtonPaint, type ButtonVariant, resolveButtonPaint } from '../../../lib/action-paint';
-import { paintName } from '../../../lib/paint';
 import { cn } from '../../../lib/utils';
 
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg'
@@ -36,5 +35,5 @@ function Button({
 }
 
 export { Button };
-export type { ActionEmphasis as ButtonEmphasis, ActionTone as ButtonTone } from '../../../lib/action-paint';
+export type { ActionEmphasis as ButtonEmphasis, ActionTone as ButtonTone } from '@workspace/ds';
 export type { ButtonProps, ButtonShape, ButtonSize, ButtonVariant };

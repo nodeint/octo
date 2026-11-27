@@ -7,19 +7,10 @@ Shared UI components for the app. The package is currently empty; add components
 ```text
 src/
   index.ts
-  styles/
-    index.css        layer order and imports
-    reset.css        base layer
-    base.css         base layer: page defaults only
-    theme/           theme layer: color, elevation and focus/invalid state tokens (state.css); the only axis with `.dark` values
-    typography.css   theme layer: type steps and text roles
-    variants/        theme layer: one file per color, each block a data-paint variant that declares --variant-*
-    layout/          layout layer: control sizes, space, radius, border widths, containers, motion, z-index, opacity
-    recipes/         recipes layer, below components: class skins shared by several components
-    components.css   components layer: per-part tokens, such as switch, tab, and sidebar parts
-    appearance/      appearance layer: one file per data-appearance-* axis
-    utilities.css    utilities layer: .sr-only, .no-scrollbar, .scroll-fade-x, .shimmer
+  styles.css   imports @workspace/ds/styles.css, then components/index.css into the components layer
 ```
+
+The styles (tokens, recipes, appearance, utilities) live in `@workspace/ds`; see `packages/ds/README.md`.
 
 | Path | Purpose |
 | --- | --- |

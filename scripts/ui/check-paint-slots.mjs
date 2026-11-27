@@ -10,7 +10,7 @@ import { join } from 'node:path';
 import { REPO_ROOT } from '../lib/repo.mjs';
 import { findSlotMismatches } from './paint-slots.mjs';
 
-const VARIANTS = join(REPO_ROOT, 'packages/ui/src/styles/variants');
+const VARIANTS = join(REPO_ROOT, 'packages/ds/src/styles/variants');
 
 const sources = readdirSync(VARIANTS)
   .filter((file) => file.endsWith('.css'))

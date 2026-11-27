@@ -17,7 +17,7 @@ import postcss from 'postcss';
 
 import { REPO_ROOT } from '../lib/repo.mjs';
 
-const STYLES = join(REPO_ROOT, 'packages/ui/src/styles');
+const STYLES = join(REPO_ROOT, 'packages/ds/src/styles');
 const SNAPSHOT = join(dirname(fileURLToPath(import.meta.url)), 'paint-baseline.json');
 
 /** Files whose `:root` and `.dark` blocks declare the tokens every paint reads, in cascade order. */

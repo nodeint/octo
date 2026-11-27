@@ -23,7 +23,7 @@ function Card({
         data-panel-size={size}
         className={cn('panel card', className)}
         data-box-surface="card"
-        data-box-border="thin"
+        data-box-bordered="all"
         {...props}
       />
     </CardSizeContext.Provider>

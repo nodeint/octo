@@ -1,29 +1,30 @@
+import { Box, type BoxProps, Flex, type FlexProps, resolveSurfacePaint } from '@workspace/ds';
 import type * as React from 'react';
 
 import { cn } from '../../../lib/utils';
-import { Box, type BoxProps } from '../box/Box';
-import { Flex, type FlexProps } from '../flex/Flex';
 import { ScrollArea, type ScrollAreaProps } from '../scroll-area/ScrollArea';
 import { Separator } from '../separator/Separator';
 
-/** `tone` and `emphasis` are the Box paint; the pane defaults them to `base` and `outline`. */
+/** `variant`, or `tone` with `emphasis`, is the Box paint; without any the pane paints `base` and `outline`. */
 type PaneProps = FlexProps
 
 function Pane({
   className,
   p = 'md',
   radius = 'md',
-  tone = 'base',
-  emphasis = 'outline',
+  variant,
+  tone,
+  emphasis,
   ...props
 }: PaneProps): React.JSX.Element {
+  const paint = resolveSurfacePaint({ variant, tone, emphasis }, 'outline');
   return (
     <Flex
       p={p}
       radius={radius}
       data-slot="pane"
-      tone={tone}
-      emphasis={emphasis}
+      tone={paint.tone}
+      emphasis={paint.emphasis}
       className={cn('pane', className)}
       {...props}
     />
