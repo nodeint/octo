@@ -100,6 +100,10 @@ drawer share. It owns the panel size: `data-panel-size` (`xs`, `sm`, `md`, `lg`;
 `--panel-inset`, `--panel-gap` and `--panel-radius` (from the `--radius-surface-*` scale), and no component declares them;
 a component reads `--panel-radius` for its own corners.
 `data-panel-size` is separate from `data-size`.
+`panel.css` also owns the panel body type, which no component declares, and the media parts: `panel-media` and
+`panel-media-action`. Three opt-in hooks on a component root switch behavior on: `data-panel-transition` (the surface
+transition), `data-panel-media-bleed` (direct `panel-media` children bleed to the edge) and `data-panel-reveal-scope`
+(hover or focus inside it reveals a `data-reveal='hover-keep-pressed'` media action).
 
 `modal.css` is the modal skin (`modal-overlay`, `modal-content`, `modal-footer`,
 `modal-close-button`) that dialog, alert dialog and drawer opt into by class, next to `panel` and `panel-footer`.
@@ -143,6 +147,7 @@ An exception applies only while a migration is in progress. A new exception need
 | File | Breaks | Why it stays | Removal condition |
 | --- | --- | --- | --- |
 | `menu.css` | Rule 1, in one selector: `:is(.menu-item, .menu-checkable) > [data-slot='text'][data-overflow='truncate']` names the Text slot | Removing it changes the Text or menu markup | The follow-up gives the row label a recipe-owned hook, or Text exposes a token the row sets |
+| `panel.css` | Rule 2: `panel-media`, `panel-media-action`, `data-panel-transition`, `data-panel-media-bleed` and `data-panel-reveal-scope` are used by Card only | The user chose to make the card media parts panel parts instead of keeping them in component CSS | A second panel component (dialog, alert dialog or drawer) adopts them, or they go back to `Card.css` |
 
 ## Rules
 

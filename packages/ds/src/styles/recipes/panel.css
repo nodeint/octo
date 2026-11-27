@@ -6,6 +6,13 @@
  *   --panel-padding       replaces the shell padding (default: the inset), for a re-padded panel
  *   --panel-stack-gap     replaces the gap between parts (default: --panel-gap)
  *
+ * Parts: panel-header, panel-footer, panel-media and panel-media-action (inside panel-media). Every .panel sets the body type.
+ *
+ * Opt-in hooks a component may set on its own root:
+ *   data-panel-transition      transitions color, background-color, border-color and box-shadow
+ *   data-panel-media-bleed     direct panel-media children bleed to the edge (first/last also take the corners)
+ *   data-panel-reveal-scope    hovering or focusing inside it reveals a data-reveal='hover-keep-pressed' media action
+ *
  * Size set: data-panel-size picks --panel-inset, --panel-gap and --panel-radius (one scale for every panel). Without the attribute a panel is md.
  * data-panel-size is separate from data-size, which components use for their own scales (dialog width, card density).
  *   xs  --inset-xs  --gap-sm  --radius-surface-xs
@@ -28,6 +35,15 @@
   --panel-padding: var(--inset);
   gap: var(--panel-stack-gap);
   padding: var(--panel-padding);
+  font-size: var(--role-body-size);
+  line-height: var(--role-body-leading);
+  font-weight: var(--role-body-weight);
+
+  &[data-panel-transition] {
+    transition-property: color, background-color, border-color, box-shadow;
+    transition-duration: var(--default-transition-duration);
+    transition-timing-function: var(--default-transition-timing-function);
+  }
 
   &[data-panel-size='xs'] {
     --panel-inset: var(--inset-xs);
@@ -67,5 +83,50 @@
     margin-block-start: calc(var(--inset) * -1);
     padding: var(--panel-inset);
     border-bottom: var(--border-width-thin) solid var(--border-surface);
+  }
+}
+
+.panel-media {
+  position: relative;
+
+  & > .panel-media-action {
+    position: absolute;
+    top: var(--panel-inset);
+    inset-inline-end: var(--panel-inset);
+  }
+}
+
+/* Media bleed: only under a root with the hook, a direct panel-media reaches the sides; first and last also the ends. */
+[data-panel-media-bleed] {
+  & > .panel-media {
+    margin-inline: calc(var(--inset) * -1);
+  }
+
+  & > .panel-media:first-child {
+    margin-block-start: calc(var(--inset) * -1);
+    border-top-left-radius: var(--panel-radius);
+    border-top-right-radius: var(--panel-radius);
+  }
+
+  & > .panel-media:last-child {
+    margin-block-end: calc(var(--inset) * -1);
+    border-bottom-left-radius: var(--panel-radius);
+    border-bottom-right-radius: var(--panel-radius);
+  }
+}
+
+/* Hover reveal that keeps a pressed child (a set favorite) visible. */
+.panel-media-action[data-reveal='hover-keep-pressed'] {
+  & > :not([aria-pressed='true']) {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  [data-panel-reveal-scope]:hover &,
+  [data-panel-reveal-scope]:focus-within & {
+    & > * {
+      pointer-events: auto;
+      opacity: 1;
+    }
   }
 }

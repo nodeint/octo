@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { cn } from '../../../lib/utils';
+import { cn } from '../../lib/utils';
 
 type CardSize = 'md' | 'sm'
 
@@ -21,6 +21,9 @@ function Card({
         data-slot="card"
         data-size={size}
         data-panel-size={size}
+        data-panel-transition=""
+        data-panel-media-bleed=""
+        data-panel-reveal-scope=""
         className={cn('panel card', className)}
         data-box-surface="card"
         data-box-bordered="all"
@@ -89,7 +92,7 @@ function CardMedia({ className, ...props }: React.ComponentProps<'div'>): React.
   return (
     <div
       data-slot="card-media"
-      className={cn('card-media', className)}
+      className={cn('panel-media card-media', className)}
       {...props}
     />
   );
@@ -99,7 +102,7 @@ function CardMediaAction({ className, ...props }: React.ComponentProps<'div'>): 
   return (
     <div
       data-slot="card-media-action"
-      className={cn('card-media-action', className)}
+      className={cn('panel-media-action card-media-action', className)}
       {...props}
     />
   );

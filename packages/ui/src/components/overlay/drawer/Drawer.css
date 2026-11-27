@@ -1,9 +1,6 @@
-/* Placement, slide and swipe come from modal-side in recipes/modal.css; this file keeps the drawer's own type and parts. */
+/* Placement, slide and swipe come from modal-side in recipes/modal.css; the body type from panel.css; this file keeps the drawer's own parts. */
 .drawer-content {
   --modal-shadow: var(--shadow-lg);
-  font-size: var(--role-body-size);
-  line-height: var(--role-body-leading);
-  font-weight: var(--role-body-weight);
 }
 
 .drawer-header {

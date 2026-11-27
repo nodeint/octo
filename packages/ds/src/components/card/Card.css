@@ -1,0 +1,24 @@
+/*
+ * The shell, body type, transition, header and footer bands, media bleed, media action and reveal come from
+ * recipes/panel.css; the title and description from recipes/row.css. This file keeps only what is specific to Card.
+ */
+.card {
+  overflow: hidden;
+  border-radius: var(--panel-radius);
+  color: var(--variant-fg);
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  container-type: inline-size;
+  container-name: card-header;
+}
+
+.card-header-action {
+  flex-shrink: 0;
+}
+
+.card-footer {
+  align-items: center;
+}

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Move `Card` into the design system; it is still exported from `@workspace/ui`. Only `CardMedia` bleeds to the card
+  edge; a bare `img` child no longer does. The media bleed, media action and hover reveal are now panel parts.
 - Move `Media` into the design system; it is still exported from `@workspace/ui`.
 - Move `Text` into the design system; it now takes `render` instead of `as`.
 - `Action` and every element with the `action` class use the label font, set per size from the size set

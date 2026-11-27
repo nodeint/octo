@@ -3,7 +3,6 @@ export * from './components/data-display/attachment/Attachment';
 export * from './components/data-display/avatar/Avatar';
 export * from './components/data-display/badge/Badge';
 export * from './components/data-display/bubble/Bubble';
-export * from './components/data-display/card/Card';
 export * from './components/data-display/empty/Empty';
 export * from './components/data-display/item/Item';
 export * from './components/data-display/skeleton/Skeleton';

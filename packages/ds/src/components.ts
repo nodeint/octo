@@ -1,6 +1,7 @@
 export * from './components/action/Action';
 export * from './components/action-link/ActionLink';
 export * from './components/box/Box';
+export * from './components/card/Card';
 export * from './components/flex/Flex';
 export * from './components/grid/Grid';
 export * from './components/media/Media';

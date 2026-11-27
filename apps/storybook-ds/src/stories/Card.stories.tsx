@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
-  Badge,
-  Button,
+  Action,
+  ActionLink,
   Card,
   CardContent,
   CardDescription,
@@ -12,19 +12,16 @@ import {
   CardMedia,
   CardMediaAction,
   CardTitle,
-  Field,
-  FieldGroup,
-  FieldLabel,
-  Icon,
-  Input,
+  Flex,
   Stack,
-  Toggle,
-} from '@workspace/ui';
+  Text,
+} from '@workspace/ds/components';
+import * as React from 'react';
 
 import { storyWidthDecorator } from '../story-width';
 
 const meta = {
-  title: 'Data Display/Card',
+  title: 'Components/Card',
   component: Card,
   tags: ['autodocs'],
   argTypes: {
@@ -38,6 +35,46 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+function Glyph({ filled = false }: { filled?: boolean }): React.JSX.Element {
+  return (
+    <svg viewBox="0 0 24 24" fill={filled ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="m12 3 2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z" />
+    </svg>
+  );
+}
+
+function CheckGlyph(): React.JSX.Element {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
+      <path d="m5 12 5 5 9-10" />
+    </svg>
+  );
+}
+
+function FavoriteAction(): React.JSX.Element {
+  const [pressed, setPressed] = React.useState(false);
+
+  return (
+    <Action
+      tone="base" emphasis="ghost"
+      shape="icon"
+      aria-label="Favorite"
+      aria-pressed={pressed}
+      onClick={() => setPressed((value) => !value)}
+    >
+      <Glyph filled={pressed} />
+    </Action>
+  );
+}
+
 export const Demo: Story = {
   render: (args) => (
     <Card {...args}>
@@ -47,31 +84,19 @@ export const Demo: Story = {
           <CardDescription>Enter your email below to login to your account</CardDescription>
         </CardHeaderContent>
         <CardHeaderAction>
-          <Button variant="link">Sign Up</Button>
+          <ActionLink href="#">Sign Up</ActionLink>
         </CardHeaderAction>
       </CardHeader>
       <CardContent>
-        <form>
-          <FieldGroup>
-            <Field>
-              <FieldLabel htmlFor="card-email">Email</FieldLabel>
-              <Input id="card-email" type="email" placeholder="m@example.com" required />
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="card-password">Password</FieldLabel>
-              <Input id="card-password" type="password" required />
-            </Field>
-          </FieldGroup>
-        </form>
+        <Stack gap="sm">
+          <Text>Email: m@example.com</Text>
+          <Text>Password: ••••••••</Text>
+        </Stack>
       </CardContent>
       <CardFooter>
-        <Stack gap="sm" style={{ width: '100%' }}>
-          <Button type="submit" style={{ width: '100%' }}>
-            Login
-          </Button>
-          <Button variant="outline" style={{ width: '100%' }}>
-            Login with Google
-          </Button>
+        <Stack gap="sm">
+          <Action>Login</Action>
+          <Action variant="outline">Login with Google</Action>
         </Stack>
       </CardFooter>
     </Card>
@@ -87,9 +112,7 @@ export const Basic: Story = {
           <CardDescription>Card Description</CardDescription>
         </CardHeaderContent>
         <CardHeaderAction>
-          <Button variant="outline" size="sm">
-            Action
-          </Button>
+          <Action variant="outline" size="sm">Action</Action>
         </CardHeaderAction>
       </CardHeader>
       <CardContent>
@@ -104,7 +127,6 @@ export const Basic: Story = {
 
 export const Small: Story = {
   args: { size: 'sm' },
-  parameters: { storyWidth: 'md' },
   render: (args) => (
     <Card {...args}>
       <CardHeader>
@@ -121,21 +143,17 @@ export const Small: Story = {
             'Include charts, tables, and key metrics.',
           ].map((text) => (
             <Stack orientation="horizontal" key={text} gap="sm">
-              <Icon name="check" size="sm"/>
+              <CheckGlyph />
               <span>{text}</span>
             </Stack>
           ))}
         </Stack>
       </CardContent>
       <CardFooter>
-        <Stack gap="sm" style={{ width: '100%' }}>
-          <Button size="sm" style={{ width: '100%' }}>
-            Set up scheduled reports
-          </Button>
-          <Button variant="outline" size="sm" style={{ width: '100%' }}>
-            See what&apos;s new
-          </Button>
-        </Stack>
+        <Flex direction='column'>
+          <Action size="sm">Set up scheduled reports</Action>
+          <Action variant="outline" size="sm">See what&apos;s new</Action>
+        </Flex>
       </CardFooter>
     </Card>
   ),
@@ -150,7 +168,7 @@ export const HeaderOnly: Story = {
           <CardDescription>Choose what you want to be notified about.</CardDescription>
         </CardHeaderContent>
         <CardHeaderAction>
-          <Badge>New</Badge>
+          <Action size="xs" variant="secondary">New</Action>
         </CardHeaderAction>
       </CardHeader>
     </Card>
@@ -181,16 +199,15 @@ export const WithFooterActions: Story = {
       </CardContent>
       <CardFooter>
         <Stack orientation="horizontal" gap="sm">
-          <Button variant="outline">Cancel</Button>
-          <Button variant="destructive">Delete</Button>
+          <Action variant="outline">Cancel</Action>
+          <Action variant="destructive">Delete</Action>
         </Stack>
       </CardFooter>
     </Card>
   ),
 };
 
-const COVER =
-  'linear-gradient(135deg, var(--primary-strong) 0%, var(--muted) 100%)';
+const COVER = 'linear-gradient(135deg, var(--primary-strong) 0%, var(--muted) 100%)';
 
 export const WithMedia: Story = {
   render: (args) => (
@@ -205,7 +222,7 @@ export const WithMedia: Story = {
         </CardHeaderContent>
       </CardHeader>
       <CardFooter>
-        <Button>View details</Button>
+        <Action>View details</Action>
       </CardFooter>
     </Card>
   ),
@@ -217,7 +234,7 @@ export const MediaWithAction: Story = {
       <CardMedia>
         <div style={{ aspectRatio: '16 / 9', background: COVER }} />
         <CardMediaAction>
-          <Badge>Featured</Badge>
+          <Action size="sm" variant="secondary">Featured</Action>
         </CardMediaAction>
       </CardMedia>
       <CardHeader>
@@ -236,15 +253,13 @@ export const MediaFavoriteOnHover: Story = {
       <CardMedia>
         <div style={{ aspectRatio: '16 / 9', background: COVER }} />
         <CardMediaAction data-reveal="hover-keep-pressed">
-          <Toggle variant="ghost" shape="icon" fillIcon aria-label="Favorite">
-            <Icon name="heart" />
-          </Toggle>
+          <FavoriteAction />
         </CardMediaAction>
       </CardMedia>
       <CardHeader>
         <CardHeaderContent>
           <CardTitle>Hover to reveal</CardTitle>
-          <CardDescription>The favorite toggle shows on hover and stays visible once pressed.</CardDescription>
+          <CardDescription>The favorite action shows on hover and stays visible once pressed.</CardDescription>
         </CardHeaderContent>
       </CardHeader>
     </Card>
