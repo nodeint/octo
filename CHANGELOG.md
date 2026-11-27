@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add the DS `ActionLink` component, an anchor that shares `Action`'s paint and size steps but never draws a
+  border or a background, with a `tone`, a `ghost` or `ghost-subtle` emphasis, an `underline` prop and a `size`.
 - Add the DS `Action` component, a native button styled only by the `action` recipe, and move the shared border
   and row size rules of `Button` and `Toggle` into that recipe.
 - Add one source for the focus and invalid ring (`--state-*` tokens and a `state-ring-group` recipe), so every control,

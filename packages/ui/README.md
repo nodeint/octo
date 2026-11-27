@@ -35,9 +35,9 @@ A stylesheet is a recipe when all of these hold:
    `--variant-*` hooks and its own private hooks (for example `--menu-gap`), and no raw color step from
    `theme/palette.css`, `theme/swatches.css` or `theme/base.css`. It declares no theme values: no `:root` or `.dark` block.
    A private hook it declares takes its value from a token.
-   The exception is the sets a recipe owns: `[data-action-size]` in `action.css`, `[data-field-size]` in
-   `field-control.css`, and `[data-group-size]` in `group.css` declare component tokens
-   (`--action-*`, `--field-*`, `--group-*`) from the control and radius scales (`--control-*`, `--radius-*`).
+   The exception is the sets a recipe owns: `[data-action-size]` in `action.css`, `[data-link-size]` in `link.css`,
+   `[data-field-size]` in `field-control.css`, and `[data-group-size]` in `group.css` declare component tokens
+   (`--action-*`, `--link-*`, `--field-*`, `--group-*`) from the control and radius scales (`--control-*`, `--radius-*`).
    `[data-panel-size]` in `panel.css` declares `--panel-inset` and `--panel-gap` from the `--inset-*` and `--gap-*` roles.
    `[data-row-size]` and `[data-row-type]` in `row.css` declare `--row-*` tokens from the control, space and role scales.
    `octo/token-tier` skips custom properties declared in a recipe.
@@ -84,6 +84,11 @@ Dialog, alert dialog and drawer set the type on their content; a small card sets
 A component sets the input tokens listed in the file header on its own root, and a state color goes in
 `--row-description-color`. It never re-declares what a type sets and never overrides a `row` property.
 
+`link.css` styles `[data-link]`: `data-link` is `none`, `hover` or `always` for the underline, and a bare `data-link`
+draws none. It forces a transparent background and no border in every state and shows the paint's focus halo, so a
+component sets `data-paint` beside it. `[data-link-size]` (`xs`, `sm`, `md`, `lg`) sets `--link-gap`, `--link-icon` and
+`--link-radius` and makes the link `inline-flex` for short labels; it adds no height or padding. `ActionLink` sets both.
+
 `stack.css` is the `stack` flex container: `data-stack-size` (`xs`, `sm`, `md`, `lg`; `md` without the attribute)
 sets the gap and `data-orientation` (`vertical`, `horizontal`) the axis and `data-stack-align` the cross axis.
 A size also declares `--stack-inset` and `--stack-radius`, which a padded or rounded box reads on its own root.
@@ -114,8 +119,9 @@ starts from. Review a recipe against these checks:
    No bare nested selector.
 3. Nest at most two levels below the top-level block.
 4. An attribute that applies without a class (`[data-box-*]`, `[data-media-size]`, `[data-row-type]`, `[data-row-size]`,
-   `[data-row-group-size]`, `[data-action-size]`, `[data-icon-size]`, `[data-link]`) is one top-level block per attribute,
-   with its values nested inside: `[data-x] { &[data-x='v'] { … } }`. A rule pairing two attributes nests under the first.
+   `[data-row-group-size]`, `[data-action-size]`, `[data-icon-size]`, `[data-link]`, `[data-link-size]`)
+   is one top-level block per attribute, with its values nested inside: `[data-x] { &[data-x='v'] { … } }`.
+   A rule pairing two attributes nests under the first.
    These blocks have a specificity of (0,2,0), not (0,1,0). Check that no element can carry the attribute and a
    competing recipe class when you add or change one.
 5. A list that covers one subject is nested as a list inside that subject. A selector list is never a nesting parent,
