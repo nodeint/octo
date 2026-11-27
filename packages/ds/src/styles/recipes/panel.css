@@ -23,21 +23,25 @@
  * or --panel-radius; it reads --panel-radius for its own corners.
  */
 .panel {
-  --panel-inset: var(--inset-md);
-  --panel-gap: var(--gap-md);
-  --panel-radius: var(--radius-surface-md);
-  /* Shell: parts stack with the gap, and --inset tells bleed regions how far to reach. */
-  display: flex;
-  flex-direction: column;
   --inset: var(--panel-inset);
   /* Initialized on every panel: custom properties inherit, so a panel override must not reach a nested panel. */
   --panel-stack-gap: var(--panel-gap);
   --panel-padding: var(--inset);
-  gap: var(--panel-stack-gap);
+  --panel-inset: var(--inset-md);
+  --panel-gap: var(--gap-md);
+  --panel-radius: var(--radius-surface-md);
+
+  /* Shell: parts stack with the gap, and --inset tells bleed regions how far to reach. */
+  display: flex;
+  flex-direction: column;
   padding: var(--panel-padding);
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);
+  overflow: hidden;
+  border-radius: var(--panel-radius);
+  color: var(--variant-fg);
+  gap: var(--panel-stack-gap);
 
   &[data-panel-transition] {
     transition-property: color, background-color, border-color, box-shadow;
