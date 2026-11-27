@@ -1,4 +1,12 @@
+/*
+ * A link has one size and sets no font: it inherits the parent's. It uses the md gap, icon and focus-ring radius.
+ * It adds no height and no padding, so the text sits on the content edge.
+ */
 [data-link] {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--control-gap-md);
+  border-radius: var(--radius-action-md);
   background-color: transparent;
   border-width: 0;
   outline: none;
@@ -28,54 +36,18 @@
     color: var(--variant-fg-disabled);
   }
 
+  & svg {
+    pointer-events: none;
+    flex-shrink: 0;
+    width: var(--icon-md);
+    height: var(--icon-md);
+  }
+
   &[data-link='always'] {
     text-decoration-line: underline;
   }
 
   &[data-link='hover']:hover {
     text-decoration-line: underline;
-  }
-}
-
-/*
- * Size set of a sized link (ActionLink): the gap, icon size and focus-ring radius.
- * It adds no height and no padding, so the text sits on the content edge.
- */
-[data-link-size] {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--link-gap);
-  border-radius: var(--link-radius);
-
-  & svg {
-    pointer-events: none;
-    flex-shrink: 0;
-    --icon-size: var(--link-icon);
-    width: var(--icon-size);
-    height: var(--icon-size);
-  }
-
-  &[data-link-size='xs'] {
-    --link-gap: var(--control-gap-xs);
-    --link-icon: var(--icon-xs);
-    --link-radius: var(--radius-action-xs);
-  }
-
-  &[data-link-size='sm'] {
-    --link-gap: var(--control-gap-sm);
-    --link-icon: var(--icon-sm);
-    --link-radius: var(--radius-action-sm);
-  }
-
-  &[data-link-size='md'] {
-    --link-gap: var(--control-gap-md);
-    --link-icon: var(--icon-md);
-    --link-radius: var(--radius-action-md);
-  }
-
-  &[data-link-size='lg'] {
-    --link-gap: var(--control-gap-lg);
-    --link-icon: var(--icon-md);
-    --link-radius: var(--radius-action-lg);
   }
 }

@@ -4,7 +4,6 @@ import { useRender } from '@base-ui/react/use-render';
 import { paintName } from '../../lib/paint';
 import type { SurfaceTone } from '../../lib/surface-paint';
 
-type ActionLinkSize = 'xs' | 'sm' | 'md' | 'lg';
 type ActionLinkUnderline = 'none' | 'hover' | 'always';
 type ActionLinkEmphasis = 'ghost' | 'ghost-subtle';
 
@@ -15,12 +14,10 @@ type ActionLinkProps = useRender.ComponentProps<'a'> & {
   emphasis?: ActionLinkEmphasis;
   /** When the text is underlined. Default `hover`. */
   underline?: ActionLinkUnderline;
-  /** The gap between a glyph and the label, the icon size and the focus-ring radius. Default `md`. */
-  size?: ActionLinkSize;
 };
 
 /**
- * A navigation link that shares `Action`'s paint and size steps but never draws a border or a background.
+ * A navigation link that shares `Action`'s paint but never draws a border or a background.
  * It renders an `<a>`; pass `render` to swap in a router link.
  *
  * Accessibility contract:
@@ -29,13 +26,12 @@ type ActionLinkProps = useRender.ComponentProps<'a'> & {
  * - set `href` for navigation;
  * - `aria-disabled="true"` only paints the disabled state and blocks the pointer; it does not stop
  *   Enter from following the link;
- * - it is meant for short labels: a sized link is `inline-flex`, so its label does not wrap.
+ * - it is meant for short labels: a link is `inline-flex`, so its label does not wrap.
  */
 function ActionLink({
   tone = 'primary',
   emphasis = 'ghost',
   underline = 'hover',
-  size = 'md',
   render,
   ...props
 }: ActionLinkProps): React.JSX.Element {
@@ -46,11 +42,10 @@ function ActionLink({
       'slot': 'action-link',
       'paint': paintName({ tone, emphasis }),
       'link': underline,
-      'link-size': size,
     },
     render,
   });
 }
 
 export { ActionLink };
-export type { ActionLinkEmphasis, ActionLinkProps, ActionLinkSize, ActionLinkUnderline };
+export type { ActionLinkEmphasis, ActionLinkProps, ActionLinkUnderline };

@@ -5,15 +5,6 @@ import { expect, fn, userEvent, waitFor } from 'storybook/test';
 const TONES = ['base', 'primary', 'destructive', 'success', 'warning', 'info'] as const;
 const EMPHASES = ['ghost', 'ghost-subtle'] as const;
 const UNDERLINES = ['none', 'hover', 'always'] as const;
-const SIZES = ['xs', 'sm', 'md', 'lg'] as const;
-
-function PlusIcon(): React.JSX.Element {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-      <path d="M12 5v14M5 12h14" />
-    </svg>
-  );
-}
 
 const meta = {
   title: 'Components/ActionLink',
@@ -23,13 +14,12 @@ const meta = {
     tone: { control: 'select', options: TONES },
     emphasis: { control: 'inline-radio', options: EMPHASES },
     underline: { control: 'inline-radio', options: UNDERLINES },
-    size: { control: 'inline-radio', options: SIZES },
   },
   parameters: {
     docs: {
       description: {
         component: [
-          'An `<a>` that shares `Action`\'s paint and size steps but never draws a border or a background.',
+          'An `<a>` that shares `Action`\'s paint but never draws a border or a background.',
           'Pass `render` to swap in a router link.',
           '',
           'Accessibility contract:',
@@ -39,7 +29,7 @@ const meta = {
           '- Set `href` for navigation.',
           '- `aria-disabled="true"` only paints the disabled state and blocks the pointer. It does not stop',
           '  Enter from following the link.',
-          '- It is meant for short labels: a sized link is `inline-flex`, so its label does not wrap.',
+          '- It is meant for short labels: a link is `inline-flex`, so its label does not wrap.',
         ].join('\n'),
       },
     },
@@ -131,26 +121,6 @@ export const UnderlineOnHover: Story = {
     await waitFor(() => expect(getComputedStyle(link).textDecorationLine).toBe('underline'));
     await pointer.unhover(link);
     await waitFor(() => expect(getComputedStyle(link).textDecorationLine).toBe('none'));
-  },
-};
-
-export const Sizes: Story = {
-  render: () => (
-    <Stack gap="sm">
-      <Stack orientation="horizontal" align="center" gap="md">
-        {SIZES.map((size) => <ActionLink key={size} href="#" size={size}>{size}</ActionLink>)}
-      </Stack>
-      <Stack orientation="horizontal" align="center" gap="md">
-        {SIZES.map((size) => <ActionLink key={size} href="#" size={size}><PlusIcon />{size}</ActionLink>)}
-      </Stack>
-    </Stack>
-  ),
-  play: async ({ canvas }) => {
-    for (const link of canvas.getAllByRole('link')) {
-      const style = getComputedStyle(link);
-      await expect(style.paddingLeft).toBe('0px');
-      await expect(style.paddingRight).toBe('0px');
-    }
   },
 };
 

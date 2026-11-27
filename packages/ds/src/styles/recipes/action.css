@@ -1,8 +1,8 @@
 /*
  * Behavior shared by the action controls (button, toggle, Action). Each adds `action` beside
- * its own class, so no selector here names a specific control. The border and the default-shape
- * row size (height, inline padding, gap) live here. The type role and group-only hooks stay in
- * Button.css and Toggle.css.
+ * its own class, so no selector here names a specific control. The border, the default-shape
+ * row size (height, inline padding, gap) and the label font live here: the font reads
+ * --action-font-* from the size set, and falls back to --role-label-*. Group-only hooks stay in Button.css and Toggle.css.
  *
  * Color comes only from the variant (styles/variants/),
  * or from a group's data-group-variant (styles/recipes/group.css), which wins for the identity slots.
@@ -24,6 +24,9 @@
   border-color: var(--group-action-border, var(--variant-border));
   color: var(--group-action-fg, var(--variant-fg));
   outline-color: var(--variant-ring);
+  font-size: var(--action-font-size, var(--role-label-size));
+  line-height: var(--action-leading, var(--role-label-leading));
+  font-weight: var(--action-font-weight, var(--role-label-weight));
 
   /* The row shape. A group's --group-action-* values resize it. */
   &[data-shape='default'][data-action-size] {
@@ -131,6 +134,9 @@
  *   gap             space between a glyph and its label
  *   icon            glyph beside a label
  *   radius          corner of an action (--radius-action-*)
+ *   font-size       label font (--role-label-sm-* for xs and sm, --role-label-* for md and lg),
+ *   leading         its line height
+ *   font-weight     and its weight
  * The steps and their raw values live in layout/index.css.
  */
 [data-action-size] {
@@ -140,6 +146,9 @@
     --action-gap: var(--control-gap-xs);
     --action-icon: var(--icon-xs);
     --action-radius: var(--radius-action-xs);
+    --action-font-size: var(--role-label-sm-size);
+    --action-leading: var(--role-label-sm-leading);
+    --action-font-weight: var(--role-label-sm-weight);
   }
 
   &[data-action-size='sm'] {
@@ -148,6 +157,9 @@
     --action-gap: var(--control-gap-sm);
     --action-icon: var(--icon-sm);
     --action-radius: var(--radius-action-sm);
+    --action-font-size: var(--role-label-sm-size);
+    --action-leading: var(--role-label-sm-leading);
+    --action-font-weight: var(--role-label-sm-weight);
   }
 
   &[data-action-size='md'] {
@@ -156,6 +168,9 @@
     --action-gap: var(--control-gap-md);
     --action-icon: var(--icon-md);
     --action-radius: var(--radius-action-md);
+    --action-font-size: var(--role-label-size);
+    --action-leading: var(--role-label-leading);
+    --action-font-weight: var(--role-label-weight);
   }
 
   &[data-action-size='lg'] {
@@ -164,5 +179,8 @@
     --action-gap: var(--control-gap-lg);
     --action-icon: var(--icon-md);
     --action-radius: var(--radius-action-lg);
+    --action-font-size: var(--role-label-size);
+    --action-leading: var(--role-label-leading);
+    --action-font-weight: var(--role-label-weight);
   }
 }

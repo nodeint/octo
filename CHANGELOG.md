@@ -2,8 +2,11 @@
 
 ## Unreleased
 
-- Add the DS `ActionLink` component, an anchor that shares `Action`'s paint and size steps but never draws a
-  border or a background, with a `tone`, a `ghost` or `ghost-subtle` emphasis, an `underline` prop and a `size`.
+- `Action` and every element with the `action` class use the label font, set per size from the size set
+  (`--role-label-sm-*` for `xs` and `sm`, `--role-label-*` for `md` and `lg`). `ActionLink` has a single size and
+  inherits its font from the parent. `Button` keeps its type role.
+- Add the DS `ActionLink` component, an anchor that shares `Action`'s paint but never draws a
+  border or a background, with a `tone`, a `ghost` or `ghost-subtle` emphasis and an `underline` prop.
 - Add the DS `Action` component, a native button styled only by the `action` recipe, and move the shared border
   and row size rules of `Button` and `Toggle` into that recipe.
 - Add one source for the focus and invalid ring (`--state-*` tokens and a `state-ring-group` recipe), so every control,

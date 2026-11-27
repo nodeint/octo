@@ -1,5 +1,7 @@
 /**
- * Raw type steps. Only the design system reads them; the text roles further down in this file are built on them.
+ * Raw type steps. Only the design system reads them: the text roles further down in this file are built on them, and
+ * the box, action, group and link recipes read them as a size-only scale (font size and line height, no weight or
+ * family). A role remains the way to get a full text style.
  *   text-xs · sm · base · lg · xl · 2xl (12 · 14 · 16 · 20 · 32 · 40), each with its line-height
  *   text-code-inline, text-code-block: code in prose
  *   font-light · normal · medium · semibold (300 · 400 · 500 · 600); leading-tight … loose
@@ -64,7 +66,7 @@
 }
 
 /**
- * Text roles: the only way text takes a size, weight, leading, and family.
+ * Text roles: the way text takes a full style (size, weight, leading, and family); the recipes above take only a size.
  * Text and the design-system components read them.
  * A theme overrides these --role-* variables to restyle every text of that role at once.
  *   titles    display · title-lg · title-md · title-sm · subtitle   (heading family)

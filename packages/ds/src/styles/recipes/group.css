@@ -11,13 +11,13 @@
  * var(--group-action-height, var(--action-height)), so it never names a group, and outside a group
  * it falls back to its own data-action-size or data-field-size. The group wins: tokens inherit, so the
  * child's own size attribute cannot override them.
- *   --group-action-*   buttons and toggles: height, px, gap, icon, radius
+ *   --group-action-*   buttons and toggles: height, px, gap, icon, radius, font-size, leading (a raw --text-* step)
  *   --group-field-*    inputs, select triggers, comboboxes: height, px, gap, radius
  *   --group-gap        the space between a group's direct items; a group reads it for its own `gap`. button-group sets it to 0 (its items join)
  *   --group-radius      the group's own corner when it paints a box (input-group, toolbar)
  *   --group-item-*     the step an action takes when it sits inside a group's own border (input-group addon, toolbar):
  *                      one step below the group, xs stays xs. height, px, gap, icon, radius. Such a group aliases these
- *                      to --group-action-* on its root, so it never copies the set.
+ *                      to --group-action-* on its root (font-size and leading included), so it never copies the set.
  * The steps and their raw values live in layout/index.css, as in the size sets in action.css and field-control.css.
  */
 .group {
@@ -42,6 +42,8 @@
     --group-item-gap: var(--control-gap-xs);
     --group-item-icon: var(--icon-xs);
     --group-item-radius: var(--radius-action-xs);
+    --group-item-font-size: var(--text-xs);
+    --group-item-leading: var(--text-xs--line-height);
   }
 
   &[data-group-size='sm'] {
@@ -62,6 +64,8 @@
     --group-item-gap: var(--control-gap-xs);
     --group-item-icon: var(--icon-xs);
     --group-item-radius: var(--radius-action-xs);
+    --group-item-font-size: var(--text-xs);
+    --group-item-leading: var(--text-xs--line-height);
   }
 
   &[data-group-size='md'] {
@@ -82,6 +86,8 @@
     --group-item-gap: var(--control-gap-sm);
     --group-item-icon: var(--icon-sm);
     --group-item-radius: var(--radius-action-sm);
+    --group-item-font-size: var(--text-sm);
+    --group-item-leading: var(--text-sm--line-height);
   }
 
   &[data-group-size='lg'] {
@@ -104,6 +110,8 @@
     --group-item-gap: var(--control-gap-md);
     --group-item-icon: var(--icon-md);
     --group-item-radius: var(--radius-action-md);
+    --group-item-font-size: var(--text-base);
+    --group-item-leading: var(--text-base--line-height);
   }
 
   /*

@@ -9,7 +9,10 @@ type ActionSize = 'xs' | 'sm' | 'md' | 'lg';
 type ActionShape = 'default' | 'icon';
 
 type ActionProps = useRender.ComponentProps<'button'> & SurfacePaint & {
-  /** The control height, inline padding, gap, radius and icon size step. Default `md`. */
+  /**
+   * The control height, inline padding, gap, radius, icon size and text step (font size and line height).
+   * Default `md`.
+   */
   size?: ActionSize;
   /** `icon` is a square of the control height; it needs an `aria-label`. Default `default`. */
   shape?: ActionShape;
