@@ -76,17 +76,18 @@ A part sets `--media-size` (or `--media-width` and `--media-height`), `--media-r
 title and description text that alert, empty, popover, section and card also add (`row-title`, `row-description`).
 `data-row-type` on the element that wraps the title and description picks their text roles
 (`content`, `header`, `compact`), and `data-row-size` (`xs`, `sm`, `md`) picks the padding and gaps.
-`row-group` holds rows in a column (`data-orientation="vertical"`, item group) or a scrolling strip (`data-orientation="horizontal"`, attachment group); set the orientation always, and the gap follows the size of the rows it holds; `--row-lead-gap` is the gap after a leading
-icon in a grid row (alert).
+`row-group` holds rows in a column (`data-orientation="vertical"`, item group) or a scrolling strip
+(`data-orientation="horizontal"`, attachment group); set the orientation always, and the gap follows the size of
+the rows it holds; `--row-lead-gap` is the gap after a leading icon in a grid row (alert).
 The row reads its color from `data-paint` (`--variant-*`), and `data-row-invalid` paints the invalid pair.
 Dialog, alert dialog and drawer set the type on their content; a small card sets `content` on its header.
 A component sets the input tokens listed in the file header on its own root, and a state color goes in
 `--row-description-color`. It never re-declares what a type sets and never overrides a `row` property.
 
-`stack.css` is the `stack` flex container: `data-stack-size` (`xs`, `sm`, `md`, `lg`; `md` without the attribute) sets the gap and
-`data-orientation` (`vertical`, `horizontal`) the axis and `data-stack-align` the cross axis. A size also declares `--stack-inset` and
-`--stack-radius`, which a padded or rounded box reads on its own root. A component never declares `display`, `flex-direction`
-or `gap` on a stack. The `Stack` component adds the class itself.
+`stack.css` is the `stack` flex container: `data-stack-size` (`xs`, `sm`, `md`, `lg`; `md` without the attribute)
+sets the gap and `data-orientation` (`vertical`, `horizontal`) the axis and `data-stack-align` the cross axis.
+A size also declares `--stack-inset` and `--stack-radius`, which a padded or rounded box reads on its own root.
+A component never declares `display`, `flex-direction` or `gap` on a stack. The `Stack` component adds the class itself.
 
 `overlay.css` holds only the `overlay-*` keyframes shared by modal and anchored overlays; it has no selectors.
 `panel.css` is the `panel` shell (flex column, inset, gap) and the `panel-footer` band that card, dialog, alert dialog and
@@ -99,6 +100,34 @@ a component reads `--panel-radius` for its own corners.
 `modal-close-button`) that dialog, alert dialog and drawer opt into by class, next to `panel` and `panel-footer`.
 It keeps only the scrim, position, animation, close button and footer direction. A component sets its input tokens
 (`--modal-background`, `--modal-shadow`) on its own root.
+
+### Writing a recipe
+
+Every file in `src/styles/recipes/` is written in nested CSS. The convention is enforced by review only; `pnpm lint:css`
+does not check it. A rule's subject is the one recipe class or recipe-owned attribute that every selector in the rule
+starts from. Review a recipe against these checks:
+
+1. One top-level block per subject. Declarations come first, then nested rules: states, attribute variants,
+   pseudo-elements, descendants, context (`:focus > &`) and `@media`.
+2. Every nested selector starts with an explicit `&` (`&:hover`, `&[data-size='sm']`, `& svg`, `&::after`, `& > img`).
+   A context selector puts `&` last (`:focus > &`). A type selector on the subject is written `&:is(svg)`, never `svg&`.
+   No bare nested selector.
+3. Nest at most two levels below the top-level block.
+4. An attribute that applies without a class (`[data-box-*]`, `[data-media-size]`, `[data-row-type]`, `[data-row-size]`,
+   `[data-row-group-size]`, `[data-action-size]`, `[data-icon-size]`, `[data-link]`) is one top-level block per attribute,
+   with its values nested inside: `[data-x] { &[data-x='v'] { … } }`. A rule pairing two attributes nests under the first.
+   These blocks have a specificity of (0,2,0), not (0,1,0). Check that no element can carry the attribute and a
+   competing recipe class when you add or change one.
+5. A list that covers one subject is nested as a list inside that subject. A selector list is never a nesting parent,
+   because it flattens to `:is(…)` with the highest specificity in the list.
+6. A list that covers several subjects stays flat at the top level, with its selector text unchanged. This is on purpose:
+   splitting it would duplicate declarations. Its children and `@media` stay flat.
+7. A subject's block sits where every cascade winner stays the same. When no single position works, the block
+   splits into a second top-level block for the same subject, and a comment names the rule it must follow.
+   This is the only allowed second block.
+8. Nested rules keep their source order. Rules do not move across files, because the files compete by import order.
+9. A `@media` that changes one subject nests inside it as `@media (…) { & { … } }`.
+10. The header comment stays first, a rule comment moves with its rule, and indentation is two spaces.
 
 ### Recorded exceptions
 
@@ -121,8 +150,9 @@ An exception applies only while a migration is in progress. A new exception need
 - Tokens live in three axes: `theme/` (color and elevation), `layout/` (size, space, radius, border widths, motion,
   z-index, opacity), and `typography.css`. An axis file reads only its own axis, except `typography.css`,
   which reads the `--variant-fg-*` text colors from `theme/`.
-- `theme/palette.css`, `theme/swatches.css` and `theme/base.css` are raw color scales. The other `theme/` files build roles on them;
-  components, recipes, `base.css`, and `utilities.css` read the roles, never a raw step.
+- `theme/palette.css`, `theme/swatches.css` and `theme/base.css` are raw color scales.
+  The other `theme/` files build roles on them; components, recipes, `base.css`, and `utilities.css`
+  read the roles, never a raw step.
 - `components.css` holds per-part tokens: switch, radio, checkbox, slider, avatar, scrollbar, tooltip, floating,
   tab, and sidebar. It may read any axis.
 - The paint variants live in `styles/variants/`, in the theme layer after the tokens.

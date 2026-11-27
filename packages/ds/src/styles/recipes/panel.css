@@ -19,28 +19,7 @@
   --panel-inset: var(--inset-md);
   --panel-gap: var(--gap-md);
   --panel-radius: var(--radius-surface-md);
-}
-
-.panel[data-panel-size='xs'] {
-  --panel-inset: var(--inset-xs);
-  --panel-gap: var(--gap-sm);
-  --panel-radius: var(--radius-surface-xs);
-}
-
-.panel[data-panel-size='sm'] {
-  --panel-inset: var(--inset-sm);
-  --panel-gap: var(--gap-md);
-  --panel-radius: var(--radius-surface-sm);
-}
-
-.panel[data-panel-size='lg'] {
-  --panel-inset: var(--inset-lg);
-  --panel-gap: var(--gap-lg);
-  --panel-radius: var(--radius-surface-lg);
-}
-
-/* Shell: parts stack with the gap, and --inset tells bleed regions how far to reach. */
-.panel {
+  /* Shell: parts stack with the gap, and --inset tells bleed regions how far to reach. */
   display: flex;
   flex-direction: column;
   --inset: var(--panel-inset);
@@ -49,6 +28,24 @@
   --panel-padding: var(--inset);
   gap: var(--panel-stack-gap);
   padding: var(--panel-padding);
+
+  &[data-panel-size='xs'] {
+    --panel-inset: var(--inset-xs);
+    --panel-gap: var(--gap-sm);
+    --panel-radius: var(--radius-surface-xs);
+  }
+
+  &[data-panel-size='sm'] {
+    --panel-inset: var(--inset-sm);
+    --panel-gap: var(--gap-md);
+    --panel-radius: var(--radius-surface-sm);
+  }
+
+  &[data-panel-size='lg'] {
+    --panel-inset: var(--inset-lg);
+    --panel-gap: var(--gap-lg);
+    --panel-radius: var(--radius-surface-lg);
+  }
 }
 
 /* Footer band: top rule on the muted fill, bleeds to the bottom and sides, pads itself. */
@@ -64,9 +61,11 @@
 }
 
 /* Header band: a header with the `border-b` class bleeds to the top and sides and pads itself. */
-.panel-header.border-b {
-  margin-inline: calc(var(--inset) * -1);
-  margin-block-start: calc(var(--inset) * -1);
-  padding: var(--panel-inset);
-  border-bottom: var(--border-width-thin) solid var(--border-surface);
+.panel-header {
+  &.border-b {
+    margin-inline: calc(var(--inset) * -1);
+    margin-block-start: calc(var(--inset) * -1);
+    padding: var(--panel-inset);
+    border-bottom: var(--border-width-thin) solid var(--border-surface);
+  }
 }

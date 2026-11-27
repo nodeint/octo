@@ -1,23 +1,23 @@
-svg[data-icon-size] {
+[data-icon-size] {
+  &:is(svg) {
     width: var(--icon-size);
     height: var(--icon-size);
-}
+  }
 
-[data-icon-size] {
-    svg {
-        width: var(--icon-size);
-        height: var(--icon-size);
-    }
-}
+  & svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
 
-[data-icon-size='sm'] {
+  &[data-icon-size='sm'] {
     --icon-size: var(--icon-sm);
-}
+  }
 
-[data-icon-size='md'] {
+  &[data-icon-size='md'] {
     --icon-size: var(--icon-md);
-}
+  }
 
-[data-icon-size='lg'] {
+  &[data-icon-size='lg'] {
     --icon-size: var(--icon-lg);
+  }
 }

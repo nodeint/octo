@@ -15,81 +15,133 @@
  * Input tokens: --row-px, --row-py, --row-gap, --row-lead-gap (the gap after a leading icon in a grid row), --row-content-gap, --row-align, --row-border-width,
  * --row-radius, --row-border-style, --row-title-display, --row-title-align, --row-description-color, --row-meta-color.
  */
-[data-row-type='content'] {
-  --row-title-family: inherit;
-  --row-title-size: var(--role-label-size);
-  --row-title-leading: var(--role-label-leading);
-  --row-title-weight: var(--role-label-weight);
-  --row-description-size: var(--role-description-size);
-  --row-description-leading: var(--role-description-leading);
-  --row-description-weight: var(--role-description-weight);
-  --row-description-type-color: var(--variant-fg-subtle);
-  --row-description-lines: 3;
+[data-row-type] {
+  &[data-row-type='content'] {
+    --row-title-family: inherit;
+    --row-title-size: var(--role-label-size);
+    --row-title-leading: var(--role-label-leading);
+    --row-title-weight: var(--role-label-weight);
+    --row-description-size: var(--role-description-size);
+    --row-description-leading: var(--role-description-leading);
+    --row-description-weight: var(--role-description-weight);
+    --row-description-type-color: var(--variant-fg-subtle);
+    --row-description-lines: 3;
+  }
+
+  &[data-row-type='header'] {
+    --row-title-family: var(--role-title-sm-family);
+    --row-title-size: var(--role-title-sm-size);
+    --row-title-leading: var(--role-title-sm-leading);
+    --row-title-weight: var(--role-title-sm-weight);
+    --row-description-size: var(--role-description-size);
+    --row-description-leading: var(--role-description-leading);
+    --row-description-weight: var(--role-description-weight);
+    --row-description-type-color: var(--variant-fg-subtle);
+    --row-description-lines: 2;
+  }
+
+  &[data-row-type='compact'] {
+    --row-title-family: inherit;
+    --row-title-size: var(--role-label-size);
+    --row-title-leading: var(--role-label-leading);
+    --row-title-weight: var(--role-label-weight);
+    --row-description-size: var(--role-caption-size);
+    --row-description-leading: var(--role-caption-leading);
+    --row-description-weight: var(--role-caption-weight);
+    --row-description-type-color: var(--variant-fg-subtle);
+    --row-description-lines: 1;
+  }
 }
 
-[data-row-type='header'] {
-  --row-title-family: var(--role-title-sm-family);
-  --row-title-size: var(--role-title-sm-size);
-  --row-title-leading: var(--role-title-sm-leading);
-  --row-title-weight: var(--role-title-sm-weight);
-  --row-description-size: var(--role-description-size);
-  --row-description-leading: var(--role-description-leading);
-  --row-description-weight: var(--role-description-weight);
-  --row-description-type-color: var(--variant-fg-subtle);
-  --row-description-lines: 2;
+[data-row-size] {
+  &[data-row-size='xs'] [data-row-type='content'] {
+    --row-description-size: var(--role-body-sm-size);
+    --row-description-leading: var(--role-body-sm-leading);
+  }
+
+  &[data-row-size='xs'] {
+    --row-radius: var(--radius-surface-xs);
+    --row-px: var(--space-sm);
+    --row-py: var(--space-xs);
+    --row-gap: var(--space-sm);
+    --row-content-gap: 0;
+    --row-actions-gap: var(--space-xxs);
+  }
+
+  &[data-row-size='sm'] {
+    --row-radius: var(--radius-surface-sm);
+    --row-px: var(--space-md);
+    --row-py: var(--space-sm);
+    --row-gap: var(--space-sm);
+    --row-content-gap: 0;
+    --row-actions-gap: var(--space-xxs);
+  }
+
+  &[data-row-size='md'] {
+    --row-radius: var(--radius-surface-md);
+    --row-px: var(--space-md);
+    --row-py: var(--space-sm);
+    --row-gap: var(--space-sm);
+    --row-content-gap: 0;
+    --row-actions-gap: var(--space-xxs);
+  }
+
+  &[data-row-size='lg'] {
+    --row-radius: var(--radius-surface-lg);
+    --row-px: var(--space-lg);
+    --row-py: var(--space-md);
+    --row-gap: var(--space-md);
+    --row-content-gap: 0;
+    --row-actions-gap: var(--space-xs);
+  }
 }
 
-[data-row-type='compact'] {
-  --row-title-family: inherit;
-  --row-title-size: var(--role-label-size);
-  --row-title-leading: var(--role-label-leading);
-  --row-title-weight: var(--role-label-weight);
-  --row-description-size: var(--role-caption-size);
-  --row-description-leading: var(--role-caption-leading);
-  --row-description-weight: var(--role-caption-weight);
-  --row-description-type-color: var(--variant-fg-subtle);
-  --row-description-lines: 1;
-}
+/* A group sets the --row-group-* tokens; the rows it holds read them instead of their own size. */
+[data-row-group-size] {
+  &[data-row-group-size='xs'] {
+    --row-group-radius: var(--radius-surface-xs);
+    --row-group-px: var(--space-sm);
+    --row-group-py: var(--space-xs);
+    --row-group-gap: var(--space-sm);
+    --row-group-content-gap: 0;
+    --row-group-actions-gap: var(--space-xxs);
+  }
 
-[data-row-size='xs'] [data-row-type='content'] {
-  --row-description-size: var(--role-body-sm-size);
-  --row-description-leading: var(--role-body-sm-leading);
-}
+  &[data-row-group-size='sm'] {
+    --row-group-radius: var(--radius-surface-sm);
+    --row-group-px: var(--space-md);
+    --row-group-py: var(--space-sm);
+    --row-group-gap: var(--space-sm);
+    --row-group-content-gap: 0;
+    --row-group-actions-gap: var(--space-xxs);
+  }
 
-[data-row-size='xs'] {
-  --row-radius: var(--radius-surface-xs);
-  --row-px: var(--space-sm);
-  --row-py: var(--space-xs);
-  --row-gap: var(--space-sm);
-  --row-content-gap: 0;
-  --row-actions-gap: var(--space-xxs);
-}
+  &[data-row-group-size='md'] {
+    --row-group-radius: var(--radius-surface-md);
+    --row-group-px: var(--space-md);
+    --row-group-py: var(--space-sm);
+    --row-group-gap: var(--space-sm);
+    --row-group-content-gap: 0;
+    --row-group-actions-gap: var(--space-xxs);
+  }
 
-[data-row-size='sm'] {
-  --row-radius: var(--radius-surface-sm);
-  --row-px: var(--space-md);
-  --row-py: var(--space-sm);
-  --row-gap: var(--space-sm);
-  --row-content-gap: 0;
-  --row-actions-gap: var(--space-xxs);
-}
+  &[data-row-group-size='lg'] {
+    --row-group-radius: var(--radius-surface-lg);
+    --row-group-px: var(--space-lg);
+    --row-group-py: var(--space-md);
+    --row-group-gap: var(--space-md);
+    --row-group-content-gap: 0;
+    --row-group-actions-gap: var(--space-xs);
+  }
 
-[data-row-size='md'] {
-  --row-radius: var(--radius-surface-md);
-  --row-px: var(--space-md);
-  --row-py: var(--space-sm);
-  --row-gap: var(--space-sm);
-  --row-content-gap: 0;
-  --row-actions-gap: var(--space-xxs);
-}
-
-[data-row-size='lg'] {
-  --row-radius: var(--radius-surface-lg);
-  --row-px: var(--space-lg);
-  --row-py: var(--space-md);
-  --row-gap: var(--space-md);
-  --row-content-gap: 0;
-  --row-actions-gap: var(--space-xs);
+  & > .row {
+    --row-radius: var(--row-group-radius);
+    --row-px: var(--row-group-px);
+    --row-py: var(--row-group-py);
+    --row-gap: var(--row-group-gap);
+    --row-content-gap: var(--row-group-content-gap);
+    --row-actions-gap: var(--row-group-actions-gap);
+  }
 }
 
 .row {
@@ -112,6 +164,11 @@
   transition-property: color, background-color, border-color, box-shadow;
   transition-duration: var(--motion-duration-fast);
   transition-timing-function: var(--default-transition-timing-function);
+
+  /* The trigger's ::after covers the row; actions sit above the cover. */
+  &:has(.row-trigger) {
+    position: relative;
+  }
 }
 
 /* Rows in a scrolling column or strip; both orientations scroll, snap and hide the scrollbar alike. Size lives on the rows, so the group reads the smallest size it holds. */
@@ -123,114 +180,57 @@
   padding: var(--space-xs);
   overscroll-behavior: contain;
   scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & > .row {
+    flex: none;
+    scroll-snap-align: start;
+  }
+
+  &:has(.row[data-row-size='sm']) {
+    gap: var(--space-sm);
+  }
+
+  &:has(.row[data-row-size='xs']) {
+    gap: var(--space-xs);
+  }
+
+  &[data-row-group-size='sm'] {
+    gap: var(--space-sm);
+  }
+
+  &[data-row-group-size='xs'] {
+    gap: var(--space-xs);
+  }
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-padding-block: var(--space-xs);
+  }
+
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+    width: auto;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--space-xs);
+  }
 }
 
-.row-group::-webkit-scrollbar {
-  display: none;
-}
-
-.row-group > .row {
-  flex: none;
-  scroll-snap-align: start;
-}
-
-.row-group:has(.row[data-row-size='sm']) {
-  gap: var(--space-sm);
-}
-
-.row-group:has(.row[data-row-size='xs']) {
-  gap: var(--space-xs);
-}
-
-/* A group sets the --row-group-* tokens; the rows it holds read them instead of their own size. */
-[data-row-group-size='xs'] {
-  --row-group-radius: var(--radius-surface-xs);
-  --row-group-px: var(--space-sm);
-  --row-group-py: var(--space-xs);
-  --row-group-gap: var(--space-sm);
-  --row-group-content-gap: 0;
-  --row-group-actions-gap: var(--space-xxs);
-}
-
-[data-row-group-size='sm'] {
-  --row-group-radius: var(--radius-surface-sm);
-  --row-group-px: var(--space-md);
-  --row-group-py: var(--space-sm);
-  --row-group-gap: var(--space-sm);
-  --row-group-content-gap: 0;
-  --row-group-actions-gap: var(--space-xxs);
-}
-
-[data-row-group-size='md'] {
-  --row-group-radius: var(--radius-surface-md);
-  --row-group-px: var(--space-md);
-  --row-group-py: var(--space-sm);
-  --row-group-gap: var(--space-sm);
-  --row-group-content-gap: 0;
-  --row-group-actions-gap: var(--space-xxs);
-}
-
-[data-row-group-size='lg'] {
-  --row-group-radius: var(--radius-surface-lg);
-  --row-group-px: var(--space-lg);
-  --row-group-py: var(--space-md);
-  --row-group-gap: var(--space-md);
-  --row-group-content-gap: 0;
-  --row-group-actions-gap: var(--space-xs);
-}
-
-[data-row-group-size] > .row {
-  --row-radius: var(--row-group-radius);
-  --row-px: var(--row-group-px);
-  --row-py: var(--row-group-py);
-  --row-gap: var(--row-group-gap);
-  --row-content-gap: var(--row-group-content-gap);
-  --row-actions-gap: var(--row-group-actions-gap);
-}
-
-.row-group[data-row-group-size='sm'] {
-  gap: var(--space-sm);
-}
-
-.row-group[data-row-group-size='xs'] {
-  gap: var(--space-xs);
-}
-
-.row-group[data-orientation='vertical'] {
-  flex-direction: column;
-  width: 100%;
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  scroll-padding-block: var(--space-xs);
-}
-
-.row-group[data-orientation='horizontal'] {
-  flex-direction: row;
-  width: auto;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--space-xs);
-}
-
-/* The trigger's ::after covers the row; actions sit above the cover. */
-.row:has(.row-trigger) {
-  position: relative;
-}
-
+/*
+ * The hover and focus lists cover several subjects, so they stay flat (convention rule 6). The `.row` block
+ * follows them: .row[data-row-invalid] must win over the focus list on a specificity tie.
+ */
 .row:is(a, button):hover,
 .row:has(.row-trigger):hover,
 .row-hover-child:has(> a, > button):hover {
   background-color: var(--variant-bg-hover, var(--accent));
-}
-
-/* A selected row reads the active slots of its paint; everything on the fill reads the fg. */
-.row[aria-selected='true'] {
-  background-color: var(--variant-bg-active, var(--accent));
-  color: var(--variant-fg-active, var(--variant-fg));
-}
-
-.row[aria-selected='true'] :is(.row-description, .row-meta) {
-  color: var(--variant-fg-active, var(--variant-fg));
 }
 
 .row:focus-visible,
@@ -241,15 +241,28 @@
   outline: var(--focus-width) solid transparent;
 }
 
-/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
-.row[data-row-invalid] {
-  border-color: var(--variant-border-invalid, var(--state-invalid-border));
-  box-shadow: var(--variant-shadow-invalid, var(--state-invalid-shadow));
-}
+/* Second .row block (convention rule 7): it must follow the focus list so .row[data-row-invalid] wins the tie. */
+.row {
+  /* A selected row reads the active slots of its paint; everything on the fill reads the fg. */
+  &[aria-selected='true'] {
+    background-color: var(--variant-bg-active, var(--accent));
+    color: var(--variant-fg-active, var(--variant-fg));
+  }
 
-.row:has(.row-trigger) .row-actions :is(a, button, input, select, textarea, [tabindex]) {
-  position: relative;
-  z-index: var(--z-raised);
+  &[aria-selected='true'] :is(.row-description, .row-meta) {
+    color: var(--variant-fg-active, var(--variant-fg));
+  }
+
+  /* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
+  &[data-row-invalid] {
+    border-color: var(--variant-border-invalid, var(--state-invalid-border));
+    box-shadow: var(--variant-shadow-invalid, var(--state-invalid-shadow));
+  }
+
+  &:has(.row-trigger) .row-actions :is(a, button, input, select, textarea, [tabindex]) {
+    position: relative;
+    z-index: var(--z-raised);
+  }
 }
 
 .row-trigger {
@@ -260,20 +273,20 @@
   min-width: 0;
   text-align: start;
   outline: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-raised);
+    border-radius: var(--row-radius, var(--radius-surface-md));
+  }
 }
 
 .row-trigger-cover {
   position: absolute;
   inset: 0;
   z-index: var(--z-raised);
-}
-
-.row-trigger::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: var(--z-raised);
-  border-radius: var(--row-radius, var(--radius-surface-md));
 }
 
 .row-content {

@@ -33,88 +33,88 @@
   outline: none;
   transform-origin: var(--transform-origin);
   animation-duration: var(--motion-duration-fast);
-}
 
-.floating-content[data-side='bottom'] {
-  --overlay-y: calc(var(--floating-slide-distance) * -1);
-}
-
-.floating-content[data-side='top'] {
-  --overlay-y: var(--floating-slide-distance);
-}
-
-.floating-content[data-side='inline-end'],
-.floating-content[data-side='right'] {
-  --overlay-x: calc(var(--floating-slide-distance) * -1);
-}
-
-.floating-content[data-side='inline-start'],
-.floating-content[data-side='left'] {
-  --overlay-x: var(--floating-slide-distance);
-}
-
-.floating-content[data-open],
-.floating-content[data-state='delayed-open'] {
-  animation-name: overlay-slide-in;
-  animation-timing-function: var(--ease-enter);
-}
-
-.floating-content[data-closed] {
-  animation-name: overlay-zoom-out;
-  animation-timing-function: var(--ease-exit);
-  animation-fill-mode: forwards;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .floating-content {
-    animation-duration: 1ms;
+  &[data-side='bottom'] {
+    --overlay-y: calc(var(--floating-slide-distance) * -1);
   }
-}
 
-/* `data-width='anchor'` matches the trigger width; the minimum width stays so a narrow trigger cannot break the content layout. */
-.floating-content[data-width='anchor'] {
-  width: var(--anchor-width);
-}
+  &[data-side='top'] {
+    --overlay-y: var(--floating-slide-distance);
+  }
 
-/* Each step only sets the width, corner, padding and gap tokens the surface reads; no data-size keeps its own width and the sm step. */
-.floating-content[data-size='xxs'] {
-  --floating-size-width: var(--panel-w-xxs);
-  --floating-size-radius: var(--radius-surface-sm);
-  --floating-inset: var(--inset-xs);
-  --floating-gap: var(--gap-xs);
-}
+  &[data-side='inline-end'],
+  &[data-side='right'] {
+    --overlay-x: calc(var(--floating-slide-distance) * -1);
+  }
 
-.floating-content[data-size='xs'] {
-  --floating-size-width: var(--panel-w-xs);
-  --floating-size-radius: var(--radius-surface-sm);
-  --floating-inset: var(--inset-xs);
-  --floating-gap: var(--gap-xs);
-}
+  &[data-side='inline-start'],
+  &[data-side='left'] {
+    --overlay-x: var(--floating-slide-distance);
+  }
 
-.floating-content[data-size='sm'] {
-  --floating-size-width: var(--panel-w-sm);
-  --floating-size-radius: var(--radius-surface-md);
-  --floating-inset: var(--inset-sm);
-  --floating-gap: var(--gap-sm);
-}
+  &[data-open],
+  &[data-state='delayed-open'] {
+    animation-name: overlay-slide-in;
+    animation-timing-function: var(--ease-enter);
+  }
 
-.floating-content[data-size='md'] {
-  --floating-size-width: var(--panel-w-md);
-  --floating-size-radius: var(--radius-surface-lg);
-  --floating-inset: var(--inset-md);
-  --floating-gap: var(--gap-md);
-}
+  &[data-closed] {
+    animation-name: overlay-zoom-out;
+    animation-timing-function: var(--ease-exit);
+    animation-fill-mode: forwards;
+  }
 
-.floating-content[data-size='lg'] {
-  --floating-size-width: var(--panel-w-lg);
-  --floating-size-radius: var(--radius-surface-lg);
-  --floating-inset: var(--inset-lg);
-  --floating-gap: var(--gap-lg);
-}
+  @media (prefers-reduced-motion: reduce) {
+    & {
+      animation-duration: 1ms;
+    }
+  }
 
-.floating-content[data-size='xl'] {
-  --floating-size-width: var(--panel-w-xl);
-  --floating-size-radius: var(--radius-surface-lg);
-  --floating-inset: var(--inset-lg);
-  --floating-gap: var(--gap-lg);
+  /* `data-width='anchor'` matches the trigger width; the minimum width stays so a narrow trigger cannot break the content layout. */
+  &[data-width='anchor'] {
+    width: var(--anchor-width);
+  }
+
+  /* Each step only sets the width, corner, padding and gap tokens the surface reads; no data-size keeps its own width and the sm step. */
+  &[data-size='xxs'] {
+    --floating-size-width: var(--panel-w-xxs);
+    --floating-size-radius: var(--radius-surface-sm);
+    --floating-inset: var(--inset-xs);
+    --floating-gap: var(--gap-xs);
+  }
+
+  &[data-size='xs'] {
+    --floating-size-width: var(--panel-w-xs);
+    --floating-size-radius: var(--radius-surface-sm);
+    --floating-inset: var(--inset-xs);
+    --floating-gap: var(--gap-xs);
+  }
+
+  &[data-size='sm'] {
+    --floating-size-width: var(--panel-w-sm);
+    --floating-size-radius: var(--radius-surface-md);
+    --floating-inset: var(--inset-sm);
+    --floating-gap: var(--gap-sm);
+  }
+
+  &[data-size='md'] {
+    --floating-size-width: var(--panel-w-md);
+    --floating-size-radius: var(--radius-surface-lg);
+    --floating-inset: var(--inset-md);
+    --floating-gap: var(--gap-md);
+  }
+
+  &[data-size='lg'] {
+    --floating-size-width: var(--panel-w-lg);
+    --floating-size-radius: var(--radius-surface-lg);
+    --floating-inset: var(--inset-lg);
+    --floating-gap: var(--gap-lg);
+  }
+
+  &[data-size='xl'] {
+    --floating-size-width: var(--panel-w-xl);
+    --floating-size-radius: var(--radius-surface-lg);
+    --floating-inset: var(--inset-lg);
+    --floating-gap: var(--gap-lg);
+  }
 }

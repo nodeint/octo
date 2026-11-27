@@ -27,83 +27,85 @@
   transition-property: color, background-color, border-color, box-shadow, transform, opacity;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
+
   /* A hovered <label> also puts :hover on the control it labels; the pointer is on the label, not the field, so skip the paint. */
   &:hover:not(:root:has(label:hover) *) {
     background-color: var(--group-field-bg-hover, var(--variant-bg-hover));
   }
+
   &:focus {
     background-color: var(--group-field-bg-focus, var(--variant-bg-focus));
   }
-}
 
-@media (pointer: coarse) {
-  .field-control {
-    font-size: var(--role-field-size-coarse);
+  @media (pointer: coarse) {
+    & {
+      font-size: var(--role-field-size-coarse);
+    }
   }
-}
 
-.field-control::placeholder {
-  color: var(--variant-fg-placeholder);
-}
+  &::placeholder {
+    color: var(--variant-fg-placeholder);
+  }
 
-/* Focus: focus border plus a soft halo, matching invalid. The transparent outline still shows in forced-colors mode. */
-.field-control:focus-visible {
-  border-color: var(--variant-border-focus);
-  box-shadow: var(--group-field-shadow-focus, var(--variant-shadow-focus));
-  outline: var(--focus-width) solid transparent;
-}
+  /* Focus: focus border plus a soft halo, matching invalid. The transparent outline still shows in forced-colors mode. */
+  &:focus-visible {
+    border-color: var(--variant-border-focus);
+    box-shadow: var(--group-field-shadow-focus, var(--variant-shadow-focus));
+    outline: var(--focus-width) solid transparent;
+  }
 
-/* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
-.field-control[aria-invalid='true'] {
-  border-color: var(--variant-border-invalid);
-  box-shadow: var(--group-field-shadow-invalid, var(--variant-shadow-invalid));
-  caret-color: var(--variant-border-invalid);
-}
+  /* After the focus rule on purpose: invalid paint wins while focused, so there is one ring. */
+  &[aria-invalid='true'] {
+    border-color: var(--variant-border-invalid);
+    box-shadow: var(--group-field-shadow-invalid, var(--variant-shadow-invalid));
+    caret-color: var(--variant-border-invalid);
+  }
 
-.field-control:disabled,
-.field-control[data-disabled] {
-  background-color: var(--group-field-bg-disabled, var(--variant-bg-disabled));
-  pointer-events: none;
-  border-color: var(--group-field-border-disabled, var(--variant-border-disabled));
-  color: var(--variant-fg-disabled);
-}
+  &:disabled,
+  &[data-disabled] {
+    background-color: var(--group-field-bg-disabled, var(--variant-bg-disabled));
+    pointer-events: none;
+    border-color: var(--group-field-border-disabled, var(--variant-border-disabled));
+    color: var(--variant-fg-disabled);
+  }
 
-/*
- * Size sets: the app-wide sizes of the text fields (input, textarea, select trigger, input group, combobox chips).
- * A field never names a step; it reads --field-* and its data-field-size picks the set.
- * Separate from data-action-size (buttons, toggles) so a field can change height or inset without moving a button.
- * Today both read the shared control scale (layout/index.css), so a field and an action of one size stand level.
- *   height          row height; a multi-line field uses it as its minimum
- *   px              inline inset, before the border is taken off
- *   gap             space between a glyph and the text
- *   radius          corner of a single-line field (--radius-field-*)
- * A multi-line field takes --radius-field-block instead. The steps and their raw values live in
- * layout/index.css.
- */
-.field-control[data-field-size='xs'] {
-  --field-height: var(--control-height-xs);
-  --field-px: var(--control-px-xs);
-  --field-gap: var(--control-gap-xs);
-  --field-radius: var(--radius-field-xs);
-}
+  /*
+   * Size sets: the app-wide sizes of the text fields (input, textarea, select trigger, input group, combobox chips).
+   * A field never names a step; it reads --field-* and its data-field-size picks the set.
+   * Separate from data-action-size (buttons, toggles) so a field can change height or inset without moving a button.
+   * Today both read the shared control scale (layout/index.css), so a field and an action of one size stand level.
+   *   height          row height; a multi-line field uses it as its minimum
+   *   px              inline inset, before the border is taken off
+   *   gap             space between a glyph and the text
+   *   radius          corner of a single-line field (--radius-field-*)
+   * A multi-line field takes --radius-field-block instead. The steps and their raw values live in
+   * layout/index.css.
+   */
+  &[data-field-size='xs'] {
+    --field-height: var(--control-height-xs);
+    --field-px: var(--control-px-xs);
+    --field-gap: var(--control-gap-xs);
+    --field-radius: var(--radius-field-xs);
+  }
 
-.field-control[data-field-size='sm'] {
-  --field-height: var(--control-height-sm);
-  --field-px: var(--control-px-sm);
-  --field-gap: var(--control-gap-sm);
-  --field-radius: var(--radius-field-sm);
-}
+  &[data-field-size='sm'] {
+    --field-height: var(--control-height-sm);
+    --field-px: var(--control-px-sm);
+    --field-gap: var(--control-gap-sm);
+    --field-radius: var(--radius-field-sm);
+  }
 
-.field-control[data-field-size='md'] {
-  --field-height: var(--control-height-md);
-  --field-px: var(--control-px-md);
-  --field-gap: var(--control-gap-md);
-  --field-radius: var(--radius-field-md);
-}
+  &[data-field-size='md'] {
+    --field-height: var(--control-height-md);
+    --field-px: var(--control-px-md);
+    --field-gap: var(--control-gap-md);
+    --field-radius: var(--radius-field-md);
+  }
 
-.field-control[data-field-size='lg'] {
-  --field-height: var(--control-height-lg);
-  --field-px: var(--control-px-lg);
-  --field-gap: var(--control-gap-lg);
-  --field-radius: var(--radius-field-lg);
+  &[data-field-size='lg'] {
+    --field-height: var(--control-height-lg);
+    --field-px: var(--control-px-lg);
+    --field-gap: var(--control-gap-lg);
+    --field-radius: var(--radius-field-lg);
+  }
 }

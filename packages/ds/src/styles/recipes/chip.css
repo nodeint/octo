@@ -22,45 +22,45 @@
   line-height: var(--role-label-sm-leading);
   font-weight: var(--role-label-sm-weight);
   white-space: nowrap;
-}
 
-.chip[data-size='xs'] {
-  --chip-size-height: var(--control-height-xs);
-  --chip-size-px: var(--control-px-xs);
-  --chip-size-gap: var(--control-gap-xs);
-  --icon-size: var(--group-item-icon, var(--icon-xs));
+  &[data-size='xs'] {
+    --chip-size-height: var(--control-height-xs);
+    --chip-size-px: var(--control-px-xs);
+    --chip-size-gap: var(--control-gap-xs);
+    --icon-size: var(--group-item-icon, var(--icon-xs));
 
-  font-size: var(--role-body-sm-size);
-  line-height: var(--role-body-sm-leading);
-  font-weight: var(--role-body-sm-weight);
-}
+    font-size: var(--role-body-sm-size);
+    line-height: var(--role-body-sm-leading);
+    font-weight: var(--role-body-sm-weight);
+  }
 
-.chip[data-size='sm'],
-.chip[data-size='md'],
-.chip[data-size='lg'] {
-  font-size: var(--role-body-size);
-  line-height: var(--role-body-leading);
-  font-weight: var(--role-body-weight);
-}
+  &[data-size='sm'],
+  &[data-size='md'],
+  &[data-size='lg'] {
+    font-size: var(--role-body-size);
+    line-height: var(--role-body-leading);
+    font-weight: var(--role-body-weight);
+  }
 
-.chip[data-size='sm'] {
-  --chip-size-height: var(--control-height-sm);
-  --chip-size-px: var(--control-px-sm);
-  --chip-size-gap: var(--control-gap-sm);
-  --icon-size: var(--group-item-icon, var(--icon-sm));
-}
+  &[data-size='sm'] {
+    --chip-size-height: var(--control-height-sm);
+    --chip-size-px: var(--control-px-sm);
+    --chip-size-gap: var(--control-gap-sm);
+    --icon-size: var(--group-item-icon, var(--icon-sm));
+  }
 
-.chip[data-size='md'] {
-  --chip-size-height: var(--control-height-md);
-  --chip-size-px: var(--control-px-md);
-  --chip-size-gap: var(--control-gap-md);
-  --icon-size: var(--group-item-icon, var(--icon-md));
-}
+  &[data-size='md'] {
+    --chip-size-height: var(--control-height-md);
+    --chip-size-px: var(--control-px-md);
+    --chip-size-gap: var(--control-gap-md);
+    --icon-size: var(--group-item-icon, var(--icon-md));
+  }
 
-/* The control scale has no lg glyph step; lg keeps the md glyph, as a large button does. */
-.chip[data-size='lg'] {
-  --chip-size-height: var(--control-height-lg);
-  --chip-size-px: var(--control-px-lg);
-  --chip-size-gap: var(--control-gap-lg);
-  --icon-size: var(--group-item-icon, var(--icon-md));
+  /* The control scale has no lg glyph step; lg keeps the md glyph, as a large button does. */
+  &[data-size='lg'] {
+    --chip-size-height: var(--control-height-lg);
+    --chip-size-px: var(--control-px-lg);
+    --chip-size-gap: var(--control-gap-lg);
+    --icon-size: var(--group-item-icon, var(--icon-md));
+  }
 }

@@ -19,6 +19,19 @@
   cursor: default;
   outline: none;
   user-select: none;
+
+  &:is(:hover, :focus, [data-highlighted]) {
+    background-color: var(--accent);
+    color: var(--variant-fg);
+  }
+
+  /* Icon glyph size beside the row text. */
+  & svg {
+    pointer-events: none;
+    flex-shrink: 0;
+    width: var(--icon-md);
+    height: var(--icon-md);
+  }
 }
 
 .menu-checkable {
@@ -38,18 +51,11 @@
   color: var(--variant-fg-muted);
 }
 
-.menu-row:is(:hover, :focus, [data-highlighted]) {
-  background-color: var(--accent);
-  color: var(--variant-fg);
-}
-
-.menu-item:not([data-variant='destructive']):focus > svg {
-  color: var(--variant-fg);
-}
-
-.menu-sub-trigger:is([data-popup-open], [data-open]) {
-  background-color: var(--accent);
-  color: var(--variant-fg);
+.menu-sub-trigger {
+  &:is([data-popup-open], [data-open]) {
+    background-color: var(--accent);
+    color: var(--variant-fg);
+  }
 }
 
 :is(.menu-item, .menu-checkable)[data-disabled]:not([data-disabled='false']) {
@@ -57,30 +63,25 @@
   color: var(--variant-fg-muted);
 }
 
-/* destructive */
-.menu-item[data-variant='destructive'] {
-  color: var(--destructive-strong-bg);
-}
+.menu-item {
+  &:not([data-variant='destructive']):focus > svg {
+    color: var(--variant-fg);
+  }
 
-.menu-item[data-variant='destructive']:focus {
-  background-color: var(--destructive-subtle-bg);
-  color: var(--destructive-subtle-fg);
-}
+  /* destructive */
+  &[data-variant='destructive'] {
+    color: var(--destructive-strong-bg);
+  }
 
-/* Glyph and shortcut follow the row colour, including the focused state. */
-.menu-item[data-variant='destructive'] > :is(svg, .menu-shortcut) {
-  color: inherit;
-}
+  &[data-variant='destructive']:focus {
+    background-color: var(--destructive-subtle-bg);
+    color: var(--destructive-subtle-fg);
+  }
 
-/* Icon glyph size beside the row text. */
-.menu-row svg {
-  pointer-events: none;
-  flex-shrink: 0;
-}
-
-.menu-row svg {
-  width: var(--icon-md);
-  height: var(--icon-md);
+  /* Glyph and shortcut follow the row colour, including the focused state. */
+  &[data-variant='destructive'] > :is(svg, .menu-shortcut) {
+    color: inherit;
+  }
 }
 
 /* A truncating label shrinks inside the row and pushes a trailing glyph to the end. */
@@ -109,10 +110,10 @@
   overflow-x: hidden;
   overflow-y: auto;
   scrollbar-width: none;
-}
 
-.menu-content::-webkit-scrollbar {
-  display: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Submenu popup: the scroll container is its menu-content child. */
@@ -131,11 +132,11 @@
   height: 1px;
   margin-inline: calc(var(--floating-inset) * -1);
   background-color: var(--border);
-}
 
-/* Bleeds to the menu edges by default; `inset` keeps it inside the menu padding. */
-.menu-separator[data-inset] {
-  margin-inline: 0;
+  /* Bleeds to the menu edges by default; `inset` keeps it inside the menu padding. */
+  &[data-inset] {
+    margin-inline: 0;
+  }
 }
 
 .menu-shortcut {
@@ -144,10 +145,10 @@
   line-height: var(--role-caption-leading);
   font-weight: var(--role-caption-weight);
   color: var(--variant-fg-subtle);
-}
 
-:focus > .menu-shortcut {
-  color: var(--variant-fg);
+  :focus > & {
+    color: var(--variant-fg);
+  }
 }
 
 /* A glyph pushed to the end of a menu row. */

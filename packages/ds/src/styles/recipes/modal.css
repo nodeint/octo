@@ -28,17 +28,17 @@
 .modal-centered-overlay {
   isolation: isolate;
   animation-duration: var(--motion-duration-fast);
-}
 
-.modal-centered-overlay[data-open] {
-  animation-name: overlay-fade-in;
-  animation-timing-function: var(--ease-enter);
-}
+  &[data-open] {
+    animation-name: overlay-fade-in;
+    animation-timing-function: var(--ease-enter);
+  }
 
-.modal-centered-overlay[data-closed] {
-  animation-name: overlay-fade-out;
-  animation-timing-function: var(--ease-exit);
-  animation-fill-mode: forwards;
+  &[data-closed] {
+    animation-name: overlay-fade-out;
+    animation-timing-function: var(--ease-exit);
+    animation-fill-mode: forwards;
+  }
 }
 
 /* Panel surface. Placement comes from modal-centered or modal-side. */
@@ -59,37 +59,38 @@
   translate: -50% -50%;
   border-radius: var(--panel-radius);
   animation-duration: var(--motion-duration-fast);
-}
 
-.modal-centered[data-open] {
-  animation-name: overlay-zoom-in;
-  animation-timing-function: var(--ease-enter);
-}
-
-.modal-centered[data-closed] {
-  animation-name: overlay-zoom-out;
-  animation-timing-function: var(--ease-exit);
-  animation-fill-mode: forwards;
-}
-
-@media (min-width: 40rem) {
-  .modal-centered[data-size='sm'] {
-    max-width: var(--panel-w-sm);
+  &[data-open] {
+    animation-name: overlay-zoom-in;
+    animation-timing-function: var(--ease-enter);
   }
 
-  .modal-centered[data-size='md'] {
-    max-width: var(--panel-w-md);
+  &[data-closed] {
+    animation-name: overlay-zoom-out;
+    animation-timing-function: var(--ease-exit);
+    animation-fill-mode: forwards;
   }
 
-  .modal-centered[data-size='lg'] {
-    max-width: var(--panel-w-lg);
-  }
+  @media (min-width: 40rem) {
+    &[data-size='sm'] {
+      max-width: var(--panel-w-sm);
+    }
 
-  .modal-centered[data-size='xl'] {
-    max-width: var(--panel-w-xl);
+    &[data-size='md'] {
+      max-width: var(--panel-w-md);
+    }
+
+    &[data-size='lg'] {
+      max-width: var(--panel-w-lg);
+    }
+
+    &[data-size='xl'] {
+      max-width: var(--panel-w-xl);
+    }
   }
 }
 
+/* One list covers two subjects, so it stays a flat top-level rule (convention rule 6). */
 @media (prefers-reduced-motion: reduce) {
   .modal-centered-overlay,
   .modal-centered {
@@ -106,15 +107,15 @@
   transition-property: opacity;
   transition-duration: var(--motion-duration-normal);
   transition-timing-function: var(--default-transition-timing-function);
-}
 
-.modal-side-overlay[data-starting-style],
-.modal-side-overlay[data-ending-style] {
-  opacity: 0;
-}
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+  }
 
-.modal-side-overlay[data-swiping] {
-  transition-duration: 0ms;
+  &[data-swiping] {
+    transition-duration: 0ms;
+  }
 }
 
 /* Sits above the scrim (later in the portal) and lets presses outside the panel through to it. */
@@ -124,18 +125,18 @@
   z-index: var(--z-floating);
   display: flex;
   pointer-events: none;
-}
 
-.modal-side-viewport[data-side='right'] {
-  justify-content: flex-end;
-}
+  &[data-side='right'] {
+    justify-content: flex-end;
+  }
 
-.modal-side-viewport[data-side='top'] {
-  align-items: flex-start;
-}
+  &[data-side='top'] {
+    align-items: flex-start;
+  }
 
-.modal-side-viewport[data-side='bottom'] {
-  align-items: flex-end;
+  &[data-side='bottom'] {
+    align-items: flex-end;
+  }
 }
 
 .modal-side {
@@ -147,57 +148,57 @@
   transition-property: transform;
   transition-duration: var(--motion-duration-slow);
   transition-timing-function: var(--ease-standard);
-}
 
-.modal-side[data-starting-style],
-.modal-side[data-ending-style] {
-  transform: translate(var(--modal-side-offscreen-x), var(--modal-side-offscreen-y));
-}
+  &[data-starting-style],
+  &[data-ending-style] {
+    transform: translate(var(--modal-side-offscreen-x), var(--modal-side-offscreen-y));
+  }
 
-.modal-side[data-swiping] {
-  transition-duration: 0ms;
-}
+  &[data-swiping] {
+    transition-duration: 0ms;
+  }
 
-.modal-side[data-ending-style] {
-  transition-duration: calc(var(--drawer-swipe-strength, 1) * var(--motion-duration-slow));
-}
+  &[data-ending-style] {
+    transition-duration: calc(var(--drawer-swipe-strength, 1) * var(--motion-duration-slow));
+  }
 
-.modal-side[data-side='top'],
-.modal-side[data-side='bottom'] {
-  width: 100%;
-  max-height: 100%;
-}
+  &[data-side='top'],
+  &[data-side='bottom'] {
+    width: 100%;
+    max-height: 100%;
+  }
 
-.modal-side[data-side='top'] {
-  --modal-side-offscreen-y: -100%;
-  border-bottom: var(--border-width-thin) solid var(--border);
-}
+  &[data-side='top'] {
+    --modal-side-offscreen-y: -100%;
+    border-bottom: var(--border-width-thin) solid var(--border);
+  }
 
-.modal-side[data-side='bottom'] {
-  --modal-side-offscreen-y: 100%;
-  border-top: var(--border-width-thin) solid var(--border);
-}
+  &[data-side='bottom'] {
+    --modal-side-offscreen-y: 100%;
+    border-top: var(--border-width-thin) solid var(--border);
+  }
 
-.modal-side[data-side='left'],
-.modal-side[data-side='right'] {
-  height: 100%;
-  width: 75%;
-}
+  &[data-side='left'],
+  &[data-side='right'] {
+    height: 100%;
+    width: 75%;
+  }
 
-.modal-side[data-side='left'] {
-  --modal-side-offscreen-x: -100%;
-  border-right: var(--border-width-thin) solid var(--border);
-}
+  &[data-side='left'] {
+    --modal-side-offscreen-x: -100%;
+    border-right: var(--border-width-thin) solid var(--border);
+  }
 
-.modal-side[data-side='right'] {
-  --modal-side-offscreen-x: 100%;
-  border-left: var(--border-width-thin) solid var(--border);
-}
+  &[data-side='right'] {
+    --modal-side-offscreen-x: 100%;
+    border-left: var(--border-width-thin) solid var(--border);
+  }
 
-@media (min-width: 40rem) {
-  .modal-side[data-side='left'],
-  .modal-side[data-side='right'] {
-    max-width: var(--panel-w-sm);
+  @media (min-width: 40rem) {
+    &[data-side='left'],
+    &[data-side='right'] {
+      max-width: var(--panel-w-sm);
+    }
   }
 }
 
@@ -207,18 +208,18 @@
  */
 .modal-footer {
   gap: var(--space-xs);
-}
 
-@media (min-width: 40rem) {
-  .modal-footer {
-    flex-direction: row;
-    justify-content: flex-end;
+  @media (min-width: 40rem) {
+    & {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
   }
-}
 
-.modal-footer[data-layout='stack'] {
-  flex-direction: column;
-  justify-content: flex-start;
+  &[data-layout='stack'] {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }
 
 .modal-close-button {
