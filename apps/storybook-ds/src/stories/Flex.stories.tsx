@@ -7,11 +7,11 @@ import { storyWidthDecorator } from '../story-width';
 const JUSTIFY_VALUES = ['flex-start', 'center', 'flex-end', 'space-between'] as const;
 
 /** A tinted block that stands in for content. */
-function Block({ style, ...props }: React.ComponentProps<typeof Box>): React.JSX.Element {
+function Block({ style, ...props }: Omit<React.ComponentProps<typeof Box>, 'variant' | 'tone' | 'emphasis'>): React.JSX.Element {
   return (
     <Box
       radius="sm"
-      surface="muted"
+      variant="secondary"
       bordered
       style={{
         display: 'flex',

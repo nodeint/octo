@@ -13,7 +13,7 @@ function Block(
   return (
     <Box
       radius="sm"
-      surface="muted"
+      variant="secondary"
       bordered
       style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width, height, fontSize: '0.75rem' }}
     >
@@ -31,9 +31,13 @@ const meta = {
     gap: { control: 'select', options: GAPS },
     wrap: { control: 'boolean' },
     align: { control: 'inline-radio', options: [undefined, ...ALIGNS] },
-    surface: { control: 'select', options: [undefined, 'background', 'card', 'muted', 'accent'] },
+    variant: {
+      control: 'select',
+      options: [undefined, 'primary', 'secondary', 'destructive', 'outline', 'plain', 'subtle', 'success', 'warning', 'info'],
+    },
     radius: { control: 'select', options: [undefined, 'xs', 'sm', 'md', 'lg'] },
-    border: { control: 'inline-radio', options: [undefined, 'thin', 'thick'] },
+    bordered: { control: 'boolean' },
+    borderWidth: { control: 'inline-radio', options: [undefined, '0', 'thin', 'thick'] },
   },
   parameters: { storyWidth: 'md' },
   decorators: [storyWidthDecorator],

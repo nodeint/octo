@@ -7,7 +7,7 @@ function Cell({ children }: { children?: React.ReactNode }): React.JSX.Element {
   return (
     <Box
       radius="sm"
-      surface="muted"
+      variant="secondary"
       bordered
       style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '2.5rem', fontSize: '0.75rem' }}
     >
