@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Icon, Media,  Stack, Text } from '@workspace/ui';
+import { Media, Stack, Text } from '@workspace/ds/components';
 
 type MediaTone = NonNullable<React.ComponentProps<typeof Media>['tone']>;
 
@@ -18,6 +18,14 @@ const VARIANTS = [
 ] as const;
 
 
+function Glyph(): React.JSX.Element {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="m12 3 2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z" />
+    </svg>
+  );
+}
+
 function picture(color: string): string {
   const svg =
     '<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">' +
@@ -29,7 +37,7 @@ function picture(color: string): string {
 }
 
 const meta = {
-  title: 'Data Display/Media',
+  title: 'Components/Media',
   component: Media,
   tags: ['autodocs'],
   argTypes: {
@@ -48,7 +56,7 @@ export const Demo: Story = {
   args: { size: 'md' },
   render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
     <Media {...args}>
-      <Icon name="sparkles" />
+      <Glyph />
     </Media>
   ),
 };
@@ -59,7 +67,7 @@ export const Variants: Story = {
       {VARIANTS.map((variant) => (
         <Stack key={variant} gap="xs">
           <Media variant={variant}>
-            <Icon name="star" />
+            <Glyph />
           </Media>
         </Stack>
       ))}
@@ -92,7 +100,7 @@ export const CustomColors: Story = {
           <Stack orientation="horizontal" key={emphasis} gap="lg">
             {TONES.map((tone) => (
               <Media key={tone} tone={tone} emphasis={emphasis}>
-                <Icon name="star" />
+                <Glyph />
               </Media>
             ))}
           </Stack>
@@ -108,7 +116,7 @@ export const Sizes: Story = {
       {SIZES.map((size) => (
         <Stack key={size} gap="xs">
           <Media size={size}>
-            <Icon name="star" />
+            <Glyph />
           </Media>
         </Stack>
       ))}
@@ -121,7 +129,7 @@ export const BesideText: Story = {
   render: () => (
     <Stack orientation="horizontal" gap="md">
       <Media>
-        <Icon name="database" />
+        <Glyph />
       </Media>
       <Stack gap="xxs">
         <Text variant="label">Database</Text>
@@ -137,7 +145,7 @@ export const Ratios: Story = {
       {RATIOS.map((ratio) => (
         <Stack key={ratio} gap="xs">
           <Media size="xl" ratio={ratio}>
-            <Icon name="star" />
+            <Glyph />
           </Media>
           <Text variant="description">{ratio}</Text>
         </Stack>
@@ -162,7 +170,7 @@ export const Fill: Story = {
   render: () => (
     <Stack gap="lg" style={{ width: '16rem' }}>
       <Media size="fill">
-        <Icon name="star" />
+        <Glyph />
       </Media>
       <Media size="fill" ratio="16:9" kind="image">
         <img src={picture('#10b981')} alt="" />

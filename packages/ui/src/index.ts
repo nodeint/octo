@@ -6,7 +6,6 @@ export * from './components/data-display/bubble/Bubble';
 export * from './components/data-display/card/Card';
 export * from './components/data-display/empty/Empty';
 export * from './components/data-display/item/Item';
-export * from './components/data-display/media/Media';
 export * from './components/data-display/skeleton/Skeleton';
 export * from './components/data-display/spinner/Spinner';
 export * from './components/data-display/table/Table';
