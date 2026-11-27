@@ -128,6 +128,10 @@ An exception applies only while a migration is in progress. A new exception need
 - The paint variants live in `styles/variants/`, in the theme layer after the tokens.
   The action, field and group size sets and the group variant sets live with their recipe
   (`recipes/action.css`, `recipes/field-control.css`, `recipes/group.css`).
+  `action.css` also owns the thin border and the default-shape row size (height, inline padding, gap), so a bare
+  `action` element, such as the DS `Action`, is a complete text button. `Button.css` and `Toggle.css` keep only the
+  type role and the rules that one control uses. A new `action` element gets the thin border; its color comes from
+  paint and is transparent for solid, soft and ghost.
   A group's `variant` maps to a paint name (`lib/group-paint.ts`); the root carries `data-paint`, and `group.css`
   only aliases the resulting `--variant-*` slots to `--group-*`, so it declares no color.
   A group overrides only the tokens that differ, on its own root, with a comment that gives the reason.

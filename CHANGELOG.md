@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add the DS `Action` component, a native button styled only by the `action` recipe, and move the shared border
+  and row size rules of `Button` and `Toggle` into that recipe.
 - Add one source for the focus and invalid ring (`--state-*` tokens and a `state-ring-group` recipe), so every control,
   input group, and combobox chips share the same ring.
 - Use the button and input focus and invalid style (border color plus soft halo) on choice controls, slider, tabs,

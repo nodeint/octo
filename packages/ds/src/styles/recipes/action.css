@@ -1,7 +1,8 @@
 /*
- * Behavior shared by the action controls (button, toggle). Both components add `action` beside
- * their own class, so no selector here names a specific control. Shape, type role and the
- * size-specific layout stay in Button.css and Toggle.css.
+ * Behavior shared by the action controls (button, toggle, Action). Each adds `action` beside
+ * its own class, so no selector here names a specific control. The border and the default-shape
+ * row size (height, inline padding, gap) live here. The type role and group-only hooks stay in
+ * Button.css and Toggle.css.
  *
  * Color comes only from the variant (styles/variants/),
  * or from a group's data-group-variant (styles/recipes/group.css), which wins for the identity slots.
@@ -12,11 +13,20 @@
   align-items: center;
   justify-content: center;
   background-clip: padding-box;
+  border-width: var(--border-width-thin);
+  border-style: solid;
   white-space: nowrap;
   outline: none;
   transition-property: color, background-color, border-color, box-shadow, transform, translate, opacity;
   transition-duration: var(--default-transition-duration);
   transition-timing-function: var(--default-transition-timing-function);
+}
+
+/* The row shape. A group's --group-action-* values resize it. */
+.action[data-shape='default'][data-action-size] {
+  height: var(--group-action-height, var(--action-height));
+  padding-inline: calc(var(--group-action-px, var(--action-px)) - var(--border-width-thin));
+  gap: var(--group-action-gap, var(--action-gap));
 }
 
 /* Icon glyph size beside the text. A size-* class on the svg opts out. */

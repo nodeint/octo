@@ -1,6 +1,4 @@
 .button {
-  border-width: var(--border-width-thin);
-  border-style: solid;
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);
   font-weight: var(--role-body-weight);
@@ -24,13 +22,6 @@
 .button[data-paint='primary-link'][data-shape='default'][data-action-size] {
   padding-inline: 0;
   border-inline-width: 0;
-}
-
-/* sizes: the row shape; the icon square and the shared size set live in styles/recipes/action.css */
-.button[data-shape='default'][data-action-size] {
-  height: var(--group-action-height, var(--action-height));
-  padding-inline: calc(var(--group-action-px, var(--action-px)) - var(--border-width-thin));
-  gap: var(--group-action-gap, var(--action-gap));
 }
 
 /* An icon-only square keeps the md glyph from sm up; only xs steps down. */

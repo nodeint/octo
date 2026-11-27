@@ -1,3 +1,4 @@
+export * from './components/action/Action';
 export * from './components/box/Box';
 export * from './components/flex/Flex';
 export * from './components/grid/Grid';

@@ -1,21 +1,14 @@
-.toggle {
-  border-width: var(--border-width-thin);
-  border-style: solid;
-}
-
 /* A pressed outline toggle fills with accent. Button outline keeps --muted for its own selected state. */
 .toggle[data-paint='base-outline'][aria-pressed='true'],
 .toggle[data-paint='base-outline'][data-pressed] {
   background-color: var(--accent);
 }
 
-/* sizes: the row shape; the icon square and the shared size set live in styles/recipes/action.css */
+/* sizes: group-only hooks and row height; the border, padding and gap live in styles/recipes/action.css */
 .toggle[data-shape='default'][data-action-size] {
   width: var(--group-action-width, auto);
   min-width: var(--group-action-min-width, auto);
   height: var(--group-action-row-height, var(--group-action-height, var(--action-height)));
-  padding-inline: calc(var(--group-action-px, var(--action-px)) - var(--border-width-thin));
-  gap: var(--group-action-gap, var(--action-gap));
   justify-content: var(--group-action-justify, center);
   text-align: var(--group-action-text-align, center);
 }
