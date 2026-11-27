@@ -1,0 +1,94 @@
+/*
+ * Header: the strip of media, content and actions at the top of a section or card, and the title and description
+ * type it owns. A component adds the classes and may set the input tokens on its own root or any ancestor.
+ *   header               the strip: a wrapping row; a header holding a fill media puts it on its own line
+ *   header-media         the leading media (a Media); it never shrinks
+ *   header-content       the text column; takes the free space
+ *   header-actions       the trailing actions
+ *   header-title         the title
+ *   header-description   the description
+ *
+ * Size set: data-header-size on the header picks the title and description type. Without it a header is md.
+ *   md  title-sm role, description clamped to 2 lines
+ *   sm  label role, description clamped to 3 lines
+ * Every .header declares its own type, so a nested header never inherits an outer one.
+ * A title or description outside a header falls back to the label role and an unclamped muted description.
+ * The type values equal the row.css header and content types; this file reads only --role-* tokens.
+ * Input tokens: --header-gap (default --gap-md), --header-actions-gap (default --gap-sm), --header-align,
+ * --header-content-gap, --header-description-color.
+ */
+.header {
+  --header-title-family: var(--role-title-sm-family);
+  --header-title-size: var(--role-title-sm-size);
+  --header-title-leading: var(--role-title-sm-leading);
+  --header-title-weight: var(--role-title-sm-weight);
+  --header-description-size: var(--role-description-size);
+  --header-description-leading: var(--role-description-leading);
+  --header-description-weight: var(--role-description-weight);
+  --header-description-type-color: var(--variant-fg-subtle);
+  --header-description-lines: 2;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: var(--header-align, flex-start);
+  min-width: 0;
+  gap: var(--header-gap, var(--gap-md));
+
+  &[data-header-size='sm'] {
+    /* initial makes the property invalid here, so the title takes its inherit fallback, not an outer family. */
+    --header-title-family: initial;
+    --header-title-size: var(--role-label-size);
+    --header-title-leading: var(--role-label-leading);
+    --header-title-weight: var(--role-label-weight);
+    --header-description-lines: 3;
+  }
+
+  /*
+   * A fill media takes its own line: its full basis plus the content's minimum width cannot share a line, at any gap.
+   */
+  &:has(> .header-media[data-media-size='fill']) > .header-media {
+    flex-basis: 100%;
+  }
+}
+
+.header-media {
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+  /* Never shrinks to nothing: media or actions wrap to their own line instead (capped by the available width). */
+  min-width: min(100%, 8rem);
+  max-width: 100%;
+  gap: var(--header-content-gap, 0);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--header-actions-gap, var(--gap-sm));
+}
+
+.header-title {
+  min-width: 0;
+  font-family: var(--header-title-family, inherit);
+  font-size: var(--header-title-size, var(--role-label-size));
+  line-height: var(--header-title-leading, var(--role-label-leading));
+  font-weight: var(--header-title-weight, var(--role-label-weight));
+}
+
+.header-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--header-description-lines, none);
+  overflow: hidden;
+  text-align: inherit;
+  font-size: var(--header-description-size, var(--role-description-size));
+  line-height: var(--header-description-leading, var(--role-description-leading));
+  font-weight: var(--header-description-weight, var(--role-description-weight));
+  color: var(--header-description-color, var(--header-description-type-color, var(--variant-fg-muted)));
+}

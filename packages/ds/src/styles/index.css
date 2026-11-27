@@ -64,7 +64,6 @@
 @import "../components/flex/Flex.css" layer(components);
 @import "../components/grid/Grid.css" layer(components);
 @import "../components/text/Text.css" layer(components);
-@import "../components/card/Card.css" layer(components);
 
 /* Appearance */
 @import "./appearance/index.css" layer(appearance);

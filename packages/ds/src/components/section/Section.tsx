@@ -1,6 +1,8 @@
 import * as React from 'react';
 
 import { cn } from '../../lib/utils';
+import type { MediaProps } from '../media/Media';
+import { Media } from '../media/Media';
 
 function Section({ className, ...props }: React.ComponentProps<'section'>): React.JSX.Element {
   return (
@@ -16,7 +18,17 @@ function SectionHeader({ className, ...props }: React.ComponentProps<'div'>): Re
   return (
     <div
       data-slot="section-header"
-      className={cn('section-header', className)}
+      className={cn('header section-header', className)}
+      {...props}
+    />
+  );
+}
+
+function SectionHeaderMedia({ className, ...props }: MediaProps): React.JSX.Element {
+  return (
+    <Media
+      data-slot="section-header-media"
+      className={cn('header-media section-header-media', className)}
       {...props}
     />
   );
@@ -26,8 +38,7 @@ function SectionHeaderContent({ className, ...props }: React.ComponentProps<'div
   return (
     <div
       data-slot="section-header-content"
-      data-row-type="header"
-      className={cn('row-content section-header-content', className)}
+      className={cn('header-content section-header-content', className)}
       {...props}
     />
   );
@@ -37,7 +48,7 @@ function SectionHeaderAction({ className, ...props }: React.ComponentProps<'div'
   return (
     <div
       data-slot="section-header-action"
-      className={cn('row-actions section-header-action', className)}
+      className={cn('header-actions section-header-action', className)}
       {...props}
     />
   );
@@ -47,7 +58,7 @@ function SectionTitle({ className, ...props }: React.ComponentProps<'h2'>): Reac
   return (
     <h2
       data-slot="section-title"
-      className={cn('row-title section-title', className)}
+      className={cn('header-title section-title', className)}
       {...props}
     />
   );
@@ -57,7 +68,7 @@ function SectionDescription({ className, ...props }: React.ComponentProps<'p'>):
   return (
     <p
       data-slot="section-description"
-      className={cn('row-description section-description', className)}
+      className={cn('header-description section-description', className)}
       {...props}
     />
   );
@@ -88,6 +99,7 @@ export {
   SectionHeader,
   SectionHeaderAction,
   SectionHeaderContent,
+  SectionHeaderMedia,
   SectionTitle,
 };
 

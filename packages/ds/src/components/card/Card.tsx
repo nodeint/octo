@@ -1,6 +1,8 @@
 import * as React from 'react';
 
 import { cn } from '../../lib/utils';
+import type { MediaProps } from '../media/Media';
+import { Media } from '../media/Media';
 
 type CardSize = 'md' | 'sm'
 
@@ -34,22 +36,32 @@ function Card({
 }
 
 function CardHeader({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
+  const size = React.useContext(CardSizeContext);
   return (
     <div
       data-slot="card-header"
-      className={cn('panel-header card-header', className)}
+      data-header-size={size === 'sm' ? 'sm' : undefined}
+      className={cn('panel-header header card-header', className)}
+      {...props}
+    />
+  );
+}
+
+function CardHeaderMedia({ className, ...props }: MediaProps): React.JSX.Element {
+  return (
+    <Media
+      data-slot="card-header-media"
+      className={cn('header-media card-header-media', className)}
       {...props}
     />
   );
 }
 
 function CardHeaderContent({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
-  const size = React.useContext(CardSizeContext);
   return (
     <div
       data-slot="card-header-content"
-      data-row-type={size === 'sm' ? 'content' : 'header'}
-      className={cn('row-content card-header-content', className)}
+      className={cn('header-content card-header-content', className)}
       {...props}
     />
   );
@@ -59,7 +71,7 @@ function CardHeaderAction({ className, ...props }: React.ComponentProps<'div'>):
   return (
     <div
       data-slot="card-header-action"
-      className={cn('row-actions card-header-action', className)}
+      className={cn('header-actions card-header-action', className)}
       {...props}
     />
   );
@@ -70,7 +82,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<'div'>): React.
     <div
       data-slot="card-title"
       className={cn(
-        'row-title card-title',
+        'header-title card-title',
         className
       )}
       {...props}
@@ -82,7 +94,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<'div'>): 
   return (
     <div
       data-slot="card-description"
-      className={cn('row-description card-description', className)}
+      className={cn('header-description card-description', className)}
       {...props}
     />
   );
@@ -136,6 +148,7 @@ export {
   CardHeader,
   CardHeaderAction,
   CardHeaderContent,
+  CardHeaderMedia,
   CardMedia,
   CardMediaAction,
   CardTitle,

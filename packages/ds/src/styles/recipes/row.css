@@ -1,6 +1,6 @@
 /*
  * Row: the strip of media, content and actions (item, attachment, alert) and the title and description text
- * (alert, empty, popover, section, card). A component adds the classes and sets the input tokens on its own root.
+ * (alert, empty, popover). A component adds the classes and sets the input tokens on its own root.
  *   row            the strip: border, radius, hover wash, focus ring
  *   row-group      a scrolling column (data-orientation='vertical') or strip (data-orientation='horizontal') of rows, always set, same snap and hidden scrollbar on both; the gap follows the size of the rows it holds (md without one)
  *   row-content    the text column

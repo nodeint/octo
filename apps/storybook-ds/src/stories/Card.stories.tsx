@@ -9,10 +9,15 @@ import {
   CardHeader,
   CardHeaderAction,
   CardHeaderContent,
+  CardHeaderMedia,
   CardMedia,
   CardMediaAction,
   CardTitle,
   Flex,
+  Section,
+  SectionHeader,
+  SectionHeaderContent,
+  SectionTitle,
   Stack,
   Text,
 } from '@workspace/ds/components';
@@ -208,6 +213,122 @@ export const WithFooterActions: Story = {
 };
 
 const COVER = 'linear-gradient(135deg, var(--primary-strong) 0%, var(--muted) 100%)';
+
+export const WithHeaderMedia: Story = {
+  render: (args) => (
+    <Card {...args}>
+      <CardHeader>
+        <CardHeaderMedia size="lg">A</CardHeaderMedia>
+        <CardHeaderContent>
+          <CardTitle>Title</CardTitle>
+          <CardDescription>Description</CardDescription>
+        </CardHeaderContent>
+        <CardHeaderAction><Action>Edit</Action></CardHeaderAction>
+      </CardHeader>
+    </Card>
+  ),
+};
+
+const noGapStyle: React.CSSProperties & Record<'--header-gap', string> = { '--header-gap': '0' };
+const wideGapStyle: React.CSSProperties & Record<'--header-gap', string> = { '--header-gap': '2rem' };
+
+type FillCardProps = React.ComponentProps<typeof Card> & { actions: boolean };
+
+function FillCard({ actions, style, ...args }: FillCardProps): React.JSX.Element {
+  return (
+    <Card {...args} style={style}>
+      <CardHeader>
+        <CardHeaderMedia size="fill">A</CardHeaderMedia>
+        <CardHeaderContent>
+          <CardTitle>Title</CardTitle>
+          <CardDescription>Description</CardDescription>
+        </CardHeaderContent>
+        {actions ? <CardHeaderAction><Action>Edit</Action></CardHeaderAction> : null}
+      </CardHeader>
+    </Card>
+  );
+}
+
+export const WithHeaderMediaFill: Story = {
+  render: (args) => <FillCard {...args} actions />,
+};
+
+export const WithHeaderMediaFillNoActions: Story = {
+  render: (args) => <FillCard {...args} actions={false} />,
+};
+
+export const WithHeaderMediaFillNoGap: Story = {
+  render: (args) => <FillCard {...args} actions style={noGapStyle} />,
+};
+
+export const WithHeaderMediaFillNoGapNoActions: Story = {
+  render: (args) => <FillCard {...args} actions={false} style={noGapStyle} />,
+};
+
+export const HeaderGapOverride: Story = {
+  render: (args) => (
+    <Card {...args} style={wideGapStyle}>
+      <CardHeader>
+        <CardHeaderMedia size="lg">A</CardHeaderMedia>
+        <CardHeaderContent>
+          <CardTitle>Title</CardTitle>
+          <CardDescription>Description</CardDescription>
+        </CardHeaderContent>
+        <CardHeaderAction><Action>Edit</Action></CardHeaderAction>
+      </CardHeader>
+    </Card>
+  ),
+};
+
+export const HeaderNarrow: Story = {
+  parameters: { storyWidth: 'sm' },
+  render: (args) => (
+    <Card {...args}>
+      <CardHeader>
+        <CardHeaderMedia size="xl">A</CardHeaderMedia>
+        <CardHeaderContent>
+          <CardTitle>Title</CardTitle>
+          <CardDescription>Description stays visible</CardDescription>
+        </CardHeaderContent>
+        <CardHeaderAction><Action>Edit</Action><Action>More</Action></CardHeaderAction>
+      </CardHeader>
+    </Card>
+  ),
+};
+
+export const TextOutsideHeader: Story = {
+  render: (args) => (
+    <Card {...args}>
+      <CardContent>
+        <CardTitle>Title outside a header</CardTitle>
+        <CardDescription>
+          A description outside a header is unclamped and muted, so this long sentence runs over as many lines as it
+          needs without being cut off after two or three lines of text in the card.
+        </CardDescription>
+      </CardContent>
+    </Card>
+  ),
+};
+
+export const NestedSmallCardInSectionHeader: Story = {
+  render: () => (
+    <Section>
+      <SectionHeader>
+        <SectionHeaderContent>
+          <SectionTitle>Outer section</SectionTitle>
+          <Card size="sm">
+            <CardHeader>
+              <CardHeaderContent>
+                <CardTitle>Inner small card</CardTitle>
+                <CardDescription>Title uses the parent body font, not the heading font.</CardDescription>
+              </CardHeaderContent>
+            </CardHeader>
+          </Card>
+        </SectionHeaderContent>
+      </SectionHeader>
+    </Section>
+  ),
+};
 
 export const WithMedia: Story = {
   render: (args) => (

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- `Card` and `Section` headers share a new `header` recipe. They gain a gap between media, content and actions, and
+  between actions, and they wrap, so a full-width header media sits above the text. Add `CardHeaderMedia` and
+  `SectionHeaderMedia`.
 - Move `Card` into the design system; it is still exported from `@workspace/ui`. Only `CardMedia` bleeds to the card
   edge; a bare `img` child no longer does. The media bleed, media action and hover reveal are now panel parts.
 - Move `Media` into the design system; it is still exported from `@workspace/ui`.

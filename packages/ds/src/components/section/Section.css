@@ -7,12 +7,3 @@
 .section-content[data-width='content'] {
   max-width: var(--content-width);
 }
-
-.section-header {
-  display: flex;
-  align-items: flex-start;
-}
-
-.section-header-action {
-  flex-shrink: 0;
-}

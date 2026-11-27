@@ -22,7 +22,7 @@ The styles (tokens, recipes, appearance, utilities) live in `@workspace/ds`; see
 
 A recipe is a stylesheet in `src/styles/recipes/` that gives a kind of element its skin. It binds token roles to
 properties and states for every element that opts in by adding the recipe's class
-(`action`, `box`, `chip`, `field-control`, `group`, `media`, `menu-row`, `panel`, `row`, `stack`, `state-ring-group`).
+(`action`, `box`, `chip`, `field-control`, `group`, `header`, `media`, `menu-row`, `panel`, `row`, `stack`, `state-ring-group`).
 Recipes live in the `recipes` cascade layer, which sits below `components`: a component rule beats a recipe rule
 whatever the specificity, so a component overrides a recipe without raising its selector.
 
@@ -73,16 +73,29 @@ A part sets `--media-size` (or `--media-width` and `--media-height`), `--media-r
 `--media-fg` and `--media-icon-size` on its own root, and an image part adds `data-media-fit="image"`.
 
 `row.css` is the `row` skin: the strip of media, content and actions that item, attachment and alert share, and the
-title and description text that alert, empty, popover, section and card also add (`row-title`, `row-description`).
+title and description text that alert, empty and popover also add (`row-title`, `row-description`).
 `data-row-type` on the element that wraps the title and description picks their text roles
 (`content`, `header`, `compact`), and `data-row-size` (`xs`, `sm`, `md`) picks the padding and gaps.
 `row-group` holds rows in a column (`data-orientation="vertical"`, item group) or a scrolling strip
 (`data-orientation="horizontal"`, attachment group); set the orientation always, and the gap follows the size of
 the rows it holds; `--row-lead-gap` is the gap after a leading icon in a grid row (alert).
 The row reads its color from `data-paint` (`--variant-*`), and `data-row-invalid` paints the invalid pair.
-Dialog, alert dialog and drawer set the type on their content; a small card sets `content` on its header.
+Dialog, alert dialog and drawer set the type on their content.
 A component sets the input tokens listed in the file header on its own root, and a state color goes in
 `--row-description-color`. It never re-declares what a type sets and never overrides a `row` property.
+
+`header.css` is the `header` skin: the strip of media, content and actions at the top of a card or section, and its
+title and description type. The parts are `header`, `header-media`, `header-content`, `header-actions`,
+`header-title` and `header-description`. The gap between parts is `--header-gap` (default `--gap-md`) and the gap
+inside actions is `--header-actions-gap` (default `--gap-sm`); both are `var()` fallbacks, so a component root or an
+ancestor can set them. The strip wraps; the content is at least 8rem wide (capped by the available width), so
+media or actions wrap to their own line before the text can shrink to nothing, at any gap, and a `size="fill"` media
+takes the first line.
+`data-header-size="sm"` picks the compact type (label title, 3-line description); without it the header is `md`
+(title-sm, 2 lines), and every `.header` declares its own type so a nested header never inherits an outer one.
+The recipe has its own text roles because card and section never use the `--row-*` size system; it reads only
+`--role-*` tokens, and `row.css` is the reference its values match.
+The panel-header band stays in `panel.css`.
 
 `link.css` styles `[data-link]`: `data-link` is `none`, `hover` or `always` for the underline, and a bare `data-link`
 draws none. It forces a transparent background and no border in every state and shows the paint's focus halo, so a

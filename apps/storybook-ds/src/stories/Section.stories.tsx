@@ -1,12 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { SectionContentWidth } from '@workspace/ds/components';
 import {
+  Card,
+  CardHeader,
+  CardHeaderContent,
+  CardTitle,
   Section,
   SectionContent,
   SectionDescription,
   SectionHeader,
   SectionHeaderAction,
   SectionHeaderContent,
+  SectionHeaderMedia,
   SectionTitle,
 } from '@workspace/ds/components';
 import type * as React from 'react';
@@ -42,6 +47,41 @@ export const Demo: Story = {
         </label>
       </SectionContent>
     </Section>
+  ),
+};
+
+export const WithHeaderMedia: Story = {
+  render: () => (
+    <Section>
+      <SectionHeader>
+        <SectionHeaderMedia size="lg">A</SectionHeaderMedia>
+        <SectionHeaderContent>
+          <SectionTitle>Members</SectionTitle>
+          <SectionDescription>People with access to this project.</SectionDescription>
+        </SectionHeaderContent>
+        <SectionHeaderAction><button type="button">Invite</button></SectionHeaderAction>
+      </SectionHeader>
+    </Section>
+  ),
+};
+
+export const NestedInSmallCardHeader: Story = {
+  render: () => (
+    <Card size="sm">
+      <CardHeader>
+        <CardHeaderContent>
+          <CardTitle>Small card</CardTitle>
+          <Section>
+            <SectionHeader>
+              <SectionHeaderContent>
+                <SectionTitle>Nested section</SectionTitle>
+                <SectionDescription>Renders md type: title-sm role and a two-line clamp.</SectionDescription>
+              </SectionHeaderContent>
+            </SectionHeader>
+          </Section>
+        </CardHeaderContent>
+      </CardHeader>
+    </Card>
   ),
 };
 
