@@ -1,9 +1,10 @@
 /*
- * Stack: a flex container that spaces its children. A component adds the class and picks a size, a direction
+ * Stack: a flex container that spaces its children. A component adds the class and picks a size, an orientation
  * and an alignment.
  *   data-stack-size       xs · sm · md · lg (md without the attribute) → --stack-gap, --stack-inset, --stack-radius
- *   data-stack-direction  column (default) · row
- *   data-stack-align      start · center · end → the cross axis (stretch without the attribute)
+ *   data-orientation      vertical (default) · horizontal
+ *   data-stack-align      start · center · end → the cross axis (stretch when vertical, center when horizontal, without the attribute)
+ *   data-stack-wrap       present → flex-wrap: wrap
  * The stack applies only the gap. A box that is padded or rounded reads --stack-inset and --stack-radius
  * on its own root, and sets --inset to --stack-inset so a bleeding child reaches its edge.
  * A component never declares display, flex-direction or gap on a stack.
@@ -35,8 +36,9 @@
   --stack-radius: var(--radius-surface-lg);
 }
 
-.stack[data-stack-direction='row'] {
+.stack[data-orientation='horizontal'] {
   flex-direction: row;
+  align-items: center;
 }
 
 .stack[data-stack-align='start'] {
@@ -49,4 +51,8 @@
 
 .stack[data-stack-align='end'] {
   align-items: flex-end;
+}
+
+.stack[data-stack-wrap] {
+  flex-wrap: wrap;
 }

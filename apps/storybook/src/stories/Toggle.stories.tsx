@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ToggleSize, ToggleVariant } from '@workspace/ui';
-import { Icon, Inline, Toggle } from '@workspace/ui';
+import { Icon, Stack, Toggle } from '@workspace/ui';
 
 const VARIANTS = ['ghost', 'outline'] as const satisfies readonly ToggleVariant[];
 
@@ -41,7 +41,7 @@ export const Demo: Story = {
 export const Outline: Story = {
   args: { variant: 'outline' },
   render: (args) => (
-    <Inline>
+    <Stack orientation="horizontal">
       <Toggle {...args} aria-label="Toggle italic">
         <Icon name="type" />
         Italic
@@ -50,7 +50,7 @@ export const Outline: Story = {
         <Icon name="pencil" />
         Bold
       </Toggle>
-    </Inline>
+    </Stack>
   ),
 };
 
@@ -68,7 +68,7 @@ export const WithText: Story = {
 export const Sizes: Story = {
   args: { variant: 'outline' },
   render: (args) => (
-    <Inline>
+    <Stack orientation="horizontal">
       <Toggle {...args} aria-label="Toggle small" size="sm">
         Small
       </Toggle>
@@ -78,21 +78,21 @@ export const Sizes: Story = {
       <Toggle {...args} aria-label="Toggle large" size="lg">
         Large
       </Toggle>
-    </Inline>
+    </Stack>
   ),
 };
 
 export const Disabled: Story = {
   args: { disabled: true },
   render: (args) => (
-    <Inline>
+    <Stack orientation="horizontal">
       <Toggle {...args} aria-label="Toggle disabled">
         Disabled
       </Toggle>
       <Toggle {...args} variant="outline" aria-label="Toggle disabled outline">
         Disabled
       </Toggle>
-    </Inline>
+    </Stack>
   ),
 };
 

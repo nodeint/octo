@@ -114,7 +114,7 @@ function EditableText({
       {...props}
       data-slot="editable-text"
       data-stack-size="sm"
-      data-stack-direction="row"
+      data-orientation="horizontal"
       data-variant={variant}
       data-edit-trigger={editTrigger}
       className={cn('stack editable-text', className)}

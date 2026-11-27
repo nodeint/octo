@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Icon, Inline, Media, Stack, Text } from '@workspace/ui';
+import { Icon, Media,  Stack, Text } from '@workspace/ui';
 
 type MediaTone = NonNullable<React.ComponentProps<typeof Media>['tone']>;
 
@@ -55,7 +55,7 @@ export const Demo: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <Inline gap="lg">
+    <Stack orientation="horizontal" gap="lg">
       {VARIANTS.map((variant) => (
         <Stack key={variant} gap="xs">
           <Media variant={variant}>
@@ -63,7 +63,7 @@ export const Variants: Story = {
           </Media>
         </Stack>
       ))}
-    </Inline>
+    </Stack>
   ),
 };
 
@@ -89,13 +89,13 @@ export const CustomColors: Story = {
     return (
       <Stack gap="lg">
         {EMPHASES.map((emphasis) => (
-          <Inline key={emphasis} gap="lg">
+          <Stack orientation="horizontal" key={emphasis} gap="lg">
             {TONES.map((tone) => (
               <Media key={tone} tone={tone} emphasis={emphasis}>
                 <Icon name="star" />
               </Media>
             ))}
-          </Inline>
+          </Stack>
         ))}
       </Stack>
     );
@@ -104,7 +104,7 @@ export const CustomColors: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <Inline gap="lg">
+    <Stack orientation="horizontal" gap="lg">
       {SIZES.map((size) => (
         <Stack key={size} gap="xs">
           <Media size={size}>
@@ -112,14 +112,14 @@ export const Sizes: Story = {
           </Media>
         </Stack>
       ))}
-    </Inline>
+    </Stack>
   ),
 };
 
 export const BesideText: Story = {
   name: 'Beside Text',
   render: () => (
-    <Inline gap="md">
+    <Stack orientation="horizontal" gap="md">
       <Media>
         <Icon name="database" />
       </Media>
@@ -127,13 +127,13 @@ export const BesideText: Story = {
         <Text variant="label">Database</Text>
         <Text variant="description">A small mark beside text.</Text>
       </Stack>
-    </Inline>
+    </Stack>
   ),
 };
 
 export const Ratios: Story = {
   render: () => (
-    <Inline gap="lg" align="end">
+    <Stack orientation="horizontal" gap="lg" align="end">
       {RATIOS.map((ratio) => (
         <Stack key={ratio} gap="xs">
           <Media size="xl" ratio={ratio}>
@@ -142,19 +142,19 @@ export const Ratios: Story = {
           <Text variant="description">{ratio}</Text>
         </Stack>
       ))}
-    </Inline>
+    </Stack>
   ),
 };
 
 export const Image: Story = {
   render: () => (
-    <Inline gap="lg" align="end">
+    <Stack orientation="horizontal" gap="lg" align="end">
       {RATIOS.map((ratio) => (
         <Media key={ratio} size="xl" kind="image" ratio={ratio}>
           <img src={picture('#6366f1')} alt="" />
         </Media>
       ))}
-    </Inline>
+    </Stack>
   ),
 };
 

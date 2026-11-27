@@ -16,7 +16,6 @@ import {
   FieldGroup,
   FieldLabel,
   Icon,
-  Inline,
   Input,
   Stack,
   Toggle,
@@ -121,10 +120,10 @@ export const Small: Story = {
             'Send to channels or specific teammates.',
             'Include charts, tables, and key metrics.',
           ].map((text) => (
-            <Inline key={text} gap="sm">
+            <Stack orientation="horizontal" key={text} gap="sm">
               <Icon name="check" size="sm"/>
               <span>{text}</span>
-            </Inline>
+            </Stack>
           ))}
         </Stack>
       </CardContent>
@@ -181,10 +180,10 @@ export const WithFooterActions: Story = {
         <p>All deployments and settings for this project will be permanently removed.</p>
       </CardContent>
       <CardFooter>
-        <Inline gap="sm">
+        <Stack orientation="horizontal" gap="sm">
           <Button variant="outline">Cancel</Button>
           <Button variant="destructive">Delete</Button>
-        </Inline>
+        </Stack>
       </CardFooter>
     </Card>
   ),

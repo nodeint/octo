@@ -1,6 +1,6 @@
 /*
  * Box: token-only decoration. A component adds the `box` class and the data-box-* attributes (the Box component does both),
- * so Stack, Inline and Grid share these rules. Nothing here sets display or layout; `gap` only applies when the element is already flex or grid.
+ * so Stack and Grid share these rules. Nothing here sets display or layout; `gap` only applies when the element is already flex or grid.
  */
 /* cancel the padding of the container around the box; the container declares it as --inset (0 when none does) */
 [data-box-bleed='x'],

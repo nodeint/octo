@@ -1,7 +1,7 @@
 /*
  * Deviations from the shadcn examples:
  * - Icons come from the `@workspace/ui` catalog (`chevron-down`, `plus`, `minus`, `folder`, `file`) instead of lucide.
- * - Settings Panel uses a plain `Box` surface instead of Card, and `Inline` instead of grid utility classes.
+ * - Settings Panel uses a plain `Box` surface instead of Card, and `Stack` instead of grid utility classes.
  * - File Tree omits the Explorer/Outline Tabs header; Tabs is covered by its own story.
  */
 import type { Meta, StoryObj } from '@storybook/react-vite';

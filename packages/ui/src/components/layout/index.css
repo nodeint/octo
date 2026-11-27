@@ -1,6 +1,5 @@
 @import "./section/Section.css";
 @import "./flex/Flex.css";
-@import "./inline/Inline.css";
 @import "./grid/Grid.css";
 @import "./pane/Pane.css";
 @import "./separator/Separator.css";

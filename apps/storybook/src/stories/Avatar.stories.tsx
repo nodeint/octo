@@ -15,7 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   Icon,
-  Inline,
+  Stack,
 } from '@workspace/ui';
 
 /*
@@ -69,7 +69,7 @@ function Person({ person }: { person: (typeof PEOPLE)[keyof typeof PEOPLE] }) {
 
 export const Demo: Story = {
   render: () => (
-    <Inline gap="xl">
+    <Stack orientation="horizontal" gap="xl">
       <Avatar>
         <AvatarImage src={PEOPLE.shadcn.src} alt={PEOPLE.shadcn.alt} style={GRAYSCALE} />
         <AvatarFallback>CN</AvatarFallback>
@@ -85,7 +85,7 @@ export const Demo: Story = {
         <Person person={PEOPLE.evilrabbit} />
         <AvatarGroupCount>+3</AvatarGroupCount>
       </AvatarGroup>
-    </Inline>
+    </Stack>
   ),
 };
 
@@ -169,14 +169,14 @@ export const GroupWithIcon: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <Inline gap="sm" style={GRAYSCALE}>
+    <Stack orientation="horizontal" gap="sm" style={GRAYSCALE}>
       {SIZES.map((size) => (
         <Avatar key={size} size={size}>
           <AvatarImage src={PEOPLE.shadcn.src} alt={PEOPLE.shadcn.alt} />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       ))}
-    </Inline>
+    </Stack>
   ),
 };
 
@@ -208,7 +208,7 @@ export const Rtl: Story = {
   name: 'RTL',
   render: () => (
     <div dir="rtl">
-      <Inline gap="xl">
+      <Stack orientation="horizontal" gap="xl">
         <Avatar>
           <AvatarImage src={PEOPLE.shadcn.src} alt={PEOPLE.shadcn.alt} style={GRAYSCALE} />
           <AvatarFallback>CN</AvatarFallback>
@@ -224,7 +224,7 @@ export const Rtl: Story = {
           <Person person={PEOPLE.evilrabbit} />
           <AvatarGroupCount>+3</AvatarGroupCount>
         </AvatarGroup>
-      </Inline>
+      </Stack>
     </div>
   ),
 };

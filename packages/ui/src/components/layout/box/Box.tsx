@@ -44,7 +44,7 @@ type BoxProps = useRender.ComponentProps<'div'> & BoxPaint & {
   border?: BoxBorder;
   /** The elevation step; `none` clears an inherited elevation. */
   shadow?: BoxShadow;
-  /** The space between children. Takes effect on a flex or grid box, such as Stack, Inline and Grid. */
+  /** The space between children. Takes effect on a flex or grid box, such as Stack and Grid. */
   gap?: BoxGap;
   /**
    * The padding step on every side. Also sets `--inset` for descendants, so a Box `bleed` inside cancels it.

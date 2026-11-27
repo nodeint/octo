@@ -8,7 +8,6 @@ import {
   EmptyHeader,
   EmptyTitle,
   Icon,
-  Inline,
   Input,
   InputGroup,
   InputGroupAddon,
@@ -58,11 +57,11 @@ export const Demo: Story = {
 
 export const Size: Story = {
   render: () => (
-    <Inline gap="xl">
+    <Stack orientation="horizontal" gap="xl">
       {['0.75rem', '1rem', '1.5rem', '2rem'].map((size) => (
         <Spinner key={size} style={{ width: size, height: size }} />
       ))}
-    </Inline>
+    </Stack>
   ),
 };
 
@@ -89,7 +88,7 @@ export const InButton: Story = {
 export const InBadge: Story = {
   name: 'Badge',
   render: () => (
-    <Inline gap="md">
+    <Stack orientation="horizontal" gap="md">
       <Badge>
         <Spinner />
         Syncing
@@ -102,7 +101,7 @@ export const InBadge: Story = {
         <Spinner />
         Processing
       </Badge>
-    </Inline>
+    </Stack>
   ),
 };
 

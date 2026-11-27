@@ -3,7 +3,7 @@ import { useRender } from '@base-ui/react/use-render';
 import * as React from 'react';
 
 import { cn } from '../../../lib/utils';
-import { Inline, type InlineProps } from '../../layout/inline/Inline';
+import { Stack, type StackProps } from '../../layout/stack/Stack';
 import { Icon } from '../../typography/icon/Icon';
 
 function Breadcrumb({ className, ...props }: React.ComponentProps<'nav'>): React.JSX.Element {
@@ -17,22 +17,24 @@ function Breadcrumb({ className, ...props }: React.ComponentProps<'nav'>): React
   );
 }
 
-function BreadcrumbList(props: InlineProps): React.JSX.Element {
+function BreadcrumbList(props: StackProps): React.JSX.Element {
   return (
-    <Inline
+    <Stack
       render={<ol />}
       data-slot="breadcrumb-list"
+      orientation="horizontal"
       gap="xs"
       {...props}
     />
   );
 }
 
-function BreadcrumbItem(props: InlineProps): React.JSX.Element {
+function BreadcrumbItem(props: StackProps): React.JSX.Element {
   return (
-    <Inline
+    <Stack
       render={<li />}
       data-slot="breadcrumb-item"
+      orientation="horizontal"
       gap="xs"
       {...props}
     />

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { BadgeSize, BadgeVariant } from '@workspace/ui';
-import { Badge, Icon, Inline, Spinner } from '@workspace/ui';
+import { Badge, Icon, Spinner,Stack } from '@workspace/ui';
 
 const VARIANTS = [
   'default',
@@ -35,7 +35,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
   render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
-    <Inline>
+    <Stack orientation="horizontal">
       <Badge {...args}>Badge</Badge>
       <Badge {...args} variant="secondary">
         Secondary
@@ -46,13 +46,13 @@ export const Demo: Story = {
       <Badge {...args} variant="outline">
         Outline
       </Badge>
-    </Inline>
+    </Stack>
   ),
 };
 
 export const Variants: Story = {
   render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
-    <Inline>
+    <Stack orientation="horizontal">
       <Badge {...args}>Default</Badge>
       <Badge {...args} variant="secondary">
         Secondary
@@ -72,14 +72,14 @@ export const Variants: Story = {
       <Badge {...args} variant="info">
         Info
       </Badge>
-    </Inline>
+    </Stack>
   ),
 };
 
 export const WithIcon: Story = {
   name: 'With Icon',
   render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
-    <Inline>
+    <Stack orientation="horizontal">
       <Badge {...args} variant="secondary">
         <Icon name="shield-check" />
         Verified
@@ -88,14 +88,14 @@ export const WithIcon: Story = {
         Bookmark
         <Icon name="star" />
       </Badge>
-    </Inline>
+    </Stack>
   ),
 };
 
 export const WithSpinner: Story = {
   name: 'With Spinner',
   render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
-    <Inline>
+    <Stack orientation="horizontal">
       <Badge {...args} variant="destructive">
         <Spinner />
         Deleting
@@ -104,7 +104,7 @@ export const WithSpinner: Story = {
         Generating
         <Spinner />
       </Badge>
-    </Inline>
+    </Stack>
   ),
 };
 
@@ -121,7 +121,7 @@ export const AsLink: Story = {
 export const CustomColors: Story = {
   name: 'Custom Colors',
   render: ({ tone: _tone, emphasis: _emphasis, variant: _variant, ...args }) => (
-    <Inline>
+    <Stack orientation="horizontal">
       <Badge {...args} tone="blue" emphasis="soft">
         Blue
       </Badge>
@@ -137,14 +137,14 @@ export const CustomColors: Story = {
       <Badge {...args} tone="rose" emphasis="soft">
         Rose
       </Badge>
-    </Inline>
+    </Stack>
   ),
 };
 
 export const Rtl: Story = {
   name: 'RTL',
   render: ({ tone: _tone, emphasis: _emphasis, ...args }) => (
-    <Inline dir="rtl">
+    <Stack orientation="horizontal" dir="rtl">
       <Badge {...args}>شارة</Badge>
       <Badge {...args} variant="secondary">
         ثانوي
@@ -163,6 +163,6 @@ export const Rtl: Story = {
         إشارة مرجعية
         <Icon name="star" />
       </Badge>
-    </Inline>
+    </Stack>
   ),
 };

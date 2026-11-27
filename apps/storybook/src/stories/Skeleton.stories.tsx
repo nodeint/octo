@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { SkeletonSize } from '@workspace/ui';
-import { Card, CardContent, CardHeader, CardHeaderContent, Inline, Skeleton, Stack } from '@workspace/ui';
+import { Card, CardContent, CardHeader, CardHeaderContent, Skeleton, Stack } from '@workspace/ui';
 
 import { storyWidthDecorator } from '../story-width';
 
@@ -41,22 +41,22 @@ function Lines() {
 
 export const Demo: Story = {
   render: () => (
-    <Inline gap="md">
+    <Stack orientation="horizontal" gap="md">
       <Skeleton style={{ ...ROUND, height: '3rem', width: '3rem', flexShrink: 0 }} />
       <Lines />
-    </Inline>
+    </Stack>
   ),
 };
 
 export const Avatar: Story = {
   render: () => (
-    <Inline gap="md">
+    <Stack orientation="horizontal" gap="md">
       <Skeleton style={{ ...ROUND, height: '2.5rem', width: '2.5rem', flexShrink: 0 }} />
       <Stack gap="sm">
         <Skeleton style={{ height: '1rem', width: '9.5rem' }} />
         <Skeleton style={{ height: '1rem', width: '6.5rem' }} />
       </Stack>
-    </Inline>
+    </Stack>
   ),
 };
 
@@ -107,11 +107,11 @@ export const Table: Story = {
   render: () => (
     <Stack gap="sm">
       {Array.from({ length: 5 }, (_, row) => (
-        <Inline key={row} gap="md">
+        <Stack orientation="horizontal" key={row} gap="md">
           <Skeleton style={{ height: '1rem', flex: 1 }} />
           <Skeleton style={{ height: '1rem', width: '6rem' }} />
           <Skeleton style={{ height: '1rem', width: '5rem' }} />
-        </Inline>
+        </Stack>
       ))}
     </Stack>
   ),
@@ -131,10 +131,10 @@ export const Rtl: Story = {
   name: 'RTL',
   render: () => (
     <div dir="rtl">
-      <Inline gap="md">
+      <Stack orientation="horizontal" gap="md">
         <Skeleton style={{ ...ROUND, height: '3rem', width: '3rem', flexShrink: 0 }} />
         <Lines />
-      </Inline>
+      </Stack>
     </div>
   ),
 };

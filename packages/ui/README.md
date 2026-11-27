@@ -93,7 +93,7 @@ A component sets the input tokens listed in the file header on its own root, and
 `--row-description-color`. It never re-declares what a type sets and never overrides a `row` property.
 
 `stack.css` is the `stack` flex container: `data-stack-size` (`xs`, `sm`, `md`, `lg`; `md` without the attribute) sets the gap and
-`data-stack-direction` (`column`, `row`) the axis and `data-stack-align` the cross axis. A size also declares `--stack-inset` and
+`data-orientation` (`vertical`, `horizontal`) the axis and `data-stack-align` the cross axis. A size also declares `--stack-inset` and
 `--stack-radius`, which a padded or rounded box reads on its own root. A component never declares `display`, `flex-direction`
 or `gap` on a stack. The `Stack` component adds the class itself.
 

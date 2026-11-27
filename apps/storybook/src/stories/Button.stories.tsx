@@ -15,8 +15,8 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
   Icon,
-  Inline,
   Spinner,
+  Stack,
 } from '@workspace/ui';
 
 const VARIANTS = [
@@ -58,12 +58,12 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {
   args: { variant: 'outline' },
   render: (args) => (
-    <Inline>
+    <Stack orientation="horizontal">
       <Button {...args} />
       <Button {...args} shape="icon" aria-label="Submit">
         <Icon name="arrow-up" />
       </Button>
-    </Inline>
+    </Stack>
   ),
 };
 
@@ -79,18 +79,18 @@ export const Size: Story = {
   },
   args: { variant: 'outline' },
   render: (args) => (
-    <Inline gap="xl">
+    <Stack orientation="horizontal" gap="xl">
       {SIZES.map((size) => (
-        <Inline key={size}>
+        <Stack orientation="horizontal" key={size}>
           <Button {...args} size={size}>
             {SIZE_LABELS[size]}
           </Button>
           <Button {...args} size={size} shape="icon" aria-label="Submit">
             <Icon name="arrow-up" />
           </Button>
-        </Inline>
+        </Stack>
       ))}
-    </Inline>
+    </Stack>
   ),
 };
 
@@ -149,7 +149,7 @@ export const WithIcon: Story = {
   },
   args: { variant: 'outline' },
   render: (args) => (
-    <Inline>
+    <Stack orientation="horizontal">
       <Button {...args}>
         <Icon name="plus" />
         New Branch
@@ -158,7 +158,7 @@ export const WithIcon: Story = {
         Fork
         <Icon name="external-link" />
       </Button>
-    </Inline>
+    </Stack>
   ),
 };
 
@@ -173,7 +173,7 @@ export const Loading: Story = {
     },
   },
   render: (args) => (
-    <Inline>
+    <Stack orientation="horizontal">
       <Button {...args} variant="outline" disabled>
         <Spinner />
         Generating
@@ -182,7 +182,7 @@ export const Loading: Story = {
         Downloading
         <Spinner />
       </Button>
-    </Inline>
+    </Stack>
   ),
 };
 
