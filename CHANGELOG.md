@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Move `Text` into the design system; it now takes `render` instead of `as`.
 - `Action` and every element with the `action` class use the label font, set per size from the size set
   (`--role-label-sm-*` for `xs` and `sm`, `--role-label-*` for `md` and `lg`). `ActionLink` has a single size and
   inherits its font from the parent. `Button` keeps its type role.

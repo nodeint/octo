@@ -81,8 +81,8 @@ export const List: Story = {
         <div key={n} style={{ display: 'contents' }}>
           {index > 0 ? <Separator /> : null}
           <dl style={{ display: 'flex', justifyContent: 'space-between', margin: 0 }}>
-            <Text as="span">Item {n}</Text>
-            <Text as="span" variant="description">Value {n}</Text>
+            <Text>Item {n}</Text>
+            <Text variant="description">Value {n}</Text>
           </dl>
         </div>
       ))}

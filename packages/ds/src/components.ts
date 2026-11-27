@@ -5,3 +5,4 @@ export * from './components/flex/Flex';
 export * from './components/grid/Grid';
 export * from './components/section/Section';
 export * from './components/stack/Stack';
+export * from './components/text/Text';

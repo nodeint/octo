@@ -1,12 +1,12 @@
 'use client';
 
+import { Text } from '@workspace/ds';
 import * as React from 'react';
 
 import { cn } from '../../../lib/utils';
 import { Input } from '../../form/input/Input';
 import { Button } from '../../general/button/Button';
 import { Icon } from '../../typography/icon/Icon';
-import { Text } from '../../typography/text/Text';
 
 type EditableTextVariant = 'title-md' | 'title-sm' | 'body';
 
@@ -137,7 +137,6 @@ function EditableText({
         />
       ) : (
         <Text
-          as="span"
           variant={variant}
           overflow="truncate"
           className="editable-text-value"

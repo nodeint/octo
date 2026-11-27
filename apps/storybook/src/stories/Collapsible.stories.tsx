@@ -46,7 +46,7 @@ export const Demo: Story = {
     <Collapsible>
       <Stack>
         <Flex align="center" justify="space-between" px="md">
-          <Text as="h4" variant="title-sm">Order #4189</Text>
+          <Text render={<h4 />} variant="title-sm">Order #4189</Text>
           <CollapsibleTrigger render={<Button variant="ghost" shape="icon" size="sm" aria-label="Toggle details" />}>
             <Icon name="chevron-down" />
           </CollapsibleTrigger>
@@ -58,12 +58,12 @@ export const Demo: Story = {
         <CollapsibleContent>
           <Stack>
             <Box radius="sm" bordered px="md" py="sm">
-              <Text as="p" variant="label">Shipping address</Text>
-              <Text as="p" variant="description">100 Market St, San Francisco</Text>
+              <Text render={<p />} variant="label">Shipping address</Text>
+              <Text render={<p />} variant="description">100 Market St, San Francisco</Text>
             </Box>
             <Box radius="sm" bordered px="md" py="sm">
-              <Text as="p" variant="label">Items</Text>
-              <Text as="p" variant="description">2x Studio Headphones</Text>
+              <Text render={<p />} variant="label">Items</Text>
+              <Text render={<p />} variant="description">2x Studio Headphones</Text>
             </Box>
           </Stack>
         </CollapsibleContent>
@@ -182,7 +182,7 @@ export const Rtl: Story = {
     <Collapsible dir="rtl">
       <Stack>
         <Flex align="center" justify="space-between" px="md">
-          <Text as="h4" variant="title-sm">الطلب #4189</Text>
+          <Text render={<h4 />} variant="title-sm">الطلب #4189</Text>
           <CollapsibleTrigger render={<Button variant="ghost" shape="icon" size="sm" aria-label="Toggle details" />}>
             <Icon name="chevron-down" />
           </CollapsibleTrigger>
@@ -194,12 +194,12 @@ export const Rtl: Story = {
         <CollapsibleContent>
           <Stack>
             <Box radius="sm" bordered px="md" py="sm">
-              <Text as="p" variant="label">عنوان الشحن</Text>
-              <Text as="p" variant="description">100 Market St, San Francisco</Text>
+              <Text render={<p />} variant="label">عنوان الشحن</Text>
+              <Text render={<p />} variant="description">100 Market St, San Francisco</Text>
             </Box>
             <Box radius="sm" bordered px="md" py="sm">
-              <Text as="p" variant="label">العناصر</Text>
-              <Text as="p" variant="description">2x سماعات الاستوديو</Text>
+              <Text render={<p />} variant="label">العناصر</Text>
+              <Text render={<p />} variant="description">2x سماعات الاستوديو</Text>
             </Box>
           </Stack>
         </CollapsibleContent>

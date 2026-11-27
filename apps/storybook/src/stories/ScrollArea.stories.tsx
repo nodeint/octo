@@ -32,10 +32,10 @@ type Story = StoryObj<typeof meta>;
 function TagList({ title }: { title: string }): React.JSX.Element {
   return (
     <div style={{ padding: '1rem' }}>
-      <Text as="h4" variant="label" style={{ marginBlockEnd: '1rem' }}>{title}</Text>
+      <Text render={<h4 />} variant="label" style={{ marginBlockEnd: '1rem' }}>{title}</Text>
       {TAGS.map((tag) => (
         <React.Fragment key={tag}>
-          <Text as="div">{tag}</Text>
+          <Text render={<div />}>{tag}</Text>
           <Separator style={{ marginBlock: '0.5rem' }} />
         </React.Fragment>
       ))}
@@ -67,7 +67,7 @@ export const Horizontal: Story = {
                 surface={index === 0 ? 'muted' : 'accent'}
                 style={{ width: '7.5rem', aspectRatio: '3 / 4' }}
               />
-              <Text as="figcaption" variant="caption" style={{ paddingBlockStart: '0.5rem' }}>
+              <Text render={<figcaption />} variant="caption" style={{ paddingBlockStart: '0.5rem' }}>
                 Photo by {artist}
               </Text>
             </figure>

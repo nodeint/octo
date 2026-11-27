@@ -8,7 +8,7 @@
  *   components per-part tokens (components.css) and every component, so a component rule beats a recipe rule whatever the specificity
  *   appearance data-appearance-* maps; they rebind tokens, so they beat every token a lower layer declares
  *   utilities  override classes (utilities.css), after every component
- * The design system components (Box, Flex, Grid, Section, Stack) are imported here; a consumer imports its own into the components layer.
+ * The design system components (Box, Flex, Grid, Section, Stack, Text) are imported here; a consumer imports its own into the components layer.
  * Nothing in this package is unlayered, so a consumer's own CSS always wins.
  */
 @layer base, theme, layout, recipes, components, appearance, utilities;
@@ -63,6 +63,7 @@
 @import "../components/section/Section.css" layer(components);
 @import "../components/flex/Flex.css" layer(components);
 @import "../components/grid/Grid.css" layer(components);
+@import "../components/text/Text.css" layer(components);
 
 /* Appearance */
 @import "./appearance/index.css" layer(appearance);

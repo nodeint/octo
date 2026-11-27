@@ -46,7 +46,6 @@ export * from './components/typography/highlighted-text/HighlightedText';
 export * from './components/typography/icon/Icon';
 export * from './components/typography/kbd/Kbd';
 export * from './components/typography/label/Label';
-export * from './components/typography/text/Text';
 export type { ColorName, IconName } from './constants';
 export { COLOR_NAMES } from './constants';
 export { useIsMobile } from './hooks/use-is-mobile';

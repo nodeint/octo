@@ -1,6 +1,7 @@
-import * as React from 'react';
+import { mergeProps } from '@base-ui/react/merge-props';
+import { useRender } from '@base-ui/react/use-render';
 
-import { cn } from '../../../lib/utils';
+import { cn } from '../../lib/utils';
 
 type TextRole =
   | 'display'
@@ -24,9 +25,11 @@ type TextAlign = 'start' | 'center' | 'end';
 
 type TextOverflow = 'truncate' | 'clamp-1' | 'clamp-2' | 'clamp-3' | 'break' | 'pre' | 'no-wrap';
 
-type TextProps = React.ComponentProps<'span'> & {
-  /** The element to render. Defaults to a `span`; use `p`, `h1`…`h6`, `label`, or `code` when the meaning needs it. */
-  as?: React.ElementType;
+/**
+ * Renders a `span` by default. Pass `render` with `<p />`, `<h1 />`…`<h6 />`, `<label />` or `<code />`
+ * when the meaning needs it.
+ */
+type TextProps = useRender.ComponentProps<'span'> & {
   /** The text role: size, weight, leading, family, and color come from it. Left unset, the text inherits. */
   variant?: TextRole;
   align?: TextAlign;
@@ -38,27 +41,21 @@ type TextProps = React.ComponentProps<'span'> & {
 };
 
 function Text({
-  as: Component = 'span',
   className,
   variant,
   align,
   overflow,
   italic = false,
   numeric = false,
+  render,
   ...props
 }: TextProps): React.JSX.Element {
-  return (
-    <Component
-      data-slot="text"
-      data-variant={variant}
-      data-align={align}
-      data-overflow={overflow}
-      data-italic={italic ? '' : undefined}
-      data-numeric={numeric ? '' : undefined}
-      className={cn('text', className)}
-      {...props}
-    />
-  );
+  return useRender({
+    defaultTagName: 'span',
+    props: mergeProps<'span'>({ className: cn('text', className) } as React.ComponentProps<'span'>, props),
+    state: { slot: 'text', variant, align, overflow, italic, numeric },
+    render,
+  });
 }
 
 export { Text };

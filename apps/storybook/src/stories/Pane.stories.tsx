@@ -31,7 +31,7 @@ export const ScrollingBody: Story = {
     <Pane style={{ height: '16rem' }}>
       <PaneBody>
         {Array.from({ length: 20 }, (_, i) => (
-          <Text as="p" key={i}>Entry {i + 1}</Text>
+          <Text render={<p />} key={i}>Entry {i + 1}</Text>
         ))}
       </PaneBody>
     </Pane>
@@ -55,7 +55,7 @@ export const WithSeparators: Story = {
       <PaneSeparator />
       <PaneBody>
         {Array.from({ length: 20 }, (_, i) => (
-          <Text as="p" key={i}>Entry {i + 1}</Text>
+          <Text render={<p />} key={i}>Entry {i + 1}</Text>
         ))}
       </PaneBody>
       <PaneSeparator />
