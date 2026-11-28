@@ -45,6 +45,84 @@
   }
 }
 
+/* width: a step of the box size scale on that axis, or `full` for 100%. */
+[data-box-width] {
+  &[data-box-width='xs'] {
+    width: var(--box-w-xs);
+  }
+
+  &[data-box-width='sm'] {
+    width: var(--box-w-sm);
+  }
+
+  &[data-box-width='md'] {
+    width: var(--box-w-md);
+  }
+
+  &[data-box-width='lg'] {
+    width: var(--box-w-lg);
+  }
+
+  &[data-box-width='xl'] {
+    width: var(--box-w-xl);
+  }
+
+  &[data-box-width='2xl'] {
+    width: var(--box-w-2xl);
+  }
+
+  &[data-box-width='3xl'] {
+    width: var(--box-w-3xl);
+  }
+
+  &[data-box-width='4xl'] {
+    width: var(--box-w-4xl);
+  }
+
+  &[data-box-width='full'] {
+    width: 100%;
+  }
+}
+
+/* height: a step of the box size scale on that axis, or `full` for 100%. */
+[data-box-height] {
+  &[data-box-height='xs'] {
+    height: var(--box-h-xs);
+  }
+
+  &[data-box-height='sm'] {
+    height: var(--box-h-sm);
+  }
+
+  &[data-box-height='md'] {
+    height: var(--box-h-md);
+  }
+
+  &[data-box-height='lg'] {
+    height: var(--box-h-lg);
+  }
+
+  &[data-box-height='xl'] {
+    height: var(--box-h-xl);
+  }
+
+  &[data-box-height='2xl'] {
+    height: var(--box-h-2xl);
+  }
+
+  &[data-box-height='3xl'] {
+    height: var(--box-h-3xl);
+  }
+
+  &[data-box-height='4xl'] {
+    height: var(--box-h-4xl);
+  }
+
+  &[data-box-height='full'] {
+    height: 100%;
+  }
+}
+
 /*
  * Radius: `radius` rounds every corner. A side (`radiusTop`, `radiusBottom`, `radiusStart`, `radiusEnd`) rounds its two
  * corners, and a corner (`radiusTopStart`, `radiusTopEnd`, `radiusBottomStart`, `radiusBottomEnd`) rounds one.

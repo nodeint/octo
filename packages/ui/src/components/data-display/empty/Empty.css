@@ -22,13 +22,13 @@
 
 .empty-header {
   align-items: center;
-  max-width: var(--panel-w-sm);
+  max-width: var(--box-w-lg);
 }
 
 .empty-content {
   align-items: center;
   width: 100%;
-  max-width: var(--panel-w-sm);
+  max-width: var(--box-w-lg);
   min-width: 0;
   font-size: var(--role-body-size);
   line-height: var(--role-body-leading);

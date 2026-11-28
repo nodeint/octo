@@ -16,7 +16,7 @@
 }
 
 .attachment[data-orientation='horizontal'] {
-  min-width: var(--panel-w-xxs);
+  min-width: var(--box-w-sm);
 }
 
 .attachment[data-orientation='vertical'] {

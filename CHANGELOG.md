@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Replace the `--panel-w-*`, `--panel-h-*` and `--box-size-*` tokens with one size scale on two axes, `--box-w-*` and
+  `--box-h-*`, from `xs` (8rem) to `4xl` (60rem) (breaking, no alias). Floating, modal, tooltip, empty, menu and
+  attachment min-width keep their sizes. The vertical attachment widens from 6 and 7rem to 8rem, and `ScrollArea`
+  `max-height` `lg` goes from 27 to 30rem and `xl` from 37.5 to 40rem.
+- Add `width` and `height` props to `Box`, and so to `Stack`, `Flex` and `Grid`, with the type `BoxSize`: a step of the
+  box size scale, or `full` for 100%. The types reject `width` together with `bleed="x"` or `bleed="all"`, so
+  `PaneHeader` and `PaneFooter` no longer accept `width`.
 - Rename `SectionContent` to `SectionBody`, with `SectionBodyProps` and `SectionBodyWidth` (breaking, no alias). Add
   `SectionFooter`, a full-width action row with an `align` of `start` or `end`.
 - Add the DS `Header` family (`Header`, `HeaderMedia`, `HeaderContent`, `HeaderAction`, `HeaderTitle`,

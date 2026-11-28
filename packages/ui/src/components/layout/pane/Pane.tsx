@@ -1,4 +1,4 @@
-import { Box, type BoxProps, Flex, type FlexProps, resolveSurfacePaint } from '@workspace/ds';
+import { Box, type BoxBleed, type BoxProps, Flex, type FlexProps, resolveSurfacePaint } from '@workspace/ds';
 import type * as React from 'react';
 
 import { cn } from '../../../lib/utils';
@@ -31,7 +31,13 @@ function Pane({
   );
 }
 
-function PaneHeader({ className, ...props }: BoxProps): React.JSX.Element {
+/** `Omit` applied to each member of a union, so the paint union of `BoxProps` survives. */
+type OmitFromEach<Props, Key extends PropertyKey> = Props extends unknown ? Omit<Props, Key> : never;
+
+/** Header and footer fix a horizontal bleed, so they take no `width`. */
+type PaneEdgeProps = OmitFromEach<BoxProps, 'bleed' | 'width'> & { bleed?: BoxBleed; width?: undefined };
+
+function PaneHeader({ className, ...props }: PaneEdgeProps): React.JSX.Element {
   return <Box bleed="x" px="inset" py="inset" data-slot="pane-header" className={cn('pane-header', className)} {...props} />;
 }
 
@@ -49,7 +55,7 @@ function PaneSeparator({ className, ...props }: React.ComponentProps<typeof Sepa
   return <Separator data-slot="pane-separator" data-box-bleed="x" className={cn('pane-separator', className)} {...props} />;
 }
 
-function PaneFooter({ className, ...props }: BoxProps): React.JSX.Element {
+function PaneFooter({ className, ...props }: PaneEdgeProps): React.JSX.Element {
   return <Box bleed="x" px="inset" py="inset" data-slot="pane-footer" className={cn('pane-footer', className)} {...props} />;
 }
 

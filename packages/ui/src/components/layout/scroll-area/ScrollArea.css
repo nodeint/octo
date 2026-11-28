@@ -40,19 +40,19 @@
 }
 
 .scroll-area-viewport[data-max-height='sm'] {
-  max-height: min(var(--panel-h-sm), 50vh);
+  max-height: min(var(--box-h-md), 50vh);
 }
 
 .scroll-area-viewport[data-max-height='md'] {
-  max-height: min(var(--panel-h-md), 50vh);
+  max-height: min(var(--box-h-lg), 50vh);
 }
 
 .scroll-area-viewport[data-max-height='lg'] {
-  max-height: min(var(--panel-h-lg), 50vh);
+  max-height: min(var(--box-h-xl), 50vh);
 }
 
 .scroll-area-viewport[data-max-height='xl'] {
-  max-height: min(var(--panel-h-xl), 50vh);
+  max-height: min(var(--box-h-2xl), 50vh);
 }
 
 /* Hidden at rest so it never covers content. It shows while the user scrolls or points at it. */

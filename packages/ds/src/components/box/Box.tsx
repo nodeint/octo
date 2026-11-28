@@ -33,19 +33,33 @@ type BoxPaddingSide = BoxPadding | '0' | 'inset';
  */
 type BoxBleed = 'x' | 'y' | 'all' | 'top' | 'bottom' | 'start' | 'end';
 
+/** A step of the box size scale (`--box-w-*` on width, `--box-h-*` on height), or `full` for 100%. */
+type BoxSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full';
+
 /**
  * Without `variant`, `tone` and `emphasis` the box is not painted. `variant` takes the paint of one preset pair;
  * `tone` with `emphasis` takes the paint of that pair.
  */
 type BoxPaint = SurfacePaint
 
-type BoxProps = useRender.ComponentProps<'div'> & BoxPaint & {
+type BoxBleedWithoutWidth = 'x' | 'all';
+
+/**
+ * `width` and a bleed over the inline axis (`x`, `all`) ask for different widths, so the types allow only one of them.
+ */
+type BoxBleedWidth =
+  | { bleed?: Exclude<BoxBleed, BoxBleedWithoutWidth>; width?: BoxSize }
+  | { bleed?: BoxBleed; width?: undefined };
+
+type BoxBaseProps = useRender.ComponentProps<'div'> & BoxPaint & {
   /**
    * Extends the box to the edges of the container that pads it, by a negative margin of `--inset`.
    * The container declares `--inset` with the same value as its padding; without one the bleed is 0.
    * The box does not pad itself again; give it its own padding to keep content aligned.
    */
   bleed?: BoxBleed;
+  /** The height, a step of the `--box-h-*` scale or `full`. */
+  height?: BoxSize;
   /** The corner radius step on every corner. */
   radius?: BoxRadius;
   /** The block start side: its two corners. Wins over `radius`. */
@@ -95,11 +109,15 @@ type BoxProps = useRender.ComponentProps<'div'> & BoxPaint & {
   borderType?: BoxBorderType;
 };
 
+type BoxProps = BoxBaseProps & BoxBleedWidth;
+
 function Box({
   variant,
   tone,
   emphasis,
   bleed,
+  width,
+  height,
   radius,
   radiusTop,
   radiusBottom,
@@ -139,6 +157,8 @@ function Box({
     state: {
       'paint': paint,
       'box-bleed': bleed,
+      'box-width': width,
+      'box-height': height,
       'box-radius': radius,
       'box-radius-top': radiusTop,
       'box-radius-bottom': radiusBottom,
@@ -179,4 +199,5 @@ export type {
   BoxProps,
   BoxRadius,
   BoxShadow,
+  BoxSize,
 };

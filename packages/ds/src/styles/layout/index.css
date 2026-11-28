@@ -38,25 +38,26 @@
   --icon-md: 1rem;
   --icon-lg: 1.25rem;
 
-  /* Box size: fixed boxes on any axis. Smaller than xs is a control size. */
-  --box-size-xs: 6rem;
-  --box-size-sm: 7rem;
-  --box-size-md: 8rem;
+  /* Box size: fixed and capped block sizes, one scale on each axis. Smaller than xs is a control size. */
+  --box-w-xs: 8rem;
+  --box-w-sm: 12rem;
+  --box-w-md: 16rem;
+  --box-w-lg: 20rem;
+  --box-w-xl: 30rem;
+  --box-w-2xl: 40rem;
+  --box-w-3xl: 48rem;
+  --box-w-4xl: 60rem;
+  --box-h-xs: 8rem;
+  --box-h-sm: 12rem;
+  --box-h-md: 16rem;
+  --box-h-lg: 20rem;
+  --box-h-xl: 30rem;
+  --box-h-2xl: 40rem;
+  --box-h-3xl: 48rem;
+  --box-h-4xl: 60rem;
 
   /* Content width: the widest a Section's content runs. A theme sets it to widen or narrow every section. */
   --content-width: 30rem;
-
-  /* Panel size: width and max height of floating panels and width-capped blocks. */
-  --panel-w-xxs: 12rem;
-  --panel-w-xs: 16rem;
-  --panel-w-sm: 20rem;
-  --panel-w-md: 30rem;
-  --panel-w-lg: 48rem;
-  --panel-w-xl: 60rem;
-  --panel-h-sm: 16rem;
-  --panel-h-md: 20rem;
-  --panel-h-lg: 27rem;
-  --panel-h-xl: 37.5rem;
 
   /*
    * Radius: the scale is plain steps. Components read a set, never the scale.

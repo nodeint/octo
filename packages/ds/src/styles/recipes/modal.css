@@ -6,7 +6,7 @@
  * of the screen, `modal-side` (with `modal-side-viewport` around it and `modal-side-overlay` on the scrim) for a panel
  * on a screen edge. `modal-side` reads data-side (top, right, bottom, left).
  *
- * Width: a centered modal reads data-size (sm, md, lg, xl) from the --panel-w-* scale, from 40rem up. A component
+ * Width: a centered modal reads data-size (sm, md, lg, xl) from the --box-w-* scale, from 40rem up. A component
  * passes data-size and never sets a width itself; a size it does not offer is simply never passed.
  *
  * Input tokens a component may set on its own root:
@@ -73,19 +73,19 @@
 
   @media (min-width: 40rem) {
     &[data-size='sm'] {
-      max-width: var(--panel-w-sm);
+      max-width: var(--box-w-lg);
     }
 
     &[data-size='md'] {
-      max-width: var(--panel-w-md);
+      max-width: var(--box-w-xl);
     }
 
     &[data-size='lg'] {
-      max-width: var(--panel-w-lg);
+      max-width: var(--box-w-3xl);
     }
 
     &[data-size='xl'] {
-      max-width: var(--panel-w-xl);
+      max-width: var(--box-w-4xl);
     }
   }
 }
@@ -197,7 +197,7 @@
   @media (min-width: 40rem) {
     &[data-side='left'],
     &[data-side='right'] {
-      max-width: var(--panel-w-sm);
+      max-width: var(--box-w-lg);
     }
   }
 }

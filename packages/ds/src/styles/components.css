@@ -96,8 +96,8 @@
   --textarea-min-width: 4rem; /* primer: --base-size-64 */
 
   /* Attachment: vertical width */
-  --attachment-vertical-width: var(--box-size-xs); /* 96 */
-  --attachment-vertical-content-width: var(--box-size-sm); /* 112, when it has content */
+  --attachment-vertical-width: var(--box-w-xs);
+  --attachment-vertical-content-width: var(--box-w-xs); /* a theme can widen the content case */
 }
 
 .dark {
