@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { cn } from '../../lib/utils';
+import { Header, HeaderAction, HeaderContent, HeaderDescription, HeaderMedia, HeaderTitle } from '../header/Header';
 import type { MediaProps } from '../media/Media';
-import { Media } from '../media/Media';
 
 function Section({ className, ...props }: React.ComponentProps<'section'>): React.JSX.Element {
   return (
@@ -16,9 +16,9 @@ function Section({ className, ...props }: React.ComponentProps<'section'>): Reac
 
 function SectionHeader({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
   return (
-    <div
+    <Header
       data-slot="section-header"
-      className={cn('header section-header', className)}
+      className={cn('section-header', className)}
       {...props}
     />
   );
@@ -26,9 +26,9 @@ function SectionHeader({ className, ...props }: React.ComponentProps<'div'>): Re
 
 function SectionHeaderMedia({ className, ...props }: MediaProps): React.JSX.Element {
   return (
-    <Media
+    <HeaderMedia
       data-slot="section-header-media"
-      className={cn('header-media section-header-media', className)}
+      className={cn('section-header-media', className)}
       {...props}
     />
   );
@@ -36,9 +36,9 @@ function SectionHeaderMedia({ className, ...props }: MediaProps): React.JSX.Elem
 
 function SectionHeaderContent({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
   return (
-    <div
+    <HeaderContent
       data-slot="section-header-content"
-      className={cn('header-content section-header-content', className)}
+      className={cn('section-header-content', className)}
       {...props}
     />
   );
@@ -46,9 +46,9 @@ function SectionHeaderContent({ className, ...props }: React.ComponentProps<'div
 
 function SectionHeaderAction({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
   return (
-    <div
+    <HeaderAction
       data-slot="section-header-action"
-      className={cn('header-actions section-header-action', className)}
+      className={cn('section-header-action', className)}
       {...props}
     />
   );
@@ -56,9 +56,10 @@ function SectionHeaderAction({ className, ...props }: React.ComponentProps<'div'
 
 function SectionTitle({ className, ...props }: React.ComponentProps<'h2'>): React.JSX.Element {
   return (
-    <h2
+    <HeaderTitle
+      render={<h2 />}
       data-slot="section-title"
-      className={cn('header-title section-title', className)}
+      className={cn('section-title', className)}
       {...props}
     />
   );
@@ -66,9 +67,10 @@ function SectionTitle({ className, ...props }: React.ComponentProps<'h2'>): Reac
 
 function SectionDescription({ className, ...props }: React.ComponentProps<'p'>): React.JSX.Element {
   return (
-    <p
+    <HeaderDescription
+      render={<p />}
       data-slot="section-description"
-      className={cn('header-description section-description', className)}
+      className={cn('section-description', className)}
       {...props}
     />
   );

@@ -4,6 +4,7 @@ export * from './components/box/Box';
 export * from './components/card/Card';
 export * from './components/flex/Flex';
 export * from './components/grid/Grid';
+export * from './components/header/Header';
 export * from './components/media/Media';
 export * from './components/section/Section';
 export * from './components/stack/Stack';

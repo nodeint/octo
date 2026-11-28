@@ -1,8 +1,15 @@
 import * as React from 'react';
 
 import { cn } from '../../lib/utils';
+import {
+  Header,
+  HeaderAction,
+  HeaderContent,
+  HeaderDescription,
+  HeaderMedia,
+  HeaderTitle,
+} from '../header/Header';
 import type { MediaProps } from '../media/Media';
-import { Media } from '../media/Media';
 
 type CardSize = 'md' | 'sm'
 
@@ -38,10 +45,10 @@ function Card({
 function CardHeader({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
   const size = React.useContext(CardSizeContext);
   return (
-    <div
+    <Header
+      size={size}
       data-slot="card-header"
-      data-header-size={size === 'sm' ? 'sm' : undefined}
-      className={cn('panel-header header card-header', className)}
+      className={cn('panel-header card-header', className)}
       {...props}
     />
   );
@@ -49,9 +56,9 @@ function CardHeader({ className, ...props }: React.ComponentProps<'div'>): React
 
 function CardHeaderMedia({ className, ...props }: MediaProps): React.JSX.Element {
   return (
-    <Media
+    <HeaderMedia
       data-slot="card-header-media"
-      className={cn('header-media card-header-media', className)}
+      className={cn('card-header-media', className)}
       {...props}
     />
   );
@@ -59,9 +66,9 @@ function CardHeaderMedia({ className, ...props }: MediaProps): React.JSX.Element
 
 function CardHeaderContent({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
   return (
-    <div
+    <HeaderContent
       data-slot="card-header-content"
-      className={cn('header-content card-header-content', className)}
+      className={cn('card-header-content', className)}
       {...props}
     />
   );
@@ -69,9 +76,9 @@ function CardHeaderContent({ className, ...props }: React.ComponentProps<'div'>)
 
 function CardHeaderAction({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
   return (
-    <div
+    <HeaderAction
       data-slot="card-header-action"
-      className={cn('header-actions card-header-action', className)}
+      className={cn('card-header-action', className)}
       {...props}
     />
   );
@@ -79,12 +86,9 @@ function CardHeaderAction({ className, ...props }: React.ComponentProps<'div'>):
 
 function CardTitle({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
   return (
-    <div
+    <HeaderTitle
       data-slot="card-title"
-      className={cn(
-        'header-title card-title',
-        className
-      )}
+      className={cn('card-title', className)}
       {...props}
     />
   );
@@ -92,9 +96,9 @@ function CardTitle({ className, ...props }: React.ComponentProps<'div'>): React.
 
 function CardDescription({ className, ...props }: React.ComponentProps<'div'>): React.JSX.Element {
   return (
-    <div
+    <HeaderDescription
       data-slot="card-description"
-      className={cn('header-description card-description', className)}
+      className={cn('card-description', className)}
       {...props}
     />
   );

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Add the DS `Header` family (`Header`, `HeaderMedia`, `HeaderContent`, `HeaderAction`, `HeaderTitle`,
+  `HeaderDescription`). `Header` takes a `size` of `md` or `sm`, and the title and description take `render`. The
+  `Card` and `Section` header parts are built from it. `@workspace/ui` now re-exports DS components by name and does
+  not export `Header`.
 - `Card` and `Section` headers share a new `header` recipe. They gain a gap between media, content and actions, and
   between actions, and they wrap, so a full-width header media sits above the text. Add `CardHeaderMedia` and
   `SectionHeaderMedia`.
