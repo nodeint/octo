@@ -7,6 +7,9 @@
       ],
       "project": [
         "scripts/**"
+      ],
+      "ignoreDependencies": [
+        "playwright"
       ]
     },
     "packages/*": {
@@ -49,6 +52,9 @@
       ]
     },
     "packages/ds": {
+      "entry": [
+        "scripts/*.mjs"
+      ],
       "ignoreDependencies": [
         "@fontsource-variable/inter"
       ]

@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import type { SectionContentWidth } from '@workspace/ds/components';
+import type { SectionBodyWidth } from '@workspace/ds/components';
 import {
   Card,
   CardHeader,
   CardHeaderContent,
   CardTitle,
   Section,
-  SectionContent,
+  SectionBody,
   SectionDescription,
+  SectionFooter,
   SectionHeader,
   SectionHeaderAction,
   SectionHeaderContent,
@@ -29,7 +30,7 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-type WidthStory = StoryObj<React.ComponentProps<typeof Section> & { width: SectionContentWidth }>;
+type WidthStory = StoryObj<React.ComponentProps<typeof Section> & { width: SectionBodyWidth }>;
 
 export const Demo: Story = {
   render: (args) => (
@@ -40,12 +41,12 @@ export const Demo: Story = {
           <SectionDescription>Update how others see you.</SectionDescription>
         </SectionHeaderContent>
       </SectionHeader>
-      <SectionContent>
+      <SectionBody>
         <label>
           Name
           <input id="section-name" defaultValue="Ada Lovelace" />
         </label>
-      </SectionContent>
+      </SectionBody>
     </Section>
   ),
 };
@@ -95,9 +96,9 @@ export const WithAction: Story = {
         </SectionHeaderContent>
         <SectionHeaderAction><button type="button">Invite</button></SectionHeaderAction>
       </SectionHeader>
-      <SectionContent>
+      <SectionBody>
         <span>3 members</span>
-      </SectionContent>
+      </SectionBody>
     </Section>
   ),
 };
@@ -111,9 +112,9 @@ export const Width: WidthStory = {
   render: ({ width, ...args }) => (
     <Section {...args}>
       <SectionHeader><SectionHeaderContent><SectionTitle>Width</SectionTitle></SectionHeaderContent></SectionHeader>
-      <SectionContent width={width}>
+      <SectionBody width={width}>
         <input aria-label="Input in section content" defaultValue={width} />
-      </SectionContent>
+      </SectionBody>
     </Section>
   ),
 };
@@ -130,9 +131,39 @@ export const ContentWidth: Story = {
           <SectionHeader>
             <SectionHeaderContent><SectionTitle>width="{width}"</SectionTitle></SectionHeaderContent>
           </SectionHeader>
-          <SectionContent width={width}>
+          <SectionBody width={width}>
             <input aria-label={`Input in ${width} width`} defaultValue={width} />
-          </SectionContent>
+          </SectionBody>
+        </Section>
+      ))}
+    </div>
+  ),
+};
+
+export const WithFooter: Story = {
+  parameters: {
+    storyWidth: 'lg',
+    docs: { description: { story: '`SectionFooter` is a full-width action row; `align="end"` puts the actions at the section edge.' } },
+  },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      {([undefined, 'end'] as const).map((align) => (
+        <Section
+          key={align ?? 'start'}
+          style={{ '--content-width': '16rem', outline: '1px dashed currentColor' } as React.CSSProperties}
+        >
+          <SectionHeader>
+            <SectionHeaderContent><SectionTitle>align={align ?? 'start (default)'}</SectionTitle></SectionHeaderContent>
+          </SectionHeader>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <SectionBody>
+              <input aria-label={`Input in ${align ?? 'start'} footer section`} defaultValue="Ada Lovelace" />
+            </SectionBody>
+            <SectionFooter align={align}>
+              <button type="button">Cancel</button>
+              <button type="button">Save</button>
+            </SectionFooter>
+          </div>
         </Section>
       ))}
     </div>

@@ -1,9 +1,14 @@
 .section,
-.section-content {
+.section-body,
+.section-footer {
   width: 100%;
   min-width: 0;
 }
 
-.section-content[data-width='content'] {
+.section-body[data-width='content'] {
   max-width: var(--content-width);
+}
+
+.section-footer[data-align='end'] {
+  justify-content: flex-end;
 }

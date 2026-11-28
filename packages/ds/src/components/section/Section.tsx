@@ -76,19 +76,40 @@ function SectionDescription({ className, ...props }: React.ComponentProps<'p'>):
   );
 }
 
-type SectionContentWidth = 'content' | 'full';
+type SectionBodyWidth = 'content' | 'full';
 
-type SectionContentProps = React.ComponentProps<'div'> & {
+type SectionBodyProps = React.ComponentProps<'div'> & {
   /** `content` stops at the content width (forms, alerts); `full` fills the section (lists, tables). */
-  width?: SectionContentWidth;
+  width?: SectionBodyWidth;
 };
 
-function SectionContent({ className, width = 'content', ...props }: SectionContentProps): React.JSX.Element {
+function SectionBody({ className, width = 'content', ...props }: SectionBodyProps): React.JSX.Element {
   return (
     <div
-      data-slot="section-content"
+      data-slot="section-body"
       data-width={width}
-      className={cn('stack section-content', className)}
+      className={cn('stack section-body', className)}
+      {...props}
+    />
+  );
+}
+
+type SectionFooterAlign = 'start' | 'end';
+
+type SectionFooterProps = React.ComponentProps<'div'> & {
+  /** Where the actions sit on the inline axis. Defaults to `start`. */
+  align?: SectionFooterAlign;
+};
+
+function SectionFooter({ className, align = 'start', ...props }: SectionFooterProps): React.JSX.Element {
+  return (
+    <div
+      data-slot="section-footer"
+      data-align={align}
+      data-orientation="horizontal"
+      data-stack-size="sm"
+      data-stack-wrap
+      className={cn('stack section-footer', className)}
       {...props}
     />
   );
@@ -96,8 +117,9 @@ function SectionContent({ className, width = 'content', ...props }: SectionConte
 
 export {
   Section,
-  SectionContent,
+  SectionBody,
   SectionDescription,
+  SectionFooter,
   SectionHeader,
   SectionHeaderAction,
   SectionHeaderContent,
@@ -105,4 +127,4 @@ export {
   SectionTitle,
 };
 
-export type { SectionContentProps, SectionContentWidth };
+export type { SectionBodyProps, SectionBodyWidth, SectionFooterAlign, SectionFooterProps };

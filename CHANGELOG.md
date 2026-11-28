@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Rename `SectionContent` to `SectionBody`, with `SectionBodyProps` and `SectionBodyWidth` (breaking, no alias). Add
+  `SectionFooter`, a full-width action row with an `align` of `start` or `end`.
 - Add the DS `Header` family (`Header`, `HeaderMedia`, `HeaderContent`, `HeaderAction`, `HeaderTitle`,
   `HeaderDescription`). `Header` takes a `size` of `md` or `sm`, and the title and description take `render`. The
   `Card` and `Section` header parts are built from it. `@workspace/ui` now re-exports DS components by name and does
